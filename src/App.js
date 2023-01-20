@@ -10,23 +10,27 @@ import State1 from './StatesAnswer/State1';
 import State2 from './StatesAnswer/State2';
 import State3 from './StatesAnswer/State3';
 import State4 from './StatesAnswer/State4';
+import State5 from './StatesAnswer/State5';
+import State6 from './StatesAnswer/State6';
 
 const App = () => {
   return (
     <div>
-      {/* <Event1 />
-      <Event2 />
-      <Event3 />
-      <Event4 />
-      <Event5 />
-      <Event6 />
-      <Event7 />
-      <Event8 /> */}
+      {/* <Event1 /> */}
+      {/* <Event2 /> */}
+      {/* <Event3 /> */}
+      {/* <Event4 /> */}
+      {/* <Event5 /> */}
+      {/* <Event6 /> */}
+      {/* <Event7 /> */}
+      {/* <Event8 /> */}
 
-      <State1 />
-      <State2 />
-      <State3 />
-      <State4 />
+      {/* <State1 /> */}
+      {/* <State2 /> */}
+      {/* <State3 /> */}
+      {/* <State4 /> */}
+      {/* <State5 /> */}
+      <State6 />
     </div>
   )
 }
