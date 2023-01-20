@@ -48,3 +48,5 @@
 2. สร้างตัวแปร useState 2 ตัว คือ name และ profile โดย name มีค่าเริ่มต้น คือ Bin และ profile มีค่าเริ่มต้นคือ My name is Bin จากนั้นสร้าง input ให้กรอกชื่อ โดยจะเปลี่ยนแปลงค่า name และ profile เป็น `My name is ${name}` โดยใช้ useEffect
 
 3. สร้างตัวแปร useState 2 ตัว คือ num และ numSquare โดย num มีค่าเริ่มต้นคือ 0 จากนั้นสร้าง input ให้กรอกตัวเลข เมื่อมีการเปลี่ยนแปลงค่า จะแสดง ค่า num และ numSquare โดย numSquare = num * num
+
+4. สร้าง ตัวนับเวลาถอยหลัง (Countdown Timer) โดย ลดค่าลง ทีละ 1 วินาที มีค่าเริ่มต้น 10 วินาที โดยลดค่าลงน้อยสุด 1 วินาที ห้ามติดลบ
