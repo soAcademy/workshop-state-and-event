@@ -57,7 +57,7 @@ const App = () => {
       {/* <Effect4 /> */}
       {/* <Effect5 /> */}
       {/* <Effect6 /> */}
-      <Effect7 />
+      {/* <Effect7 /> */}
     </div>
   );
 };
