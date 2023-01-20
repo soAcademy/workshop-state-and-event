@@ -38,3 +38,5 @@
 2. สร้าง Component รับ props ชื่อว่า data1 และ data2 จากนั้น render data1 และ data2 ออกมา
 
 3. สร้าง Counter ที่เมื่อกดปุ่ม จะส่งค่า counter ไปใน Component ผ่าน Prop (Counter กับ Render อยู่คนละ Component)
+
+4. สร้าง 2 Component คือ Increase และ Decrease โดยส่ง counter และ setCounter ผ่าน prop เมื่อกดแต่ละปุ่ม จะ render ค่า counter ทาง root component

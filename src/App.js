@@ -17,6 +17,7 @@ import State6 from './StatesAnswer/State6';
 import Prop1 from './PropsAnswer/Prop1';
 import Prop2 from './PropsAnswer/Prop2';
 import Prop3 from './PropsAnswer/Prop3';
+import Prop4 from './PropsAnswer/Prop4';
 
 const App = () => {
   return (
@@ -39,7 +40,8 @@ const App = () => {
 
       {/* <Prop1 data="Hello World" /> */}
       {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
-      <Prop3 />
+      {/* <Prop3 /> */}
+      <Prop4 />
     </div>
   )
 }
