@@ -40,3 +40,11 @@
 3. สร้าง Counter ที่เมื่อกดปุ่ม จะส่งค่า counter ไปใน Component ผ่าน Prop (Counter กับ Render อยู่คนละ Component)
 
 4. สร้าง 2 Component คือ Increase และ Decrease โดยส่ง counter และ setCounter ผ่าน prop เมื่อกดแต่ละปุ่ม จะ render ค่า counter ทาง root component
+
+# โจทย์ useEffect
+
+1. แก้ Html Title ตามใช้ข้อความ ตามจำนวน Click โดยใช้ useState และ useEffect
+
+2. สร้างตัวแปร useState 2 ตัว คือ name และ profile โดย name มีค่าเริ่มต้น คือ Bin และ profile มีค่าเริ่มต้นคือ My name is Bin จากนั้นสร้าง input ให้กรอกชื่อ โดยจะเปลี่ยนแปลงค่า name และ profile เป็น `My name is ${name}` โดยใช้ useEffect
+
+3. สร้างตัวแปร useState 2 ตัว คือ num และ numSquare โดย num มีค่าเริ่มต้นคือ 0 จากนั้นสร้าง input ให้กรอกตัวเลข เมื่อมีการเปลี่ยนแปลงค่า จะแสดง ค่า num และ numSquare โดย numSquare = num * num

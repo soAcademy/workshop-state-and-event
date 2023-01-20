@@ -19,6 +19,10 @@ import Prop2 from './PropsAnswer/Prop2';
 import Prop3 from './PropsAnswer/Prop3';
 import Prop4 from './PropsAnswer/Prop4';
 
+import Effect1 from "./EffectsAnswer/Effect1"
+import Effect2 from "./EffectsAnswer/Effect2"
+import Effect3 from "./EffectsAnswer/Effect3"
+
 const App = () => {
   return (
     <div>
@@ -41,7 +45,11 @@ const App = () => {
       {/* <Prop1 data="Hello World" /> */}
       {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
       {/* <Prop3 /> */}
-      <Prop4 />
+      {/* <Prop4 /> */}
+
+      {/* <Effect1 /> */}
+      {/* <Effect2 /> */}
+      <Effect3 />
     </div>
   )
 }
