@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const Effect4 = () => {
   const [countdown, setCountdown] = useState(10);
 
- useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setCountdown(countdown - 1);
     }, 1000);

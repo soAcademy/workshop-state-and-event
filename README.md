@@ -50,3 +50,7 @@
 3. สร้างตัวแปร useState 2 ตัว คือ num และ numSquare โดย num มีค่าเริ่มต้นคือ 0 จากนั้นสร้าง input ให้กรอกตัวเลข เมื่อมีการเปลี่ยนแปลงค่า จะแสดง ค่า num และ numSquare โดย numSquare = num * num
 
 4. สร้าง ตัวนับเวลาถอยหลัง (Countdown Timer) โดย ลดค่าลง ทีละ 1 วินาที มีค่าเริ่มต้น 10 วินาที โดยลดค่าลงน้อยสุด 1 วินาที ห้ามติดลบ
+
+5. ดึงข้อมูล API ผ่าน GET Method โดยใช้ axios จาก `https://api.sampleapis.com/coffee/hot` โดยดึงตั้งแต่โหลดหน้าเว็บ
+
+6. ดึงข้อมูล API ผ่าน GET Method โดยใช้ axios จาก `https://api.sampleapis.com/coffee/hot` โดยโหลดข้อมูลเมื่อกดปุ่ม Fetch
