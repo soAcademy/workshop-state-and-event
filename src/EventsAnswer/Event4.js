@@ -1,6 +1,6 @@
 import React from "react";
 
-const Event3 = () => {
+const Event4 = () => {
   const inputChange = (e) => console.log(e.target.value);
 
   return (
@@ -10,4 +10,4 @@ const Event3 = () => {
   );
 };
 
-export default Event3;
+export default Event4;
