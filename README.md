@@ -30,3 +30,11 @@
 5. สร้าง state ชื่อว่า customer ที่เก็บข้อมูล `{name: "Bin", location: "Bangkok"}` เมื่อกดปุ่มแล้วจะเปลี่ยน ค่าเป็น `{name: "Jam", location: "Nonthaburi"}`
 
 6. สร้าง number input fields 2 อัน คือ Number1 และ Number2 โดย เมื่อกรอกค่าไปให้ render number มาแสดง จากนั้นถ้ากดปุ่ม calculate ให้เอา Number1 + Number2
+
+# โจทย์ Props
+
+1. สร้าง Component รับ props ชื่อว่า data จากนั้น render data ออก
+
+2. สร้าง Component รับ props ชื่อว่า data1 และ data2 จากนั้น render data1 และ data2 ออกมา
+
+3. สร้าง Counter ที่เมื่อกดปุ่ม จะส่งค่า counter ไปใน Component ผ่าน Prop (Counter กับ Render อยู่คนละ Component)

@@ -6,12 +6,17 @@ import Event5 from "./EventsAnswer/Event5"
 import Event6 from "./EventsAnswer/Event6"
 import Event7 from "./EventsAnswer/Event7"
 import Event8 from "./EventsAnswer/Event8"
+
 import State1 from './StatesAnswer/State1';
 import State2 from './StatesAnswer/State2';
 import State3 from './StatesAnswer/State3';
 import State4 from './StatesAnswer/State4';
 import State5 from './StatesAnswer/State5';
 import State6 from './StatesAnswer/State6';
+
+import Prop1 from './PropsAnswer/Prop1';
+import Prop2 from './PropsAnswer/Prop2';
+import Prop3 from './PropsAnswer/Prop3';
 
 const App = () => {
   return (
@@ -30,7 +35,11 @@ const App = () => {
       {/* <State3 /> */}
       {/* <State4 /> */}
       {/* <State5 /> */}
-      <State6 />
+      {/* <State6 /> */}
+
+      {/* <Prop1 data="Hello World" /> */}
+      {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
+      <Prop3 />
     </div>
   )
 }

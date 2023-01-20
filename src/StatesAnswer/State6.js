@@ -8,7 +8,7 @@ const State6 = () => {
   return (
     <div className="">
       <div>
-       Input1: {number1}
+        Input1: {number1}
         <input
           type="number"
           className="border bg-red-300"
