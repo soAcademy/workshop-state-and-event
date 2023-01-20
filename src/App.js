@@ -25,6 +25,7 @@ import Effect3 from "./EffectsAnswer/Effect3";
 import Effect4 from "./EffectsAnswer/Effect4";
 import Effect5 from "./EffectsAnswer/Effect5";
 import Effect6 from "./EffectsAnswer/Effect6";
+import Effect7 from "./EffectsAnswer/Effect7";
 
 const App = () => {
   return (
@@ -55,7 +56,8 @@ const App = () => {
       {/* <Effect3 /> */}
       {/* <Effect4 /> */}
       {/* <Effect5 /> */}
-      <Effect6 />
+      {/* <Effect6 /> */}
+      <Effect7 />
     </div>
   );
 };
