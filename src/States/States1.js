@@ -8,7 +8,7 @@ const State1 = () => {
       <p>{title}</p>
       <p>
         <button className="p-4 bg-red-400" onClick={() => setTitle("Pooves")}>
-          Change Title
+          เปลี่ยนชื่อ
         </button>
       </p>
     </div>
