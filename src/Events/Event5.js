@@ -4,7 +4,8 @@ function Event5() {
   return (
     <div
       className="my-2 bg-gray-500 h-64 text-white"
-      onMouseOver={() => alert("Hello world 5")}
+      onMouseOver={() => console.log("Hello world 5")}
+      onMouseLeave={() => console.log("Exit ! ")}
     >
       Hover Me ...
     </div>
