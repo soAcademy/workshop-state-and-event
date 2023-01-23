@@ -12,6 +12,7 @@ import State2 from "./States/State2";
 import State3 from "./States/State3";
 import State4 from "./States/State4";
 import State5 from "./States/State5";
+import State6 from "./States/State6";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <State3 />
       <State4 />
       <State5 />
+      <State6 />
     </>
   );
 }
