@@ -3,7 +3,7 @@ import Event2 from "./Event/Event2";
 import Event3 from "./Event/Event3";
 import Event4 from "./Event/Event4";
 import Event5 from "./Event/Event5";
-
+import Event6 from "./Event/Event6";
 const App = () => {
   return (
     <div>
@@ -11,8 +11,8 @@ const App = () => {
       {/* <Event2 /> */}
       {/* <Event3 /> */}
       {/* <Event4 /> */}
-      <Event5 />
-      {/* <Event6 /> */}
+      {/* <Event5 /> */}
+      <Event6 />
       {/* <Event7 /> */}
       {/* <Event8 /> */}
 
