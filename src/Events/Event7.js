@@ -5,9 +5,11 @@ const Event7 = () => {
     // ใช้เพื่อป้องกันการ refresh หน้า ตอนกด submit
     e.preventDefault();
     const data = {
-      name: e.target[0].value,
-      tel: e.target[1].value,
-      email: e.target[2].value,
+      name: e.target["name"].value,
+      tel: e.target["tel"].value,
+      email: e.target["email"].value,
+      // key ข้อมูลห้ามซ้ำ
+      // email2: e.target["email"].value, 
     };
     console.log(data);
   };
