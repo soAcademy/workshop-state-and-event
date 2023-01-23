@@ -10,6 +10,9 @@ const State1 = () => {
         <button className="p-4 bg-blue-200" onClick={() => setTitle("Jam")}>
           Change Title
         </button>
+        <button className="p-4 bg-blue-200" onClick={() => setTitle("Bin")}>
+          Change Title
+        </button>
       </p>
     </div>
   );
