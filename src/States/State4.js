@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const State4 = () => {
   const [inputNumber, setInputNumber] = useState();
   return (
-    <div className="m-3 bg-green-400 rounded-lg">
+    <div className="m-3 bg-gradient-to-b from-green-400 to-blue-400 rounded-lg">
       <h1 className="text-2xl p-2 mt-2">{inputNumber}</h1>
       <input
         type="number"

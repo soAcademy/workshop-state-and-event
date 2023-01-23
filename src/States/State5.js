@@ -7,7 +7,7 @@ const State5 = () => {
   });
 
   return (
-    <div className="m-3 bg-blue-400 rounded-lg">
+    <div className="m-3 bg-gradient-to-b from-blue-400 to-indigo-400 rounded-lg">
       <h1 className="text-2xl p-2 mt-2">{JSON.stringify(customers)}</h1>
       <button
         onClick={() => setCustomers({ name: "Jam", location: "Nonthaburi" })}

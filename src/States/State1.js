@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const State1 = () => {
   const [title, setTitle] = useState("Title");
   return (
-    <div className="m-3 bg-red-400 rounded-lg">
+    <div className="m-3 bg-gradient-to-b from-red-400 to-orange-400 rounded-lg">
       <h1 className="text-2xl p-2 mt-2">{title}</h1>
       <button
         onClick={() => setTitle("setTitle")}

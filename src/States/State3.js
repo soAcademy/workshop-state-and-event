@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const State3 = () => {
   const [count, setCount] = useState(10);
   return (
-    <div className="m-3 bg-yellow-400 rounded-lg">
+    <div className="m-3 bg-gradient-to-b from-yellow-400 to-green-400 rounded-lg">
       <h1 className="text-2xl p-2 mt-2">{count}</h1>
       <button
         onClick={() => setCount(count + 1)}
