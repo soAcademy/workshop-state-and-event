@@ -1,6 +1,9 @@
 import React from "react";
 
 function Event7() {
+  const handleReset = (e) => {
+    console.log(e);
+  };
   const submitData = (e) => {
     e.preventDefault();
     const data = {
@@ -15,7 +18,9 @@ function Event7() {
       {/* structure zone */}
       <form
         className="m-6 p-5 bg-yellow-300 shadow-lg rounded-[20px] border-4 border-green-600"
-        onSubmit={(e) => submitData(e)}
+        onSubmit={(event) => submitData(event)}
+        onReset={(event) => handleReset(event)}
+        // การเรียกใช้งาน submit()
       >
         <div>
           <input
@@ -23,6 +28,7 @@ function Event7() {
             placeholder="ชื่อ"
             id="name"
             required //*
+            //ก้อนแรกที่ตัว target หาเจอ โดยผ่าน index การวางของ jsx
           />
         </div>
         <div>
@@ -43,6 +49,9 @@ function Event7() {
         </div>
         <button className="bg-green-600 border-3 shadow-lg p-4 -2 mt-4 text-white rounded-[10px] ">
           Submit
+        </button>
+        <button className="bg-yellow-300 p-4" type="reset">
+          Clear
         </button>
       </form>
     </>
