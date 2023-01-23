@@ -7,7 +7,8 @@
 // import Event7 from "./Events/Event7";
 // import Event8 from "./Events/Event8";
 
-import State1 from "./States/State1";
+// import State1 from "./States/State1";
+import State2 from "./States/State2";
 
 const App = () => {
   return (
@@ -20,7 +21,8 @@ const App = () => {
       {/* <Event6 /> */}
       {/* <Event7 /> */}
       {/* <Event8 /> */}
-      <State1 />
+      {/* <State1 /> */}
+      <State2 />
     </div>
   );
 };
