@@ -6,7 +6,7 @@ const Event2 = () => {
   return (
     <div className="m-3">
       <button
-        className="bg-cyan-300 border-2 rounded-lg"
+        className="bg-orange-400 border-2 rounded-lg p-1"
         onClick={() => hello2()}
       >
         Button 2
