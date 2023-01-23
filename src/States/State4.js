@@ -1,4 +1,4 @@
-import { useState } from "react";
+import  React, { useState } from "react";
 
 const State4 = () => {
   const [number, setNumber] = useState(0);
@@ -11,11 +11,11 @@ const State4 = () => {
         onChange={(e) => setNumber(e.target.value)}
         className="bg-gray-200 rounded-lg px-2 w-[105px]"
       ></input>
-      &nbsp; +7
+      &nbsp; +7 = &nbsp;
+      <p>{number}</p>
       <button onClick={calculate} className="bg-gray-400 rounded-lg p-2 m-2 ">
         Calculate
       </button>
-      <p>{number}</p>
     </div>
   );
 };
