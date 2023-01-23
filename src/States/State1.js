@@ -4,7 +4,7 @@ import { useState } from "react"
 const State1 = () => {
   const [state, setState] = useState("Bin")
   const click = () => {
-    setState("Jam")
+    state === "Bin" ? setState("Jam") : setState("Bin")
     console.log({state})
   }
   return (
