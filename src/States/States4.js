@@ -6,7 +6,9 @@ const State4 = () => {
   return (
     <div className="bg-gradient-to-r 
     from-blue-500 to-red-500">
-      <div>{inputNumber}</div>
+      <div>
+        {inputNumber}
+        </div>
       <div>
         <input
           className=" border border-red-800 bg-red-200"
