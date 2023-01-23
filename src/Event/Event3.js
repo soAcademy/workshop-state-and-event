@@ -4,7 +4,7 @@ const Event3 = () => {
   const helloWorld = () => console.log("Hello 3");
 
   return (
-    <div className="wp-3">
+    <div className="my-3">
       <button className="bg-pink-800" onClick={helloWorld}>
         Button 30
       </button>
