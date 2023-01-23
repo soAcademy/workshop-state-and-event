@@ -14,7 +14,7 @@ const State6 = () => {
         placeholder="Number1"
         className="bg-gray-200 rounded-lg m-2 w-24 px-2"
         id="number1"
-        onChange={(e)=>setNumber(e.target.form['number1'].value)}
+        onChange={(e)=>setNumber(e.target.value)}
       />
       +
       <input

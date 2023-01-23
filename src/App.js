@@ -29,7 +29,7 @@ import Effect7 from "./EffectsAnswer/Effect7";
 
 const App = () => {
   return (
-    <div>
+    <div className="mx-2">
       <Event1 />
       <Event2 />
       <Event3 />

@@ -15,10 +15,10 @@ const State5 = () => {
       location: "Bangkok"})
   };
   return (
-    <div className="flex flex-col w-[276px] items-center bg-gray-300 m-2 rounded-lg p-2">
+    <div className="flex flex-col w-[330px] items-center bg-gray-300 m-2 rounded-lg p-2">
       <p>State5 - Change Customer State</p>
       <button onClick={changeState} className="bg-gray-400 p-2 rounded-lg my-2">Change State</button>
-      <div className="text-red-600 border-2 rounded-lg p-2 w-2/3 flex justify-center">{customer.name} {customer.location}</div>
+      <div className="text-red-600 border-2 rounded-lg p-2 w-fit flex justify-center">{JSON.stringify(customer)}</div>
     </div>
   );
 };

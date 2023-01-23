@@ -9,8 +9,9 @@ const State4 = () => {
         type="number"
         placeholder="Enter Number"
         onChange={(e) => setNumber(e.target.value)}
-        className="bg-gray-200 rounded-lg px-2 w-[140px]"
+        className="bg-gray-200 rounded-lg px-2 w-[105px]"
       ></input>
+      &nbsp; +7
       <button onClick={calculate} className="bg-gray-400 rounded-lg p-2 m-2 ">
         Calculate
       </button>
