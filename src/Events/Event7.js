@@ -8,34 +8,27 @@ const Event7 = () => {
     });
   };
   return (
-    <div className="bg-gray-300 w-fit my-4 border-2 border-black p-2">Event7 - // Form onSubmit //
-      <form onSubmit={submit}>
+    <div className="bg-gray-300 w-fit m-4 p-4 border-2 border-black">
+      <form className="flex flex-col" onSubmit={submit}>
         <label className="flex justify-between">
-          Name:
-          <input type="text" required placeholder="name"></input>
+          Name: &nbsp;
+          <input type="text" required placeholder="Name" />
         </label>
         <br />
         <label className="flex justify-between">
-          Tel: &nbsp;
-          <input type="tel" pattern="[0-9]*" placeholder="tel"></input>
+          Tel:&nbsp;
+          <input type="tel" placeholder="Tel." pattern="[0-9]*" />
         </label>
         <br />
         <label className="flex justify-between">
-          E-mail: &nbsp;
-          <input type="email" placeholder="Email"></input>
+          E-mail:&nbsp;
+          <input type="email" placeholder="E-mail" />
         </label>
-        <br />
-        <div className="w-full flex justify-center p-2">
-          <button
-            type="submit"
-            className="border-2 bg-gray-400 px-2 rounded-md w-full"
-          >
-            Submit &nbsp;
-          </button>
-        </div>
+        <button className="border-2 border-black mt-4  bg-gray-400">
+          Submit
+        </button>
       </form>
     </div>
   );
 };
-
 export default Event7;
