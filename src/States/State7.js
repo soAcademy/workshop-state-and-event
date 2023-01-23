@@ -12,15 +12,20 @@ const State7 = () => {
       {toggle && (
         <div className="bg-purple-700">
           Show
+
+
           <button
             className="bg-purple-200"
             onClick={() => setToggle1(!toggle1)}
           >
             อะไรก็ได้
           </button>
-          {toggle1 && <div className="bg-teal-700">อิหยังวะเนี่ย</div>}
+
+
+          {toggle1 && <div className="bg-teal-700">เนื้อหาที่อยู่ข้างใน</div>}
         </div>
       )}
+
       {toggle && <div className="bg-purple-700">Show1</div>}
       {toggle && <div className="bg-purple-700">Show2</div>}
       {toggle && <div className="bg-purple-700">Show3</div>}
@@ -29,3 +34,5 @@ const State7 = () => {
 };
 
 export default State7;
+
+// && แปลว่ามันต้องจริงทั้งคู่ ในที่นี้คือ toggle ทีม่ันต้องจริงทั้ง๕ู่ มันถึงจะโชว์นะ อันนี้มันเป็นเทคนิคแทนที่จะใช้คำว่า If-else อ่ะ
