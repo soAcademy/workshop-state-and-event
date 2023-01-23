@@ -1,11 +1,14 @@
 import Event1 from "./Event/Event1";
 import Event2 from "./Event/Event2";
+import Event3 from "./Event/Event3";
+
+
 const App = () => {
   return (
     <div>
       {/* <Event1 /> */}
-      <Event2 />
-      {/* <Event3 /> */}
+      {/* <Event2 /> */}
+      <Event3 />
       {/* <Event4 /> */}
       {/* <Event5 /> */}
       {/* <Event6 /> */}
