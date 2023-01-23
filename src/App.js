@@ -1,5 +1,5 @@
 import Event1 from "./Events/Event1";
-// import Event2 from "./EventsAnswer/Event2";
+import Event2 from "./Events/Event2";
 // import Event3 from "./EventsAnswer/Event3";
 // import Event4 from "./EventsAnswer/Event4";
 // import Event5 from "./EventsAnswer/Event5";
@@ -30,8 +30,8 @@ import Event1 from "./Events/Event1";
 const App = () => {
   return (
     <div>
-      <Event1 />
-      {/* <Event2 /> */}
+      {/* <Event1 /> */}
+      <Event2 />
       {/* <Event3 /> */}
       {/* <Event4 /> */}
       {/* <Event5 /> */}
