@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const State2 = () => {
+const State3 = () => {
   const [counter, setCounter] = useState(0);
 
   return (
@@ -17,11 +17,14 @@ const State2 = () => {
         onClick={() => console.log("clear")  }>
           Clear
         </button>
-        
+        <button className="p-4 bg-green-200" 
+        onClick={() => setCounter(counter - 1)}>
+          Decrease Counter
+        </button>
       
       </p>
     </div>
   );
 };
 
-export default State2;
+export default State3;
