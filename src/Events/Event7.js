@@ -1,7 +1,15 @@
 const Event7 = () => {
+  const submit = (e) => {
+    e.preventDefault();
+    console.log({
+      name: e.target[0].value,
+      tel: e.target[1].value,
+      email: e.target[2].value,
+    });
+  };
   return (
     <div className="bg-gray-300 w-fit my-4 border-2 border-black p-2">
-      <form>
+      <form onSubmit={submit}>
         <label className="flex justify-between">
           Name:
           <input type="text" required placeholder="name"></input>
@@ -20,7 +28,7 @@ const Event7 = () => {
         <div className="w-full flex justify-center p-2">
           <button
             type="submit"
-            className="border-2 bg-gray-400 px-2 rounded-md w-full "
+            className="border-2 bg-gray-400 px-2 rounded-md w-full"
           >
             Submit &nbsp;
           </button>
