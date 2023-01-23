@@ -4,8 +4,8 @@ const Event2 = () => {
   const helloWorld = () => console.log("Hello 2");
 
   return (
-    <div className="my-2">
-      <button className="bg-yellow-200" onClick={() => helloWorld()}>
+    <div className="wp-2">
+      <button className="bg-blue-200" onClick={() => helloWorld()}>
         Button 2
       </button>
     </div>
