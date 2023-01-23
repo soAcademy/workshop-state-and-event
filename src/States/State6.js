@@ -14,7 +14,7 @@ const State6 = () => {
         <input
           type="number"
           placeholder="Number1"
-          className="bg-gray-200 rounded-lg m-2 w-24 px-2"
+          className="bg-gray-200 rounded-md m-2 w-24 px-2"
           id="number1"
           onChange={(e) => {
             setSum(e.target.value);
@@ -25,18 +25,18 @@ const State6 = () => {
         <input
           type="number"
           placeholder="Number2"
-          className="bg-gray-200 rounded-lg m-2 w-24 px-2"
+          className="bg-gray-200 rounded-md m-2 w-24 px-2"
           id="number2"
           onChange={(e) => setNumber2(e.target.value)}
         />
         <div className="flex w-full justify-evenly">
           <button
-            className="px-4 mx-2 bg-gray-400 rounded-lg"
+            className="px-4 mx-2 bg-gray-400 rounded-md font-bold"
             onClick={calculate}
           >
             Calculate
           </button>
-          <p className="mx-2 bg-gray-100 rounded-lg w-fit px-4 text-red-500">
+          <p className="mx-2 bg-gray-100 rounded-md w-fit px-4 text-red-500 font-bold">
             {sum}
           </p>
         </div>
