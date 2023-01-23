@@ -36,7 +36,7 @@ const App = () => {
       {/* <Event4 /> */}
       {/* <Event5 /> */}
       {/* <Event6 /> */}
-      {/* <Event7 /> */}
+      <Event7 />
       {/* <Event8 /> */}
 
       {/* <State1 /> */}

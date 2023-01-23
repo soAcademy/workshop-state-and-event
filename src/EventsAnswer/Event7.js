@@ -7,8 +7,8 @@ const Event7 = () => {
     const data = {
       name: e.target[0].value,
       tel: e.target[1].value,
-      email: e.target[2].value
-    }
+      email: e.target[2].value,
+    };
     console.log(data);
   };
 
@@ -36,7 +36,19 @@ const Event7 = () => {
           id="email"
         />
       </div>
-      <button className="bg-red-300 p-4">Submit</button>
+      <button
+        className="bg-red-300 p-4"
+        type="submit"
+      >
+        Submit
+      </button>
+      <button
+        className="bg-yellow-300 p-4"
+        type="button"
+        onClick={() => console.log("clear")}
+      >
+        Clear
+      </button>
     </form>
   );
 };
