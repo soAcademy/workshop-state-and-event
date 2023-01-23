@@ -1,6 +1,6 @@
 import React from "react";
 
-const Event1 = () => {
+const Event2 = () => {
   const helloWorld = () => console.log("Hello 2");
   return (
     <div className="my-2">
@@ -11,4 +11,4 @@ const Event1 = () => {
   );
 };
 
-export default Event1;
+export default Event2;
