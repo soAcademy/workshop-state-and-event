@@ -4,7 +4,7 @@ const State4 = () => {
   const [inputNumber, setInputNumber] = useState();
 
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray-200 p-5">
       <div>{inputNumber}</div>
       <div>
         <input
@@ -12,9 +12,15 @@ const State4 = () => {
           className="bg-red-300"
           onChange={(e) => setInputNumber(e.target.value)}
         />
+
         <div>
           Plus 7
         </div>
+
+        {/* <input
+          className="bg-red-300 p-4 border-2 border-black my-4 ml-6 rounded-[10px]">
+          </input> */}
+
         <button
           className="p-4 bg-green-200"
           onClick={() => setInputNumber(Number(inputNumber) + 7)}
