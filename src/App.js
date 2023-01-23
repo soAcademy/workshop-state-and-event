@@ -5,6 +5,7 @@ import Event3 from "./Events/Event3";
 import Event4 from "./Events/Event4";
 import Event5 from "./Events/Event5";
 import Event6 from "./Events/Event6";
+import Event7 from "./Events/Event7";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Event4 />
       <Event5 />
       <Event6 />
+      <Event7 />
     </>
   );
 }
