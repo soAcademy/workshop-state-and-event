@@ -29,9 +29,9 @@ const App = () => {
       {/* <State2 /> */}
       {/* <State3 /> */}
       {/* <State4/> */}
-    {/* <State5/> */}
-    {/* <State6/> */}
-    <State7/>
+      {/* <State5/> */}
+      {/* <State6/> */}
+      <State7 />
     </div>
   );
 };
