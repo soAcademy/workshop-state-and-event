@@ -40,6 +40,12 @@ const Event7 = () => {
       <button className="mt-2 w-16 mx-3 bg-blue-100 border border-black">
         Submit
       </button>
+      <button
+        className="mt-2 w-16 mx-3 bg-yellow-100 border border-black"
+        type="reset"
+      >
+        Clear
+      </button>
     </form>
   );
 };
