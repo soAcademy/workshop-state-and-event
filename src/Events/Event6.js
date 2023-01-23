@@ -1,7 +1,6 @@
 const Event6 = () => {
-  const helloWorld = () => (console.log('Hello 6'))
   return (
-    <input type="text" className="w-14 border-2" placeholder="Hello" onSelect={helloWorld}></input>
+    <input type='text' placeholder="Hello" onSelect={()=>console.log("Hello 6")} className="w-14 border-2"></input>
   )
 }
 

@@ -8,7 +8,7 @@ const Event7 = () => {
     });
   };
   return (
-    <div className="bg-gray-300 w-fit my-4 border-2 border-black p-2">
+    <div className="bg-gray-300 w-fit my-4 border-2 border-black p-2">Event7 - // Form onSubmit //
       <form onSubmit={submit}>
         <label className="flex justify-between">
           Name:
@@ -17,7 +17,7 @@ const Event7 = () => {
         <br />
         <label className="flex justify-between">
           Tel: &nbsp;
-          <input type="tel" required placeholder="tel"></input>
+          <input type="tel" pattern="[0-9]*" placeholder="tel"></input>
         </label>
         <br />
         <label className="flex justify-between">
