@@ -10,7 +10,6 @@ const State3 = () => {
         <button className="p-4 bg-blue-200" onClick={() => setCounter(counter + 1)}>
           Increase Counter
         </button>
-
         <button className="p-4 bg-green-200" onClick={() => setCounter(counter - 1)}>
           Decrease Counter
         </button>

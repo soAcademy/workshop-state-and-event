@@ -11,25 +11,23 @@ const State6 = () => {
         <h1>{sum}</h1>
       </div>
       <div>
-        <p>Input1: {number1} </p>
 
         <input
           type="number"
-          className="border bg-red-100"
+          className="border bg-red-100 w-1/6"
           onChange={(e) => setNumber1(e.target.value)}
         />
       </div>
       <div>
-        <p>Input2: {number2} </p>
         <input
           type="number"
-          className="border bg-yellow-100"
+          className="border bg-yellow-100 w-1/6"
           onChange={(e) => setNumber2(e.target.value)}
         />
       </div>
       <div>
         <button
-          className="p-4 bg-green-200"
+          className="p-4 bg-green-200 w-1/6"
           onClick={() => setSum(Number(number1) + Number(number2))}
         >
           Calculate
