@@ -5,6 +5,7 @@ import Event4 from "./Events/Event4.js";
 import Event5 from "./Events/Event5.js";
 import Event6 from "./Events/Event6.js";
 import Event7 from "./Events/Event7.js";
+import Event8 from "./Events/Event8.js";
 
 const App = () => {
   return (
@@ -15,7 +16,8 @@ const App = () => {
       {/* <Event4 /> */}
       {/* <Event5 /> */}
       {/* <Event6 /> */}
-      <Event7 />
+      {/* <Event7 /> */}
+      <Event8 />
     </div>
   );
 };

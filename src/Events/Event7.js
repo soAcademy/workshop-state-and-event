@@ -7,7 +7,7 @@ const Event7 = () => {
         const data = {
             name: e.target[0].value,
             tel: e.target[1].value,
-            email: e.target[2].value
+            email: e.target[3].value
         }
         console.log(data);
     }
