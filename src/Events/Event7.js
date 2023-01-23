@@ -8,6 +8,7 @@ const Event7 = () => {
       tel: e.target[1].value,
       email: e.target[2].value,
     };
+    console.log(data);
   };
   return (
     <form className="bg-blue-200 ml-2" onSubmit={(e) => submitData(e)}>
