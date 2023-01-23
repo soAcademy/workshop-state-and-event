@@ -12,14 +12,14 @@ const State6 = () => {
         Input1: {number1}
         <input
           type="number"
-          className="border-3 border-black bg-indigo-400 text-white"
+          className="border-3 border-black bg-indigo-400 text-white rounded-[20px]"
           onChange={(e) => setNumber1(e.target.value)}
         />
       </div>
       <div>
         Input2: {number2}
         <input
-          className="border-3 border-black bg-slate-400 text-white"
+          className="border-3 border-black bg-slate-400 text-white rounded-[20px]"
           type="number"
           onChange={(event) => setNumber2(event.target.value)}
         />
