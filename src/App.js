@@ -11,6 +11,7 @@ import State2 from "./States/State2.js";
 import State3 from "./States/State3.js";
 import State4 from "./States/State4.js";
 import State5 from "./States/State5.js";
+import State6 from "./States/State6.js";
 
 
 const App = () => {
@@ -28,7 +29,8 @@ const App = () => {
       {/* <State2 /> */}
       {/* <State3 /> */}
       {/* <State4 /> */}
-      <State5 />
+      {/* <State5 /> */}
+      <State6 />
     </div>
   );
 };
