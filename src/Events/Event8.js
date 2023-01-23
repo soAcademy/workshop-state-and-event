@@ -8,10 +8,10 @@ const Event8 = () => {
   return (
     <div className="m-3">
       <input
-        id="picture"
+        id="image"
         type="file"
         accept="image/jpg, image/png"
-        className="h-12 border-2 rounded-lg"
+        className="h-12 border-2 border-violet-500 rounded-lg"
         onChange={(e) => picData(e)}
       />
     </div>
