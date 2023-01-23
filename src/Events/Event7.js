@@ -50,7 +50,10 @@ function Event7() {
         <button className="bg-green-600 border-3 shadow-lg p-4 -2 mt-4 text-white rounded-[10px] ">
           Submit
         </button>
-        <button className="bg-yellow-300 p-4" type="reset">
+        <button
+          className="bg-yellow-300 p-4 border-red-400 bg-red-300 ml-4 rounded-[10px] text-white"
+          type="reset "
+        >
           Clear
         </button>
       </form>
