@@ -14,7 +14,7 @@ const Event8 = () => {
           className="h-12 border border-green-800 mt-2"
           id="image"
           type="file"
-          accept="image/png, image/jpeg" //mime type 
+          accept="image/png, image/jpeg" //mime type ไฟล์ PNG PG JPG 
           onChange={(e)=>submitData(e)}
         />
       </div>

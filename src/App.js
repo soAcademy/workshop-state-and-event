@@ -7,6 +7,8 @@ import Event6 from "./Event/Event6";
 import Event7 from "./Event/Event7";
 import Event8 from "./Event/Event8";
 
+import State1 from "./States/States1";
+
 
 
 
@@ -20,9 +22,9 @@ const App = () => {
       {/* <Event5 /> */}
       {/* <Event6 /> */}
       {/* <Event7 /> */}
-      <Event8 />
+      {/* <Event8 /> */}
 
-      {/* <State1 /> */}
+      <State1 />
       {/* <State2 /> */}
       {/* <State3 /> */}
       {/* <State4 /> */}
