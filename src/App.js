@@ -12,7 +12,8 @@
 // import State3 from "./States/State3";
 // import State4 from "./States/State4";
 // import State5 from "./States/State5";
-import State6 from "./States/State6";
+// import State6 from "./States/State6";
+import State7 from "./States/State7";
 
 const App = () => {
   return (
@@ -30,7 +31,8 @@ const App = () => {
       {/* <State3 /> */}
       {/* <State4 /> */}
       {/* <State5 /> */}
-      <State6 />
+      {/* <State6 /> */}
+      <State7 />
     </div>
   );
 };

@@ -11,7 +11,7 @@ const State6 = () => {
         Input: {number1}
         <input
           type="number"
-          className="border border-red-200"
+          className="border border-black rounded-full"
           onChange={(e) => setNumber1(e.target.value)}
         />
       </div>
@@ -19,7 +19,7 @@ const State6 = () => {
         Input: {number2}
         <input
           type="number"
-          className="border border-blue-200"
+          className="border border-black rounded-full"
           onChange={(e) => setNumber2(e.target.value)}
         />
       </div>
