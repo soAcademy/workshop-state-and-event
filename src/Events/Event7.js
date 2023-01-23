@@ -12,21 +12,43 @@ const Event7 = () => {
       <form className="flex flex-col" onSubmit={submit}>
         <label className="flex justify-between">
           Name: &nbsp;
-          <input type="text" required placeholder="Name" />
+          <input
+            type="text"
+            required
+            placeholder="Name"
+            className="px-1 focus:outline-none focus:border-red-500 border-2"
+          />
         </label>
         <br />
         <label className="flex justify-between">
           Tel:&nbsp;
-          <input type="tel" placeholder="Tel." pattern="[0-9]*" />
+          <input
+            type="tel"
+            placeholder="Tel."
+            pattern="[0-9]*"
+            className="px-1 focus:outline-none focus:border-red-500 border-2"
+          />
         </label>
         <br />
         <label className="flex justify-between">
           E-mail:&nbsp;
-          <input type="email" placeholder="E-mail" />
+          <input
+            type="email"
+            placeholder="E-mail"
+            className="px-1 focus:outline-none focus:border-red-500 border-2"
+          />
         </label>
-        <button className="border-2 border-black mt-4  bg-gray-400">
-          Submit
-        </button>
+        <div className="flex justify-between">
+          <button className="border-2 border-black mt-4  bg-gray-200 hover:bg-gray-300 hover:shadow-lg hover:shadow-gray-600 w-1/2 mx-1">
+            Submit
+          </button>
+          <button
+            className="border-2 border-black mt-4  bg-gray-200 hover:bg-gray-300 hover:shadow-lg hover:shadow-gray-600 w-1/2 mx-1"
+            type="reset"
+          >
+            Clear
+          </button>
+        </div>
       </form>
     </div>
   );
