@@ -1,7 +1,14 @@
 const Event6 = () => {
+  const changeClass = (e) => {
+    console.log("Hello 6")
+  };
   return (
-    <input type='text' placeholder="Hello" onSelect={()=>console.log("Hello 6")} className="w-14 border-2"></input>
-  )
-}
+    <input
+      type="text"
+      placeholder="Hello"
+      className="w-14 border-2 focus:border-red-600 focus:outline-none"
+    ></input>
+  );
+};
 
-export default Event6
+export default Event6;
