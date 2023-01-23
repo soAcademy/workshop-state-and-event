@@ -13,7 +13,7 @@ const State4 = () => {
       ></input>
       &nbsp; +7 = &nbsp;
       <p>{number}</p>
-      <button onClick={calculate} className="bg-gray-400 rounded-lg p-2 m-2 ">
+      <button onClick={calculate} className="bg-gray-400 rounded-lg p-2 m-2 font-bold shadow-sm shadow-black duration-75 hover:shadow-md hover:shadow-black active:bg-gray-500">
         Calculate
       </button>
     </div>

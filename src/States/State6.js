@@ -31,7 +31,7 @@ const State6 = () => {
         />
         <div className="flex w-full justify-evenly">
           <button
-            className="px-4 mx-2 bg-gray-400 rounded-md font-bold"
+            className="px-4 mx-2 bg-gray-400 rounded-md font-bold font-bold shadow-sm shadow-black duration-75 hover:shadow-md hover:shadow-black active:bg-gray-500"
             onClick={calculate}
           >
             Calculate
