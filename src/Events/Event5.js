@@ -1,10 +1,10 @@
 const Event5 = () => {
   return (
     <div className="my-2">
-      <button
-        className="bg-gray-600 text-primary text-bold-center"
+      <div
+        className="bg-white-600 text-bold"
         onMouseOver={() => console.log("Hello 5")}
-      >Button 5</button>
+      >Button 5</div>
     </div>
   );
 };
