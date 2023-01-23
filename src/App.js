@@ -9,6 +9,7 @@ import Event8 from './Events/Event8';
 import State1 from './States/State1';
 import State2 from './States/State2';
 import State3 from './States/State3';
+import State4 from './States/State4';
 
 const App = () => {
   return (
@@ -25,7 +26,7 @@ const App = () => {
       <State1 />
       <State2 />
       <State3 />
-      {/* <State4 /> */}
+      <State4 />
       {/* <State5 /> */}
       {/* <State6 /> */}
 
