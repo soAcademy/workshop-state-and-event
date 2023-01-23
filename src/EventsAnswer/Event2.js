@@ -5,7 +5,7 @@ const Event2 = () => {
 
   return (
     <div className="my-2">
-      <button className="bg-yellow-200" onClick={() => helloWorld()}>
+      <button className="bg-yellow-200 w-[50px]" onClick={() => helloWorld()}>
         Button 2
       </button>
     </div>
