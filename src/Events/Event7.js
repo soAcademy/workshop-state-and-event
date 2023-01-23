@@ -8,7 +8,7 @@ const Event7 = () => {
     });
   };
   return (
-    <div className="bg-gray-300 w-fit m-4 p-4 border-2 border-black">
+    <div className="bg-gray-300 w-fit m-4 p-4 border-2 border-black rounded-lg">
       <form className="flex flex-col" onSubmit={submit}>
         <label className="flex justify-between">
           Name: &nbsp;
@@ -16,7 +16,7 @@ const Event7 = () => {
             type="text"
             required
             placeholder="Name"
-            className="px-1 focus:outline-none focus:border-red-500 border-2"
+            className="px-1 focus:outline-none focus:border-red-500 border-2 rounded-lg"
           />
         </label>
         <br />
@@ -26,7 +26,7 @@ const Event7 = () => {
             type="tel"
             placeholder="Tel."
             pattern="[0-9]*"
-            className="px-1 focus:outline-none focus:border-red-500 border-2"
+            className="px-1 focus:outline-none focus:border-red-500 border-2 rounded-lg"
           />
         </label>
         <br />
@@ -35,15 +35,15 @@ const Event7 = () => {
           <input
             type="email"
             placeholder="E-mail"
-            className="px-1 focus:outline-none focus:border-red-500 border-2"
+            className="px-1 focus:outline-none focus:border-red-500 border-2 rounded-lg"
           />
         </label>
         <div className="flex justify-between">
-          <button className="border-2 border-black mt-4  bg-gray-200 hover:bg-gray-300 hover:shadow-lg hover:shadow-gray-600 w-1/2 mx-1">
+          <button className="border-2 border-black mt-4 bg-gray-200 hover:bg-gray-300 hover:shadow-lg hover:shadow-gray-600 w-1/2 mx-1 rounded-lg">
             Submit
           </button>
           <button
-            className="border-2 border-black mt-4  bg-gray-200 hover:bg-gray-300 hover:shadow-lg hover:shadow-gray-600 w-1/2 mx-1"
+            className="border-2 border-black mt-4 bg-gray-200 hover:bg-gray-300 hover:shadow-lg hover:shadow-gray-600 w-1/2 mx-1 rounded-lg"
             type="reset"
           >
             Clear
