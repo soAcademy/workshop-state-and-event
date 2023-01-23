@@ -2,9 +2,9 @@ const Event7 = () => {
   const submitData = (e) => {
     e.preventDefault();
     const data = {
-      name: e.target[0].value,
-      tel: e.target[1].value
-      email: e.target[2].value
+      name:e.target[0].value,
+      tel:e.target[1].value,
+      email:e.target[2].value
     }
     console.log(data);
   };
@@ -41,15 +41,14 @@ return (
 
 
 
-
-      
       <button className="bg-red-300 p-4">Submit</button>
+      <button className="bg-red-300 p-4" type="reset" >Clear</button>
     </form>
   );
 };
 export default Event7;
 
-
+//อยากให้มอง Type เป็น Function หรือตัวแปรที่มันเข้ามาช่วยเลคียร์ข้อมูลในฟอร์มได้เอ.โดยอัตโนมัติ
 
 
 
