@@ -9,12 +9,12 @@ const State5 = () => {
     <div className="bg-blue-200 h-32">
       <div className="mb-2">{JSON.stringify(customer)}</div>
       <div>
-        <botton
+        <button
           className="bg-green-200 rounded-lg p-2 m-2 "
           onClick={() => setCustomer({ name: "Jam", location: "London" })}
         >
           Change Customer
-        </botton>
+        </button>
       </div>
     </div>
   );
