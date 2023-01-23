@@ -4,7 +4,7 @@ const Event6 = () => {
   return (
     <div>
       <input
-        className=" my-2 border border-red-700 rounded-lg"
+        className=" my-2 border border-3 border-red-700 hover:border-blue-500 rounded-lg"
         onSelect={() => console.log("Hello 6")}
         placeholder="Hello 6"
       />
