@@ -1,4 +1,4 @@
-const event6 = () => {
+const Event6 = () => {
   return (
     <input
       className="my-2 bg-yellow-200 border border-black"
@@ -8,7 +8,7 @@ const event6 = () => {
   );
 };
 
-export default event6;
+export default Event6;
 
 
 
