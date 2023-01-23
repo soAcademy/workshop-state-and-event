@@ -44,8 +44,7 @@ const Event7 = () => {
       </button>
       <button
         className="bg-yellow-300 p-4"
-        type="button"
-        onClick={() => console.log("clear")}
+        type="reset"
       >
         Clear
       </button>
