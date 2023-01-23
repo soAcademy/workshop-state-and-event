@@ -8,8 +8,17 @@ const State1 = () => {
     <div className="bg-sky-200">
       <p>{name}</p>
       <p>
-        <button className="p-4 bg-green-200" onClick={() => setName("mike")}>
-          Change name
+        <button
+          className="p-4 bg-green-400 rounded-[10px] mr-4"
+          onClick={() => setName("mike")}
+        >
+          Change mike
+        </button>
+        <button
+          className="p-4 bg-green-400 rounded-[10px]"
+          onClick={() => setName("boeing")}
+        >
+          Change boeing
         </button>
       </p>
     </div>
