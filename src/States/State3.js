@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const State2 = () => {
-  const [counter, setCounter] = useState(0);
+const State3 = () => {
+  const [counter, setCounter] = useState(10);
 
   return (
     <div className="bg-yellow-200">
@@ -18,4 +18,4 @@ const State2 = () => {
   );
 };
 
-export default State2;
+export default State3;
