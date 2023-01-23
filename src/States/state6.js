@@ -18,7 +18,7 @@ const State6=()=>{
 
     <div className='bg-slate-200 w-[100px] m-5'>
       Sum : {sum}
-      <button className='bg-teal-500' onClick={()=>setSum(Number(number1) + Number(number2))}>Sum</button>
+      <button className='bg-teal-500' onClick={()=>setSum(Number(number1) + Number(number2))}><br/>Sum</button>
     </div>
     </>
   );

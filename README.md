@@ -25,11 +25,13 @@
 
 3. สร้างปุ่ม Counter + - ที่ถ้ากดแล้วบวกลบเลขทีละ 1 โดยค่าเริ่มต้นคือ 10
 
-4. สร้าง number input field ที่เมื่อกรอกค่า จะนำค่าที่แสดงมา render หน้า input ถ้ากดปุ่ม Caluculate จะนำค่าที่ได้ + 7 แล้วแสดง
+4. สร้าง number input field ที่เมื่อกรอกค่า จะนำค่าที่แสดงมา render หน้า input ถ้ากดปุ่ม Calculate จะนำค่าที่ได้ + 7 แล้วแสดง
 
 5. สร้าง state ชื่อว่า customer ที่เก็บข้อมูล `{name: "Bin", location: "Bangkok"}` เมื่อกดปุ่มแล้วจะเปลี่ยน ค่าเป็น `{name: "Jam", location: "Nonthaburi"}`
 
 6. สร้าง number input fields 2 อัน คือ Number1 และ Number2 โดย เมื่อกรอกค่าไปให้ render number มาแสดง จากนั้นถ้ากดปุ่ม calculate ให้เอา Number1 + Number2
+
+7. สร้าง ปุ่ม toggle ที่กดแล้ว ปิดเปิด component
 
 # โจทย์ Props
 
