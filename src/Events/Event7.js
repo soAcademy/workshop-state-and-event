@@ -4,9 +4,9 @@ const Event7=()=>{
   const summitData =(e)=>{
     e.preventDefault();  //ป้องกันไม่ให้ refresh เวลากรอกข้อมูลแล้วกด summit
     const data = {
-    name : e.target[0].value,
-    tel : e.target[1].value,
-    email : e.target[2].value
+    name : e.target['name'].value,
+    tel : e.target['tel'].value,
+    email : e.target['email'].value
   }
   console.log(data);
   };
