@@ -1,5 +1,3 @@
-import React from "react";
-
 const Event2 = () => {
   const helloWorld = () => console.log("Hello 2");
   return (
