@@ -8,6 +8,8 @@ const Effect4 = () => {
       setCountdown(countdown - 1);
     }, 1000);
 
+  // async await, synchronouse, async มันคือ function ที่เราใช้ที่ต้องให้เราทำอะไรก่อนหน้าให้เสร็จก่อนที่จะไปในขั้นต่อไป
+
     // if (countdown === 1) {
     //   clearInterval(interval);
     // }
