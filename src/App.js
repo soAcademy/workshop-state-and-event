@@ -14,12 +14,15 @@
 // import State6 from "./States/state6"
 // import Test from "./States/teststate"
 import Prop1 from "./Props/prop1";
+import Prop2 from "./Props/prop2";
 
 
 const App = () => {
   return (
     <div>
-      <Prop1 data="HelloWorld"/>
+      {/* <Prop1 props="HelloWorld"/> */}
+      <Prop2 data1="Hello World" data2="Dew"/>
+
       {/* <Test/> */}
       {/* <Event1 />
       <Event2 />
