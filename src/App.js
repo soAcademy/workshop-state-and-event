@@ -18,7 +18,9 @@
 // import Prop1 from "./Props/Prop1";
 // import Prop2 from "./Props/Prop2";
 // import Prop3 from "./Props/Prop3";
-import Prop4 from "./Props/Prop4";
+// import Prop4 from "./Props/Prop4";
+
+import Effect1 from "./Effects/Effect1";
 const App = () => {
   return (
     <div>
@@ -39,7 +41,8 @@ const App = () => {
       {/* <State7 /> */}
       {/* <Prop1 data={"Hello World"}/> */}
       {/* <Prop3 /> */}
-      <Prop4/>
+      {/* <Prop4/> */}
+      <Effect1/>
     </div>
   );
 };
