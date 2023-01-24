@@ -25,7 +25,7 @@ import Effect1 from "./Effects/Effect1";
 import EffectA1 from "./Effects/EffectA1";
 import Effect2 from "./Effects/Effect2";
 import Effect3 from "./Effects/Effect3";
-
+import Effect4 from "./Effects/Effect4";
 
 
 const App = () => {
@@ -56,8 +56,8 @@ const App = () => {
       {/* <Effect1 /> */}
       {/* <EffectA1 /> */}
       {/* <Effect2 /> */}
-      <Effect3 />
-      {/* <Effect4 /> */}
+      {/* <Effect3 /> */}
+      <Effect4 />
       {/* <Effect5 /> */}
       {/* <Effect6 /> */}
       {/* <Effect7 /> */}

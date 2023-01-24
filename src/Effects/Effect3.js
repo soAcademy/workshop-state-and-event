@@ -5,6 +5,7 @@ const Effect3 = () => {
   const [numSquare, setNumSquare] = useState(0);
 
   useEffect(() => {
+    console.log(Math.sqrt(2));
     setNumSquare(Number(num) ** 2);
   }, [num]);
 
