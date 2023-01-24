@@ -7,7 +7,11 @@ const Effect1 = () => {
   useEffect(() => {
     document.title = `Counter ${count}`;
   }, [count]);
+
   console.log(count);
+  useEffect(() => {
+    document.title = `Counter ${count}`;
+  }, []);
 
   return (
     <>
