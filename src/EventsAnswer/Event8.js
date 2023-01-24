@@ -15,6 +15,7 @@ const Event8 = () => {
           id="image"
           type="file"
           accept="image/png, image/jpeg"
+          // MIME type
           onChange={(e)=>submitData(e)}
         />
       </div>
