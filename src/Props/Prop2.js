@@ -5,4 +5,11 @@ const Prop2 = ({ data1, data2 }) => (
   </>
 );
 
+// const Prop2 = (a) => (
+//   <>
+//     <div>{a.data1}</div>
+//     <div>{a.data2}</div>
+//   </>
+// );
+
 export default Prop2;
