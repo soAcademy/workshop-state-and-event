@@ -17,14 +17,14 @@ import React, { useState } from "react";
 
 // export default Prop3;
 
-const RenderCounter = (props) => <div className="ml-3 mb-2 text-xl">Counter: {props.counter}</div>;
+const RenderCounter = (props) => <div className="ml-3 mb-2 text-xl">Counter: {props.counterProp}</div>;
 
 const Prop3 = () => {
   const [counter, setCounter] = useState(0);
 
   return (
-    <div className="ml-3 py-2 bg-slate-200 rounded-lg">
-      <RenderCounter counter={counter} />
+    <div className="m-3 py-2 bg-slate-200 rounded-lg">
+      <RenderCounter counterProp={counter} />
       <button
         onClick={() => setCounter(counter + 1)}
         className="bg-green-300 rounded w-1/12 p-2 ml-2 mt-2"
