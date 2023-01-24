@@ -9,6 +9,11 @@ const Effect1_1 = () => {
         console.log(counter);
     });
 
+    useEffect(() => {
+        document.title = `Counter ${counter2}`;
+        console.log(counter2);
+    },[counter]);
+
     return (
         <>
             {counter}, {counter2}
