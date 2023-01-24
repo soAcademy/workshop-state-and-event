@@ -7,7 +7,7 @@ const Effect1 = () => {
   useEffect(() => {
     
     document.title = `Counter ${counter}`;
-    console.log(counter);
+    console.log(counter,counter2);
   }, [counter]);
 
   return (
@@ -21,7 +21,7 @@ const Effect1 = () => {
       </button>
       <button
         className="p-4 bg-red-400 w-24 rounded-lg"
-        onClick={() => setCounter(counter - 1)}
+        onClick={() => setCounter(counter2 + 1)}
       >
         Increase2
       </button>
