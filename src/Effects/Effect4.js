@@ -13,8 +13,9 @@ const Effect4 = () => {
     //countdown -1 per 1 sec
     countdown > 1 || clearInterval(interval);
     // true||true
-    //สั่งให้หยุดทำ ตอนที่เป็น 1
+    //สั่งให้หยุดทำ ก่อนจบ 1วิ
     return () => clearInterval(interval);
+    // clear เมื่อถึง 1
   }, [countdown]);
 
   return (

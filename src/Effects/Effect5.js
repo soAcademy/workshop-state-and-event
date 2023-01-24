@@ -9,12 +9,13 @@ const Effect5 = () => {
 
   useEffect(() => {
     axios({
-      method: "get",
-      url: "https://api.sampleapis.com/coffee/hot",
+      method: "get", //ดึงข้อมูลจาก server
+      url: "https://api.sampleapis.com/coffee/hot", //address
     }).then((response) => {
       console.log(response);
       setData(response);
     });
+    //then คือหลังจากที่ดึงข้อมูลมาแล้ว ก็จะได้ข้อมูลที่ response มาโชว์
   }, []);
 
   return (
