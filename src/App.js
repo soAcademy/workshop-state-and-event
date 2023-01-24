@@ -50,7 +50,7 @@ const App = () => {
 
       {/* <Prop1 data="Hello World" /> */}
       <Prop2 data1="Hello World" data2="Bin Bin Bin" />
-      {/* <Prop3 /> */}
+      {/* <Prop3 counter={}/>*/}
       {/* <Prop4 /> */}
 
       {/* <Effect1 /> */}
