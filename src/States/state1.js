@@ -1,13 +1,13 @@
 import React,{useState} from 'react';
 
 const State1=()=>{
- const [title,setTitle]=useState("Dew");
+ const [count,setCounter]=useState(10);
 
 return(
   <div className='bg-cyan-500'>
-    <p>{title}</p>
+    <p>{count}</p>
     <div>
-      <button className='bg-cyan-200'onClick={()=>setTitle("Kad")}>Change button</button>
+      <button className='bg-cyan-200'onClick={()=>setCounter(count+2)}>Change button</button>
     </div>
   </div>
 );

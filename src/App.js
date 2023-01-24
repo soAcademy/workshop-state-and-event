@@ -12,13 +12,15 @@
 // import State4 from "./States/state4"
 // import State5 from "./States/state5"
 // import State6 from "./States/state6"
-import State7 from "./States/state7"
+// import Test from "./States/teststate"
+import Prop1 from "./Props/prop1";
+
 
 const App = () => {
   return (
     <div>
-      
-
+      <Prop1 data="HelloWorld"/>
+      {/* <Test/> */}
       {/* <Event1 />
       <Event2 />
       <Event3 />
@@ -34,7 +36,6 @@ const App = () => {
       {/* <State4 /> */}
       {/* <State5 /> */}
       {/* <State6 /> */}
-      <State7/>
 
       {/* <Prop1 data="Hello World" /> */}
       {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
@@ -51,5 +52,10 @@ const App = () => {
     </div>
   );
 };
+
+
+
+
+
 
 export default App;

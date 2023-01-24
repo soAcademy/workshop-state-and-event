@@ -4,6 +4,7 @@ const State6=()=>{
   const[number1,setNumber1]=useState(0);
   const[number2,setNumber2]=useState(0);
   const[sum,setSum]=useState(0);
+  
   return(
     <>
     <div className='bg-yellow-200 w-[100px] m-5'>
