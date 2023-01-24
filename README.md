@@ -31,6 +31,8 @@
 
 6. สร้าง number input fields 2 อัน คือ Number1 และ Number2 โดย เมื่อกรอกค่าไปให้ render number มาแสดง จากนั้นถ้ากดปุ่ม calculate ให้เอา Number1 + Number2
 
+7. สร้าง ปุ่ม toggle ที่กดแล้ว ปิดเปิด component
+
 # โจทย์ Props
 
 1. สร้าง Component รับ props ชื่อว่า data จากนั้น render data ออก
