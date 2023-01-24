@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 
 const Effect3 = () => {
-  const [num, setNum] = useState(0);
-  const [numSquareRoot, setNumSquareRoot] = useState(0);
+  const [radius, setRadius] = useState(0);
+  const [areaCircle, setAreaCircle] = useState(0);
 
   useEffect(() => {
-    // setNumSquareRoot(Number(num) ** 0.5);
-    setNumSquareRoot(Math.sqrt(num));
-  }, [num]);
+    // setAreaCircle(Number(redius) ** 0.5);
+    setAreaCircle(Math.PI*(radius)**2);
+  }, [radius]);
 
   return (
     <>
-      <p>Num: {num}</p>
-      <p>The Square Root of <b>{num}</b> is equal to <b>{numSquareRoot}</b></p>
+      <p>Radius: {radius}</p>
+      <p>The Circle Area = <b>{areaCircle}</b></p>
       <input
         className="border border-black bg-yellow-200 w-64"
-        onChange={(e) => setNum(e.target.value)}
+        onChange={(e) => setRadius(e.target.value)}
       />
     </>
   );
