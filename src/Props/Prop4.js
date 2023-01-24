@@ -31,4 +31,5 @@ const Prop4 = () => {
 export default Prop4;
 
 //เราสามารถส่งทั้งตัวแปลและ fucntion เข้าไปใน component ได้
-//component return >> HTML
+//component return >> HTML DOM >> มี life cycle ได้
+//function return Array Object String
