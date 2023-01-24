@@ -8,7 +8,7 @@ const [counter,setCounter] = useState(10); //set state
 
 return(
   <>  
-    <NumberRender number={counter}/>  {/*12312*/}
+    <NumberRender number={counter}/>  {/*assign ค่าให้ NumberRender เท่ากับ counter*/}
     <button className='bg-red-200' onClick={()=>setCounter(counter+1)}>Increase</button>
   </>
 );
