@@ -12,7 +12,14 @@ const Effect4 = () => {
     //   clearInterval(interval);
     // }
 
+    // true
+    // false || true
+    // countdown > 1 && clearInterval(interval);
     countdown > 1 || clearInterval(interval);
+
+    // true && true
+    // toggle && <div></div>
+
     return () => clearInterval(interval);
   }, [countdown]);
 
