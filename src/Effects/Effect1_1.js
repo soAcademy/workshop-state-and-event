@@ -6,8 +6,10 @@ const Effect1_1 = () => {
 
   useEffect(() => {
     document.title = `Counter ${counter}`;
-    console.log(counter, counter2)
+    console.log(counter, counter2);
   }, [counter2]);
+
+  // บรรทัดที่ 10 กำหนดเงื่อนไขว่าถ้าตรงจะแสดงผลบรรทัดที่ 9(inspect ดู)
 
   return (
     <>
