@@ -1,0 +1,22 @@
+import React, { useState } from "react";
+// component 1 that render value from component 2 
+const RenderComponent = ({ counterData }) => <div>Count = {counterData}</div>;
+
+
+//component 2 that call component 1 then send to App.js
+const Prop3 = () => {
+   const [count, setCount] = useState(0);
+
+  return (
+    <div className="bg-red-200">
+      <RenderComponent counterData={count} />
+        <button className="p-4 bg-blue-200" onClick={() => {
+          setCount(count + 1)
+        }}>
+          Count ++
+        </button>
+    </div>
+  );
+};
+
+export default Prop3;

@@ -17,7 +17,7 @@ import State7 from "./States/State7";
 
 import Prop1 from "./Props/Prop1";
 import Prop2 from "./Props/Prop2";
-// import Prop3 from "./PropsAnswer/Prop3";
+import Prop3 from "./Props/Prop3";
 // import Prop4 from "./PropsAnswer/Prop4";
 
 // import Effect1 from "./EffectsAnswer/Effect1";
@@ -48,9 +48,9 @@ const App = () => {
       {/* <State6 /> */}
       {/* <State7 /> */}
 
-      <Prop1 data="It's a beautiful day yay yayyy" />
-      <Prop2 data1="I Thank you for sun, Thank you for rain" data2="Thank you for joy Thank you for pain" />
-      {/* <Prop3 /> */}
+      {/* <Prop1 data="It's a beautiful day yay yayyy" /> */}
+      {/* <Prop2 data1="I Thank you for sun, Thank you for rain" data2="Thank you for joy Thank you for pain" /> */}
+      <Prop3 />
       {/* <Prop4 /> */}
 
       {/* <Effect1 /> */}
