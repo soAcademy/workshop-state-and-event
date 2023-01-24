@@ -4,10 +4,10 @@ const Effect101=()=>{
   const[count1,setCount1]=useState(0);
   const[count2,setCount2]=useState(100);
   useEffect(()=>{
-    document.title=`Change ${count1}`
-    console.log(count1)
-    console.log(count2)
-  },);
+    document.title=`Change ${count1},${count2}`
+    console.log(count1,count2)
+  
+  },[]);    //[] ไม่ทำงานเลย  , ถ้าไม่ใส่ ทำงานทุกกรณี 
   return(
     <>
     <button className='bg-red-200' onClick={()=>setCount1(count1+1)}>Increase</button>

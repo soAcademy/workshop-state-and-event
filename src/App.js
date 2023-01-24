@@ -18,7 +18,7 @@
 // import Prop3 from "./Props/prop3";
 // import Prop4 from "./Props/prop4";
 // import EffectTest from "./Effects/effectTest"
-import Effect101 from "./Effects/effect101"
+import Effect2 from "./Effects/effect2"
 
 
 
@@ -27,7 +27,7 @@ const App = () => {
     <div>
       {/* <Prop1 props="HelloWorld"/> */}
       {/* <Prop2 data1="Hello World" data2="Dew"/> */}
-      <Effect101/>
+      <Effect2/>
       {/* <Effect1/> */}
 
       {/* <Test/> */}

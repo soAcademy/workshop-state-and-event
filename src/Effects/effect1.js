@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react';
 
 const Effect1 =()=>{
-  const[count,setCounter] = useState(0);
+  const[count,setCounter] = useState();
   useEffect(()=>{
     document.title = `Change ${count}`
   },[count]);
