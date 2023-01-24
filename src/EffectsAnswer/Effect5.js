@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Effect5 = () => {
-  const [menus, setMenus] = useState("");
+  const [menus, setMenus] = useState();
 
   useEffect(() => {
     axios({
@@ -20,6 +20,8 @@ const Effect5 = () => {
       {
         menus?.map((r) => <div className="bg-red-700 mb-2">{r.title}</div>)
       }
+      {/* {menus !== undefined &&
+        menus.map((r) => <div className="bg-red-700 mb-2">{r.title}</div>)} */}
     </>
   );
 };
