@@ -15,7 +15,7 @@ const Effect5_1 = () => {
   return (
     <>
       {/* <p>{JSON.stringify(data)}</p> */}
-      {menus?.map((r) => (
+      {menus?.map((r) => (  // ? for checking if the array is undefined or not: only proceeds to map if not undefined
         <div className="bg-blue-500 mb-2">{r.title}</div>
       ))}
     </>
