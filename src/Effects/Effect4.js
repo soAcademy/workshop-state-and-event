@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 const Effect4 = () => {
   const [time, setTime] = useState(10);
   const [start, setStart] = useState(false);
-  let interval;
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(time - 1);
