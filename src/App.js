@@ -20,7 +20,7 @@ import Prop2 from "./Props/Prop2";
 import Prop3 from "./Props/Prop3";
 import Prop4 from "./Props/Prop4";
 
-// import Effect1 from "./EffectsAnswer/Effect1";
+import Effect1 from "./Effects/Effect1";
 // import Effect2 from "./EffectsAnswer/Effect2";
 // import Effect3 from "./EffectsAnswer/Effect3";
 // import Effect4 from "./EffectsAnswer/Effect4";
@@ -51,9 +51,9 @@ const App = () => {
       {/* <Prop1 data="It's a beautiful day yay yayyy" /> */}
       {/* <Prop2 data1="I Thank you for sun, Thank you for rain" data2="Thank you for joy Thank you for pain" /> */}
       {/* <Prop3 /> */}
-      <Prop4 />
+      {/* <Prop4 /> */}
 
-      {/* <Effect1 /> */}
+      <Effect1 />
       {/* <Effect2 /> */}
       {/* <Effect3 /> */}
       {/* <Effect4 /> */}
