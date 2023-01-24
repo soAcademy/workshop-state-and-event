@@ -7,7 +7,9 @@ const Effect4 = () => {
   const [countdown, setCountdown] = useState(10);
 
   // useEffect(() => {
+  //   console.log('i fire once');
   //   const timerId = setInterval(() => {
+  //     console.log('timerId start: ' + timerId);
   //     setCountdown((prev) => {
   //       console.log(prev);
   //       prev > 2 || clearInterval(timerId);
@@ -15,7 +17,10 @@ const Effect4 = () => {
   //     });
   //   }, 1000);
 
-  //   return () => clearInterval(timerId);
+  //   return () => {
+  //     console.log('timerId end: ' + timerId);
+  //     clearInterval(timerId);
+  //   }
   // }, []);
 
   useEffect(() => {
