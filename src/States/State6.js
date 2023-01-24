@@ -17,7 +17,6 @@ const State6 = () => {
           className="bg-gray-200 rounded-md m-2 w-24 px-2"
           id="number1"
           onChange={(e) => {
-            setSum(e.target.value);
             setNumber1(e.target.value);
           }}
         />
