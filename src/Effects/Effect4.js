@@ -10,6 +10,7 @@ const Effect4 = () => {
     countDown > 1 || clearInterval(interval);
     return () => clearInterval(interval);
   }, [countDown]);
+
   return (
     <>
       <p>Countdown: {countDown}</p>
