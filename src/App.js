@@ -46,6 +46,7 @@ import State7 from "./States/State7";
 
 import Prop1 from "./Props/Prop1";
 import Prop2 from "./Props/Prop2";
+import Prop3 from "./Props/Prop3";
 
 const App = () => {
   return (
@@ -69,7 +70,7 @@ const App = () => {
       <hr />
       <Prop1 data="Hello World!" />
       <Prop2 data1="Hello World!" data2="Hi! Alien" />
-      {/* <Prop3 /> */}
+      <Prop3 />
       {/* <Prop4 /> */}
 
       {/* <Effect1 /> */}
