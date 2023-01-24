@@ -5,7 +5,7 @@ const Effect2=()=>{
   const[name,setName]=useState('Dew');
   const[profile,setProfile]=useState('BKK');
   useEffect(()=>{
-    setProfile("UTH");
+    setProfile("UTH");  //Listen ตัวแปรไหน ไม่ควร set ตัวแปรนั้น ไม่งั้นจะเกิดการวน loop 
   },[name]);
   return(
     <>
