@@ -9,7 +9,7 @@ function App() {
       <Prop1 data="Hello world" />
       <Prop2 data1="boeing" data2="mike" />
       <RenderComponent />
-      <Prop3 counterData />
+      <Prop3 />
     </>
   );
 }
