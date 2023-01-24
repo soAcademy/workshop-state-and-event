@@ -14,8 +14,8 @@ const IncreasesComponent = ({ counterIn, setCounterIn }) => (
 const DecreaseCounter = ({ counterDe, setCounterDe }) => (
   <div>
     <button
-      onClick={() => setCounterDe(counterDe - 1)}
-      // onClick={() => (counterDe > 0 ? setCounterDe(counterDe - 1) : null)}
+      // onClick={() => setCounterDe(counterDe - 1)}
+      onClick={() => (counterDe > 0 ? setCounterDe(counterDe - 1) : null)}
       className="bg-green-300 rounded w-1/12 p-2 ml-2 mt-2"
     >
       counter - 1

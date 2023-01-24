@@ -6,11 +6,11 @@ const Effect1 = () => {
 
   useEffect(() => {
     document.title = `Counter ${counter}`;
-    console.log(counter);
+    console.log(counter, counter2);
   });
 
   return (
-    <div className="m-3">
+    <div className="m-3 py-2 bg-yellow-200 rounded-lg">
       <div className="text-xl pl-4">
         {counter}, {counter2}
       </div>
