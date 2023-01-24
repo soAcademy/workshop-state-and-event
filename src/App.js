@@ -17,6 +17,7 @@ import State7 from "./States/States7";
 
 import Props1 from "./Props/Props1";
 import Props2 from "./Props/Props2";
+import Props3 from "./Props/Props3";
 
 
 
@@ -41,9 +42,9 @@ const App = () => {
       {/* <State7 /> */}
 
       {/* <Props1 data="Hello World" /> */}
-      <Props2 data1="Hello World" data2="Bin Bin Bin" />
-      {/* <Prop3 /> */}
-      {/* <Prop4 /> */}
+      {/* <Props2 data1="Bello World" data2="Ball Bank Boom" /> */}
+      <Props3 />
+      {/* <Props4 /> */}
 
       {/* <Effect1 /> */}
       {/* <Effect2 /> */}
