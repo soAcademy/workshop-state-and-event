@@ -12,15 +12,15 @@ const Effect1_1 = () => {
     document.title = `Counter : ${counter}`;
   }, [counter]);
 
-  useEffect(() => {
-    console.log(`counter2 ${counter2}`)
-    document.title = `Counter : ${counter2}`;
-  }, []);
+  // useEffect(() => {
+  //   console.log(`counter2 ${counter2}`)
+  //   document.title = `Counter : ${counter2}`;
+  // }, []);
 
-  useEffect(() => {
-    console.log(`counter3 ${counter3}`)
-    document.title = `Counter : ${counter3}`;
-  },);
+  // useEffect(() => {
+  //   console.log(`counter3 ${counter3}`)
+  //   document.title = `Counter : ${counter3}`;
+  // },);
 
   return (
     <div className="w-fit m-2 p-2 bg-gray-300 rounded-lg">
