@@ -22,3 +22,6 @@ const Prop3 = () => {
 };
 
 export default Prop3;
+
+
+// การเขียน State เข้าไปใน Prop
