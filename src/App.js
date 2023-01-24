@@ -18,15 +18,15 @@
 // import Prop1 from "./Props/Prop1";
 // import Prop2 from "./Props/Prop2";
 // import Prop3 from "./Props/Prop3";
-import Prop4 from "./Props/Prop4";
+// import Prop4 from "./Props/Prop4";
 
-// import Effect1 from "./EffectsAnswer/Effect1";
-// import Effect2 from "./EffectsAnswer/Effect2";
-// import Effect3 from "./EffectsAnswer/Effect3";
-// import Effect4 from "./EffectsAnswer/Effect4";
-// import Effect5 from "./EffectsAnswer/Effect5";
-// import Effect6 from "./EffectsAnswer/Effect6";
-// import Effect7 from "./EffectsAnswer/Effect7";
+import Effect1 from "./Effects/Effect1";
+// import Effect2 from "./Effects/Effect2";
+// import Effect3 from "./Effects/Effect3";
+// import Effect4 from "./Effects/Effect4";
+// import Effect5 from "./Effects/Effect5";
+// import Effect6 from "./Effects/Effect6";
+// import Effect7 from "./Effects/Effect7";
 
 const App = () => {
   return (
@@ -51,9 +51,9 @@ const App = () => {
       {/* <Prop1 data="Hello World" /> */}
       {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
       {/* <Prop3 /> */}
-      <Prop4 />
+      {/* <Prop4 /> */}
 
-      {/* <Effect1 /> */}
+      <Effect1 />
       {/* <Effect2 /> */}
       {/* <Effect3 /> */}
       {/* <Effect4 /> */}
