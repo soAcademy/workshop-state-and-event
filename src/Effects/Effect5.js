@@ -18,7 +18,7 @@ const Effect5 = () => {
     <>
       {/* <p>{JSON.stringify(data)}</p> */}
       {
-        data !== "" && data.data.map((r) => <div className="bg-red-300 mt-1">{r.id} . {r.title}</div>)
+        data !== "" && data.data.map((r) => <div key={r.id} className="bg-red-300 mt-1">{r.id} . {r.title}</div>)
       }
     </>
   );
