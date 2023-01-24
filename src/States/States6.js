@@ -9,7 +9,8 @@ const State6 = () => {
     <div className="border bg-gradient-to-r 
     from-orange-500 to-red-500">
       <div>
-        Input1: {number1}
+        Input1: {number1} 
+        {/* ตรงนี้ถ้าไม่ใส่ number จะไม่โชว์เลขด้านหน้า */}
         <input
           type="number"
           className="border  bg-gradient-to-r 
