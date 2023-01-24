@@ -19,6 +19,8 @@ import Prop2 from "./PropsAnswer/Prop2";
 import Prop3 from "./PropsAnswer/Prop3";
 import Prop4 from "./PropsAnswer/Prop4";
 
+import Effect1 from "./Effects/Effect1";
+
 
 const App = () => {
   return (
@@ -43,7 +45,7 @@ const App = () => {
       {/* <Prop3 /> */}
       {/* <Prop4 /> */}
 
-      {/* <Effect1 /> */}
+      <Effect1 />
       {/* <Effect2 /> */}
       {/* <Effect3 /> */}
       {/* <Effect4 /> */}
