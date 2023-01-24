@@ -5,6 +5,7 @@ const Effect1 = () => {
 
   useEffect(() => {
     document.title = `Counter ${counter}`;
+    console.log(counter);
   }, [counter]);
   return (
     <>
