@@ -46,12 +46,12 @@ const App = () => {
       {/* <State4 /> */}
       {/* <State5 /> */}
       {/* <State6 /> */}
-      <State7 />
+      {/* <State7 /> */}
 
-      {/* <Prop1 data="Hello World" /> */}
-      {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
-      {/* <Prop3 /> */}
-      {/* <Prop4 /> */}
+      {/* <Prop1 data="Hello World" />
+      <Prop2 data1="Hello World" data2="Bin Bin Bin" />
+      <Prop3 /> */}
+      <Prop4 />
 
       {/* <Effect1 /> */}
       {/* <Effect2 /> */}
