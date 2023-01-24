@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const State4 = () => {
-  const [inputNumber, setInputNumber] = useState();
+const State4 = (props) => {
+  const [inputNumber, setInputNumber] = useState(props.default);
 
   return (
     <div className="m-4">
@@ -9,6 +9,7 @@ const State4 = () => {
       <div>
         <input
           type="number"
+          value={inputNumber}
           className="p-1 bg-gray-100"
           onChange={(e) => setInputNumber(e.target.value)}
         />

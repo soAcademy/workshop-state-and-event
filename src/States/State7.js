@@ -11,6 +11,7 @@ const State7 = () => {
       >
         Menu
       </button>
+
       {toggle && (
         <div className="rounded-lg ml-3 py-1 bg-purple-200 w-1/6">
           <ul>
@@ -21,6 +22,24 @@ const State7 = () => {
           </ul>
         </div>
       )}
+
+
+      {!toggle && (
+        <p>Please select something!</p>
+      )}
+
+
+      <button onClick={()=>{
+        debugger
+        if (toggle) {
+          alert('yeah')
+        }
+        if (!toggle) {
+          alert('boo')
+        }
+      }}>
+        check
+      </button>
     </div>
   );
 };

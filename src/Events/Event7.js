@@ -4,10 +4,10 @@ const Event7 = () => {
   const submitData = (e) => {
     e.preventDefault(); // ใช้เพื่อป้องกันการ refresh หน้า ตอนกด submit
     const data = {
-      name: e.target['name'].value,
-      tel: e.target['tel'].value,
-      email: e.target['email'].value
-    }
+      name: e.target["name"].value,
+      tel: e.target["tel"].value,
+      email: e.target["email"].value,
+    };
     console.log(data);
   };
 
@@ -35,8 +35,13 @@ const Event7 = () => {
           id="email"
         />
       </div>
-      <button className="bg-green-300 p-4 my-2 ml-2 rounded-xl" type="submit">Submit</button>
-      <button className="bg-red-300 p-4 my-2 ml-2 rounded-xl" type="reset">reset</button>
+      <button className="bg-green-300 p-4 my-2 ml-2 rounded-xl" type="submit">
+        Submit
+      </button>
+      <button className="bg-red-300 p-4 my-2 ml-2 rounded-xl" type="reset">
+        reset
+      </button>
+
     </form>
   );
 };

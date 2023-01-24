@@ -8,13 +8,19 @@ const State5 = () => {
 
   return (
     <div className="m-4">
-      <div>{JSON.stringify(customer)}</div><br />
+      <div>{JSON.stringify(customer)}</div>
+      <br />
       <div>
         <button
           className="p-1 bg-purple-200"
           onClick={() => setCustomer({ name: "Cream", location: "Lamlukka" })}
         >
           Change Customer
+        </button>
+        <button
+          onClick={() => setCustomer({ ...customer, location: "Thonglor" })}
+        >
+          Relocate
         </button>
       </div>
     </div>
