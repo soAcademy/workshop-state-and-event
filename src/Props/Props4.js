@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const IncreaseComponent = ({ counter, setCounter }) => (
   <div>
     <button className="p-4 bg-red-300 rounded-lg" onClick={() => setCounter(counter + 1)}>
-      Increase
+      เพิ่มจำนวน
     </button>
   </div>
 );
@@ -11,7 +11,7 @@ const IncreaseComponent = ({ counter, setCounter }) => (
 const DecreaseComponent = ({ counter, setCounter }) => (
   <div>
     <button className="p-4 bg-purple-300 rounded-lg" onClick={() => setCounter(counter - 1)}>
-      Decrease
+      ลดจำนวน
     </button>
   </div>
 );

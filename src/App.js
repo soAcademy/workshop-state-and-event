@@ -21,6 +21,8 @@ import Props3 from "./Props/Props3";
 import Props4 from "./Props/Props4";
 
 
+import Effect1 from "./Effects/Effect1";
+
 
 const App = () => {
   return (
@@ -45,9 +47,9 @@ const App = () => {
       {/* <Props1 data="Hello World" /> */}
       {/* <Props2 data1="Bello World" data2="Ball Bank Boom" /> */}
       {/* <Props3 /> */}
-      <Props4 />
+      {/* <Props4 /> */}
 
-      {/* <Effect1 /> */}
+      <Effect1 />
       {/* <Effect2 /> */}
       {/* <Effect3 /> */}
       {/* <Effect4 /> */}
