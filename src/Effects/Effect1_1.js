@@ -6,8 +6,9 @@ const Effect1_1 = () => {
 
   useEffect(() => {
     document.title = `Counter ${counter}`;
-    console.log(counter);
+    console.log(counter, counter2);
   });
+  // }, [counter, counter2]);
 
   return (
     <>
@@ -29,3 +30,5 @@ const Effect1_1 = () => {
 };
 
 export default Effect1_1;
+// ตัวอย่างที่ใช้กันตอนนี้ก็มีตัว การสั่งซื้ออาหารที่เราสามารถเข้าไปสัั่งอาหารแล้วถ้าเราไม่ได้ยืนยันมันก็ไม่ได้สั่งจริงอ่ะ เหมือนเราเข้าไปกดกรอกจำนวนสินค้าก่อนงี้
+//เหมือนตัว Component แรกจะใช้สำหรับการ อัพเดทว่ามีการใช้งานตัวนี้แล้วนะ แล้วตัวที่สองคือ
