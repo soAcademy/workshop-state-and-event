@@ -14,7 +14,7 @@ import State5 from './States/State5';
 import State6 from './States/State6';
 import State7 from './States/State7';
 import Prop1 from './Props/Prop1';
-
+import Prop2 from './Props/Prop2';
 
 
 
@@ -40,7 +40,8 @@ const App = () => {
 
 
       <Prop1 data="Hello Bond" />
-      {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
+      <p></p>
+      <Prop2 data1="Hello World" data2="Bond Krab Phom" />
       {/* <Prop3 /> */}
       {/* <Prop4 /> */}
 
