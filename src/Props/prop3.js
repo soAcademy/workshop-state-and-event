@@ -1,13 +1,14 @@
+
 import {useState} from 'react';
 const NumberRender = ({number})=> <div> counter: {number}</div> //รับค่า value มาจาก NumberRender
 
-//สร้าง state counter 
-const Prop3 =()=>{
-const [counter,setCounter] = useState(0); 
+//สร้างfuntioin Prop3 ซึ่งข้างในมี state counter 
+const Prop3 =()=>{                         //สร้าง function Prop3
+const [counter,setCounter] = useState(10); //set state
 
 return(
   <>  
-    <NumberRender number={counter}/>  
+    <NumberRender number={counter}/>  {/*12312*/}
     <button className='bg-red-200' onClick={()=>setCounter(counter+1)}>Increase</button>
   </>
 );

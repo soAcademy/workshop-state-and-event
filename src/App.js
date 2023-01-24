@@ -15,7 +15,9 @@
 // import Test from "./States/teststate"
 // import Prop1 from "./Props/prop1";
 // import Prop2 from "./Props/prop2";
-import Prop3 from "./Props/prop3";
+// import Prop3 from "./Props/prop3";
+import Prop4 from "./Props/prop4";
+
 
 
 const App = () => {
@@ -23,7 +25,7 @@ const App = () => {
     <div>
       {/* <Prop1 props="HelloWorld"/> */}
       {/* <Prop2 data1="Hello World" data2="Dew"/> */}
-      <Prop3/>
+      <Prop4/>
 
       {/* <Test/> */}
       {/* <Event1 />
