@@ -27,6 +27,7 @@ const Prop4 = () => {
     </>
   );
 };
+// callback ส่ง function เข้าไปใน components แล้ว components เรียกว่า function นั้น แล้วค่าใน root มีการเปลี่ยนแปลง
 
 export default Prop4;
 
