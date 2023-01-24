@@ -12,6 +12,7 @@ const Effect5 = () => {
       console.log(response.data);
       setMenus(response.data);
     });
+    // async
   }, []);
 
   return (
