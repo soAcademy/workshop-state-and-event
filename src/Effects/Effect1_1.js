@@ -27,7 +27,7 @@ const Effect1_1 = () => {
       <IncreaseButton counter={counter} setCounter={setCounter}/>
       <IncreaseButton counter={counter2} setCounter={setCounter2}/>
       <IncreaseButton counter={counter3} setCounter={setCounter3}/>
-      <p>Counter</p><CounterRender counter={counter} />
+      <p>Counter1</p><CounterRender counter={counter} />
       Counter2<CounterRender counter={counter2} />
       Counter3<CounterRender counter={counter3} />
 
