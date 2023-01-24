@@ -8,7 +8,9 @@ const Effect2 = () => {
   useEffect(() => {
     setProfile(`My name is ${name}`);
   }, [name]);
+  console.log(name);
   //tricker on name and then render.
+  //listen only the thing in the dependency.
 
   return (
     <div className="border-2 border-sky-500 p-3 w-1/2 rounded-[30px] mt-4 shadow-md">

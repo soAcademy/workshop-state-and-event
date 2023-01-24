@@ -9,7 +9,7 @@ const Effect1_1 = () => {
   }, []);
   useEffect(() => {
     document.title = `Counter ${count}`;
-  }, [count]);
+  }, [count, count2]);
   return (
     <>
       {count},{count2}

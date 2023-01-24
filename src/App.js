@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       <Effect1 />
-      <Effect2 />
       <Effect1_1 />
+      <Effect2 />
     </>
   );
 }
