@@ -5,15 +5,15 @@ const Effect1_1 = () => {
   const [counter2, setCounter2] = useState(5);
 
   useEffect(() => {
-    document.title = `Counter : ${counter1}`;
+    document.title = `Counter : ${counter2}`;
     console.log(counter1);
     console.log(counter2);
   });
 
   return (
     <>
-      {counter1}
-      {counter2}
+      <div>{counter1}</div>
+      <div>{counter2}</div>
       <button
         className="border border-red-200 bg-yellow-300"
         onClick={() => setCounter1(counter1 + 1)}

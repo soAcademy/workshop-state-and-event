@@ -21,7 +21,8 @@
 // import Prop4 from "./Props/Prop4";
 
 // import Effect1 from "./Effects/Effect1";
-import Effect1_1 from "./Effects/Effect1_1";
+// import Effect1_1 from "./Effects/Effect1_1";
+import Effect2 from "./Effects/Effect2";
 
 const App = () => {
   return (
@@ -46,7 +47,8 @@ const App = () => {
       {/* <Prop3 /> */}
       {/* <Prop4 /> */}
       {/* <Effect1 /> */}
-      <Effect1_1 />
+      {/* <Effect1_1 /> */}
+      <Effect2 />
     </div>
   );
 };
