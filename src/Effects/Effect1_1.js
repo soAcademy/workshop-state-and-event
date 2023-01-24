@@ -8,8 +8,9 @@ const Effect1_1 = () => {
     document.title = `Counter ${count}`;
   }, []);
   useEffect(() => {
-    document.title = `Counter ${count}`;
+    document.title = `Counter ${count} ${count2}`;
   }, [count, count2]);
+
   return (
     <>
       {count},{count2}
@@ -21,7 +22,7 @@ const Effect1_1 = () => {
       </button>
       <button
         className="bg-sky-500 text-white"
-        onClick={() => setCount2(count + 1)}
+        onClick={() => setCount2(count2 + 1)}
       >
         Increase 2
       </button>

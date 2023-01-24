@@ -10,7 +10,7 @@ const Effect3 = () => {
   useEffect(() => {
     setNumSquare(Number(num) ** 2); //ยกกำลัง 2 = square
   }, [num]);
-
+  //NUmber = แปลง type text ที่ได้รับจาก input ให้เป็น number เพื่อให้มันไปยกกำลังสองได้
   return (
     <>
       <h1 className="text-xl">Num:{num}</h1>

@@ -13,6 +13,8 @@ const Effect6 = () => {
       }).then((response) => {
         console.log(response);
         setData(response);
+        setIsFetch(false);
+        // useState ถ้าเรา set ค่าเดิมไปใหม่ มันจะไม่ render ให้
       });
     }
   }, [isFetch]);

@@ -10,11 +10,15 @@ const Effect4 = () => {
     const interval = setInterval(() => {
       setCountdown(countdown - 1);
     }, 1000);
+    // setInterval ใช้เพื่อให้มันทำงานทุกๆ 1000 milisec
+
     //countdown -1 per 1 sec
-    countdown > 1 || clearInterval(interval);
-    // true||true
+    countdown === 1 && clearInterval(interval);
+    //เจอtrue แล้วทำงานเลย
     //สั่งให้หยุดทำ ก่อนจบ 1วิ
     return () => clearInterval(interval);
+    // ท่าการทำ Unmounting ของ life cycle
+    //return ใน useEffect ต้องมี () => เสมอ
     // clear เมื่อถึง 1
   }, [countdown]);
 

@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Effect5 = () => {
   const [data, setData] = useState("");
-
+  // useState จะเป็นตัวเก็บค่า data ที่เราไป get มา
   useEffect(() => {
     axios({
       method: "get", //ดึงข้อมูลจาก server
@@ -17,6 +17,7 @@ const Effect5 = () => {
     });
     //then คือหลังจากที่ดึงข้อมูลมาแล้ว ก็จะได้ข้อมูลที่ response มาโชว์
   }, []);
+  //เรียกครั้งเดียว
 
   return (
     <>
