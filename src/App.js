@@ -52,6 +52,7 @@ import Prop4 from "./Props/Prop4";
 import Effect1 from "./Effects/Effect1";
 import Effect2 from "./Effects/Effect2";
 import Effect3 from "./Effects/Effect3";
+import Effect4 from "./Effects/Effect4";
 
 const App = () => {
   return (
@@ -87,7 +88,7 @@ const App = () => {
       <Effect1 />
       <Effect2 />
       <Effect3 />
-      {/* <Effect4 /> */}
+      <Effect4 />
       {/* <Effect5 /> */}
       {/* <Effect6 /> */}
       {/* <Effect7 /> */}
