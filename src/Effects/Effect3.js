@@ -11,7 +11,7 @@ const Effect3 = () => {
     <>
       <p className='m-2'>Number: {num}</p>
       <p className='m-2'>Squared number: {numSquared}</p>
-      <input className='bg-green-200 m-2 border border-red' onChange={(e) => setNum(e.target.value)} />
+      <input className='bg-green-200 m-2 border border-red-500 border-4' onChange={(e) => setNum(e.target.value)} />
     </>
   );
 };
