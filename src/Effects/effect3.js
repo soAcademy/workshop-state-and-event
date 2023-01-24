@@ -11,8 +11,8 @@ const Effect3=()=>{
     <>
     <p>Num : {num}</p>
     <input className='bg-red-200' onChange={(e)=>setNum(e.target.value)}/>
-    <p>Sum Square : {sumSqt}</p>
-    <input className='bg-blue-200' onChange={(e)=>setSumSqt(e.target.value)}/>
+    <p className='bg-blue-200 w-[200px]'>Sum Square : {sumSqt}</p>
+    <input className='' onChange={(e)=>setSumSqt(e.target.value)}/>
     </>
   );
 };
