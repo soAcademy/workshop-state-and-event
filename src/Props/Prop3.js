@@ -11,6 +11,10 @@ const Prop3 = () => {
       <button className="bg-green-300" onClick={() => setCounter(counter + 1)}>
         Increase
       </button>
+
+      <button className="bg-red-300" onClick={() => setCounter(counter - 1)}>
+        Decrease
+      </button>
     </>
   );
 };
