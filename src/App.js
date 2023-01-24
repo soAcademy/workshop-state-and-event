@@ -62,7 +62,9 @@ const App = () => {
       <Event6 />
       <Event7 />
       <Event8 />
+      <br />
       <hr />
+      <br />
       <State1 />
       <State2 />
       <State3 />
@@ -70,12 +72,16 @@ const App = () => {
       <State5 />
       <State6 />
       <State7 />
+      <br />
       <hr />
+      <br />
       <Prop1 data="Hello World!" />
       <Prop2 data1="Hello World!" data2="Hi! Alien" />
       <Prop3 />
       <Prop4 />
-
+      <br />
+      <hr />
+      <br />
       <Effect1 />
       {/* <Effect2 /> */}
       {/* <Effect3 /> */}
