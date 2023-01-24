@@ -7,7 +7,7 @@ const Prop3 = () => {
 
   return (
     <div className="w-100 h-screen flex justify-center items-center">
-      <div className="">
+      <div className="text-center">
         <RenderComponent dataCnt={counter} />
         <button
           onClick={() => setCounter(counter + 1)}
