@@ -18,16 +18,16 @@ const Effect7 = () => {
         <button
           onClick={() => setLight1(!light1)}
           className={`p-2 m-2 ${
-            light1 ? "bg-white" : "bg-black text-white"
-          } font-bold rounded-lg mx-2 shadow-sm shadow-black duration-75 hover:shadow-md hover:shadow-black active:bg-gray-500`}
+            light1 ? "bg-white active:shadow-[inset_0_0_5px_rgba(0,0,0,0.8)]" : "bg-gray-800 text-white active:shadow-[inset_0_0_5px_rgba(0,0,0,1)]"
+          } font-bold rounded-lg mx-2 shadow-sm shadow-black duration-75 active:shadow-[inset_0_0_5px_rgba(0,0,0,0.6)] `}
         >
           Light1
         </button>
         <button
           onClick={() => setLight2(!light2)}
           className={`p-2 m-2 ${
-            light2 ? "bg-white" : "bg-black text-white"
-          } font-bold rounded-lg mx-2 shadow-sm shadow-black duration-75 hover:shadow-md hover:shadow-black active:bg-gray-500`}
+            light2 ? "bg-white active:shadow-[inset_0_0_5px_rgba(0,0,0,0.8)]" : "bg-gray-800 text-white active:shadow-[inset_0_0_5px_rgba(0,0,0,1)]"
+          } font-bold rounded-lg mx-2 shadow-sm shadow-black duration-75`}
         >
           Light2
         </button>
