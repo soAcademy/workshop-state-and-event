@@ -23,8 +23,8 @@ import Prop4 from "./Props/Prop4";
 import Effect1 from "./Effects/Effect1";
 import Effect1_1 from "./Effects/Effect1_1";
 import Effect2 from "./Effects/Effect2";
-// import Effect3 from "./Effects/Effect3";
-// import Effect4 from "./Effects/Effect4";
+import Effect3 from "./Effects/Effect3";
+import Effect4 from "./Effects/Effect4";
 // import Effect5 from "./Effects/Effect5";
 // import Effect6 from "./Effects/Effect6";
 // import Effect7 from "./Effects/Effect7";
@@ -57,8 +57,8 @@ const App = () => {
       <Effect1 />
       <Effect1_1 />
       <Effect2 />
-      {/* <Effect3 /> */}
-      {/* <Effect4 /> */}
+      <Effect3 />
+      <Effect4 />
       {/* <Effect5 /> */}
       {/* <Effect6 /> */}
       {/* <Effect7 /> */}
