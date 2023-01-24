@@ -29,4 +29,4 @@ yarn-error.log*
 /.vscode
 workspace.code-workspace
 
-/.gitignore
+.gitignore
