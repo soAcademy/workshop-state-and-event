@@ -45,6 +45,7 @@ import State6 from "./States/State6";
 import State7 from "./States/State7";
 
 import Prop1 from "./Props/Prop1";
+import Prop2 from "./Props/Prop2";
 
 const App = () => {
   return (
@@ -57,7 +58,7 @@ const App = () => {
       <Event6 />
       <Event7 />
       <Event8 />
-
+      <hr />
       <State1 />
       <State2 />
       <State3 />
@@ -65,9 +66,9 @@ const App = () => {
       <State5 />
       <State6 />
       <State7 />
-
-      <Prop1 data="Hello World" />
-      {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
+      <hr />
+      <Prop1 data="Hello World!" />
+      <Prop2 data1="Hello World!" data2="Hi! Alien" />
       {/* <Prop3 /> */}
       {/* <Prop4 /> */}
 
