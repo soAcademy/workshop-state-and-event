@@ -13,21 +13,35 @@ const Effect4 = () => {
   return (
     <div className="w-fit bg-gray-300 rounded-lg p-2 m-2">
       Time : {time}
-      <button
-        onClick={() => {
-          setStart(false);
-          setTime(10);
-        }}
-        className="p-2 bg-gray-400 font-bold rounded-lg mx-2 shadow-sm shadow-black duration-75 hover:shadow-md hover:shadow-black active:bg-gray-500"
-      >
-        Reset
-      </button>
-      <button
-        onClick={() => setStart(!start)}
-        className="p-2 bg-gray-400 font-bold rounded-lg mx-2 shadow-sm shadow-black duration-75 hover:shadow-md hover:shadow-black active:bg-gray-500"
-      >
-        Start
-      </button>
+      <form>
+        <input
+          type="number"
+          placeholder="Enter Time"
+          onChange={(e) => {
+            setStart(false);
+            setTime(e.target.value);
+          }}
+        ></input>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setStart(false);
+            setTime(e.target.form[0].value ? e.target.form[0].value : 10);
+          }}
+          className="p-2 bg-gray-400 font-bold rounded-lg mx-2 shadow-sm shadow-black duration-75 hover:shadow-md hover:shadow-black active:bg-gray-500"
+        >
+          Reset
+        </button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setStart(!start);
+          }}
+          className="p-2 bg-gray-400 font-bold rounded-lg mx-2 shadow-sm shadow-black duration-75 hover:shadow-md hover:shadow-black active:bg-gray-500"
+        >
+          Start
+        </button>
+      </form>
     </div>
   );
 };
