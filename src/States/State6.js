@@ -5,33 +5,26 @@ const State6 = () => {
   const [number2, setNumber2] = useState(0);
   const [sum, setSum] = useState(0);
 
-
-
   return (
     <div className="">
       <div>
-        Input1: {number1}
+        Input1:
+        {/* Input1: {number1} */}
         <input
           type="number"
           className="border bg-red-300"
           onChange={(e) => setNumber1(e.target.value)}
         />
       </div>
-
-
       <div>
-        Input2: {number2}
+        Input2:
+        {/* Input2: {number2} */}
         <input
           type="number"
           className="border bg-yellow-300"
           onChange={(e) => setNumber2(e.target.value)}
         />
       </div>
-
-
-
-
-
       <div>
         Sum: {sum}
         <button
