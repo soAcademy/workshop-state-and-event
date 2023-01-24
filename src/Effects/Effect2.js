@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 
 const Effect2 = () => {
   const [name, setName] = useState("Cake");
-  const [profile, setProfile] = useState("Cake");
+  const [profile, setProfile] = useState(name);
 
   useEffect(() => {
     setProfile(name);
-  }, [name]);
+  },);
 
   return (
     <>
