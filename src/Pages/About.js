@@ -4,7 +4,7 @@ const About = () => (
   <div>
     {" "}
     <Link to="/">Home</Link> | <span className="underline">About</span> |{" "}
-    <Link to="/contact">Contact</Link> | <Link to="/products">Products</Link>
+    <Link to="/contact">Contact</Link> | <Link to="/product">Product</Link> | <Link to="/products">Products</Link>
   </div>
 );
 
