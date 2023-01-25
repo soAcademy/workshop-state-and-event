@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Home = ({title}) => {
-  document.title = title;
-  console.log(title);
+  document.title = "Home";
   return (
-    <div>
-      <span className="underline">Home</span> | <Link to="/about">About</Link> | <Link to="/products">Products</Link>
+    <div className="font-bold text-[100px]">
+      Home Page
     </div>
 
   );

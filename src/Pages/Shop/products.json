@@ -1,0 +1,58 @@
+{
+  "product": [
+    {
+      "no":1,
+      "category": "TRAVELING",
+      "type": "TRIP",
+      "itemName": "SOMEWHERE IN THE WORLD ONLY WE KNOW",
+      "description": "Trip to somewhere in the world only we know Lorem ipsum dolor sit amet consectetur adipisicing elit. est perferendis!",
+      "imgSource": "https://plus.unsplash.com/premium_photo-1668181103252-352173f7ada7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=775&q=80",
+      "price": 100
+    },
+    {
+      "no":2,
+      "category": "TRAVELING",
+      "type": "TRIP",
+      "itemName": "3 DAYS 2NIGHTS TRIP TO HEAVEN",
+      "description": "Experience the ultimate paradise on a journey to heaven. Meet legendary gods Zeus and Poseidon and enjoy a heavenly drink with angels. A trip of a lifetime, don't miss out!",
+      "imgSource": "https://images.unsplash.com/photo-1498015583783-4abcab4a760a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+      "price": 200
+    },
+    {
+      "no":3,
+      "category": "EATING",
+      "type": "FINE-DINING",
+      "itemName": "12 COURSES EXCLUSIVE DINNER BY BEELZEBUB",
+      "description": "Indulge in a culinary experience like no other with our 12-course fine-dining program. Savor the flavors crafted by our exclusive chef, Beelzebub , who has trained under renowned masters and brings a unique touch to each dish.",
+      "imgSource": "https://hotpotmedia.s3.us-east-2.amazonaws.com/8-PoxvOlxvkMv7DPr.png?nc=1",
+      "price": 300
+    },
+    {
+      "no":4,
+      "category": "TRAVELING",
+      "type": "TRIP",
+      "itemName": "SOMEWHERE IN THE WORLD ONLY WE KNOW",
+      "description": "Trip to somewhere in the world only we know Lorem ipsum dolor sit amet consectetur adipisicing elit. est perferendis!",
+      "imgSource": "https://plus.unsplash.com/premium_photo-1668181103252-352173f7ada7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=775&q=80",
+      "price": 100
+    },
+    {
+      "no":5,
+      "category": "TRAVELING",
+      "type": "TRIP",
+      "itemName": "3 DAYS 2NIGHTS TRIP TO HEAVEN",
+      "description": "Experience the ultimate paradise on a journey to heaven. Meet legendary gods Zeus and Poseidon and enjoy a heavenly drink with angels. A trip of a lifetime, don't miss out!",
+      "imgSource": "https://images.unsplash.com/photo-1498015583783-4abcab4a760a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+      "price": 200
+    },
+    {
+      "no":6,
+      "category": "EATING",
+      "type": "FINE-DINING",
+      "itemName": "12 COURSES EXCLUSIVE DINNER BY BEELZEBUB",
+      "description": "Indulge in a culinary experience like no other with our 12-course fine-dining program. Savor the flavors crafted by our exclusive chef, Beelzebub , who has trained under renowned masters and brings a unique touch to each dish.",
+      "imgSource": "https://hotpotmedia.s3.us-east-2.amazonaws.com/8-PoxvOlxvkMv7DPr.png?nc=1",
+      "price": 300
+    }
+  ]
+}
