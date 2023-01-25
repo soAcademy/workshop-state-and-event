@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 // const Effect4 = () => {
 //   const [countdown, setCountdown] = useState(10);
@@ -19,8 +19,6 @@
 // }
 
 // export default Effect4;
-
-// import React, { useState, useEffect } from "react";
 
 // const Effect4 = () => {
 //   const [countdown, setCountdown] = useState(10);
@@ -45,8 +43,6 @@
 // }
 
 // export default Effect4;
-
-import React, { useState, useEffect } from "react";
 
 const Effect4 = () => {
   const [countdown, setCountdown] = useState(10);
