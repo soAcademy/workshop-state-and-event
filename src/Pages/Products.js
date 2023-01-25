@@ -1,20 +1,16 @@
-import { Link } from "react-router-dom";
-import { Routes, Route, useLocation } from "react-router-dom";
-import Product1 from "./Products/Product1";
-import Product2 from "./Products/Product2";
-import Product from "./Shop/Product";
+import { Routes, Route, useLocation, Link, useParams } from "react-router-dom";
 import ProductPage from "./Products/ProductPage";
 
 const Products = ({ title }) => {
   const location = useLocation();
-  console.log(location);
+  const productId = useParams();
   document.title = title;
   return (
     <div>
       <div className="w-[300px] bg-gray-300 h-[400px] mx-auto m-5">
         <div className="bg-gray-700 p-2 text-white font-bold">
           <Link
-            to="product1"
+            to="1"
             className={`${
               location.pathname === "/products/product1" ? "underline" : ""
             }`}
@@ -23,7 +19,7 @@ const Products = ({ title }) => {
           </Link>{" "}
           |{" "}
           <Link
-            to="product2"
+            to="2"
             className={`${
               location.pathname === "/products/product2" ? "underline" : ""
             }`}
@@ -32,9 +28,7 @@ const Products = ({ title }) => {
           </Link>
         </div>
         <Routes>
-          <Route path="/Product/:productId" component={ProductPage} />
-          {/* <Route path="product1" element={<Product1 />} />
-          <Route path="product2" element={<Product2 />} /> */}
+          <Route path=":productId" element={<ProductPage />} />
         </Routes>
       </div>
     </div>

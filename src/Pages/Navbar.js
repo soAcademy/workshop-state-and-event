@@ -1,11 +1,15 @@
-import { Link , useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const Navbar = () => {
   const location = useLocation();
   return (
     <div className="bg-black text-center text-white">
       <Link
         to="/home"
-        className={`${location.pathname === "/" || location.pathname === "/home"  ? "underline" : ""}`}
+        className={`${
+          location.pathname === "/" || location.pathname === "/home"
+            ? "underline"
+            : ""
+        }`}
       >
         Home
       </Link>{" "}
@@ -18,7 +22,7 @@ const Navbar = () => {
       </Link>{" "}
       |{" "}
       <Link
-        to="/product"
+        to="/products"
         className={`${location.pathname === "/products" ? "underline" : ""}`}
       >
         Products
