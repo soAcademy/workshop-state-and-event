@@ -13,4 +13,8 @@ const State7 = () => {
   );
 };
 
+<<<<<<< HEAD
 export default State7;
+=======
+export default State7;
+>>>>>>> 2ca4ef9b632eeac10e2c819a85109bdb1fea7f85

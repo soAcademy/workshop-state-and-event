@@ -6,7 +6,7 @@ const Effect6 = () => {
   const [isFetch, setIsFetch] = useState(false);
 
   useEffect(() => {
-    if (isFetch) {
+    isFetch &&
       axios({
         method: "get",
         url: "https://api.sampleapis.com/coffee/hot",
@@ -14,7 +14,6 @@ const Effect6 = () => {
         console.log(response);
         setData(response);
       });
-    }
   }, [isFetch]);
 
   return (
