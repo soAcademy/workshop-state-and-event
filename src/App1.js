@@ -1,7 +1,3 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home';
-import About from './Pages/About';
-
 // import Event1 from "./Events/Event1";
 // import Event2 from "./Events/Event2";
 // import Event3 from "./Events/Event3";
@@ -68,12 +64,12 @@ import About from './Pages/About';
 //   );
 // };
 
-const App = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route exact path="/" element={<Home/>} />
-      <Route exact path="/about" element={<About/>} />
-    </Routes>
-  </BrowserRouter>
-);
-export default App;
+// const App = () => (
+//   <BrowserRouter>
+//     <Routes>
+//       <Route exact path="/" element={<Home/>} />
+//       <Route exact path="/about" element={<About/>} />
+//     </Routes>
+//   </BrowserRouter>
+// );
+// export default App;
