@@ -62,6 +62,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
+import Product1 from "./Pages/Product1";
+import Product2 from "./Pages/Product2";
 
 const App = () => (
   <BrowserRouter>
@@ -69,6 +71,8 @@ const App = () => (
     <Routes>
       <Route exact path="/" element={<Home heading="Greeting!" />} />
       <Route exact path="/about" element={<About />} />
+      <Route exact path="/products/product1" element={<Product1 />} />
+      <Route exact path="/products/product2" element={<Product2 />} />
     </Routes>
     <div className="bg-purple-500 p-4">This is Footer</div>
   </BrowserRouter>
