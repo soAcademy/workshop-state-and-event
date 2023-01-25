@@ -22,7 +22,7 @@ const App = () => {
     <BrowserRouter>
       <div className="text-center bg-stone-100 shadow-lg w-full">Navbar</div>
       <Routes>
-        <Route exact path="/" element={<Home title="Hello World!"/>} />
+        <Route exact path="/" element={<Home message="Hello World!" />} />
         <Route exact path="/about" element={<About />} />
       </Routes>
       <div className="text-center bg-stone-100 w-full">Footer</div>
