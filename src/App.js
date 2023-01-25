@@ -56,43 +56,20 @@
 // import Effect4 from "./Effects/Effect4";
 // import Effect5 from "./Effects/Effect5";
 // import Effect6 from "./Effects/Effect6";
-import Effect7 from "./Effects/Effect7";
+// import Effect7 from "./Effects/Effect7";
 
-const App = () => {
-  return (
-    <div>
-      {/* <Event1 /> */}
-      {/* <Event2 /> */}
-      {/* <Event3 /> */}
-      {/* <Event4 /> */}
-      {/* <Event5 /> */}
-      {/* <Event6 /> */}
-      {/* <Event7 /> */}
-      {/* <Event8 /> */}
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
 
-      {/* <State1 /> */}
-      {/* <State2 /> */}
-      {/* <State3 /> */}
-      {/* <State4 /> */}
-      {/* <State5 /> */}
-      {/* <State6 /> */}
-      {/* <State7 /> */}
-
-      {/* <Prop1 data="Hello World" /> */}
-      {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
-      {/* <Prop3 /> */}
-      {/* <Prop4 /> */}
-
-      {/* <Effect1 /> */}
-      {/* <Effect1_1 /> */}
-      {/* <Effect2 /> */}
-      {/* <Effect3 /> */}
-      {/* <Effect4 /> */}
-      {/* <Effect5 /> */}
-      {/* <Effect6 /> */}
-      <Effect7 />
-    </div>
-  );
-};
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/about" element={<About />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;
