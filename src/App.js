@@ -16,7 +16,7 @@ const App = () => (
       <Route exact path="about" element={<About />} />
       {/* <Route exact path="/products/product1" element={<Product1 />} />
       <Route exact path="/products/product2" element={<Product2 />} /> */}
-      <Route exact path="products" element={<></>}>
+      <Route exact path="products">
         <Route exact path="product1" element={<Product1 />} />
         <Route exact path="product2" element={<Product2 />} />
       </Route>
