@@ -1,3 +1,36 @@
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
+import About from './Pages/About';
+import Home from './Pages/Home';
+
+const App = () => {
+  return (
+    <>
+  <div>
+  <BrowserRouter>
+    <Routes>
+      <Route exact path="/" element={<Home/>} />
+      <Route exact path="/about" element={<About/>} />
+    </Routes>
+  </BrowserRouter>
+  </div>
+  </>
+);
+};
+export default App;
+
+// const App = () => (
+//   <BrowserRouter>
+//     <Routes>
+//       <Route exact path="/" element={<Home/>} />
+//       <Route exact path="/about" element={<About/>} />
+//     </Routes>
+//   </BrowserRouter>
+// );
+// export default App;
+
+
+
 // import Event1 from './Events/Event1';
 // import Event2 from './Events/Event2';
 // import Event3 from './Events/Event3';
@@ -17,18 +50,18 @@
 // import Prop2 from './Props/Prop2';
 // import Prop3 from './Props/Prop3';
 // import Prop4 from './Props/Prop4';
-import Effect1 from './Effects/Effect1';
-import Effect1_1 from './Effects/Effect1_1';
-import Effect2 from './Effects/Effect2';
-import Effect3 from './Effects/Effect3';
-import Effect4 from './Effects/Effect4';
-import Effect5 from './Effects/Effect5';
-import Effect6 from './Effects/Effect6';
-import Effect7 from './Effects/Effect7';
+// import Effect1 from './Effects/Effect1';
+// import Effect1_1 from './Effects/Effect1_1';
+// import Effect2 from './Effects/Effect2';
+// import Effect3 from './Effects/Effect3';
+// import Effect4 from './Effects/Effect4';
+// import Effect5 from './Effects/Effect5';
+// import Effect6 from './Effects/Effect6';
+// import Effect7 from './Effects/Effect7';
 
-const App = () => {
-  return (
-    <div>
+// const App = () => {
+//   return (
+//     <div>
       {/* <Event1 />
       <Event2 />
       <Event3 />
@@ -62,16 +95,19 @@ const App = () => {
       {/* <Effect5 /> */}
       {/* <Effect6 /> */}
       {/* <Effect7 /> */}
-    </div>
+    {/* </div>
   );
-};
+}; */}
 
-const App = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route exact path="/" element={<Home/>} />
-      <Route exact path="/about" element={<About/>} />
-    </Routes>
-  </BrowserRouter>
-);
-export default App;
+// import About from './Pages/About';
+// import Home from './Pages/Home';
+
+// const App = () => (
+//   <BrowserRouter>
+//     <Routes>
+//       <Route exact path="/" element={<Home/>} />
+//       <Route exact path="/about" element={<About/>} />
+//     </Routes>
+//   </BrowserRouter>
+// );
+// export default App;
