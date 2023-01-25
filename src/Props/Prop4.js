@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 const RenderComponent = ({ counterData }) => <div>Counter: {counterData}</div>;
 
-
 const IncreaseCounter = (props) => {
-console.log("IncreaseCounter", props);
-const { counterData, setCounter2 } = props
-return (
-<button className="bg-green-300" onClick={() => setCounter2(counterData + 1)}>
-Increase
-</button>
-
-)
-}
+  console.log("IncreaseCounter", props);
+  const { counterData, setCounter2 } = props;
+  return (
+    <button
+      className="bg-green-300"
+      onClick={() => setCounter2(counterData + 1)}
+    >
+      Increase
+    </button>
+  );
+};
 // const IncreaseCounter = ({ counterData, setCounter2 }) => (
 //   <button className="bg-green-300" onClick={() => setCounter2(counterData + 1)}>
 //     Increase

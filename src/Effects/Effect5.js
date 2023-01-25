@@ -18,9 +18,9 @@ const Effect5 = () => {
   return (
     <>
       {/* <p>{JSON.stringify(menus)}</p> */}
-      {menus?.map((r) => 
+      {menus?.map((r) => (
         <div className="bg-red-700 mb-2">{r.title}</div>
-      )}
+      ))}
       {/* {menus !== undefined &&
         menus.map((r) => <div className="bg-red-700 mb-2">{r.title}</div>)} */}
     </>
