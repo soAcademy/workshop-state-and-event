@@ -1,6 +1,6 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home';
-import About from './Pages/About';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
 
 // import Event1 from "./Events/Event1";
 // import Event2 from "./Events/Event2";
@@ -71,8 +71,8 @@ import About from './Pages/About';
 const App = () => (
   <BrowserRouter>
     <Routes>
-      <Route exact path="/" element={<Home/>} />
-      <Route exact path="/about" element={<About/>} />
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/about" element={<About />} />
     </Routes>
   </BrowserRouter>
 );
