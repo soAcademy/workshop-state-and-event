@@ -58,3 +58,11 @@
 6. ดึงข้อมูล API ผ่าน GET Method โดยใช้ axios จาก `https://api.sampleapis.com/coffee/hot` โดยโหลดข้อมูลเมื่อกดปุ่ม Fetch
 
 7. สร้างปุ่ม 2 ปุ่มคือ Light 1 และ Light 2 โดยเก็บตัวแปร Boolean โดย 2 ปุ่มนี้เป็น toggle คือ true/false ถ้า light1 และ light2 เป็น true ทั้งคู่ ให้แสดงค่า เป็น "Hello" ถ้าไม่ใช่ให้แสดงค่าเป็น "Hola" โดย default ให้เป็น false ทั้งหมด
+
+# โจทย์ Routes
+
+1. สร้างหน้า Home และ About ทำ link
+
+2. สร้าง หน้า Home, About, Product/product1, Product/product2 แล้วทำ link (nested route)
+
+3. ทำ route แบบมี slug params, Product/{productId}
