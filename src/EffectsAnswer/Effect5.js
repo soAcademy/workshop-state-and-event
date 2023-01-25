@@ -9,9 +9,9 @@ const Effect5 = () => {
     axios({
       method: "get",
       url: "https://api.sampleapis.com/coffee/hot",
-    }).then((response) => {
-      console.log(response.data);
-      setMenus(response.data);
+    }).then((res) => {
+      console.log(res.data);
+      setMenus(res.data);
     });
     // async
   }, []);
