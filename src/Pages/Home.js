@@ -8,6 +8,7 @@ const Home =(props)=>(
     <span className="underline">Home</span>|{""}
     <Link to="/products/product1">Product1</Link>|{""}
     <Link to="/products/product2">Product2</Link>|{""}
+    <Link to="/product/:productId">ProductId</Link>|{""}
     <Link to="/about">About</Link>
     
   </div>

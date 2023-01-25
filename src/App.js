@@ -2,19 +2,20 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-import Product1 from "./Pages/Product1";
-import Product2 from "./Pages/Product2";
+import Product1 from "./Pages/Products/Product1";
+import Product2 from "./Pages/Products/Product2";
+import Products from "./Pages/Products/Products";
 const App = () => (
   <BrowserRouter>
     <div className="bg-red-200">Nav bar</div>
     <Routes>
-      <Route
-        exact
-        path="/"
-        element={<Home title="My name is Dew" location="BKK" />}
-      />
-      <Route exact path="/about" element={<About tel="093-537-2883" />} />
-      <Route exact path="products" >
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/about" element={<About />} />
+      <Route path="product">
+        <Route path=":productId" element={<Products />} />
+      </Route>
+
+      <Route exact path="products">
         <Route exact path="product1" element={<Product1 />}></Route>
         <Route exact path="product2" element={<Product2 />}></Route>
       </Route>

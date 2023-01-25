@@ -3,7 +3,7 @@ const About =()=>(
   <div>
     
     <Link to="/">Home</Link>{""}
-    <span className="underlined">About</span>
+    {/* <span className="underlined">About</span> */}
     {/* <div className="bg-blue-200">dew</div> */}
   </div>
 );
