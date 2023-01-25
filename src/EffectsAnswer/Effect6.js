@@ -6,7 +6,7 @@ const Effect6 = () => {
   const [isFetch, setIsFetch] = useState(false);
 
   useEffect(() => {
-    if (isFetch) {
+    isFetch &&
       axios({
         method: "get",
         url: "https://api.sampleapis.com/coffee/hot",
@@ -16,7 +16,6 @@ const Effect6 = () => {
         setIsFetch(false);
         // useState ถ้าเรา set ค่าเดิมไปใหม่ มันจะไม่ render ให้
       });
-    }
   }, [isFetch]);
 
   return (
