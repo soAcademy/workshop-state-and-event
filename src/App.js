@@ -5,10 +5,12 @@ import About from './About';
 
 const App = () => (
   <BrowserRouter>
+  <div className="bg-green-300">NavBar</div>
     <Routes>
-      <Route exact path="/" element={<Home/>} />
+      <Route exact path="/" element={<Home title="My name is Teak"/>} />
       <Route exact path="/about" element={<About/>} />
     </Routes>
+  <div className="bg-red-300">Footer</div>
   </BrowserRouter>
 );
 
