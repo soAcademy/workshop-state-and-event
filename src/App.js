@@ -76,6 +76,7 @@ const App = () => (
         <Route exact path="product1" element={<Product1 />} />
         <Route exact path="product2" element={<Product2 />} />
       </Route>
+      <Route exact path="*" element={<>Not found</>} />
     </Routes>
     <div className="bg-purple-500 p-4">This is Footer</div>
   </BrowserRouter>
