@@ -1,7 +1,7 @@
 import React from "react";
 
 const Event4 = () => {
-  const inputChange = (e) => console.log(e);
+  const inputChange = (e) => console.log(e.target.value);
   return (
     <div className="my-2">
       <input
