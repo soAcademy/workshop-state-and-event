@@ -10,16 +10,30 @@ const App = () => {
     <>
       <div>
         <BrowserRouter>
-          <div className="bg-teal-700 w-full">This is NavBar</div>
+          <div className="bg-teal-700 w-full">This is NavBar
+          //เอาพวกนั้นมาใส่ในนี้ เพื่อที่เราจะได้ไม่ต้องเขียนลิงค์ในแต่ละเพจ
+          
+          </div>
+
+
+
           <Routes>
-            <Route exact path="/" element={<Home title="Hello Bond" />} />
-            <Route exact path="/about" element={<About />} />
+            <Route 
+              exact 
+              path="/" 
+              element={<Home title="Hello Bond" location="BKK" />}/>
+            
+            <Route exact path="/about" element={<About tel="093542497"/>} />
+            <Route exact path="/about" element={<About tel="093542497"/>} />
+            <Route exact path="/about" element={<About tel="093542497"/>} />
             <Route exact path="products">
               <Route exact path="product1" element={<Product1 />} />
               <Route exact path="product2" element={<Product2 />} />
             </Route>
             <Route> exact path="*" element={<>404 Not Found</>} </Route>
           </Routes>
+
+
 
           <div className="bg-green-700 w-full">This is Footer</div>
         </BrowserRouter>
