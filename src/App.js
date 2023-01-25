@@ -3,14 +3,20 @@ import Home from "./PagesAnswer/Home";
 import About from "./PagesAnswer/About";
 import Product1 from "./PagesAnswer/Product1";
 import Product2 from "./PagesAnswer/Product2";
+import Product from "./PagesAnswer/Product";
 
 const App = () => (
   <BrowserRouter>
-  <div className="bg-red-700 w-full">This is Navbar</div>
+    <div className="bg-red-700 w-full">This is Navbar</div>
     <Routes>
-      <Route exact path="/" element={<Home title= "I'm Korayut" />} />
+      <Route exact path="/" element={<Home title="I'm Korayut" />} />
       <Route exact path="about" element={<About />} />
       {/* <Route exact path="products" element={<div>Products</div>} /> */}
+
+      <Route path="product">
+        <Route path=":productId" element={<Product />} />
+      </Route>
+
       <Route exact path="products">
         <Route exact path="product1" element={<Product1 />} />
         <Route exact path="product2" element={<Product2 />} />
