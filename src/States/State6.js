@@ -7,7 +7,7 @@ const State6 = () => {
   return (
     <div className="bg-blue-200 p-2 m-2">
       <div>
-      Input1: {number1}
+      Input1: 
       <input
         className="bg-yellow-200"
         type="number"
@@ -15,7 +15,7 @@ const State6 = () => {
       />
       </div>
       <div>
-      Input2: {number2}
+      Input2: 
       <input
         className="bg-green-200"
         type="number"

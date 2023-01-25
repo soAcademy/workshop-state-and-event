@@ -5,7 +5,7 @@ const Event4 = () => {
 
   return (
     <div className="my-2">
-      <input className="bg-red-200" onChange={(e) => change(e)}></input>
+      <input className="border-red-700 rounded-lg" onChange={(e) => change(e)}></input>
     </div>
   );
 };

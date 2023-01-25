@@ -36,7 +36,8 @@ const Event7 = () => {
           id="email"
         />
       </div>
-      <button className="bg-red-300 p-4">Submit</button>
+      <button className="bg-red-300 p-4" type="submit">Submit</button>
+      <button className="bg-yellow-300 p-4" type="reset">Clear</button>
     </form>
   );
 };

@@ -35,6 +35,7 @@ const Event7 = () => {
         />
       </div>
       <button className="rounded-lg bg-red-500 p-2 m-2">Submit</button>
+      <button className="bg-yellow-300 p-4 rounded-lg m-2" type="reset">Clear</button>
     </form>
   );
 };

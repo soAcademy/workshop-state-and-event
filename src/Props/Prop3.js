@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const RenderComponent = ({ counterData }) => <div>counter: {counterData}</div>;
+const RenderComponent = ({counterData}) => <div>counter: {counterData}</div>;
 const Prop3 = () => {
   const [counter, setCounter] = useState(0);
   return (
