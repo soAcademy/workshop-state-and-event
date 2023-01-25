@@ -5,7 +5,7 @@ const Home = ({title}) => {
   console.log(title);
   return (
     <div>
-      <span className="underline">Home</span> | <Link to="/About">About</Link> | <Link to="/Products">Products</Link>
+      <span className="underline">Home</span> | <Link to="/about">About</Link> | <Link to="/products">Products</Link>
     </div>
 
   );
