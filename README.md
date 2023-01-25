@@ -63,9 +63,17 @@
 
 1. สร้างหน้า Home และ About ทำ link
 
+<<<<<<< HEAD
 2. สร้าง หน้า Home, About, Product/product1, Product/product2 แล้วทำ link (nested route)
 / --> Home
 /about --> About
 /product
+=======
+2. สร้าง หน้า Home, About, Products/product1, Product/product2 แล้วทำ link (nested route)
+/ --> Home
+/about --> About
+/products/product1 --> Product1
+/products/product2 --> Product2
+>>>>>>> 4913f41ad49e3c9f0ac5ba0950390306440576c3
 
 3. ทำ route แบบมี slug params, Product/{productId}
