@@ -65,10 +65,12 @@ import About from "./Pages/About";
 
 const App = () => (
   <BrowserRouter>
+    <div className="bg-yellow-500 p-4">This is Header</div>
     <Routes>
-      <Route exact path="/" element={<Home />} />
+      <Route exact path="/" element={<Home heading="Greeting!" />} />
       <Route exact path="/about" element={<About />} />
     </Routes>
+    <div className="bg-purple-500 p-4">This is Footer</div>
   </BrowserRouter>
 );
 
