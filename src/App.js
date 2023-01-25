@@ -76,10 +76,12 @@ const App = () => (
   <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route exact path="/" element={<Home title={"Hi there"}/>} />
-      <Route exact path="/about" element={<About />} />
-      <Route exact path="/products/product1" element={<Product1 />} />
-      <Route exact path="/products/product2" element={<Product2 />} />
+      <Route exact path="/" element={<Home title={"Hi there"} />} />
+      <Route exact path="about" element={<About />} />
+      <Route exact path="products">
+        <Route exact path="product1" element={<Product1 />} />
+        <Route exact path="product2" element={<Product2 />} />
+      </Route>
       <Route exact path="*" element={<>404 NOT FOUND</>} />
     </Routes>
     <Footer />
