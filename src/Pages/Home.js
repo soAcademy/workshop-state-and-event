@@ -8,6 +8,9 @@ const Home = (props) => {
       <span class="ml-3">
         <Link to="/products">Product</Link>
       </span>
+      <span class="ml-3">
+        <Link to="/product">Product Params</Link>
+      </span>
       <p>{props.message}</p>
     </div>
   );

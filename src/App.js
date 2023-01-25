@@ -30,7 +30,7 @@ const App = () => {
         <Route exact path="about" element={<About />} />
         {/* <Route exact path="/product1" element={<Product1 />} />
         <Route exact path="/product2" element={<Product2 />} /> */}
-        <Route exact path="product">
+        <Route exact path="product" element={<Product />} >
           <Route exact path=":productId" element={<Product />} />
         </Route>
         <Route exact path="products" element={<Products />} />

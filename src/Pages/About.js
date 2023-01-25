@@ -8,6 +8,9 @@ const About = () => {
       <span class="ml-3">
         <Link to="/products">Product</Link>
       </span>
+      <span class="ml-3">
+        <Link to="/product">Product Params</Link>
+      </span>
       <p>This is About page</p>
     </div>
   );
