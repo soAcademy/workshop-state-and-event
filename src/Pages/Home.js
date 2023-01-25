@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 const Home = (props) => (
   <div>
     <div>{props.title}</div>
-    <span className="underline mr-5">Home </span> |{" "}
+    <span className="underline">Home </span>
+    <span className="px-5">|</span>
     <Link to="/about">About</Link>
+    <span className="px-5">|</span>
+    <Link to="/products/product1">Product1</Link>
+    <span className="px-5">|</span>
+    <Link to="/products/product2">Product2</Link>
   </div>
 );
 

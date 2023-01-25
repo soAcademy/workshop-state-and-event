@@ -60,15 +60,22 @@ import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-
+import Product1 from "./Pages/Product1";
+import Product2 from "./Pages/Product2";
 const App = () => (
   <BrowserRouter>
-    <div className="bg-red w-full">This is Navbar</div>
+    <div className="bg-red-300 w-full">This is Navbar</div>
     <Routes>
       <Route exact path="/" element={<Home title="Hello Bin" />} />
       <Route exact path="/about" element={<About />} />
+      <Route exact path="products" element={<div>Products</div>} />
+      <Route exact path="products">
+        <Route exact path="product1" element={<Product1 />} />
+        <Route exact path="product2" element={<Product2 />} />
+      </Route>
+      <Route exact path="*" element={<>404 Not found</>} />
     </Routes>
-    <div className="bg-red w-full">This is Footer</div>
+    <div className="bg-red-300 w-full">This is Footer</div>
   </BrowserRouter>
 );
 export default App;
