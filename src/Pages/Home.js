@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Home = () => (
+const Home = (props) => (
   <div>
     <span className="underline">Home</span> | <Link to="/about">About</Link> |{" "}
     <Link to="/contact">Contact</Link>
+    <p>{props.title}</p>
   </div>
 );
 
