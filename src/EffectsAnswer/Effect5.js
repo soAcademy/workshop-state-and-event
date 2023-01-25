@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Effect4 = () => {
+const Effect5 = () => {
   const [data, setData] = useState("");
 
   useEffect(() => {
@@ -21,4 +21,4 @@ const Effect4 = () => {
   );
 };
 
-export default Effect4;
+export default Effect5;

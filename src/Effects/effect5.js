@@ -2,15 +2,15 @@ import {useState,useEffect} from 'react';
 import axios from "axios";
 
 const Effect5=()=>{
-  const[menu,setData]=useState("");
+  const[menu,setMenu]=useState();
 
   useEffect(()=>{
     axios({
       method: "get",
-      url: "https://api.sampleapis.com/coffee/hot"})
+      url: "https://dummyjson.com/products"})
       .then((response)=>{
         console.log(response.data);
-        setData(response.data);
+        setMenu(response.data.products);
       });
     
   },[]);
@@ -18,10 +18,9 @@ const Effect5=()=>{
   return(
     <>
     {/* <p>{JSON.stringify(menu)}</p> */}
-    {
-      // console.log(typeof(menu.title))
-    menu?.map((r)=><div className='bg-red-200'>{r.title}</div>)
-    }    
+    {menu?.map((r) => (
+        <div className="bg-red-200 mb-2">{r.title}</div>
+      ))}
     </>
   );
 };
