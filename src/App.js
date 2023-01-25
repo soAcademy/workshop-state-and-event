@@ -21,9 +21,9 @@ function App() {
       <Effect3 />
       <Effect4 />
       <Effect4_1 />
-      <Effect5 />
+      <Effect5 /> */}
       <Effect6 />
-      <Effct6ans /> */}
+      {/* <Effct6ans /> */}
       <Effect7 />
       <Effect7ans />
     </>

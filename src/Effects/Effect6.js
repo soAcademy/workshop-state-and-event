@@ -10,7 +10,7 @@ const Effect6 = () => {
   const fireAPI = () => {
     axios({
       method: "GET",
-      url: "https://api.sampleapis.com/coffee/hot",
+      url: " https://pokeapi.co/api/v2/pokemon/ditto",
     })
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
