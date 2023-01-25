@@ -71,16 +71,16 @@ const App = () => (
   <BrowserRouter>
     <div className="bg-yellow-500 p-4">This is Header</div>
     <Routes>
-      <Route exact path="/" element={<Home heading="Greeting!" />} />
-      <Route exact path="/about" element={<About />} />
-      <Route exact path="/products">
-        <Route exact index element={<Products />} />
-        <Route exact path=":productId" element={<Product />} />
-        {/* <Route exact path="product1" element={<Product1 />} />
-        <Route exact path="product2" element={<Product2 />} /> */}
+      <Route path="/" element={<Home heading="Greeting!" />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/products">
+        <Route index element={<Products />} />
+        <Route path=":productId" element={<Product />} />
+        {/* <Route path="product1" element={<Product1 />} />
+        <Route path="product2" element={<Product2 />} /> */}
       </Route>
 
-      <Route exact path="*" element={<>Not found</>} />
+      <Route path="*" element={<>Not found</>} />
     </Routes>
     <div className="bg-purple-500 p-4">This is Footer</div>
   </BrowserRouter>
