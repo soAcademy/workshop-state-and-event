@@ -12,13 +12,14 @@ const Effect5 = () => {
       console.log(response.data);
       setData(response.data);
     });
+
   }, []);
 
   return (
     <>
       {/* <p>{JSON.stringify(data)}</p> */}
       {
-        data?.map((r) => <div className="bg-green-400 mb-2">(r.title)</div>  )
+        data?.map((r) => <div className="bg-green-400 mb-2">{r.title}</div>)
       }
     </>
   );
