@@ -62,6 +62,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
+import Products from "./Pages/Products";
 import Product1 from "./Pages/Product1";
 import Product2 from "./Pages/Product2";
 
@@ -71,8 +72,10 @@ const App = () => (
     <Routes>
       <Route exact path="/" element={<Home heading="Greeting!" />} />
       <Route exact path="/about" element={<About />} />
-      <Route exact path="/products/product1" element={<Product1 />} />
-      <Route exact path="/products/product2" element={<Product2 />} />
+      <Route exact path="/products" element={<Products />}>
+        <Route exact path="product1" element={<Product1 />} />
+        <Route exact path="product2" element={<Product2 />} />
+      </Route>
     </Routes>
     <div className="bg-purple-500 p-4">This is Footer</div>
   </BrowserRouter>
