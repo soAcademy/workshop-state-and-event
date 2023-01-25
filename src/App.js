@@ -1,12 +1,14 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 
 const App = () => (
   <BrowserRouter>
-    <Route exact path="/" component={Home} />
-    <Route exact path="/about" component={About} />
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/about" element={<About />} />
+    </Routes>
   </BrowserRouter>
 );
 export default App;
