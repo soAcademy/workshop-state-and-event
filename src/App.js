@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
+import Footer from "./Components/Footer";
+import Product1 from "./Pages/Product1";
+import Product2 from "./Pages/Product2";
 
 // import Event1 from "./Events/Event1";
 // import Event2 from "./Events/Event2";
@@ -75,8 +78,11 @@ const App = () => (
     <Routes>
       <Route exact path="/" element={<Home title={"Hi there"}/>} />
       <Route exact path="/about" element={<About />} />
+      <Route exact path="/products/product1" element={<Product1 />} />
+      <Route exact path="/products/product2" element={<Product2 />} />
+      <Route exact path="*" element={<>404 NOT FOUND</>} />
     </Routes>
-    <footer className="bg-zinc-200 text-center p-4">This is a Footer</footer>
+    <Footer />
   </BrowserRouter>
 );
 export default App;
