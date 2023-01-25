@@ -4,6 +4,7 @@ import Home from "./Home";
 import About from "./About";
 import Product2 from "./Product2";
 import Product1 from "./Product1";
+import Product from "./Product";
 
 const App = () => (
   <BrowserRouter>
@@ -11,7 +12,11 @@ const App = () => (
     <Routes>
       <Route exact path="" element={<Home title="My name is Teak" />} />
       <Route exact path="about" element={<About />} />
-    
+
+      <Route path="product">
+        <Route path=":productId" element={<Product />} />
+      </Route>
+      <Route exact path="products" element={<div>Products</div>} />
       <Route exact path="products">
         <Route exact path="product1" element={<Product1 />} />
         <Route exact path="product2" element={<Product2 />} />
