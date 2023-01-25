@@ -1,10 +1,25 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [currPath, setCurrPath] = useState("");
+  // console.log(currPath);
   return (
-    <nav className="w-full bg-zinc-200 p-4">
-      <Link to="/" className="mr-4">home</Link>
-      <Link to="/about" className="mr-4">about</Link>
+    <nav className="w-full bg-zinc-200 border-b shadow-md p-4">
+      <Link
+        to="/"
+        className={"rounded-lg mr-2 p-2 " + (currPath === "/" ? "underline" : "")}
+        onClick={() => setCurrPath("/")}
+      >
+        Home
+      </Link>
+      <Link
+        to="/about"
+        className={"rounded-lg mr-2 p-2 " + (currPath === "/about" ? "underline" : "")}
+        onClick={() => setCurrPath("/about")}
+      >
+        About
+      </Link>
     </nav>
   );
 };

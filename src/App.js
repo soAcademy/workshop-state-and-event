@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 
@@ -70,10 +71,12 @@ import About from "./Pages/About";
 
 const App = () => (
   <BrowserRouter>
+    <Navbar />
     <Routes>
-      <Route exact path="/" element={<Home />} />
+      <Route exact path="/" element={<Home title={"Hi there"}/>} />
       <Route exact path="/about" element={<About />} />
     </Routes>
+    <footer className="bg-zinc-200 text-center p-4">This is a Footer</footer>
   </BrowserRouter>
 );
 export default App;
