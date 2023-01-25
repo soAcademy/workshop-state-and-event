@@ -62,7 +62,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
-// import Products from "./Pages/Products";
+import Products from "./Pages/Products";
 import Product from "./Pages/Product";
 // import Product1 from "./Pages/Product1";
 // import Product2 from "./Pages/Product2";
@@ -74,6 +74,7 @@ const App = () => (
       <Route exact path="/" element={<Home heading="Greeting!" />} />
       <Route exact path="/about" element={<About />} />
       <Route exact path="/products">
+        <Route exact index element={<Products />} />
         <Route exact path=":productId" element={<Product />} />
         {/* <Route exact path="product1" element={<Product1 />} />
         <Route exact path="product2" element={<Product2 />} /> */}
