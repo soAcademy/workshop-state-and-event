@@ -28,10 +28,10 @@ const Effect6 = () => {
           Fetch
         </button>
       </div>
-      <div className={data!== "" ? "visible h-[500px] overflow-scroll" : "hidden"}>
+      <div className={data!== "" ? "opacity-100 duration-500 h-[500px] overflow-scroll" : "opacity-0"}>
         <table className="table-auto border-separate border-spacing-x-1">
           <thead className="font-bold">
-            <tr className="border-2 border-black">
+            <tr className={`border-2 border-black ${ data!=="" ? "visible" : "hidden"} `}>
               <th className="border-2 border-black">Menu</th>
               <th className="border-2 border-black w-1/2">Description</th>
               <th className="border-2 border-black">Ingredient</th>
