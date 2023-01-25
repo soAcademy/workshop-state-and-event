@@ -12,6 +12,7 @@
 // );
 // export default App;
 
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
@@ -19,10 +20,12 @@ import About from "./Pages/About";
 const App = () => {
   return (
     <BrowserRouter>
+      <div className="text-center bg-stone-100 shadow-lg w-full">Navbar</div>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Home title="Hello World!"/>} />
         <Route exact path="/about" element={<About />} />
       </Routes>
+      <div className="text-center bg-stone-100 w-full">Footer</div>
     </BrowserRouter>
   );
 };
