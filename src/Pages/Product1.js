@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-const About = () => {
+const Product1 = () => {
   return (
     <div className="m-3">
       <Link to="/">Home</Link>
-      <span class="underline ml-3">About</span>
       <span class="ml-3">
-        <Link to="/product1">Product 1</Link>
+        <Link to="/about">About</Link>
       </span>
+      <span class="underline ml-3">Product 1</span>
       <span class="ml-3">
         <Link to="/product2">Product 2</Link>
       </span>
@@ -15,4 +15,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Product1;
