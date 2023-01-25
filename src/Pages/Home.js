@@ -10,11 +10,11 @@ const Home = (props) => (
     <span className="px-4" >|</span>
       <Link to="/about">
       About
-      </Link><span className="px-4" >|</span>
-      <Link to="/product/product1">
+      </Link><span className="px-4 " >|</span>
+      <Link to="/products/product1">
         Product1
       </Link><span className="px-4" >|</span>
-      <Link to="/product/product2">
+      <Link to="/products/product2">
         Product2
         </Link>
   </div>
