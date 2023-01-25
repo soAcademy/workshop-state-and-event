@@ -5,6 +5,7 @@ const Event5 = () => {
     <div
       className="my-2 bg-blue-200 h-64"
       onMouseOver={() => console.log("Hello 5")}
+      onMouseLeave={() => console.log("Exit")}
     >
       Hover Me
     </div>

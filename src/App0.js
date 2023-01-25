@@ -1,6 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./PagesAnswer/Home";
-import About from "./PagesAnswer/About";
+import Event1 from "./EventsAnswer/Event1";
+import Event2 from "./EventsAnswer/Event2";
+import Event3 from "./EventsAnswer/Event3";
+import Event4 from "./EventsAnswer/Event4";
+import Event5 from "./EventsAnswer/Event5";
+import Event6 from "./EventsAnswer/Event6";
+import Event7 from "./EventsAnswer/Event7";
+import Event8 from "./EventsAnswer/Event8";
 
 import State1 from "./StatesAnswer/State1";
 import State2 from "./StatesAnswer/State2";
@@ -8,6 +13,7 @@ import State3 from "./StatesAnswer/State3";
 import State4 from "./StatesAnswer/State4";
 import State5 from "./StatesAnswer/State5";
 import State6 from "./StatesAnswer/State6";
+import State7 from "./StatesAnswer/State7";
 
 import Prop1 from "./PropsAnswer/Prop1";
 import Prop2 from "./PropsAnswer/Prop2";
@@ -40,17 +46,18 @@ const App = () => {
       {/* <State4 /> */}
       {/* <State5 /> */}
       {/* <State6 /> */}
+      {/* <State7 /> */}
 
-      {/* <Prop1 data="Hello World" /> */}
-      {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
-      {/* <Prop3 /> */}
+      {/* <Prop1 data="Hello World" />
+      <Prop2 data1="Hello World" data2="Bin Bin Bin" />
+      <Prop3 /> */}
       {/* <Prop4 /> */}
 
       {/* <Effect1 /> */}
       {/* <Effect2 /> */}
       {/* <Effect3 /> */}
       {/* <Effect4 /> */}
-      {/* <Effect5 /> */}
+      <Effect5 />
       {/* <Effect6 /> */}
       {/* <Effect7 /> */}
     </div>

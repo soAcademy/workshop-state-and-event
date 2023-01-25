@@ -5,10 +5,10 @@ const Event7 = () => {
     // ใช้เพื่อป้องกันการ refresh หน้า ตอนกด submit
     e.preventDefault();
     const data = {
-      name: e.target[0].value,
+      name: e.target['name'].value,
       tel: e.target[1].value,
-      email: e.target[2].value
-    }
+      email: e.target[2].value,
+    };
     console.log(data);
   };
 
@@ -36,7 +36,18 @@ const Event7 = () => {
           id="email"
         />
       </div>
-      <button className="bg-red-300 p-4">Submit</button>
+      <button
+        className="bg-red-300 p-4"
+        type="submit"
+      >
+        Submit
+      </button>
+      <button
+        className="bg-yellow-300 p-4"
+        type="reset"
+      >
+        Clear
+      </button>
     </form>
   );
 };
