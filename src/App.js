@@ -10,12 +10,17 @@ const App = () => (
     <Routes>
       <Route
         exact
-        path="/"
+        path=""
         element={<Home title="Hello Bin" name2="Hello Name2" />}
       />
-      <Route exact path="/about" element={<About />} />
-      <Route exact path="/products/product1" element={<Product1 />} />
-      <Route exact path="/products/product2" element={<Product2 />} />
+      <Route exact path="about" element={<About />} />
+      {/* <Route exact path="/products/product1" element={<Product1 />} />
+      <Route exact path="/products/product2" element={<Product2 />} /> */}
+      <Route exact path="products" element={<></>}>
+        <Route exact path="product1" element={<Product1 />} />
+        <Route exact path="product2" element={<Product2 />} />
+      </Route>
+      <Route exact path="*" element={<>404 Not found</>} />
     </Routes>
     <div className="bg-green-700 w-full">This is Footer</div>
   </BrowserRouter>
