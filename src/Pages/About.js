@@ -6,11 +6,9 @@ const About = () => {
       <Link to="/">Home</Link>
       <span class="underline ml-3">About</span>
       <span class="ml-3">
-        <Link to="/product1">Product 1</Link>
+        <Link to="/products">Product</Link>
       </span>
-      <span class="ml-3">
-        <Link to="/product2">Product 2</Link>
-      </span>
+      <p>This is About page</p>
     </div>
   );
 };
