@@ -70,3 +70,18 @@
 /products/product2 --> Product2
 
 3. ทำ route แบบมี slug params, Product/{productId}
+
+# โจทย์ LocalStorage
+
+1. สร้างตัวแปร LocalStorage ชื่อว่า username และ setItem เป็น "Bin" จากนั้น เรียกค่าตัวแปรผ่าน getItem มาแสดงในหน้า browser
+
+2. สร้างตัวแปร LocalStorage ชื่อว่า num และ setItem เป็น 14 จากนั้น เรียกค่าตัวแปรผ่าน getItem นำมาบวก 3 และนำมาแสดงในหน้า browser
+
+3. สร้างตัวแปร LocalStorage เก็บข้อมูลประเภท Object ชื่อตัวแปรว่า `objectData`
+```
+const objectData = {
+  name: "Bin",
+  location: "Bangkok",
+  age: 30,
+}
+``` จากนั้น render ค่าใน object
