@@ -84,4 +84,40 @@ const objectData = {
   location: "Bangkok",
   age: 30,
 }
-``` จากนั้น render ค่าใน object
+```
+จากนั้น render ค่าใน object
+
+4. สร้างตัวแปร LocalStorage เก็บข้อมูลประเภท Array of Object ชื่อตัวแปรว่า `arrayData`
+
+```
+const arrayData = [
+  {
+    name: "Bin",
+    location: "Bangkok",
+    age: 30,
+  },
+  {
+    name: "Jam",
+    location: "Nonthaburi",
+    age: 25,
+  },
+  {
+    name: "Ploy",
+    location: "Sukhothai",
+    age: 20,
+  },
+]
+```
+จากนั้น render ค่าใน array
+
+# โจทย์ To Do List
+
+1. สร้าง Text Input Field และ ปุ่ม submit จากนั้นเก็บค่าลง localStorage โดยก่อนเก็บให้ดึงค่าเก่าจาก localStorage แล้วนำข้อมูลใหม่ไปต่อเป็น array ชื่อว่า tasks
+
+2. ดึงข้อมูลจาก localStorage ผ่าน useState และใช้ โหลดข้อมูลใหม่เมื่อกดปุ่ม submit
+
+3. render ข้อมูล to-do-list ให้สวยงาม
+
+4. เปลี่ยนแปลงค่าใน object ให้เก็บ id, datetime และ status ของ tasks
+
+5. เพิ่มปุ่ม done และ delete สำหรับแต่ละ task และ update data ของ task
