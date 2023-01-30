@@ -15,6 +15,10 @@ const Home = (props) => (
       <Link to="products/product2" className="hover:text-blue-300">
         Product 2
       </Link>
+      |{" "}
+      <Link to="product/test1234" className="hover:text-blue-300">
+        Test1234
+      </Link>
     </div>
     <div>{props.title}</div>
   </>
