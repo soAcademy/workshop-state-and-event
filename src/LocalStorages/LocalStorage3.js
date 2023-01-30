@@ -13,7 +13,7 @@ const LocalStorage3 = () => {
   console.log(data);
 
   return (
-    <div className="m-3 pl-2 py-1 bg-sky-700 rounded ">
+    <div className="m-3 pl-2 py-1 bg-sky-700 rounded">
       <p className="text-white">Name: {data.name}</p>
       <p className="text-white">Location: {data.location}</p>
       <p className="text-white">Age: {data.age}</p>
