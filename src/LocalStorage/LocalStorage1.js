@@ -7,8 +7,8 @@ const LocalStorage1 = () => {
       {username}
       <button
         onClick={() => {
-          setUsername(`${username === "Bin" ? "Earth" : "Bin"}`)
-          localStorage.setItem("username", username);
+          localStorage.setItem("username", `${username === "Bin" ? "Earth" : "Bin"}`);
+          setUsername(localStorage.getItem('username'))
         }}
         className="rounded-lg p-2 bg-red-300"
       >
