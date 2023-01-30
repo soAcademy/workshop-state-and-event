@@ -6,6 +6,8 @@ const ProductPage = () => {
   return (
     <div>
       Product Id: {productId}
+      {productId === '1' && <p>Product1 Content</p>}
+      {productId === '2' && <p>Product2 Content</p>}
     </div>
   );
 };

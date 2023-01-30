@@ -23,7 +23,7 @@ const Navbar = () => {
       |{" "}
       <Link
         to="/products"
-        className={`${location.pathname === "/products" ? "underline" : ""}`}
+        className={`${location.pathname.startsWith("/products") ? "underline" : ""}`}
       >
         Products
       </Link>{" "}
