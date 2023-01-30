@@ -11,9 +11,7 @@ const App = () => {
       {/* <LocalStorage2 /> */}
       {/* <LocalStorage3 /> */}
       {/* <LocalStorage4 /> */}
-      {/* <ToDoList1 /> */}
-      {/* <ToDoList2 /> */}
-      {/* <ToDoList3 /> */}
+
       <ToDoList4 />
     </>
   );
