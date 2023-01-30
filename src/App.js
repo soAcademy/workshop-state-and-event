@@ -6,8 +6,8 @@ import LocalStorage4 from "./LocalStorage/LocalStorage4";
 const App = () => {
   return (
     <>
-      <LocalStorage1 />
-      {/* <LocalStorage2 /> */}
+      {/* <LocalStorage1 /> */}
+      <LocalStorage2 />
       {/* <LocalStorage3 /> */}
       {/* <LocalStorage4 /> */}
      

@@ -6,4 +6,5 @@ const LocalStorage1 = () => {
   return <>{username}</>;
 };
 
+// รู้วิธีเก็บข้อมูลไปใน store เก็บ item
 export default LocalStorage1;
