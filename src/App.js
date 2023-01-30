@@ -58,6 +58,8 @@
 // import Effect6 from "./Effects/Effect6";
 // import Effect7 from "./Effects/Effect7";
 
+import LocalStorage1 from "./LocalStorage/LocalStorage1";
+
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
@@ -68,22 +70,23 @@ import Product from "./Pages/Product";
 // import Product2 from "./Pages/Product2";
 
 const App = () => (
-  <BrowserRouter>
-    <div className="bg-yellow-500 p-4">This is Header</div>
-    <Routes>
-      <Route path="/" element={<Home heading="Greeting!" />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/products">
-        <Route index element={<Products />} />
-        <Route path=":productId" element={<Product />} />
-        {/* <Route path="product1" element={<Product1 />} />
-        <Route path="product2" element={<Product2 />} /> */}
-      </Route>
+  // <BrowserRouter>
+  //   <div className="bg-yellow-500 p-4">This is Header</div>
+  //   <Routes>
+  //     <Route path="/" element={<Home heading="Greeting!" />} />
+  //     <Route path="/about" element={<About />} />
+  //     <Route path="/products">
+  //       <Route index element={<Products />} />
+  //       <Route path=":productId" element={<Product />} />
+  //       {/* <Route path="product1" element={<Product1 />} />
+  //       <Route path="product2" element={<Product2 />} /> */}
+  //     </Route>
 
-      <Route path="*" element={<>Not found</>} />
-    </Routes>
-    <div className="bg-purple-500 p-4">This is Footer</div>
-  </BrowserRouter>
+  //     <Route path="*" element={<>Not found</>} />
+  //   </Routes>
+  //   <div className="bg-purple-500 p-4">This is Footer</div>
+  // </BrowserRouter>
+  <LocalStorage1 />
 );
 
 export default App;
