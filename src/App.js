@@ -13,7 +13,7 @@ const App = () => (
       <Route exact path="about" element={<About />} />
       {/* <Route exact path="products" element={<div>Products</div>} /> */}
 
-      <Route path="product">
+      <Route path="product"> // เนื่องจากว่าเป็น review product by product จึงแยกออกมาจาก products
         <Route path=":productId" element={<Product />} />
       </Route>
 
