@@ -71,6 +71,63 @@
     ```
   - จะใช้ () ก็ต่อเมื่อโค้ดสั้นๆ ทำบรรทัดเดียวเสร็จ
   - ถ้าใส่ {} จะประกาศตัวแปรข้างในได้ ถ้าใส่ () จะประกาศตัวแปรข้างในไม่ได้
+  - ใช้ console.log ก่อน return เพื่อ debug เช่น 
+    ```
+    const Component = (props) => {
+      console.log(props);
+      return props;
+    }
+    ```
+- การสร้าง Class ใน javaScript จะมองทุกตัวเป็น Object 1 ก้อน มีทั้งตัวแปรและ function เช่น
+  ```
+  Class Rectangle {
+    constructor (width, height) {
+      this.width = width;
+      height = height;
+    }
+
+    function area () { return this.width * this.height } 
+  }
+  ```
+  เวลาเรียกใช้จะเป็น const newRect = new Rectangle(4, 5);
+  - class สามารถ inherited จาก class ก่อนหน้าได้ เช่น 
+  ```
+  Class Box extends Box {
+    constructor (width, height, length) {
+    }
+
+    function volume () { return this.width * this.height * this.length }
+  }
+  ```
+- ความหมายของ undefined กับ NAN -> undefined คือตัวแปรที่ยังไม่ประกาศค่า, NAN -> จะ error (undefined, null คือคล้ายกัน)
+- undefined ไม่เท่ากับ "" (string เปล่า)
+- array กับ object ต่างกันยังไง? 
+  - ทั้งสองเป็น data structure เหมือนกัน
+  - array ใช้ [] (สี่เหลี่ยม)
+  - object ใช้ {} (ปีกกา)
+  - argument, parameter ใช้ () (วงเล็บ)
+  - object จะเป็น key / value,
+  - array จะเป็น loop ได้
+  - object ใช้ .map, .reduce, .filter, .find, .findIndex, .some ไม่ได้
+  - array ใช้ .map, .reduce, .filter, .find, .findIndex, .some ได้
+  - วิธีเรียกค่าใน object จะเรียกเป็น key.value เช่น data.name, data.location, data['name'], data['location']
+  - วิธีเรียกค่าใน array จะเรียกเป็น index เช่น data[0], data[1]
+  - object สามารถเรียกโดย ? (ตัวเดียว) เช่น data?.name ถ้าไม่มีข้อมูลจะได้ค่า undefined
+  - array สามารถเรียกโดย ? (ตัวเดียว) เช่น data[0]?.name ถ้าไม่มีข้อมูลจะได้ค่า undefined
+- destructring
+  - เราสามารถ destructing จากใน parameters ของ function ได้ เช่น
+  ```
+  const Component = ({data1, data2}) => {
+    console.log(data1, data2)
+  }
+  ```
+  - เราสามารถเรารับตัวแปรเต็มๆ แล้วค่อย destructing ทีหลังได้ เช่น
+  ```
+  const Component = (props) => {
+    console.log(props)
+    const [data1, data2] = props;
+  }
+  เราใช้วิธีนี้เพื่อ ถ้าเราไม่รู้ว่า props ส่งข้อมูลอะไรมาบ้าง เรา จะ log เพื่อเห็น data ก่อน
 
 ## TailwindCSS
 
