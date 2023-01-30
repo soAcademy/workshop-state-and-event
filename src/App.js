@@ -15,6 +15,8 @@ const App = () => (
       <Route path="Product">
         <Route path=":productId" element={<Product />} />
       </Route>
+      {/* : ทำให้ useParam หา productId */}
+      {/* //localhost:3000/Product/>>...<<  */}
 
       <Route exact path="products">
         <Route exact path="product1" element={<Product1 />} />
