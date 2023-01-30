@@ -10,7 +10,7 @@ const LocalStorage1 = () => {
           localStorage.setItem("username", `${username === "Bin" ? "Earth" : "Bin"}`);
           setUsername(localStorage.getItem('username'))
         }}
-        className="rounded-lg p-2 bg-red-300"
+        className="rounded-lg p-2 bg-red-300 mx-2"
       >
         Change Name
       </button>
