@@ -303,4 +303,78 @@
   - localStorage ต่างจาก cookie ยังไง
     - cookie มีวันหมดอายุ localStorage ไม่มี
     - cookie เก็บจะประเภทได้น้อยกว่า ขนาดเล็กกว่า localStorage
+  - การใช้ useEffect ระวังเรื่อง เซ็ตตัวแปร ตอน listening ห้ามใช้ตัวแปรซ้ำกัน ไม่งั้นจะวนลูปไม่จบ
+  - ตัวแปร hook ต้องอยู่ใน component ห้ามอยู่ข้างนอก component เช่น
+    แบบนี้ใช้ได้
+    ```
+    const ProductComponent = () => {
+      const [counter, setCounter] = useState();
+      return <div>{counter}</div>
+    }
+    ```
+    แบบนี้ผิด
+    ```
+    const [counter, setCounter] = useState();
+    const ProductComponent = () => {
+      return <div>{counter}</div>
+    }
+    ```
+  - เวลากำหนดตัวแปร useState ควรวางไว้ข้างบนๆ ของ function ไม่ควรวางไว้กลางๆ เช่น
+    แบบนี้ใช้ได้
+    ```
+    const ProductComponent = () => {
+      const [counter, setCounter] = useState();
+      const increaseCounter = () => setCounter(counter + 1)
+
+      return <div>{counter}</div>
+    }
+    ```
+    แบบนี้ไม่ควรทำ
+    ```
+    const ProductComponent = () => {
+      const increaseCounter = () => setCounter(counter + 1)
+      const [counter, setCounter] = useState();
+
+      return <div>{counter}</div>
+    }
+    ```
+  - DOM vs Virtual DOM ต่างกัน คือ DOM refresh จะ render โหลดทั้งหน้า, Virtual DOM ของ react จะ render เฉพาะส่วนที่เปลี่ยน ไม่ refresh ทั้งหน้า
+  - Event ต้องเรียกเป็น function เช่น
+    แบบนี้ถูก
+    <button onClick={() => setCounter(counter + 1)}>Increase</button>
+    แบบนี้ผิด
+    <button onClick={setCounter(counter + 1)}>Increase</button>
+  - Event ใน react ต้องเรียกเป็น camelCase
+    แบบนี้ถูก
+    <button onClick={() => setcounter(counter + 1)}>Increase</button>
+    แบบนี้ผิด
+    <button onclick={() => setcounter(counter + 1)}>Increase</button>
+  - custom style ถ้าจะใส่ต้องเป็นปีกกา แล้วข้างในเป็น object 
+    แบบนี้ถูก
+    <button style={{backgroundColor: "red"}}>Increase</button>
+    แบบนี้ผิด
+    <button style={{background-color: "red"}}>Increase</button>
+    <button style={backgroundColor: "red"}>Increase</button>
+  - button ถ้าใช้กับ form แล้วเซ็ต type="clear" สามารถเคลียร์ data ใน form ได้เลย
+    <form>
+      <input .../>
+      <button type="clear">Clear Data</button>
+    </form>
+  - e.preventDefault() ใช้เพื่อป้องกันการ refresh เพจเมื่อ onSubmit form
+  - ถ้าตัวแปร state ไม่ได้กำหนด intialize เวลาใช้ .map ต้องใส่ ?
+    const [products, setProducts] = useState();
+
+    return <div>{products?.map((r) => r)}</div>
+  - useState("") ใช้ ? ไม่ได้ เพราะไม่ใช่ undefined ต้องใช้ useState() แบบนี้แทน ถึงจะใช้ products?.map((r) => r) ได้
+  - event ของ input onChange ต้องส่งค่า (e) ไปด้วย
+    <input onChange={(e) => updateDatae(e)} />
+  - เราสามารถใส่ id="" เข้าไปใน input ได้ เพื่อเวลาเรียกใช้ e.target จะได้เรียกผ่านชื่อ id ได้
+    <input id="name" />
+    `const updateData = (e) => { setData(e.target['name'].value) }`
+  - Link กับ a ใช้ตอนไหน
+    - Link จะไม่ reload หน้าเว็บเพจใหม่ ใช้กรณี internal url (ผ่าน Router)
+    - a จะ reload หน้าเว็บเพจใหม่ ใช้กรณี external url (https://google.com)
+  - lib icon `react-icons` สามารถเรียกใช้เป็น component ได้เลย `<FaArrow />` และสามารถส่ง className ไปได้ `<FaArrow className="mt-2" />`
+  - ตัวแปรที่ส่งไปใน useEffect จะเป็น string, ถ้าจะให้เป็น number ต้องเรียก Number(num)
   
+
