@@ -11,8 +11,10 @@ const LocalStorage3 = () => {
   localStorage.setItem("objectData", JSON.stringify(objectData));
 
   console.log(JSON.stringify(localStorage));
+  //turn Object to JSONstring
 
   const data = JSON.parse(localStorage.getItem("objectData"));
+  // turn JSONstring to an Object
   console.log(data);
 
   return (
