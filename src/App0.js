@@ -27,41 +27,15 @@
 // import Effect5 from "./EffectsAnswer/Effect5";
 // import Effect6 from "./EffectsAnswer/Effect6";
 // import Effect7 from "./EffectsAnswer/Effect7";
-import Effect103 from "./Effects/effect103";
+// import Effect103 from "./Effects/effect103";
+import LocalStorage1 from "./LocalStorage/LocalStorage1";
+
 
 const App = () => {
   return (
     <div>
-      {/* <Event1 /> */}
-      {/* <Event2 /> */}
-      {/* <Event3 /> */}
-      {/* <Event4 /> */}
-      {/* <Event5 /> */}
-      {/* <Event6 /> */}
-      {/* <Event7 /> */}
-      {/* <Event8 /> */}
-
-      {/* <State1 /> */}
-      {/* <State2 /> */}
-      {/* <State3 /> */}
-      {/* <State4 /> */}
-      {/* <State5 /> */}
-      {/* <State6 /> */}
-      {/* <State7 /> */}
-
-      {/* <Prop1 data="Hello World" />
-      <Prop2 data1="Hello World" data2="Bin Bin Bin" />
-      <Prop3 /> */}
-      {/* <Prop4 /> */}
-
-      {/* <Effect1 /> */}
-      {/* <Effect2 /> */}
-      {/* <Effect3 /> */}
-      {/* <Effect4 /> */}
-      {/* <Effect5 /> */}
-      {/* <Effect6 /> */}
-      {/* <Effect7 /> */}
-      <Effect103/>
+      <LocalStorage1/>
+     
     </div>
   );
 };
