@@ -58,14 +58,15 @@
 // import Effect6 from "./Effects/Effect6";
 // import Effect7 from "./Effects/Effect7";
 
-import LocalStorage1 from "./LocalStorage/LocalStorage1";
+// import LocalStorage1 from "./LocalStorage/LocalStorage1";
+import LocalStorage2 from "./LocalStorage/LocalStorage2";
 
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import About from "./Pages/About";
-import Products from "./Pages/Products";
-import Product from "./Pages/Product";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Home from "./Pages/Home";
+// import About from "./Pages/About";
+// import Products from "./Pages/Products";
+// import Product from "./Pages/Product";
 // import Product1 from "./Pages/Product1";
 // import Product2 from "./Pages/Product2";
 
@@ -86,7 +87,7 @@ const App = () => (
   //   </Routes>
   //   <div className="bg-purple-500 p-4">This is Footer</div>
   // </BrowserRouter>
-  <LocalStorage1 />
+  <LocalStorage2 />
 );
 
 export default App;
