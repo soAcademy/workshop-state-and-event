@@ -375,6 +375,63 @@
     - Link จะไม่ reload หน้าเว็บเพจใหม่ ใช้กรณี internal url (ผ่าน Router)
     - a จะ reload หน้าเว็บเพจใหม่ ใช้กรณี external url (https://google.com)
   - lib icon `react-icons` สามารถเรียกใช้เป็น component ได้เลย `<FaArrow />` และสามารถส่ง className ไปได้ `<FaArrow className="mt-2" />`
-  - ตัวแปรที่ส่งไปใน useEffect จะเป็น string, ถ้าจะให้เป็น number ต้องเรียก Number(num)
-  
+  - ตัวแปรที่ส่งไปใน useEffect / localStorage หรือดึงข้อมูลจากภายนอก จะเป็น string, ถ้าจะให้เป็น number ต้องเรียก Number(num)
+  - การตั้งชื่อตัวแปร array ต้องเป็น plural เติม s หรือ es หรือ ies
+  - setInterval / setTimeout
+    - setInterval จะทำทุกๆ ระยะเวลา 1, 2, 3, 4, 5, 6 (นับไปเรื่อยๆ)
+    - setTimeout จะทำคำสั่งนั้นๆ หลังจาก เวลาผ่านไป ทำ 1 ครั้ง เช่น 1 (นับ 1 ครั้ง)
+    - clearInterval ต้องเคลียร์ด้วย ไม่งั้นผลลัพธ์จะเปลี่ยน
+  - ระวังเรื่องไฟล์ที่ อยู่ src กับนอก src เช่น tailwind.config.js, .firebaserc, firebase.json ต้องอยู่นอก src
+
+## Git
+  - .gitignore ต้อง ignore อะไรบ้าง
+    - build
+    - node_modules
+    - .firebase
+  - git push ก่อน push จะมี step ดังนี้
+    - git status
+    - git add .
+    - git commit -m "message"
+    - git push
+  - git push กับ git push -u origin branchname ต่างกันยังไง
+    - ถ้ายังไม่ได้สร้าง branch ขึ้นมา ต้อง git push -u origin branchname ครั้งแรกก่อน
+    - git push ใช้กรณีถ้ามี branch แล้ว แล้วเราอยู่ branch ที่จะ push
+    - เช็ค terminal ด้วยว่าอยู่ branch ไหน ก่อน push ไม่งั้นอาจจะผิด branch
+  - git pull
+    - git pull vs git pull origin main
+    - git pull origin main คือการดึงข้อมูลจาก branch main มาใส่ branch เรา อาจจะมี conflict ต้องแก้ก่อน
+    - ก่อนจะ pull origin main ต้อง commit file ใน branch เราขึ้นไปก่อน
+    - git pull เฉยๆ คือดึงข้อมูลจาก branch เราที่อยู่ใน server ลงมา local
+  - git checkout
+    - git checkout -b branchname กับ git checkout branchname ต่างกันยังไง
+      - git checkout -b branchname ใช้กรณีสร้าง branch ใหม่ที่ไม่เคยมีใน server
+      - git checkout branchname ใช้กรณีมี branch อยู่แล้ว แล้วต้องการ switch branch (มีอยู่แล้วทั้งใน local หรือ server)
+    - git checkout -D branchname ลบ branch ใน local ออก
+  - conflict คืออะไร
+    - คือโค้ดที่ไม่ตรงกันบน local กับ server กรณีที่ pull ออกมา
+    - แก้ยังไง เช็คดูโค้ดที่ใช้งานว่าอันไหนถูกต้อง แล้วเลือก accept current change หรือ accept incoming change
+    - file ที่ conflict จะขึ้น icon ตกใจ สีแดง
+    - ถ้ามี option git config global.rebase ให้เลือก false อันแรก คือเราจะไม่ rebase
+    - แก้ไขข้อความเวลา commit ผิด ใช้เป็น git commit --amend -m "ข้อความใหม่"
+    - ถ้า conflict มากๆ จนถอดใจไม่รู้จะแก้ยังไง ใช้ force push ไปก็ได้ แต่ต้องระวังขีดส่ง git push -uf branchname
+    - ตำแหน่งไฟล์ที่เกิน conflict จะขึ้นสีแดงๆ บน slider ขวามือ
+  - git clone
+    - แนะนำให้ใช้ clone แบบ ssh แทน https
+  - git push origin --delete branch ใช้กรณี delete branch บน server กรณีตั้งชื่อผิด
+  - เวลาที่ไฟล์ไหนยังไม่เซฟจะขึ้นวงกลมสีขาวๆ ตรงชื่อไฟล์บน vscode
+  - ถ้าเผลอตั้งชื่อ ตัวเล็ก แล้ว rename เป็นตัวใหญ่ แล้วไฟล์งงๆ แก้ไขโดย rename เป็น file0 แล้ว commit ไปก่อน แล้วค่อย rename เป็น File แล้ว commit ไปอีกรอบ (ชื่อไฟล์ให้มีความแตกต่าง)
+  - ถ้า ssh error ทำไง ไม่โหลด / ไม่ login ให้รัน
+    ```
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_ed25519 หรือ ssh-add ไปเลย
+    ```
+  - git fetch ใช้กรณีมีใครสร้าง branch ใหม่บน server แล้วเราอยากจะอัพเดทว่ามี branch นั้นๆ
+  - เวลาเผลอ push folder ที่ไม่ต้องการขึ้นไปเราสามารถ remove ได้ โดยใช้ git rm -rf --cache filename
+  - เวลารัน git status ไฟล์ไหนที่ commit แล้วจะเป็นสีเขียว ไฟล์ไหนที่ยังไม่ commit จะเป็นสีแดง
+  - เวลาจะ commit terminal ต้องอยู่ใน root folder ห้ามอยู่ ใน src
+  - ถ้า folder ไหนมี git จะมีชื่อ branch ใน terminal
+
+
+
+
 
