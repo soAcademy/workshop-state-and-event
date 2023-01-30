@@ -27,7 +27,7 @@ const LocalStorage4 = () => {
 
   return (
     <>
-      {data[0].name}, {data[0].location}, {data[0].age}s
+      {data[1].name}, {data[0].location}, {data[2].age}s
     </>
   );
 };
