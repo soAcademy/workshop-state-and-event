@@ -1,16 +1,9 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
-import Product2 from "./Product2";
-import Product1 from "./Product1";
-import Product from "./Product";
-import { Link } from "react-router-dom";
-import LocalStorage2 from "./localstorages/LocalStorage2";
+import LocalStorage3 from "./localstorages/LocalStorage3";
 
 const App = () => (
   
-  <LocalStorage2 />
+  <LocalStorage3 />
 );
 
 export default App;
