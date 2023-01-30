@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "sprinttech-dew"
+  },
+  "targets": {
+    "sprinttech-dew": {
+      "hosting": {
+        "sprinttech-dew-resume": [
+          "sprinttech-dew-resume"
+        ]
+      }
+    }
+  }
+}

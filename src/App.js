@@ -5,12 +5,15 @@ import About from "./Pages/About";
 import Product1 from "./Pages/Products/Product1";
 import Product2 from "./Pages/Products/Product2";
 import Products from "./Pages/Products/Products";
+
 const App = () => (
+      // <Home/>
   <BrowserRouter>
     <div className="bg-red-200">Nav bar</div>
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route exact path="/about" element={<About />} />
+       <Route exact path="/About" element={<About />} />
+
       <Route path="product">
         <Route path=":productId" element={<Products />} />
       </Route>
@@ -18,7 +21,7 @@ const App = () => (
       <Route exact path="products">
         <Route exact path="product1" element={<Product1 />}></Route>
         <Route exact path="product2" element={<Product2 />}></Route>
-      </Route>
+      </Route> 
       <Route exact path="*" element={<>404 Not found</>}></Route>
     </Routes>
     <div className="bg-cyan-200">Footer</div>
