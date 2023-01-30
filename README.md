@@ -3,7 +3,7 @@
 1. สร้างปุ่ม ที่ Click แล้วให้ console.log("Hello 1"); (onClick)
 
 2. สร้างปุ่ม ที่ Click แล้วให้ console.log("Hello 2");
-แต่ console.log ให้สร้างเป็น function ชื่อ helloWorld (onClick, function)
+   แต่ console.log ให้สร้างเป็น function ชื่อ helloWorld (onClick, function)
 
 3. สร้างปุ่ม ที่ Click แล้วให้ console.log("Hello 3"); แต่ console.log ให้สร้างเป็น function ชื่อ helloWorld และตอนเรียก onClick ให้เรียกแบบ onClick={helloWorld2} (onClick, function)
 
@@ -49,7 +49,7 @@
 
 2. สร้างตัวแปร useState 2 ตัว คือ name และ profile โดย name มีค่าเริ่มต้น คือ Bin และ profile มีค่าเริ่มต้นคือ My name is Bin จากนั้นสร้าง input ให้กรอกชื่อ โดยจะเปลี่ยนแปลงค่า name และ profile เป็น `My name is ${name}` โดยใช้ useEffect
 
-3. สร้างตัวแปร useState 2 ตัว คือ num และ numSquare โดย num มีค่าเริ่มต้นคือ 0 จากนั้นสร้าง input ให้กรอกตัวเลข เมื่อมีการเปลี่ยนแปลงค่า จะแสดง ค่า num และ numSquare โดย numSquare = num * num
+3. สร้างตัวแปร useState 2 ตัว คือ num และ numSquare โดย num มีค่าเริ่มต้นคือ 0 จากนั้นสร้าง input ให้กรอกตัวเลข เมื่อมีการเปลี่ยนแปลงค่า จะแสดง ค่า num และ numSquare โดย numSquare = num \* num
 
 4. สร้าง ตัวนับเวลาถอยหลัง (Countdown Timer) โดย ลดค่าลง ทีละ 1 วินาที มีค่าเริ่มต้น 10 วินาที โดยลดค่าลงน้อยสุด 1 วินาที ห้ามติดลบ
 
@@ -58,3 +58,241 @@
 6. ดึงข้อมูล API ผ่าน GET Method โดยใช้ axios จาก `https://api.sampleapis.com/coffee/hot` โดยโหลดข้อมูลเมื่อกดปุ่ม Fetch
 
 7. สร้างปุ่ม 2 ปุ่มคือ Light 1 และ Light 2 โดยเก็บตัวแปร Boolean โดย 2 ปุ่มนี้เป็น toggle คือ true/false ถ้า light1 และ light2 เป็น true ทั้งคู่ ให้แสดงค่า เป็น "Hello" ถ้าไม่ใช่ให้แสดงค่าเป็น "Hola" โดย default ให้เป็น false ทั้งหมด
+
+# โจทย์ Routes
+
+1. สร้างหน้า Home และ About ทำ link
+
+2. สร้าง หน้า Home, About, Products/product1, Product/product2 แล้วทำ link (nested route)
+   / --> Home
+   /about --> About
+   /products/product1 --> Product1
+   /products/product2 --> Product2
+
+3. ทำ route แบบมี slug params, Product/{productId}
+
+# โจทย์ LocalStorage
+
+1. สร้างตัวแปร LocalStorage ชื่อว่า username และ setItem เป็น "Bin" จากนั้น เรียกค่าตัวแปรผ่าน getItem มาแสดงในหน้า browser
+
+2. สร้างตัวแปร LocalStorage ชื่อว่า num และ setItem เป็น 14 จากนั้น เรียกค่าตัวแปรผ่าน getItem นำมาบวก 3 และนำมาแสดงในหน้า browser
+
+3. สร้างตัวแปร LocalStorage เก็บข้อมูลประเภท Object ชื่อตัวแปรว่า `objectData`
+
+```
+const objectData = {
+  name: "Bin",
+  location: "Bangkok",
+  age: 30,
+}
+```
+
+จากนั้น render ค่าใน object
+
+4. สร้างตัวแปร LocalStorage เก็บข้อมูลประเภท Array of Object ชื่อตัวแปรว่า `arrayData`
+
+```
+const arrayData = [
+  {
+    name: "Bin",
+    location: "Bangkok",
+    age: 30,
+  },
+  {
+    name: "Jam",
+    location: "Nonthaburi",
+    age: 25,
+  },
+  {
+    name: "Ploy",
+    location: "Sukhothai",
+    age: 20,
+  },
+]
+```
+
+จากนั้น render ค่าใน array
+
+# โจทย์ To Do List
+
+1. สร้าง Text Input Field และ ปุ่ม submit จากนั้นเก็บค่าลง localStorage โดยก่อนเก็บให้ดึงค่าเก่าจาก localStorage แล้วนำข้อมูลใหม่ไปต่อเป็น array ชื่อว่า tasks
+
+2. ดึงข้อมูลจาก localStorage ผ่าน useState และใช้ โหลดข้อมูลใหม่เมื่อกดปุ่ม submit
+
+3. render ข้อมูล to-do-list ให้สวยงาม
+
+4. เปลี่ยนแปลงค่าใน object ให้เก็บ id, datetime และ status ของ tasks
+
+5. เพิ่มปุ่ม done และ delete สำหรับแต่ละ task และ update data ของ task
+
+# โจทย์ Chart
+
+1. สร้าง line chart จาก ข้อมูลนี้
+
+```
+const orders = [
+  {
+    date: "2022-01-13,
+    orderValue: 23000
+  },
+  {
+    date: "2022-01-14,
+    orderValue: 25000
+  },
+  {
+    date: "2022-01-15,
+    orderValue: 24000
+  },
+  {
+    date: "2022-01-16,
+    orderValue: 23000
+  }
+]
+```
+
+2. สร้าง pie chart จากข้อมูลนี้
+
+```
+const orderByProduct = [
+  {
+    name: "Collagen",
+    orderValue: 13500
+  },
+  {
+    name: "Serum",
+    orderValue: 8500
+  },
+  {
+    name: "Vitamin C",
+    orderValue: 10200
+  },
+  {
+    name: "Fiber",
+    orderValue: 8300
+  }
+]
+```
+
+3. สร้าง candlestick chart จากข้อมูลต่อไปนี้
+
+```
+const stockPrices = [{
+    date: "2022-01-11",
+    open: 172.320007,
+    high: 175.179993,
+    low: 170.820007,
+    close: 175.080002,
+    adjClose: 174.069733,
+    volume: 76138300,
+  },
+  {
+    date: "2022-01-12",
+    open: 176.119995,
+    high: 177.179993,
+    low: 174.820007,
+    close: 175.529999,
+    adjClose: 174.517136,
+    volume: 74805200,
+  },
+  {
+    date: "2022-01-13",
+    open: 175.779999,
+    high: 176.619995,
+    low: 171.789993,
+    close: 172.190002,
+    adjClose: 171.196426,
+    volume: 84505800,
+  },
+  {
+    date: "2022-01-14",
+    open: 171.339996,
+    high: 173.779999,
+    low: 171.089996,
+    close: 173.070007,
+    adjClose: 172.07135,
+    volume: 80440800,
+  },
+  {
+    date: "2022-01-18",
+    open: 171.509995,
+    high: 172.539993,
+    low: 169.410004,
+    close: 169.800003,
+    adjClose: 168.820206,
+    volume: 90956700,
+  },
+  {
+    date: "2022-01-19",
+    open: 170,
+    high: 171.080002,
+    low: 165.940002,
+    close: 166.229996,
+    adjClose: 165.270798,
+    volume: 94815000,
+  },
+  {
+    date: "2022-01-20",
+    open: 166.979996,
+    high: 169.679993,
+    low: 164.179993,
+    close: 164.509995,
+    adjClose: 163.560715,
+    volume: 91420500,
+  },
+  {
+    date: "2022-01-21",
+    open: 164.419998,
+    high: 166.330002,
+    low: 162.300003,
+    close: 162.410004,
+    adjClose: 161.47287,
+    volume: 122848900,
+  },
+  {
+    date: "2022-01-24",
+    open: 160.020004,
+    high: 162.300003,
+    low: 154.699997,
+    close: 161.619995,
+    adjClose: 160.687378,
+    volume: 162294600,
+  },
+  {
+    date: "2022-01-25",
+    open: 158.979996,
+    high: 162.759995,
+    low: 157.020004,
+    close: 159.779999,
+    adjClose: 158.858017,
+    volume: 115798400,
+  },
+  {
+    date: "2022-01-26",
+    open: 163.5,
+    high: 164.389999,
+    low: 157.820007,
+    close: 159.690002,
+    adjClose: 158.768539,
+    volume: 108275300,
+  },
+  {
+    date: "2022-01-27",
+    open: 162.449997,
+    high: 163.839996,
+    low: 158.279999,
+    close: 159.220001,
+    adjClose: 158.301254,
+    volume: 121954600,
+  },
+  {
+    date: "2022-01-28",
+    open: 165.710007,
+    high: 170.350006,
+    low: 162.800003,
+    close: 170.330002,
+    adjClose: 169.347153,
+    volume: 179935700,
+  }]
+```
+
+3. ทำตาราง Dashboard โดยใช้ข้อมูลจาก https://raw.githubusercontent.com/soAcademy/dashboard-app/lesson/7-accident-page-data/src/data/thailand-death-cause.json
