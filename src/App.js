@@ -1,9 +1,11 @@
-import LocalStorage1 from "./LocalStorage/LocalStorage1";
+// import LocalStorage1 from "./LocalStorage/LocalStorage1";
+import LocalStorage2 from "./LocalStorage/LocalStorage2";
 
 const App = () => {
   return (
     <>
-      <LocalStorage1 />
+      {/* <LocalStorage1 /> */}
+      <LocalStorage2 />
     </>
   );
 };
