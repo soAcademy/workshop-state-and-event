@@ -1,5 +1,5 @@
 const LocalStorage1 = () => {
-  // localStorage.setItem("username", "Poom");
+  localStorage.setItem("username", "Poom");
 
   const username = localStorage.getItem("username");
 
