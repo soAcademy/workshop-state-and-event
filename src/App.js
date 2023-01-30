@@ -59,7 +59,9 @@
 // import Effect7 from "./Effects/Effect7";
 
 // import LocalStorage1 from "./LocalStorage/LocalStorage1";
-import LocalStorage2 from "./LocalStorage/LocalStorage2";
+// import LocalStorage2 from "./LocalStorage/LocalStorage2";
+import LocalStorage3 from "./LocalStorage/LocalStorage3";
+// import LocalStorage4 from "./LocalStorage/LocalStorage4";
 
 import React from "react";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -87,7 +89,12 @@ const App = () => (
   //   </Routes>
   //   <div className="bg-purple-500 p-4">This is Footer</div>
   // </BrowserRouter>
-  <LocalStorage2 />
+  <>
+    {/* <LocalStorage1 /> */}
+    {/* <LocalStorage2 /> */}
+    <LocalStorage3 />
+    {/* <LocalStorage4 /> */}
+  </>
 );
 
 export default App;
