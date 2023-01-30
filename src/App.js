@@ -1,47 +1,24 @@
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Home from "./PagesAnswer/Home";
-// import About from "./PagesAnswer/About";
-
-// const App = () => (
-//   <BrowserRouter>
-//     <Routes>
-//       <Route exact path="/" element={<Home/>} />
-//       <Route exact path="/about" element={<About/>} />
-//     </Routes>
-//   </BrowserRouter>
-// );
-// export default App;
-
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import About from "./Pages/About";
-import Products from "./Pages/Products";
-import Product1 from "./Pages/Product1";
-import Product2 from "./Pages/Product2";
-import Product from "./Pages/ProductParams";
+import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
+import LocalStorage2 from "./LocalStorageAnswer/LocalStorage2";
+import LocalStorage3 from "./LocalStorageAnswer/LocalStorage3";
+import LocalStorage4 from "./LocalStorageAnswer/LocalStorage4";
+import ToDoList1 from "./ToDoListAnswers/ToDoList1";
+import ToDoList2 from "./ToDoListAnswers/ToDoList2";
+import ToDoList3 from "./ToDoListAnswers/ToDoList3";
+import ToDoList4 from "./ToDoListAnswers/ToDoList4";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className="text-center bg-stone-100 shadow-lg w-full">Navbar</div>
-      <Routes>
-        <Route exact path="" element={<Home message="Hello World!" />} />
-        <Route exact path="about" element={<About />} />
-        {/* <Route exact path="/product1" element={<Product1 />} />
-        <Route exact path="/product2" element={<Product2 />} /> */}
-        <Route exact path="product" element={<Product />} >
-          <Route exact path=":productId" element={<Product />} />
-        </Route>
-        <Route exact path="products" element={<Products />} />
-        <Route exact path="products">
-          <Route exact path="product1" element={<Product1 />} />
-          <Route exact path="product2" element={<Product2 />} />
-        </Route>
-        <Route exact path="*" element={<>404 Not found</>} />
-      </Routes>
-      <div className="text-center bg-stone-100 w-full">Footer</div>
-    </BrowserRouter>
+    <>
+      {/* <LocalStorage1 /> */}
+      {/* <LocalStorage2 /> */}
+      {/* <LocalStorage3 /> */}
+      {/* <LocalStorage4 /> */}
+      {/* <ToDoList1 /> */}
+      {/* <ToDoList2 /> */}
+      {/* <ToDoList3 /> */}
+      {/* <ToDoList4 /> */}
+    </>
   );
 };
 
