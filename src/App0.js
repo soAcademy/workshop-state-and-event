@@ -28,13 +28,13 @@
 // import Effect6 from "./EffectsAnswer/Effect6";
 // import Effect7 from "./EffectsAnswer/Effect7";
 // import Effect103 from "./Effects/effect103";
-import LocalStorage2 from "./LocalStorage/LocalStorage2";
+import LocalStorage3 from "./LocalStorage/LocalStorage3";
 
 
 const App = () => {
   return (
     <div>
-      <LocalStorage2/>
+      <LocalStorage3/>
      
     </div>
   );
