@@ -1,9 +1,9 @@
 const LocalStorage1 = () => {
   localStorage.setItem("username", "Bin");
 
-  const usernamme = localStorage.getItem("username");
+  const username = localStorage.getItem("username");
 
-  return <>(username)</>;
+  return <>{username}</>;
 };
 
 export default LocalStorage1;
