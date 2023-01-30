@@ -38,7 +38,8 @@
 // import Effect7 from "./Effects/Effect7";
 
 // import LocalStorage1 from "./LocalStorages/LocalStorage1";
-import LocalStorage2 from "./LocalStorages/LocalStorage2";
+// import LocalStorage2 from "./LocalStorages/LocalStorage2";
+import LocalStorage3 from "./LocalStorages/LocalStorage3";
 
 const App = () => {
   return (
@@ -71,7 +72,8 @@ const App = () => {
       {/* <Effect7 /> */}
 
       {/* <LocalStorage1 /> */}
-      <LocalStorage2 />
+      {/* <LocalStorage2 /> */}
+      <LocalStorage3 />
     </div>
   );
 };
