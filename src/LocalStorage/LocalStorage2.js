@@ -3,9 +3,9 @@ const LocalStorage2 = () => {
 
   const num = localStorage.getItem("num");
 
-  return <>{Number(num) + 3}</>;
+  return <>&nbsp;&nbsp;{Number(num) + 3}</>;
 };
 // return <>{(num) + 3}</>; ถ้าไม่มี {number}กำกับ 
-// ค่าจะเอามาชนกันแทนที่จะเป็นบวก (19+3=22) แต่จะกลายเป็น 193 
+// ค่าจะเอามาชนต่อกันแทนที่จะเป็นบวก (19+3=22) แต่จะกลายเป็น 193 
 export default LocalStorage2;
 

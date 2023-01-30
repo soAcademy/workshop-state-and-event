@@ -7,8 +7,8 @@ const App = () => {
   return (
     <>
       {/* <LocalStorage1 /> */}
-      <LocalStorage2 />
-      {/* <LocalStorage3 /> */}
+      {/* <LocalStorage2 /> */}
+      <LocalStorage3 />
       {/* <LocalStorage4 /> */}
      
     </>
