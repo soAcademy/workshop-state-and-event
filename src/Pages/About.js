@@ -5,6 +5,9 @@ const About = () => (
     <Link to="/">Home</Link>
     <span className="px-5">|</span>
     <span className="underline">About</span>
+    <span className="px-5">|</span>
+    <Link to="/products">Products</Link>
+    <span className="px-5">|</span>
   </div>
 );
 

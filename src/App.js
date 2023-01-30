@@ -62,13 +62,20 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Product1 from "./Pages/Product1";
 import Product2 from "./Pages/Product2";
+import Product from "./Pages/Product";
+import ProductList from "./Pages/ProductList";
+
 const App = () => (
   <BrowserRouter>
     <div className="bg-red-300 w-full">This is Navbar</div>
     <Routes>
-      <Route exact path="/" element={<Home title="Hello Bin" />} />
+      <Route exact path="/" element={<Home title="Best Price Shop" />} />
       <Route exact path="/about" element={<About />} />
-      <Route exact path="products" element={<div>Products</div>} />
+      {/* <Route exact path="/product" element={<></>} /> */}
+      <Route exact path="/products" element={<ProductList/>} />
+      <Route path="product">
+        <Route path=":productId" element={<Product />}/>
+      </Route>
       <Route exact path="products">
         <Route exact path="product1" element={<Product1 />} />
         <Route exact path="product2" element={<Product2 />} />

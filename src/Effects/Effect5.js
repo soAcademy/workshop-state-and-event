@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Effect5 = () => {
-  const [menus, setMenus] = useState();
+  const [menus, setMenus] = useState([]);
   //ใน usestate ห้ามมี "" เพราะมันแปลง undefined ให้เป็น "" ทำให้ run 21 error
+  // เราจะใส่ ? ในบรรทัด 21 ตรง .map เพื่อบอกหากเจอ undefined ให้
 
   useEffect(() => {
     axios({
