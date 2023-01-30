@@ -3,7 +3,11 @@ const LocalStorage1 = () => {
 
   const username = localStorage.getItem("username");
 
-  return <div>{username}</div>;
+  return (
+    <div className="m-3">
+      <p>Username: {username}</p>
+    </div>
+  );
 };
 
 export default LocalStorage1;

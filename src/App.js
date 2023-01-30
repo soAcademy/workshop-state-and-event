@@ -7,12 +7,13 @@
 // import ToDoList3 from "./ToDoListAnswers/ToDoList3";
 // import ToDoList4 from "./ToDoListAnswers/ToDoList4";
 import LocalStorage1 from "./LocalStorages/LocalStorage1";
+import LocalStorage2 from "./LocalStorages/LocalStorage2";
 
 const App = () => {
   return (
     <>
       <LocalStorage1 />
-      {/* <LocalStorage2 /> */}
+      <LocalStorage2 />
       {/* <LocalStorage3 /> */}
       {/* <LocalStorage4 /> */}
       {/* <ToDoList1 /> */}
