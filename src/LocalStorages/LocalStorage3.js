@@ -1,0 +1,33 @@
+const LocalStorage3 = () => {
+
+
+
+  const objectData = {
+    name: "Bin",
+    location: "Bangkok",
+    age: 30,
+  };
+
+
+
+
+  console.log(JSON.stringify(objectData));
+  localStorage.setItem("objectData", JSON.stringify(objectData));
+  console.log(localStorage.getItem("objectData"));
+
+
+
+
+  const data = JSON.parse(localStorage.getItem("objectData"));
+  console.log(data);
+  // เราจะต้องใช้ JSON.parse เพื่อเปลงให้มันเเป็น strong ก่อน
+
+
+
+  return (
+    <>
+      {data.name}, {data.location}, {data.age}
+    </>
+  );
+};
+export default LocalStorage3;
