@@ -1,11 +1,11 @@
 const LocalStorage1 =()=>{
-  localStorage.setItem("username","Dew");
+  localStorage.setItem("nickname","Dew");
 
-  const username = localStorage.getItem("username");
+  const nickname = localStorage.getItem("nickname");
 
   return(
     <>
-    {username}
+    {nickname}
     </>
   );
 };
