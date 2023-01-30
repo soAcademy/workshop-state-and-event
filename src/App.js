@@ -6,11 +6,11 @@ import Product2 from "./Product2";
 import Product1 from "./Product1";
 import Product from "./Product";
 import { Link } from "react-router-dom";
-import LocalStorage1 from "./localstorages/LocalStorage1";
+import LocalStorage2 from "./localstorages/LocalStorage2";
 
 const App = () => (
   
-  <LocalStorage1 />
+  <LocalStorage2 />
 );
 
 export default App;
