@@ -1,11 +1,5 @@
 import { Link } from "react-router-dom";
 
-const About = () => (
-  <div>
-    {" "}
-    <Link to="/">Home</Link> | <span className="underline">About</span> |{" "}
-    <Link to="/contact">Contact</Link> | <Link to="/product">Product</Link> | <Link to="/products">Products</Link>
-  </div>
-);
+const About = () => <div>About Content is Here</div>;
 
 export default About;
