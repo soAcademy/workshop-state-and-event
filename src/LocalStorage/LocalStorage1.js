@@ -1,11 +1,14 @@
+import {useState} from 'react'
+
 const LocalStorage1 = () => {
-  const username = localStorage.getItem("username");
+  const [username, setUsername] = useState(localStorage.getItem('username'))
   return (
     <div>
       {username}
       <button
         onClick={() => {
-          localStorage.setItem("username", `${username === "Bin" ? "Earth" : "Bin"}`);
+          setUsername(`${username === "Bin" ? "Earth" : "Bin"}`)
+          localStorage.setItem("username", username);
         }}
         className="rounded-lg p-2 bg-red-300"
       >
