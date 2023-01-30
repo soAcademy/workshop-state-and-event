@@ -4,7 +4,7 @@ import LocalStorage3 from "./LocalStorage/LocalStorage3";
 
 const AppLocalStorage = () => {
   return (
-    <div className="mx-2">
+    <div className="mx-2 space-y-2">
       <LocalStorage1 />
       <LocalStorage2 />
       <LocalStorage3 />
