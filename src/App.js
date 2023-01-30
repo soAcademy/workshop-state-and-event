@@ -1,9 +1,9 @@
 import React from "react";
-import LocalStorage3 from "./localstorages/LocalStorage3";
+import LocalStorage4 from "./localstorages/LocalStorage4";
 
 const App = () => (
   
-  <LocalStorage3 />
+  <LocalStorage4 />
 );
 
 export default App;
