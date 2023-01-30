@@ -48,25 +48,27 @@ const App = () => {
             </Link>
           </div>
 
+          {/* ของจริง nested route เราตัวนี้ไปใส่ใน Resume แทน*/}
           <Routes>
-            <Route exact path="/"element={<Home title="Hello Bond" name2="BKK" />} />
+            <Route
+              exact
+              path="/"
+              element={<Home title="Hello Bond" name2="BKK" />}
+            />
             <Route exact path="/about" element={<About />} />
 
-            {/* ของจริง nested route เราตัวนี้ไปใส่ใน Resume แทน*/}
             <Route exact path="products">
               <Route exact path="product1" element={<Product1 />} />
               <Route exact path="product2" element={<Product2 />} />
               <Route exact path="product3" element={<Product3 />} />
             </Route>
-            {/* ของจริง */}
-
             <Route exact path="product">
               <Route path=":productId" element={<Product />} />
             </Route>
-
             <Route exact path="*" element={<>404 Not Found</>} />
           </Routes>
-
+          {/* ของจริง */}
+          
           <div className="bg-green-700 w-full">This is Footer</div>
         </BrowserRouter>
       </div>
