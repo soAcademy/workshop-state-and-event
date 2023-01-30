@@ -9,8 +9,13 @@ const LocalStorage3 = () => {
   console.log(JSON.stringify(objectData));
   localStorage.setItem("objectData", JSON.stringify(objectData));
 
+  //setItem เพื่อ save ข้อมูลลงใน Storage ให้มีอยู่ใน 
+  //Application/Local storage
+
+
   console.log(localStorage.getItem("objectData"));
 
+  
   const data = JSON.parse(localStorage.getItem("objectData"));
   console.log(data);
 
