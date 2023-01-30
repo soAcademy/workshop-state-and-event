@@ -1,3 +1,4 @@
+import State3 from "./StatesAnswer/State3";
 import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
 import LocalStorage2 from "./LocalStorageAnswer/LocalStorage2";
 import LocalStorage3 from "./LocalStorageAnswer/LocalStorage3";
@@ -10,14 +11,15 @@ import ToDoList4 from "./ToDoListAnswers/ToDoList4";
 const App = () => {
   return (
     <>
+      {/* <State3 /> */}
       {/* <LocalStorage1 /> */}
       {/* <LocalStorage2 /> */}
-      {/* <LocalStorage3 /> */}
+      <LocalStorage3 />
       {/* <LocalStorage4 /> */}
       {/* <ToDoList1 /> */}
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
-      <ToDoList4 />
+      {/* <ToDoList4 /> */}
     </>
   );
 };
