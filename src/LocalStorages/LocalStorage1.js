@@ -4,8 +4,8 @@ const LocalStorage1 = () => {
   const username = localStorage.getItem("username");
 
   return (
-    <div className="m-3">
-      <p>Username: {username}</p>
+    <div className="m-3 pl-2 py-1 bg-sky-900 rounded">
+      <p className="text-white">Username: {username}</p>
     </div>
   );
 };

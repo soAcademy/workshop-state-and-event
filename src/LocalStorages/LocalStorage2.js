@@ -4,10 +4,8 @@ const LocalStorage2 = () => {
   const number = localStorage.getItem("number");
 
   return (
-    <div className="m-3">
-      <p>{Number(number) + 3}</p>
-      <p>{Number(number) + 4}</p>
-      <p>{Number(number) + 5}</p>
+    <div className="m-3 pl-2 py-1 bg-sky-800 rounded ">
+      <p className="text-white">{Number(number) + 3}</p>
     </div>
   );
 };
