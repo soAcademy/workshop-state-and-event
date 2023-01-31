@@ -10,7 +10,7 @@ const NewTaskModal = (props) => (
       {/* Modal content */}
       <div className="relative rounded-lg bg-white shadow">
         <div className="flex items-start justify-between rounded-t border-b p-4 dark:border-gray-600">
-          <h3 class="text-xl font-bold text-slate-900">เพิ่มโน้ต</h3>
+          <h3 className="text-xl font-bold text-slate-900">เพิ่มโน้ต</h3>
           <button
             onClick={() => props.toggleModal(!props.isModalOn)}
             className="h-8 w-8 rounded-full p-2"
