@@ -134,7 +134,7 @@
   ```
   const Component = (props) => {
     console.log(props)
-    const [data1, data2] = props;
+    const {data1, data2} = props;
   }
   เราใช้วิธีนี้เพื่อ ถ้าเราไม่รู้ว่า props ส่งข้อมูลอะไรมาบ้าง เรา จะ log เพื่อเห็น data ก่อน
   -
