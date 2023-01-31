@@ -16,9 +16,14 @@ const ToDoList3 = () => {
 
     const newTask = [
       ..._task,
-      { id: new Date().getTime(), task: newVal, status: "active" },
+      {
+        id: crypto.randomUUID(),
+        dateTime: new Date(),
+        task: newVal,
+        status: "active",
+      },
     ];
-    newTask.sort((a, b) => b.id - a.id);
+    newTask.sort((a, b) => (new Date(b.dateTime)).getTime() - (new Date(a.dateTime)).getTime());
     localStorage.setItem("tasks", JSON.stringify(newTask));
 
     setTasks(newTask);
@@ -45,7 +50,7 @@ const ToDoList3 = () => {
               <li key={idx} className="bg-yellow-100 rounded-lg p-2 mt-2">
                 <div className="flex flex-col gap-2">
                   <div className="text-sm font-thin">
-                    {new Date(r.id).toLocaleString("TH")}
+                    {new Date(r.dateTime).toLocaleString("TH")}
                   </div>
                   <div className="flex justify-center text-xl">
                     <p>{r.task}</p>
