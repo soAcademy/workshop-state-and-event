@@ -2,14 +2,14 @@ const ToDoList1 = () => {
   const onsubmitBtn = (e) => {
     e.preventDefault();
 
-    const _task = JSON.parse(localStorage.getItem("task")) ?? [];
+    const _task = JSON.parse(localStorage.getItem("tasks")) ?? [];
     console.log(_task);
 
     const newVal = e.target["task"].value;
     console.log(e.target["task"].value);
 
     const newTask = [..._task, { task: newVal }];
-    localStorage.setItem("task", JSON.stringify(newTask));
+    localStorage.setItem("tasks", JSON.stringify(newTask));
 
     e.target["task"].value = "";
   };
