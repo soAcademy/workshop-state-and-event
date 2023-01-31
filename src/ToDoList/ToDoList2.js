@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const ToDoList1 = () => {
-  const [tasks, setTasks] = useState([]);
+const ToDoList2 = () => {
+  const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
+  console.log(_tasks);
+  const [tasks, setTasks] = useState(_tasks);
 
   const addTask = (e) => {
     e.preventDefault();
@@ -11,6 +13,7 @@ const ToDoList1 = () => {
     console.log(e.target["task"].value);
     const newTasks = [..._tasks, { task: e.target["task"].value }];
     localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setTasks(newTasks);
   };
   return (
     <>
@@ -24,8 +27,13 @@ const ToDoList1 = () => {
           เพิ่ม
         </button>
       </form>
+      <div>
+        {tasks?.map((r) => (
+          <div className="bg-sky-500 mt-2 text-white p-3">{r.task}</div>
+        ))}
+      </div>
     </>
   );
 };
 
-export default ToDoList1;
+export default ToDoList2;
