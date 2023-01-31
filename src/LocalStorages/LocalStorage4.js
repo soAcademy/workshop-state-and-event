@@ -27,9 +27,9 @@ const LocalStorage4 = () => {
 
   return (
     <div className="m-3 pl-2 py-1 bg-sky-600 rounded">
-      <p className="text-white">Name: {data[1].name}</p>
-      <p className="text-white">Location: {data[1].location}</p>
-      <p className="text-white">Age: {data[1].age}</p>
+      <p className="text-white">Name: {data[2].name}</p>
+      <p className="text-white">Location: {data[2].location}</p>
+      <p className="text-white">Age: {data[2].age}</p>
     </div>
   );
 };
