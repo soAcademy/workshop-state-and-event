@@ -2,8 +2,10 @@
 // import LocalStorage2 from "./LocalStorage/LocalStorage2";
 // import LocalStorage3 from "./LocalStorage/LocalStorage3";
 // import LocalStorage4 from "./LocalStorage/LocalStorage4";
+
 // import ToDoList1 from "./ToDoList/ToDoList1";
-import ToDoList2 from "./ToDoList/ToDoList2"
+// import ToDoList2 from "./ToDoList/ToDoList2"
+import ToDoList3 from "./ToDoList/ToDoList3"
 
 
 
@@ -16,7 +18,8 @@ const App = () => {
       {/* <LocalStorage4/> */}
 
       {/* <ToDoList1/> */}
-      <ToDoList2/>
+      {/* <ToDoList2/> */}
+      <ToDoList3/>
     </>
   );
 };

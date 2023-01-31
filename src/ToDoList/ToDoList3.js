@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ToDoList2 = () => {
+const ToDoList3 = () => {
   const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
   console.log("_tasks", _tasks);
   const [tasks, setTasks] = useState(_tasks);
@@ -15,9 +15,12 @@ const ToDoList2 = () => {
     const newTasks = [
       ..._tasks,
       {
+        id: new Date().getTime(),
         task: e.target["task"].value,
+        datetime: new Date(),
+        status: "active",
       },
-    ];
+    ].sort((a, b) => b.id - a.id);
 
     localStorage.setItem("tasks", JSON.stringify(newTasks));
     setTasks(newTasks);
@@ -38,11 +41,15 @@ const ToDoList2 = () => {
       <div>
         {/* ใส่ .task เพื่อดึงข้อมูลใน object ซึ่ง task เป็น key*/}
         {tasks?.map((r) => (
-          <div className="bg-yellow-300 mt-2">{r.task}</div>
+          <div className="bg-yellow-300 mt-2">
+            <h1>{r.task}</h1>
+            <div>สถานะ:{r.status}</div>
+            <div>วันที่:{new Date(r.datetime).toLocaleString("th")}</div>
+          </div>
         ))}
       </div>
     </>
   );
 };
 
-export default ToDoList2;
+export default ToDoList3;
