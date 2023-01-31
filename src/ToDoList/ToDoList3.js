@@ -14,13 +14,14 @@ const ToDoList3 = () => {
       {
         id: new Date().getTime(),
         task: e.target["task"].value,
-        datetime: new Date(),
-        status: "active",
+        datetime: new Date().toLocaleString("TH"),
+        status: "Active",
       },
     ].sort((a, b) => b.id - a.id);
 
     localStorage.setItem("tasks", JSON.stringify(newTasks));
     setTasks(newTasks);
+    console.log(newTasks);
   };
 
   return (
@@ -29,9 +30,9 @@ const ToDoList3 = () => {
         <input
           type="text"
           id="task"
-          className="border-2 border-blue-300 rounded py-2 mr-4"
+          className="border-2 border-black rounded py-2 mr-4"
         />
-        <button type="submit" className="px-4 py-2 bg-red-300 rounded">
+        <button type="submit" className="px-4 py-2 bg-blue-300 rounded">
           เพิ่ม
         </button>
       </form>
