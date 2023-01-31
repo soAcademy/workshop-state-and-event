@@ -42,19 +42,13 @@ const ToDoList3 = () => {
           Add
         </button>
       </form>
-      <div className="m-2 grid grid-cols-4 h-40">
+      <div className="m-2 grid grid-cols-4">
         {tasks?.map((task, idx) => (
-          <div className="bg-gray-400 m-2 rounded flex flex-col justify-between">
+          <div className="bg-gray-200 m-2 rounded flex flex-col justify-between h-36">
             <div key={idx} className="flex p-2">
               {task.task}
             </div>
-            <div
-              className={`rounded-md  px-1 m-1 w-fit text-sm duration-500 ${
-                task.status === "Done" ? "bg-green-400" : "bg-red-400"
-              }`}
-            >
-              {task.status}
-            </div>
+            
             <div className="flex justify-between text-xs">
               <span key={idx} className="flex leading-0 items-center px-2">
                 {task.datetime}
@@ -62,7 +56,7 @@ const ToDoList3 = () => {
               <div>
                 <span>
                   <button
-                    className="text-xl mr-1"
+                    className={`text-xl mr-1 duration-500 ${task.status === 'Done' ? 'text-emerald-600' : ''}`}
                     onClick={() => {
                       tasks[idx].status = "Done";
                       updateTask(tasks);
