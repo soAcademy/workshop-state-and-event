@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ToDoList2 = () => {
+const ToDoList3 = () => {
   const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? []; //*
   console.log(_tasks); //*
   const [tasks, setTasks] = useState(_tasks); //*
@@ -11,7 +11,17 @@ const ToDoList2 = () => {
     //_tasks ใช้สำหรับครั้งเดียว แทนตัวแปร temp ที่เราใช้งานครั้งเดียว
     //ถ้ามันเป็น undefine ให้สร้าง [] มา เพราะว่าตัว undefine ใช้กับ [...spread operator]
     console.log(e.target["task"].value);
-    const newTasks = [..._tasks, { task: e.target["task"].value }];
+    const newTasks = [
+      ..._tasks,
+      {
+        task: e.target["task"].value,
+        id: new Date().getTime,
+        datetime: new Date(),
+        status: "active",
+      },
+    ].sort((a, b) => b.id - a.id);
+    //ถ้าทำแบบสร้างตัวแปร = [..._tasks, task1];
+    // ...เอาข้อมูลมาเรียงต่อกันโดยถอด [] of {} ออก
     localStorage.setItem("tasks", JSON.stringify(newTasks));
     setTasks(newTasks);
   };
@@ -33,7 +43,9 @@ const ToDoList2 = () => {
       <div>
         {tasks?.map((r) => (
           <div className="bg-sky-500 mt-2 text-white p-3 shadow-lg">
-            {r.task}
+            <h1>{r.task}</h1>
+            <div>สถานะ: {r.status}</div>
+            <div>วันที่: {new Date(r.datetime).toLocaleString("TH")}</div>
           </div>
         ))}
       </div>
@@ -41,4 +53,4 @@ const ToDoList2 = () => {
   );
 };
 
-export default ToDoList2;
+export default ToDoList3;
