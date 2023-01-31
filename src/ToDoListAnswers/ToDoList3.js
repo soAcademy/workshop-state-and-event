@@ -13,6 +13,7 @@ const ToDoList3 = () => {
       ..._tasks,
       {
         id: new Date().getTime(),
+        // id: _tasks.length + 1,
         task: e.target["task"].value,
         datetime: new Date(),
         status: "active",
@@ -40,7 +41,7 @@ const ToDoList3 = () => {
           <div className="bg-yellow-300 mt-2">
             <h1>{r.task}</h1>
             <div>สถานะ: {r.status}</div>
-            <div>วันที่: {new Date(r.datetime).toLocaleString()}</div>
+            <div>วันที่: {new Date(r.datetime).toLocaleString('TH')}</div>
           </div>
         ))}
       </div>
