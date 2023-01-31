@@ -10,8 +10,8 @@ const ToDoList2 = () => {
     console.log(e.target["keyTasks"].value);
 
     const task2 = {valueTask: e.target["keyTasks"].value};
-    const newTasks = [..._tasks, task2 ];
-    
+    const newTasks = [..._tasks, task2 ];  
+
     localStorage.setItem("keyTasks", JSON.stringify(newTasks));
     setTasks(newTasks);
   };
