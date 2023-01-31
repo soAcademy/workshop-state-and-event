@@ -95,7 +95,7 @@ const App = () => (
   //   </Routes>
   //   <div className="bg-purple-500 p-4">This is Footer</div>
   // </BrowserRouter>
-  <div className="p-8 font-prompt">
+  <div className="p-8 font-prompt text-slate-900">
     <h1 className="mb-6 text-xl font-bold">บันทึกของฉัน</h1>
     {/* <LocalStorage1 /> */}
     {/* <LocalStorage2 /> */}

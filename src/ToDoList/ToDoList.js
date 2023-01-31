@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaClock, FaRegCheckCircle, FaTrash, FaPlus } from "react-icons/fa";
+import NewTaskModal from "./NewTaskModal";
 
 const ToDoList = () => {
   const taskPalette = [
@@ -23,6 +24,7 @@ const ToDoList = () => {
     "rose",
   ];
   const [tasks, setTasks] = useState([]);
+  const [isModalOn, toggleModal] = useState(false);
 
   const updateTasks = (newTasks) => {
     const sortedNewTasks = newTasks.sort((a, b) => b.id - a.id);
@@ -44,6 +46,7 @@ const ToDoList = () => {
     const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
 
     updateTasks([..._tasks, _task]);
+    toggleModal(!isModalOn);
   };
 
   const markDoneTask = (id) => {
@@ -59,7 +62,7 @@ const ToDoList = () => {
   };
 
   return (
-    <div className="relative">
+    <div>
       <ul className="mb-4 flex flex-wrap gap-6 p-0 text-slate-900">
         {tasks.map((task) => (
           <li
@@ -92,15 +95,23 @@ const ToDoList = () => {
           </li>
         ))}
       </ul>
-      <form onSubmit={(e) => addTask(e)} className="p-0">
+      {/* <form onSubmit={(e) => addTask(e)} className="p-0">
         <input type="text" name="task" id="task" />
         <button type="submit" name="submit" className="bg-red-400 p-2">
           Add task
         </button>
-      </form>
-      <button className="font-4xl absolute right-0 bottom-0 z-50 h-10 w-10 rounded-full bg-emerald-900 p-3 text-white shadow-md shadow-slate-500 hover:bg-emerald-700">
+      </form> */}
+      <button
+        onClick={() => toggleModal(!isModalOn)}
+        className="font-4xl fixed right-8 bottom-8 z-30 h-10 w-10 rounded-full bg-emerald-900 p-3 text-white shadow-md shadow-slate-500 hover:bg-emerald-700"
+      >
         <FaPlus />
       </button>
+      <NewTaskModal
+        addTask={addTask}
+        isModalOn={isModalOn}
+        toggleModal={toggleModal}
+      />
     </div>
   );
 };
