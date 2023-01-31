@@ -7,12 +7,10 @@ const ToDoList4 = () => {
 
   const updateTasks = (newTasks) => {
     console.log(newTasks);
-    localStorage.setItem(
-      "tasks",
-      JSON.stringify(newTasks.sort((a, b) => b.id - a.id))
-    );
+    localStorage.setItem("tasks", JSON.stringify(newTasks.sort((a,b) => b.id - a.id))
+    )
     setTasks(newTasks);
-  };
+  }
 
   const addTask = (e) => {
     e.preventDefault();
@@ -26,35 +24,36 @@ const ToDoList4 = () => {
         datetime: new Date(),
         status: "active",
       },
-    ];
+    ]
     updateTasks(newTasks);
   };
 
   const doneTask = (id) => {
-    // const targetTask = tasks.filter((r) => r.id === id)[0];
-    // const newTasks = [
-    //   ...tasks.filter((r) => r.id !== id),
-    //   {
-    //     id,
-    //     task: targetTask.task,
-    //     datetime: targetTask.datetime,
-    //     status: "done",
-    //   },
-    // ];
+    const targetTask = tasks.filter((r) => r.id === id)[0]
+    const newTask = [
+      ...tasks.filter((r) => r.id !== it),
+      {
+        id,
+        task: targetTask.task,
+        datetime: targetTask.datetime,
+        status: "done",
+      }
+    ]
 
-    const targetTaskIndex = tasks.findIndex((r) => r.id === id);
-    const newTasks = [...tasks];
-    tasks[targetTaskIndex].status = "done";
 
-    updateTasks(newTasks);
+
+    // const targetTaskIndex = tasks.findIndex(t => t.id === id);
+    // const newTask = [...tasks]
+    // tasks[targetTaskIndex].status = "done";
+
+    updateTasks(newTask);
   };
 
   const deleteTask = (id) => {
-    const newTasks = tasks.filter((r) => r.id !== id);
+    const newTask = tasks.filter((r) => r.id === id);
 
-    updateTasks(newTasks);
-  };
-
+    updateTasks(newTask);
+  }
   return (
     <>
       <form onSubmit={(e) => addTask(e)}>
@@ -75,14 +74,14 @@ const ToDoList4 = () => {
             <div>วันที่: {new Date(r.datetime).toLocaleString()}</div>
             <div>
               <button
-                className="bg-green-300 px-4"
-                onClick={() => doneTask(r.id)}
+              className="bg-green-300 px-4"              
+              onClick={() => doneTask(r.id)}
               >
                 done
               </button>
               <button
-                className="bg-orange-300 px-4"
-                onClick={() => deleteTask(r.id)}
+              className="bg-orange-300 px-4"              
+              onClick={() => deleteTask(r.id)}
               >
                 delete
               </button>
