@@ -13,7 +13,9 @@ const ToDoList5 = () => {
   ];
   const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
   console.log(_tasks);
+
   const [tasks, setTasks] = useState(_tasks);
+  const [togglePopup, setTogglePopup] = useState(false);
 
   const updateTasks = (newTasks) => {
     console.log(newTasks);
@@ -71,16 +73,42 @@ const ToDoList5 = () => {
 
   return (
     <>
-      <form onSubmit={(e) => addTask(e)}>
-        <input
-          type="text"
-          id="task"
-          className="border-2 border-blue-300 rounded py-2 mr-4"
-        />
-        <button type="submit" className="px-4 py-2 bg-red-300 rounded">
-          เพิ่ม
-        </button>
-      </form>
+      {togglePopup && (
+        <div className="w-full h-screen fixed flex bg-gray-500/30 backdrop-blur-sm">
+          <form
+            onSubmit={(e) => {
+              addTask(e);
+              setTogglePopup(false);
+            }}
+            className="flex flex-col m-auto bg-white p-5 w-2/5 rounded-lg"
+          >
+            <div className="mb-4 flex">
+              <h1 className="font-bold flex-auto">เพิ่มโน๊ต</h1>
+              <span
+                className="cursor-pointer"
+                onClick={() => setTogglePopup(false)}
+              >
+                ปิด
+              </span>
+            </div>
+            <div>
+              <textarea
+                type="text"
+                id="task"
+                className="border-2 border-blue-300 rounded py-2 w-full"
+              />
+            </div>
+            <div className="mt-2">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-red-300 rounded w-full font-bold"
+              >
+                เพิ่ม
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
       <div className="grid grid-cols-4">
         {tasks?.map((r, idx) => (
           <div
@@ -115,6 +143,12 @@ const ToDoList5 = () => {
           </div>
         ))}
       </div>
+      <button
+        onClick={() => setTogglePopup(true)}
+        className="fixed bottom-5 right-5 rounded-full w-12 h-12 bg-yellow-400 hover:bg-amber-400 md-lg text-2xl flex items-center shadow-lg"
+      >
+        <span className="text-center w-full">+</span>
+      </button>
     </>
   );
 };
