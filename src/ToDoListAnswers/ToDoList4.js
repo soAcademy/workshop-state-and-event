@@ -44,7 +44,7 @@ const ToDoList4 = () => {
 
     const targetTaskIndex = tasks.findIndex((r) => r.id === id);
     const newTasks = [...tasks];
-    tasks[targetTaskIndex].status = "done";
+    newTasks[targetTaskIndex].status = "done";
 
     updateTasks(newTasks);
   };
