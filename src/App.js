@@ -4,6 +4,7 @@ import LocalStorage3 from "./LocalStorage/LocalStorage3";
 import LocalStorage4 from "./LocalStorage/LocalStorage4";
 
 import ToDoList1 from "./ToDoList/ToDoList1";
+import ToDoList2 from "./ToDoList/ToDoList2";
 
 const App = () => (
   <div className="">
@@ -11,7 +12,8 @@ const App = () => (
     <LocalStorage2 /> */}
     {/* <LocalStorage3 /> */}
     {/* <LocalStorage4 /> */}
-    <ToDoList1 />
+    {/* <ToDoList1 /> */}
+    <ToDoList2 />
   </div>
 );
 

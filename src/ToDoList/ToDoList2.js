@@ -1,6 +1,8 @@
 import react, { useState, useEffect } from "react";
 
-const ToDoList1 = () => {
+const ToDoList2 = () => {
+  const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
+  console.log(_tasks);
   const [tasks, setTasks] = useState();
 
   const addTask = (e) => {
@@ -14,6 +16,7 @@ const ToDoList1 = () => {
       },
     ];
     localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setTasks(newTasks);
   };
 
   return (
@@ -28,8 +31,13 @@ const ToDoList1 = () => {
           เพิ่ม
         </button>
       </form>
+      <div>
+        {tasks?.map((r) => (
+          <div className="bg-yellow-300 mt-2">{r.task}</div>
+        ))}
+      </div>
     </>
   );
 };
 
-export default ToDoList1;
+export default ToDoList2;
