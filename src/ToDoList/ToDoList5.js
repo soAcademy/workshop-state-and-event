@@ -6,18 +6,22 @@ const ToDoList5 = () => {
   const tmpTasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
 
   const colors = [
-    "#F5EA5A",
+    "#82CD47",
     "#FF78F0",
     "#A31ACB",
-    "#39B5E0",
+    "#00FFD1",
     "#00F5FF",
     "#FCE700",
     "#FF6D28",
     "#EA047E",
+    "#F0FF42",
   ];
   const randomColor = () => colors[Math.floor(Math.random() * colors.length)];
+
   const [tasks, setTasks] = useState(tmpTasks);
   const [toggle, setToggle] = useState(false);
+  const [toggleDel, setToggleDel] = useState(false);
+  const [deleteId, setDeleteId] = useState();
 
   const updateTasks = (newTasks) => {
     console.log(newTasks);
@@ -60,11 +64,6 @@ const ToDoList5 = () => {
     updateTasks(newTasks);
   };
 
-  const deleteTask = (id) => {
-    const newTasks = tasks.filter((r) => r.id !== id);
-    updateTasks(newTasks);
-  };
-
   return (
     <div>
       {/* {toggle && (
@@ -80,7 +79,7 @@ const ToDoList5 = () => {
               <p className="font-bold flex-auto">เพิ่มโน๊ต</p>
               <button
                 className="cursor-pointer"
-                onClick={() => setToggle(!toggle)}
+                onClick={() => setToggle(false)}
               >
                 ปิด
               </button>
@@ -95,7 +94,7 @@ const ToDoList5 = () => {
             <div className="mt-3">
               <button
                 type="submit"
-                className="px-4 py-3 bg-sky-400 active:bg-sky-600 rounded w-full font-bold"
+                className="px-4 py-2 bg-red-300 active:bg-red-100 rounded w-full font-bold"
               >
                 บันทึก
               </button>
@@ -103,6 +102,7 @@ const ToDoList5 = () => {
           </from>
         </div>
       )} */}
+
       {toggle && (
         <div className="w-full h-screen fixed flex bg-gray-500/30 backdrop-blur-sm">
           <form
@@ -122,20 +122,49 @@ const ToDoList5 = () => {
               <textarea
                 type="text"
                 id="task"
-                className="border-2 border-blue-300 rounded py-2 w-full"
+                className="border-2 border-neutral-400 rounded py-2 w-full"
               />
             </div>
             <div className="mt-2">
               <button
                 type="submit"
-                className="px-4 py-2 bg-red-300 rounded w-full font-bold"
+                className="px-4 py-2 bg-sky-300 active:bg-sky-100 rounded w-full font-bold"
               >
-                เพิ่ม
+                บันทึก
               </button>
             </div>
           </form>
         </div>
       )}
+
+      {toggleDel && (
+        <div className="w-full h-screen fixed flex bg-gray-500/30 backdrop-blur-sm">
+          <div className="bottom-10 flex flex-col m-auto bg-white p-5 w-2/5 rounded-lg">
+            <div className="mb-4 flex justify-between">
+              <p className="font-bold flex-auto">ลบโน๊ต</p>
+              <button
+                className="cursor-pointer"
+                onClick={() => setToggleDel(false)}
+              >
+                ปิด
+              </button>
+            </div>
+            <div>
+              <button
+                onClick={() => {
+                  const newTasks = tasks.filter((r) => r.id !== deleteId);
+                  updateTasks(newTasks);
+                  setToggleDel(false);
+                }}
+                className="px-4 py-2 bg-sky-300 active:bg-sky-100 rounded w-full font-bold"
+              >
+                ยืนยันการลบ
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="px-4 pb-4">
         <div className=" my-3">
           <p className="text-xl">บันทึกของฉัน</p>
@@ -147,42 +176,46 @@ const ToDoList5 = () => {
               className="rounded px-2 pt-5 pb-2 shadow-lg"
               style={{ backgroundColor: r.bgColor }}
             >
-              <div className="w-[236px] h-[236px]">
-                <p
-                  className={`text-xl ${
-                    r.status === "done" ? "line-through" : ""
-                  }`}
-                >
-                  {r.task}
-                </p>
+              <div
+                className={`w-[208px] h-[208px] text-xl ${
+                  r.status === "Done" ? "line-through" : ""
+                }`}
+              >
+                {r.task}
               </div>
               {/* <p>status: {r.status}</p> */}
-              <div className="flex content-end">
+              <div className="flex">
                 <div className="text-sm flex-auto">
                   {new Date(r.dateTime).toLocaleString("TH")}
                 </div>
-                {r.status === "active" && (
-                  <button type="button" onClick={() => doneTask(r.id)}>
-                    <BsCheckCircle />
+                <div>
+                  {r.status === "Active" && (
+                    <button type="button" onClick={() => doneTask(r.id)}>
+                      <BsCheckCircle />
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setToggleDel(true);
+                      setDeleteId(r.id);
+                    }}
+                    className="pl-2"
+                  >
+                    <RiDeleteBin6Line />
                   </button>
-                )}
-                <button
-                  type="button"
-                  onClick={() => deleteTask(r.id)}
-                  className="pl-2"
-                >
-                  <RiDeleteBin6Line />
-                </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
+
         <div className="flex justify-end">
           <button
-            onClick={() => setToggle(!toggle)}
-            className="fixed bottom-5 right-5 rounded-full w-12 h-12 bg-sky-400 hover:bg-sky-600 shadow-lg"
+            onClick={() => setToggle(true)}
+            className="fixed bottom-5 right-5 rounded-full w-12 h-12 bg-sky-400 hover:bg-sky-500 md-lg text-2xl flex items-center shadow-lg"
           >
-            <p className="text-white text-5xl">+</p>
+            <p className="text-center text-white w-full">+</p>
           </button>
         </div>
       </div>
