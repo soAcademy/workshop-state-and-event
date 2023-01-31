@@ -29,13 +29,13 @@
 // import Effect7 from "./EffectsAnswer/Effect7";
 // import Effect103 from "./Effects/effect103";
 // import LocalStorage4 from "./LocalStorage/LocalStorage4";
-import ToDoList2 from "./ToDolist/ToDoList2"
+import ToDoList3 from "./ToDolist/ToDoList3"
 
 
 const App = () => {
   return (
     <div>
-      <ToDoList2/>
+      <ToDoList3/>
      
     </div>
   );
