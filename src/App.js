@@ -42,7 +42,8 @@
 // import LocalStorage3 from "./LocalStorages/LocalStorage3";
 // import LocalStorage4 from "./LocalStorages/LocalStorage4";
 
-  import ToDoList1 from "./ToDoLists/ToDoList1";
+  // import ToDoList1 from "./ToDoLists/ToDoList1";
+  import ToDoList2 from "./ToDoLists/ToDoList2";
 
 const App = () => {
   return (
@@ -79,7 +80,8 @@ const App = () => {
       {/* <LocalStorage3 /> */}
       {/* <LocalStorage4 /> */}
       
-      <ToDoList1 />
+      {/* <ToDoList1 /> */}
+      <ToDoList2 />
     </div>
   );
 };
