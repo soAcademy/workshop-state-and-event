@@ -1,6 +1,12 @@
 import { useState } from "react";
+import { AiOutlineDelete } from "react-icons/ai";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 const ToDoList3 = () => {
+  const updateTask = (tasks) => {
+    localStorage.setItem("task", JSON.stringify(tasks));
+    setTasks(tasks.flat());
+  };
   const addTask = (e) => {
     e.preventDefault();
     const _tasks = JSON.parse(localStorage.getItem("task")) ?? [];
@@ -16,9 +22,8 @@ const ToDoList3 = () => {
         datetime: _dateString,
         status: "Active",
       },
-    ].sort((a,b)=> b.id-a.id)
-    localStorage.setItem("task", JSON.stringify(newTasks));
-    setTasks(newTasks);
+    ].sort((a, b) => b.id - a.id);
+    updateTask(newTasks);
   };
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("task")));
   return (
@@ -32,18 +37,52 @@ const ToDoList3 = () => {
         ></input>
         <button
           type="submit"
-          className="bg-red-400 duration-200 rounded p-2 w-16 font-bold hover:bg-red-500 active:bg-red-400"
+          className="bg-red-300 duration-200 rounded p-1 w-16 font-bold hover:bg-red-400 active:bg-red-500"
         >
           Add
         </button>
       </form>
-      <div className="m-2">
+      <div className="m-2 grid grid-cols-4 h-40">
         {tasks?.map((task, idx) => (
-          <div className="bg-gray-400 m-2 p-2 rounded">
-            <div key={idx}>ID : {task.id}</div>
-            <div key={idx}>Task : {task.task}</div>
-            <div key={idx}>Date time : {task.datetime}</div>
-            <div key={idx}>Status : {task.status}</div>
+          <div className="bg-gray-400 m-2 rounded flex flex-col justify-between">
+            <div key={idx} className="flex p-2">
+              {task.task}
+            </div>
+            <div
+              className={`rounded-md  px-1 m-1 w-fit text-sm duration-500 ${
+                task.status === "Done" ? "bg-green-400" : "bg-red-400"
+              }`}
+            >
+              {task.status}
+            </div>
+            <div className="flex justify-between text-xs">
+              <span key={idx} className="flex leading-0 items-center px-2">
+                {task.datetime}
+              </span>
+              <div>
+                <span>
+                  <button
+                    className="text-xl mr-1"
+                    onClick={() => {
+                      tasks[idx].status = "Done";
+                      updateTask(tasks);
+                    }}
+                  >
+                    <IoMdCheckmarkCircleOutline />
+                  </button>
+                </span>
+                <span>
+                  <button className="text-xl mr-2" onClick={() => {
+                    const _newTasks = [
+                      ...tasks.filter(r=> r.id !== task.id)
+                    ]
+                    updateTask(_newTasks)
+                  }}>
+                    <AiOutlineDelete />
+                  </button>
+                </span>
+              </div>
+            </div>
           </div>
         ))}
       </div>
