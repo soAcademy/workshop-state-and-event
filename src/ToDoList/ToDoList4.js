@@ -44,7 +44,7 @@ const ToDoList4 = () => {
   };
 
   const deleteTask = (id) => {
-    const newTasks = tasks.filter((r) => r.id != id);
+    const newTasks = tasks.filter((r) => r.id !== id);
     updateTasks(newTasks);
   };
 
@@ -66,14 +66,14 @@ const ToDoList4 = () => {
               <button
                 type="button"
                 onClick={() => doneTask(r.id)}
-                className="bg-rose-200 rounded p-1"
+                className="bg-teal-200 hover:bg-teal-400 rounded p-1"
               >
                 Done
               </button>
               <button
                 type="button"
                 onClick={() => deleteTask(r.id)}
-                className="bg-rose-200 rounded p-1 ml-2"
+                className="bg-rose-200 hover:bg-rose-600 rounded p-1 ml-2"
               >
                 Delete
               </button>
