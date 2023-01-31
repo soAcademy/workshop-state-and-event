@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
 const ToDoList1 = () => {
-  const [tasks, setTasks] = useState();
+  // const [tasks, setTasks] = useState();
 
   const addTask = (e) => {
     e.preventDefault();
     const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
     console.log(e.target["task"].value);
+    
     const newTasks = [
       ..._tasks,
       {
