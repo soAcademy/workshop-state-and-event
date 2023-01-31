@@ -7,6 +7,8 @@ const ToDoList5 = () => {
 
   const [tasks, setTasks] = useState(_tasks);
   const [toggleShow, setToggleShow] = useState(false);
+  const [toggleConfirmDelete, setToggleConfirmDelete] = useState(false);
+  const [chooseDelete, setChooseDelete] = useState(null);
 
   const updateTasks = (newTasks) => {
     console.log(newTasks);
@@ -47,16 +49,49 @@ const ToDoList5 = () => {
     ];
     updateTasks(newTasks);
   };
-  const deleteTask = (id) => {
-    const newTasks = tasks.filter((r) => r.id != id);
-
+  const deleteTask = () => {
+    const newTasks = tasks.filter((r) => r.id != chooseDelete);
+    // filter ออกมาแค่อันที่เราจะไม่ลบ แล้วเอาไปทับอันเดิม
     updateTasks(newTasks);
+    setToggleConfirmDelete(false);
+    setChooseDelete(null);
   };
+  const openConfirmDelete = (id) => {
+    setToggleConfirmDelete(true);
+    setChooseDelete(id);
+  };
+
+  const closeConfirmDelete = () => {
+    setToggleConfirmDelete(false);
+    setChooseDelete(null);
+  };
+
   const bgPallets = ["#f6f7d8", "#fcdd8d", "#fd8d41", "#e8c192"];
   return (
     <div className="mx-auto w-[90%]">
+      {toggleConfirmDelete && (
+        <div className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center  bg-gray-500/30 backdrop-opacity-80">
+          <div className="bg-white h-[120px] w-2/6 p-5">
+            <div className="flex justify-between">
+              <div>ลบโน๊ต ?</div>
+              <button
+                onClick={() => closeConfirmDelete()}
+                className="text-red-600 "
+              >
+                ปิด
+              </button>
+            </div>
+            <button
+              onClick={() => deleteTask()}
+              className="mt-6 w-full bg-orange-500 text-white p-2 rounded-lg"
+            >
+              ยืนยันการลบ
+            </button>
+          </div>
+        </div>
+      )}
       {toggleShow && (
-        <div className="w-full h-screen fixed flex bg-gray-500/30 backdrop-opacity-80">
+        <div className="fixed top-0 bottom-0 left-0 right-0 flex bg-gray-500/30 backdrop-opacity-80">
           <form
             onSubmit={(e) => {
               addTask(e);
@@ -129,7 +164,7 @@ const ToDoList5 = () => {
                       color="green"
                     />
                   </button>
-                  <button onClick={() => deleteTask(r.id)}>
+                  <button onClick={() => openConfirmDelete(r.id)}>
                     <IoMdTrash fontSize={"1.5rem"} />
                   </button>
                 </div>
