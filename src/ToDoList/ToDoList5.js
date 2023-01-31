@@ -25,18 +25,17 @@ const ToDoList5 = () => {
     const newTasks = [
       {
         task: e.target["task"].value,
-        id: new Date().getTime,
+        id: new Date().getTime(),
         datetime: new Date(),
         status: "active",
       },
       ..._tasks,
     ];
-
     updateTasks(newTasks);
   };
 
   const doneTask = (id) => {
-    const targetTask = tasks.filter((r) => r.id === id)[0];
+    const targetTask = tasks.find((r) => r.id === id);
     const newTasks = [
       ...tasks.filter((r) => r.id !== id),
       {
@@ -55,21 +54,7 @@ const ToDoList5 = () => {
   };
   const bgPallets = ["#f6f7d8", "#fcdd8d", "#fd8d41", "#e8c192"];
   return (
-    <div className="mx-8">
-      {/* <form onSubmit={(e) => addTask(e)}>
-        <input
-          type="text"
-          id="task"
-          className="border-2 border-sky-400 rounded py-2 mr-4"
-        />
-        <button
-          type="submit"
-          className="px-4 py-2 bg-green-500 rounded text-white"
-        >
-          เพิ่ม
-        </button>
-      </form> */}
-
+    <div className="mx-auto w-[90%]">
       {toggleShow && (
         <div className="w-full h-screen fixed flex bg-gray-500/30 backdrop-opacity-80">
           <form
@@ -80,7 +65,9 @@ const ToDoList5 = () => {
             className="flex flex-col m-auto bg-white p-5 w-2/5 h-auto rounded-lg"
           >
             <div className="mb-4 flex">
-              <h1 className="font-bold flex-auto text-xl">Add To do list</h1>
+              <h1 className="font-bold flex-auto text-xl text-orange-600">
+                Add To do list
+              </h1>
               <span
                 className="cursor-pointer"
                 onClick={() => setToggleShow(false)}
@@ -92,13 +79,13 @@ const ToDoList5 = () => {
               <textarea
                 type="text"
                 id="task"
-                className="border-2 border-orange-400 rounded py-10 w-full"
+                className="border-2 border-orange-400 rounded p-2 h-[150px] w-full"
               />
             </div>
             <div className="mt-6">
               <button
                 type="submit"
-                className="px-4 py-2 bg-sky-500 rounded-[20px] w-[100%] font-bold text-white"
+                className="px-4 py-2 bg-orange-500 rounded-[20px] w-[100%] font-bold text-white"
               >
                 ADD
               </button>
@@ -107,45 +94,43 @@ const ToDoList5 = () => {
         </div>
       )}
 
-      <div className="mx-5 my-7">
+      <div className="my-7">
         <h1 className="text-xl flex justify-center bg-orange-300 py-3 text-white rounded-[20px]">
           บันทึกของฉัน
         </h1>
       </div>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-4 gap-3">
         {tasks?.map((r, idx) => (
           <div
             key={idx}
             style={{ backgroundColor: bgPallets[idx % bgPallets.length] }}
-            className="bg-sky-500 mt-3 p-3 w-[200px] h-[200px] rounded-[20px] shadow-lg "
+            className=" p-3 w-[200px] h-[200px] rounded-[20px] shadow-lg "
           >
             <div className="text-center pt-6">
-              <h1>To do list : {r.task}</h1>
-              <div>สถานะ : {r.status}</div>
+              <h1 className={r.status === "done" ? "line-through" : ""}>
+                To do list : {r.task}
+              </h1>
+              <div className={r.status === "done" ? "line-through" : ""}>
+                สถานะ : {r.status}
+              </div>
             </div>
             <div className="my-3">
-              {/* <button
-                className="bg-green-500 text-white px-4 rounded-[10px]"
-                onClick={() => doneTask(r.id)}
-              >
-                done
-              </button>
-              <button
-                className="bg-gray-500 text-white px-4 rounded-[10px] ml-3"
-                onClick={() => deleteTask(r.id)}
-              >
-                delete
-              </button> */}
-              <div className="ml-4">
+              <div className="ml-4 ">
                 <div className="pt-8 text-[10px] text-gray-600">
                   วันที่ : {new Date(r.datetime).toLocaleString("TH")}
                 </div>
                 <div className="flex mt-3 gap-3 ">
-                  <button onClick={() => doneTask(r.id)}>
-                    <IoIosCheckmarkCircleOutline />
+                  <button
+                    hidden={r.status === "done" ? true : false}
+                    onClick={() => doneTask(r.id)}
+                  >
+                    <IoIosCheckmarkCircleOutline
+                      fontSize={"1.5rem"}
+                      color="green"
+                    />
                   </button>
                   <button onClick={() => deleteTask(r.id)}>
-                    <IoMdTrash />
+                    <IoMdTrash fontSize={"1.5rem"} />
                   </button>
                 </div>
               </div>
