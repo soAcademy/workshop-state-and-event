@@ -2,6 +2,7 @@ const ToDoList1 = () => {
   const addTask = (e) => {
     e.preventDefault();
     const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
+    console.log(_tasks);
     console.log(e);
     console.log(e.target["task"].value);
 
