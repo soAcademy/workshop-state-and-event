@@ -28,7 +28,7 @@ const AddTaskPopUp = ({ isAddPopUp, setIsAddPopUp, addTask }) => {
       className="h-full w-full flex flex-col justify-between">
         <textarea
           id="textarea"
-          className="m-6 p-4 border-2 rounded-md"
+          className="m-6 p-4 border-2 rounded-md min-h-[150px]"
           placeholder="Enter Task..."
           required
         ></textarea>
