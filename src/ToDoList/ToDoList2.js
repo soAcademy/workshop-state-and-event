@@ -1,7 +1,9 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-const ToDoList1 = () => {
-  // const [tasks, setTasks] = useState();
+const ToDoList2 = () => {
+    const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
+    console.log("_tasks",_tasks);
+    const [tasks, setTasks] = useState(_tasks);
 
   const addTask = (e) => {
     // prevenDefault ปกกันการ refresh เวลากรอก form
@@ -9,7 +11,7 @@ const ToDoList1 = () => {
     // _tasks สร้างตัวแปรชั่วคราว เพื่อนำไปเก็บใน newTasks
     // ?? ใส่เพื่อหากไม่มีค่าให้ return [] เปล่ากลับมา
     const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
-    console.log(e.target["task"].value);
+    console.log("task",e.target["task"].value);
     const newTasks = [
       ..._tasks,
       {
@@ -18,6 +20,7 @@ const ToDoList1 = () => {
     ];
 
     localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setTasks(newTasks);
   };
 
   return (
@@ -32,8 +35,13 @@ const ToDoList1 = () => {
           เพิ่ม
         </button>
       </form>
+      <div>
+        {tasks?.map((r) => (
+          <div className="bg-yellow-300 mt-2">{r.task}</div>
+        ))}
+      </div>
     </>
   );
 };
 
-export default ToDoList1;
+export default ToDoList2;
