@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ToDoList2 = () => {
+const ToDoList3 = () => {
   const _task = JSON.parse(localStorage.getItem("tasks")) ?? [];
   // console.log(_task);
   const [tasks, setTasks] = useState(_task);
@@ -14,7 +14,11 @@ const ToDoList2 = () => {
     const newVal = e.target["task"].value;
     // console.log(e.target["task"].value);
 
-    const newTask = [..._task, { task: newVal }];
+    const newTask = [
+      ..._task,
+      { id: new Date().getTime(), task: newVal, status: "active" },
+    ];
+    newTask.sort((a, b) => b.id - a.id);
     localStorage.setItem("tasks", JSON.stringify(newTask));
 
     setTasks(newTask);
@@ -39,7 +43,17 @@ const ToDoList2 = () => {
           <ul>
             {tasks.map((r, idx) => (
               <li key={idx} className="bg-yellow-100 rounded-lg p-2 mt-2">
-                task: {r.task}
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-thin">
+                    {new Date(r.id).toLocaleString("TH")}
+                  </div>
+                  <div className="flex justify-center text-xl">
+                    <p>{r.task}</p>
+                  </div>
+                  <div className="flex justify-end">
+                    <p>{r.status}</p>
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
@@ -49,4 +63,4 @@ const ToDoList2 = () => {
   );
 };
 
-export default ToDoList2;
+export default ToDoList3;
