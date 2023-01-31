@@ -8,12 +8,10 @@ const ToDoList2 = () => {
     e.preventDefault();
     const _tasks = JSON.parse(localStorage.getItem("keyTasks")) ?? [];
     console.log(e.target["keyTasks"].value);
-    const newTasks = [
-      ..._tasks, 
-      { 
-        ValueTask: e.target["keyTasks"].value 
-      }
-    ];
+
+    const task2 = {valueTask: e.target["keyTasks"].value};
+    const newTasks = [..._tasks, task2 ];
+    
     localStorage.setItem("keyTasks", JSON.stringify(newTasks));
     setTasks(newTasks);
   };
@@ -32,7 +30,7 @@ const ToDoList2 = () => {
       <div>
       {console.log('tasks',tasks)}
       {tasks?.map((r) => (
-        <div className="bg-blue-300 py-2">{r.ValueTask}</div>
+        <div className="bg-blue-300 py-2">{r.valueTask}</div>
       ))}
       </div>
     </>
