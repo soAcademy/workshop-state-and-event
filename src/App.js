@@ -66,7 +66,8 @@
 // import ToDoList1 from "./ToDoList/ToDoList1";
 // import ToDoList2 from "./ToDoList/ToDoList2";
 // import ToDoList3 from "./ToDoList/ToDoList3";
-import ToDoList4 from "./ToDoList/ToDoList4";
+// import ToDoList4 from "./ToDoList/ToDoList4";
+import ToDoList from "./ToDoList/ToDoList";
 
 import React from "react";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -94,7 +95,8 @@ const App = () => (
   //   </Routes>
   //   <div className="bg-purple-500 p-4">This is Footer</div>
   // </BrowserRouter>
-  <>
+  <div className="p-8 font-prompt">
+    <h1 className="mb-6 text-xl font-bold">บันทึกของฉัน</h1>
     {/* <LocalStorage1 /> */}
     {/* <LocalStorage2 /> */}
     {/* <LocalStorage3 /> */}
@@ -102,8 +104,9 @@ const App = () => (
     {/* <ToDoList1 /> */}
     {/* <ToDoList2 /> */}
     {/* <ToDoList3 /> */}
-    <ToDoList4 />
-  </>
+    {/* <ToDoList4 /> */}
+    <ToDoList />
+  </div>
 );
 
 export default App;
