@@ -5,5 +5,7 @@ const LocalStorage2 = () => {
 
   return <>{Number(num) + 3}</>;
 };
+// "14" + "3" --> "143"
+// 14 + 3 --> 17
 
 export default LocalStorage2;
