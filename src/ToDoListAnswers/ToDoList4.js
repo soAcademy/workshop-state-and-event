@@ -31,21 +31,26 @@ const ToDoList4 = () => {
   };
 
   const doneTask = (id) => {
-    const targetTask = tasks.filter((r) => r.id === id)[0];
-    const newTasks = [
-      ...tasks.filter((r) => r.id !== id),
-      {
-        id,
-        task: targetTask.task,
-        datetime: targetTask.datetime,
-        status: "done",
-      },
-    ];
+    // const targetTask = tasks.filter((r) => r.id === id)[0];
+    // const newTasks = [
+    //   ...tasks.filter((r) => r.id !== id),
+    //   {
+    //     id,
+    //     task: targetTask.task,
+    //     datetime: targetTask.datetime,
+    //     status: "done",
+    //   },
+    // ];
+
+    const targetTaskIndex = tasks.findIndex((r) => r.id === id);
+    const newTasks = [...tasks];
+    tasks[targetTaskIndex].status = "done";
+
     updateTasks(newTasks);
   };
 
   const deleteTask = (id) => {
-    const newTasks = tasks.filter((r) => r.id != id);
+    const newTasks = tasks.filter((r) => r.id !== id);
 
     updateTasks(newTasks);
   };
