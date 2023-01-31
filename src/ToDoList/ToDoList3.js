@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ToDoList2 = () => {
+const ToDoList3 = () => {
   const [tasks, setTasks] = useState([]);
 
   const addTask = (e) => {
@@ -29,4 +29,4 @@ const ToDoList2 = () => {
   );
 };
 
-export default ToDoList2;
+export default ToDoList3;
