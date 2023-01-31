@@ -8,6 +8,7 @@ const ToDoList3 = () => {
   const addTask = (e) => {
     e.preventDefault(); //prevent page refresh
     const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? []; //get item from "task" //return empty array if no tasks
+    //_tasks = temporary tasks
     console.log(e.target["tasks"].value);
     const newTasks = [
       ..._tasks,

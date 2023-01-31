@@ -13,7 +13,6 @@ const ToDoList4 = () => {
   const addTask = (e) => {
     e.preventDefault(); //prevent page refresh
     const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? []; //get item from "task" //return empty array if no tasks
-    //_tasks = temporary tasks
     console.log(e.target["tasks"].value);
     const newTasks = [
       ..._tasks,
@@ -28,22 +27,27 @@ const ToDoList4 = () => {
   };
 
   const doneTask = (id) => {
-    const targetTask = tasks.filter((r) => r.id === id); //[0] to get only the one object with the specified ID (without it, it will return an array, but we only want the object)
-    console.log("targettask", targetTask)
-    const newTasks = [
-      ...tasks.filter((r) => r.id !== id),  //list all objects that are NOT done first
-      {
-        id,
-        task: targetTask.task,
-        datetime: targetTask.datetime,
-        status: "done",
-      },
-    ];
+    // const targetTask = tasks.filter((r) => r.id === id)[0];
+    // const newTasks = [
+    //   ...tasks.filter((r) => r.id !== id),
+    //   {
+    //     id,
+    //     task: targetTask.task,
+    //     datetime: targetTask.datetime,
+    //     status: "done",
+    //   },
+    // ];
+
+    const targetTaskIndex = tasks.findIndex((r) => r.id === id);
+    const newTasks = [...tasks];
+    console.log("New Tasks1", newTasks);
+    newTasks[targetTaskIndex].status = "done";
+    console.log("New Tasks2", newTasks); //mutable - status here might not be the same as line 43
     updateTasks(newTasks);
   };
 
   const deleteTask = (id) => {
-    const newTasks = tasks.filter((r) => r.id !== id);
+    const newTasks = tasks.filter((r) => r.id != id);
 
     updateTasks(newTasks);
   };
