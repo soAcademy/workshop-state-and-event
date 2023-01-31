@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { IoIosCheckmarkCircleOutline, IoMdTrash } from "react-icons/io";
 
-const ToDoList4 = () => {
+const ToDoList5 = () => {
   const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
   console.log(_tasks);
+
   const [tasks, setTasks] = useState(_tasks);
+  const [toggleShow, setToggleShow] = useState(false);
 
   const updateTasks = (newTasks) => {
     console.log(newTasks);
@@ -30,8 +32,6 @@ const ToDoList4 = () => {
       ..._tasks,
     ];
 
-    // เรียงใหม่
-
     updateTasks(newTasks);
   };
 
@@ -56,7 +56,7 @@ const ToDoList4 = () => {
   const bgPallets = ["#f6f7d8", "#fcdd8d", "#fd8d41"];
   return (
     <>
-      <form onSubmit={(e) => addTask(e)}>
+      {/* <form onSubmit={(e) => addTask(e)}>
         <input
           type="text"
           id="task"
@@ -68,18 +68,61 @@ const ToDoList4 = () => {
         >
           เพิ่ม
         </button>
-      </form>
-      <div className="w-3/6 h-3/6 grid grid-rows-4 grid-flow-col gap-4">
+      </form> */}
+
+      {toggleShow && (
+        <div className="w-full h-screen fixed flex bg-gray-500/30 backdrop-opacity-80">
+          <form
+            onSubmit={(e) => {
+              addTask(e);
+              setToggleShow(false);
+            }}
+            className="flex flex-col m-auto bg-white p-5 w-2/5 h-auto rounded-lg"
+          >
+            <div className="mb-4 flex">
+              <h1 className="font-bold flex-auto text-xl">Add To do list</h1>
+              <span
+                className="cursor-pointer"
+                onClick={() => setToggleShow(false)}
+              >
+                X
+              </span>
+            </div>
+            <div>
+              <textarea
+                type="text"
+                id="task"
+                className="border-2 border-orange-400 rounded py-10 w-full"
+              />
+            </div>
+            <div className="mt-6">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-sky-500 rounded-[20px] w-[100%] font-bold text-white"
+              >
+                ADD
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+
+      <div className="mx-5 my-7">
+        <h1 className="text-xl flex justify-center">บันทึกของฉัน</h1>
+      </div>
+      <div className="grid grid-cols-4">
         {tasks?.map((r, idx) => (
           <div
             key={idx}
             style={{ backgroundColor: bgPallets[idx % bgPallets.length] }}
-            className="bg-sky-500 mt-3 p-3 w-[200px] h-[200px] rounded-[20px] "
+            className="bg-sky-500 mt-3 p-3 w-[200px] h-[200px] rounded-[20px] shadow-lg "
           >
-            <h1>To do list : {r.task}</h1>
-            <div>สถานะ : {r.status}</div>
+            <div className="text-center pt-6">
+              <h1>To do list : {r.task}</h1>
+              <div>สถานะ : {r.status}</div>
+            </div>
             <div className="my-3">
-              <button
+              {/* <button
                 className="bg-green-500 text-white px-4 rounded-[10px]"
                 onClick={() => doneTask(r.id)}
               >
@@ -90,26 +133,34 @@ const ToDoList4 = () => {
                 onClick={() => deleteTask(r.id)}
               >
                 delete
-              </button>
-              <div className="">
+              </button> */}
+              <div className="ml-4">
                 <div className="pt-8 text-[10px] ">
                   วันที่ : {new Date(r.datetime).toLocaleString("TH")}
                 </div>
-                <div className="flex">
-                  <div>
+                <div className="flex mt-3 gap-3 ">
+                  <button onClick={() => doneTask(r.id)}>
                     <IoIosCheckmarkCircleOutline />
-                  </div>
-                  <div>
+                  </button>
+                  <button onClick={() => deleteTask(r.id)}>
                     <IoMdTrash />
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+      <div className="flex justify-end mr-8 mt-10">
+        <button
+          onClick={() => setToggleShow(true)}
+          className="px-4 py-2 bg-sky-500 rounded text-white shadow-lg"
+        >
+          <span className="text-3xl">+</span>
+        </button>
+      </div>
     </>
   );
 };
 
-export default ToDoList4;
+export default ToDoList5;

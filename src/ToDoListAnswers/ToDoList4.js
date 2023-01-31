@@ -32,6 +32,7 @@ const ToDoList4 = () => {
 
   const doneTask = (id) => {
     const targetTask = tasks.filter((r) => r.id === id)[0];
+    // เอาตัวแรกที่ filter ออกมา
     const newTasks = [
       ...tasks.filter((r) => r.id !== id),
       {
