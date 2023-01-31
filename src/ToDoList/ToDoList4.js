@@ -42,6 +42,13 @@ const ToDoList4 = () => {
       },
     ];
     updateTasks(newTasks);
+
+    // const targetTaskIndex = tasks.findIndex((t) => t.id === id);
+    // const newTask = [...tasks];
+    // console.log("newTask1: " , newTasks);
+    // newTask[targetTaskIndex].status = "done";
+    // log.info("newTask2: " , newTasks);
+    // updateTasks(newTasks);
   };
 
   const deleteTask = (id) => {
@@ -62,7 +69,7 @@ const ToDoList4 = () => {
         </button>
       </form>
       <div>
-      {tasks?.map((t) => (
+        {tasks?.map((t) => (
           <div className="bg-yellow-300 mt-2">
             <h1>{t.task}</h1>
             <div>Status: {t.status}</div>
