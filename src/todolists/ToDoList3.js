@@ -1,6 +1,6 @@
 import react, { useState, useEffect } from "react";
 
-const ToDoList2 = () => {
+const ToDoList3 = () => {
   const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
   console.log(_tasks);
   const [tasks, setTasks] = useState(_tasks); //for mapping/ rendering on screen
@@ -12,16 +12,19 @@ const ToDoList2 = () => {
     const newTasks = [
       ..._tasks,
       {
+        id: new Date().getTime(),
         task: e.target["tasks"].value,
+        datetime: new Date(),
+        status: "active",
       },
-    ];
+    ].sort((a, b) => b.id - a.id);
     localStorage.setItem("tasks", JSON.stringify(newTasks));
     setTasks(newTasks);
   };
   return (
     <>
-      <form onSubmit={(e) => addTask(e)}>    
-      {/* submit new tasks to "addTasks" */}
+      <form onSubmit={(e) => addTask(e)}>
+        {/* submit new tasks to "addTasks" */}
         <input
           type="text"
           id="tasks"
@@ -33,11 +36,15 @@ const ToDoList2 = () => {
       </form>
       <div>
         {tasks?.map((r) => (
-          <div className="bg-yellow-300 mt-2 rounded">{r.task}</div> // {} for rendering in JSX, not as texts
+          <div className="bg-yellow-300 mt-2 rounded">
+            <h1>{r.task}</h1>
+            <div>status:{r.status}</div>
+            <div>date: {new Date(r.datetime).toLocaleString()}</div>
+          </div> // {} for rendering in JSX, not as texts
         ))}
       </div>
     </>
   );
 };
 
-export default ToDoList2;
+export default ToDoList3;

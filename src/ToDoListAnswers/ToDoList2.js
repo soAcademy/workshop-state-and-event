@@ -7,16 +7,16 @@ const ToDoList2 = () => {
 
   const addTask = (e) => {
     e.preventDefault();
-    const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
+    const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? []; // get infomation that is already in localStorage
     console.log(e.target["task"].value);
     const newTasks = [
       ..._tasks,
       {
-        task: e.target["task"].value,
+        task: e.target["task"].value,   //add typed infomation
       },
     ];
 
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    localStorage.setItem("tasks", JSON.stringify(newTasks)); //add to localStorage
     setTasks(newTasks);
   };
 
