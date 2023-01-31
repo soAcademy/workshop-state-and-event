@@ -57,15 +57,21 @@ const ToDoList4 = () => {
   const updateTask = (id) => {
     // console.log(id);
     // console.log(tasks);
-    const data = tasks.find((r) => r.id === id);
-    // console.log(data);
-    data.status = "done";
-    // console.log(data);
+    const data = tasks.filter((r) => r.id === id);
+    const data0 = data[0];
+    // console.log(data0);
 
-    // console.log(tasks);
     const filterTasksOut = tasks.filter((r) => r.id !== id);
     // console.log(filterTasksOut);
-    const newArrTasks = [...filterTasksOut, data];
+    const newArrTasks = [
+      ...filterTasksOut,
+      {
+        id: data0.id,
+        dateTime: data0.dateTime,
+        task: data0.task,
+        status: "done",
+      },
+    ];
     // console.log(newArrTasks);
 
     savOnLocalSt(newArrTasks);
@@ -109,7 +115,7 @@ const ToDoList4 = () => {
                   {new Date(r.dateTime).toLocaleString("TH")}
                 </div>
                 <div className="flex justify-center text-xl py-8">
-                  <p className={r.status === "done" && `line-through`}>
+                  <p className={r.status === "done" ? `line-through` : ``}>
                     {r.task}
                   </p>
                 </div>
