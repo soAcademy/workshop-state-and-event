@@ -27,7 +27,7 @@ const ToDoList3 = () => {
       </form>
       <ul className="p-4">
         {tasks.map((task) => (
-          <li className="p-2 bg-orange-400 mb-2">
+          <li key={task.id} className="p-2 bg-orange-400 mb-2">
             <div className="text-xl">{task.task}</div>
             <div className="text-sm">{task.dateTime}</div>
             <div className="text-sm font-bold">{task.status}</div>
