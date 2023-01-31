@@ -6,13 +6,13 @@ const ToDoListApp = () => {
   );
   const [counter, setCounter] = useState(localStorage.getItem("counter") ?? 0);
 
-  // useEffect(() => {
-  //   localStorage.setItem("tasks", JSON.stringify(tasks));
-  // }, [JSON.stringify(tasks)]);
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [JSON.stringify(tasks)]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("counter", counter);
-  // }, [counter]);
+  useEffect(() => {
+    localStorage.setItem("counter", counter);
+  }, [counter]);
 
   return (
     <div className="bg-gray-400 m-6 rounded-lg p-6 font-kanit">
@@ -40,7 +40,7 @@ const ToDoListApp = () => {
           ];
           setCounter(Number(counter) + 1);
           localStorage.setItem("tasks", JSON.stringify(tasksArray.flat()));
-          localStorage.setItem("counter", Number(counter)+1);
+
           setTasks(JSON.parse(localStorage.getItem("tasks")));
         }}
       >
@@ -59,7 +59,7 @@ const ToDoListApp = () => {
         {tasks?.map((e, idx) => {
           return (
             <div className="flex justify-between border-b py-4">
-              <div className="font-semibold">
+              <div className={`font-semibold ${e.status === 'Done' ? 'line-through' : ""}`}>
                 <div className="text-xl font-bold">Task: {e.task}</div>
                 <div>ID: {e.id}</div>
                 <div>Time: {e.datetime}</div>
@@ -80,7 +80,6 @@ const ToDoListApp = () => {
                   onClick={() => {
                     tasks[idx].status = "Done";
                     setTasks(tasks.flat());
-                    localStorage.setItem("tasks", JSON.stringify(tasks))
                   }}
                 >
                   Done
@@ -89,7 +88,6 @@ const ToDoListApp = () => {
                   className="p-4 my-auto mx-2 rounded bg-red-400"
                   onClick={() => {
                     setTasks([...tasks.slice(0, idx), ...tasks.slice(idx + 1)]);
-                    localStorage.setItem("tasks", JSON.stringify(tasks))
                   }}
                 >
                   ลบ

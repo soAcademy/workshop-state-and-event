@@ -11,13 +11,13 @@ const ToDoList2 = () => {
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('task')))
   return (
     <div>
-      <form onSubmit={addTask} >
-        <input required type="text" className="m-2 border-2 px-2" placeholder="Enter Task..."></input>
-        <button type="submit" className="bg-red-300 rounded p-2">Add</button>
+      <form onSubmit={addTask} className="font-kanit">
+        <input required type="text" className="m-2 border-2 px-2 rounded-lg" placeholder="Enter Task..."></input>
+        <button type="submit" className="bg-red-400 duration-200 rounded p-2 w-16 font-bold hover:bg-red-500 active:bg-red-400">Add</button>
       </form>
       <div className="m-2">
-        {tasks?.map(task=>(
-          <div className="bg-gray-300 font-kanit">Task : {task.task}</div>
+        {tasks?.map((task, idx)=>(
+          <div className="bg-gray-300 font-kanit m-2 p-2 rounded" key={idx}>Task : {task.task}</div>
         ))}
       </div>
     </div>
