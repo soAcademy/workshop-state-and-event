@@ -24,7 +24,7 @@ const ToDoList2 = () => {
           className="p-2 bg-teal-700 hover:bg-red-500"
         />
         <button type="submit" className="px-4 py-2 bg-red-300 rounded">
-          {" "}
+          {""}
           เพิ่ม{" "}
         </button>
       </form>

@@ -29,7 +29,8 @@ const ToDoList2 = () => {
           className="border-2 border-blue-300 rounded py-2 mr-4"
         />
         <button type="submit" className="px-4 py-2 bg-red-300 rounded">
-          เพิ่ม
+        {""}
+          เพิ่ม{""}
         </button>
       </form>
       <div>
