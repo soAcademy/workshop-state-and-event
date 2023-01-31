@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
 import { IoMdCheckmarkCircleOutline, IoMdReturnLeft } from "react-icons/io";
+import AddTaskPopUp from "./AddTaskPopUp";
 import RemoveTaskPopUp from "./RemoveTaskPopUp";
 
 const ToDoList3 = () => {
-  const updateTask = (tasks) => {
+  const updateTasks = (tasks) => {
     localStorage.setItem("task", JSON.stringify(tasks));
     setTasks(tasks.flat());
   };
@@ -24,11 +25,20 @@ const ToDoList3 = () => {
         status: "Active",
       },
     ].sort((a, b) => b.id - a.id);
-    updateTask(newTasks);
+    updateTasks(newTasks);
   };
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("task")));
   const [isRemovePopUp, setIsRemovePopUp] = useState(false);
-  const bgPalettes = ["#00A5Ec", "#8DD7BF", "#FF96C5", "#FF5768", "#FFBF65", '#6C88C4'];
+  const [isAddPopUp, setIsAddPopUp] = useState(false);
+  const [deleteId, setDeleteId] =useState()
+  const bgPalettes = [
+    "#00A5Ec",
+    "#8DD7BF",
+    "#FF96C5",
+    "#FF5768",
+    "#FFBF65",
+    "#6C88C4",
+  ];
   return (
     <div className="font-kanit m-12">
       <div className="text-2xl underline">To Do List</div>
@@ -36,7 +46,7 @@ const ToDoList3 = () => {
         className="bg-red-300 duration-200 rounded-full p-1 w-16 h-16 font-bold 
         hover:bg-red-400 active:bg-red-500 fixed bottom-16 right-16 text-6xl flex 
         justify-center items-center text-white"
-        onClick={() => setIsRemovePopUp(!isRemovePopUp)}
+        onClick={() => setIsAddPopUp(!isAddPopUp)}
       >
         <AiOutlinePlus />
       </button>
@@ -62,7 +72,7 @@ const ToDoList3 = () => {
                     }`}
                     onClick={() => {
                       tasks[idx].status = "Done";
-                      updateTask(tasks);
+                      updateTasks(tasks);
                     }}
                   >
                     <IoMdCheckmarkCircleOutline />
@@ -71,11 +81,9 @@ const ToDoList3 = () => {
                 <span>
                   <button
                     className="mr-2"
-                    onClick={() => {
-                      const _newTasks = [
-                        ...tasks.filter((r) => r.id !== task.id),
-                      ];
-                      updateTask(_newTasks);
+                    onClick={() => {  
+                      setIsRemovePopUp(!isRemovePopUp)
+                      setDeleteId(task.id)
                     }}
                   >
                     <AiOutlineDelete />
@@ -86,11 +94,30 @@ const ToDoList3 = () => {
           </div>
         ))}
       </div>
-      <RemoveTaskPopUp
-        isRemovePopUp={isRemovePopUp}
-        setIsRemovePopUp={setIsRemovePopUp}
-        addTask={addTask}
-      />
+
+      <div
+        className={`flex justify-center items-center fixed 
+        top-0 left-0 h-full w-full duration-300 ${
+          isRemovePopUp ? "scale-1" : "scale-0"
+        }`}
+      >
+        <RemoveTaskPopUp
+          isRemovePopUp={isRemovePopUp}
+          setIsRemovePopUp={setIsRemovePopUp}
+          updateTasks={updateTasks}
+          tasks={tasks}
+          deleteId={deleteId}
+        />
+      </div>
+      <div className={`flex justify-center items-center fixed 
+        top-0 left-0 h-full w-full duration-300
+        ${isAddPopUp ? "scale-1" : "scale-0"}`}>
+        <AddTaskPopUp
+          isAddPopUp={isAddPopUp}
+          setIsAddPopUp={setIsAddPopUp}
+          addTask={addTask}
+        />
+      </div>
     </div>
   );
 };

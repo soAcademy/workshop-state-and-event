@@ -1,47 +1,39 @@
-const RemoveTaskPopUp = ({ isRemovePopUp, setIsRemovePopUp, addTask }) => {
+const RemoveTaskPopUp = ({ isRemovePopUp, setIsRemovePopUp, updateTasks, tasks, deleteId }) => {
   return (
     <div
-      className={`w-[450x] h-[500px] bg-white shadow-xl border-2 border-gray-400 fixed inset-1/4 box-border flex flex-col 
-    justify-between rounded-lg overflow-hidden duration-300 ${
+      className={`w-60 h-36 bg-white shadow-xl border-2 border-gray-400 box-border flex flex-col 
+    justify-evenly rounded-lg overflow-hidden duration-300 ${
       isRemovePopUp ? "scale-1" : "scale-0"
     }`}
     >
-      <div className="p-6 text-lg flex justify-between">
-        เพิ่มโน๊ต
+      <div className="self-center py-4 text-xl">ลบรายการ</div>
+      <div className="flex justify-between mx-8 mb-8">
+        <button
+          onClick={() => {
+            const _newTasks = [...tasks.filter((r) => r.id !== deleteId)];
+            updateTasks(_newTasks);
+            setIsRemovePopUp(false)
+          }}
+          className="bg-blue-400 hover:bg-blue-500 active:bg-blue-600 rounded-lg px-4 py-2"
+        >
+          ยืนยัน
+        </button>
         <button
           onClick={() => {
             setIsRemovePopUp(false);
           }}
-          className="text-red-500"
+          className="bg-gray-300 hover:bg-gray-400 active:bg-gray-500 rounded-lg px-4 py-2"
         >
-          ปิด
+          ยกเลิก
         </button>
       </div>
-      <form 
-      id="addNote"
-      onSubmit={(e)=>{
-          addTask(e)
-          e.target[0].value = ''
-          // setIsRemovePopUp(false)
-        }
-      } 
-      className="h-full w-full flex flex-col justify-between">
-        <textarea
-          id="textarea"
-          className="m-6 p-4 border-2 rounded-md"
-          placeholder="Enter Task..."
-          required
-        ></textarea>
-        <button
-          type="submit"
-          className="bg-sky-400 m-6 mb-8 h-16 rounded-lg hover:bg-sky-500 
-      active:bg-sky-600"
-        >
-          บันทึก
-        </button>
-      </form>
     </div>
   );
 };
 
 export default RemoveTaskPopUp;
+
+// const _newTasks = [
+//   ...tasks.filter((r) => r.id !== task.id),
+// ];
+// updateTask(_newTasks);
