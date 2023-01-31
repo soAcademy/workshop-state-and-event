@@ -15,7 +15,7 @@ const ToDoList3 = () => {
         dateTime: new Date(),
         status: "active",
       },
-    ];
+    ].sort((a, b) => b.id - a.id);
     localStorage.setItem("tasks", JSON.stringify(newTasks));
     setTasks(newTasks);
   };
