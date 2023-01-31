@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const ComponentIncrease = ({ counter, setCounter }) => (
+const ComponentIncrease = ({ counter, setCounter }) => (  //ลูก
   <div>
     <button
       className="bg-green-200 m-3 rounded-lg p-2"
@@ -9,7 +9,7 @@ const ComponentIncrease = ({ counter, setCounter }) => (
     </button>
   </div>
 );
-const ComponentDecrease = ({ counter, setCounter }) => (
+const ComponentDecrease = ({ counter, setCounter }) => (   //ลูก
   <div>
     <button
       className="bg-red-200 m-3 rounded-lg p-2"
@@ -20,7 +20,7 @@ const ComponentDecrease = ({ counter, setCounter }) => (
   </div>
 );
 const Prop4 = () => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(0); //Parent
   return (
     <>
       {counter}
