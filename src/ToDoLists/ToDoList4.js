@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { FaClipboardCheck, FaTrash, FaPlus, FaTimes } from "react-icons/fa";
 
 const ToDoList4 = () => {
   const _task = JSON.parse(localStorage.getItem("tasks")) ?? [];
   // console.log(_task);
   const [tasks, setTasks] = useState(_task);
+  const [toggle, setToggle] = useState(false);
+
+  const colorPallet = ["#79b473", "#70A37F", "#41658A", "#414073", "#4C3957"];
 
   const onsubmitBtn = (e) => {
     e.preventDefault();
@@ -52,6 +56,7 @@ const ToDoList4 = () => {
     localStorage.setItem("tasks", JSON.stringify(newTasks));
 
     setTasks(newTasks);
+    setToggle(false);
   };
 
   const updateTask = (id) => {
@@ -86,58 +91,85 @@ const ToDoList4 = () => {
   };
 
   return (
-    <div className="w-100 h-screen flex justify-center mt-12">
+    <div className="w-full h-100">
       <div>
-        <h1 className="w-full text-center text-2xl mb-4">My ToDoLists</h1>
-        <form
-          className="flex justify-center gap-4 mb-12"
-          onSubmit={(e) => onsubmitBtn(e)}
-        >
-          <input id="task" type="text" className="border-2 rounded-lg p-2" />
-          <button
-            type="submit"
-            className="rounded-lg bg-green-200 hover:bg-green-300 shadow-md active:shadow-lg p-2"
-          >
-            Submit
-          </button>
-        </form>
-        <div className="flex flex-wrap gap-8">
-          {tasks.map((r, idx) => (
-            <div
-              key={idx}
-              className={
-                `rounded-lg shadow-md p-4 mt-2 ` +
-                (r.status === "active" ? `bg-yellow-100` : `bg-gray-200`)
-              }
-            >
-              <div className="flex flex-col gap-2">
-                <div className="text-sm font-thin">
-                  {new Date(r.dateTime).toLocaleString("TH")}
-                </div>
-                <div className="flex justify-center text-xl py-8">
-                  <p className={r.status === "done" ? `line-through` : ``}>
-                    {r.task}
-                  </p>
-                </div>
-                <div className="flex gap-2 justify-between">
-                  <button
-                    onClick={() => updateTask(r.id)}
-                    className="rounded-lg bg-green-300 hover:bg-green-400 p-2"
-                  >
-                    {r.status}
-                  </button>
-                  <button
-                    onClick={() => deleteTask(r.id)}
-                    className="rounded-lg bg-red-300 hover:bg-red-400 p-2"
-                  >
-                    Delete
-                  </button>
+        <h1 className="w-full text-center text-2xl mt-8">My ToDoLists</h1>
+        <div className="w-full h-100 flex justify-center p-8">
+          <div className="w-full grid grid-col-1 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {tasks.map((r, idx) => (
+              <div
+                key={idx}
+                className="max-w-[250px] h-[250px] rounded-lg shadow-lg text-sm p-4 mt-2"
+                style={{
+                  backgroundColor:
+                    colorPallet[
+                      Math.floor(Math.random() * (colorPallet.length - 1))
+                    ],
+                }}
+              >
+                <div className="h-full flex flex-col gap-2 text-white">
+                  <div className="h-[80%] flex text-xl">
+                    <p className={r.status === "done" ? `line-through` : ``}>
+                      {r.task}
+                    </p>
+                  </div>
+                  <div className="h-[20%] flex gap-2 justify-between items-end">
+                    <div className="text-xs font-thin">
+                      {new Date(r.dateTime).toLocaleString("TH")}
+                    </div>
+                    <div className="flex gap-4">
+                      <button onClick={() => updateTask(r.id)} className="">
+                        <FaClipboardCheck className="text-lg" />
+                      </button>
+                      <button onClick={() => deleteTask(r.id)} className="">
+                        <FaTrash className="text-lg" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
+
+      <button
+        className="w-[50px] h-[50px] fixed bottom-8 right-8 z-40 flex items-center justify-center bg-green-300 active:bg-green-400 text-white rounded-full shadow-lg"
+        onClick={() => setToggle(true)}
+      >
+        <FaPlus className="text-lg" />
+      </button>
+
+      {toggle && (
+        <div className="fixed top-0 left-0 right-0 w-full h-screen backdrop-blur-sm">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[350px] z-30 flex items-center justify-center border-2 bg-white rounded-lg shadow-xl p-8">
+            <form
+              className="flex flex-col justify-center items-center gap-8"
+              onSubmit={(e) => onsubmitBtn(e)}
+            >
+              <h1 className="text-2xl font-bold">Add a new ToDoList</h1>
+              <input
+                id="task"
+                type="text"
+                className="w-full border-2 rounded-lg p-2"
+              />
+              <button
+                type="submit"
+                className="w-full rounded-lg bg-green-200 hover:bg-green-300 shadow-md active:shadow-lg p-2"
+              >
+                Submit
+              </button>
+            </form>
+
+            <button
+              onClick={() => setToggle(false)}
+              className="absolute top-4 right-4"
+            >
+              <FaTimes />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
