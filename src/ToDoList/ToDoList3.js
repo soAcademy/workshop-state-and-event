@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 
-const ToDoList2 = () => {
+const ToDoList3 = () => {
   const tmpTasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
   const [tasks, setTasks] = useState(tmpTasks);
   const addTask = (e) => {
     e.preventDefault();
     const tmpTasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
     console.log(e.target["task"].value);
-    const newTasks = [...tmpTasks, { task: e.target["task"].value }];
+    const newTasks = [
+      ...tmpTasks,
+      {
+        id: new Date().getTime(),
+        task: e.target["task"].value,
+        dateTime: new Date(),
+        status: "active",
+      },
+    ];
     localStorage.setItem("tasks", JSON.stringify(newTasks));
     setTasks(newTasks);
   };
@@ -22,11 +30,15 @@ const ToDoList2 = () => {
       </form>
       <div>
         {tasks?.map((r) => (
-          <div className="mt-2 bg-emerald-300 rounded pl-2 py-1">{r.task}</div>
+          <div className="mt-2 bg-emerald-300 rounded pl-2 py-1">
+            <p>{r.task}</p>
+            <p>status: {r.status}</p>
+            <p>Date: {new Date(r.dateTime).toLocaleString("TH")}</p>
+          </div>
         ))}
       </div>
     </div>
   );
 };
 
-export default ToDoList2;
+export default ToDoList3;
