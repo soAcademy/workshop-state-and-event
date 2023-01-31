@@ -53,9 +53,9 @@ const ToDoList5 = () => {
 
     updateTasks(newTasks);
   };
-  const bgPallets = ["#f6f7d8", "#fcdd8d", "#fd8d41"];
+  const bgPallets = ["#f6f7d8", "#fcdd8d", "#fd8d41", "#e8c192"];
   return (
-    <>
+    <div className="mx-8">
       {/* <form onSubmit={(e) => addTask(e)}>
         <input
           type="text"
@@ -108,7 +108,9 @@ const ToDoList5 = () => {
       )}
 
       <div className="mx-5 my-7">
-        <h1 className="text-xl flex justify-center">บันทึกของฉัน</h1>
+        <h1 className="text-xl flex justify-center bg-orange-300 py-3 text-white rounded-[20px]">
+          บันทึกของฉัน
+        </h1>
       </div>
       <div className="grid grid-cols-4">
         {tasks?.map((r, idx) => (
@@ -135,7 +137,7 @@ const ToDoList5 = () => {
                 delete
               </button> */}
               <div className="ml-4">
-                <div className="pt-8 text-[10px] ">
+                <div className="pt-8 text-[10px] text-gray-600">
                   วันที่ : {new Date(r.datetime).toLocaleString("TH")}
                 </div>
                 <div className="flex mt-3 gap-3 ">
@@ -154,12 +156,12 @@ const ToDoList5 = () => {
       <div className="flex justify-end mr-8 mt-10">
         <button
           onClick={() => setToggleShow(true)}
-          className="px-4 py-2 bg-sky-500 rounded text-white shadow-lg"
+          className="px-4 py-2 bg-orange-500 rounded text-white shadow-xl"
         >
           <span className="text-3xl">+</span>
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
