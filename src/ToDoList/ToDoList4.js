@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 
 const ToDoList4 = () => {
   const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
-  console.log(_tasks);
+  console.log("_tasks",_tasks);
   const [tasks, setTasks] = useState(_tasks);
 
   const updateTasks = (newTasks) => {
-    console.log(newTasks);
+    console.log("updateTask_new Tasks",newTasks);
     localStorage.setItem(
       "tasks",
       JSON.stringify(newTasks.sort((a, b) => b.id - a.id))
@@ -17,7 +17,7 @@ const ToDoList4 = () => {
   const addTask = (e) => {
     e.preventDefault();
     const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
-    console.log(e.target["task"].value);
+    console.log("e.Target",e.target["task"].value);
     const newTasks = [
       ..._tasks,
       {
@@ -41,10 +41,10 @@ const ToDoList4 = () => {
         status: "done",
       },
     ];
-
+console.log("DoneTake_newTask",newTasks);
     // const targetTaskIndex = tasks.findIndex((r) => r.id === id);
     // const newTasks = [...tasks];
-    // tasks[targetTaskIndex].status = "done";
+    // newTasks[targetTaskIndex].status = "done";
 
     updateTasks(newTasks);
   };
