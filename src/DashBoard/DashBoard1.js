@@ -276,7 +276,7 @@ const mockData = [
 
 const DashBoard1 = () => {
   const UniqueDeathCause = [...new Set(mockData.map((r) => r.causeOfDeath))];
-  // console.log(UniqueDeathCause);
+  console.log(UniqueDeathCause);
   const deathByCauses = UniqueDeathCause.map((d) => {
     const deathListFilters = mockData.filter((r) => r.causeOfDeath === d);
     // console.log(deathListFilters)
