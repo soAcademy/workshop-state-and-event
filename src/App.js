@@ -70,8 +70,8 @@
 // import ToDoList from "./ToDoList/ToDoList";
 
 // import Charts1 from "./Charts/Charts1";
-import Charts2 from "./Charts/Charts2";
-// import Charts3 from "./Charts/Charts3"
+// import Charts2 from "./Charts/Charts2";
+import Charts3 from "./Charts/Charts3";
 
 import React from "react";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -111,8 +111,8 @@ const App = () => (
     {/* <ToDoList3 /> */}
     {/* <ToDoList4 /> */}
     {/* <Charts1 /> */}
-    <Charts2 />
-    {/* <Charts3 /> */}
+    {/* <Charts2 /> */}
+    <Charts3 />
   </div>
 );
 
