@@ -21,6 +21,9 @@ const orders = [
 
 const Charts1 = () => {
   const option = {
+    title: {
+      text: "Order value by date",
+    },
     xAxis: {
       type: "category",
       data: orders.map((order) => order.date),
@@ -36,6 +39,9 @@ const Charts1 = () => {
         type: "line",
       },
     ],
+    tooltip: {
+      trigger: "axis",
+    },
   };
   return <ReactECharts option={option} />;
 };
