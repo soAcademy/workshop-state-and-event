@@ -136,6 +136,24 @@ const Chart3 = () => {
         type: "candlestick",
         data: stockPrices.map((r) => [r.close, r.open, r.low, r.high]),
       },
+      {
+        name: "AdjClose",
+        type: "line",
+        data: stockPrices.map((r) => r.adjClose),
+        smooth: true,
+        lineStyle: {
+          opacity: 0.5,
+        },
+      },
+      {
+        name: "High",
+        type: "line",
+        data: stockPrices.map((r) => r.high),
+        smooth: true,
+        lineStyle: {
+          opacity: 0.5,
+        },
+      },
     ],
   };
 
