@@ -1,11 +1,11 @@
 
-import Chart2 from "./Charts/Chart2"
+import Chart3 from "./Charts/Chart3"
 
 
 const App0 = () => {
   return (
     <div>
-      <Chart2/>
+      <Chart3/>
      
     </div>
   );
