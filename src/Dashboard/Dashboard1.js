@@ -42,7 +42,7 @@ const Dashboard1 = () => {
   return (
     <div className="font-kanit">
       <div className="h-[822px] w-[1442px] p-2 m-2">
-        <p>จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554-2560</p>
+        <p className='text-2xl font-bold'>จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554-2560</p>
         <div className="flex items-center">
           <p>เลือกปี</p>
           <select
