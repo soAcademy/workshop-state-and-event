@@ -1,61 +1,50 @@
-import ReactECharts from "echarts-for-react";
+// import ReactECharts from "echarts-for-react";
 
 import thailandDeathCause from "./thailand-death-cause.json";
 
-const tdc2557 = thailandDeathCause
-  .filter((entry) => entry.year === 2557)
-  .map((entry) => ({
-    ...entry,
-    deathTotal: entry.deathMale + entry.deathFemale,
-  }))
-  .sort((a, b) => b.deathTotal - a.deathTotal);
+const YEAR = 2557;
 
-// console.log(JSON.stringify(tdc2557, null, 2));
+const tdcByYear = (year) =>
+  thailandDeathCause
+    .filter((entry) => entry.year === year)
+    .map((entry) => ({
+      ...entry,
+      deathTotal: entry.deathMale + entry.deathFemale,
+    }))
+    .sort((a, b) => b.deathTotal - a.deathTotal);
 
-const tdc2557total = tdc2557.reduce((acc, cur) => acc + cur.deathTotal, 0);
+const tdcDeathTotal = (tdc) =>
+  tdc.reduce((acc, cur) => acc + cur.deathTotal, 0);
 
-const provinceList = [...new Set(tdc2557.map((entry) => entry.provinceName))];
+const provinceList = (tdc) => [
+  ...new Set(tdc.map((entry) => entry.provinceName)),
+];
 
-// console.log(provinceList);
+const tdcByProvince = (tdc) =>
+  provinceList(tdc)
+    .map((province) => ({
+      provinceName: province,
+      deathTotal: tdc
+        .filter((entry) => entry.provinceName === province)
+        .reduce((acc, cur) => acc + cur.deathTotal, 0),
+    }))
+    .sort((a, b) => b.deathTotal - a.deathTotal);
 
-// const tdc2557byProvince = tdc2557.reduce((acc, cur) => {
-//   console.log(cur);
+// console.log(tdcByProvince(tdcByYear(YEAR)));
 
-//   const newEntry = acc
-//     .filter((entry) => entry.provinceName === cur.provinceName)
-//     .pop() || { provinceName: cur.provinceName, deathTotal: 0 };
+const codList = (tdc) => [...new Set(tdc.map((entry) => entry.causeOfDeath))];
 
-//   // console.log("newEntry:");
-//   // console.log(newEntry);
+const tdcByCOD = (tdc) =>
+  codList(tdc)
+    .map((cod) => ({
+      causeOfDeath: cod,
+      deathTotal: tdc
+        .filter((entry) => entry.causeOfDeath === cod)
+        .reduce((acc, cur) => acc + cur.deathTotal, 0),
+    }))
+    .sort((a, b) => b.deathTotal - a.deathTotal);
 
-//   // newEntry.deathMale = newEntry.deathMale + cur.deathMale;
-//   // newEntry.deathFemale = newEntry.deathFemale + cur.deathFemale;
-//   newEntry.deathTotal = newEntry.deathTotal + cur.deathTotal;
-
-//   acc.push(newEntry);
-//   // console.log("acc:");
-//   // console.log(acc);
-
-//   return acc;
-// }, []);
-
-const tdc2557byProvince = provinceList
-  .map((province) => ({
-    provinceName: province,
-    deathTotal: tdc2557
-      .filter((entry) => entry.provinceName === province)
-      .reduce((acc, cur) => acc + cur.deathTotal, 0),
-  }))
-  .sort((a, b) => b.deathTotal - a.deathTotal);
-
-// console.log(tdc2557);
-console.log(tdc2557byProvince);
-
-const codList = [...new Set(tdc2557.map((entry) => entry.causeOfDeath))];
-
-// console.log(codList);
-
-// const tdc2557byCod = tdc2557
+// console.log(tdcByCOD(tdcByYear(YEAR)));
 
 const Dashboard1 = () => {
   // const option = {
@@ -87,16 +76,39 @@ const Dashboard1 = () => {
   // };
 
   return (
-    <>
+    <div className="flex flex-row gap-8 font-nstl">
       {/* <ReactECharts option={option} /> */}
-      {tdc2557byProvince.map((cause) => (
-        <>
-          <div>{cause.provinceName}</div>
-          <div>{cause.deathTotal}</div>
-          <div>{((cause.deathTotal * 100) / tdc2557total).toFixed(2)}%</div>
-        </>
-      ))}
-    </>
+      <div className="flex flex-col gap-4">
+        {tdcByProvince(tdcByYear(YEAR)).map((cause, idx) => (
+          <div key={idx} className="flex flex-row gap-4">
+            <div>{cause.provinceName}</div>
+            <div>{cause.deathTotal.toLocaleString("TH")}</div>
+            <div>
+              {(
+                (cause.deathTotal * 100) /
+                tdcDeathTotal(tdcByYear(YEAR))
+              ).toFixed(2)}
+              %
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col gap-4">
+        {tdcByCOD(tdcByYear(YEAR)).map((cause, idx) => (
+          <div key={idx} className="flex flex-row gap-4">
+            <div>{cause.causeOfDeath}</div>
+            <div>{cause.deathTotal.toLocaleString("TH")}</div>
+            <div>
+              {(
+                (cause.deathTotal * 100) /
+                tdcDeathTotal(tdcByYear(YEAR))
+              ).toFixed(2)}
+              %
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
