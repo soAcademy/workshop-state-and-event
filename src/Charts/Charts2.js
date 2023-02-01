@@ -26,6 +26,7 @@ const Charts2 = () => {
     },
     legend: {
       orient: "vertical",
+      top: "middle",
       left: "left",
       center: "center",
     },
