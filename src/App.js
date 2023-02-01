@@ -8,7 +8,7 @@
 // import ToDoList3 from "./ToDoListAnswers/ToDoList3";
 // import ToDoList4 from "./ToDoListAnswers/ToDoList4";
 // import ToDoList5 from "./ToDoListAnswers/ToDoList5";
-import Chart2 from "./charts/Chart2";
+import Chart3 from "./charts/Chart3";
 // import Chart2 from "./ChartsAnswer/Chart2";
 // import Chart3 from "./ChartsAnswer/Chart3";
 
@@ -25,7 +25,7 @@ const App = () => {
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
       {/* <ToDoList5 /> */}
-      <Chart2 />
+      <Chart3 />
       {/* <Chart2 />
       <Chart3 /> */}
     </>
