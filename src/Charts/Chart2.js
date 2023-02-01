@@ -22,7 +22,7 @@ const Chart2 = () => {
 
   const options = {
     title: {
-      text: "Products",
+      text: "Order by Product",
       // subtext: "Fake Data",
       left: "center",
     },
@@ -45,7 +45,10 @@ const Chart2 = () => {
         //   { value: 484, name: "Union Ads" },
         //   { value: 300, name: "Video Ads" },
         // ],
-        data: orderByProduct.map(r=>({value: r.orderValue, name: r.name})),
+        data: orderByProduct.map((r) => ({
+          value: r.orderValue,
+          name: r.name,
+        })),
         emphasis: {
           itemStyle: {
             shadowBlur: 10,
@@ -58,8 +61,8 @@ const Chart2 = () => {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
-      <div className="w-[800px]">
+    <div className="w-full h-screen flex justify-center items-center bg-gray-300">
+      <div className="w-[800px] bg-white rounded-lg shadow-lg p-8">
         <ReactECharts option={options} />
       </div>
     </div>
