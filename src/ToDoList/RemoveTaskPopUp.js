@@ -14,7 +14,7 @@ const RemoveTaskPopUp = ({ isRemovePopUp, setIsRemovePopUp, updateTasks, tasks, 
             updateTasks(_newTasks);
             setIsRemovePopUp(false)
           }}
-          className="bg-blue-400 hover:bg-blue-500 active:bg-blue-600 rounded-lg px-4 py-2"
+          className="bg-blue-400 hover:bg-blue-500 eactive:bg-blue-600 rounded-lg px-4 py-2"
         >
           ยืนยัน
         </button>
