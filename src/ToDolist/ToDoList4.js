@@ -6,7 +6,7 @@ const ToDoList4 = ()=>{
   const[finalTasks,setFinalTasks] = useState(_tasks);
 
   const updateTasks =(newTasks)=>{
-    console.log('newTasks',newTasks);
+    console.log('updateTasks ;',newTasks);
     localStorage.setItem(
       'keyTasks',
     JSON.stringify(newTasks.sort((a,b)=>b.id-a.id))
@@ -16,7 +16,7 @@ const ToDoList4 = ()=>{
   const addTask = (e)=>{
     e.preventDefault();
     const _tasks = JSON.parse(localStorage.getItem("keyTasks"))??[];
-    console.log(e.target["keyTasks"].value);
+    console.log("Add Task :",e.target["keyTasks"].value);
     const newTasks =[
       ..._tasks,
       {
@@ -31,6 +31,7 @@ const ToDoList4 = ()=>{
   };
   const doneTask = (id)=>{
     const targetTask = finalTasks.filter(r=>r.id === id)[0];
+    console.log('targetTask :',targetTask);
     const newTasks = [
       ...finalTasks.filter((r)=>r.id !== id),
       {
