@@ -1,4 +1,4 @@
-import Dashboard from "./Dashboard/Dashboard";
+import Dashboard from "./Dashboard/Dashboard0";
 import THDeathCause from "./Dashboard/thailand-death-cause.json"
 
 const App = () => {
