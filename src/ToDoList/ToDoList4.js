@@ -75,6 +75,8 @@ const ToDoList4 = () => {
               type="text"
               id="task"
               className="border border-gray-300 bg-white rounded my-4 p-4 w-full h-48"
+              required
+              placeholder="Type task ...."
             />
             <button
               type="submit"
