@@ -69,8 +69,8 @@
 // import ToDoList4 from "./ToDoList/ToDoList4";
 // import ToDoList from "./ToDoList/ToDoList";
 
-import Charts1 from "./Charts/Charts1";
-// import Charts2 from "./Charts/Charts2"
+// import Charts1 from "./Charts/Charts1";
+import Charts2 from "./Charts/Charts2";
 // import Charts3 from "./Charts/Charts3"
 
 import React from "react";
@@ -110,9 +110,9 @@ const App = () => (
     {/* <ToDoList2 /> */}
     {/* <ToDoList3 /> */}
     {/* <ToDoList4 /> */}
-    <Charts1 />
-    {/* <Charts2 />
-    <Charts3 /> */}
+    {/* <Charts1 /> */}
+    <Charts2 />
+    {/* <Charts3 /> */}
   </div>
 );
 
