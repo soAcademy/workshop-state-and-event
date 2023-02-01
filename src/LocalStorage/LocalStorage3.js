@@ -15,9 +15,12 @@ const LocalStorage3 = () => {
 
   console.log(localStorage.getItem("objectData"));
 
-  
+  //getItem เพื่อดึงค่าจาก Database เข้ามา
+
   const data = JSON.parse(localStorage.getItem("objectData"));
   console.log(data);
+
+  //
 
   return (
     <>
