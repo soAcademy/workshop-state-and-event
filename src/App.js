@@ -67,7 +67,11 @@
 // import ToDoList2 from "./ToDoList/ToDoList2";
 // import ToDoList3 from "./ToDoList/ToDoList3";
 // import ToDoList4 from "./ToDoList/ToDoList4";
-import ToDoList from "./ToDoList/ToDoList";
+// import ToDoList from "./ToDoList/ToDoList";
+
+import Charts1 from "./Charts/Charts1";
+// import Charts2 from "./Charts/Charts2"
+// import Charts3 from "./Charts/Charts3"
 
 import React from "react";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -96,7 +100,8 @@ const App = () => (
   //   <div className="bg-purple-500 p-4">This is Footer</div>
   // </BrowserRouter>
   <div className="p-8 font-prompt text-slate-900">
-    <h1 className="mb-6 text-xl font-bold">บันทึกของฉัน</h1>
+    {/* <h1 className="mb-6 text-xl font-bold">บันทึกของฉัน</h1> */}
+    {/* <ToDoList /> */}
     {/* <LocalStorage1 /> */}
     {/* <LocalStorage2 /> */}
     {/* <LocalStorage3 /> */}
@@ -105,7 +110,9 @@ const App = () => (
     {/* <ToDoList2 /> */}
     {/* <ToDoList3 /> */}
     {/* <ToDoList4 /> */}
-    <ToDoList />
+    <Charts1 />
+    {/* <Charts2 />
+    <Charts3 /> */}
   </div>
 );
 
