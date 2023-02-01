@@ -29,12 +29,15 @@ const Chart1 = () => {
     yAxis: {
       type: "value",
       name: "มูลค่าสั่งซื้อ",
+      max: "26000",
+      min: "21000",
     },
     series: [
       {
         data: orders.map((order) => order.orderValue),
         type: "line",
         smooth: true,
+        lineStyle: { color: "#749f83", width: 5 },
       },
     ],
     tooltip: {

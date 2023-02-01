@@ -3,6 +3,7 @@
 // import ToDoList3 from "./ToDoList/ToDoList3";
 import ToDoList4 from "./ToDoList/ToDoList4";
 import Charts1 from "./Charts/Charts1";
+import Charts2 from "./Charts/Charts2";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       {/* <ToDoList4 /> */}
       {/* <Test /> */}
       <Charts1 />
+      <Charts2 />
     </>
   );
 };
