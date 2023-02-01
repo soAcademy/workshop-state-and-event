@@ -21,19 +21,24 @@ const Chart1 = () => {
   ];
 
   const options = {
-    grid: { top: 10, right: 8, bottom: 24, left: 50 },
+    // grid: { top: 10, right: 8, bottom: 24, left: 50 },
     xAxis: {
       type: "category",
       data: orders.map((r) => r.date),
+      name: "วันที่",
     },
     yAxis: {
       type: "value",
+      name: "มูลค่าสั่งซื้อ",
+      min: 22000,
+      max: 26000
     },
     series: [
       {
         data: orders.map((r) => r.orderValue),
         type: "line",
         smooth: true,
+        lineStyle : { width: 2, color: "#f11"}
       },
     ],
     tooltip: {
