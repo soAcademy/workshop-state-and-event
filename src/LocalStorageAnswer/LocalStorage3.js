@@ -1,4 +1,7 @@
-const LocalStorage3 = () => {
+const LocalStorage3 = (props) => {
+  console.log(props);
+  const [data1, data2] = props; // destructuring
+
   const objectData = {
     name: "Bin",
     location: "Bangkok",
@@ -15,6 +18,7 @@ const LocalStorage3 = () => {
 
   return (
     <>
+    {data1}, {data2}
       {data.name}, {data.location}, {data.age}
     </>
   );
