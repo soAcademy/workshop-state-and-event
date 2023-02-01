@@ -10,7 +10,7 @@ import ToDoList4 from "./ToDoListAnswers/ToDoList4";
 import ToDoList5 from "./ToDoListAnswers/ToDoList5";
 import Chart1 from "./Charts/Chart1";
 import Chart2 from "./Charts/Chart2";
-import Chart3 from "./ChartsAnswer/Chart3";
+import Chart3 from "./Charts/Chart3";
 
 const App = () => {
   return (
@@ -27,7 +27,7 @@ const App = () => {
       {/* <ToDoList5 /> */}
       <Chart1 />
       <Chart2 />
-      {/* <Chart3 /> */}
+      <Chart3 />
     </>
   );
 };
