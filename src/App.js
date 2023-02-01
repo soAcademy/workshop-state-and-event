@@ -71,7 +71,9 @@
 
 // import Charts1 from "./Charts/Charts1";
 // import Charts2 from "./Charts/Charts2";
-import Charts3 from "./Charts/Charts3";
+// import Charts3 from "./Charts/Charts3";
+
+import Dashboard1 from "./Dashboard/Dashboard1";
 
 import React from "react";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -112,7 +114,8 @@ const App = () => (
     {/* <ToDoList4 /> */}
     {/* <Charts1 /> */}
     {/* <Charts2 /> */}
-    <Charts3 />
+    {/* <Charts3 /> */}
+    <Dashboard1 />
   </div>
 );
 
