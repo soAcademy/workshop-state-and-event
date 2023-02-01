@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const State1 = () => {
   const [title, setTitle] = useState("Bin");
+  console.log("Title:",title);
+  console.log("setTitle:",setTitle);
 
   return (
     <div className="bg-red-200">

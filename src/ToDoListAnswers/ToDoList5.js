@@ -109,7 +109,7 @@ const ToDoList5 = () => {
         {tasks?.map((r, idx) => (
           <div
             key={idx}
-            className="mt-2 rounded-lg p-4 m-2"
+            className="rounded-lg p-4 m-2"
             style={{
               backgroundColor: colorPalletes[idx % colorPalletes.length],
             }}
