@@ -38,7 +38,7 @@ const Chart2 = () => {
         avoidLabelOverlap: false,
         label: {
           show: false,
-          position: 'center'
+          position: 'bottom'
         },
         emphasis: {
           itemStyle: {
@@ -48,15 +48,14 @@ const Chart2 = () => {
           },
           label: {
             show: true,
-            fontSize: '30',
-            fontWeight: 'bold'
+            fontSize: '10',
+            fontWeight: 'bold',
+            formatter: '{b}: {@2012} ({d}%)'
           },
+          focus: 'self',
         },
       },
     ],
-    tooltip: {
-      trigger: "item",
-    },
     legend: {
       position: 'left',
       left: 0,
