@@ -28,6 +28,7 @@ const Chart1 = () => {
     yAxis: {
       type: "value",
       name: "มูลค่าสั่งซื้อ",
+      
     },
     series: [
       {
@@ -35,7 +36,7 @@ const Chart1 = () => {
         type: "line",
         smooth: true,
         itemStyle: { normal: { areaStyle: { type: "default" } } },
-        lineStyle: { color: "#ffbcd9" },
+        lineStyle: { color: "#ffbcd9",type : 'dotted' },
         // darkMode: auto
       },
     ],
