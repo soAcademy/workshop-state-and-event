@@ -28,6 +28,8 @@ import ToDoList3 from "./ToDoList/TodoList3";
 import ToDoList4 from "./ToDoList/ToDoList4";
 import ToDoList5 from "./ToDoListAnswers/ToDoList5"
 
+import Chart1 from "./Charts/Chart1";
+
 
 // import ToDoList4 from "./ToDoListAnswers/ToDoList4"
 
@@ -63,7 +65,10 @@ const App = () => {
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
-      <ToDoList5 />
+      {/* <ToDoList5 /> */}
+      <Chart1 />
+      {/* <Chart2 /> */}
+      {/* <Chart3 /> */}
     </>
   );
 };
