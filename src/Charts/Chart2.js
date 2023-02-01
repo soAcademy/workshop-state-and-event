@@ -35,13 +35,33 @@ const Chart2 = () => {
           };
         }),
         radius: ["40%", "70%"],
+        avoidLabelOverlap: false,
+        label: {
+          show: false,
+          position: 'center'
+        },
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: "rgba(0, 0, 0, 0.5)",
+          },
+          label: {
+            show: true,
+            fontSize: '30',
+            fontWeight: 'bold'
+          },
+        },
       },
     ],
-
     tooltip: {
       trigger: "item",
     },
-    radius: ["40%", "70%"],
+    legend: {
+      position: 'left',
+      left: 0,
+      orient: 'vertical'
+    },
   };
   return <ReactECharts option={options} />;
 };
