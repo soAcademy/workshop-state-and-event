@@ -121,22 +121,74 @@ const Chart3 = () => {
     },
   ];
   const options = {
-    xAxis: {
-      data: stockPrices.map((e) => e.date),
-    },
-    yAxis: {
-      scale: true,
-    },
+    xAxis: [
+      {
+        data: stockPrices.map((e) => e.date),
+        min:'dataMin',
+        max:'dataMax',
+      },
+      {
+        type: 'category',
+        data: stockPrices.map((e) => e.date),
+        gridIndex: 1,
+        axisLine: {onZero: false},
+        splitLine: {show:false},
+        axisTick: {show:false},
+        axisLabel: {show:false},
+        min: 'dataMin',
+        max: 'dataMax',
+      },
+    ],
+    yAxis: [
+      {
+        scale: true,
+        splitArea: {
+          show: true
+        },
+        splitNumber: 6,
+      },
+      {
+        scale: true,
+        gridIndex: 1,
+        splitNumber: 4,
+        axisLabel: {show: false},
+      }
+    ],
+    grid: [
+      {
+        left: "10%",
+        right: "8%",
+        height: "50%",
+      },
+      {
+        left: "10%",
+        right: "8%",
+        top: "70%",
+        height: "30%",
+      },
+    ],
     series: [
       {
         type: "candlestick",
         data: stockPrices.map((e) => [e.close, e.open, e.low, e.high]),
       },
       {
-        name: 'AdjClose',
-        type: 'line',
+        name: "AdjClose",
+        type: "line",
         smooth: true,
-        data: stockPrices.map(e=>e.adjClose)
+        data: stockPrices.map((e) => e.adjClose),
+      },
+      {
+        name: "Volume",
+        type: "bar",
+        data: stockPrices.map((e) => e.volume),
+        large: true,
+        yAxisIndex:1,
+        xAxisIndex:1,
+        encode: {
+          x: 0,
+          y: 5,
+        },
       },
     ],
     tooltip: {

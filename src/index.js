@@ -6,6 +6,7 @@ import "./index.css";
 import AppToDoList from "./AppToDoList"
 import AppLocalStorage from "./AppLocalStorage";
 import AppChart from "./AppChart";
+import AppDashBoard from "./AppDashBoard";
 import reportWebVitals from "./reportWebVitals";
 
 
@@ -14,7 +15,8 @@ root.render(
   <React.StrictMode>
     {/* <AppLocalStorage /> */}
     {/* <AppToDoList /> */}
-    <AppChart />
+    {/* <AppChart /> */}
+    <AppDashBoard />
   </React.StrictMode>
 );
 
