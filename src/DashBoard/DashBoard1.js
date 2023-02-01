@@ -275,44 +275,56 @@ const mockData = [
 ];
 
 const DashBoard1 = () => {
-  const UniqueDeathCause = [...new Set(mockData.map((r) => r.causeOfDeath))];
-  console.log(UniqueDeathCause);
-  const deathByCauses = UniqueDeathCause.map((d) => {
-    const deathListFilters = mockData.filter((r) => r.causeOfDeath === d);
-    // console.log(deathListFilters)
+  // console.log(mockData)
+  // console.log(mockData.map((r) => r.causeOfDeath))
+  const deathCauseList = [...new Set(mockData.map((r) => r.causeOfDeath))];
+  console.log(deathCauseList);
+
+  const deathByCauses = deathCauseList.map((deathcause) => {
+    const deathListFilters = mockData.filter((r) => r.causeOfDeath === deathcause)
+    console.log("DeathFilter",deathListFilters)
     const sumDeath = deathListFilters.reduce((acc,r) => {
         acc.deathFemale += r.deathFemale;
         acc.deathMale += r.deathMale;
         return acc;
     },
-
+    {deathFemale: 0, deathMale: 0 }
     )
     // console.log(sumDeath);
 
     return{
-        causeOfDeath: sumDeath.causeOfDeath,
+        causeOfDeath: deathcause,
         deathMale: sumDeath.deathMale,
         deathFemale: sumDeath.deathFemale,
         death: sumDeath.deathMale + sumDeath.deathFemale
     }
     
 })
-console.log(deathByCauses)
+// console.log(deathByCauses)
 
 return (
     <>
-    <div>
+    <div className="w-full h-screen flex flex-col gap-3 px-10">
+    <div className="text-xl font-bold pt-5">จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554 - 2559</div>
+    <div className="flex gap-3">
+    <div>เลือกปี</div>
+    <div>2558</div>
+    </div>
+    <div>ปี 2558 :: สาเหตุการเสียชีวิต: ความดันเลือดสูง และโรคหลอดเลือดในสมอง</div>
+    <div className="border-1 border-red-500 w-full h-screen px-2">
     <table>
-        <h1 className="mb-4 text-xl font-bold">สาเหตุการเสียชีวิต</h1>
+        <h4 className="text-lg font-bold">สาเหตุการเสียชีวิต</h4>
         <tbody>
             {deathByCauses?.map((r) => (
                 <tr>
-                    <td className="bg-gray-600 text-white">{r.causeOfDeath}</td>
-                    <td className="bg-yellow-700 text-white">{r.death}</td>
+                    <td className="bg-gray-600 text-white pr-5">{r.causeOfDeath}</td>
+                    <td className="bg-yellow-700 text-white pl-10">{r.death}</td>
+                    <td></td>
                 </tr>
             ))}
         </tbody>
     </table>
+    </div>
     </div>   
     </>
 )
