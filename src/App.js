@@ -6,8 +6,8 @@ const App = () => {
   return (
     <>
       {/* <Chart1 /> */}
-      <Chart2 />
-      {/* <Chart3 /> */}
+      {/* <Chart2 /> */}
+      <Chart3 />
     </>
   );
 };
