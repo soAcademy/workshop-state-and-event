@@ -13,6 +13,7 @@ const ToDoList3 = () => {
       ..._tasks,
       {
         id: new Date().getTime(),
+        // id: _tasks.length + 1,
         task: e.target["task"].value,
         datetime: new Date(),
         status: "active",
