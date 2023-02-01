@@ -5,6 +5,9 @@ import ToDoList4 from "./ToDoList/ToDoList4";
 import Charts1 from "./Charts/Charts1";
 import Charts2 from "./Charts/Charts2";
 import Charts3 from "./Charts/Charts3";
+import Dashboard from "./Dashboard/Dashboard";
+import Dash from "./Dashboard2/Dash";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
   return (
@@ -14,9 +17,11 @@ const App = () => {
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
       {/* <Test /> */}
-      <Charts1 />
-      <Charts2 />
-      <Charts3 />
+      {/* <Charts1 /> */}
+      {/* <Charts2 /> */}
+      {/* <Charts3 /> */}
+      {/* <Dashboard /> */}
+      <Dash />
     </>
   );
 };
