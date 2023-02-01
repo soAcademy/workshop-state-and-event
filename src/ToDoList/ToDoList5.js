@@ -42,14 +42,12 @@ const ToDoList5 = () => {
 
   const doneTask = (id) => {
     const targetTask = tasks.filter((t) => t.id === id)[0];
+    
+    targetTask.status = "done";
+
     const newTasks = [
       ...tasks.filter((t) => t.id !== id),
-      {
-        id,
-        task: targetTask.task,
-        dateTime: targetTask.dateTime,
-        status: "done",
-      },
+      targetTask,
     ];
     updateTasks(newTasks);
 
