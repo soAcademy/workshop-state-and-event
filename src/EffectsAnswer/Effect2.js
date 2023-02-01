@@ -5,7 +5,7 @@ const Effect2 = () => {
   const [profile, setProfile] = useState("My name is Bin");
 
   useEffect(() => {
-    setProfile(`My name is ${name}`);
+    setProfile(`Hello My name is ${name}`);
   }, [name]);
 
   return (

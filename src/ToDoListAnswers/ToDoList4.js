@@ -30,6 +30,10 @@ const ToDoList4 = () => {
     updateTasks(newTasks);
   };
 
+  const f1 = () => {
+    return <div>AAA</div>
+  }
+
   const doneTask = (id) => {
     // const targetTask = tasks.filter((r) => r.id === id)[0];
     // const newTasks = [
@@ -44,7 +48,7 @@ const ToDoList4 = () => {
 
     const targetTaskIndex = tasks.findIndex((r) => r.id === id);
     const newTasks = [...tasks];
-    tasks[targetTaskIndex].status = "done";
+    newTasks[targetTaskIndex].status = "done";
 
     updateTasks(newTasks);
   };

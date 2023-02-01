@@ -4,7 +4,7 @@ const State6 = () => {
     const [number1, setNumber1] = useState(0);
     const [number2, setNumber2] = useState(0);
     const [sum, setSum] = useState(0);
-
+    console.log("number1:",number1)
     return(
         <div className="">
             <div>

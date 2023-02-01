@@ -1,5 +1,5 @@
 const LocalStorage1 = () => {
- // localStorage.setItem("username", "Bin")
+ localStorage.setItem("username", "Na")
 
   const username = localStorage.getItem("username")
 

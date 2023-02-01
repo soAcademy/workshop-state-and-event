@@ -127,24 +127,28 @@ const arrayData = [
 
 # โจทย์ Chart
 
+## ติดตั้ง echarts และ echarts for react
+
+`yarn add echarts echarts-for-react`
+
 1. สร้าง line chart จาก ข้อมูลนี้
 
 ```
 const orders = [
   {
-    date: "2022-01-13,
+    date: "2022-01-13",
     orderValue: 23000
   },
   {
-    date: "2022-01-14,
+    date: "2022-01-14",
     orderValue: 25000
   },
   {
-    date: "2022-01-15,
+    date: "2022-01-15",
     orderValue: 24000
   },
   {
-    date: "2022-01-16,
+    date: "2022-01-16",
     orderValue: 23000
   }
 ]

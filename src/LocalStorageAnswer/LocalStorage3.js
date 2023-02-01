@@ -1,6 +1,6 @@
 const LocalStorage3 = (props) => {
   console.log(props);
-  const [data1, data2] = props; // destructuring
+  const {data1, data2} = props; // destructuring
 
   const objectData = {
     name: "Bin",
