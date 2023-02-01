@@ -24,9 +24,11 @@ const Charts1 = () => {
     xAxis: {
       type: "category",
       data: orders.map((order) => order.date),
+      name: "Date",
     },
     yAxis: {
       type: "value",
+      name: "Order value",
     },
     series: [
       {
