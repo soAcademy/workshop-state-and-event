@@ -30,13 +30,15 @@ const Chart1 = () => {
     yAxis: {
       type: "value",
       name: "orderValue",
+      max: "dataMax",
+      min: 22500,
     },
     series: [
       {
         data: orders.map((order) => order.orderValue),
         type: "line",
         smooth: true,
-        lineStyle: { color: "#EA047E" },
+        lineStyle: { color: "#82CD47", width: 2, type: "solid" },
       },
     ],
     tooltip: {

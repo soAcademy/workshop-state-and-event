@@ -12,6 +12,7 @@
 // import Chart2 from "./ChartsAnswer/Chart2";
 // import Chart3 from "./ChartsAnswer/Chart3";
 import Chart1 from "./Charts/Chart1";
+import Chart2 from "./Charts/Chart2";
 
 const App = () => {
   return (
@@ -27,7 +28,7 @@ const App = () => {
       {/* <ToDoList4 /> */}
       {/* <ToDoList5 /> */}
       <Chart1 />
-      {/* <Chart2 /> */}
+      <Chart2 />
       {/* <Chart3 /> */}
     </>
   );
