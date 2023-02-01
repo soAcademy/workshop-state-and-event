@@ -24,17 +24,22 @@ const Chart1 = () => {
     xAxis: {
       type: "category",
       data: orders.map((order) => order.date),
-      name: "วันที่"
+      name: "วันที่",
     },
     yAxis: {
       type: "value",
-      name: "มูลค่าสั่งซื้อ"
+      name: "มูลค่าสั่งซื้อ",
+      // max: "dataMax",
+      // min: "dataMin",
+      max: 28000,
+      min: 20000
     },
     series: [
       {
         data: orders.map((order) => order.orderValue),
         type: "line",
         smooth: true,
+        lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
       },
     ],
     tooltip: {

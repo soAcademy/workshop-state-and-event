@@ -26,8 +26,8 @@ const App = () => {
       {/* <ToDoList4 /> */}
       {/* <ToDoList5 /> */}
       <Chart1 />
-      <Chart2 />
-      <Chart3 />
+      {/* <Chart2 />
+      <Chart3 /> */}
     </>
   );
 };
