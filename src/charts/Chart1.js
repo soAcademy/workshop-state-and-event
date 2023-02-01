@@ -29,19 +29,23 @@ const Chart1 = () => {
     yAxis: {
       type: "value",
       name: "Order Price",
+      max: "dataMax",
+      min: "dataMin",
     },
     series: [
       {
         data: orders.map((order) => order.orderValue),
         type: "line",
         smooth: true,
+        lineStyle: {color: "green", width: 5, type:"dashed"}
       },
     ],
     tooltip: {
       trigger: "axis",
+      
     },
   };
-  return <ReactECharts option={options} />;
+  return <ReactECharts option={options}  />;
 };
 
 export default Chart1;
