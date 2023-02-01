@@ -5,6 +5,18 @@ import AddTaskPopUp from "./AddTaskPopUp";
 import RemoveTaskPopUp from "./RemoveTaskPopUp";
 
 const ToDoList3 = () => {
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("task")));
+  const [isRemovePopUp, setIsRemovePopUp] = useState(false);
+  const [isAddPopUp, setIsAddPopUp] = useState(false);
+  const [deleteId, setDeleteId] =useState()
+  const bgPalettes = [
+    "#00A5Ec",
+    "#8DD7BF",
+    "#FF96C5",
+    "#FF5768",
+    "#FFBF65",
+    "#6C88C4",
+  ];
   const updateTasks = (tasks) => {
     localStorage.setItem("task", JSON.stringify(tasks));
     setTasks(tasks.flat());
@@ -27,18 +39,6 @@ const ToDoList3 = () => {
     ].sort((a, b) => b.id - a.id);
     updateTasks(newTasks);
   };
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("task")));
-  const [isRemovePopUp, setIsRemovePopUp] = useState(false);
-  const [isAddPopUp, setIsAddPopUp] = useState(false);
-  const [deleteId, setDeleteId] =useState()
-  const bgPalettes = [
-    "#00A5Ec",
-    "#8DD7BF",
-    "#FF96C5",
-    "#FF5768",
-    "#FFBF65",
-    "#6C88C4",
-  ];
   return (
     <div className="font-kanit m-12">
       <div className="text-2xl underline">To Do List</div>
@@ -57,7 +57,7 @@ const ToDoList3 = () => {
             className={`m-2 rounded flex flex-col 
           justify-between h-36`}
           >
-            <div key={idx} className="p-2 break-words">
+            <div key={idx} className={`p-2 break-words ${task.status === 'Done' ? 'line-through ' : ''}`}>
               {task.task}
             </div>
             <div className="flex justify-between text-xs">

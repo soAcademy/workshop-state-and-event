@@ -5,13 +5,16 @@ import "./index.css";
 // import App from "./App2";
 import AppToDoList from "./AppToDoList"
 import AppLocalStorage from "./AppLocalStorage";
+import AppChart from "./AppChart";
 import reportWebVitals from "./reportWebVitals";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     {/* <AppLocalStorage /> */}
-    <AppToDoList />
+    {/* <AppToDoList /> */}
+    <AppChart />
   </React.StrictMode>
 );
 
