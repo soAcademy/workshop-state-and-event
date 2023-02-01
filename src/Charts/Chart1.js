@@ -35,6 +35,7 @@ const Chart1 = () => {
         data: orders.map((order) => order.orderValue),
         type: "line",
         smooth: true,
+        lineStyle: { color: "#d5ceeb" },
       },
     ],
     tooltip: {
