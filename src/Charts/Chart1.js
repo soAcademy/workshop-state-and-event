@@ -43,7 +43,7 @@ const Chart1 = () => {
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
-      <div className="w-[800px] h-[500px]">
+      <div className="w-[800px]">
         <ReactECharts option={options} />
       </div>
     </div>
