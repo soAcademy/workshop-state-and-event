@@ -22,24 +22,32 @@ const Chart1 = () => {
     },
   ];
   const options = {
+    // แกน x
     xAxis: {
       type: "category",
       data: orders.map((order) => order.date),
       name: "วันที่",
     },
+    // แกน y
     yAxis: {
       type: "value",
       name: "มูลค่าสั่งซื้อ",
+      // max: "datamax",
+      // min: "datamin",
+      max: 28000,
+      min: 20000,
     },
     series: [
       {
         data: orders.map((order) => order.orderValue),
         type: "line",
         smooth: true,
+        lineStyle: { color: "d5ceeb", width: 5, type: "dashed" },
       },
     ],
     tooltip: {
       trigger: "axis",
+      // ตัว trigger ตอนเรา กดกราฟ
     },
   };
   return <ReactECharts option={options} />;
