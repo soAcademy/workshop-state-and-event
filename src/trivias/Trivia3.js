@@ -40,21 +40,22 @@ const Trivia3 = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  
+
   const checkAnswer = (quizId, answerId) => {
+    console.log(quizId, answerId);
     setScore(score + (quizzes[quizId].answer === answerId ? 1 : 0));
-  }
+    setCurrentQuestion(quizId + 1); //proceeds to the next question
+  };
 
   return (
     <>
       <div>
         <h1 className="text-center">
-          Q.{currentQuestion + 1}/{quizzes.length}
+          Q.{currentQuestion + 1}/{quizzes.length}{" "}
+          {/* //needs {} to render HTML */}
         </h1>
         <div className="text-center">score: {score} marks</div>
-        <div className="text-center mb-3">
-          {quizzes[currentQuestion].question}
-        </div>
+        <div className="text-center">{quizzes[currentQuestion].question}</div>
         <div className="grid grid-cols-2 gap-2 text-center">
           {quizzes[currentQuestion].answers.map((choice, index) => (
             <div>
