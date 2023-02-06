@@ -11,6 +11,7 @@ import Accordians1 from "./Accordians/Accordians1";
 import Accordians2 from "./Accordians/Accordians2";
 import Accordians3 from "./Accordians/Accordians3";
 import Trivia1 from "./Trivia/Trivia1";
+import Trivia2 from "./Trivia/Trivia2";
 import React, { useState, useEffect } from "react";
 
 const App = () => {
@@ -29,7 +30,8 @@ const App = () => {
       {/* <Accordians1 /> */}
       {/* <Accordians2 /> */}
       {/* <Accordians3 /> */}
-      <Trivia1 />
+      {/* <Trivia1 /> */}
+      <Trivia2 />
     </>
   );
 };
