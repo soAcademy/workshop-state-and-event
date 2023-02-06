@@ -52,8 +52,10 @@ const Trivia2 = () => {
       <div className="py-4 text-center">{quizes[currentQuiz].question}</div>
       <div className="grid gap-2 grid-cols-2">
         {/* map choices */}
-        {quizes[currentQuiz].answer.map((r, index) => (
-          <button className="bg-sky-500 py-4 text-white">{r}</button>
+        {quizes[currentQuiz].answers?.map((r, index) => (
+          <button key={index} className="bg-sky-500 py-4 text-white">
+            {r}
+          </button>
         ))}
       </div>
     </>
