@@ -74,8 +74,8 @@
 // import Charts3 from "./Charts/Charts3";
 
 // import Accordion1 from "./Accordions/Accordion1";
-import Accordion2 from "./Accordions/Accordion2";
-// import Accordion3 from "./Accordions/Accordion3";
+// import Accordion2 from "./Accordions/Accordion2";
+import Accordion3 from "./Accordions/Accordion3";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
@@ -121,8 +121,8 @@ const App = () => (
     {/* <Charts3 /> */}
     {/* <Dashboard1 /> */}
     {/* <Accordion1 /> */}
-    <Accordion2 />
-    {/* <Accordion3 /> */}
+    {/* <Accordion2 /> */}
+    <Accordion3 />
   </div>
 );
 
