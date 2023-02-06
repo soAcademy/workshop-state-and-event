@@ -71,7 +71,7 @@ const Accordian3 = () => {
     const newToggleFaq = [...toggleFaq];
     console.log(idx);
     newToggleFaq[idx] = !newToggleFaq[idx];
-    // this logic *
+    // this logic * "not"
     console.log(newToggleFaq);
 
     setToggleFaq(newToggleFaq);

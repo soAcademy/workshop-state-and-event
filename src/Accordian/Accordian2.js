@@ -74,7 +74,6 @@ const Accordian2 = () => {
       {faqs?.map((faq, idx) => (
         // คำถาม ใส่ Onclick
         <div
-          curs
           key={idx}
           onClick={() => updateFaqToggle(idx)}
           className="py3 cursor-pointer"
