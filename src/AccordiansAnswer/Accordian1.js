@@ -64,7 +64,7 @@ const Accordian1 = () => {
       {faqs?.map((faq, index) => (
         <div key={index} className="py-2">
           <div className="bg-green-300">
-            {index + 1}. {faq.question}
+            {index + 1}.{faq.question}
           </div>
           <div className="bg-gray-200">{faq.answer}</div>
         </div>

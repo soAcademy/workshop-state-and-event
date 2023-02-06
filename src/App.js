@@ -7,7 +7,7 @@ import ThailandDeathCause from "./Dashboard/ThailandDeathCause";
 const App = () => {
   return (
     <>
-      <Accordian1 />
+      <Accordian2 />
     </>
   );
 };

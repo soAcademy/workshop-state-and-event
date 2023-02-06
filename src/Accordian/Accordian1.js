@@ -66,7 +66,8 @@ const Accordian1 = () => {
       {faqs?.map((faq, idx) => (
         <div key={idx} className="py3">
           <div className="bg-green-300">
-            {idx + 1}. {faq.question}
+            {idx + 1}.{faq.question}
+            {/* เพราะคอมจะเริ่มนับที่ 0 เลยต้อง +1 เพื่อให้โชว์ตัวเลขที่ระบุว่าเป็นคำถามที่เท่าไหร่แล้ว */}
           </div>
           <div className="bg-gray-200">{faq.answer}</div>
         </div>
