@@ -1,11 +1,17 @@
-import Chart1 from "./Charts/Chart1";
-import Chart2 from "./Charts/Chart2";
-import Chart3 from "./Charts/Chart3";
-import Dashboard from "./Dashboard/Dashboard";
+// import Chart1 from "./Charts/Chart1";
+// import Chart2 from "./Charts/Chart2";
+// import Chart3 from "./Charts/Chart3";
+// import Dashboard from "./Dashboard/Dashboard";
 
-import Accordian1 from "./Accordians/Accordian1";
-import Accordian2 from "./Accordians/Accordian2";
-import Accordian3 from "./Accordians/Accordian3";
+// import Accordian1 from "./Accordians/Accordian1";
+// import Accordian2 from "./Accordians/Accordian2";
+// import Accordian3 from "./Accordians/Accordian3";
+
+// import Trivia1 from "./Trivia/Trivia1";
+// import Trivia2 from "./Trivia/Trivia2"
+// import Trivia3 from "./Trivia/Trivia3"
+// import Trivia4 from "./Trivia/Trivia4";
+import Trivia5 from "./Trivia/Trivia5";
 
 const App = () => {
   return (
@@ -16,7 +22,12 @@ const App = () => {
       {/* <Dashboard/> */}
       {/* <Accordian1/> */}
       {/* <Accordian2 /> */}
-      <Accordian3/>
+      {/* <Accordian3/> */}
+      {/* <Trivia1/> */}
+      {/* <Trivia2/> */}
+      {/* <Trivia3/> */}
+      {/* <Trivia4/> */}
+      <Trivia5 />
     </>
   );
 };
