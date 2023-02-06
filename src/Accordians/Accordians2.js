@@ -2,7 +2,9 @@ import React, { useState } from "react";
 
 const Accordians2 = () => {
   const [toggle, setToggle] = useState(-1);
-  const [show, setShow] = useState(false);
+  const updateFaqToggle = (index) => {
+    setToggle(toggle === index ? -1 : index);
+  };
   const faqs = [
     {
       question: <>How much does it cost to use ChatGPT?</>,
@@ -66,17 +68,16 @@ const Accordians2 = () => {
   return (
     <>
       {faqs?.map((r, idx) => (
-        <div className="my-3">
-          <div
-            className="bg-green-200 cursor-pointer"
-            onClick={() => {
-              setToggle(idx);
-              setShow(!show);
-            }}
-          >
-            {idx + 1}. {r.question}
+        <div
+          className="my-3 cursor-pointer"
+          onClick={() => {
+            updateFaqToggle(idx);
+          }}
+        >
+          <div className="bg-green-200">
+            Q{idx + 1} : {r.question}
           </div>
-          {toggle === idx && show && <div className="bg-white">{r.answer}</div>}
+          {toggle === idx && <div className="bg-white">{r.answer}</div>}
         </div>
       ))}
     </>
