@@ -61,17 +61,20 @@ const Accordian2 = () => {
     },
   ];
 
-  const [toggle, setToggle] = useState(-1);
+  const [toggle, setToggle] = useState(false);
 
   const openToggleAnswer = (idx) => {
-    setToggle(idx);
+    setToggle(toggle === idx ? -1 : idx, true);
   };
 
   return (
     <div>
       {faqs.map((r, idx) => (
-        <div key={idx} className="p-4" onClick={() => openToggleAnswer(idx)}>
-          <div className="bg-cyan-300 cursor-pointer">
+        <div key={idx} className="p-4">
+          <div
+            className="bg-cyan-300 cursor-pointer"
+            onClick={() => openToggleAnswer(idx)}
+          >
             {idx + 1}: {r.question}
           </div>
           {toggle === idx && <div className="bg-cyan-50">{r.answer}</div>}
