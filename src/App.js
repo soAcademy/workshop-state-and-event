@@ -42,15 +42,17 @@
 // import LocalStorage3 from "./LocalStorages/LocalStorage3";
 // import LocalStorage4 from "./LocalStorages/LocalStorage4";
 
-  // import ToDoList1 from "./ToDoLists/ToDoList1";
-  // import ToDoList2 from "./ToDoLists/ToDoList2";
-  // import ToDoList3 from "./ToDoLists/ToDoList3";
-  // import ToDoList4 from "./ToDoLists/ToDoList4";
+// import ToDoList1 from "./ToDoLists/ToDoList1";
+// import ToDoList2 from "./ToDoLists/ToDoList2";
+// import ToDoList3 from "./ToDoLists/ToDoList3";
+// import ToDoList4 from "./ToDoLists/ToDoList4";
 
 // import Chart1 from "./Charts/Chart1";
 // import Chart2 from "./Charts/Chart2";
 // import Chart3 from "./Charts/Chart3";
-import Dashboard from "./Dashboard/Dashboard";
+// import Dashboard from "./Dashboard/Dashboard";
+
+import Accordian1 from "./Accordians/Accordian1";
 
 const App = () => {
   return (
@@ -86,7 +88,7 @@ const App = () => {
       {/* <LocalStorage2 /> */}
       {/* <LocalStorage3 /> */}
       {/* <LocalStorage4 /> */}
-      
+
       {/* <ToDoList1 /> */}
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
@@ -95,7 +97,9 @@ const App = () => {
       {/* <Chart1 /> */}
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
-      <Dashboard />
+      {/* <Dashboard /> */}
+
+      {<Accordian1 />}
     </div>
   );
 };
