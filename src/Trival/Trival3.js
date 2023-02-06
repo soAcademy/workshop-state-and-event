@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 const quizes = [
   {
     question: "ซุปอะไรมีสารอาหารมากที่สุด",
@@ -36,20 +37,33 @@ const quizes = [
     answer: 1,
   },
 ];
-const Trival1 = () => {
+
+const Trival3=()=>{
+  
   const [currentQuiz, setCurrentQuiz] = useState(0);
   const [score, setScore] = useState(0);
+  const checkAnswer = (quizId, answerId)=>{
+    console.log(quizId,answerId);
+    setScore(score+(quizes[quizId].answer === answerId ? 1 : 0));
+  };
+
   return (
-    <>
-      <div className="bg-black text-white">
-        <div className="text-center "> ข้อ {currentQuiz + 1}/{quizes.length}</div>
-        <div className="text-center text-white">คะแนน {score}</div>
-        <div className="py-4 text-center">{quizes[currentQuiz].question}</div>
-          {quizes[currentQuiz].answer.map((r,index)=>(
-            <button className="bg-green-400">{r}</button>
-          ))}
-      </div>
-    </>
+  <>
+    <div className="text-center">
+      ข้อ {currentQuiz+1}/{quizes.length}
+    </div>
+    <div className="text-center">คะแนน {score}</div>
+    <div className="text-center">{quizes[currentQuiz].question}</div>
+    <div className="grid gap-2 grid-cols-2">
+      {quizes[currentQuiz].answers.map((r,index)=>(
+        <button 
+          className="bg-teal-200 py-4"
+          onClick={()=>checkAnswer(currentQuiz, index)}
+          >{r}</button>
+      ))}
+
+    </div>
+  </>
   );
 };
-export default Trival1;
+export default Trival3;
