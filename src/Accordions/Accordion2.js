@@ -63,8 +63,10 @@ const Accordion1 = () => {
   // todo 1 : สร้างเสตท toggle เพื่อเก็บค่า เปิด/ปิด [เซ็ตค่าเริ่มต้นเป็น -1 เพราะยังไม่มี index อันไหนเปิดโชว์ขึ้นมา]
   const [toggle, setToggle] = useState(-1);
 
-  // todo 2 : สร้างฟังก์ชั่น ที่เมื่อคลิกคำถามอันนั้นแล้วให้ setToggle เป็นเลข index ของคำถามที่คลิก
-  const changeFaq = (index) => setToggle(index);
+  // todo 2 : สร้างฟังก์ชั่น ที่เมื่อคลิกคำถามอันนั้นแล้วให้ setToggle เป็นเลข index ของคำถามที่คลิก (แต่จะกดปิดไม่ได้ ทำยังไง? ดูข้อ 2.1)
+  // const changeFaq = (index) => (setToggle(index));
+  // todo 2.1 : ให้เช็คว่า ถ้า Toggle index ซ้ำ ให้คืนค่า index เป็น -1 แต่ถ้าไม่ซ่ำ ให้เปลี่ยนเป็นค่า index ของคำถามที่กด
+  const changeFaq = (index) => (setToggle(toggle === index? -1: index));
 
   // todo 3 : เขียน logic ในส่วนของ render ว่า เมื่อ toggle === index is true ให้ทำการแสดงคำตอบของ index นั้นๆ
 
