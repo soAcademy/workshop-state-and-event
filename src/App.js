@@ -11,8 +11,8 @@
 // import Chart1 from "./ChartsAnswer/Chart1";
 // import Chart2 from "./ChartsAnswer/Chart2";
 // import Chart3 from "./ChartsAnswer/Chart3";
-import Accordian1 from "./Accordians/Accordian1";
-// import Accordian2 from "./Accordians/Accordian2";
+// import Accordian1 from "./Accordians/Accordian1";
+import Accordian2 from "./Accordians/Accordian2";
 // import Accordian3 from "./Accordians/Accordian3";
 
 const App = () => {
@@ -31,8 +31,8 @@ const App = () => {
       {/* <Chart1 /> */}
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
-      <Accordian1 />
-      {/* <Accordian2 /> */}
+      {/* <Accordian1 /> */}
+      <Accordian2 />
       {/* <Accordian3 /> */}
     </>
   );

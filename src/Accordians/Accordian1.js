@@ -1,5 +1,5 @@
 const Accordian1 = () => {
-  const faq = [
+  const faqs = [
     {
       question: <>อะไรนะ</>,
       answer: (
@@ -43,11 +43,11 @@ const Accordian1 = () => {
 
   return (
     <>
-      {faq?.map((faq, index) => (
+      {faqs?.map((faq, index) => (
         <div key={index} className="py-2">
   {/* อันนี้ต้องมีเพราะมันเป็น array ที่เราต้องการเลือกให้มันมาrender หน้าจอ */}
-          <div className="bg-teal-300">{index + 1}.{faq.question}</div>
-          <div className="bg-gray-200">{faq.answer}</div>
+          <div className="bg-teal-300">{index + 1}.{faqs.question}</div>
+          <div className="bg-gray-200">{faqs.answer}</div>
         </div>
       ))}
     </>
