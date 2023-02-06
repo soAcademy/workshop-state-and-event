@@ -3,6 +3,7 @@ import Accordian2 from "./Accordians/Accordian2";
 import Accordian3 from "./Accordians/Accordian3";
 
 const AppAccordian = () => {
+  
   return (
     <div>
       {/* <Accordian1 /> */}

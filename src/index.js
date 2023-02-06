@@ -17,8 +17,8 @@ root.render(
     {/* <AppLocalStorage /> */}
     {/* <AppToDoList /> */}
     {/* <AppChart /> */}
-    {/* <AppDashBoard /> */}
-    <AppAccordian />
+    <AppDashBoard />
+    {/* <AppAccordian /> */}
   </React.StrictMode>
 );
 

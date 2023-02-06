@@ -1,0 +1,402 @@
+[
+  {
+    "locationCode": 100101,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "พระบรมมหาราชวัง",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100102,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "วังบูรพาภิรมย์",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100103,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "วัดราชบพิธ",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100104,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "สำราญราษฎร์",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100105,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "ศาลเจ้าพ่อเสือ",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100106,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "เสาชิงช้า",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100107,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "บวรนิเวศ",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100108,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "ตลาดยอด",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100109,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "ชนะสงคราม",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100110,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "บ้านพานถม",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100111,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "บางขุนพรหม",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100112,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระนคร",
+    "subdistrict": "วัดสามพระยา",
+    "zipcode": 10200,
+    "except": ""
+  },
+  {
+    "locationCode": 100201,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตดุสิต",
+    "subdistrict": "ดุสิต",
+    "zipcode": 10300,
+    "except": ""
+  },
+  {
+    "locationCode": 100202,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตดุสิต",
+    "subdistrict": "วชิรพยาบาล",
+    "zipcode": 10300,
+    "except": ""
+  },
+  {
+    "locationCode": 100203,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตดุสิต",
+    "subdistrict": "สวนจิตรลดา",
+    "zipcode": 10300,
+    "except": "ยกเว้น พระราชวังดุสิต สวนจิตรลดา ใช้รหัสไปรษณีย์ 10303"
+  },
+  {
+    "locationCode": 100204,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตดุสิต",
+    "subdistrict": "สี่แยกมหานาค",
+    "zipcode": 10300,
+    "except": ""
+  },
+  {
+    "locationCode": 100206,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตดุสิต",
+    "subdistrict": "ถนนนครไชยศรี",
+    "zipcode": 10300,
+    "except": ""
+  },
+  {
+    "locationCode": 100301,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตหนองจอก",
+    "subdistrict": "กระทุ่มราย",
+    "zipcode": 10530,
+    "except": ""
+  },
+  {
+    "locationCode": 100302,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตหนองจอก",
+    "subdistrict": "หนองจอก",
+    "zipcode": 10530,
+    "except": ""
+  },
+  {
+    "locationCode": 100303,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตหนองจอก",
+    "subdistrict": "คลองสิบ",
+    "zipcode": 10530,
+    "except": ""
+  },
+  {
+    "locationCode": 100304,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตหนองจอก",
+    "subdistrict": "คลองสิบสอง",
+    "zipcode": 10530,
+    "except": ""
+  },
+  {
+    "locationCode": 100305,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตหนองจอก",
+    "subdistrict": "โคกแฝด",
+    "zipcode": 10530,
+    "except": ""
+  },
+  {
+    "locationCode": 100306,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตหนองจอก",
+    "subdistrict": "คู้ฝั่งเหนือ",
+    "zipcode": 10530,
+    "except": ""
+  },
+  {
+    "locationCode": 100307,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตหนองจอก",
+    "subdistrict": "ลำผักชี",
+    "zipcode": 10530,
+    "except": ""
+  },
+  {
+    "locationCode": 100308,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตหนองจอก",
+    "subdistrict": "ลำต้อยติ่ง",
+    "zipcode": 10530,
+    "except": ""
+  },
+  {
+    "locationCode": 100401,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตบางรัก",
+    "subdistrict": "มหาพฤฒาราม",
+    "zipcode": 10500,
+    "except": ""
+  },
+  {
+    "locationCode": 100402,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตบางรัก",
+    "subdistrict": "สีลม",
+    "zipcode": 10500,
+    "except": ""
+  },
+  {
+    "locationCode": 100403,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตบางรัก",
+    "subdistrict": "สุริยวงศ์",
+    "zipcode": 10500,
+    "except": ""
+  },
+  {
+    "locationCode": 100404,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตบางรัก",
+    "subdistrict": "บางรัก",
+    "zipcode": 10500,
+    "except": "ยกเว้น หน่วยงานของ ปณท ที่ตั้งในบริเวณ ไปรษณีย์กลาง ใช้รหัสไปรษณีย์ 10501"
+  },
+  {
+    "locationCode": 100405,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตบางรัก",
+    "subdistrict": "สี่พระยา",
+    "zipcode": 10500,
+    "except": ""
+  },
+  {
+    "locationCode": 100502,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตบางเขน",
+    "subdistrict": "อนุสาวรีย์",
+    "zipcode": 10220,
+    "except": ""
+  },
+  {
+    "locationCode": 100508,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตบางเขน",
+    "subdistrict": "ท่าแร้ง",
+    "zipcode": 10220,
+    "except": "ยกเว้น หมู่ 8-10 ท่าแร้ง ใช้รหัสไปรษณีย์ 10230"
+  },
+  {
+    "locationCode": 100601,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตบางกะปิ",
+    "subdistrict": "คลองจั่น",
+    "zipcode": 10240,
+    "except": "ยกเว้น หมู่บ้านเสรี ใช้รหัสไปรษณีย์ 10250"
+  },
+  {
+    "locationCode": 100608,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตบางกะปิ",
+    "subdistrict": "หัวหมาก",
+    "zipcode": 10240,
+    "except": ""
+  },
+  {
+    "locationCode": 100701,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตปทุมวัน",
+    "subdistrict": "รองเมือง",
+    "zipcode": 10330,
+    "except": ""
+  },
+  {
+    "locationCode": 100702,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตปทุมวัน",
+    "subdistrict": "วังใหม่",
+    "zipcode": 10330,
+    "except": ""
+  },
+  {
+    "locationCode": 100703,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตปทุมวัน",
+    "subdistrict": "ปทุมวัน",
+    "zipcode": 10330,
+    "except": ""
+  },
+  {
+    "locationCode": 100704,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตปทุมวัน",
+    "subdistrict": "ลุมพินี",
+    "zipcode": 10330,
+    "except": ""
+  },
+  {
+    "locationCode": 100801,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตป้อมปราบศัตรูพ่าย",
+    "subdistrict": "ป้อมปราบ",
+    "zipcode": 10100,
+    "except": ""
+  },
+  {
+    "locationCode": 100802,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตป้อมปราบศัตรูพ่าย",
+    "subdistrict": "วัดเทพศิรินทร์",
+    "zipcode": 10100,
+    "except": ""
+  },
+  {
+    "locationCode": 100803,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตป้อมปราบศัตรูพ่าย",
+    "subdistrict": "คลองมหานาค",
+    "zipcode": 10100,
+    "except": ""
+  },
+  {
+    "locationCode": 100804,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตป้อมปราบศัตรูพ่าย",
+    "subdistrict": "บ้านบาตร",
+    "zipcode": 10100,
+    "except": ""
+  },
+  {
+    "locationCode": 100805,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตป้อมปราบศัตรูพ่าย",
+    "subdistrict": "วัดโสมนัส",
+    "zipcode": 10100,
+    "except": ""
+  },
+  {
+    "locationCode": 100905,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตพระโขนง",
+    "subdistrict": "บางจาก",
+    "zipcode": 10260,
+    "except": ""
+  },
+  {
+    "locationCode": 101001,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตมีนบุรี",
+    "subdistrict": "มีนบุรี",
+    "zipcode": 10510,
+    "except": ""
+  },
+  {
+    "locationCode": 101002,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตมีนบุรี",
+    "subdistrict": "แสนแสบ",
+    "zipcode": 10510,
+    "except": ""
+  },
+  {
+    "locationCode": 101101,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตลาดกระบัง",
+    "subdistrict": "ลาดกระบัง",
+    "zipcode": 10520,
+    "except": ""
+  },
+  {
+    "locationCode": 101102,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตลาดกระบัง",
+    "subdistrict": "คลองสองต้นนุ่น",
+    "zipcode": 10520,
+    "except": ""
+  },
+  {
+    "locationCode": 101103,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตลาดกระบัง",
+    "subdistrict": "คลองสามประเวศ",
+    "zipcode": 10520,
+    "except": ""
+  },
+  {
+    "locationCode": 101104,
+    "province": "กรุงเทพมหานคร",
+    "district": "เขตลาดกระบัง",
+    "subdistrict": "ลำปลาทิว",
+    "zipcode": 10520,
+    "except": ""
+  }
+]
