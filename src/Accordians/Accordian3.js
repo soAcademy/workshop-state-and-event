@@ -81,7 +81,7 @@ const Accordian3 = () => {
       {faqs?.map((faq, index) => (
         <div
           key={index}
-          className="py2 cursor-pointer"
+          className="py-2 cursor-pointer"
           onClick={() => updateAns(index)}
         >
           <div className="bg-yellow-500">
