@@ -58,7 +58,8 @@
 
 // import Trivia1 from "./Trivia/Trivia1";
 // import Trivia2 from "./Trivia/Trivia2";
-import Trivia3 from "./Trivia/Trivia3";
+// import Trivia3 from "./Trivia/Trivia3";
+import Trivia4 from "./Trivia/Trivia4";
 
 const App = () => {
   return (
@@ -111,7 +112,8 @@ const App = () => {
 
       {/* {<Trivia1/>} */}
       {/* {<Trivia2/>} */}
-      {<Trivia3/>}
+      {/* {<Trivia3/>} */}
+      {<Trivia4 />}
     </div>
   );
 };
