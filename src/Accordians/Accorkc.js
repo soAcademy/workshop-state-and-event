@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Accor2 = () => {
+const Accorkc = () => {
   const faqs = [
     {
       question: <>ร้านอาหารเปิดกี่โมง</>,
@@ -38,4 +38,4 @@ const Accor2 = () => {
     </>
   )
 }
-export default Accor2;
+export default Accorkc;
