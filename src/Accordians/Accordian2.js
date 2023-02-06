@@ -65,20 +65,27 @@ const Accordian2 = () => {
 
   const checkIndexToggle = (idx) => {
     // console.log(idx, toggle);
-    settoggle(idx);
+    settoggle(idx === toggle ? -1 : idx);
   };
 
-  return faqs?.map((faq, idx) => (
-    <div key={idx}>
-      <div
-        className="cursor-pointer bg-green-100 p-2"
-        onClick={() => checkIndexToggle(idx)}
-      >
-        {idx+1}. {faq.question}
+  return (
+    <div className="w-full flex justify-center p-8">
+      <div className="w-1/2">
+        <h1 className="text-center text-3xl mb-4">FAQ?</h1>
+        {faqs?.map((faq, idx) => (
+          <div className="m-1" key={idx}>
+            <div
+              className="cursor-pointer bg-green-100 rounded-t-lg  p-2"
+              onClick={() => checkIndexToggle(idx)}
+            >
+              {idx + 1}. {faq.question}
+            </div>
+            {toggle === idx && <div className="bg-gray-50 rounded-b-lg p-6 pt-0">{faq.answer}</div>}
+          </div>
+        ))}
       </div>
-      {toggle === idx && <div className="p-6 pt-0">{faq.answer}</div>}
     </div>
-  ));
+  );
 };
 
 export default Accordian2;
