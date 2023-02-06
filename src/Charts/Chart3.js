@@ -121,6 +121,21 @@ const Chart3 = () => {
       volume: 179935700,
     },
   ];
+  // const getMA = (dayCount) => {
+  //   let result = [];
+  //   for (let i = 0; i < stockPrices.length; i++) {
+  //     if (i < dayCount) {
+  //       result.push("-");
+  //       continue;
+  //     }
+  //     let sum = 0;
+  //     for (let j = 0; j < dayCount; j++) {
+  //       sum += stockPrices[i - j].close;
+  //     }
+  //     result.push(sum / dayCount);
+  //   }
+  //   console.log(result);
+  // };
 
   const options = {
     xAxis: {
@@ -156,15 +171,15 @@ const Chart3 = () => {
           opacity: 0.5,
         },
       },
-      {
-        name: "MovingAverage",
-        type: "line",
-        data: stockPrices.map((r) => r.open % r.volume),
-        smooth: true,
-        lineStyle: {
-          opacity: 0.5,
-        },
-      },
+      // {
+      //   name: "MovingAverage",
+      //   type: "line",
+      //   data: getMA(10),
+      //   smooth: true,
+      //   lineStyle: {
+      //     opacity: 0.5,
+      //   },
+      // },
     ],
   };
 
