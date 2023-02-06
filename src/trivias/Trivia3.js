@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const Trivia2 = () => {
+const Trivia3 = () => {
   const quizzes = [
     {
       question: "ซุปอะไรมีสารอาหารมากที่สุด",
@@ -40,6 +40,10 @@ const Trivia2 = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
+  
+  const checkAnswer = (quizId, answerId) => {
+    setScore(score + (quizzes[quizId].answer === answerId ? 1 : 0));
+  }
 
   return (
     <>
@@ -57,6 +61,7 @@ const Trivia2 = () => {
               <button
                 className="bg-sky-400 border border-3 py-4 button w-56"
                 key={index}
+                onClick={() => checkAnswer(currentQuestion, index)}
               >
                 {choice}
               </button>
@@ -68,4 +73,4 @@ const Trivia2 = () => {
   );
 };
 
-export default Trivia2;
+export default Trivia3;
