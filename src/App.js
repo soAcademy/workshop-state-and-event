@@ -1,18 +1,16 @@
 
-import Charts1 from "./Chart/Charts1";
-import Charts2 from "./Chart/Charts2";
-import Charts3 from "./Chart/Charts3";
-import DeadCharts1 from "./DeadCharts/DeadCharts1";
+
+import Accor1 from "./Accordians/Accor1";
+import Accor2 from "./Accordians/Accor2";
 
 
 const App = () => {
   return (
     <>
-     
-      {/* <Charts1 /> */}
-      {/* <Charts2 /> */}
-      {/* <Charts3 /> */}
-      <DeadCharts1 />
+      
+      {/* <Accor1 /> */}
+      <Accor2 />
+
     </>
   );
 };
