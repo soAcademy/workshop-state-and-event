@@ -7,7 +7,7 @@ import Trivia5 from "./Trivia/Trivia5";
 const App = () => {
   return (
     <>
-      <Trivia3 />
+      <Trivia5 />
     </>
   );
 };
