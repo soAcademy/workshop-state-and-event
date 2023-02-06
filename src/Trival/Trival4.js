@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 const quizes = [
   {
     question: "ซุปอะไรมีสารอาหารมากที่สุด",
@@ -38,32 +37,36 @@ const quizes = [
   },
 ];
 
-const Trival3 = () => {
+const Trival4 = () => {
   const [currentQuiz, setCurrentQuiz] = useState(0);
   const [score, setScore] = useState(0);
-  const checkAnswer = (quizId, answerId) => {
-    console.log(quizId, answerId);
-    setScore(score + (quizes[quizId].answer === answerId ? 1 : 0));
-  };
 
+  const checkAnswer = (quizId, answerId) => {
+    setScore(score + (quizes[quizId].answer === answerId ? 1 : 0));
+    setCurrentQuiz(quizId + 1);
+  };
   return (
     <>
-      <div className="text-center">
-        ข้อ {currentQuiz + 1}/{quizes.length}
-      </div>
-      <div className="text-center">คะแนน {score}</div>
-      <div className="text-center">{quizes[currentQuiz].question}</div>
-      <div className="grid gap-2 grid-cols-2">
-        {quizes[currentQuiz].answers.map((r, index) => (
-          <button
-            className="bg-teal-200 py-4"
-            onClick={() => checkAnswer(currentQuiz, index)}
-          >
-            {r}
-          </button>
-        ))}
+      <div>
+        <div className="text-center">
+          ข้อ {currentQuiz + 1}/{quizes.length}
+        </div>
+        <div className="text-center">คะแนน{score}</div>
+        <div className="text-center py-4">
+          คำถาม{quizes[currentQuiz].question}
+        </div>
+        <div className="grid gap-2 grid-cols-2">
+          {quizes[currentQuiz].answers.map((r, index) => (
+            <button
+              className="bg-teal-300"
+              onClick={() => checkAnswer(currentQuiz, index)}
+            >
+              {r}
+            </button>
+          ))}
+        </div>
       </div>
     </>
   );
 };
-export default Trival3;
+export default Trival4;
