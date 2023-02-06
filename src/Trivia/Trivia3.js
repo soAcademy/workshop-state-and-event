@@ -45,9 +45,11 @@ const Trivia3 = () => {
 
   const checkAnswer = (id, answer) => {
     // console.log(quizId, answer);
-    setScore(score + (quizes[id].answer === answer ? 1 : 0));
+    const newScore = quizes[id].answer === answer ? 1 : 0;
+    const totalScore = score + newScore;
+    setScore(totalScore);
   };
-  // console.log(score);
+  console.log(score);
   return (
     <div className="p-4">
       <div className="text-center mb-4 text-xl">
