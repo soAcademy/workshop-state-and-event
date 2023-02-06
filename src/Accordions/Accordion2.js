@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const faqs = [
   {
     question: <>How much does it cost to use ChatGPT?</>,
@@ -58,19 +60,32 @@ const faqs = [
   },
 ];
 
-const Accordian1 = () => {
+const Accordion2 = () => {
+  const [expandedFaqEntry, setExpandedFaqEntry] = useState(-1);
+
   return (
     <ul className="mb-4">
       {faqs.map((faq, idx) => (
         <li key={idx} className="mb-4">
-          <button className="w-full bg-blue-400 p-2 text-left">
-            {faq.question}
+          <button
+            className="w-full bg-blue-400 p-2 text-left"
+            onClick={() => setExpandedFaqEntry(idx)}
+          >
+            {idx + 1}. {faq.question}
           </button>
-          <div className="bg-blue-200 p-2">{faq.answer}</div>
+          <div
+            className={`bg-blue-200 p-2 ${
+              idx === expandedFaqEntry && expandedFaqEntry !== -1
+                ? "block"
+                : "hidden"
+            }`}
+          >
+            {faq.answer}
+          </div>
         </li>
       ))}
     </ul>
   );
 };
 
-export default Accordian1;
+export default Accordion2;
