@@ -61,6 +61,11 @@ const Accordian1 = () => {
     },
   ];
 
+    // const faqNumber = [];
+  // for (let i = 1; i <= 5; i++) {
+  //   faqNumber.push(i);
+  // }
+
   return (
     <div>
       {faqs.map((q, idx) => (
