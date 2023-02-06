@@ -43,35 +43,40 @@ const Trivia2 = () => {
   const [score, setScore] = useState(0);
 
   const checkAnswer = (currentQuiz, selectedIndex) => {
-    console.log(currentQuiz, selectedIndex)
+    console.log(currentQuiz, selectedIndex);
     // todo: check if user send correct answer
-    const isScoreCount = quizes[currentQuiz].answer === selectedIndex ? 1 : 0 //output 1 or 0
+    const isScoreCount = quizes[currentQuiz].answer === selectedIndex ? 1 : 0; //output 1 or 0
     // todo: then set score + isScoreCount
     setScore(score + isScoreCount);
-    setCurrentQuiz(currentQuiz+1)
-  }
+    setCurrentQuiz(currentQuiz + 1);
+  };
 
   return (
     <>
-      <div className="m-32 bg-yellow-200 p-16 rounded-xl">
-        <div className="text-center">
-          {currentQuiz + 1}/{quizes.length}
+      {currentQuiz < quizes.length && (
+        <div className="m-32 h-1/2 bg-yellow-200 p-16 rounded-xl">
+          <div className="text-center">
+            {currentQuiz + 1}/{quizes.length}
+          </div>
+          <div className="text-center">
+            คะแนน : {score}/{quizes.length}
+          </div>
+          <div className="py-4 text-center">{quizes[currentQuiz].question}</div>
+          <div className="mx-16 grid gap-2 grid-cols-1">
+            {quizes[currentQuiz].answers.map((r, index) => (
+              <button
+                className="bg-green-400 py-4"
+                onClick={() => checkAnswer(currentQuiz, index)}
+              >
+                {r}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="text-center">
-          คะแนน : {score}/{quizes.length}
-        </div>
-        <div className="py-4 text-center">{quizes[currentQuiz].question}</div>
-        <div className="mx-16 grid gap-2 grid-cols-1">
-          {quizes[currentQuiz].answers.map((r, index) => (
-            <button
-              className="bg-green-400 py-4"
-              onClick={() => checkAnswer(currentQuiz, index)}
-            >
-              {r}
-            </button>
-          ))}
-        </div>
-      </div>
+      )}
+      {currentQuiz >= quizes.length && (
+        <div className="text-center text-xl">สรุปคะแนน {score}/{quizes.length}</div>
+      )}
     </>
   );
 };
