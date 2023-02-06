@@ -7,6 +7,7 @@ import Charts2 from "./Charts/Charts2";
 import Charts3 from "./Charts/Charts3";
 import Dashboard from "./Dashboard/Dashboard";
 import Dash from "./Dashboard2/Dash";
+import Accordians1 from "./Accordians/Accordians1";
 import React, { useState, useEffect } from "react";
 
 const App = () => {
@@ -21,7 +22,8 @@ const App = () => {
       {/* <Charts2 /> */}
       {/* <Charts3 /> */}
       {/* <Dashboard /> */}
-      <Dash />
+      {/* <Dash /> */}
+      <Accordians1 />
     </>
   );
 };
