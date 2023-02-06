@@ -2,9 +2,11 @@ import React, { useState } from "react";
 
 const Accordian2 = () => {
   const [toggleFaq, setToggleFaq] = useState(-1);
+  // ใส่ค่า iniitial -1 เพื่อให้มันปิด ไม่ต้องมีอะไรไหลลงมา
 
   const updateFaqToggle = (idx) => {
-    setToggleFaq(idx);
+    setToggleFaq(toggleFaq === idx ? -1 : idx);
+    // logic ที่ทำให้เกิดการเปิดปิดตัว Accordian
   };
 
   const faqs = [
@@ -71,7 +73,12 @@ const Accordian2 = () => {
     <>
       {faqs?.map((faq, idx) => (
         // คำถาม ใส่ Onclick
-        <div key={idx} onClick={() => updateFaqToggle(idx)} className="py3">
+        <div
+          curs
+          key={idx}
+          onClick={() => updateFaqToggle(idx)}
+          className="py3 cursor-pointer"
+        >
           <div className="bg-green-500">
             {idx + 1}. {faq.question}
           </div>
