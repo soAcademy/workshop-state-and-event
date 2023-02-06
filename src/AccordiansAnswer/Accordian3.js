@@ -66,13 +66,34 @@ const Accordian3 = () => {
   );
 
   const updateFaqToggle = (index) => {
-    console.log(toggles);
-    const newToggles = [...toggles];
-    console.log(index);
-    newToggles[index] = !newToggles[index];
-    console.log(newToggles);
+    // console.log(toggles);
+    const newToggles =  [...toggles];
 
-    setToggles(newToggles);
+    // Memory
+    // key, value
+    // newToggles = toggles
+
+    // 0x001 false
+    // 0x002 true
+    // 0x003 false
+
+    // 0x004 [0x001, 0x002, 0x003]
+    // 0x005 0x004
+    // newToggles = [...toggles]
+
+    // 0x1001 false
+    // 0x1002 true
+    // 0x1003 false
+    // 0x1004 [0x1001, 0x1002, 0x1003]
+  
+
+
+
+    // console.log(index);
+    newToggles[index] = !newToggles[index];
+    // console.log(newToggles);
+
+    setToggles(toggles);
   };
 
   return (
