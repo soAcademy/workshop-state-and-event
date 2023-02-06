@@ -1,6 +1,9 @@
-
+import React, {useState} from "react";
 const Accordian1 = () => {
-
+  const [toggle, setToggle] = useState(-1);
+  const updateToggleIndex = (index) => {
+    setToggle(index);
+  }
   const faqs = [
     {
       question: <>How much does it cost to use ChatGPT?</>,
@@ -64,8 +67,8 @@ const Accordian1 = () => {
   return (
     faqs.map((faq, index) => (
       <div>
-      <div className="p-2 bg-green-300" key={index}>{index + 1}.{faq.question}</div>
-      <div className="p-2 bg-gray-300">{faq.answer}</div>
+      <div className="p-2 bg-green-300 pointer-cursor border border-3 border-red-400" key={index} onClick={() => updateToggleIndex(index)}>{index + 1}.{faq.question}</div>
+       {toggle === index && <div className="p-2 bg-gray-300">{faq.answer}</div>}
       </div>
     ))
   )
