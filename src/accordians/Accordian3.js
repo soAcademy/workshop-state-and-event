@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-const Accordian1 = () => {
-  const [toggle, setToggle] = useState(-1);
-  const updateToggleIndex = (index) => {
-    setToggle(toggle === index? -1 : index);
-  };
+const Accordian3 = () => {
+  
   const faqs = [
     {
       question: <>How much does it cost to use ChatGPT?</>,
@@ -63,8 +60,24 @@ const Accordian1 = () => {
       ),
     },
   ];
+  const [toggles, setToggles] = useState(
+    [...Array(faqs.length)].map(() => false)
+  );
+  const updateToggleIndex = (index) => {
+    console.log("toggles", toggles);
+    const newToggles = [...toggles];
+    console.log("newToggles1", newToggles);
+    //copy existing toggle
+    console.log("index", index);
+    newToggles[index] = !newToggles[index];
+    //set toggle to opposite state: if opened:close, if closed: open
+    console.log("newToggles2", newToggles);
+    setToggles( newToggles);
+    //update current toggle state as determined by line 71
+  };
 
-  return faqs.map((faq, index) => (
+  return (
+  faqs?.map((faq, index) => (
     <div>
       <div
         className="p-2 bg-green-300 pointer-cursor border border-3 border-red-400"
@@ -73,9 +86,10 @@ const Accordian1 = () => {
       >
         {index + 1}.{faq.question}
       </div>
-      {toggle === index && <div className="p-2 bg-gray-300">{faq.answer}</div>}
+      {toggles[index] && <div className="p-2 bg-gray-300">{faq.answer}</div>}
     </div>
-  ));
+  ))
+  )
 };
 
-export default Accordian1;
+export default Accordian3;
