@@ -42,14 +42,14 @@ const Trivia2 = () => {
   const [currentQuiz, setCurrentQuiz] = useState(0);
   const [score, setScore] = useState(0);
 
-  const checkAnswer = (quizId, answerId) => {
-    console.log(quizId, answerId)
+  const checkAnswer = (currentQuiz, selectedIndex) => {
+    console.log(currentQuiz, selectedIndex)
     // todo: check if user send correct answer
-    const isScoreCount = (quizes[quizId].answer === answerId ? 1 : 0) //output 1 or 0
+    const isScoreCount = quizes[currentQuiz].answer === selectedIndex ? 1 : 0 //output 1 or 0
     // todo: then set score + isScoreCount
     setScore(score + isScoreCount);
+    setCurrentQuiz(currentQuiz+1)
   }
-  console.log("score",score)
 
   return (
     <>
