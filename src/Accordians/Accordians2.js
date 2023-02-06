@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-const Accordians1 = () => {
-  const [toggle, setToggle] = useState(false);
+const Accordians2 = () => {
+  const [toggle, setToggle] = useState(-1);
+  const [show, setShow] = useState(false);
   const faqs = [
     {
       question: <>How much does it cost to use ChatGPT?</>,
@@ -66,14 +67,20 @@ const Accordians1 = () => {
     <>
       {faqs?.map((r, idx) => (
         <div className="my-3">
-          <div className="bg-green-200" onClick={() => setToggle(!toggle)}>
+          <div
+            className="bg-green-200 cursor-pointer"
+            onClick={() => {
+              setToggle(idx);
+              setShow(!show);
+            }}
+          >
             {idx + 1}. {r.question}
           </div>
-          <div className="bg-white">{r.answer}</div>
+          {toggle === idx && show && <div className="bg-white">{r.answer}</div>}
         </div>
       ))}
     </>
   );
 };
 
-export default Accordians1;
+export default Accordians2;
