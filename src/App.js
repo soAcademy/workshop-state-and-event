@@ -37,9 +37,9 @@ const App = () => {
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
       {/* <Accordian1 /> */}
-      <Accordian2 />
-      <Accordian3 />
-      {/* <Trivia1 /> */}
+      {/* <Accordian2 /> */}
+      {/* <Accordian3 /> */}
+      <Trivia1 />
       {/* <Trivia2 /> */}
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}
