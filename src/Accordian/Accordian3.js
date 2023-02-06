@@ -64,11 +64,11 @@ const Accordian3 = () => {
   );
   const updateFaqToggle = (index) => {
     console.log(toggle);
-    const newToggle = [...toggle];
+    const newToggle = [...toggle];      // Copy มาก่อน > เปลี่ยนแปลงค่าใหม่ > save ทับ ***const new = [...toggle] คือการ save array 
     console.log("...>>>>",newToggle)
     console.log(index);
     newToggle[index] = !newToggle[index];  //switch boolean value
-    console.log(newToggle);
+    console.log(newToggle);      
 
     setToggle(newToggle); 
   };
