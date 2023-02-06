@@ -69,6 +69,7 @@ const ToDoList5 = () => {
   const bgPallets = ["#f6f7d8", "#fcdd8d", "#fd8d41", "#e8c192"];
   return (
     <div className="mx-auto w-[90%]">
+      {/* popup confirm delete card */}
       {toggleConfirmDelete && (
         <div className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center  bg-gray-500/30 backdrop-opacity-80">
           <div className="bg-white h-[120px] w-2/6 p-5">
@@ -90,6 +91,9 @@ const ToDoList5 = () => {
           </div>
         </div>
       )}
+      {/* popup confirm delete card end ###*/}
+
+      {/* pop up create card memo */}
       {toggleShow && (
         <div className="fixed top-0 bottom-0 left-0 right-0 flex bg-gray-500/30 backdrop-opacity-80">
           <form
@@ -128,7 +132,9 @@ const ToDoList5 = () => {
           </form>
         </div>
       )}
+      {/* pop up create card memo end ####*/}
 
+      {/* show memo zone */}
       <div className="my-7">
         <h1 className="text-xl flex justify-center bg-orange-300 py-3 text-white rounded-[20px]">
           บันทึกของฉัน
@@ -181,6 +187,7 @@ const ToDoList5 = () => {
           <span className="text-3xl">+</span>
         </button>
       </div>
+      {/* show memo zone #####*/}
     </div>
   );
 };
