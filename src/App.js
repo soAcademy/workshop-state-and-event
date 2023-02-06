@@ -13,6 +13,7 @@ import Chart2 from "./ChartsAnswer/Chart2";
 import Chart3 from "./ChartsAnswer/Chart3";
 import Accordian1 from "./AccordiansAnswer/Accordian1";
 import Accordian2 from "./AccordiansAnswer/Accordian2";
+import Accordian3 from "./AccordiansAnswer/Accordian3";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
       {/* <Chart3 /> */}
       {/* <Accordian1 /> */}
       <Accordian2 />
+      {/* <Accordian3 /> */}
     </>
   );
 };
