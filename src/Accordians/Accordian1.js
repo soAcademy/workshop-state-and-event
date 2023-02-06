@@ -80,7 +80,7 @@ const Accordian1 = () => {
               Question {idx+1} : {e.question}
             </div>
             {<div className={`bg-gray-200 duration-500 overflow-hidden z-10 transition-all
-            ${isToggle[idx] ? '' : 'max-h-0'}`}>Answer : {e.answer}</div>}
+            ${isToggle[idx] ? 'max-h-max' : 'max-h-0'}`}>Answer : {e.answer}</div>}
           </div>
         );
       })}

@@ -58,22 +58,35 @@ const faqs = [
     ),
   },
 ];
-const Accordian2 = () => {
-  const [toggle, setToggle] = useState(-1);
+const Accordian3 = () => {
+  const [isToggle, setIsToggle] = useState(
+    faqs.map(() => {
+      return false;
+    })
+  );
   return (
     <div>
       {faqs.map((e, idx) => {
         return (
-          <div key={idx}>
+          <div className="m-2 z-20" key={idx}>
             <div
-            className="cursor-pointer"
+              className="bg-gray-300 z-20"
               onClick={() => {
-                toggle === idx ? setToggle(-1) : setToggle(idx);
+                isToggle[idx] = !isToggle[idx];
+                const _newToggle = [...isToggle];
+                setIsToggle(_newToggle);
               }}
             >
-              Question : {e.question}
+              Question {idx + 1} : {e.question}
             </div>
-            {toggle === idx  && <div>Answer : {e.answer}</div>}
+            {
+              <div
+                className={`bg-gray-200 duration-500 overflow-hidden z-10 transition-all
+            ${isToggle[idx] ? "max-h-max" : "max-h-0"}`}
+              >
+                Answer : {e.answer}
+              </div>
+            }
           </div>
         );
       })}
@@ -81,4 +94,4 @@ const Accordian2 = () => {
   );
 };
 
-export default Accordian2;
+export default Accordian3;
