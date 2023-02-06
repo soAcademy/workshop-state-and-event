@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Trivia2 = () => {
+const Trivia3 = () => {
   const [quizeNo, setQuizNo] = useState(0);
   const [score, setScore] = useState(0);
 
@@ -42,6 +42,10 @@ const Trivia2 = () => {
     },
   ];
 
+  const checkAnswer = (quizNo, ansNo) => {
+    setScore(quizes[quizNo].answer === ansNo ? score + 1 : score);
+  };
+
   return (
     <div className="w-full h-screen flex justify-center bg-gray-400 items-center font-prompt p-4">
       <div className="w-[600px] bg-gray-100 rounded-lg shadow-md p-8">
@@ -63,7 +67,8 @@ const Trivia2 = () => {
           <div className="choice grid grid-col-1 md:grid-cols-2 gap-4">
             {quizes[quizeNo].answers.map((r, idx) => (
               <button
-                key={idx + 1}
+                onClick={() => checkAnswer(quizeNo + 1, idx)}
+                key={idx}
                 className="h-14 bg-green-200 flex items-center rounded-full hover:bg-green-300 shadow-sm active:shadow-md p-4"
               >
                 {idx + 1}. {r}
@@ -76,4 +81,4 @@ const Trivia2 = () => {
   );
 };
 
-export default Trivia2;
+export default Trivia3;
