@@ -24,7 +24,7 @@ const Dashboard = ({ datas }) => {
         },
         { deathFemale: 0, deathMale: 0 }
       );
-      console.log("sumOfDeath : ", sumOfDeath);
+      console.log("sumOfDeath 1 : ", sumOfDeath);
       return {
         causeOfDeath: uniqueDeathCause,
         deathFemale: sumOfDeath.deathFemale,
@@ -52,19 +52,19 @@ const Dashboard = ({ datas }) => {
 
   return (
     <>
-      <div className="w-10/12 mx-auto">
-        <h1 className="font-bold text-xl">Cause of Death 2558</h1>
-        <div className="flex mx-auto w-full">
-          <div className="w-7/12">ทั้งหมด</div>
-          <div className="w-1/12">{(totalDeath).toLocaleString("TH")}</div>
-          <div className="w-1/12">{(totalDeath * 100) / totalDeath}%</div>
+      <div className="m-2 w-1/3 border-2">
+        <h1 className="font-bold text-xl pt-3 px-3">สาเหตุการเสียชีวิต ปี 2558</h1>
+        <div className="flex px-2">
+          <div className="w-2/3 mx-2">ทั้งหมด</div>
+          <div className="w-1/6 mx-2 bg-sky-400">{(totalDeath).toLocaleString("TH")}</div>
+          <div className="w-1/6 mx-2 bg-sky-400">{(totalDeath * 100) / totalDeath}%</div>
         </div>
 
         {dataByUniqueDeathCauses.map((r) => (
-          <div className="flex">
-            <div className="w-7/12">{(r.causeOfDeath)}</div>
-            <div className="w-1/12">{(r.deathTotal).toLocaleString("TH")}</div>
-            <div className="w-1/12">{((r.deathMale * 100) / totalDeath).toFixed(2)}%</div>
+          <div className="flex px-2">
+            <div className="w-2/3 mx-2">{(r.causeOfDeath)}</div>
+            <div className="w-1/6 mx-2 bg-sky-400">{(r.deathTotal).toLocaleString("TH")}</div>
+            <div className="w-1/6 mx-2 bg-sky-400">{((r.deathTotal * 100) / totalDeath).toFixed(2)}%</div>
           </div>
         ))}
       </div>
