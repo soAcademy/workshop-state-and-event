@@ -403,6 +403,7 @@
       "deathFemale": 197,
       "deathRatePer100000MalePopulation": 79.2,
       "deathRatePer100000FemalePopulation": 61
+<<<<<<< HEAD
   },
   {
       "provinceKey": 19,
@@ -36838,5 +36839,7 @@
       "deathFemale": 0,
       "deathRatePer100000MalePopulation": 0,
       "deathRatePer100000FemalePopulation": 0
+=======
+>>>>>>> 8ffaec18e29761a492f03a821d0ac01668adfe24
   }
 ]
