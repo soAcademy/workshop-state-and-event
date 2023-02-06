@@ -8,9 +8,11 @@
 // import ToDoList3 from "./ToDoLists/ToDoList3";
 // import ToDoList4 from "./ToDoLists/ToDoList4";
 // import ToDoList5 from "./ToDoLists/ToDoList5";
-import Chart1 from "./Charts/Chart1";
+// import Chart1 from "./Charts/Chart1";
 // import Chart2 from "./Charts/Chart2";
 // import Chart3 from "./Charts/Chart3";
+// import Chart4 from "./Charts/Chart4";
+import Dashboard from "./Dashboards/Dashboard.js";
 
 const App = () => {
   return (
@@ -25,9 +27,12 @@ const App = () => {
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
       {/* <ToDoList5 /> */}
-      <Chart1 />
-      {/* <Chart2 />
-      <Chart3 /> */}
+      {/* <Chart1 />
+      <Chart2 />
+      <Chart3 />
+      <Chart4 /> */}
+      <Dashboard/>
+    
     </>
   );
 };

@@ -17,6 +17,8 @@ const Chart1 = () => {
     yAxis: {
       type: "value",
       name: "มูลค่าสั่งซื้อ",
+      // max: "DataMax",
+      // min: "DataMin",
     },
     tooltip: {
       trigger: "axis",
@@ -26,13 +28,14 @@ const Chart1 = () => {
         data: orders.map((order) => order.orderValue),
         type: "line",
         smooth: true,
+        lineStyle: { color: "#d5ceeb", width: 5, type: "dashed"},
       },
     ],
   };
 
   return (
     <>
-      {/* <ReactECharts option={options} /> */}
+      <ReactECharts option={options} />
     </>
   );
 };

@@ -120,16 +120,12 @@ const Chart3 = () => {
       volume: 179935700,
     },
   ];
+
   const options = {
-    xAxis: {
-      data: stockPrices.map((r) => r.date),
-    },
+    xAxis: { data: stockPrices.map((r) => r.date) },
     yAxis: {
-      // max: "dataMax",
-      // min: "dataMin",
       max: Math.max(...stockPrices.map((r) => r.high)),
       min: Math.min(...stockPrices.map((r) => r.low)),
-  // อันนี้เป็นวิธีการหาค่า Min Max ของข้อมูลที่เป็น Array
       type: "value",
     },
     series: [
@@ -137,10 +133,32 @@ const Chart3 = () => {
         type: "candlestick",
         data: stockPrices.map((r) => [r.close, r.open, r.low, r.high]),
       },
+      {
+        name: "AdjClose",
+        type: "line",
+        data: stockPrices.map((r) => r.adjClose),
+        smooth: true,
+        lineStyle: {
+          opacity: 0.5,
+        },
+      },
+      {
+        name: "High",
+        type: "line",
+        data: stockPrices.map((r) => r.high),
+        smooth: true,
+        lineStyle: {
+          opacity: 0.5,
+        },
+      },
+      // เอา Object มาใส่อีกได้เรื่อย ๆ อยากได้อะไรอ่ะ
     ],
   };
 
-  return <ReactECharts option={options} />;
+  return (
+    <>
+      <ReactECharts option={options} />
+    </>
+  );
 };
-
 export default Chart3;
