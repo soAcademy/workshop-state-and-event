@@ -398,5 +398,61 @@
     "subdistrict": "ลำปลาทิว",
     "zipcode": 10520,
     "except": ""
+  },
+  {
+    "locationCode": 310416,
+    "province": "บุรีรัมย์",
+    "district": "อำเภอนางรอง",
+    "subdistrict": "บ้านสิงห์",
+    "zipcode": 31110,
+    "except": ""
+  },
+  {
+    "locationCode": 303001,
+    "province": "นครราชสีมา",
+    "district": "อำเภอบัวลาย",
+    "subdistrict": "เมืองพะไล",
+    "zipcode": 30120,
+    "except": ""
+  },
+  {
+    "locationCode": 220201,
+    "province": "จันทบุรี",
+    "district": "อำเภอขลุง",
+    "subdistrict": "ขลุง",
+    "zipcode": 22110,
+    "except": ""
+  },
+  {
+    "locationCode": 150401,
+    "province": "อ่างทอง",
+    "district": "อำเภอโพธิ์ทอง",
+    "subdistrict": "อ่างแก้ว",
+    "zipcode": 14120,
+    "except": ""
+  },
+  {
+    "locationCode": 110403,
+    "province": "สมุทรปราการ",
+    "district": "อำเภอพระประแดง",
+    "subdistrict": "บางจาก",
+    "zipcode": 10130,
+    "except": ""
+  },
+  {
+    "locationCode": 410601,
+    "province": "อุดรธานี",
+    "district": "อำเภอหนองหาน",
+    "subdistrict": "หนองหาน",
+    "zipcode": 41130,
+    "except": ""
+  },
+  {
+    "locationCode": 440706,
+    "province": "มหาสารคาม",
+    "district": "อำเภอนาเชือก",
+    "subdistrict": "ปอพาน",
+    "zipcode": 44170,
+    "except": ""
   }
 ]
