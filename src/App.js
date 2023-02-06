@@ -1,18 +1,19 @@
 // import State3 from "./StatesAnswer/State3";
-// import LocalStorage1 from "./LocalStorages/LocalStorage1";
-// import LocalStorage2 from "./LocalStorages/LocalStorage2";
-// import LocalStorage3 from "./LocalStorages/LocalStorage3";
-// import LocalStorage4 from "./LocalStorages/LocalStorage4";
-// import ToDoList1 from "./ToDoLists/ToDoList1";
-// import ToDoList2 from "./ToDoLists/ToDoList2";
-// import ToDoList3 from "./ToDoLists/ToDoList3";
-// import ToDoList4 from "./ToDoLists/ToDoList4";
-// import ToDoList5 from "./ToDoLists/ToDoList5";
-// import Chart1 from "./Charts/Chart1";
-// import Chart2 from "./Charts/Chart2";
-// import Chart3 from "./Charts/Chart3";
-// import Chart4 from "./Charts/Chart4";
-import Dashboard from "./Dashboards/Dashboard.js";
+// import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
+// import LocalStorage2 from "./LocalStorageAnswer/LocalStorage2";
+// import LocalStorage3 from "./LocalStorageAnswer/LocalStorage3";
+// import LocalStorage4 from "./LocalStorageAnswer/LocalStorage4";
+// import ToDoList1 from "./ToDoListAnswers/ToDoList1";
+// import ToDoList2 from "./ToDoListAnswers/ToDoList2";
+// import ToDoList3 from "./ToDoListAnswers/ToDoList3";
+// import ToDoList4 from "./ToDoListAnswers/ToDoList4";
+// import ToDoList5 from "./ToDoListAnswers/ToDoList5";
+// import Chart1 from "./ChartsAnswer/Chart1";
+// import Chart2 from "./ChartsAnswer/Chart2";
+// import Chart3 from "./ChartsAnswer/Chart3";
+import Accordian1 from "./Accordians/Accordian1";
+// import Accordian2 from "./Accordians/Accordian2";
+// import Accordian3 from "./Accordians/Accordian3";
 
 const App = () => {
   return (
@@ -27,12 +28,12 @@ const App = () => {
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
       {/* <ToDoList5 /> */}
-      {/* <Chart1 />
-      <Chart2 />
-      <Chart3 />
-      <Chart4 /> */}
-      <Dashboard/>
-    
+      {/* <Chart1 /> */}
+      {/* <Chart2 /> */}
+      {/* <Chart3 /> */}
+      <Accordian1 />
+      {/* <Accordian2 /> */}
+      {/* <Accordian3 /> */}
     </>
   );
 };
