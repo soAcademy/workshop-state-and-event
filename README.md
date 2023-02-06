@@ -308,7 +308,7 @@ const stockPrices = [{
 const faqs = [
     {
       question: <>How much does it cost to use ChatGPT?</>,
-      answer: <>The research preview of ChatGPT is free to use. </>,
+      answer: <>The research preview of ChatGPT is ree to use. </>,
     },
     {
       question: <>How does ChatGPT work?</>,
