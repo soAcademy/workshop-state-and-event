@@ -59,26 +59,26 @@ const faqs = [
   },
 ];
 const Accordian1 = () => {
-  const [isToggle1, setIsToggle1] = useState(faqs.map(()=>{
-    return {
-      state:false
-    }
-  }))
-  console.log(JSON.stringify(isToggle1))
+  const [isToggle, setIsToggle] = useState(
+    faqs.map(() => {
+      return false
+    })
+  );
   return (
     <div>
       {faqs.map((e, idx) => {
         return (
           <div>
-            <div onClick={() => {
-              console.log('isToggle1[idx] :>> ',idx, isToggle1[idx]);
-              isToggle1[idx].state = !isToggle1[idx].state
-              console.log('isToggle1 :>> ', isToggle1);
-              setIsToggle1(isToggle1)
-              }}>
+            <div
+              onClick={() => {
+                isToggle[idx] = !isToggle[idx];
+                const _newToggle = [...isToggle]
+                setIsToggle(_newToggle);
+              }}
+            >
               Question : {e.question}
             </div>
-            {isToggle1[idx] && <div>Answer : {e.answer}</div>}
+            {isToggle[idx] && <div>Answer : {e.answer}</div>}
           </div>
         );
       })}
