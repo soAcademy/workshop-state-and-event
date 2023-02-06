@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Trivia4 = () => {
+const Trivia5 = () => {
   const [quizeNo, setQuizNo] = useState(0);
   const [score, setScore] = useState(0);
 
@@ -47,11 +47,16 @@ const Trivia4 = () => {
     setQuizNo(quizeNo + 1);
   };
 
+  const reset = () => {
+    setScore(0);
+    setQuizNo(0);
+  };
+
   return (
     <div className="w-full h-screen flex justify-center bg-gray-400 items-center font-prompt text-sm p-4">
       <div className="w-[600px] bg-gray-100 rounded-lg shadow-md p-8">
         <h1 className="text-3xl text-center font-bold mb-6">TRIVIA GAME</h1>
-        {quizeNo < 4 && (
+        {quizeNo < 5 && (
           <>
             <div className="qNumber">
               <p className="text-center mb-8">
@@ -70,7 +75,7 @@ const Trivia4 = () => {
             <div className="choice grid grid-col-1 md:grid-cols-2 gap-4">
               {quizes[quizeNo].answers.map((r, idx) => (
                 <button
-                  onClick={() => checkAnswer(quizeNo + 1, idx)}
+                  onClick={() => checkAnswer(quizeNo, idx)}
                   key={idx}
                   className="h-14 bg-green-200 flex text-left items-center rounded-full hover:bg-green-300 shadow-sm active:shadow-md p-4"
                 >
@@ -80,9 +85,22 @@ const Trivia4 = () => {
             </div>
           </>
         )}
+        {quizeNo >= 5 && (
+          <div className="text-center">
+            <div className="qNumber">
+              <p className="text-center mb-8">สรุปคะแนน {score}</p>
+            </div>
+            <button
+              onClick={() => reset()}
+              className="h-14 bg-green-200 rounded-lg shadow-md hover:bg-green-300 active:shadow-lg p-2 px-4"
+            >
+              Try again!
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default Trivia4;
+export default Trivia5;
