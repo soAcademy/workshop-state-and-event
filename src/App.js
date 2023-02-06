@@ -14,7 +14,7 @@ import Chart3 from "./ChartsAnswer/Chart3";
 import Accordian1 from "./AccordiansAnswer/Accordian1";
 import Accordian2 from "./AccordiansAnswer/Accordian2";
 import Accordian3 from "./AccordiansAnswer/Accordian3";
-import Trivia3 from "./trivias/Trivia3";
+import Trivia5 from "./trivias/Trivia5";
 // import Trivia2 from "./TriviaAnswer/Trivia2";
 // import Trivia3 from "./TriviaAnswer/Trivia3";
 // import Trivia4 from "./TriviaAnswer/Trivia4";
@@ -39,7 +39,7 @@ const App = () => {
       {/* <Accordian1 /> */}
       {/* <Accordian2 /> */}
       {/* <Accordian3 /> */}
-      <Trivia3 />
+      <Trivia5 />
       {/* <Trivia2 /> */}
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}

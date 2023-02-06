@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const Trivia3 = () => {
+const Trivia5 = () => {
   const quizzes = [
     {
       question: "ซุปอะไรมีสารอาหารมากที่สุด",
@@ -49,29 +49,36 @@ const Trivia3 = () => {
 
   return (
     <>
-      <div>
-        <h1 className="text-center">
-          Q.{currentQuestion + 1}/{quizzes.length}{" "}
-          {/* //needs {} to render HTML */}
-        </h1>
-        <div className="text-center">score: {score} marks</div>
-        <div className="text-center">{quizzes[currentQuestion].question}</div>
-        <div className="grid grid-cols-2 gap-2 text-center">
-          {quizzes[currentQuestion].answers.map((choice, index) => (
-            <div>
-              <button
-                className="bg-sky-400 border border-3 py-4 button w-96"
-                key={index}
-                onClick={() => checkAnswer(currentQuestion, index)}
-              >
-                {choice}
-              </button>
-            </div>
-          ))}
+      {currentQuestion < quizzes.length && (
+        <div>
+          <h1 className="text-center">
+            Q.{currentQuestion + 1}/{quizzes.length}{" "}
+            {/* //needs {} to render HTML */}
+          </h1>
+          <div className="text-center">score: {score} marks</div>
+          <div className="text-center">{quizzes[currentQuestion].question}</div>
+          <div className="grid grid-cols-2 gap-2 text-center">
+            {quizzes[currentQuestion].answers.map((choice, index) => (
+              <div>
+                <button
+                  className="bg-sky-400 border border-3 py-4 button w-96"
+                  key={index}
+                  onClick={() => checkAnswer(currentQuestion, index)}
+                >
+                  {choice}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+      {currentQuestion >= quizzes.length && (
+        <div className="font-bold m-3 text-center bg-red-300 p-2 rounded-lg">
+          Total Score: {score}
+        </div>
+      )}
     </>
   );
 };
 
-export default Trivia3;
+export default Trivia5;
