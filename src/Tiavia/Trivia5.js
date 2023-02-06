@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Trivia3 = () => {
+const Trivia5 = () => {
   const quizes = [
     {
       question: "ซุปอะไรมีสารอาหารมากที่สุด",
@@ -39,32 +39,41 @@ const Trivia3 = () => {
     },
   ];
 
-  const [currentQuiz, setCurrentQuiz] = useStage(0);
-  const [score, setScore] = useStage(0);
+  const [currentQuiz, setCurrentQuiz] = useState(0);
+  const [score, setScore] = useState(0);
 
   const checkAnswer = (quizId, answerId) => {
-    setScore(score + (quizes[quizId].answer === answerId? 1:0))
-  }
+    console.log(quizId, answerId);
+    setScore(score + (quizes[quizId].answer === answerId ? 1 : 0));
+    setCurrentQuiz(quizId + 1);
+  };
 
   return (
     <>
-      <div className="text-center">
-        ข้อ{setCurrentQuiz + 1}/{quizes.length}
-      </div>
-      <div className="text-center">คะแนน {score}</div>
-      <div className="py-4 text-center">{quizes[currentQuiz].question}</div>
-      <div className="grid gap-2 grid-cols-2">
-        {quizes[currentQuiz].answer.map((r, index) => (
-          <button
-            className="bg-yellow-500 py-4"
-            onClick={() => checkAnswer(currentQuiz, index)}
-          >
-            {r}
-          </button>
-        ))}
-      </div>
+      {currentQuiz <= quizes.length && (
+        <>
+          <div className="text-center">
+            ข้อ {currentQuiz + 1}/{quizes.length}
+          </div>
+          <div className="text-center">คะแนน {score}</div>
+          <div className="py-4 text-center">{quizes[currentQuiz].question}</div>
+          <div className="grid gap-2 grid-cols-2">
+            {quizes[currentQuiz].answers.map((r, index) => (
+              <button
+                className="bg-green-400 py-4"
+                onClick={() => checkAnswer(currentQuiz, index)}
+              >
+                {r}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+      {currentQuiz <= quizes.length && (
+        <div className="text-center text-3xl">สรุปคะแนน {score}</div>
+      )}
     </>
   );
 };
 
-export default Trivia3
+export default Trivia5;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Trivia3 = () => {
+const Trivia4 = () => {
   const quizes = [
     {
       question: "ซุปอะไรมีสารอาหารมากที่สุด",
@@ -44,6 +44,7 @@ const Trivia3 = () => {
 
   const checkAnswer = (quizId, answerId) => {
     setScore(score + (quizes[quizId].answer === answerId? 1:0))
+    setCurrentQuiz(quizId+1)
   }
 
   return (
@@ -67,4 +68,5 @@ const Trivia3 = () => {
   );
 };
 
-export default Trivia3
+
+export default Trivia4
