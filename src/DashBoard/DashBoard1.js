@@ -278,7 +278,7 @@ const DashBoard1 = () => {
   // console.log(mockData)
   // console.log(mockData.map((r) => r.causeOfDeath))
   const deathCauseList = [...new Set(mockData.map((r) => r.causeOfDeath))];
-  console.log(deathCauseList);
+  console.log("deathCauseLis",deathCauseList);
 
   const deathByCauses = deathCauseList.map((deathcause) => {
     const deathListFilters = mockData.filter((r) => r.causeOfDeath === deathcause)
@@ -290,17 +290,20 @@ const DashBoard1 = () => {
     },
     {deathFemale: 0, deathMale: 0 }
     )
-    // console.log(sumDeath);
+    console.log("sumDeath",sumDeath);
+
+    // const deathByProvice = []
 
     return{
         causeOfDeath: deathcause,
         deathMale: sumDeath.deathMale,
         deathFemale: sumDeath.deathFemale,
-        death: sumDeath.deathMale + sumDeath.deathFemale
+        totalDeath: sumDeath.deathMale + sumDeath.deathFemale
+        // %death: 
     }
     
 })
-// console.log(deathByCauses)
+console.log("deathByCauses",deathByCauses)
 
 return (
     <>
@@ -318,7 +321,7 @@ return (
             {deathByCauses?.map((r) => (
                 <tr>
                     <td className="bg-gray-600 text-white pr-5">{r.causeOfDeath}</td>
-                    <td className="bg-yellow-700 text-white pl-10">{r.death}</td>
+                    <td className="bg-yellow-700 text-white pl-10">{r.totalDeath}</td>
                     <td></td>
                 </tr>
             ))}
