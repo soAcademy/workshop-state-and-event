@@ -12,5 +12,4 @@ const Trivia1 = () => {
     </>
   );
 };
-
 export default Trivia1;
