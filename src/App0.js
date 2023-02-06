@@ -1,11 +1,11 @@
 
-import Chart3 from "./Charts/Chart3"
+import Dashboard from "./Dashboard/Dashboard";
 
 
 const App0 = () => {
   return (
     <div>
-      <Chart3/>
+      <Dashboard year={2557}/>
      
     </div>
   );

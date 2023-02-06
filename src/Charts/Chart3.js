@@ -131,9 +131,10 @@ const Chart3=()=>{
     },
     series :[
       {
-      type : "candlestick",
-      data : stockPrices.map(r=>[r.close,r.open,r.low,r.high]),
+        type : "candlestick",
+        data : stockPrices.map(r=>[r.close,r.open,r.low,r.high]),
       },
+      
     ],
   };
   return (<>
