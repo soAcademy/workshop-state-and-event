@@ -4,10 +4,10 @@ const Trivia1 = () => {
   return (
     <div className="p-4">
       <div className="text-center mb-4 text-xl">
-        <p>ข้อ 1/10</p>
+        <p>ข้อ 1/5</p>
       </div>
       <div className="text-center text-lg mb-4">
-        <p>คะแนน 0</p>
+        <p>คะแนน : 0</p>
       </div>
       <div className="text-lg mb-4">
         <p>คำถาม :</p>
