@@ -52,7 +52,8 @@
 // import Chart3 from "./Charts/Chart3";
 // import Dashboard from "./Dashboard/Dashboard";
 
-import Accordian1 from "./Accordians/Accordian1";
+// import Accordian1 from "./Accordians/Accordian1";
+import Accordian2 from "./Accordians/Accordian2";
 
 const App = () => {
   return (
@@ -99,7 +100,8 @@ const App = () => {
       {/* <Chart3 /> */}
       {/* <Dashboard /> */}
 
-      {<Accordian1 />}
+      {/* {<Accordian1 />} */}
+      {<Accordian2 />}
     </div>
   );
 };

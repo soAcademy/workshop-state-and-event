@@ -1,4 +1,7 @@
-const Accordian1 = () => {
+import { useState } from "react";
+
+const Accordian2 = () => {
+  const [toggle, settoggle] = useState(-1);
 
   const faqs = [
     {
@@ -60,12 +63,22 @@ const Accordian1 = () => {
     },
   ];
 
+  const checkIndexToggle = (idx) => {
+    // console.log(idx, toggle);
+    settoggle(idx);
+  };
+
   return faqs?.map((faq, idx) => (
     <div key={idx}>
-      <div>{faq.question}</div>
-      <div>{faq.answer}</div>
+      <div
+        className="cursor-pointer bg-green-100 p-2"
+        onClick={() => checkIndexToggle(idx)}
+      >
+        {idx+1}. {faq.question}
+      </div>
+      {toggle === idx && <div className="p-6 pt-0">{faq.answer}</div>}
     </div>
   ));
 };
 
-export default Accordian1;
+export default Accordian2;
