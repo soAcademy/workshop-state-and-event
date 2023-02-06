@@ -1,22 +1,18 @@
 
 import Charts1 from "./Chart/Charts1";
+import Charts2 from "./Chart/Charts2";
+import Charts3 from "./Chart/Charts3";
+import DeadCharts1 from "./DeadCharts/DeadCharts1";
+
 
 const App = () => {
   return (
     <>
-      {/* <State3 /> */}
-      {/* <LocalStorage1 /> */}
-      {/* <LocalStorage2 /> */}
-      {/* <LocalStorage3 data1="bin" data2="hello"/> */}
-      {/* <LocalStorage4 /> */}
-      {/* <ToDoList1 /> */}
-      {/* <ToDoList2 /> */}
-      {/* <ToDoList3 /> */}
-      {/* <ToDoList4 /> */}
-      {/* <ToDoList5 /> */}
-      <Charts1 />
-      {/* <Chart2 /> */}
-      {/* <Chart3 /> */}
+     
+      {/* <Charts1 /> */}
+      {/* <Charts2 /> */}
+      {/* <Charts3 /> */}
+      <DeadCharts1 />
     </>
   );
 };
