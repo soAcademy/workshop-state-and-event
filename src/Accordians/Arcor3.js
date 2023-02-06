@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Accor2 = () => {
+const Accor3 = () => {
   const faqs = [
     {
       question: <>How much does it cost to use ChatGPT?</>,
@@ -61,31 +61,37 @@ const Accor2 = () => {
     },
   ];
 
-const [toggle, setToggle] = useState(-1);
-//กดหนึ่งครั้งให้เริ่มค่าจาก -1 จะไม่มีการเปิดขึ้นมาเพราะ ค่าตัวเลขในคอมจะอ่าน 0 1 2 3
-const updateFaqToggle = (index) => {
-  setToggle(toggle === index ? -1 : index);
-  // ถ้ามันกดตัวมันเองก็จะเป็น -1 แต่ถ้าไม่ใช่มันก็จะสลับ
-};
-//ติดตั้งการใช้
-return (
-  <>
-  {faqs?.map((faq, index) => (
-    <div
-    key={index}
-    className="py-4 cursor-pointer"
-    onClick={() => updateFaqToggle(index)}
-    >
-      <div className="bg-yellow-400" >
-      {index + 1}.{faq.question}
-      {/* ด้านหลังวงเล็บเป็นอะไรก็ได้ . หรือ # */}
-      </div>
-      {toggle === index && <div className="bg-yellow-200">{faq.answer}</div>}
-    </div>
-  ))}
-  ใช้แมพเพื่อเปลี่ยนเป็นค่าใหม่”
+  const [toggles, setToggles] = useState(
+    [...Array(faqs.length)].map(() => false)
+  );
 
-  </>
-)
-}
-export default Accor2;
+  const updateFaqToggle = (index) => {
+    console.log(toggles);
+    const newToggles = [...toggles];
+    console.log(index);
+    newToggles[index] = !newToggles[index];
+    console.log(newToggles);
+    setToggles(newToggles);
+  }
+
+
+  return (
+    <>
+      {faqs?.map((faq, index) => (
+        <dive 
+        key={index}
+        className="py-2 cursor-pointer"
+        onClick={() => updateFaqToggle(index)}
+        >
+          <div className="bg-yellow-400" >
+            {index + 1}. {faq.question}
+          </div>
+          {toggles[index] && <div className="bg-yellow-200">{faq.answer}</div>}
+        </dive>
+      ))}
+    
+    </>
+  )
+};
+
+export default Accor3;
