@@ -69,7 +69,9 @@ const Accordion2 = () => {
         <li key={idx} className="mb-4">
           <button
             className="w-full bg-blue-400 p-2 text-left"
-            onClick={() => setExpandedFaqEntry(idx)}
+            onClick={() => {
+              setExpandedFaqEntry(idx === expandedFaqEntry ? -1 : idx);
+            }}
           >
             {idx + 1}. {faq.question}
           </button>
