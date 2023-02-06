@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Accordian2 = () => {
+const Accordian3 = () => {
   const faqs = [
     {
       question: <>How much does it cost to use ChatGPT?</>,
@@ -61,10 +61,18 @@ const Accordian2 = () => {
     },
   ];
 
-  const [toggle, setToggle] = useState(-1);
+  const [toggles, setToggles] = useState(
+    [...Array(faqs.length)].map(() => false)
+  );
 
   const updateFaqToggle = (index) => {
-    setToggle(toggle === index ? -1 : index);
+    // console.log("toggles",toggles);
+    const newToggles = [...toggles];
+    // console.log("index", index);
+    newToggles[index] = !newToggles[index];
+    // console.log("newToggles",newToggles);
+
+    setToggles(newToggles);
   };
 
   return (
@@ -78,11 +86,11 @@ const Accordian2 = () => {
           <div className="bg-green-300">
             {index + 1}. {faq.question}
           </div>
-          {toggle === index && <div className="bg-gray-200">{faq.answer}</div>}
+          {toggles[index] && <div className="bg-gray-200">{faq.answer}</div>}
         </div>
       ))}
     </>
   );
 };
 
-export default Accordian2;
+export default Accordian3;
