@@ -7,8 +7,9 @@ const Trivia1 = () => {
       <div className="text-center">คะแนน 0</div>
       <div className="py-4 text-center">คำถาม</div>
       <div className="grid gap-2 grid-cols-2">
+        {/* map choices */}
         {[...Array(4).keys()].map((r, index) => (
-          <button className="bg-green-400 py-4">{r}</button>
+          <button className="bg-sky-500 py-4">{r}</button>
         ))}
       </div>
     </>
