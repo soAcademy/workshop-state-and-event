@@ -1,3 +1,4 @@
+import { useState } from "react";
 const faqs = [
   {
     question: <>How much does it cost to use ChatGPT?</>,
@@ -57,14 +58,23 @@ const faqs = [
     ),
   },
 ];
-const Accordian1 = () => {
+const Accordian2 = () => {
+  const [toggle, setToggle] = useState(-1);
+  const updateFaqToggle = (index)=>{ 
+    setToggle(index)
+  };
   return (
     <div>
       {faqs.map((r, index) => (
         <>
-          <div key={index} className="">
-            <div className="bg-blue-500 p-2 font-bold">question :{r.question}</div>
-            <div className="bg-slate-200 p-2">answer :{r.answer}</div>
+          <div  key={index} 
+                className="cursor-pointer"
+                onClick={()=>updateFaqToggle(index)}>
+            <div className="bg-blue-500 p-2 font-bold">
+              question :{index+1}.{r.question}
+            </div>
+
+            {toggle === index &&<div className="bg-slate-200 p-2">answer :{r.answer}</div>}
           </div>
         </>
       ))}
@@ -72,4 +82,4 @@ const Accordian1 = () => {
   );
 };
 
-export default Accordian1;
+export default Accordian2;
