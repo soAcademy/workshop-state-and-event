@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const Accordian3 = () => {
   const faqs = [
     {
@@ -59,11 +61,41 @@ const Accordian3 = () => {
     },
   ];
 
+  const [toggles, setToggles] = useState(
+    [...Array(faqs.length)].map(() => false)
+  );
+
+  const updateAns = (index) => {
+    console.log("toggles",toggles)
+    const newToggles = [...toggles]
+    console.log("newToggles:",newToggles)
+    console.log("index",index)
+    newToggles[index] = !newToggles[index];
+    console.log("newToggles",newToggles)
+
+    setToggles(newToggles);
+  };
+
   return (
     <>
-    
+      {faqs?.map((faq, index) => (
+        <div
+          key={index}
+          className="py2 cursor-pointer"
+          onClick={() => updateAns(index)}
+        >
+          <div className="bg-yellow-500">
+            Q{index + 1}.{faq.question}
+          </div>
+          {toggles[index] && (
+            <div className="bg-white-500">
+              A{index + 1}.{faq.answer}
+            </div>
+          )}
+        </div>
+      ))}
     </>
-    
-      )
-    
-    }
+  );
+};
+
+export default Accordian3;

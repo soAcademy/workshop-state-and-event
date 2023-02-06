@@ -54,8 +54,8 @@ const App = () => {
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
       {/* <Accordian1 /> */}
-      <Accordian2 />
-      {/* <Accordian3 /> */}
+      {/* <Accordian2 /> */}
+      <Accordian3 />
     </>
   );
 };

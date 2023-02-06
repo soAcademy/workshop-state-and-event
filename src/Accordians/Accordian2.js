@@ -65,7 +65,7 @@ const Accordian2 = () => {
   const [toggle, setToggle] = useState(-1);
 
 const updateAns = (index) => {
-  setToggle(index);
+  setToggle(toggle === index? -1 : index);
 };
 
 
@@ -75,7 +75,7 @@ const updateAns = (index) => {
         <div 
         key={index}
         onClick={() => updateAns(index)}
-        className="py-2 cursor-point">
+        className="py-2 cursor-pointer">
         <div className="bg-yellow-500">
           Q{index+1}.{faq.question}
         </div>
