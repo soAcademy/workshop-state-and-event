@@ -75,7 +75,9 @@
 
 // import Accordion1 from "./Accordions/Accordion1";
 // import Accordion2 from "./Accordions/Accordion2";
-import Accordion3 from "./Accordions/Accordion3";
+// import Accordion3 from "./Accordions/Accordion3";
+
+import Trivia1 from "./Trivia/Trivia1";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
@@ -122,7 +124,8 @@ const App = () => (
     {/* <Dashboard1 /> */}
     {/* <Accordion1 /> */}
     {/* <Accordion2 /> */}
-    <Accordion3 />
+    {/* <Accordion3 /> */}
+    <Trivia1 />
   </div>
 );
 
