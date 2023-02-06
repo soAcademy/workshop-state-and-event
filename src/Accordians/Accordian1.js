@@ -68,17 +68,19 @@ const Accordian1 = () => {
     <div>
       {faqs.map((e, idx) => {
         return (
-          <div>
+          <div className="m-2 z-20">
             <div
+            className="bg-gray-300 z-20"
               onClick={() => {
                 isToggle[idx] = !isToggle[idx];
                 const _newToggle = [...isToggle]
                 setIsToggle(_newToggle);
               }}
             >
-              Question : {e.question}
+              Question {idx+1} : {e.question}
             </div>
-            {isToggle[idx] && <div>Answer : {e.answer}</div>}
+            {<div className={`bg-gray-200 duration-500 overflow-hidden z-10 transition-all
+            ${isToggle[idx] ? '' : 'max-h-0'}`}>Answer : {e.answer}</div>}
           </div>
         );
       })}

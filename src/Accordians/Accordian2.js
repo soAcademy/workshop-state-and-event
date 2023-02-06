@@ -68,7 +68,7 @@ const Accordian2 = () => {
             <div
             className="cursor-pointer"
               onClick={() => {
-                setToggle(idx);
+                toggle === idx ? setToggle(-1) : setToggle(idx);
               }}
             >
               Question : {e.question}
