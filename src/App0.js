@@ -1,11 +1,12 @@
 
 import Dashboard from "./Dashboard/Dashboard";
+import Accordian1 from "./Accordian/Accordian1"
 
 
 const App0 = () => {
   return (
     <div>
-      <Dashboard year={2557}/>
+      <Accordian1/>
      
     </div>
   );
