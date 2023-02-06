@@ -58,10 +58,19 @@ const faqs = [
     ),
   },
 ];
-const Accordian2 = () => {
-  const [toggle, setToggle] = useState(-1);
+const Accordian3 = () => {
+  const [toggle, setToggle] = useState(
+    [...Array(faqs.length)].map(() => false)
+  );
   const updateFaqToggle = (index) => {
-    setToggle(toggle === index ? -1 : index);   // มันจะเช็คว่า toggle = ตัวมันเองมันจะ return -1 ถ้าไม่ใช่ มันจะ retur index 
+    console.log(toggle);
+    const newToggle = [...toggle];
+    console.log("...>>>>",newToggle)
+    console.log(index);
+    newToggle[index] = !newToggle[index];  //switch boolean value
+    console.log(newToggle);
+
+    setToggle(newToggle); 
   };
   return (
     <div>
@@ -76,7 +85,7 @@ const Accordian2 = () => {
               question :{index + 1}####{r.question}
             </div>
 
-            {toggle === index && (
+            {toggle[index] && (
               <div className="bg-slate-200 p-2">answer :{r.answer}</div>
             )}
           </div>
@@ -86,4 +95,4 @@ const Accordian2 = () => {
   );
 };
 
-export default Accordian2;
+export default Accordian3;
