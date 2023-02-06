@@ -3,16 +3,20 @@ import Chart2 from "./Charts/Chart2";
 import Chart3 from "./Charts/Chart3";
 import Dashboard from "./Dashboard/Dashboard";
 
-
 import Accordian1 from "./Accordians/Accordian1";
+import Accordian2 from "./Accordians/Accordian2";
+
 const App = () => {
-  return <>
-  {/* <Chart1/> */}
-  {/* <Chart2/> */}
-  {/* <Chart3/> */}
-  {/* <Dashboard/> */}
-  <Accordian1/>
-  </>;
+  return (
+    <>
+      {/* <Chart1/> */}
+      {/* <Chart2/> */}
+      {/* <Chart3/> */}
+      {/* <Dashboard/> */}
+      {/* <Accordian1/> */}
+      <Accordian2 />
+    </>
+  );
 };
 
 export default App;
