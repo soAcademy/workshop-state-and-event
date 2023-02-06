@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const DeathPerCause = ({
   deathDataFiltered,
   uniqueCauseOfDeath,
-  totalDeath
+  totalDeath,
 }) => {
   const [deathNumPerCause, setDeathNumPerCause] = useState([]);
 
@@ -37,16 +37,18 @@ const DeathPerCause = ({
   }, [uniqueCauseOfDeath]);
   return (
     <>
-      {deathNumPerCause.map((e,idx) => {
+      {deathNumPerCause.map((e, idx) => {
         return (
           <div className="flex flex-row justify-between w-full my-1" key={idx}>
             <div className="w-2/3">{e.cause}</div>
-            <div className="flex flex-row w-1/3">
-              <div className="bg-blue-500 w-1/2 text-right px-2">
-                {e.totalDeath.toLocaleString()}
-              </div>
-              <div className="bg-teal-400 w-1/2 px-2">
-                {((e.totalDeath / totalDeath) * 100).toFixed(2)}%
+            <div className="flex flex-row w-1/3 justify-center ">
+              <div className={`w-[${Math.round(((e.totalDeath / totalDeath) * 100))+'%'}] flex ` }>
+                <div className="bg-blue-500 w-1/2 text-right px-2">
+                  {e.totalDeath.toLocaleString()}
+                </div>
+                <div className="bg-teal-400 w-1/2 px-2">
+                  {((e.totalDeath / totalDeath) * 100).toFixed(2)}%
+                </div>
               </div>
             </div>
           </div>

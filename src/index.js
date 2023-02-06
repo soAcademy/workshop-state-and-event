@@ -8,6 +8,7 @@ import AppLocalStorage from "./AppLocalStorage";
 import AppChart from "./AppChart";
 import AppDashBoard from "./AppDashBoard";
 import reportWebVitals from "./reportWebVitals";
+import AppAccordian from "./AppAccordian";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -16,7 +17,8 @@ root.render(
     {/* <AppLocalStorage /> */}
     {/* <AppToDoList /> */}
     {/* <AppChart /> */}
-    <AppDashBoard />
+    {/* <AppDashBoard /> */}
+    <AppAccordian />
   </React.StrictMode>
 );
 

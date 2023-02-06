@@ -1,7 +1,7 @@
 import deathData from './thailand-death-cause.json'
-import DeathGenderPie from "./DeathGenderPie";
 import DeathPerCause from "./DeathPerCause";
 import DeathPerProvince from "./DeathPerProvince";
+import DeathGenderPie from "./DeathGenderPie";
 import DeathTrendLine from "./DeathTrendLine";
 import { useState, useEffect } from "react";
 
