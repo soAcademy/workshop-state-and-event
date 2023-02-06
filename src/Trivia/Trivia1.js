@@ -11,7 +11,7 @@ const Trivia1 = () => {
   );
   return (
     <div className="m-10 flex flex-col justify-center font-kanit">
-      <div className="mx-auto w-10/12 flex text-2xl font-bold">
+      <div className="mx-auto w-11/12 flex text-xl font-bold">
         <p>
           ข้อ {questionId + 1} / {quizes.length}
         </p>{" "}
