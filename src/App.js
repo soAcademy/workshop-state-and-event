@@ -15,8 +15,8 @@
 // import Accordian2 from "./AccordiansAnswer/Accordian2";
 // import Accordian3 from "./AccordiansAnswer/Accordian3";
 // import Trivia1 from "./Trivia/Trivia1";
-import Trivia2 from "./Trivia/Trivia2";
-// import Trivia3 from "./Trivia/Trivia3";
+// import Trivia2 from "./Trivia/Trivia2";
+import Trivia3 from "./Trivia/Trivia3";
 // import Trivia4 from "./Trivia/Trivia4";
 // import Trivia5 from "./Trivia/Trivia5";
 
@@ -40,8 +40,8 @@ const App = () => {
       {/* <Accordian2 /> */}
       {/* <Accordian3 /> */}
       {/* <Trivia1 /> */}
-      <Trivia2 />
-      {/* <Trivia3 /> */}
+      {/* <Trivia2 /> */}
+      <Trivia3 />
       {/* <Trivia4 /> */}
       {/* <Trivia5 /> */}
     </>
