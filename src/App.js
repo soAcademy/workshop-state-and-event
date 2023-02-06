@@ -1,44 +1,19 @@
-
-import State1 from "./States/State1";
-import State2 from "./States/State2";
-import State3 from "./States/State3";
-import State4 from "./States/State4";
-import State5 from "./States/State5";
-import State6 from "./States/State6";
-import State7 from "./States/State7";
-
-import Prop1 from "./PropsAnswer/Prop1"
-import Prop3 from "./PropsAnswer/Prop3"
-
-import Effect1 from "./EffectsAnswer/Effect1"
-import Effect2 from "./EffectsAnswer/Effect2"
-import Effect3 from "./EffectsAnswer/Effect3"
-import Effect5 from "./EffectsAnswer/Effect5";
-import Effect6 from "./EffectsAnswer/Effect6";
-import Effect7 from "./EffectsAnswer/Effect7";
-
-import LocalStorage1 from "./LocalStorage/LocalStorage1";
-import LocalStorage2 from "./LocalStorage/LocalStorage2";
-import LocalStorage3 from "./LocalStorageAnswer/LocalStorage3"
-import LocalStorage4 from "./LocalStorage/LocalStorage4";
-
-import ToDoList1 from "./ToDoList/ToDoList1";
-import ToDoList2 from "./ToDoList/ToDoList2";
-import ToDoList3 from "./ToDoList/TodoList3";
-import ToDoList4 from "./ToDoList/ToDoList4";
-import ToDoList5 from "./ToDoListAnswers/ToDoList5"
-
-import Chart1 from "./Charts/Chart1";
-import Chart2 from "./Charts/Chart2";
-import Chart3 from "./Charts/Chart3";
-
-import DashBoard1 from "./DashBoard/DashBoard1"
-
-// import ToDoList4 from "./ToDoListAnswers/ToDoList4"
-// import Test from "./ToDoList/Test"
-// import ToDoList5 from "./ToDoList/ToDoList5"
-
-
+import State3 from "./StatesAnswer/State3";
+import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
+import LocalStorage2 from "./LocalStorageAnswer/LocalStorage2";
+import LocalStorage3 from "./LocalStorageAnswer/LocalStorage3";
+import LocalStorage4 from "./LocalStorageAnswer/LocalStorage4";
+import ToDoList1 from "./ToDoListAnswers/ToDoList1";
+import ToDoList2 from "./ToDoListAnswers/ToDoList2";
+import ToDoList3 from "./ToDoListAnswers/ToDoList3";
+import ToDoList4 from "./ToDoListAnswers/ToDoList4";
+import ToDoList5 from "./ToDoListAnswers/ToDoList5";
+import Chart1 from "./ChartsAnswer/Chart1";
+import Chart2 from "./ChartsAnswer/Chart2";
+import Chart3 from "./ChartsAnswer/Chart3";
+import Accordian1 from "./AccordiansAnswer/Accordian1";
+import Accordian2 from "./AccordiansAnswer/Accordian2";
+import Accordian3 from "./AccordiansAnswer/Accordian3";
 
 const App = () => {
   return (
@@ -74,8 +49,9 @@ const App = () => {
       {/* <Chart1 /> */}
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
-
-      <DashBoard1 />
+      {/* <Accordian1 /> */}
+      <Accordian2 />
+      {/* <Accordian3 /> */}
     </>
   );
 };
