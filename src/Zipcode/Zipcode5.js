@@ -1,8 +1,10 @@
 import ThailandZipcodeData from "./thailand-zipcode.json";
+// อันนี้จะเหมือนกันหับอันที4 เลยแต่เราเพิ่มต้ว function หนึ่งเข้ามาแล้วก็มีการ
 
 const ZipcodeHome = ({ provinces }) => (
+  // Component จะใช้เป็นวงเล็บไม่ใช่ปีกกา แล้วก็จะมีตัว props อย่าง provinces ที่เรายกมาเลย
   <>
-    <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
+    <h1 className="text-2xl pt-3 font-bold">ค้าหารหัสไปรษณีย์</h1>
     <div>
       <input
         type="text"
@@ -22,6 +24,7 @@ const ZipcodeHome = ({ provinces }) => (
 );
 
 const ZipcodeProvince = ({ province, districts }) => (
+  // อะไรที่มันอยู่ในวงเล็บนี้หมายความว่ามันจะเอาข้อมูลจากในวงเล็บนี้มาเท่านั้น
   <>
     <h1 className="text-2xl pt-3 font-bold">
       รหัสไปรษณีย์ในจังหวัด {province}
@@ -61,7 +64,9 @@ const ZipcodeProvince = ({ province, districts }) => (
 );
 
 const Zipcode5 = () => {
-  const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
+  const provincesArray = ThailandZipcodeData.map((r) => r.province);
+  const provinces = [...new Set(provincesArray)];
+  // const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
   const province = "กรุงเทพมหานคร";
   // const districts = ThailandZipcodeData.filter((r) => r.province === province);
   const districts = [
@@ -73,13 +78,21 @@ const Zipcode5 = () => {
     ).values(),
   ];
 
-  
+// มันจะมี pattern นี้ถ้าเราอยากจะได้ข้อมูลที่มีลักษณะแบบนี้ออกมา 
+// [
+//   ...new Map(
+//     ThailandZipcodeData.filter((r) => r.province === province).map((r) => [
+//       r.district,
+//       r,
+//     ])
+//   ).values(),
+// ];
+
   return (
     <div className="w-full text-center">
       {/* <ZipcodeHome provinces={provinces} /> */}
-      <ZipcodeProvince province={province} districts={districts} />
+      <ZipcodeProvince province={province} districts={districts}/>
     </div>
   );
 };
-
 export default Zipcode5;
