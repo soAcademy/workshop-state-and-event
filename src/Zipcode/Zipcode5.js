@@ -46,7 +46,7 @@ const ZipCodeProvince = (props) => {
               return (
                 <tr key={idx}>
                   <td className="text-center p-1 border-2 border-gray-300">
-                    {idx + 1}}
+                    {idx + 1}
                   </td>
                   <td className="text-center p-1 border-2 border-gray-300">
                     {r.district}
