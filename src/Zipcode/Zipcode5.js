@@ -24,12 +24,13 @@ const ZipcodeHome = ({ provinces }) => (
   </div>
 );
 
-// todo 6. สร้าง component ใหม่ 1 อัน ชื่อว่า ZipcodeByProvince ให้เป็นหน้าที่แสดง รายการ Zipcode ของจังหวัดนั้นๆ 
-// เช่น กรุงเทพฯ มีเขต 20 เขต แล้วก็แสดงรายการรหัสไปรณีย์แต่ละเขต
-const ZipcodeByProvince = () => (
+// todo 6. สร้าง component ใหม่ 1 อัน ชื่อว่า ZipcodeByProvince ให้เป็นหน้าที่แสดง รายการ Zipcode ของจังหวัดนั้นๆ
+// เช่น กรุงเทพฯ มีเขต 50 เขต แล้วก็แสดงรายการรหัสไปรณีย์แต่ละเขต
+// todo 8. รับค่า props มาจาก main components
+const ZipcodeByProvince = ({ province, districts }) => (
   <>
     <h1 className="text-2xl pt-3 font-bold text-center">
-      รหัสไปรษณีย์ในจังหวัด กรุงเทพมหานคร
+      รหัสไปรษณีย์ในจังหวัด {province}
     </h1>
     <div className="text-center">
       <input
@@ -48,17 +49,25 @@ const ZipcodeByProvince = () => (
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="border border-slate-300 text-center p-2">1</td>
-            <td className="border border-slate-300 p-2">เขตคลองสาน</td>
-            <td className="border border-slate-300 text-center p-2">10600</td>
-          </tr>
+          {districts.map((r, idx) => (
+            <tr key={idx}>
+              <td className="border border-slate-300 text-center p-2">
+                {idx + 1}
+              </td>
+              <td className="border border-slate-300 p-2">{r.district}</td>
+              <td className="border border-slate-300 text-center p-2">
+                {r.zipcode}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   </>
 );
-const Zipcode4 = () => {
+
+// ==== MAIN COMPONENT BELOW ====
+const Zipcode5 = () => {
   // todo 1. สร้าง Mock up จังหวัด เพื่อ วางโครงหน้า
   // const provinces = ["กรุงเทพมหานคร", "นนทบุรี", "สุโขทัย", "แพร่"]
   // todo 3. find all existing provinces in JSON file
@@ -72,12 +81,29 @@ const Zipcode4 = () => {
   const provinces = [
     ...new Set(thailandZipCodeDatas.map((_province) => _province.province)),
   ];
-
+  // todo 7. create parameter to collect province name and district name
+  // todo 7.1. create parameter province
+  const province = "กรุงเทพมหานคร";
+  // todo 7.2. create parameter district
+  // todo 7.2.1 คอนเซปคือให้ฟิลเตอร์จังหวัดใน thailandZipCodeDatas ที่มีชื่อตรงกันกับ จังหวัดที่อยู่ใน parameter ข้อ 7.1
+  // todo 7.2.2 แล้วทำ [...new Map(...)] <== !!อันนี้ต้องไปอ่านเพิ่มนะ
+  const _dist = thailandZipCodeDatas
+    .filter((r) => r.province === province)
+    .map((r) => [r.district, r]);
+  console.log("distx : ", _dist);
+  const districts = [
+    ...new Map(
+      thailandZipCodeDatas
+        .filter((r) => r.province === province)
+        .map((r) => [r.district, r])
+    ).values(),
+  ];
+  console.log("districts : ", districts);
   return (
     <>
-      <ZipcodeByProvince />
+      <ZipcodeByProvince province={province} districts={districts} />
     </>
   );
 };
 
-export default Zipcode4;
+export default Zipcode5;
