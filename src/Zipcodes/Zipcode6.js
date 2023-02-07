@@ -1,6 +1,7 @@
 import AllZipCode from "./thailand-zipcode.json";
+import { useState } from "react";
 
-const ZipcodeHome = ({ provinces }) => {
+const ZipcodeHome = ({ provinces, setProvince }) => {
   return (
     <div className="w-full md:w-3/4">
       <div className="header w-full h-14 flex items-center justify-center mb-4">
@@ -21,7 +22,11 @@ const ZipcodeHome = ({ provinces }) => {
       <div className="provinceBlock">
         <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
           {provinces.map((province, idx) => (
-            <button key={idx} className="text-center">
+            <button
+              onClick={() => setProvince(province)}
+              key={idx}
+              className="text-center"
+            >
               {province}
             </button>
           ))}
@@ -31,13 +36,13 @@ const ZipcodeHome = ({ provinces }) => {
   );
 };
 
-const ZipCodeDistrict = ({ districts }) => {
+const ZipCodeDistrict = ({ province, districts }) => {
   return (
     <div className="w-full md:w-3/4">
       <div className="header mb-6">
         <div className="w-full mb-6">
           <h1 className="text-xl text-left md:text-center">
-            รหัสไปรษณีย์ในจังหวัดxxx
+            รหัสไปรษณีย์ในจังหวัด {province}
           </h1>
         </div>
         <div className="tableBlock w-full flex justify-center">
@@ -73,29 +78,34 @@ const ZipCodeDistrict = ({ districts }) => {
   );
 };
 
-const Zipcode5 = () => {
+const Zipcode6 = () => {
+  const [province, setProvince] = useState();
+  const [districts, setDistricts] = useState([]);
   // console.log(AllZipCode);
   const uniqueProvinces = [
     ...new Set(AllZipCode?.map((r) => r.province)),
   ].sort();
 
-  const province = "กรุงเทพมหานคร";
-  const districts = [
-    ...new Map(
-      AllZipCode.filter((r) => r.province === province).map((r) => [
-        r.district,
-        r,
-      ])
-    ).values(),
-  ];
-  console.log(districts);
+  // const districts = [
+  //   ...new Map(
+  //     AllZipCode.filter((r) => r.province === province).map((r) => [
+  //       r.district,
+  //       r,
+  //     ])
+  //   ).values(),
+  // ];
+  // console.log(districts);
 
   return (
     <div className="w-full h-full flex justify-center font-prompt text-sm p-6">
-      {/* <ZipcodeHome provinces={uniqueProvinces} /> */}
-      <ZipCodeDistrict districts={districts} />
+      {province === undefined && (
+        <ZipcodeHome setProvince={setProvince} provinces={uniqueProvinces} />
+      )}
+      {province !== undefined && (
+        <ZipCodeDistrict province={province} districts={districts} />
+      )}
     </div>
   );
 };
 
-export default Zipcode5;
+export default Zipcode6;
