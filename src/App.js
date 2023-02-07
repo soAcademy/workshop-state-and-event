@@ -14,11 +14,19 @@ import Chart3 from "./ChartsAnswer/Chart3";
 import Accordian1 from "./AccordiansAnswer/Accordian1";
 import Accordian2 from "./AccordiansAnswer/Accordian2";
 import Accordian3 from "./AccordiansAnswer/Accordian3";
-import Trivia5 from "./trivias/Trivia5";
-// import Trivia2 from "./TriviaAnswer/Trivia2";
-// import Trivia3 from "./TriviaAnswer/Trivia3";
-// import Trivia4 from "./TriviaAnswer/Trivia4";
-// import Trivia5 from "./TriviaAnswer/Trivia5";
+import Trivia1 from "./TriviaAnswer/Trivia1";
+import Trivia2 from "./TriviaAnswer/Trivia2";
+import Trivia3 from "./TriviaAnswer/Trivia3";
+import Trivia4 from "./TriviaAnswer/Trivia4";
+import Trivia5 from "./TriviaAnswer/Trivia5";
+import Zipcode1 from "./ZipcodeAnswer/Zipcode1";
+import Zipcode2 from "./ZipcodeAnswer/Zipcode2";
+import Zipcode3 from "./ZipcodeAnswer/Zipcode3";
+import Zipcode4 from "./ZipcodeAnswer/Zipcode4";
+import Zipcode5 from "./ZipcodeAnswer/Zipcode5";
+import Zipcode6 from "./ZipcodeAnswer/Zipcode6";
+import Zipcode7 from "./ZipcodeAnswer/Zipcode7";
+import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
   return (
@@ -39,11 +47,19 @@ const App = () => {
       {/* <Accordian1 /> */}
       {/* <Accordian2 /> */}
       {/* <Accordian3 /> */}
-      <Trivia5 />
+      {/* <Trivia1 /> */}
       {/* <Trivia2 /> */}
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}
       {/* <Trivia5 /> */}
+      {/* <Zipcode1 /> */}
+      {/* <Zipcode2 /> */}
+      {/* <Zipcode3 /> */}
+      {/* <Zipcode4 /> */}
+      {/* <Zipcode5 /> */}
+      {/* <Zipcode6 /> */}
+      {/* <Zipcode7 /> */}
+      <Zipcode8 />
     </>
   );
 };

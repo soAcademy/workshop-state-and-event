@@ -39,7 +39,7 @@ const Trivia2 = () => {
     },
   ];
 
-  const [currentQuiz, setCurrentQuiz] = useState(0);
+  const [currentQuiz, setCurrentQuiz] = useState(3);
   const [score, setScore] = useState(0);
 
   return (
