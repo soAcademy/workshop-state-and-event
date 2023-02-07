@@ -1,6 +1,7 @@
 import React from 'react'
 // todo 2. import JSON files
 import thailandZipCodeDatas from "./thailand-zipcode.json"
+
 const Zipcode1 = () => {
 
   // todo 1. สร้าง Mock up จังหวัด เพื่อ วางโครงหน้า
@@ -10,7 +11,7 @@ const Zipcode1 = () => {
   // output of todo 3. ข้อมูลที่ออกมาจะเป็นรายชื่อจังหวัดซ้ำๆเยอะๆ
   // todo 4. find unique province from _provinces
   const provinces = [...new Set(_provinces)]
-  // todo 5. สามารถ ReFactor ข้อ 3-4 ได้ดังนี้ ...
+  // todo 4.1. สามารถ ReFactor ข้อ 3-4 ได้ดังนี้ ...
   // const provinces = [...new Set(thailandZipCodeDatas.map((_province) => _province.province))]
 
   return (
