@@ -31,9 +31,11 @@ const ZipcodeProvince = ({ province, districtListForProvince }) => {
       <table className="w-full text-left font-nstl text-sm text-gray-500 dark:text-gray-400">
         <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th>#</th>
-            <th>{province === "กรุงเทพมหานคร" ? "เขต" : "อำเภอ"}</th>
-            <th>รหัสไปรษณีย์</th>
+            <th className="px-6 py-3">#</th>
+            <th className="px-6 py-3">
+              {province === "กรุงเทพมหานคร" ? "เขต" : "อำเภอ"}
+            </th>
+            <th className="px-6 py-3">รหัสไปรษณีย์</th>
           </tr>
         </thead>
         <tbody>
@@ -41,12 +43,12 @@ const ZipcodeProvince = ({ province, districtListForProvince }) => {
             .filter((item) => item.province === province) */}
           {districtListForProvince.map((item, idx) => (
             <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
-              <td>{idx + 1}</td>
-              <td>
+              <td className="px-6 py-4">{idx + 1}</td>
+              <td className="px-6 py-4">
                 {item.district}
                 {/* {item.district} {item.subdistrict} */}
               </td>
-              <td>{item.zipcode}</td>
+              <td className="px-6 py-4">{item.zipcode}</td>
             </tr>
           ))}
         </tbody>
@@ -62,13 +64,16 @@ const Zipcode5 = () => {
 
   // console.log(zipcodeList.filter((item) => item.province === "กรุงเทพมหานคร"));
 
-  const districtListForProvince = (province) => [
-    ...new Map(
-      zipcodeList
-        .filter((item) => item.province === province)
-        .map((item) => [item.district, item])
-    ).values(),
-  ];
+  const districtListForProvince = (province) =>
+    [
+      ...new Map(
+        zipcodeList
+          .filter((item) => item.province === province)
+          .map((item) => [item.district, item])
+      ).values(),
+    ].sort((a, b) =>
+      a.district.localeCompare(b.district, "th", { ignorePunctuation: true })
+    );
 
   console.log(districtListForProvince("กรุงเทพมหานคร"));
 
