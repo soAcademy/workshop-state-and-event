@@ -29,7 +29,7 @@ const ZipcodeProvider = ({uniqProvinces}) => {
 };
 
 
-const Zipcode1 = () => {
+const Zipcode3 = () => {
   return (
     <>
       <div className="w-full text-center"></div>
@@ -38,4 +38,4 @@ const Zipcode1 = () => {
     </>
   );
 };
-export default Zipcode1;
+export default Zipcode3;

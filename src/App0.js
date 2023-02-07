@@ -2,13 +2,13 @@
 // import Dashboard from "./Dashboard/Dashboard";
 // import Accordian3 from "./Accordian/Accordian3"
 // import Accordian1 from "./Playground/accordian";
-import Zipcode4 from "./Zipcode/Zipcode4";
+import Zipcode6 from "./Zipcode/Zipcod6"
 
 
 const App0 = () => {
   return (
     <div>
-      <Zipcode4/>
+      <Zipcode6/>
      
     </div>
   );
