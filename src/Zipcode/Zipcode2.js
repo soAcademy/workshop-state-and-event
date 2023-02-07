@@ -11,7 +11,11 @@ const Zipcode2 = () => {
         <p className="font-semibold text-xl">ค้นหารหัสไปรษณีย์</p>
       </div>
       <div className="flex justify-center mt-5">
-        <input type="text" className="border-2 w-2/3 rounded" />
+        <input
+          type="text"
+          className="border-2 border-gray-400 w-2/3 rounded"
+          placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
+        />
       </div>
       <div className="mx-auto mt-14 py-2 px-4 w-4/5 bg-gradient-to-b from-red-100 to-blue-100 rounded">
         <p className="text-lg">เลือกจังหวัด :</p>
