@@ -36,43 +36,40 @@ const quizes = [
     answer: 1,
   },
 ];
-
-const Trival5 = () => {
+const Accordian1 = () => {
   const [currentQuiz, setCurrentQuiz] = useState(0);
-  const [score, setScore] = useState(0);
-
+  const [scores, setScores] = useState(0);
   const checkAnswer = (quizId, answerId) => {
-    setScore(score + (quizes[quizId].answer === answerId ? 1 : 0));
-    setCurrentQuiz(quizId + 1);
+    setScores(scores + (quizes[quizId].answer === answerId ? 1 : 0));
+    setCurrentQuiz(quizId+1)
   };
+
   return (
     <>
-      {" "}
-      {currentQuiz < quizes.length && (
+    {currentQuiz < quizes.length&&(<div className="text-center">
         <div>
-          <div className="text-center">
-            ข้อ {currentQuiz + 1}/{quizes.length}
-          </div>
-          <div className="text-center">คะแนน{score}</div>
-          <div className="text-center py-4">
-            คำถาม{quizes[currentQuiz].question}
-          </div>
-          <div className="grid gap-2 grid-cols-2">
-            {quizes[currentQuiz].answers.map((r, index) => (
-              <button
-                className="bg-teal-300"
-                onClick={() => checkAnswer(currentQuiz, index)}
-              >
-                {r}
-              </button>
-            ))}
-          </div>
+          ข้อที่{currentQuiz + 1}/{quizes.length}
         </div>
-      )}
-      {currentQuiz >= quizes.length && (
-        <div className="text-center text-xl">สรุปคะแนน{score}</div>
-      )}
+        <div className="text-center">คะแนน {scores}</div>
+        <div>{quizes[currentQuiz].question}</div>
+        <div className="grid grid-cols-2 gap-4">
+          {quizes[currentQuiz].answers.map((r, index) => {
+            return (
+              <>
+                <div
+                  className="bg-teal-200"
+                  onClick={() => checkAnswer(currentQuiz, index)}
+                >
+                  {r}
+                </div>{" "}
+              </>
+            );
+          })}
+        </div>
+      </div>)}
+      {currentQuiz>=  quizes.length && (<div className="text-center text-xl">คะแนนรวม{scores}</div>)}
+    
     </>
   );
 };
-export default Trival5;
+export default Accordian1;

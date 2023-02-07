@@ -1,13 +1,13 @@
 
 // import Dashboard from "./Dashboard/Dashboard";
 // import Accordian3 from "./Accordian/Accordian3"
-import Trival5 from "./Trival/Trival5";
+import Accordian1 from "./Playground/accordian";
 
 
 const App0 = () => {
   return (
     <div>
-      <Trival5/>
+      <Accordian1/>
      
     </div>
   );
