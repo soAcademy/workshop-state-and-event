@@ -19,34 +19,40 @@ const ZipcodeHome = ({ provinces }) => (
   </>
 );
 
-const ZipcodeProvince = ({ province }) => (
-  <>
-    <h1 className="font-2xl mb-2 text-center font-bold">
-      รหัสไปรษณีย์ในจังหวัด
-      {province}
-    </h1>
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>อำเภอ/เขต</th>
-          <th>รหัสไปรษณีย์</th>
-        </tr>
-      </thead>
-      <tbody>
-        {zipcodeList
-          .filter((item) => item.province === province)
-          .map((item, idx) => (
-            <tr>
-              <td>{idx + 1}</td>
-              <td>{province.district}</td>
-              <td>{province.zipcode}</td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
-  </>
-);
+const ZipcodeProvince = ({ province }) => {
+  // const ZipcodeListforProvince = (province) =>
+  //   zipcodeList.filter((item) => item.province === province);
+  return (
+    <>
+      <h1 className="font-2xl mb-2 text-center font-bold">
+        รหัสไปรษณีย์ในจังหวัด
+        {province}
+      </h1>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>อำเภอ/เขต</th>
+            <th>รหัสไปรษณีย์</th>
+          </tr>
+        </thead>
+        <tbody>
+          {zipcodeList
+            .filter((item) => item.province === province)
+            .map((item, idx) => (
+              <tr>
+                <td>{idx + 1}</td>
+                <td>
+                  {item.district} {item.subdistrict}
+                </td>
+                <td>{item.zipcode}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
 
 const Zipcode4 = () => {
   const provinces = [...new Set(zipcodeList.map((item) => item.province))].sort(
@@ -61,9 +67,7 @@ const Zipcode4 = () => {
     //     (a, b) => a.localeCompare(b, "th", { ignorePunctuation: true })
     //   )}
     // />
-    <ZipcodeProvince
-    // province={zipcodeList.filter((item) => item.province === "กรุงเทพมหานคร")}
-    />
+    <ZipcodeProvince province="กรุงเทพมหานคร" />
   );
 };
 
