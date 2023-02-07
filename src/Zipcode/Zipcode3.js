@@ -1,5 +1,5 @@
 import React from "react";
-import thailandZipcode from "../ZipcodeAnswer/thailand-zipcode.json";
+import thailandZipCode from "../ZipcodeAnswer/thailand-zipcode.json";
 
 const ZipCodeHome = ({ provinces }) => {
   return (
@@ -14,7 +14,7 @@ const ZipCodeHome = ({ provinces }) => {
           placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
         />
       </div>
-      <div className="mx-auto mt-14 py-2 px-4 w-4/5 bg-gradient-to-b from-red-100 to-blue-100 rounded">
+      <div className="mx-auto mt-14 py-2 px-4 w-4/5 bg-gradient-to-b from-red-100 to-blue-100 rounded text-left">
         <p className="text-lg">เลือกจังหวัด :</p>
         <div className="grid gap-4 grid-cols-4 pl-4 mt-4">
           {provinces.map((r) => (
@@ -26,8 +26,8 @@ const ZipCodeHome = ({ provinces }) => {
   );
 };
 
-const Zipcode3 = () => {
-  const provinces = [...new Set(thailandZipcode.map((r) => r.province))];
+const ZipCode3 = () => {
+  const provinces = [...new Set(thailandZipCode.map((r) => r.province))];
   console.log(provinces);
 
   return (
@@ -39,4 +39,4 @@ const Zipcode3 = () => {
   );
 };
 
-export default Zipcode3;
+export default ZipCode3;

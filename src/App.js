@@ -27,9 +27,10 @@
 // import Zipcode6 from "./ZipcodeAnswer/Zipcode6";
 // import Zipcode7 from "./ZipcodeAnswer/Zipcode7";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
-// import Zipcode1 from "./Zipcode/Zipcode1";
-// import Zipcode2 from "./Zipcode/Zipcode2";
-import Zipcode3 from "./Zipcode/Zipcode3";
+// import ZipCode1 from "./Zipcode/Zipcode1";
+// import ZipCode2 from "./Zipcode/Zipcode2";
+import ZipCode3 from "./Zipcode/Zipcode3";
+import ZipCode4 from "./Zipcode/Zipcode4";
 
 const App = () => {
   return (
@@ -55,10 +56,10 @@ const App = () => {
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}
       {/* <Trivia5 /> */}
-      {/* <Zipcode1 /> */}
-      {/* <Zipcode2 /> */}
-      <Zipcode3 />
-      {/* <Zipcode4 /> */}
+      {/* <ZipCode1 /> */}
+      {/* <ZipCode2 /> */}
+      {/* <ZipCode3 /> */}
+      <ZipCode4 />
       {/* <Zipcode5 /> */}
       {/* <Zipcode6 /> */}
       {/* <Zipcode7 /> */}

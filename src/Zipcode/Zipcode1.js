@@ -1,6 +1,6 @@
 import React from "react";
 
-const Zipcode1 = () => {
+const ZipCode1 = () => {
   const provinces = ["กรุงเทพมหานคร", "นนทบุรี", "สุโขทัย", "แพร่"];
 
   return (
@@ -23,4 +23,4 @@ const Zipcode1 = () => {
   );
 };
 
-export default Zipcode1;
+export default ZipCode1;

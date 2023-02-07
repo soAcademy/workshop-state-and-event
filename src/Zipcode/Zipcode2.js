@@ -1,7 +1,7 @@
 import React from "react";
 import thailandZipcode from "../ZipcodeAnswer/thailand-zipcode.json";
 
-const Zipcode2 = () => {
+const ZipCode2 = () => {
   const provinces = [...new Set(thailandZipcode.map((r) => r.province))];
   console.log(provinces);
 
@@ -29,4 +29,4 @@ const Zipcode2 = () => {
   );
 };
 
-export default Zipcode2;
+export default ZipCode2;
