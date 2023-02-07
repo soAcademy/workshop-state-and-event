@@ -70,6 +70,10 @@ const Accordian3 = () => {
     const newToggles = [...toggles];
     // console.log("index", index);
     newToggles[index] = !newToggles[index];
+
+    // let nToggles = [true, false, true];
+    // nToggles[0] = false;
+    // [false, false, true]
     // console.log("newToggles",newToggles);
 
     setToggles(newToggles);
