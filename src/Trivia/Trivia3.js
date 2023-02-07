@@ -53,7 +53,7 @@ const Trivia2 = () => {
 
   return (
     <>
-      {currentQuiz < quizes.length && (
+      {/* {currentQuiz < quizes.length && (
         <div className="m-32 h-1/2 bg-yellow-200 p-16 rounded-xl">
           <div className="text-center">
             {currentQuiz + 1}/{quizes.length}
@@ -76,6 +76,31 @@ const Trivia2 = () => {
       )}
       {currentQuiz >= quizes.length && (
         <div className="text-center text-xl">สรุปคะแนน {score}/{quizes.length}</div>
+      )} */}
+      {currentQuiz < quizes.length ? (
+        <div className="m-32 h-1/2 bg-yellow-200 p-16 rounded-xl">
+          <div className="text-center">
+            {currentQuiz + 1}/{quizes.length}
+          </div>
+          <div className="text-center">
+            คะแนน : {score}/{quizes.length}
+          </div>
+          <div className="py-4 text-center">{quizes[currentQuiz].question}</div>
+          <div className="mx-16 grid gap-2 grid-cols-1">
+            {quizes[currentQuiz].answers.map((r, index) => (
+              <button
+                className="bg-green-400 py-4"
+                onClick={() => checkAnswer(currentQuiz, index)}
+              >
+                {r}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="text-center text-xl">
+          สรุปคะแนน {score}/{quizes.length}
+        </div>
       )}
     </>
   );
