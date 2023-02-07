@@ -26,9 +26,14 @@ const Dashboard = () => {
 
     const sumOfDeaths = filterData.reduce(
       (acc, r) => {
-        acc.deathFemale =+ r.deathFemale;
-        acc.deathMale =+ r.deathMale;
-        return acc;
+        // acc.deathFemale =+ r.deathFemale;
+        // acc.deathMale =+ r.deathMale;
+        // return acc;
+
+        return {
+          deathFemale: acc.deathFemale + r.deathFemale,
+          deathMale: acc.deathMale + r.deathMale,
+        }
       },
       { deathFemale: 0, deathMale: 0 }
     );
