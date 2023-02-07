@@ -1,6 +1,5 @@
 import Zipcode from "./thailand-zipcode.json";
 
-const provinces = ["กรุงเทพมหานคร", "นนทบุรี", "สุโขทัย", "แพร่"];
 const uniqueProvices = [...new Set(Zipcode.map(r=>r.province))];
 
 const Zipcode1 = () => {
