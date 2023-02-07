@@ -88,14 +88,21 @@ const Zipcode5 = () => {
   // -------------------------------
   const district = [
     ...new Map(
-      ThailandZipcodeData.filter((item) => item.province === province).map(
-        (r) => [r.district, r]
-      )
+      ThailandZipcodeData.filter(
+        (item) => item.province === "กรุงเทพมหานคร"
+      ).map((r) => [r.district, r])
     ).values(),
   ];
   console.log("District", district);
-  // set Map()  ====>>
-  // set Set() ====>>
+
+  // set Set()
+  // [...new Set([1,1,2,2,3,3])]
+  // output = [1,2,3]
+
+  // set Map()
+  // [...new Map(["key1","value1"],["key2","value2"]).values()]
+  // output = [[key,value]]
+
   return (
     <>
       {/* <ZipcodeHome provincesUnique={provincesUnique} /> */}
