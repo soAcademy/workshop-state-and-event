@@ -4,12 +4,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProvincePages from "./Dashboard/ProvincePages";
 import DistrictPages from "./Dashboard/DistrictPages";
 import Navbar from "./Dashboard/Navbar";
+import { useState } from "react";
 
 const AppDashBoard = () => {
+  const [dataFilteredBySearchTerm, setDataFilteredBySearchTerm] = useState();
   return (
     // <Dashboard1 />
     <BrowserRouter>
-      <Navbar />
+      <Navbar
+        dataFilteredBySearchTerm={dataFilteredBySearchTerm}
+        setDataFilteredBySearchTerm={setDataFilteredBySearchTerm}
+      />
       <Routes>
         <Route path="/" element={<DashboardZipcode />} />
         <Route path="/home" element={<DashboardZipcode />} />
