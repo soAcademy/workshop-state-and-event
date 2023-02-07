@@ -1,6 +1,6 @@
 import zipcodeList from "./thailand-zipcode.json";
 
-const Zipcode1 = () => {
+const Zipcode2 = () => {
   return (
     <>
       <h1 className="font-2xl mb-2 text-center font-bold">ค้นหารหัสไปรษณีย์</h1>
@@ -11,7 +11,7 @@ const Zipcode1 = () => {
       <h2 className="font-xl mb-2 font-bold">เลือกจังหวัด</h2>
       <ul className="grid grid-cols-4 gap-2">
         {[...new Set(zipcodeList.map((item) => item.province))]
-          .sort()
+          .sort((a, b) => a.localeCompare(b, "th", { ignorePunctuation: true }))
           .map((province, idx) => (
             <li key={idx} className="font-nstl">
               <button className="text-blue-600">{province}</button>
@@ -23,4 +23,4 @@ const Zipcode1 = () => {
   );
 };
 
-export default Zipcode1;
+export default Zipcode2;

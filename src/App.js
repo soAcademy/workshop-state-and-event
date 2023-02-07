@@ -83,7 +83,8 @@
 // import Trivia4 from "./Trivia/Trivia4";
 // import Trivia5 from "./Trivia/Trivia5";
 
-import Zipcode1 from "./Zipcode/Zipcode1";
+// import Zipcode1 from "./Zipcode/Zipcode1";
+import Zipcode2 from "./Zipcode/Zipcode2";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
@@ -136,7 +137,8 @@ const App = () => (
     {/* <Trivia3 /> */}
     {/* <Trivia4 /> */}
     {/* <Trivia5 /> */}
-    <Zipcode1 />
+    {/* <Zipcode1 /> */}
+    <Zipcode2 />
   </div>
 );
 
