@@ -51,29 +51,36 @@ const Trivia4 = () => {
   };
   return (
     <>
-      <div className="bg-sky-200 p-5">
-        <div className="text-center text-xl font-semibold text-sky-700">
-          ข้อ {currentQuiz + 1}/{quizes.length}
+      {currentQuiz < quizes.length && (
+        <div className="bg-sky-200 p-6">
+          <div className="text-center text-xl font-semibold text-sky-700">
+            ข้อ {currentQuiz + 1}/{quizes.length}
+          </div>
+          <div className="text-center text-xl font-semibold">
+            คะแนนสะสม : {score}
+          </div>
+          <div className="py-4 text-center text-2xl">
+            {quizes[currentQuiz].question}
+          </div>
+          <div className="grid gap-2 grid-cols-2">
+            {/* map choices */}
+            {quizes[currentQuiz].answers?.map((r, idx) => (
+              <button
+                key={idx}
+                onClick={() => checkAnswer(currentQuiz, idx)}
+                className="bg-sky-500 py-4 text-white border-2 border-white shadow-lg"
+              >
+                {r}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="text-center text-xl font-semibold">
-          คะแนนสะสม : {score}
+      )}
+      {currentQuiz >= quizes.length && (
+        <div className="text-center text-3xl bg-sky-500 text-white underline p-3 ">
+          ได้คะแนนทั้งหมด {score} คะแนน 🦞
         </div>
-        <div className="py-4 text-center text-2xl">
-          {quizes[currentQuiz].question}
-        </div>
-        <div className="grid gap-2 grid-cols-2">
-          {/* map choices */}
-          {quizes[currentQuiz].answers?.map((r, idx) => (
-            <button
-              key={idx}
-              onClick={() => checkAnswer(currentQuiz, idx)}
-              className="bg-sky-500 py-4 text-white border-2 border-white shadow-lg"
-            >
-              {r}
-            </button>
-          ))}
-        </div>
-      </div>
+      )}
     </>
   );
 };
