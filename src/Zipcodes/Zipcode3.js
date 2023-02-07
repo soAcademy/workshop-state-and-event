@@ -1,14 +1,8 @@
 import AllZipCode from "./thailand-zipcode.json";
 
-const Zipcode2 = () => {
-  // console.log(AllZipCode);
-  const uniqueProvinces = [
-    ...new Set(AllZipCode?.map((r) => r.province)),
-  ].sort();
-  // console.log(uniqueProvince);
-
+const ZipcodeHome = ({ provinces }) => {
   return (
-    <div className="w-full h-full font-prompt text-sm p-6">
+    <>
       <div className="header w-full h-14 flex items-center justify-center mb-4">
         <h1 className="text-2xl">ค้นหารหัสไปรษณีย์</h1>
       </div>
@@ -26,15 +20,29 @@ const Zipcode2 = () => {
       </div>
       <div className="provinceBlock">
         <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
-          {uniqueProvinces.map((province, idx) => (
+          {provinces.map((province, idx) => (
             <button key={idx} className="text-center">
               {province}
             </button>
           ))}
         </div>
       </div>
+    </>
+  );
+};
+
+const Zipcode3 = () => {
+  // console.log(AllZipCode);
+  const uniqueProvinces = [
+    ...new Set(AllZipCode?.map((r) => r.province)),
+  ].sort();
+  // console.log(uniqueProvince);
+
+  return (
+    <div className="w-full h-full font-prompt text-sm p-6">
+      <ZipcodeHome provinces={uniqueProvinces} />
     </div>
   );
 };
 
-export default Zipcode2;
+export default Zipcode3;
