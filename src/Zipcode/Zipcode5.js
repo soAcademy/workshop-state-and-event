@@ -26,11 +26,11 @@ const ZipCodeHome = ({ provinces }) => {
   );
 };
 
-const ZipCodeProvince = () => {
+const ZipCodeProvince = (props) => {
   return (
     <div>
       <div className="text-xl pt-5 text-center font-semibold">
-        <p>รหัสไปรษณีย์ในจังหวัด กรุงเทพมหานคร</p>
+        <p>รหัสไปรษณีย์ในจังหวัด {props.province}</p>
       </div>
       <div className="w-4/5 mx-auto p-4 mt-10 bg-gray-100 rounded">
         <table className="w-full">
@@ -42,15 +42,21 @@ const ZipCodeProvince = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="text-center p-1 border-2 border-gray-300">1</td>
-              <td className="text-center p-1 border-2 border-gray-300">
-                เขตคลองสาน
-              </td>
-              <td className="text-center p-1 border-2 border-gray-300">
-                10600
-              </td>
-            </tr>
+            {props.districts.map((r, idx) => {
+              return (
+                <tr key={idx}>
+                  <td className="text-center p-1 border-2 border-gray-300">
+                    {idx + 1}}
+                  </td>
+                  <td className="text-center p-1 border-2 border-gray-300">
+                    {r.district}
+                  </td>
+                  <td className="text-center p-1 border-2 border-gray-300">
+                    {r.zipcode}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -58,9 +64,29 @@ const ZipCodeProvince = () => {
   );
 };
 
-const ZipCode4 = () => {
+const ZipCode5 = () => {
   const provinces = [...new Set(thailandZipCode.map((r) => r.province))];
-  console.log(provinces);
+  // console.log(provinces);
+  const province = "เชียงใหม่";
+  // const filterDistricts = thailandZipCode.filter(
+  //   (r) => r.province === province
+  // );
+  // console.log("filter", filterDistricts);
+  // const mapDistrict = filterDistricts.map((r) => {
+  //   return { p: r.province, d: r.district };
+  // });
+  // console.log("map", mapDistrict);
+  // const newMapDistrict = [...new Map(mapDistrict).values()]; // ยังทำไม่ได้
+  // console.log("newMap", newMapDistrict);
+
+  const districts = [
+    ...new Map(
+      thailandZipCode
+        .filter((r) => r.province === province)
+        .map((r) => [r.district, r])
+    ).values(),
+  ];
+  console.log(districts);
 
   return (
     <div>
@@ -68,10 +94,10 @@ const ZipCode4 = () => {
         {/* <ZipCodeHome provinces={provinces} /> */}
       </div>
       <div>
-        <ZipCodeProvince />
+        <ZipCodeProvince province={province} districts={districts} />
       </div>
     </div>
   );
 };
 
-export default ZipCode4;
+export default ZipCode5;

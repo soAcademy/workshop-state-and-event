@@ -29,8 +29,9 @@
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 // import ZipCode1 from "./Zipcode/Zipcode1";
 // import ZipCode2 from "./Zipcode/Zipcode2";
-import ZipCode3 from "./Zipcode/Zipcode3";
-import ZipCode4 from "./Zipcode/Zipcode4";
+// import ZipCode3 from "./Zipcode/Zipcode3";
+// import ZipCode4 from "./Zipcode/Zipcode4";
+import ZipCode5 from "./Zipcode/Zipcode5";
 
 const App = () => {
   return (
@@ -59,8 +60,8 @@ const App = () => {
       {/* <ZipCode1 /> */}
       {/* <ZipCode2 /> */}
       {/* <ZipCode3 /> */}
-      <ZipCode4 />
-      {/* <Zipcode5 /> */}
+      {/* <ZipCode4 /> */}
+      <ZipCode5 />
       {/* <Zipcode6 /> */}
       {/* <Zipcode7 /> */}
       {/* <Zipcode8 /> */}
