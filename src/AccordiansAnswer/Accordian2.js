@@ -64,7 +64,7 @@ const Accordian2 = () => {
   const [toggle, setToggle] = useState(-1);
 
   const updateFaqToggle = (index) => {
-    setToggle(index);
+    setToggle(toggle === index ? -1 : index);
   };
 
   return (
