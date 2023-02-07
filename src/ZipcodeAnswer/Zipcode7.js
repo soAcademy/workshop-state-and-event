@@ -72,7 +72,7 @@ const Zipcode7 = () => {
   const [districts, setDistricts] = useState([]);
 
   useEffect(() => {
-    const _districts = [
+    const tempDistricts = [
       ...new Map(
         ThailandZipcodeData.filter((r) => r.province === province).map((r) => [
           r.district,
@@ -80,7 +80,7 @@ const Zipcode7 = () => {
         ])
       ).values(),
     ];
-    setDistricts(_districts);
+    setDistricts(tempDistricts);
   }, [province]);
 
   return (

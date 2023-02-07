@@ -11,7 +11,7 @@ const ZipcodeHome = (props) => {
         <div>
           <input
             type="text"
-            className="border border-gray-600 rounded-lg py-2 px-5 mt-4 w-1/3"
+            className="border-2 border-sky-600 shadow-lg rounded-lg py-2 px-5 mt-4 w-1/3"
             placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
           />
         </div>
