@@ -1,22 +1,16 @@
 import ThailandZipcodeData from "./thailand-zipcode.json";
 
-
-const Zipcode2 = () => {
-  const provincesArray = ThailandZipcodeData.map(r => r.province);
-  const provinces = [...new Set(provincesArray)];
-  // มันคือการทำ Map ก่อนแล้วก็มาทำ unique แล้วก็เอาไปใช้ตอน reutnr ข้างล่าง
-  // const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
-return (
+const ZipcodeHome = ({ provinces }) => (
   <div className="w-full text-center">
-  <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
+    <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
 
-  <div>
-    <input
+    <div>
+      <input
         type="text"
         className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
         placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
       />
-  </div>
+    </div>
 
     <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
       <h2 className="text-xl mt-4 font-bold">เลือกจังหวัด</h2>
@@ -28,5 +22,17 @@ return (
     </div>
   </div>
 );
+
+const Zipcode3 = () => {
+  const provincesArray = ThailandZipcodeData.map(r => r.province);
+  const provinces = [...new Set(provincesArray)];
+  // const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
+
+  return (
+    <div className="w-full text-center">
+      <ZipcodeHome provinces={provinces} />
+    </div>
+  );
 };
-export default Zipcode2;
+
+export default Zipcode3;
