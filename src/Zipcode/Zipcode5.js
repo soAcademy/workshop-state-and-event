@@ -42,7 +42,10 @@ const ZipcodeProvince = ({ province, districtListForProvince }) => {
           {/* {zipcodeList
             .filter((item) => item.province === province) */}
           {districtListForProvince.map((item, idx) => (
-            <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
+            <tr
+              key={idx}
+              className="border-b bg-white dark:border-gray-700 dark:bg-gray-900"
+            >
               <td className="px-6 py-4">{idx + 1}</td>
               <td className="px-6 py-4">
                 {item.district}
@@ -75,7 +78,7 @@ const Zipcode5 = () => {
       a.district.localeCompare(b.district, "th", { ignorePunctuation: true })
     );
 
-  console.log(districtListForProvince("กรุงเทพมหานคร"));
+  // console.log(districtListForProvince("กรุงเทพมหานคร"));
 
   return (
     // <ZipcodeHome
