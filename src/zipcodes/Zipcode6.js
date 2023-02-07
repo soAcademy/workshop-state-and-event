@@ -1,6 +1,7 @@
+import { useState } from "react";
 import thailandZipcodeData from "./thailand-zipcode.json";
 
-const ZipCodeHome = ({ provinces }) => (
+const ZipCodeHome = ({ provinces, setProvince }) => (
   <>
     <div className="text-center">
       <h1 className="font-bold my-2 text-2xl text-sky-300">Zipcode Search</h1>
@@ -11,14 +12,19 @@ const ZipCodeHome = ({ provinces }) => (
         className="border border-4 my-2 border-sky-500"
       />
     </div>
-    <div className="bg-sky-300 rounded-lg w-2/3 mx-auto mt-2 p-3">
+    <div className="bg-sky-500 rounded-lg w-2/3 mx-auto mt-2 p-3">
       <h2 className="text-left font-bold text-xl text-neutral-50">
         Select Province
       </h2>
       <div className="grid grid-cols-4 gap-2 text-center mt-2">
         {provinces.map((province) => (
           <div>
-            <div className="text-neutral-50">{province}</div>
+            <div
+              className="text-neutral-50 cursor-pointer hover:text-sky-800"
+              onClick={() => setProvince(province)}
+            >
+              {province}
+            </div>
           </div>
         ))}
       </div>
@@ -27,10 +33,10 @@ const ZipCodeHome = ({ provinces }) => (
 );
 
 const ZipcodeProvince = (props) => {
-  const { districts2 } = props;
+  const { province, districts2 } = props;
   return (
     <>
-      <h1 className="font-bold p-2 text-sky-400">Bangkok Postcodes</h1>
+      <h1 className="font-bold p-2 text-sky-400">Postcodes: {province}</h1>
       <div className="w-2/3 mx-auto bg-sky-500 rounded-lg">
         <table className="w-full">
           <thead>
@@ -61,8 +67,10 @@ const ZipcodeProvince = (props) => {
   );
 };
 
-const Zipcode5 = () => {
-  const province = "กรุงเทพมหานคร";
+const Zipcode6 = () => {
+  const [province, setProvince] = useState();
+  const [district, setDistrict] = useState([]);
+  // const province = "กรุงเทพมหานคร";
   const provinces = [...new Set(thailandZipcodeData.map((r) => r.province))]; //use ...new Set to only get unique provinces // [...new Set([1, 1, 2, 2, 3, 3])]
 
   const districts = thailandZipcodeData.filter((r) => r.province === province);
@@ -81,10 +89,14 @@ const Zipcode5 = () => {
   // ];
   return (
     <div>
-      {/* <ZipCodeHome provinces={provinces} /> */}
-      <ZipcodeProvince provinces={provinces} districts2={districts2} />
+      {province === undefined && (
+        <ZipCodeHome provinces={provinces} setProvince={setProvince} />
+      )}
+      {province !== undefined && (
+        <ZipcodeProvince province={province} districts2={districts2} />
+      )}
     </div>
   );
 };
 
-export default Zipcode5;
+export default Zipcode6;
