@@ -21,7 +21,7 @@ const ZipcodeHome = (props) => {
             {provincesUnique.map((province, idx) => (
               <div
                 onClick={() => setProvince(province)}
-                className="flex justify-center text-white"
+                className="flex justify-center text-white cursor-pointer hover:bg-white hover:text-black hover:p-1 hover:rounded-[10px]"
                 key={idx}
               >
                 {province}
@@ -34,13 +34,13 @@ const ZipcodeHome = (props) => {
   );
 };
 const ZipcodeProvince = (props) => {
-  const { districts, provinces } = props;
+  const { districts, province } = props;
   return (
     <>
       <div className="">
         <div className="flex flex-col items-center mt-6">
           <h1 className="text-2xl pt-3 font-bold">
-            รหัสไปรษณีย์ในจังหวัด {provinces}
+            รหัสไปรษณีย์ในจังหวัด {province}
           </h1>
           <div>
             <input
