@@ -9,7 +9,7 @@ const DashboardZipcode = () => {
         <p>เลือกจังหวัด</p>
         <div className="grid grid-cols-4">
           {uniqueProvince.map((province, idx) => (
-            <Link id={idx} to={province} className="text-blue-400">
+            <Link id={idx} to={province} className="text-blue-400 w-fit">
               {province}
             </Link>
           ))}
