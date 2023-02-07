@@ -30,9 +30,13 @@ const ZipcodeHome = ({
   setSearchInput,
   searchResults,
 }) => {
+  const [isSearchResultsDropdownOpen, toggleSearchResultsDropdown] =
+    useState(false);
+
   const handleSearchInputChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value.length >= 3 ? e.target.value : undefined);
+    toggleSearchResultsDropdown(e.target.value.length >= 3 ? true : false);
   };
 
   const handleResultEntryClick = async (zipcode) => {
@@ -53,11 +57,15 @@ const ZipcodeHome = ({
         className="mb-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 font-nstl text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
         placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
       />
-      <div className="absolute w-full rounded-lg border border-gray-200 bg-white font-nstl text-sm font-medium text-gray-900 shadow shadow-slate-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+      <div
+        className={`absolute w-full rounded-lg border border-gray-200 bg-white font-nstl text-sm font-medium text-gray-900 shadow shadow-slate-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white ${
+          isSearchResultsDropdownOpen ? "block" : "hidden"
+        }`}
+      >
         <div className="w-full rounded-t-lg border-b border-gray-200 px-4 py-2 dark:border-gray-600">
           {searchResults.length > 0
             ? `ผลการค้นหา ${searchResults.length} รายการ`
-            : "พิมพ์อย่างน้อย 3 ตัวอักษรหรือตัวเลขในช่องค้นหา"}
+            : "ไม่พบผลการค้นหา"}
         </div>
         <div className="h-48 overflow-y-auto">
           {searchResults.map((result, idx) => (
