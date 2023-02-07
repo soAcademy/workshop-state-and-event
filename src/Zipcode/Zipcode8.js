@@ -1,31 +1,34 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import ThailandZipcodeData from "./thailand-zipcode.json";
+// มีทำ Auto suggest โดยการใช้ onchange กับมีทำปุ่มไว้หน้าหลัก
 
-const ZipcodeHome = ({provinces, setProvince}) => (
-<>
-<h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
-<div>
-  <input
-  type="text"
-  className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
-  placeholder="ค้าหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
-  />
-</div>
-<div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
+const ZipcodeHome = ({ provinces, setProvince }) => (
+  <>
+    <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
+    <div>
+      <input
+        type="text"
+        className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
+        placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
+      />
+    </div>
+    <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
       <h2 className="text-xl mt-4 font-bold">เลือกจังหวัด</h2>
       <div className="grid grid-cols-4 mt-4">
         {provinces.map((province) => (
-          <div className="cursor-pointer text-blue-500"
+          <div
             onClick={() => setProvince(province)}
+            className="cursor-pointer text-blue-500"
           >
             {province}
           </div>
         ))}
       </div>
     </div>
-</>
+  </>
 );
 
+//อันนี้คือหน้าหลัก
 const ZipcodeProvince = ({ province, districts }) => (
   <>
     <h1 className="text-2xl pt-3 font-bold">
@@ -65,33 +68,45 @@ const ZipcodeProvince = ({ province, districts }) => (
   </>
 );
 
-const Zipcode7 = () => {
+// อันนี้สร้าง Navbar เด้อ
+const ZipcodeNavBar = ({ province, setProvince }) => (
+  <div>
+    <span
+      className="text-blue-500 cursor-pointer"
+      onClick={() => setProvince(undefined)}
+    >
+      หน้าแรก
+    </span>
+    {province !== undefined && (
+      <span className="text-gray-500"> / {province}</span>
+    )}
+  </div>
+);
+
+//ตัวแม่ด้าน Component
+const Zipcode8 = () => {
   const provincesArray = ThailandZipcodeData.map((r) => r.province);
   const provinces = [...new Set(provincesArray)];
   const [province, setProvince] = useState(undefined);
   const [districts, setDistricts] = useState([]);
 
-useEffect(() => {
-  const _districts = [
-    ...new Map(
-      ThailandZipcodeData.filter((r) => r.province === province).map((r) => [
-        r.district,
-        r,
-      ])
-    ).values(),
-  ];
-setDistricts(_districts);
-}, [province]);
+  useEffect(() => {
+    const _districts = [
+      ...new Map(
+        ThailandZipcodeData.filter((r) => r.province === province).map((r) => [
+          r.district,
+          r,
+        ])
+      ).values(),
+    ];
+    setDistricts(_districts);
+  }, [province]);
 
-return (
-  <>
-    <div className="w-full text-left">
-      {province !== undefined && (
-        <button className="underline flex flex-justify-between" onClick={() => setProvince(undefined)}>หน้าแรก</button>
-      )}
-    </div>
-
+  return (
     <div className="w-full text-center">
+      <div className="mt-4">
+        <ZipcodeNavBar province={province} setProvince={setProvince} />
+      </div>
       {province === undefined && (
         <ZipcodeHome provinces={provinces} setProvince={setProvince} />
       )}
@@ -99,7 +114,6 @@ return (
         <ZipcodeProvince province={province} districts={districts} />
       )}
     </div>
-  </>
-);
+  );
 };
-export default Zipcode7;
+export default Zipcode8;
