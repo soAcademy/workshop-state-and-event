@@ -35,6 +35,15 @@ const ZipcodeHome = ({
     setSearchInput(e.target.value.length >= 3 ? e.target.value : undefined);
   };
 
+  const handleResultEntryClick = async (zipcode) => {
+    try {
+      await navigator.clipboard.writeText(zipcode);
+      console.log("Content copied to clipboard");
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
+
   return (
     <div className="relative">
       <h1 className="font-2xl mb-2 text-center font-bold">ค้นหารหัสไปรษณีย์</h1>
@@ -46,13 +55,16 @@ const ZipcodeHome = ({
       />
       <div className="absolute w-full rounded-lg border border-gray-200 bg-white font-nstl text-sm font-medium text-gray-900 shadow shadow-slate-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
         <div className="w-full rounded-t-lg border-b border-gray-200 px-4 py-2 dark:border-gray-600">
-          ผลการค้นหา {searchResults.length} รายการ
+          {searchResults.length > 0
+            ? `ผลการค้นหา ${searchResults.length} รายการ`
+            : "พิมพ์อย่างน้อย 3 ตัวอักษรหรือตัวเลขในช่องค้นหา"}
         </div>
         <div className="h-48 overflow-y-auto">
           {searchResults.map((result, idx) => (
             <button
               key={idx}
               type="button"
+              onClick={() => handleResultEntryClick(result.zipcode)}
               className="w-full cursor-pointer border-b border-gray-200 px-4 py-2 text-left font-medium text-blue-600 hover:bg-gray-100 hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500"
             >
               {result.province} {result.district} {result.subdistrict}{" "}
