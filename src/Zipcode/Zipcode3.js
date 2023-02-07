@@ -1,5 +1,5 @@
 import ThailandZipcodeData from "./thailand-zipcode.json";
-
+// ผลลัพธ์เหมือนข้อสองแต่เราแยกเป็น Component ออกมาไว้ข้างนอกเท่านั้น 
 const ZipcodeHome = ({ provinces }) => (
   <div className="w-full text-center">
     <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
