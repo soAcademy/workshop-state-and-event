@@ -1,4 +1,5 @@
 import ReactECharts from "echarts-for-react";
+// เป็นกราฟวงกลมแบ่งตามสารอาหาร
 
 const Chart2 = () => {
   const orderByProduct = [

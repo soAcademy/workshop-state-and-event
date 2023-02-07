@@ -1,4 +1,5 @@
 import ReactECharts from "echarts-for-react";
+// เป็นกราฟแท่งเทียน
 
 const Chart3 = () => {
   const stockPrices = [

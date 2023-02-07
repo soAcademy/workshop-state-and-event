@@ -1,5 +1,4 @@
 import ReactECharts from "echarts-for-react";
-
 const Chart1 = () => {
   const orders = [
     {

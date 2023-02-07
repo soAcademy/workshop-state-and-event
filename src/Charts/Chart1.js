@@ -1,5 +1,5 @@
 import ReactECharts from "echarts-for-react";
-
+// ทำกราฟเส้นแบบเป็นประ
 const Chart1 = () => {
   const orders = [
     { date: "2022-01-13", orderValue: 23000 },
