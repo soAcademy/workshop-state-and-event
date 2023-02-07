@@ -42,10 +42,9 @@ const Trivia5 = () => {
   const [currentQuiz, setCurrentQuiz] = useState(0);
   const [score, setScore] = useState(0);
 
-  const checkAnswer = (quizId, answerId) => {
-    console.log(quizId, answerId);
-    setScore(score + (quizes[quizId].answer === answerId ? 1 : 0));
-    setCurrentQuiz(quizId + 1);
+  const checkAns = (quizId, ansId) => {
+    setScore(score + (quizes[quizId].answer === ansId ? 1 : 0));
+    setCurrentQuiz(currentQuiz + 1);
   };
 
   return (
@@ -56,14 +55,12 @@ const Trivia5 = () => {
             ข้อ {currentQuiz + 1}/{quizes.length}
           </div>
           <div className="text-center">คะแนน {score}</div>
-          <div className="py-4 text-center">
-            {quizes[currentQuiz]?.question}
-          </div>
-          <div className="grid gap-2 grid-cols-2">
+          <div className="text-center">{quizes[currentQuiz]?.question}</div>
+          <div className="grid grid-cols-2 gap-2">
             {quizes[currentQuiz]?.answers.map((r, index) => (
               <button
-                className="bg-green-400 py-4"
-                onClick={() => checkAnswer(currentQuiz, index)}
+                onClick={() => checkAns(currentQuiz, index)}
+                className="bg-yellow-600 py-4"
               >
                 {r}
               </button>
@@ -71,7 +68,7 @@ const Trivia5 = () => {
           </div>
         </>
       )}
-      {/* {currentQuiz >= quizes.length && <div className="text-center text-xl">สรุปคะแนน {score}</div>} */}
+      {currentQuiz >= quizes.length && <div className="text-center text-xl">สรุปคะแนน {score}</div>}
     </>
   );
 };

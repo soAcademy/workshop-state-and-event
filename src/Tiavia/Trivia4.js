@@ -1,6 +1,7 @@
+import { setCanvasCreator } from "echarts";
 import { useState } from "react";
 
-const Trivia5 = () => {
+const Trivia4 = () => {
   const quizes = [
     {
       question: "ซุปอะไรมีสารอาหารมากที่สุด",
@@ -39,41 +40,33 @@ const Trivia5 = () => {
     },
   ];
 
-  const [currentQuiz, setCurrentQuiz] = useState(0);
-  const [score, setScore] = useState(0);
+  const [currentQuiz, SetcurrentQuiz] = useState(0);
+  const [score, Setscore] = useState(0);
 
-  const checkAnswer = (quizId, answerId) => {
-    console.log(quizId, answerId);
-    setScore(score + (quizes[quizId].answer === answerId ? 1 : 0));
-    setCurrentQuiz(quizId + 1);
+  const checkAns = (quizeId, ansId) => {
+    Setscore(score + (quizes[quizeId].answer === ansId ? 1 : 0));
+    SetcurrentQuiz(currentQuiz + 1);
   };
 
   return (
     <>
-      {currentQuiz < quizes.length && (
-        <>
-          <div className="text-center">
-            ข้อ {currentQuiz + 1}/{quizes.length}
-          </div>
-          <div className="text-center">คะแนน {score}</div>
-          <div className="py-4 text-center">
-            {quizes[currentQuiz]?.question}
-          </div>
-          <div className="grid gap-2 grid-cols-2">
-            {quizes[currentQuiz]?.answers.map((r, index) => (
-              <button
-                className="bg-green-400 py-4"
-                onClick={() => checkAnswer(currentQuiz, index)}
-              >
-                {r}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
-      {/* {currentQuiz >= quizes.length && <div className="text-center text-xl">สรุปคะแนน {score}</div>} */}
+      <div className="text-center">
+        ข้อ {currentQuiz}/{quizes.length}
+      </div>
+      <div className="text-center py-2">คะแนน {score}</div>
+      <div className="text-center py-2">{quizes[currentQuiz].question}</div>
+      <div className="grid grid-cols-2 gap-2">
+        {quizes[currentQuiz].answers.map((r, index) => (
+          <button
+            onClick={() => checkAns(currentQuiz, index)}
+            className="bg-green-400 py-4"
+          >
+            {r}
+          </button>
+        ))}
+      </div>
     </>
   );
 };
 
-export default Trivia5;
+export default Trivia4;
