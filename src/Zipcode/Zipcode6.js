@@ -15,13 +15,15 @@ const ZipcodeHome = (props) => {
             placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
           />
         </div>
-        <div className="w-2/3 mx-auto bg-sky-500 p-4 mt-8 rounded-lg text-left">
-          <h2 className="text-white ml-3">เลือกจังหวัด</h2>
+        <div className="w-2/3 mx-auto bg-gradient-to-r from-cyan-500 to-blue-500 p-4 mt-8 rounded-lg text-left shadow-lg">
+          <h2 className="bg-white ml-3 border border-sky-600 rounded-lg shadow-lg flex justify-center">
+            เลือกจังหวัด
+          </h2>
           <div className="grid grid-cols-4 mt-5">
             {provincesUnique.map((province, idx) => (
               <div
                 onClick={() => setProvince(province)}
-                className="flex justify-center text-white cursor-pointer hover:bg-white hover:text-black hover:p-1 hover:rounded-[10px]"
+                className="flex justify-center text-white cursor-pointer hover:bg-white hover:text-black hover:rounded-[10px]"
                 key={idx}
               >
                 {province}
