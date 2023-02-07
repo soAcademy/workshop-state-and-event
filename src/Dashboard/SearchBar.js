@@ -19,7 +19,7 @@ const SearchBar = ({
       <form id="search">
         <input
           onChange={(e) => {
-            e.target.value !== ""
+            e.target.value !== "" && e.target.value.length >= 3
               ? setDataFilteredBySearchTerm(filterData(e.target.value))
               : setDataFilteredBySearchTerm();
           }}
