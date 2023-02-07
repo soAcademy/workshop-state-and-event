@@ -56,12 +56,16 @@ const Zipcode5 = () => {
   const provinces = [...new Set(data.map((r) => r.province))];
   const province = "กรุงเทพมหานคร";
 
-  // console.log("data", data);
-  // const districts0 = data.filter((r) => r.province === province);
-  // console.log("districts0", districts0);
-  // const districts1 = districts0.map((r) => [r.district, r]);
-  // console.log("districts1", districts1);
-  // console.log("districts1value", [...new Map(districts1)].values());
+  console.log("data", data);
+  const districts0 = data.filter((r) => r.province === province);
+  console.log("districts0", districts0);
+  const districts1 = districts0.map((r) => [r.district, r]);
+  console.log("districts1", districts1);
+  const districts2 = [...new Map(districts1)];
+  console.log("districts2", districts2);
+
+  const a = { a: 1, b: 2, c: 3 };
+  console.log("a", a.keys());
 
   const districts = [
     ...new Map(
