@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import ThailandZipcodeData from "./thailand-zipcode.json";
 
-const ZipcodeHome = ({ provinces, setSelectedProvince, setSearch }) => (
+const ZipcodeHome = ({
+  provinces,
+  setSelectedProvince,
+  setSearch,
+  search,
+  searchResult,
+}) => (
   <>
     <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
     <div>
@@ -14,22 +20,39 @@ const ZipcodeHome = ({ provinces, setSelectedProvince, setSearch }) => (
     </div>
     {search !== undefined && search.length >= 3 && (
       <div className="w-1/3 mx-auto mt-4 relative">
-        <div className="w-full h-64 bg-gray absolute top-0"></div>
-      </div>
-      )}
-      <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
-        <h2 className="text-xl mt-4 font-bold">เลือกจังหวัด</h2>
-        <div className="grid grid-cols-4 mt-4">
-          {provinces.map((province) => (
-            <div
-              onClick={() => setSelectedProvince(province)}
-              className="cursor-pointer"
-            >
-              {province}
-            </div>
-          ))}
+        <div className="w-full h-64 overflow-auto bg-white shadow text-left rounded-lg absolute top-0">
+          <div className="font-bold px-4 pt-4">
+            ผลลัพธ์การค้นหา {searchResult.length} รายการ
+          </div>
+          <div className="text-sm text-gray-600">
+            {searchResult?.map((r, idx) => (
+              <div
+                className="py-1 hover:cursor-pointer hover:bg-blue-100"
+                key={idx}
+                onClick={() => navigator.clipboard.writeText(r.zipcode)}
+              >
+                <span className="px-4">
+                  ต.{r.subdistrict} อ.{r.district} จ.{r.province} {r.zipcode}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+    )}
+    <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
+      <h2 className="text-xl mt-4 font-bold">เลือกจังหวัด</h2>
+      <div className="grid grid-cols-4 mt-4">
+        {provinces.map((province) => (
+          <div
+            onClick={() => setSelectedProvince(province)}
+            className="cursor-pointer"
+          >
+            {province}
+          </div>
+        ))}
+      </div>
+    </div>
   </>
 );
 
@@ -114,7 +137,8 @@ const Zipcode8 = () => {
       (r) =>
         r.province.includes(search) ||
         r.district.includes(search) ||
-        r.subdistrict.includes(search)
+        r.subdistrict.includes(search) ||
+        String(r.zipcode).includes(search)
     );
     setSearchResult(_searchResult);
   }, [search]);
@@ -132,6 +156,9 @@ const Zipcode8 = () => {
         <ZipcodeHome
           provinces={provinces}
           setSelectedProvince={setSelectedProvince}
+          search={search}
+          setSearch={setSearch}
+          searchResult={searchResult}
         />
       )}
 
