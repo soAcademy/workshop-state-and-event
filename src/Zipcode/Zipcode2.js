@@ -2,7 +2,9 @@ import React from "react";
 import ThailandZipcodeData from "./thailand-zipcode.json";
 
 const Zipcode2 = () => {
-  const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
+  // const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
+  const provinces = ThailandZipcodeData.map((r) => r.province);
+  const provincesUnique = [...new Set(provinces)];
 
   return (
     <div className="w-full text-center">
@@ -17,7 +19,7 @@ const Zipcode2 = () => {
       <div className="w-2/3 mx-auto bg-sky-500 p-4 mt-8 rounded-lg text-left">
         <h2 className="text-white ml-3">เลือกจังหวัด</h2>
         <div className="grid grid-cols-4 mt-5">
-          {provinces.map((province, idx) => (
+          {provincesUnique.map((province, idx) => (
             <div className="flex justify-center text-white" key={idx}>
               {province}
             </div>
