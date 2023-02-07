@@ -99,19 +99,19 @@ const ZipcodeProvince = ({ selectedProvince, districts }) => (
   </>
 );
 
-const ZipcodeNavBar = ({ selectedProvince, setSelectedProvince }) => {
+const ZipcodeNavBar = ({ selectedProvince, setSelectedProvince }) => (
   <div>
     <span
       onClick={() => setSelectedProvince(undefined)}
-      className="cursor-pointer text-black"
+      className="cursor-pointer text-blue-500"
     >
       หน้าแรก
     </span>
     {selectedProvince !== undefined && (
       <span className="text-gray-500">/ {selectedProvince}</span>
     )}
-  </div>;
-};
+  </div>
+);
 
 const Zipcode8 = () => {
   const [selectedProvince, setSelectedProvince] = useState();
