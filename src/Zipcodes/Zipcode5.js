@@ -31,7 +31,7 @@ const ZipcodeHome = ({ provinces }) => {
   );
 };
 
-const ZipCodeDistrict = () => {
+const ZipCodeDistrict = ({ districts }) => {
   return (
     <div className="w-full md:w-3/4">
       <div className="header mb-6">
@@ -46,15 +46,25 @@ const ZipCodeDistrict = () => {
               <tr>
                 <th className="border border-slate-300 p-2 px-4">#</th>
                 <th className="border border-slate-300 p-2 px-4">อำเภอ/เขต</th>
-                <th className="border border-slate-300 p-2 px-4">รหัสไปรษณีย์</th>
+                <th className="border border-slate-300 p-2 px-4">
+                  รหัสไปรษณีย์
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="border border-slate-300 text-center p-2 px-4">1</td>
-                <td className="border border-slate-300 p-2 px-4">กรุงเทพมหานคร</td>
-                <td className="border border-slate-300 text-center p-2 px-4">11111</td>
-              </tr>
+              {districts.map((district, idx) => (
+                <tr key={idx + 1}>
+                  <td className="border border-slate-300 text-center p-2 px-4">
+                    {idx + 1}
+                  </td>
+                  <td className="border border-slate-300 p-2 px-4">
+                    {district.district}
+                  </td>
+                  <td className="border border-slate-300 text-center p-2 px-4">
+                    {district.locationCode}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -63,19 +73,37 @@ const ZipCodeDistrict = () => {
   );
 };
 
-const Zipcode4 = () => {
+const Zipcode5 = () => {
   // console.log(AllZipCode);
   const uniqueProvinces = [
     ...new Set(AllZipCode?.map((r) => r.province)),
   ].sort();
   // console.log(uniqueProvince);
+  // const xxx = AllZipCode.filter((x) => x.province === "กรุงเทพมหานคร");
+  // console.log('xxx',xxx);
+  // const xxx2 = xxx.map((x) => [x.district, x]);
+  // console.log("xxx2", xxx2);
+  // const districts = [...new Map(xxx2)].values();
+  // console.log('districts',districts);
+
+  const province = "กรุงเทพมหานคร";
+  // const districts = ThailandZipcodeData.filter((r) => r.province === province);
+  const districts = [
+    ...new Map(
+      AllZipCode.filter((r) => r.province === province).map((r) => [
+        r.district,
+        r,
+      ])
+    ).values(),
+  ];
+  console.log(districts);
 
   return (
     <div className="w-full h-full flex justify-center font-prompt text-sm p-6">
       {/* <ZipcodeHome provinces={uniqueProvinces} /> */}
-      <ZipCodeDistrict />
+      <ZipCodeDistrict districts={districts} />
     </div>
   );
 };
 
-export default Zipcode4;
+export default Zipcode5;
