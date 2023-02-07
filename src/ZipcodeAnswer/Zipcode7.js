@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThailandZipcodeData from "./thailand-zipcode.json";
 
 const ZipcodeHome = ({ provinces, setProvince }) => (
@@ -15,7 +15,12 @@ const ZipcodeHome = ({ provinces, setProvince }) => (
       <h2 className="text-xl mt-4 font-bold">เลือกจังหวัด</h2>
       <div className="grid grid-cols-4 mt-4">
         {provinces.map((province) => (
-          <div onClick={() => setProvince(province)} className="cursor-pointer text-blue-500">{province}</div>
+          <div
+            onClick={() => setProvince(province)}
+            className="cursor-pointer text-blue-500"
+          >
+            {province}
+          </div>
         ))}
       </div>
     </div>
@@ -61,19 +66,22 @@ const ZipcodeProvince = ({ province, districts }) => (
   </>
 );
 
-const Zipcode6 = () => {
+const Zipcode7 = () => {
   const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
   const [province, setProvince] = useState();
   const [districts, setDistricts] = useState([]);
-  // const districts = ThailandZipcodeData.filter((r) => r.province === province);
-  // const districts = [
-  //   ...new Map(
-  //     ThailandZipcodeData.filter((r) => r.province === province).map((r) => [
-  //       r.district,
-  //       r,
-  //     ])
-  //   ).values(),
-  // ];
+
+  useEffect(() => {
+    const _districts = [
+      ...new Map(
+        ThailandZipcodeData.filter((r) => r.province === province).map((r) => [
+          r.district,
+          r,
+        ])
+      ).values(),
+    ];
+    setDistricts(_districts);
+  }, [province]);
 
   return (
     <div className="w-full text-center">
@@ -87,4 +95,4 @@ const Zipcode6 = () => {
   );
 };
 
-export default Zipcode6;
+export default Zipcode7;
