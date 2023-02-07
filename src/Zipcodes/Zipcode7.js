@@ -1,5 +1,5 @@
 import AllZipCode from "./thailand-zipcode.json";
-import { useState, useEffects } from "react";
+import { useState, useEffect } from "react";
 
 const ZipcodeHome = ({ provinces, setProvince }) => {
   return (
@@ -40,8 +40,8 @@ const ZipCodeDistrict = ({ province, districts }) => {
   return (
     <div className="w-full md:w-3/4">
       <div className="header mb-6">
-        <div className="w-full mb-6">
-          <h1 className="text-xl text-left md:text-center">
+        <div className="w-full h-14 mb-6 flex items-center justify-center">
+          <h1 className="text-xl ">
             รหัสไปรษณีย์ในจังหวัด {province}
           </h1>
         </div>
@@ -78,24 +78,27 @@ const ZipCodeDistrict = ({ province, districts }) => {
   );
 };
 
-const Zipcode6 = () => {
+const Zipcode7 = () => {
   const [province, setProvince] = useState();
   const [districts, setDistricts] = useState([]);
+
+  useEffect(() => {
+    const newDistricts = [
+      ...new Map(
+        AllZipCode.filter((r) => r.province === province).map((r) => [
+          r.district,
+          r,
+        ])
+      ).values(),
+    ];
+    console.log(newDistricts);
+    setDistricts(newDistricts);
+  }, [province]);
 
   // console.log(AllZipCode);
   const uniqueProvinces = [
     ...new Set(AllZipCode?.map((r) => r.province)),
   ].sort();
-
-  // const districts = [
-  //   ...new Map(
-  //     AllZipCode.filter((r) => r.province === province).map((r) => [
-  //       r.district,
-  //       r,
-  //     ])
-  //   ).values(),
-  // ];
-  // console.log(districts);
 
   return (
     <div className="w-full h-full flex justify-center font-prompt text-sm p-6">
@@ -109,4 +112,4 @@ const Zipcode6 = () => {
   );
 };
 
-export default Zipcode6;
+export default Zipcode7;
