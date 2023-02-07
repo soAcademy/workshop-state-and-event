@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import thailandZipcodeData from "./thailand-zipcode.json";
 
 const ZipCodeHome = ({ provinces, setProvince }) => (
@@ -67,36 +67,44 @@ const ZipcodeProvince = (props) => {
   );
 };
 
-const Zipcode6 = () => {
+const Zipcode7 = () => {
   const [province, setProvince] = useState();
-  const [district, setDistrict] = useState([]);
+  const [districts2, setDistrict] = useState([]);
   // const province = "กรุงเทพมหานคร";
   const provinces = [...new Set(thailandZipcodeData.map((r) => r.province))]; //use ...new Set to only get unique provinces // [...new Set([1, 1, 2, 2, 3, 3])]
 
+  useEffect(() => {
   const districts = thailandZipcodeData.filter((r) => r.province === province);
   console.log("filterProvince", districts);
   const districts1 = districts.map((r) => [r.district, r]); //['เขตพระนคร', {…}]
   console.log("filterDistrict", districts1);
+  
   const districts2 = [...new Map(districts1).values()]; // [...new Map([["key1", "value1"], ["key2", "value2"]]).values()]  //only map unique  districts (get only one location code from each district)
   console.log("districtMapped", districts2);
-  // const districts = [
+  setDistrict(districts2);
+}, [province])
+// const [districts2, setDistrict] = useState([]);
+// useEffect(() => {
+  // const districts2 = [
   //   ...new Map(
-  //     ThailandZipcodeData.filter((r) => r.province === province).map((r) => [
+  //     thailandZipcodeData.filter((r) => r.province === province).map((r) => [
   //       r.district,
   //       r,
   //     ])
   //   ).values(),
   // ];
+  // setDistrict(districts2);
+  // }, [province])
   return (
     <div>
-      {/* {province === undefined && ( */}
+      {province === undefined && (
         <ZipCodeHome provinces={provinces} setProvince={setProvince} />
-      {/* )} */}
-      {/* {province !== undefined && ( */}
+      )}
+      {province !== undefined && (
         <ZipcodeProvince province={province} districts2={districts2} />
-      {/* )} */}
+      )}
     </div>
   );
 };
 
-export default Zipcode6;
+export default Zipcode7;
