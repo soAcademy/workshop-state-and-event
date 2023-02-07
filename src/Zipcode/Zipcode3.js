@@ -2,7 +2,7 @@ import React from "react";
 import ThailandZipcodeData from "./thailand-zipcode.json";
 
 const ZipcodeHome = (props) => {
-  const [provinces, provincesUnique] = props;
+  const [provincesUnique] = props;
 
   <>
     <div className="w-full text-center">
@@ -35,7 +35,7 @@ const Zipcode3 = () => {
 
   return (
     <>
-      <ZipcodeHome provincesUnique={provincesUnique} provinces={provinces} />
+      <ZipcodeHome provincesUnique={provincesUnique} />
     </>
   );
 };
