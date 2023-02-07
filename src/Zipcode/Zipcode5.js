@@ -25,14 +25,14 @@ const ZipcodeProvince = ({ province, districtListForProvince }) => {
   return (
     <>
       <h1 className="font-2xl mb-2 text-center font-bold">
-        รหัสไปรษณีย์ในจังหวัด
+        รหัสไปรษณีย์ใน{province === "กรุงเทพมหานคร" ? "" : "จังหวัด"}
         {province}
       </h1>
       <table className="w-full text-left font-nstl text-sm text-gray-500 dark:text-gray-400">
         <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th>#</th>
-            <th>อำเภอ/เขต</th>
+            <th>{province === "กรุงเทพมหานคร" ? "เขต" : "อำเภอ"}</th>
             <th>รหัสไปรษณีย์</th>
           </tr>
         </thead>
