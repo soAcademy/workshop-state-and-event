@@ -12,12 +12,20 @@ const Navbar = () => {
         <p className="text-slate-500">หน้าแรก</p>
       )}
       {location[1] !== "" && location.length > 2 ? (
-        <Link to={`${"/" + location[1]}`}>/ {location[1]} &nbsp;</Link>
-      ) : location.length === 2 ? 
-      location[1] !== '' ? (
-        <span className="text-slate-500">/ {location[1]}</span>
-      ) : ''
-      : (
+        <span>
+          <span className="text-slate-500">/{" "}</span>
+          <Link to={`${"/" + location[1]}`} className="text-blue-500">
+            {" "}
+            {location[1]} &nbsp;
+          </Link>
+        </span>
+      ) : location.length === 2 ? (
+        location[1] !== "" ? (
+          <span className="text-slate-500">/ {location[1]}</span>
+        ) : (
+          ""
+        )
+      ) : (
         ""
       )}
       {location[1] !== "" && location.length > 3 ? (

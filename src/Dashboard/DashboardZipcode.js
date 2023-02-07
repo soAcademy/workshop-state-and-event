@@ -7,7 +7,7 @@ const DashboardZipcode = () => {
       <p className="mx-auto p-10 text-2xl font-bold">ค้นหารหัสไปรษณีย์</p>
       <input
         placeholder="ค้นหา ตำบล อำเภอ"
-        className="border-2 px-8 py-2"
+        className="border-2 px-8 py-2 focus:border-blue-400 "
       ></input>
       <div className="mt-10">
         <p>เลือกจังหวัด</p>

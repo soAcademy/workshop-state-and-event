@@ -40,7 +40,6 @@ const ProvincePages = () => {
                       copy("item" + String(idx));
                       e.target.innerHTML = "คัดลอกแล้ว";
                       setTimeout(() => (e.target.innerHTML = "คัดลอก"), 2000);
-                      // console.log("e :>> ", e);
                     }}
                     className="text-blue-500"
                   >
