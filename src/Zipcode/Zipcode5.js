@@ -64,9 +64,6 @@ const Zipcode5 = () => {
   const districts2 = [...new Map(districts1)];
   console.log("districts2", districts2);
 
-  const a = { a: 1, b: 2, c: 3 };
-  console.log("a", a.keys());
-
   const districts = [
     ...new Map(
       data.filter((r) => r.province === province).map((r) => [r.district, r])

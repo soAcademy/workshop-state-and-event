@@ -58,7 +58,24 @@ const ZipcodeProvinces = ({ province, districts }) => {
   );
 };
 
-const Zipcode7 = () => {
+const ZipcodeNavbar = ({ province, setProvince }) => {
+  return (
+    <>
+      <div className="flex justify-between mx-6">
+        <div
+          className="cursor-pointer hover:text-blue-500 hover:underline"
+          onClick={() => setProvince(undefined)}
+        >
+          กลับไปหน้าแรก
+        </div>
+
+        <div>จังหวัด : {province}</div>
+      </div>
+    </>
+  );
+};
+
+const Zipcode8 = () => {
   const [province, setProvince] = useState();
   const [districts, setDistricts] = useState([]);
   const provinces = [...new Set(data.map((r) => r.province))];
@@ -79,11 +96,15 @@ const Zipcode7 = () => {
     ];
     setDistricts(tempDistricts);
 
-    console.log("districts", tempDistricts);
+    console.log("tempDistricts", tempDistricts);
   }, [province]);
 
   return (
     <div className="text-center mt-4 w-full">
+      {province !== undefined && (
+        <ZipcodeNavbar province={province} setProvince={setProvince} />
+      )}
+
       {province === undefined && (
         <ZipcodeHome provinces={provinces} setProvince={setProvince} />
       )}
@@ -94,4 +115,4 @@ const Zipcode7 = () => {
   );
 };
 
-export default Zipcode7;
+export default Zipcode8;
