@@ -15,6 +15,7 @@ import Trivia2 from "./Trivia/Trivia2";
 import Trivia3 from "./Trivia/Trivia3";
 import Trivia4 from "./Trivia/Trivia4";
 import Trivia5 from "./Trivia/Trivia5";
+import Zipcode1 from "./Zipcode/Zipcode1";
 import React, { useState, useEffect } from "react";
 
 const App = () => {
@@ -37,7 +38,8 @@ const App = () => {
       {/* <Trivia2 /> */}
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}
-      <Trivia5 />
+      {/* <Trivia5 /> */}
+      <Zipcode1 />
     </>
   );
 };
