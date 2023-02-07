@@ -3,7 +3,6 @@ import { useState } from "react";
 import thailandZipCodeDatas from "./thailand-zipcode.json";
 
 // todo 5 . re factor ส่วน render ของ Zipcode1 ให้กลายเป็น ZipcodeHome component ที่รับ props provinces แล้วเอาไปใช้ในส่วน render ของ Zipcode 3
-// todo 10. ใส่ event onClick ใส่ดิฟ ที่แสดงชื่อจังหวัด "เมื่อคลิกแล้ว ให้ setProvince(จังหวัดที่เราคลิก)"
 const ZipcodeHome = ({ provinces, setProvince }) => (
   <div className="w-full text-center">
     <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
@@ -18,8 +17,8 @@ const ZipcodeHome = ({ provinces, setProvince }) => (
       <h2 className="text-xl mt-4 font-bold">Select Province</h2>
       <div className="grid grid-cols-4 mt-4">
         {provinces.map((province) => (
-          // toto 10 here
           <div
+            // todo 11. ใส่ event onClick ในดิฟ ที่แสดงชื่อจังหวัด "เมื่อคลิกแล้ว ให้ setProvince(จังหวัดที่เราคลิก)"
             onClick={() => setProvince(province)}
             className="cursor-pointer text-blue-500"
           >
@@ -106,7 +105,7 @@ const Zipcode5 = () => {
   //   ).values(),
   // ];
   // console.log("districts : ", districts);
-  // todo 9. change parameters province & district (todo 7.1,7.2) to State
+  // todo 9. change parameters province & district (todo 7.1,7.2) to stand as useState
   const [province, setProvince] = useState(); //ทิ้งไว้เป็นค่าว่าง เพื่อให้ค่าเริ่มต้นเป็น undefine เพื่อเอาไปใช้เขียน logic ตอนเรียกหน้า ZipHome
   const [districts, setDistricts] = useState([]); // ใส่เป็นอาเรย์ว่างเพื่อรอรับค่าจากการ map district
   // todo 10. ใส่ logic ในส่วน render ว่า "ถ้าจังหวัดเป็น undefine ให้แสดงหน้า ZipHome ถ้าไม่ใช่ ให้แสดงหน้า ZipcodeByProvince"
