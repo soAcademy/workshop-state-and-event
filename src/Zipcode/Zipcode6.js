@@ -1,7 +1,7 @@
 import { useState } from "react";
 import zipcodeList from "./thailand-zipcode.json";
 
-const ZipcodeHome = ({ provinces }) => (
+const ZipcodeHome = ({ provinces, setProvince }) => (
   <>
     <h1 className="font-2xl mb-2 text-center font-bold">ค้นหารหัสไปรษณีย์</h1>
     <input
@@ -14,7 +14,7 @@ const ZipcodeHome = ({ provinces }) => (
       {provinces.map((province, idx) => (
         <li key={idx} className="font-nstl">
           <button
-            // onClick={setProvince(province)}
+            onClick={() => setProvince(province)}
             className="text-blue-600"
           >
             {province}
@@ -97,6 +97,7 @@ const Zipcode6 = () => {
           ].sort((a, b) =>
             a.localeCompare(b, "th", { ignorePunctuation: true })
           )}
+          setProvince={setProvince}
         />
       )}
       {province !== undefined && (
