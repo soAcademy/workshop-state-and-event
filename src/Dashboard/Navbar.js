@@ -5,7 +5,7 @@ const Navbar = ({ dataFilteredBySearchTerm, setDataFilteredBySearchTerm }) => {
   const location = decodeURI(_location.pathname).split("/");
 
   return (
-    <div className="font-kanit text-lg p-7 text-slate-500">
+    <div className="font-kanit text-lg p-7 text-slate-500 z-20">
       {_location.pathname != "/" ? (
         <Link to="/" className="text-blue-500">หน้าแรก </Link>
       ) : (
