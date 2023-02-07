@@ -24,7 +24,7 @@ const ZipcodeHome = ({ provinces }) => (
 const ZipcodeProvince = ({province, districts}) => (
   <>
     <h1 className="text-2xl pt-3 font-bold">
-      รหัสไปรษณีย์ในจังหวัด กรุงเทพมหานคร
+      รหัสไปรษณีย์ในจังหวัด {province}
     </h1>
     <div>
       <input
@@ -58,7 +58,7 @@ const ZipcodeProvince = ({province, districts}) => (
 
 const Zipcode5 = () => {
   const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
-  const province = "กรุงเทพมหานคร"
+  const province = "พิจิตร"
   
   const districts = [
     ...new Map(
