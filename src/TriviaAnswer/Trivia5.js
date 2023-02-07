@@ -71,7 +71,9 @@ const Trivia5 = () => {
           </div>
         </>
       )}
-      {/* {currentQuiz >= quizes.length && <div className="text-center text-xl">สรุปคะแนน {score}</div>} */}
+      {currentQuiz >= quizes.length && (
+        <div className="text-center text-xl">สรุปคะแนน {score}</div>
+      )}
     </>
   );
 };
