@@ -10,7 +10,7 @@ import Zipcode8 from "./Zipcode/Zipcode8";
 const App = () => {
   return (
     <>
-      <Zipcode1 />
+      <Zipcode2 />
     </>
   );
 };
