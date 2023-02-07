@@ -48,10 +48,10 @@ const Trivia2 = () => {
         ข้อ {currentQuiz + 1}/{quizes.length}
       </div>
       <div className="text-center">คะแนน {score}</div>
-      <div className="py-4 text-center">{quizes[currentQuiz].question}</div>
-      <div className="grid gap-2 grid-cols-2">
-        {quizes[currentQuiz].answers.map((r, index) => (
-          <button className="bg-green-400 py-4">{r}</button>
+      <div className="text-center">{quizes[currentQuiz].question}</div>
+      <div className="grid grid-cols-2 gap-2">
+        {quizes[currentQuiz].answers.map((r,index) => (
+          <button className="bg-green-500 py-4">{r}</button>
         ))}
       </div>
     </>

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { setCanvasCreator } from "echarts";
+>>>>>>> 121a60f1a706c57b4a9c526136becf20f7069442
 import { useState } from "react";
 
 const Trivia4 = () => {
@@ -39,6 +43,7 @@ const Trivia4 = () => {
     },
   ];
 
+<<<<<<< HEAD
   const [currentQuiz, setCurrentQuiz] = useStage(0);
   const [score, setScore] = useStage(0);
 
@@ -46,10 +51,20 @@ const Trivia4 = () => {
     setScore(score + (quizes[quizId].answer === answerId? 1:0))
     setCurrentQuiz(quizId+1)
   }
+=======
+  const [currentQuiz, SetcurrentQuiz] = useState(0);
+  const [score, Setscore] = useState(0);
+
+  const checkAns = (quizeId, ansId) => {
+    Setscore(score + (quizes[quizeId].answer === ansId ? 1 : 0));
+    SetcurrentQuiz(currentQuiz + 1);
+  };
+>>>>>>> 121a60f1a706c57b4a9c526136becf20f7069442
 
   return (
     <>
       <div className="text-center">
+<<<<<<< HEAD
         ข้อ{setCurrentQuiz + 1}/{quizes.length}
       </div>
       <div className="text-center">คะแนน {score}</div>
@@ -59,6 +74,17 @@ const Trivia4 = () => {
           <button
             className="bg-yellow-500 py-4"
             onClick={() => checkAnswer(currentQuiz, index)}
+=======
+        ข้อ {currentQuiz}/{quizes.length}
+      </div>
+      <div className="text-center py-2">คะแนน {score}</div>
+      <div className="text-center py-2">{quizes[currentQuiz].question}</div>
+      <div className="grid grid-cols-2 gap-2">
+        {quizes[currentQuiz].answers.map((r, index) => (
+          <button
+            onClick={() => checkAns(currentQuiz, index)}
+            className="bg-green-400 py-4"
+>>>>>>> 121a60f1a706c57b4a9c526136becf20f7069442
           >
             {r}
           </button>
@@ -68,5 +94,9 @@ const Trivia4 = () => {
   );
 };
 
+<<<<<<< HEAD
 
 export default Trivia4
+=======
+export default Trivia4;
+>>>>>>> 121a60f1a706c57b4a9c526136becf20f7069442

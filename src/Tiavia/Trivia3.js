@@ -39,6 +39,7 @@ const Trivia3 = () => {
     },
   ];
 
+<<<<<<< HEAD
   const [currentQuiz, setCurrentQuiz] = useStage(0);
   const [score, setScore] = useStage(0);
 
@@ -66,5 +67,33 @@ const Trivia3 = () => {
     </>
   );
 };
+=======
+  const [currentQuiz, setCurrentQuiz] = useState(0)
+  const [score, setScore] = useState(0)
+
+  const checkAnswer = (quizId,ansId) => {
+    setScore(score + (quizes[quizId].answer === ansId ? 1 : 0))
+  }
+
+
+
+return (
+  <>
+  <div className="text-center">ข้อ {currentQuiz+1}/{quizes.length}</div>
+  <div className="text-center py-2">คะแนน {score}</div>
+  <div className="text-center py-2">{quizes[currentQuiz].question}</div>
+  <div className="grid grid-cols-2 gap-2">
+    {quizes[currentQuiz].answers.map((r,index) => (
+
+      <button onClick={() => checkAnswer(currentQuiz,index)} className="bg-green-500 py-4">{r}</button>
+    ))}
+  </div>
+
+  </>
+)
+
+
+}
+>>>>>>> 121a60f1a706c57b4a9c526136becf20f7069442
 
 export default Trivia3
