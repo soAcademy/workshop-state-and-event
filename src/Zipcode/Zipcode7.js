@@ -108,11 +108,11 @@ const Zipcode6 = () => {
 
   // กด province แล้วตัว UseEffect จะไป Trigger กับ district ด้วยทำให้ตัว district เปลี่ยนตาม
 
-  // set Set()
+  // new Set()
   // [...new Set([1,1,2,2,3,3])]
   // output = [1,2,3]
 
-  // set Map()
+  // new Map()
   // [...new Map(["key1","value1"],["key2","value2"]).values()]
   // output = [[key,value]]
 
