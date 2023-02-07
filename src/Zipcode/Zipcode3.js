@@ -1,9 +1,6 @@
 import data from "./thailand-zipcode.json";
 
-const Zipcode3 = () => {
-  console.log("DATA", data);
-  const provinces = [...new Set(data.map((r) => r.province))];
-  console.log("provinces", provinces);
+const ZipcodeHome = ({ provinces }) => {
   return (
     <>
       <div className="text-center mt-4 w-full">
@@ -26,6 +23,12 @@ const Zipcode3 = () => {
       </div>
     </>
   );
+};
+
+const Zipcode3 = () => {
+  const provinces = [...new Set(data.map((r) => r.province))];
+
+  return <ZipcodeHome provinces={provinces} />;
 };
 
 export default Zipcode3;
