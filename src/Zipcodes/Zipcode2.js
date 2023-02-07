@@ -1,6 +1,6 @@
 import AllZipCode from "./thailand-zipcode.json";
 
-const Zipcode1 = () => {
+const Zipcode2 = () => {
   // console.log(AllZipCode);
   const uniqueProvince = [
     ...new Set(AllZipCode?.map((r) => r.province)),
@@ -37,4 +37,4 @@ const Zipcode1 = () => {
   );
 };
 
-export default Zipcode1;
+export default Zipcode2;
