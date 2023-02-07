@@ -24,52 +24,59 @@ const ZipcodeNavbar = ({ province, setProvince }) => (
   </nav>
 );
 
-const ZipcodeHome = ({ provinces, setProvince }) => (
-  <div className="relative">
-    <h1 className="font-2xl mb-2 text-center font-bold">ค้นหารหัสไปรษณีย์</h1>
-    <input
-      type="text"
-      className="mb-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 font-nstl text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-      placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
-    />
-    <div className="absolute w-full rounded-lg border border-gray-200 bg-white font-nstl text-sm font-medium text-gray-900 shadow shadow-slate-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
-      <div className="w-full rounded-t-lg border-b border-gray-200 px-4 py-2 dark:border-gray-600">
-        ผลการค้นหา 3 รายการ
+const ZipcodeHome = ({
+  provinces,
+  setProvince,
+  setSearchInput,
+  searchResults,
+}) => {
+  const handleSearchInputChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value.length >= 3 ? e.target.value : undefined);
+  };
+
+  return (
+    <div className="relative">
+      <h1 className="font-2xl mb-2 text-center font-bold">ค้นหารหัสไปรษณีย์</h1>
+      <input
+        type="text"
+        onChange={(e) => handleSearchInputChange(e)}
+        className="mb-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 font-nstl text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
+      />
+      <div className="absolute w-full rounded-lg border border-gray-200 bg-white font-nstl text-sm font-medium text-gray-900 shadow shadow-slate-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
+        <div className="w-full rounded-t-lg border-b border-gray-200 px-4 py-2 dark:border-gray-600">
+          ผลการค้นหา {searchResults.length} รายการ
+        </div>
+        <div className="h-48 overflow-y-auto">
+          {searchResults.map((result, idx) => (
+            <button
+              key={idx}
+              type="button"
+              className="w-full cursor-pointer border-b border-gray-200 px-4 py-2 text-left font-medium text-blue-600 hover:bg-gray-100 hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500"
+            >
+              {result.province} {result.district} {result.subdistrict}{" "}
+              {result.zipcode}
+            </button>
+          ))}
+        </div>
       </div>
-      <button
-        type="button"
-        className="w-full cursor-pointer border-b border-gray-200 px-4 py-2 text-left font-medium text-blue-600 hover:bg-gray-100 hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500"
-      >
-        รายการ 1
-      </button>
-      <button
-        type="button"
-        className="w-full cursor-pointer border-b border-gray-200 px-4 py-2 text-left font-medium text-blue-600 hover:bg-gray-100 hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500"
-      >
-        รายการ 2
-      </button>
-      <button
-        type="button"
-        className="w-full cursor-pointer rounded-b-lg border-b border-gray-200 px-4 py-2 text-left font-medium text-blue-600 hover:bg-gray-100 hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500"
-      >
-        รายการ 3
-      </button>
+      <h2 className="font-xl mb-2 font-bold">เลือกจังหวัด</h2>
+      <ul className="grid grid-cols-4 gap-2">
+        {provinces.map((province, idx) => (
+          <li key={idx} className="font-nstl">
+            <button
+              onClick={() => setProvince(province)}
+              className="text-blue-600"
+            >
+              {province}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
-    <h2 className="font-xl mb-2 font-bold">เลือกจังหวัด</h2>
-    <ul className="grid grid-cols-4 gap-2">
-      {provinces.map((province, idx) => (
-        <li key={idx} className="font-nstl">
-          <button
-            onClick={() => setProvince(province)}
-            className="text-blue-600"
-          >
-            {province}
-          </button>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+  );
+};
 
 const ZipcodeProvince = ({ province, districtListForProvince }) => {
   // const ZipcodeListforProvince = (province) =>
@@ -115,6 +122,8 @@ const ZipcodeProvince = ({ province, districtListForProvince }) => {
 const Zipcode8 = () => {
   const [province, setProvince] = useState();
   const [districtListForProvince, setDistrictListForProvince] = useState([]);
+  const [searchInput, setSearchInput] = useState();
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const _districtListForProvince = [
@@ -128,6 +137,18 @@ const Zipcode8 = () => {
     );
     setDistrictListForProvince(_districtListForProvince);
   }, [province]);
+
+  useEffect(() => {
+    const _searchResults = zipcodeList.filter(
+      (item) =>
+        item.province.includes(searchInput) ||
+        item.district.includes(searchInput) ||
+        item.subdistrict.includes(searchInput) ||
+        String(item.zipcode).includes(searchInput)
+    );
+
+    setSearchResults(_searchResults);
+  }, [searchInput]);
 
   // const provinces = [...new Set(zipcodeList.map((item) => item.province))].sort(
   //   (a, b) => a.localeCompare(b, "th", { ignorePunctuation: true })
@@ -159,6 +180,9 @@ const Zipcode8 = () => {
             a.localeCompare(b, "th", { ignorePunctuation: true })
           )}
           setProvince={setProvince}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          searchResults={searchResults}
         />
       )}
       {province !== undefined && (
