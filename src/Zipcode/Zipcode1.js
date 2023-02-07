@@ -12,6 +12,7 @@ const Zipcode1 = () => {
           <input
             type="text"
             className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
+            placeholder="ค้นหา ตำบล อำเภอ จังหวัด"
           />
         </div>
         <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">

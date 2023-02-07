@@ -12,6 +12,7 @@ const ZipcodeProvider = ({uniqProvinces}) => {
         <input
           type="text"
           className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
+          placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
         />
       </div>
       </div>
@@ -27,11 +28,13 @@ const ZipcodeProvider = ({uniqProvinces}) => {
   );
 };
 
+
 const Zipcode1 = () => {
   return (
     <>
       <div className="w-full text-center"></div>
       <ZipcodeProvider uniqProvinces={uniqueProvices}/>
+    
     </>
   );
 };
