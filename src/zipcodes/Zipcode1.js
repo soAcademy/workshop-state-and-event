@@ -11,11 +11,11 @@ const Zipcode1 = () => {
       
     </div>
     <div className="bg-sky-300 rounded-lg w-2/3 mx-auto mt-2 p-3">
-      <h2 className="text-left font-bold text-xl">Select Province</h2>
+      <h2 className="text-left font-bold text-xl text-neutral-50">Select Province</h2>
       <div className="grid grid-cols-4 gap-2 text-center mt-2">
       {provinces.map((province) => (
           <div>
-            <div>{province}</div>
+            <div className="text-neutral-50">{province}</div>
           </div>
         ))}
       </div>

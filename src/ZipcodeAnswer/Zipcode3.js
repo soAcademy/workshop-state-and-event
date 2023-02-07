@@ -1,6 +1,8 @@
 import ThailandZipcodeData from "./thailand-zipcode.json";
 
-const ZipcodeHome = ({ provinces }) => (
+const ZipcodeHome = (props) => {
+  const {provinces} = props;
+  return (
   <>
     <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
     <div>
@@ -19,7 +21,7 @@ const ZipcodeHome = ({ provinces }) => (
       </div>
     </div>
   </>
-);
+)};
 
 const Zipcode3 = () => {
   const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
