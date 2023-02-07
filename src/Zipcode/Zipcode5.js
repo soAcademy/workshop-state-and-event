@@ -28,8 +28,8 @@ const ZipcodeProvince = ({ province, districtListForProvince }) => {
         รหัสไปรษณีย์ในจังหวัด
         {province}
       </h1>
-      <table>
-        <thead>
+      <table className="w-full text-left font-nstl text-sm text-gray-500 dark:text-gray-400">
+        <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th>#</th>
             <th>อำเภอ/เขต</th>
@@ -40,7 +40,7 @@ const ZipcodeProvince = ({ province, districtListForProvince }) => {
           {/* {zipcodeList
             .filter((item) => item.province === province) */}
           {districtListForProvince.map((item, idx) => (
-            <tr>
+            <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-900">
               <td>{idx + 1}</td>
               <td>
                 {item.district}
