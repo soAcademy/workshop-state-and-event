@@ -1,15 +1,13 @@
 import ThailandZipcodeData from "./thailand-zipcode.json";
 
-const Zipcode1 = () => {
-  const provinces = ["กรุงเทพมหานคร", "นนทบุรี", "สุโขทัย", "แพร่"];
-    
-  return (
-    <div className="w-full text-center">
-      <h1 className="text-2xl pt-3 font-bold underline">ค้นหารหัสไปรษณีย์</h1>
+
+  const ZipcodeData = ({ provinces }) => (
+  <>  
+  <h1 className="text-2xl pt-3 font-bold underline">ค้นหารหัสไปรษณีย์</h1>
       <div>
       <input
           type="text"
-          className="border-4 border-gray-400 rounded-lg p-4 mt-6 w-2/3"
+          className="border-4 border-sky-400 rounded-lg p-4 mt-6 w-2/3"
           placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
         />
       </div>
@@ -21,7 +19,24 @@ const Zipcode1 = () => {
           ))}
         </div>
       </div>
+  </>
+  );
+
+    
+  
+  
+      
+    
+
+const Zipcode1 = () => {
+  const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];        
+
+  return (
+    <div className="w-full text-center">
+      <ZipcodeData provinces={provinces} />
     </div>
+
+
   );
 
 };
