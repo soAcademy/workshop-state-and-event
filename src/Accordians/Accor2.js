@@ -83,7 +83,7 @@ return (
       {toggle === index && <div className="bg-yellow-200">{faq.answer}</div>}
     </div>
   ))}
-  ใช้แมพเพื่อเปลี่ยนเป็นค่าใหม่”
+  {/* ใช้แมพเพื่อเปลี่ยนเป็นค่าใหม่” */}
 
   </>
 )

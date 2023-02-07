@@ -9,6 +9,8 @@ import Trivial2 from "./Trivial/Trivial2";
 import Trivial3 from "./Trivial/Trivial3";
 import Trivial4 from "./Trivial/Trivial4";
 import Trivial5 from "./Trivial/Trivial5";
+import Chartskc from "./Chart/Chartskc";
+
 
 const App = () => {
   return (
@@ -22,7 +24,8 @@ const App = () => {
       {/* <Trivial2 /> */}
       {/* <Trivial3 /> */}
       {/* <Trivial4 />  */}
-      <Trivial5 />
+      {/* <Trivial5 /> */}
+      <Chartskc />
 
 
     </>
