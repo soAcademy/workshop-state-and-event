@@ -127,10 +127,11 @@ const Zipcode7 = () => {
           .map((r) => [r.district, r])
       ).values(),
     ];
-    // todo 12.3 หลังจาก effects โดน trigger แล้ว และคำนวณค่า _districts เสร็จแล้ว ให้ดำเนินการเซ็ตค่ากลับไปที่ useState distict
+    // todo 12.3 หลังจาก useEffects โดน trigger แล้ว และคำนวณค่า _districts เสร็จแล้ว ให้ดำเนินการเซ็ตค่ากลับไปที่ useState distict
     setDistricts(_districts);
   }, [province]);
 
+  // ==== RENDERING BELOW ====
   return (
     <>
       {province === undefined && (
