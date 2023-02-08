@@ -50,7 +50,6 @@ const DeathChart = () => (
 
 const DeathCause4 = () => {
   const currentYear = "2559";
-
   const deathCauseDatas = [
     {
       provinceKey: 19,
@@ -68,58 +67,44 @@ const DeathCause4 = () => {
       deathRatePer100000FemalePopulation: 89.1,
     },
     {
-      provinceKey: 19,
-      provinceName: "สระบุรี",
-      pronvinceNameEng: "Saraburi",
-      regionKey: 3,
-      region: "ภาคเหนือ",
-      regionEng: "Northern",
-      diseaseCauseDeathKey: 116,
-      causeOfDeath: "อุบัติเหตุจากการขนส่ง",
+      provinceKey: 20,
+      provinceName: "ชลบุรี",
+      pronvinceNameEng: "Chon Buri",
+      regionKey: 5,
+      region: "ภาคใต้",
+      regionEng: "Southern",
+      diseaseCauseDeathKey: 3,
+      causeOfDeath: "ความดันเลือดสูง และโรคหลอดเลือดในสมอง",
       year: 2557,
-      deathMale: 104,
-      deathFemale: 24,
-      deathRatePer100000MalePopulation: 33.4,
-      deathRatePer100000FemalePopulation: 7.5,
+      deathMale: 391,
+      deathFemale: 306,
+      deathRatePer100000MalePopulation: 56.77,
+      deathRatePer100000FemalePopulation: 42.67,
     },
     {
-      provinceKey: 96,
-      provinceName: "นราธิวาส",
-      pronvinceNameEng: "Narathiwat",
-      regionKey: 4,
-      region: "ภาคตะวันออกเฉียงเหนือ",
-      regionEng: "Northeastern",
-      diseaseCauseDeathKey: 20,
-      causeOfDeath: "อื่นๆ",
-      year: 2559,
-      deathMale: 0,
-      deathFemale: 0,
-      deathRatePer100000MalePopulation: 0,
-      deathRatePer100000FemalePopulation: 0,
+      provinceKey: 48,
+      provinceName: "นครพนม",
+      pronvinceNameEng: "Nakhon Phanom",
+      regionKey: 2,
+      region: "ภาคกลาง",
+      regionEng: "Central",
+      diseaseCauseDeathKey: 83,
+      causeOfDeath: "โรคระบบสืบพันธุ์ร่วมปัสสาวะ",
+      year: 2556,
+      deathMale: 110,
+      deathFemale: 23,
+      deathRatePer100000MalePopulation: 30.98,
+      deathRatePer100000FemalePopulation: 6.49,
     },
   ];
   const totalDeath = deathCauseDatas.reduce(
     (acc, r) => acc + r.deathMale + r.deathFemale,
     0
   );
-
-
-  // const deathByCauses = [
-  //   {
-  //     cause: "วัณโรคทุกชนิด",
-  //     death: 189000,
-  //   },
-  //   {
-  //     cause: "เบาหวาน",
-  //     death: 130000,
-  //   },
-  // ];
-
   const deathCauseLists = [
-    ...new Set(deathCauseDatas.map((r) => r.causeOfDeath)),
+    ...new Set(deathCauseDatas.map((cause) => cause.causeOfDeath)),
   ];
-  console.log(deathCauseLists);
-
+  console.log("deathCauseLists",deathCauseLists);
   const deathByCauses = deathCauseLists.map((cause) => {
     const totalDeath = deathCauseDatas
       .filter((r) => r.causeOfDeath === cause)
@@ -135,31 +120,24 @@ const DeathCause4 = () => {
           deathMale: 0,
         }
       );
+      // totalDeath = {
+      //   death: 1000,
+      //   deathFemale: 150,
+      //   deathMale: 850
+      // }
     return {
       cause,
       death: totalDeath.death,
       deathFemale: totalDeath.deathFemale,
       deathMale: totalDeath.deathMale,
     };
+  
   });
   console.log(deathByCauses);
 
   const provinceLists = [
     ...new Set(deathCauseDatas.map((r) => r.provinceName)),
   ];
-  console.log(provinceLists);
-
-  // const deathByProvinces = [
-  //   {
-  //     province: "กรุงเทพมหานคร",
-  //     death: 189000,
-  //   },
-  //   {
-  //     province: "เชียงใหม่",
-  //     death: 109000,
-  //   },
-  // ];
-
   const deathByProvinces = provinceLists.map((province) => {
     const totalDeath = deathCauseDatas
       .filter((r) => r.provinceName === province)
@@ -169,21 +147,16 @@ const DeathCause4 = () => {
           deathFemale: acc.deathFemale + r.deathFemale,
           deathMale: acc.deathMale + r.deathMale,
         }),
-        {
-          death: 0,
-          deathFemale: 0,
-          deathMale: 0,
-        }
+        { death: 0, deathFemale: 0, deathMale: 0 }
       );
-    return {
-      province,
-      death: totalDeath.death,
-      deathFemale: totalDeath.deathFemale,
-      deathMale: totalDeath.deathMale,
-    };
+      return {
+        province,
+        death : totalDeath.death,
+        deathFemale: totalDeath.deathFemale,
+        deathMale: totalDeath.deathMale,
+      }
   });
   console.log(deathByProvinces);
-
   return (
     <div className="p-4">
       <h1 className="font-bold text-xl">
