@@ -4,9 +4,9 @@ import ReactECharts from "echarts-for-react";
 
 // เอาข้อมูลทุกอันเข้าไปใส่ใน useEffect เมื่อ currentYear ถูก trigger ข้อมูลทุกอย่างก็จะเปลี่ยนไปตามปีที่เราเลือก
 const DeathByCause = (props) => {
-  const { deathByCauses, totalDeath } = props;
+  const { deathByCauses, totalDeath, setChooseCause } = props;
   return (
-    <div className="bg-yellow-200 w-1/3 p-4">
+    <div className="bg-yellow-200 w-1/3 p-4 rounded-[20px] h-screen overflow-auto">
       <div className="font-bold mb-2 bg-white p-2 text-center">
         สาเหตุการเสียชีวิต
       </div>
@@ -18,7 +18,11 @@ const DeathByCause = (props) => {
             <td>100%</td>
           </tr>
           {deathByCauses.map((r, idx) => (
-            <tr key={idx}>
+            <tr
+              className="hover:cursor-pointer hover:bg-white hover:text-sky-600 mx-auto"
+              onClick={() => setChooseCause(r.cause)}
+              key={idx}
+            >
               <td>{r.cause}</td>
               <td>{r.death}</td>
               <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
@@ -33,7 +37,7 @@ const DeathByCause = (props) => {
 const DeathByProvince = (props) => {
   const { totalDeath, deathByProvinces } = props;
   return (
-    <div className="bg-sky-200 w-1/3 p-4">
+    <div className="bg-sky-200 w-1/3 p-4 rounded-[20px] h-screen overflow-auto">
       <div className="font-bold mb-2 bg-white p-2 text-center">
         จำนวนผู้เสียชีวิตแยกตามจังหวัด
       </div>
@@ -45,7 +49,7 @@ const DeathByProvince = (props) => {
             <td>100%</td>
           </tr>
           {deathByProvinces.map((r, idx) => (
-            <tr key={idx}>
+            <tr className="hover:cursor-pointer hover:bg-white" key={idx}>
               <td>{r.province}</td>
               <td>{r.death.toLocaleString()}</td>
               <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
@@ -80,7 +84,7 @@ const DeathFilter = (props) => {
 const DeathChart = (props) => {
   const { chartOption1, chartOption2 } = props;
   return (
-    <div className="bg-green-100 w-1/3 p-4">
+    <div className="bg-green-100 w-1/3 p-4 rounded-[20px]">
       <div className="font-bold mb-2 bg-white p-2 text-center">
         แนวโน้มการเสียชีวิต
       </div>
@@ -100,7 +104,7 @@ const DeathCause8 = () => {
   const [totalDeath, setTotalDeath] = useState(0);
   const [chartOption1, setChartOption1] = useState({});
   const [chartOption2, setChartOption2] = useState({});
-  const [selectedCause, setSelectedCause] = useState();
+  const [chooseCause, setChooseCause] = useState();
 
   useEffect(() => {
     const deathCauseDatas = ThailandDeathCause.filter(
@@ -157,7 +161,11 @@ const DeathCause8 = () => {
     const _deathByProvinces = provinceLists
       .map((province) => {
         const totalDeath = deathCauseDatas
-          .filter((r) => r.provinceName === province)
+          .filter(
+            (r) =>
+              r.provinceName === province &&
+              (chooseCause === undefined || chooseCause === r.causeOfDeath) //*****ฮึ่มมมม*****
+          )
           .reduce(
             (acc, r) => ({
               death: acc.death + r.deathFemale + r.deathMale,
@@ -284,7 +292,7 @@ const DeathCause8 = () => {
     setTotalDeath(_totalDeath);
     setChartOption1(_chartOption1);
     setChartOption2(_chartOption2);
-  }, [currentYear]);
+  }, [currentYear, chooseCause]);
   return (
     <div className="p-4">
       <h1 className="font-bold text-xl">
@@ -297,7 +305,11 @@ const DeathCause8 = () => {
       />
       <div className="mt-4">การเสียชีวิตของปี {currentYear}</div>
       <div className="flex space-x-4 mt-4">
-        <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
+        <DeathByCause
+          totalDeath={totalDeath}
+          deathByCauses={deathByCauses}
+          setChooseCause={setChooseCause}
+        />
         <DeathByProvince
           totalDeath={totalDeath}
           deathByProvinces={deathByProvinces}
