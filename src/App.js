@@ -14,10 +14,10 @@ const App = () => {
       {/* <Zipcode2 /> */}
       {/* <Zipcode3 /> */}
       {/* <Zipcode4 /> */}
-      <Zipcode5 />
+      {/* <Zipcode5 /> */}
       {/* <Zipcode6 /> */}
       {/* <Zipcode7 /> */}
-      {/* <Zipcode8 /> */}
+      <Zipcode8 />
     </>
   );
 };
