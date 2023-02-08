@@ -30,7 +30,7 @@
 // import DeathCause1 from "./DeathCauseAnswer/DeathCause1";
 // import DeathCause2 from "./DeathCauseAnswer/DeathCause2";
 // import DeathCause3 from "./DeathCauseAnswer/DeathCause3";
-import DeathCause4 from "./deathcauses/DeathCause4";
+import DeathCause5 from "./deathcauses/DeathCause5";
 // import DeathCause5 from "./DeathCauseAnswer/DeathCause5";
 // import DeathCause6 from "./DeathCauseAnswer/DeathCause6";
 // import DeathCause7 from "./DeathCauseAnswer/DeathCause7";
@@ -69,7 +69,7 @@ const App = () => {
       {/* <Zipcode6 /> */}
       {/* <Zipcode7 /> */}
       {/* {/* <Zipcode8 /> */} 
-      <DeathCause4 />
+      <DeathCause5 />
       {/* <DeathCause2 /> */}
       {/* <DeathCause3 /> */}
       {/* <DeathCause4 /> */}
