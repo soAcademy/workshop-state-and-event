@@ -1,4 +1,6 @@
-const DeathsByCauseTable = ({ totalDeath, DeathsByCause }) => {
+import deaths from "./thailand-death-cause.json";
+
+const DeathsByCauseTable = ({ totalDeath, deathsByCause }) => {
   return (
     <div>
       <h2 className="mb-2 text-xl">สาเหตุการเสียชีวิต</h2>
@@ -9,7 +11,7 @@ const DeathsByCauseTable = ({ totalDeath, DeathsByCause }) => {
             <td>{totalDeath.toLocaleString("TH")}</td>
             <td>100%</td>
           </tr>
-          {DeathsByCause.map((deathByCause, idx) => (
+          {deathsByCause.map((deathByCause, idx) => (
             <tr key={idx}>
               <td>{deathByCause.causeOfDeath.toLocaleString("TH")}</td>
               <td>{deathByCause.death.toLocaleString("TH")}</td>
@@ -27,7 +29,7 @@ const DeathsByCauseTable = ({ totalDeath, DeathsByCause }) => {
   );
 };
 
-const DeathsByProvinceTable = ({ totalDeath, DeathsByProvince }) => {
+const DeathsByProvinceTable = ({ totalDeath, deathsByProvince }) => {
   return (
     <div>
       <h2 className="mb-2 text-xl">จำนวนผู้เสียชีวิตแยกตามจังหวัด</h2>
@@ -38,12 +40,12 @@ const DeathsByProvinceTable = ({ totalDeath, DeathsByProvince }) => {
             <td>{totalDeath.toLocaleString("TH")}</td>
             <td>100%</td>
           </tr>
-          {DeathsByProvince.map((DeathByProvince, idx) => (
+          {deathsByProvince.map((deathByProvince, idx) => (
             <tr key={idx}>
-              <td>{DeathByProvince.provinceName.toLocaleString("TH")}</td>
-              <td>{DeathByProvince.death.toLocaleString("TH")}</td>
+              <td>{deathByProvince.provinceName.toLocaleString("TH")}</td>
+              <td>{deathByProvince.death.toLocaleString("TH")}</td>
               <td>
-                {((DeathByProvince.death * 100) / totalDeath)
+                {((deathByProvince.death * 100) / totalDeath)
                   .toFixed(2)
                   .toLocaleString("TH")}
                 %
@@ -68,7 +70,7 @@ const DeathCause4 = () => {
 
   const totalDeath = 408009;
 
-  const DeathsByCause = [
+  const deathsByCause = [
     {
       causeOfDeath: "วัณโรคทุกชนิด",
       death: 189009,
@@ -76,7 +78,7 @@ const DeathCause4 = () => {
     { causeOfDeath: "โรคเกี่ยวกับตับและตับอ่อน", death: 158809 },
   ];
 
-  const DeathsByProvince = [
+  const deathsByProvince = [
     {
       provinceName: "กรุงเทพมหานคร",
       death: 52302,
@@ -93,11 +95,11 @@ const DeathCause4 = () => {
       <div className="grid grid-cols-3 gap-4">
         <DeathsByCauseTable
           totalDeath={totalDeath}
-          DeathsByCause={DeathsByCause}
+          deathsByCause={deathsByCause}
         />
         <DeathsByProvinceTable
           totalDeath={totalDeath}
-          DeathsByProvince={DeathsByProvince}
+          deathsByProvince={deathsByProvince}
         />
         <DeathCharts />
       </div>
