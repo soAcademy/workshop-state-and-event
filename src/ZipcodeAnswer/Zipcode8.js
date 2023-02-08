@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import ThailandZipcodeData from "./thailand-zipcode.json";
 
-const ZipcodeHome = ({ provinces, setProvince }) => (
+const ZipCodeHome = ({
+  provinces,
+  setProvince,
+  searchbar,
+  setSearchbar,
+  searchZipCode,
+  setSearchZipCode,
+}) => (
   <>
     <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
     <div>
@@ -9,8 +16,18 @@ const ZipcodeHome = ({ provinces, setProvince }) => (
         type="text"
         className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
         placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
+        onChange={(e) => setSearchbar(e.target.value)}
       />
     </div>
+    {searchbar !== undefined && searchbar.length >= 4 && (
+      <div className="w-1/3 mx-auto mt-4 relative">
+        <div className="w-full overflow-auto bg-slate-200 shadow-md rounded">
+          <div className="font-semibold px-4 pt-4">
+            ผลการค้นหา {searchZipCode.length} รายการ
+          </div>
+        </div>
+      </div>
+    )}
     <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
       <h2 className="text-xl mt-4 font-bold">เลือกจังหวัด</h2>
       <div className="grid grid-cols-4 mt-4">
@@ -84,6 +101,8 @@ const Zipcode8 = () => {
   const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
   const [province, setProvince] = useState();
   const [districts, setDistricts] = useState([]);
+  const [searchbar, setSearchbar] = useState();
+  const [searchZipCode, setSearchZipCode] = useState();
 
   useEffect(() => {
     const _districts = [
@@ -103,7 +122,14 @@ const Zipcode8 = () => {
         <ZipcodeNavBar province={province} setProvince={setProvince} />
       </div>
       {province === undefined && (
-        <ZipcodeHome provinces={provinces} setProvince={setProvince} />
+        <ZipCodeHome
+          provinces={provinces}
+          setProvince={setProvince}
+          searchbar={searchbar}
+          setSearchbar={setSearchbar}
+          searchZipCode={searchZipCode}
+          setSearchZipCodeHome={setSearchZipCodeHome}
+        />
       )}
       {province !== undefined && (
         <ZipcodeProvince province={province} districts={districts} />
