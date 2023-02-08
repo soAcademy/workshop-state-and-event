@@ -23,8 +23,11 @@ const ZipcodeHome = ({ provinces, setProvince }) => (
 );
 
 const ZipcodeProvince = ({ province, districts }) => (
+
   <>
+  
     {console.log("province",province,"districts",districts)}
+    <h2   className="w-screen text-left ml-5 mt-5 fixed bg-transparent ">กลับสู่หน้าหลัก</h2>
     <h1 className="text-2xl pt-3 font-bold">
       รหัสไปรษณีย์ในจังหวัด {province}
     </h1>
@@ -64,8 +67,6 @@ const ZipcodeProvince = ({ province, districts }) => (
 
 const Zipcode7 = () => {
   const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];  // 77 provinces 
-  // const uniqDistrict = ThailandZipcodeData.filter((r) => r.province === province).map((r) => {return [r.district, r];});
-  // console.log(">>>>>>>>>>>>>>",uniqDistrict);
   const [province, setProvince] = useState();
   const [districts, setDistricts] = useState([]); 
   
