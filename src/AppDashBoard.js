@@ -5,23 +5,29 @@ import ProvincePages from "./Dashboard/ProvincePages";
 import DistrictPages from "./Dashboard/DistrictPages";
 import Navbar from "./Dashboard/Navbar";
 import { useState } from "react";
+import DashboardAccidents from "./Dashboard/DashboardAccidents";
+import Map from "./Dashboard/Map";
 
 const AppDashBoard = () => {
   const [dataFilteredBySearchTerm, setDataFilteredBySearchTerm] = useState();
   return (
     // <Dashboard1 />
-    <BrowserRouter>
-      <Navbar
-        dataFilteredBySearchTerm={dataFilteredBySearchTerm}
-        setDataFilteredBySearchTerm={setDataFilteredBySearchTerm}
-      />
-      <Routes>
-        <Route path="/" element={<DashboardZipcode />} />
-        <Route path="/home" element={<DashboardZipcode />} />
-        <Route path=":province" element={<ProvincePages />}></Route>
-        <Route path=":province/:district" element={<DistrictPages />} />
-      </Routes>
-    </BrowserRouter>
+    // <BrowserRouter>
+    //   <Navbar
+    //     dataFilteredBySearchTerm={dataFilteredBySearchTerm}
+    //     setDataFilteredBySearchTerm={setDataFilteredBySearchTerm}
+    //   />
+    //   <Routes>
+    //     <Route path="/" element={<DashboardZipcode />} />
+    //     <Route path="/home" element={<DashboardZipcode />} />
+    //     <Route path=":province" element={<ProvincePages />}></Route>
+    //     <Route path=":province/:district" element={<DistrictPages />} />
+    //   </Routes>
+    // </BrowserRouter>
+    <div>
+      <Map />
+      <DashboardAccidents />
+    </div>
   );
 };
 

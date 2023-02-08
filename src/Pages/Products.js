@@ -1,9 +1,8 @@
-import { Routes, Route, useLocation, Link, useParams } from "react-router-dom";
+import { Routes, Route, useLocation, Link } from "react-router-dom";
 import ProductPage from "./Products/ProductPage";
 
 const Products = ({ title }) => {
   const location = useLocation();
-  const productId = useParams();
   document.title = title;
   return (
     <div>
