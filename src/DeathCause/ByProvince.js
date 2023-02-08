@@ -21,7 +21,7 @@ const ByProvince = ({ yearSelected, datasByProveince, sumByProvince }) => {
           <div key={data.province}>
             {data.amount > 0 && (
               <div className="blockCause flex justify-between gap-x-2 mb-1">
-                <div className="provinceName">{data.province}</div>
+                <div className="provinceName truncate">{data.province}</div>
                 <div className="tbAmount flex gap-x-1">
                   <div className="allAmount w-[70px] h-fit text-right bg-blue-800 text-white rounded-md p-1">
                     {data.amount}
