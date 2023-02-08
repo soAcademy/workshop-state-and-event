@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ThailandDeathCause from "./thailand-death-cause.json";
+import ReactECharts from "echarts-for-react";
 
 const DeathByCause = ({ totalDeath, deathByCauses }) => (
   <div className="bg-blue-100 w-1/3 p-4">
@@ -45,9 +46,12 @@ const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
   </div>
 );
 
-const DeathChart = () => (
+const DeathChart = ({ chartOption1, chartOption2 }) => (
   <div className="bg-green-100 w-1/3 p-4">
     <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
+    <ReactECharts option={chartOption1} />
+    <div className="font-bold mb-2">การเสียชีวิตตามเพศ</div>
+    <ReactECharts option={chartOption2} />
   </div>
 );
 
@@ -70,7 +74,7 @@ const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
   </div>
 );
 
-const DeathCause6 = () => {
+const DeathCause8 = () => {
   const yearLists = [...new Set(ThailandDeathCause.map((r) => r.year))].sort(
     (a, b) => b - a
   );
@@ -78,6 +82,8 @@ const DeathCause6 = () => {
   const [totalDeath, setTotalDeath] = useState(0);
   const [deathByCauses, setDeathByCauses] = useState([]);
   const [deathByProvinces, setDeathByProvinces] = useState([]);
+  const [chartOption1, setChartOption1] = useState({});
+  const [chartOption2, setChartOption2] = useState({});
 
   useEffect(() => {
     const deathCauseDatas = ThailandDeathCause.filter(
@@ -152,9 +158,104 @@ const DeathCause6 = () => {
       .sort((a, b) => b.death - a.death);
     // console.log(_deathByProvinces);
 
+    const _deathByYears = yearLists
+      .map((year) => {
+        const totalDeath = ThailandDeathCause.filter(
+          (r) => r.year == year
+        ).reduce(
+          (acc, r) => ({
+            death: acc.death + r.deathFemale + r.deathMale,
+            deathFemale: acc.deathFemale + r.deathFemale,
+            deathMale: acc.deathMale + r.deathMale,
+          }),
+          {
+            death: 0,
+            deathFemale: 0,
+            deathMale: 0,
+          }
+        );
+        return {
+          year,
+          death: totalDeath.death,
+          deathFemale: totalDeath.deathFemale,
+          deathMale: totalDeath.deathMale,
+        };
+      })
+      .sort((a, b) => a.year - b.year);
+
+    console.log(_deathByYears);
+
+    const _chartOption1 = {
+      xAxis: {
+        type: "category",
+        data: _deathByYears.map((r) => r.year),
+        name: "ปีพ.ศ.",
+      },
+      yAxis: {
+        type: "value",
+        name: "จำนวนผู้เสียชีวิต",
+        max: "dataMax",
+        min: "dataMin",
+      },
+      series: [
+        {
+          data: _deathByYears.map((r) => r.death),
+          type: "line",
+          smooth: true,
+          lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+        },
+      ],
+      tooltip: {
+        trigger: "axis",
+      },
+    };
+
+    const _deathBySex = deathCauseDatas.reduce(
+      (acc, r) => ({
+        death: acc.death + r.deathFemale + r.deathMale,
+        deathFemale: acc.deathFemale + r.deathFemale,
+        deathMale: acc.deathMale + r.deathMale,
+      }),
+      {
+        death: 0,
+        deathFemale: 0,
+        deathMale: 0,
+      }
+    );
+    console.log(_deathBySex);
+
+    const _chartOption2 = {
+      tooltip: {
+        trigger: "item",
+      },
+      legend: {
+        orient: "vertical",
+        left: "left",
+      },
+      series: [
+        {
+          type: "pie",
+          radius: "50%",
+          data: [
+            { value: _deathBySex.deathMale, name: "ชาย" },
+            { value: _deathBySex.deathFemale, name: "หญิง" },
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: "rgba(0, 0, 0, 0.5)",
+            },
+          },
+        },
+      ],
+    };
+
     setTotalDeath(_totalDeath);
     setDeathByCauses(_deathByCauses);
     setDeathByProvinces(_deathByProvinces);
+    setChartOption1(_chartOption1);
+    setChartOption2(_chartOption2);
   }, [currentYear]);
 
   return (
@@ -173,10 +274,10 @@ const DeathCause6 = () => {
           totalDeath={totalDeath}
           deathByProvinces={deathByProvinces}
         />
-        <DeathChart />
+        <DeathChart chartOption1={chartOption1} chartOption2={chartOption2} />
       </div>
     </div>
   );
 };
 
-export default DeathCause6;
+export default DeathCause8;

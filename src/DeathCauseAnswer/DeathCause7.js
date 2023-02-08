@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ThailandDeathCause from "./thailand-death-cause.json";
+import ReactECharts from "echarts-for-react";
 
 const DeathByCause = ({ totalDeath, deathByCauses }) => (
   <div className="bg-blue-100 w-1/3 p-4">
@@ -48,6 +49,61 @@ const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
 const DeathChart = () => (
   <div className="bg-green-100 w-1/3 p-4">
     <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
+    <ReactECharts
+      option={{
+        xAxis: {
+          type: "category",
+          data: [2554, 2555, 2556],
+          name: "ปีพ.ศ.",
+        },
+        yAxis: {
+          type: "value",
+          name: "จำนวนผู้เสียชีวิต",
+          max: "dataMax",
+          min: "dataMin",
+        },
+        series: [
+          {
+            data: [100000, 120000, 30000],
+            type: "line",
+            smooth: true,
+            lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+          },
+        ],
+        tooltip: {
+          trigger: "axis",
+        },
+      }}
+    />
+    <div className="font-bold mb-2">การเสียชีวิตตามเพศ</div>
+    <ReactECharts
+      option={{
+        tooltip: {
+          trigger: "item",
+        },
+        legend: {
+          orient: "vertical",
+          left: "left",
+        },
+        series: [
+          {
+            type: "pie",
+            radius: "50%",
+            data: [
+              { value: 100000, name: "ชาย" },
+              { value: 120000, name: "หญิง" },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      }}
+    />
   </div>
 );
 
@@ -70,7 +126,7 @@ const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
   </div>
 );
 
-const DeathCause6 = () => {
+const DeathCause7 = () => {
   const yearLists = [...new Set(ThailandDeathCause.map((r) => r.year))].sort(
     (a, b) => b - a
   );
@@ -179,4 +235,4 @@ const DeathCause6 = () => {
   );
 };
 
-export default DeathCause6;
+export default DeathCause7;
