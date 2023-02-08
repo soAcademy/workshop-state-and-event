@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import deathDatas from "./thailand-death-cause.json";
 
-const DeathCause3 = () => {
+const DeathCause4 = () => {
   const [yearSelected, setYearSelected] = useState(0);
   const [yearsList, setYearsList] = useState([]);
   const [datasByYear, setDatasByYear] = useState([]);
@@ -188,4 +188,4 @@ const DeathCause3 = () => {
   );
 };
 
-export default DeathCause3;
+export default DeathCause4;
