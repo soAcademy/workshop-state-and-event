@@ -49,7 +49,7 @@ const DeathByProvince = () => {
           </tr>
           <tr>
             <td>เชียงใหม่</td>
-            <td>109,000</td>
+            <td>109,000 คน</td>
             <td>1.48%</td>
           </tr>
         </tbody>
