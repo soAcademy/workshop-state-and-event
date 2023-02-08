@@ -19,9 +19,9 @@ const ZipcodeHome = ({
         onChange={(e) => setSearch(e.target.value)}
       />
     </div>
-    {search !== undefined && search.length >= 3 && (
-      <div className="w-1/3 mx-auto mt-4 relative ">
-        <div className="w-full h-64 overflow-auto bg-white shadow text-left rounded-lg absolute top-0">
+    {search?.length >= 3 && (
+      <div className="w-1/3 mx-auto mt-4 relative">
+        <div className="w-full h-64 overflow-auto bg-white shadow text-left rounded-lg absolute">
           <div className="font-bold px-4 pt-4">
             ผลลัพธ์การค้นหา {searchDatas.length} รายการ
           </div>
@@ -130,13 +130,13 @@ const Zipcode8 = () => {
   }, [province]);
 
   useEffect(() => {
-    const _searchDatas = ThailandZipcodeData.filter(
+    const _searchDatas = search?.length >= 3 ? ThailandZipcodeData.filter(
       (r) =>
         r.province.includes(search) ||
         r.district.includes(search) ||
         r.subdistrict.includes(search) ||
         String(r.zipcode).includes(search)
-    );
+    ) : [];
     setSearchDatas(_searchDatas);
   }, [search]);
 
