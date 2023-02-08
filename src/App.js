@@ -27,7 +27,7 @@
 // import Zipcode6 from "./ZipcodeAnswer/Zipcode6";
 // import Zipcode7 from "./ZipcodeAnswer/Zipcode7";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
-import DeathCause1 from "./deathcauses/DeathCause1";
+import DeathCause3 from "./deathcauses/DeathCause3";
 // import DeathCause2 from "./DeathCauseAnswer/DeathCause2";
 // import DeathCause3 from "./DeathCauseAnswer/DeathCause3";
 // import DeathCause4 from "./DeathCauseAnswer/DeathCause4";
@@ -65,7 +65,7 @@ const App = () => {
       {/* <Zipcode6 /> */}
       {/* <Zipcode7 /> */}
       {/* <Zipcode8 /> */}
-      <DeathCause1 />
+      <DeathCause3 />
       {/* <DeathCause2 /> */}
       {/* <DeathCause3 /> */}
       {/* <DeathCause4 /> */}

@@ -1,5 +1,5 @@
 const DeathCauseByDisease = () => (
-  <div className="bg-sky-500 w-1/3">
+  <div className="bg-sky-500 w-1/3 p-4">
     <div className="font-bold">Causes of Death in 2015</div>
     <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
     <table className="w-full">
@@ -15,7 +15,7 @@ const DeathCauseByDisease = () => (
 );
 
 const DeathCauseByProvince = () => (
-  <div className="bg-teal-300 w-1/3">
+  <div className="bg-teal-300 w-1/3 p-4">
     <div className="font-bold">Number of Death By Province in 2015</div>
     <div className="font-bold mb-2">สาเหตุการเสียชีวิตตามจังหวัด</div>
     <table className="w-full">
@@ -31,7 +31,7 @@ const DeathCauseByProvince = () => (
 );
 
 const DeathChart = () => (
-  <div className="bg-red-300 w-1/3">
+  <div className="bg-red-300 w-1/3 p-4">
     <div>Likelihood of Death</div>
   </div>
 );
