@@ -52,28 +52,114 @@ const DeathChart = () => (
 
 const DeathCause4 = () => {
   const currentYear = "2559";
-  const totalDeath = 400800;
-  const deathByCauses = [
+
+  const deathCauseDatas = [
     {
-      cause: "วัณโรคทุกชนิด",
-      death: 189000,
+      provinceKey: 19,
+      provinceName: "สระบุรี",
+      pronvinceNameEng: "Saraburi",
+      regionKey: 3,
+      region: "ภาคเหนือ",
+      regionEng: "Northern",
+      diseaseCauseDeathKey: 53,
+      causeOfDeath: "มะเร็ง และเนื้องอกทุกชนิด",
+      year: 2557,
+      deathMale: 384,
+      deathFemale: 284,
+      deathRatePer100000MalePopulation: 123.2,
+      deathRatePer100000FemalePopulation: 89.1,
     },
     {
-      cause: "เบาหวาน",
-      death: 130000,
+      provinceKey: 19,
+      provinceName: "สระบุรี",
+      pronvinceNameEng: "Saraburi",
+      regionKey: 3,
+      region: "ภาคเหนือ",
+      regionEng: "Northern",
+      diseaseCauseDeathKey: 116,
+      causeOfDeath: "อุบัติเหตุจากการขนส่ง",
+      year: 2557,
+      deathMale: 104,
+      deathFemale: 24,
+      deathRatePer100000MalePopulation: 33.4,
+      deathRatePer100000FemalePopulation: 7.5,
+    },
+    {
+      provinceKey: 96,
+      provinceName: "นราธิวาส",
+      pronvinceNameEng: "Narathiwat",
+      regionKey: 4,
+      region: "ภาคตะวันออกเฉียงเหนือ",
+      regionEng: "Northeastern",
+      diseaseCauseDeathKey: 20,
+      causeOfDeath: "อื่นๆ",
+      year: 2559,
+      deathMale: 0,
+      deathFemale: 0,
+      deathRatePer100000MalePopulation: 0,
+      deathRatePer100000FemalePopulation: 0,
     },
   ];
 
-  const deathByProvinces = [
-    {
-      province: "กรุงเทพมหานคร",
-      death: 189000,
-    },
-    {
-      province: "เชียงใหม่",
-      death: 109000,
-    },
-  ];
+  const totalDeath = deathCauseDatas.reduce(
+    (acc, r) => acc + r.deathMale + r.deathFemale,
+    0
+  );
+  console.log("totalDeath", totalDeath);
+
+  const causeList = [...new Set(deathCauseDatas.map((r) => r.causeOfDeath))];
+  console.log("causeList", causeList);
+
+  const deathByCauses = causeList.map((cause) => {
+    const sum = deathCauseDatas
+      .filter((r) => r.causeOfDeath === cause)
+      .reduce(
+        (acc, r) => ({
+          death: acc.death + r.deathFemale + r.deathMale,
+          deathFemale: acc.deathFemale + r.deathFemale,
+          deathMale: acc.deathMale + r.deathMale,
+        }),
+        {
+          death: 0,
+          deathFemale: 0,
+          deathMale: 0,
+        }
+      );
+    return {
+      cause,
+      death: sum.death,
+      deathFemale: sum.deathFemale,
+      deathMale: sum.deathMale,
+    };
+  });
+  console.log("deathByCauses", deathByCauses);
+
+  const provinceList = [...new Set(deathCauseDatas.map((r) => r.provinceName))];
+  console.log("provinceList", provinceList);
+
+  const deathByProvinces = provinceList.map((province) => {
+    const sum = deathCauseDatas
+      .filter((r) => r.provinceName === province)
+      .reduce(
+        (acc, r) => ({
+          death: acc.death + r.deathFemale + r.deathMale,
+          deathFemale: acc.deathFemale + r.deathFemale,
+          deathMale: acc.deathMale + r.deathMale,
+        }),
+        {
+          death: 0,
+          deathFemale: 0,
+          deathMale: 0,
+        }
+      );
+    return {
+      province,
+      death: sum.death,
+      deathFemale: sum.deathFemale,
+      deathMale: sum.deathMale,
+    };
+  });
+  console.log("deathByProvinces", deathByProvinces);
   return (
     <div className="p-4">
       <h1 className="font-bold text-2xl">
