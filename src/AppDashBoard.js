@@ -6,7 +6,6 @@ import DistrictPages from "./Dashboard/DistrictPages";
 import Navbar from "./Dashboard/Navbar";
 import { useState } from "react";
 import DashboardAccidents from "./Dashboard/DashboardAccidents";
-import Map from "./Dashboard/Map";
 
 const AppDashBoard = () => {
   const [dataFilteredBySearchTerm, setDataFilteredBySearchTerm] = useState();
@@ -24,10 +23,7 @@ const AppDashBoard = () => {
     //     <Route path=":province/:district" element={<DistrictPages />} />
     //   </Routes>
     // </BrowserRouter>
-    <div>
-      <Map />
       <DashboardAccidents />
-    </div>
   );
 };
 
