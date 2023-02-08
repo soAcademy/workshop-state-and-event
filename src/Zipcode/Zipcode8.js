@@ -18,7 +18,10 @@ const ZipcodeHome = (props) => {
         </div>
         {searchData.length > 0 && (
           <div className="bg-sky-100 w-1/3 flex justify-center relative mx-auto">
-            <div className="absolute top-0 overflow-auto bg-white py-3 rounded-[10px] w-full h-[200px]">
+            <div
+              className="absolute top-0 overflow-auto bg-white py-3 rounded-[10px] w-full
+             h-[200px]"
+            >
               {searchData.map((r) => {
                 return (
                   <div className="text-sky-700">
