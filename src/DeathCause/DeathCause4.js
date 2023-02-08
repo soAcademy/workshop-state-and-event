@@ -66,7 +66,7 @@ const DeathChart = () => {
   );
 };
 
-const DeathCause3 = () => {
+const DeathCause4 = () => {
   const currentYear = "2559";
 
   // MockData เพื่อนำว่าใช้งาน
@@ -238,4 +238,4 @@ const DeathCause3 = () => {
   );
 };
 
-export default DeathCause3;
+export default DeathCause4;
