@@ -73,11 +73,11 @@ const YearsFilter = (props) => {
       <div className="mt-4 text-lg">
         เลือกปี พ.ศ.
         <select
-          onChange={(e) => props.setCurrentYear(e.target.value)}
-          value={props.currentYear}
+          onChange={(e) => props.setCurrentYear(e.target.value)} // เพื่อให้สารมารถเปลี่ยนแปลงปีได้
+          value={props.currentYear} // ข้อมูลปีที่ unique แล้ว
           className="border-2 border-gray-500 rounded ml-2"
         >
-          {props.yearsUnique.map((year) => (
+          {props.yearsUnique.map((year) => ( // map เข้าไปในปีที่ unique แล้วมาแสดงใน option
             <option value={year} key={year}>
               {year}
             </option>
@@ -100,7 +100,7 @@ const DeathCause5 = () => {
 
   const yearsUnique = [...new Set(ThailandDeathCause.map((r) => r.year))].sort(
     (a, b) => a - b
-  );
+  ); // เริ่มจากการ map เข้าไปใน year ใน dataset แล้ว เรียงจากน้อย -> มาก 
   console.log("yearsUnique", yearsUnique);
 
   // เริ่มหาจำนวนการเสียชีวิตทั้งหมดก่อน โดยการใช้ reduce ให้ acc เก็บค่าการเสียชีวิตของ ช/ญ

@@ -35,7 +35,8 @@
 // import DeathCause2 from "./DeathCause/DeathCause2";
 // import DeathCause3 from "./DeathCause/DeathCause3";
 // import DeathCause4 from "./DeathCause/DeathCause4";
-import DeathCause5 from "./DeathCause/DeathCause5";
+// import DeathCause5 from "./DeathCause/DeathCause5";
+import DeathCause6 from "./DeathCause/DeathCause6";
 
 const App = () => {
   return (
@@ -73,8 +74,8 @@ const App = () => {
       {/* <DeathCause2 /> */}
       {/* <DeathCause3 /> */}
       {/* <DeathCause4 /> */}
-      <DeathCause5 />
-      {/* <DeathCause6 /> */}
+      {/* <DeathCause5 /> */}
+      <DeathCause6 />
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
     </>
