@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import ThailandZipcodeData from "./thailand-zipcode.json";
 
-const ZipCodeHome = ({
+const ZipcodeHome = ({
   provinces,
   setProvince,
-  searchbar,
-  setSearchbar,
-  searchZipCode,
-  setSearchZipCode,
+  search,
+  setSearch,
+  searchDatas,
+  setSearchDatas,
 }) => (
   <>
     <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
@@ -16,14 +16,31 @@ const ZipCodeHome = ({
         type="text"
         className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
         placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
-        onChange={(e) => setSearchbar(e.target.value)}
+        onChange={(e) => setSearch(e.target.value)}
       />
     </div>
-    {searchbar !== undefined && searchbar.length >= 4 && (
+    {search?.length >= 3 && (
       <div className="w-1/3 mx-auto mt-4 relative">
-        <div className="w-full overflow-auto bg-slate-200 shadow-md rounded">
-          <div className="font-semibold px-4 pt-4">
-            ผลการค้นหา {searchZipCode.length} รายการ
+        <div className="w-full h-64 overflow-auto bg-white shadow text-left rounded-lg absolute">
+          <div className="font-bold px-4 pt-4">
+            ผลลัพธ์การค้นหา {searchDatas.length} รายการ
+          </div>
+          <div className="text-sm text-gray-600">
+            {searchDatas?.map((r, idx) => (
+              <div
+                key={idx}
+                className="py-1 hover:cursor-pointer hover:bg-blue-100 active:bg-blue-200"
+                onClick={() =>
+                  navigator.clipboard.writeText(
+                    `ต.${r.subdistrict} อ.${r.district} จ.${r.province} ${r.zipcode}`
+                  )
+                }
+              >
+                <span className="px-4">
+                  ต.{r.subdistrict} อ.{r.district} จ.{r.province} {r.zipcode}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -49,13 +66,6 @@ const ZipcodeProvince = ({ province, districts }) => (
     <h1 className="text-2xl pt-3 font-bold">
       รหัสไปรษณีย์ในจังหวัด {province}
     </h1>
-    <div>
-      <input
-        type="text"
-        className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
-        placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
-      />
-    </div>
     <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
       <table className="w-full">
         <thead>
@@ -73,7 +83,13 @@ const ZipcodeProvince = ({ province, districts }) => (
               </td>
               <td className="border border-slate-300 p-2">{r.district}</td>
               <td className="border border-slate-300 text-center p-2">
-                {r.zipcode}
+                {r.zipcode}{" "}
+                <span
+                  className="text-blue-500 cursor-pointer active:text-blue-300"
+                  onClick={() => navigator.clipboard.writeText(r.zipcode)}
+                >
+                  คัดลอก
+                </span>
               </td>
             </tr>
           ))}
@@ -101,8 +117,14 @@ const Zipcode8 = () => {
   const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
   const [province, setProvince] = useState();
   const [districts, setDistricts] = useState([]);
-  const [searchbar, setSearchbar] = useState();
-  const [searchZipCode, setSearchZipCode] = useState();
+  const [search, setSearch] = useState();
+  const [searchDatas, setSearchDatas] = useState([]);
+
+  // Event based driven
+  // 1 -> 2 -> 3 -> 4
+  // onClick = () => {setProvince()}
+  // useEffect(() => {updateDistrict()}, [province, filter])
+  // useEffect(() => {calculateData()}, [province, searchTerm])
 
   useEffect(() => {
     const _districts = [
@@ -116,19 +138,34 @@ const Zipcode8 = () => {
     setDistricts(_districts);
   }, [province]);
 
+  useEffect(() => {
+    const _searchDatas =
+      search?.length >= 3
+        ? ThailandZipcodeData.filter(
+            (r) =>
+              r.province.includes(search) ||
+              r.district.includes(search) ||
+              r.subdistrict.includes(search) ||
+              String(r.zipcode).includes(search)
+          )
+        : [];
+    setSearchDatas(_searchDatas);
+    console.log(_searchDatas);
+  }, [search]);
+
   return (
     <div className="w-full text-center">
       <div className="mt-4">
         <ZipcodeNavBar province={province} setProvince={setProvince} />
       </div>
       {province === undefined && (
-        <ZipCodeHome
+        <ZipcodeHome
           provinces={provinces}
           setProvince={setProvince}
-          searchbar={searchbar}
-          setSearchbar={setSearchbar}
-          searchZipCode={searchZipCode}
-          setSearchZipCodeHome={setSearchZipCodeHome}
+          search={search}
+          setSearch={setSearch}
+          searchDatas={searchDatas}
+          setSearchDatas={setSearchDatas}
         />
       )}
       {province !== undefined && (
@@ -139,3 +176,64 @@ const Zipcode8 = () => {
 };
 
 export default Zipcode8;
+
+// const carts = [
+//   {
+//     id: 100,
+//     quantity: 1
+//   }
+// ]
+
+// const product = {
+//   id: 101,
+//   quantity: 2
+// }
+
+// const carts = [
+//   {
+//     id: 100,
+//     quantity: 1
+//   },
+//   {
+//     id: 101,
+//     quantity: 2
+//   }
+// ]
+
+// const product = {
+//   id: 101,
+//   quantity: 2
+// }
+
+// const carts = [
+//   {
+//     id: 100,
+//     quantity: 1
+//   },
+//   {
+//     id: 101,
+//     quantity: 4
+//   }
+// ]
+
+// if ถ้ามีอยู่แล้ว then ให้เพิ่ม quantity
+// else ถ้ายังไม่มีให้สร้างใหม่
+
+// const idx = carts.findIndex((r) => r.id === product.id);
+
+// ถ้ามันมี idx >= 0 (เป็นค่า index)
+// ถ้าไม่มี idx === -1
+
+// แล้วเราจะเอา product join กับ cart ได้ไง
+
+// const tempCarts = [...carts];
+// const idx = carts.findIndex((r) => r.id === product.id);
+
+// if (idx >=0) {
+//   tempCarts[idx].quantity += product.quantity;
+// } else {
+//   tempCarts.push(product);
+//   // setCarts([...tempCarts, ...product])
+//   setCarts([...tempCarts, {id: product.id, quantity: product.quantity}])
+// }
+// setCarts(tempCarts);
