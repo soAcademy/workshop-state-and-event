@@ -183,7 +183,7 @@ const DeathCause8 = () => {
       })
       .sort((a, b) => a.year - b.year);
 
-    console.log(_deathByYears);
+    console.log("byYears", _deathByYears);
 
     const _chartOption1 = {
       xAxis: {
