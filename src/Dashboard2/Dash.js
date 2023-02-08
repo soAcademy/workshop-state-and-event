@@ -3,192 +3,11 @@ import React, { useState, useEffect } from "react";
 import data from "./thailand-death-cause.json";
 
 const Dashboard = () => {
-  // const data = [
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 53,
-  //     causeOfDeath: "มะเร็ง และเนื้องอกทุกชนิด",
-  //     year: 2556,
-  //     deathMale: 384,
-  //     deathFemale: 284,
-  //     deathRatePer100000MalePopulation: 123.2,
-  //     deathRatePer100000FemalePopulation: 89.1,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 53,
-  //     causeOfDeath: "มะเร็ง และเนื้องอกทุกชนิด",
-  //     year: 2556,
-  //     deathMale: 384,
-  //     deathFemale: 284,
-  //     deathRatePer100000MalePopulation: 123.2,
-  //     deathRatePer100000FemalePopulation: 89.1,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 116,
-  //     causeOfDeath: "อุบัติเหตุจากการขนส่ง",
-  //     year: 2556,
-  //     deathMale: 104,
-  //     deathFemale: 24,
-  //     deathRatePer100000MalePopulation: 33.4,
-  //     deathRatePer100000FemalePopulation: 7.5,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 29,
-  //     causeOfDeath: "ความดันเลือดสูง",
-  //     year: 2557,
-  //     deathMale: 22,
-  //     deathFemale: 28,
-  //     deathRatePer100000MalePopulation: 7.1,
-  //     deathRatePer100000FemalePopulation: 8.8,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 90,
-  //     causeOfDeath: "โรคหลอดเลือดในสมอง",
-  //     year: 2557,
-  //     deathMale: 195,
-  //     deathFemale: 141,
-  //     deathRatePer100000MalePopulation: 62.5,
-  //     deathRatePer100000FemalePopulation: 44.2,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 93,
-  //     causeOfDeath: "โรคหัวใจขาดเลือด",
-  //     year: 2557,
-  //     deathMale: 184,
-  //     deathFemale: 141,
-  //     deathRatePer100000MalePopulation: 59,
-  //     deathRatePer100000FemalePopulation: 44.2,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 48,
-  //     causeOfDeath: "ปอดอักเสบและโรคอื่นๆ ของปอด",
-  //     year: 2557,
-  //     deathMale: 270,
-  //     deathFemale: 200,
-  //     deathRatePer100000MalePopulation: 86.6,
-  //     deathRatePer100000FemalePopulation: 62.7,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 5,
-  //     causeOfDeath: "ไตอักเสบ กลุ่มอาการของไตพิการ และไตพิการ",
-  //     year: 2558,
-  //     deathMale: 57,
-  //     deathFemale: 53,
-  //     deathRatePer100000MalePopulation: 18.3,
-  //     deathRatePer100000FemalePopulation: 16.6,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 10,
-  //     causeOfDeath: "โรคเกี่ยวกับตับและตับอ่อน",
-  //     year: 2558,
-  //     deathMale: 73,
-  //     deathFemale: 50,
-  //     deathRatePer100000MalePopulation: 23.4,
-  //     deathRatePer100000FemalePopulation: 15.7,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "สระบุรี",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 23,
-  //     causeOfDeath: "การฆ่าตัวตาย ถูกฆ่าตาย",
-  //     year: 2558,
-  //     deathMale: 36,
-  //     deathFemale: 10,
-  //     deathRatePer100000MalePopulation: 11.5,
-  //     deathRatePer100000FemalePopulation: 3.1,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "กทม.",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 42,
-  //     causeOfDeath: "เบาหวาน",
-  //     year: 2558,
-  //     deathMale: 41,
-  //     deathFemale: 32,
-  //     deathRatePer100000MalePopulation: 13.1,
-  //     deathRatePer100000FemalePopulation: 10,
-  //   },
-  //   {
-  //     provinceKey: 19,
-  //     provinceName: "นครสวรรค์",
-  //     pronvinceNameEng: "Saraburi",
-  //     regionKey: 3,
-  //     region: "ภาคเหนือ",
-  //     regionEng: "Northern",
-  //     diseaseCauseDeathKey: 17,
-  //     causeOfDeath: "วัณโรคทุกชนิด",
-  //     year: 2559,
-  //     deathMale: 60,
-  //     deathFemale: 15,
-  //     deathRatePer100000MalePopulation: 19.2,
-  //     deathRatePer100000FemalePopulation: 4.7,
-  //   },
-  // ];
-
-  const [selectYear, setSelectYear] = useState(Number(2556));
-  console.log("selectYear", selectYear);
-  console.log("TypeselectYear", typeof selectYear);
+  const [selectYear, setSelectYear] = useState(Number(2554));
+  const [deathByProvince, setDeathByProvince] = useState([]);
+  const [deathByCause, setDeathByCause] = useState([]);
+  const [sumDeathBySex, setSumDeathBySex] = useState([]);
+  const [sumDeathByYear, setSumDeathByYear] = useState([]);
 
   const sumTotalDeath = data.reduce(
     (acc, r) => acc + r.deathFemale + r.deathMale,
@@ -196,106 +15,140 @@ const Dashboard = () => {
   );
   console.log("sumTotalDeath", sumTotalDeath);
 
-  // แยกตามเพศ
-  const deathByYear = data.filter((r) => r.year === Number(selectYear));
-  const sumDeathBySex = deathByYear.reduce(
-    (acc, r) => {
-      acc.deathMale += r.deathMale;
-      acc.deathFemale += r.deathFemale;
-      return acc;
-    },
-    { deathMale: 0, deathFemale: 0 }
-  );
-  console.log("sumDeathBySex", sumDeathBySex);
-  console.log("TypeofsumDeathBySex", typeof sumDeathBySex);
-  console.log("deathMale", sumDeathBySex.deathMale);
+  useEffect(() => {
+    // แยกตามเพศ
+    const deathByYear = data.filter((r) => r.year === Number(selectYear));
+    const sumDeathBySex = deathByYear.reduce(
+      (acc, r) => {
+        acc.deathMale += r.deathMale;
+        acc.deathFemale += r.deathFemale;
+        return acc;
+      },
+      { deathMale: 0, deathFemale: 0 }
+    );
+    setSumDeathBySex(sumDeathBySex);
+    console.log("sumDeathBySex", sumDeathBySex);
+    console.log("TypeofsumDeathBySex", typeof sumDeathBySex);
+    console.log("deathMale", sumDeathBySex.deathMale);
 
-  // แยกตามสาเหตุการเสียชีวิต
-  const deathcauseList = [...new Set(data.map((r) => r.causeOfDeath))];
-  console.log("deathcauseList", deathcauseList);
+    // แยกตามสาเหตุการเสียชีวิต
+    const deathcauseList = [...new Set(data.map((r) => r.causeOfDeath))];
+    console.log("deathcauseList", deathcauseList);
 
-  const deathByCause = deathcauseList
-    .map((deathcause) => {
-      // const filteredData = data.filter((r) => r.causeOfDeath === deathcause);
-      const filteredData = data.filter(
-        (r) => r.causeOfDeath === deathcause && r.year === Number(selectYear)
-      );
-      console.log("filteredData", filteredData);
+    const deathByCause = deathcauseList
+      .map((deathcause) => {
+        // const filteredData = data.filter((r) => r.causeOfDeath === deathcause);
+        const filteredData = data.filter(
+          (r) => r.causeOfDeath === deathcause && r.year === Number(selectYear)
+        );
+        console.log("filteredData", filteredData);
+
+        const sum = filteredData.reduce(
+          (acc, r) => {
+            acc.deathMale += r.deathMale;
+            acc.deathFemale += r.deathFemale;
+            return acc;
+          },
+          { deathMale: 0, deathFemale: 0 }
+        );
+        console.log("sum", sum);
+
+        return {
+          causeOfDeath: deathcause,
+          deathMale: sum.deathMale,
+          deathFemale: sum.deathFemale,
+          death: sum.deathMale + sum.deathFemale,
+          year: filteredData[0]?.year,
+          percentage: (
+            ((sum.deathMale + sum.deathFemale) / sumTotalDeath) *
+            100
+          ).toFixed(2),
+        };
+      })
+      .sort((a, b) => b.death - a.death);
+    setDeathByCause(deathByCause);
+    console.log("deathByCause", deathByCause);
+
+    // แยกตามจังหวัด
+    const provinceList = [...new Set(data.map((r) => r.provinceName))];
+    console.log("provinceList", provinceList);
+
+    const deathByProvince = provinceList
+      .map((province) => {
+        const filteredData = data.filter(
+          (r) => r.provinceName === province && r.year === Number(selectYear)
+        );
+        console.log("filteredData", filteredData);
+
+        const sum = filteredData.reduce(
+          (acc, r) => {
+            acc.deathMale += r.deathMale;
+            acc.deathFemale += r.deathFemale;
+            return acc;
+          },
+          { deathMale: 0, deathFemale: 0 }
+        );
+        console.log("sum", sum);
+
+        return {
+          province: province,
+          deathMale: sum.deathMale,
+          deathFemale: sum.deathFemale,
+          death: sum.deathMale + sum.deathFemale,
+          year: filteredData[0]?.year,
+          percentage: (
+            ((sum.deathMale + sum.deathFemale) / sumTotalDeath) *
+            100
+          ).toFixed(2),
+        };
+      })
+      .sort((a, b) => b.death - a.death);
+    setDeathByProvince(deathByProvince);
+    console.log("deathByProvince", deathByProvince);
+
+    const yearList = [...new Set(data.map((r) => r.year))].sort(
+      (a, b) => a - b
+    );
+    console.log("yearList", yearList);
+
+    const sumDeathByYear = yearList.map((year) => {
+      const filteredData = data.filter((r) => r.year === year);
+      console.log("filteredData3", filteredData);
 
       const sum = filteredData.reduce(
-        (acc, r) => {
-          acc.deathMale += r.deathMale;
-          acc.deathFemale += r.deathFemale;
-          return acc;
-        },
-        { deathMale: 0, deathFemale: 0 }
+        (acc, r) => acc + r.deathFemale + r.deathMale,
+        0
       );
-      console.log("sum", sum);
+      console.log("sum3", sum);
 
       return {
-        causeOfDeath: deathcause,
-        deathMale: sum.deathMale,
-        deathFemale: sum.deathFemale,
-        death: sum.deathMale + sum.deathFemale,
-        year: filteredData[0]?.year,
-        percentage: (
-          ((sum.deathMale + sum.deathFemale) / sumTotalDeath) *
-          100
-        ).toFixed(2),
+        year: year,
+        death: sum,
       };
-    })
-    .sort((a, b) => b.death - a.death);
-  console.log("deathByCause", deathByCause);
-
-  // แยกตามจังหวัด
-  const provinceList = [...new Set(data.map((r) => r.provinceName))];
-  console.log("provinceList", provinceList);
-
-  const deathByProvince = provinceList
-    .map((province) => {
-      const filteredData = data.filter(
-        (r) => r.provinceName === province && r.year === Number(selectYear)
-      );
-      console.log("filteredData", filteredData);
-
-      const sum = filteredData.reduce(
-        (acc, r) => {
-          acc.deathMale += r.deathMale;
-          acc.deathFemale += r.deathFemale;
-          return acc;
-        },
-        { deathMale: 0, deathFemale: 0 }
-      );
-      console.log("sum", sum);
-
-      return {
-        province: province,
-        deathMale: sum.deathMale,
-        deathFemale: sum.deathFemale,
-        death: sum.deathMale + sum.deathFemale,
-        year: filteredData[0]?.year,
-        percentage: (
-          ((sum.deathMale + sum.deathFemale) / sumTotalDeath) *
-          100
-        ).toFixed(2),
-      };
-    })
-    .sort((a, b) => b.death - a.death);
-  console.log("deathByProvince", deathByProvince);
+    });
+    setSumDeathByYear(sumDeathByYear);
+    console.log("sumDeathByYear", sumDeathByYear);
+  }, [selectYear]);
 
   const options1 = {
     xAxis: {
       type: "category",
-      data: data.map((r) => r.year),
+      data: sumDeathByYear.map((r) => r.year),
       name: "พ.ศ.",
     },
     yAxis: {
       type: "value",
       name: "จำนวน",
     },
+    grid: {
+      left: "5%",
+      right: "4%",
+      bottom: "3%",
+      containLabel: true,
+    },
     series: [
       {
-        data: data.map((r) => r.deathMale),
+        data: sumDeathByYear.map((r) => r.death),
         type: "line",
         smooth: true,
       },
@@ -350,7 +203,9 @@ const Dashboard = () => {
           className="border border-black ml-2"
           onChange={(e) => setSelectYear(Number(e.target.value))}
         >
-          <option value="2554">2554</option>
+          <option value="2554" selected>
+            2554
+          </option>
           <option value="2555">2555</option>
           <option value="2556">2556</option>
           <option value="2557">2557</option>
@@ -392,9 +247,14 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="w-1/3 mx-4 border border-gray-200 px-2">
-          <h1 className="font-bold mx-4 mt-4">แนวโน้มการเสียชึวิต</h1>
-          <ReactECharts option={options1} />
-          <ReactECharts option={options2} />
+          <div>
+            <h1 className="font-bold mx-4 mt-4">แนวโน้มการเสียชึวิต</h1>
+            <ReactECharts option={options1} />
+          </div>
+          <div className="mt-6">
+            <h1 className="font-bold mx-4 mb-4">จำนวนผู้เสียชีวิตแยกตามเพศ</h1>
+            <ReactECharts option={options2} />
+          </div>
         </div>
       </div>
     </>

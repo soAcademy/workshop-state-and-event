@@ -23,6 +23,7 @@ import Zipcode5 from "./Zipcode/Zipcode5";
 import Zipcode6 from "./Zipcode/Zipcode6";
 import Zipcode7 from "./Zipcode/Zipcode7";
 import Zipcode8 from "./Zipcode/Zipcode8";
+import DeathCause1 from "./DeathCause/DeathCause1";
 import React, { useState, useEffect } from "react";
 
 const App = () => {
@@ -46,7 +47,11 @@ const App = () => {
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}
       {/* <Trivia5 /> */}
-      <Zipcode8 />
+      {/* <Zipcode8 /> */}
+      <DeathCause1 />
+      {/* <DeathCause2 /> */}
+      {/* <DeathCause3 /> */}
+      {/* <DeathCause4 /> */}
     </>
   );
 };
