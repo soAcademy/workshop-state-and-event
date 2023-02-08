@@ -123,7 +123,7 @@ const DeathChart = () => {
               data: [100000, 120000, 30000],
               type: "line",
               smooth: true,
-              lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+              lineStyle: { color: "red", width: 5, type: "dashed" },
             },
           ],
           tooltip: {
