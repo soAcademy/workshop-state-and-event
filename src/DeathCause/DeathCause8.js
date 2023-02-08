@@ -2,26 +2,49 @@ import { useState, useEffect } from "react";
 import EChartsReact from "echarts-for-react";
 import deaths from "./thailand-death-cause.json";
 
-const DeathsByCauseTable = ({ totalDeath, deathsByCause, currentYear }) => {
+const DeathsByCauseTable = ({
+  totalDeath,
+  deathsByCause,
+  currentYear,
+  setSelectedCause,
+}) => {
+  const handleCauseButtonClick = () => {};
+
   return (
     <div>
       <h2 className="mb-2 text-xl">สาเหตุการเสียชีวิตปี {currentYear}</h2>
-      <table className="w-full text-left font-nstl text-sm text-gray-900">
+      <table className="table-auto text-left font-nstl text-sm text-gray-900">
         <tbody>
           <tr className="border-b bg-white">
-            <td className="px-6 py-4">ทั้งหมด</td>
-            <td className="px-6 py-4">{totalDeath.toLocaleString("TH")}</td>
-            <td className="px-6 py-4">100%</td>
+            <td className="py-2 pr-2">
+              <button
+                className="text-left"
+                onClick={() => handleCauseButtonClick("")}
+              >
+                ทั้งหมด
+              </button>
+            </td>
+            <td className="px-2 py-2 text-right">
+              {totalDeath.toLocaleString("TH")}
+            </td>
+            <td className="py-2 pl-2 text-right">100.00%</td>
           </tr>
           {deathsByCause.map((deathByCause, idx) => (
             <tr key={idx} className="border-b bg-white">
-              <td className="px-6 py-4">
-                {deathByCause.causeOfDeath.toLocaleString("TH")}
+              <td className="py-2 pr-2">
+                <button
+                  className="text-left"
+                  onClick={() =>
+                    handleCauseButtonClick(deathByCause.causeOfDeath)
+                  }
+                >
+                  {deathByCause.causeOfDeath}
+                </button>
               </td>
-              <td className="px-6 py-4">
+              <td className="px-2 py-2 text-right">
                 {deathByCause.death.toLocaleString("TH")}
               </td>
-              <td className="px-6 py-4">
+              <td className="py-2 pl-2 text-right">
                 {((deathByCause.death * 100) / totalDeath)
                   .toFixed(2)
                   .toLocaleString("TH")}
@@ -45,22 +68,24 @@ const DeathsByProvinceTable = ({
       <h2 className="mb-2 text-xl">
         จำนวนผู้เสียชีวิตปี {currentYear} แยกตามจังหวัด
       </h2>
-      <table className="w-full text-left font-nstl text-sm text-gray-900">
+      <table className="table-auto text-left font-nstl text-sm text-gray-900">
         <tbody>
           <tr className="border-b bg-white">
-            <td className="px-6 py-4">ทั้งหมด</td>
-            <td className="px-6 py-4">{totalDeath.toLocaleString("TH")}</td>
-            <td className="px-6 py-4">100%</td>
+            <td className="py-2 pr-2">ทั้งหมด</td>
+            <td className="px-2 py-2 text-right">
+              {totalDeath.toLocaleString("TH")}
+            </td>
+            <td className="py-2 pl-2 text-right">100.00%</td>
           </tr>
           {deathsByProvince.map((deathByProvince, idx) => (
             <tr key={idx} className="border-b bg-white">
-              <td className="px-6 py-4">
+              <td className="py-2 pr-2">
                 {deathByProvince.provinceName.toLocaleString("TH")}
               </td>
-              <td className="px-6 py-4">
+              <td className="px-2 py-2 text-right">
                 {deathByProvince.death.toLocaleString("TH")}
               </td>
-              <td className="px-6 py-4">
+              <td className="py-2 pl-2 text-right">
                 {((deathByProvince.death * 100) / totalDeath)
                   .toFixed(2)
                   .toLocaleString("TH")}
@@ -204,6 +229,7 @@ const DeathCause8 = () => {
   const [deathsByProvince, setDeathsByProvince] = useState([]);
   const [optionForDeathTrend, setOptionForDeathTrend] = useState({});
   const [optionForDeathsByGender, setOptionForDeathsByGender] = useState({});
+  const [selectedCause, setSelectedCause] = useState();
 
   useEffect(() => {
     const _totalDeath = deaths
@@ -252,6 +278,9 @@ const DeathCause8 = () => {
       .map((deathProvince) => {
         const _deathsForProvince = deaths
           .filter((death) => death.year === currentYear)
+          .filter((death) =>
+            selectedCause ? death.causeOfDeath === selectedCause : true
+          )
           .filter((death) => death.provinceName === deathProvince)
           .reduce(
             (acc, death) => ({
@@ -401,11 +430,13 @@ const DeathCause8 = () => {
           totalDeath={totalDeath}
           deathsByCause={deathsByCause}
           currentYear={currentYear}
+          setSelectedCause={setSelectedCause}
         />
         <DeathsByProvinceTable
           totalDeath={totalDeath}
           deathsByProvince={deathsByProvince}
           currentYear={currentYear}
+          selectedCause={selectedCause}
         />
         <DeathCharts
           optionForDeathTrend={optionForDeathTrend}
