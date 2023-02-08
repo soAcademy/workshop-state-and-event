@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ThailandDeathCause from "./thailand-death-cause.json";
+import ReactECharts from "echarts-for-react";
 
 // todo 1 : สร้าง components ตามสิ่งที่เราต้องการโชว์
 // 1.1 components 1: เราจะใส่ "ตาราง" ที่แสดงจำนวนผู้เสียชีวิตแยกตามสาเหตุการเสียชีวิต
@@ -48,10 +49,68 @@ const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
     </table>
   </div>
 );
+// todo 7. import ReactECharts from "echarts-for-react"; MockUp หน้าตา Data ที่จะเอาไปใส่ Chart
 // 1.3 components 3: เราจะใส่ "กราฟ" ที่แสดงแนวโน้มการเสียชีวิต
 const DeathChart = () => (
-  <div className="bg-green-100 w-1/3">
-    <div>แนวโน้มการเสียชีวิต</div>
+  <div className="bg-green-100 w-1/3 p-4">
+    <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
+    {/* 7.1 : line Charts */}
+    <ReactECharts
+      option={{
+        xAxis: {
+          type: "category",
+          data: [2554, 2555, 2556],
+          name: "ปีพ.ศ.",
+        },
+        yAxis: {
+          type: "value",
+          name: "จำนวนผู้เสียชีวิต",
+          max: "dataMax",
+          min: "dataMin",
+        },
+        series: [
+          {
+            data: [100000, 120000, 30000],
+            type: "line",
+            smooth: true,
+            lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+          },
+        ],
+        tooltip: {
+          trigger: "axis",
+        },
+      }}
+    />
+    <div className="font-bold mb-2">การเสียชีวิตตามเพศ</div>
+    {/* 7.2 : Pie Charts */}
+    <ReactECharts
+      option={{
+        tooltip: {
+          trigger: "item",
+        },
+        legend: {
+          orient: "vertical",
+          left: "left",
+        },
+        series: [
+          {
+            type: "pie",
+            radius: "50%",
+            data: [
+              { value: 100000, name: "ชาย" },
+              { value: 120000, name: "หญิง" },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      }}
+    />
   </div>
 );
 // todo 5.4 : สร้าง components DeathFilter รับ props มาจาก ข้อ 5.3
@@ -85,9 +144,7 @@ const DeathCause6 = () => {
   console.log("yearLists : ", yearLists);
 
   // todo 5.2 : เปลี่ยน ตัวแปร currentYear ให้เป้น state เอาไว้เก็บค่าการเปลี่ยนแปลงจากการเลือก option year
-  //const currentyear = "2559" <=== เป็น Mock ของข้อ 3
   const [currentYear, setCurrentYear] = useState(2559);
-  
   // todo 6.2 : เปลี่ยน ตัวแปร 4.1/4.2.2/4.3.2 ให้เป้น state (อันเดิมให้เติม _ ไว้ข้างหน้า) เอาไว้เก็บค่าที่ได้จากการทำงานของ Effects
   const [totalDeath, setTotalDeath] = useState(0);
   const [deathByCauses, setDeathByCauses] = useState([]);
