@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DeathCouse1 = () => {
+const DeathCause1 = () => {
   // todo 1 : สร้าง components ตามสิ่งที่เราต้องการโชว์
   // 1.1 components 1: เราจะใส่ "ตาราง" ที่แสดงจำนวนผู้เสียชีวิตแยกตามสาเหตุการเสียชีวิต
   const DeathByCause = () => (
@@ -36,4 +36,4 @@ const DeathCouse1 = () => {
   )
 }
 
-export default DeathCouse1
+export default DeathCause1
