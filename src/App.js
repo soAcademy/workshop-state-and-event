@@ -86,7 +86,15 @@ const App = () => {
       {/* <Zipcode5 /> */}
       {/* <Zipcode6 /> */}
       {/* <Zipcode7 /> */}
-      <Zipcode8 />
+      {/* <Zipcode8 /> */}
+      {/* <DeathCause1 /> */}
+      {/* <DeathCause2 /> */}
+      {/* <DeathCause3 /> */}
+      {/* <DeathCause4 /> */}
+      {/* <DeathCause6 /> */}
+      {/* <DeathCause7 /> */}
+      <DeathCause8 />
+
     </>
   );
 };
