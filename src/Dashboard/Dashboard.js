@@ -9,7 +9,7 @@ import GenderChart from "./GenderChart";
 const Dashboard = () => {
   const [yearSelected, setYearSelected] = useState(0);
   const [yearsList, setYearsList] = useState([]);
-  const [datasByYear, setdatasByYear] = useState([]);
+  const [datasByYear, setDatasByYear] = useState([]);
   const [sumByYear, setSumByYear] = useState(0);
   const [datasByProveince, setDatasByProveince] = useState([]);
   const [sumByProvince, setSumByProvince] = useState(0);
@@ -88,7 +88,7 @@ const Dashboard = () => {
       0
     );
 
-    setdatasByYear(deathByCause);
+    setDatasByYear(deathByCause);
     setSumByYear(sumDeathInYear);
     setDatasByProveince(deathByProvince);
     setSumByProvince(sumDeathAllProvince);
