@@ -28,6 +28,7 @@ const ZipcodeHome = (props) => {
             <div className="font-bold px-4 pt-4">
               ผลลัพธ์การค้นหา {searchDatas.length} รายการ
             </div>
+            {/* .map เวลา render html ต้องใส่ key={idx} */}
             <div className="text-sm text-gray-600">
               {searchDatas?.map((r, idx) => (
                 <div
@@ -132,7 +133,7 @@ const Zipcode8 = () => {
   const [searchDatas, setSearchDatas] = useState([]);
 
   // useEffect เอาไว้จับค่าเมื่อ province เปลี่ยนแปลง
-  // state ตัวแปรเอาไว้เก็บค่า
+  // state ตัวแปรเอาไว้เก็บค่า , useState() or ([]) ขึ้นอยู่กับเงื่อนไขเรา
   // effect เป็นฟังค์ชั่น หากตัวแปรเปลี่ยน จะให้เกิดอะไร
 
   useEffect(() => {
@@ -160,6 +161,7 @@ const Zipcode8 = () => {
         r.subdistrict.includes(search) ||
         String(r.zipcode).includes(search)
     );
+    console.log("_searchDatas", searchDatas);
     setSearchDatas(_searchDatas);
   }, [search]);
 
