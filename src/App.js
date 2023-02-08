@@ -10,7 +10,7 @@ import DeathCause8 from "./DeathCause/DeathCause8";
 const App = () => {
   return (
     <>
-      <DeathCause7 />
+      <DeathCause8 />
     </>
   );
 };
