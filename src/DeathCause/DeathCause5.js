@@ -161,7 +161,7 @@ const DeathCause5 = () => {
   //   { provinceName: "เชียงใหม่", death: 48512 },
   // ];
 
-  const [currentYear, setCurrentYear] = useState(Math.max(listOfYears));
+  const [currentYear, setCurrentYear] = useState(Math.max(...listOfYears));
 
   const handleYearSelect = (e) => {
     e.preventDefault();
@@ -174,7 +174,8 @@ const DeathCause5 = () => {
   return (
     <>
       <h1 className="mb-2 text-2xl font-bold">
-        จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554 - 2559
+        จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี {Math.min(...listOfYears)} -{" "}
+        {Math.max(...listOfYears)}
       </h1>
       {/* <div>ปี พ.ศ. {currentYear}</div> */}
       <div className="mb-2 flex content-center gap-x-2">
