@@ -32,13 +32,6 @@ const ZipcodeProvince = ({ province, districts }) => (
     <h1 className="text-2xl pt-3 font-bold">
       รหัสไปรษณีย์ในจังหวัด {province}
     </h1>
-    <div>
-      <input
-        type="text"
-        className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
-        placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
-      />
-    </div>
     <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
       <table className="w-full">
         <thead>
@@ -85,12 +78,12 @@ const Zipcode7 = () => {
 
   return (
     <div className="w-full text-center">
-      {province === undefined && (
+      {/* {province === undefined && ( */}
         <ZipcodeHome provinces={provinces} setProvince={setProvince} />
-      )}
-      {province !== undefined && (
+      {/* )} */}
+      {/* {province !== undefined && ( */}
         <ZipcodeProvince province={province} districts={districts} />
-      )}
+      {/* // )} */}
     </div>
   );
 };
