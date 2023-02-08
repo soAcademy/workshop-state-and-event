@@ -1,7 +1,33 @@
 import { useState, useEffect } from "react";
 import thailandZipcodeData from "./thailand-zipcode.json";
 
-const ZipCodeHome = ({ provinces, setProvince }) => (
+const ZipcodeNavBar = (props) => {
+  const { province, setProvince } = props;
+  return (
+    <>
+      <div>
+        <span
+          className="mt-2 ml-2 text-red-500 font-bold"
+          onClick={() => setProvince(undefined)}
+        >
+          Return Homepage
+        </span>
+        {province !== undefined && (
+          <span className="text-red-500 font-bold">/ {province}</span>
+        )}
+      </div>
+    </>
+  );
+};
+
+const ZipCodeHome = ({
+  provinces,
+  setProvince,
+  search,
+  setSearch,
+  searchDatas,
+  setSearchDatas,
+}) => (
   <>
     <div className="text-center">
       <h1 className="font-bold my-2 text-2xl text-sky-500">Zipcode Search</h1>
@@ -9,9 +35,32 @@ const ZipCodeHome = ({ provinces, setProvince }) => (
       <input
         type="text"
         placeholder="Search Zipcode"
-        className="border border-4 my-2 border-sky-500"
+        className="border border-4 mt-2 border-sky-500"
+        onChange={(e) => setSearch(e.target.value)}
       />
     </div>
+    {search !== undefined && search.length >= 3 && (
+      <div className="w-2/4 mx-auto bg-white shadow-lg top-0 overflow-auto relative">
+        <div className="w-full h-64 top-0">
+          <div>
+            <div className="font-bold px-2 text-sky-500 ">
+              {searchDatas.length} result
+            </div>
+            {searchDatas.map((r, idx) => (
+              <div className="text-center">
+                <div
+                  key={idx}
+                  className="px-1 hover:bg-sky-300 text-sky-600 font-bold active:bg-teal-500 cursor-pointer"
+                >
+                  {r.subdistrict} {r.district} {r.province} {r.zipcode}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
+
     <div className="bg-sky-500 rounded-lg w-2/3 mx-auto mt-2 p-3">
       <h2 className="text-left font-bold text-xl text-neutral-50">
         Select Province
@@ -69,9 +118,11 @@ const ZipcodeProvince = (props) => {
   );
 };
 
-const Zipcode7 = () => {
+const Zipcode8 = () => {
   const [province, setProvince] = useState();
   const [districts2, setDistrict] = useState([]);
+  const [search, setSearch] = useState();
+  const [searchDatas, setSearchDatas] = useState([]);
   // const province = "กรุงเทพมหานคร";
   const provinces = [...new Set(thailandZipcodeData.map((r) => r.province))]; //use ...new Set to only get unique provinces // [...new Set([1, 1, 2, 2, 3, 3])]
 
@@ -99,10 +150,31 @@ const Zipcode7 = () => {
   // ];
   // setDistrict(districts2);
   // }, [province])
+
+  useEffect(() => {
+    const searchDatas = thailandZipcodeData.filter(
+      (data) =>
+        data.province.includes(search) ||
+        data.district.includes(search) ||
+        data.subdistrict.includes(search) ||
+        String(data.zipcode).includes(search)
+    );
+    setSearchDatas(searchDatas);
+  }, [search]);
   return (
     <div>
+      <div>
+        <ZipcodeNavBar province={province} setProvince={setProvince} />
+      </div>
       {province === undefined && (
-        <ZipCodeHome provinces={provinces} setProvince={setProvince} />
+        <ZipCodeHome
+          provinces={provinces}
+          setProvince={setProvince}
+          search={search}
+          setSearch={setSearch}
+          searchDatas={searchDatas}
+          setSearchDatas={setSearchDatas}
+        />
       )}
       {province !== undefined && (
         <ZipcodeProvince province={province} districts2={districts2} />
@@ -111,4 +183,4 @@ const Zipcode7 = () => {
   );
 };
 
-export default Zipcode7;
+export default Zipcode8;
