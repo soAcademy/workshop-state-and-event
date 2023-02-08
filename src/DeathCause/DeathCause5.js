@@ -1,3 +1,6 @@
+import { useState } from "react";
+import ThailandDeathCause from "./thailand-death-cause.json";
+
 const DeathByCause = (props) => {
   const { totalDeath, deathByCauses } = props;
   return (
@@ -53,56 +56,38 @@ const DeathChart = () => (
   </div>
 );
 
-const DeathCause4 = () => {
-  const currentYear = "2559";
-  const deathCauseDatas = [
-    {
-      provinceKey: 19,
-      provinceName: "สระบุรี",
-      pronvinceNameEng: "Saraburi",
-      regionKey: 3,
-      region: "ภาคเหนือ",
-      regionEng: "Northern",
-      diseaseCauseDeathKey: 53,
-      causeOfDeath: "มะเร็ง และเนื้องอกทุกชนิด",
-      year: 2557,
-      deathMale: 384,
-      deathFemale: 284,
-      deathRatePer100000MalePopulation: 123.2,
-      deathRatePer100000FemalePopulation: 89.1,
-    },
-    {
-      provinceKey: 19,
-      provinceName: "สระบุรี",
-      pronvinceNameEng: "Saraburi",
-      regionKey: 3,
-      region: "ภาคเหนือ",
-      regionEng: "Northern",
-      diseaseCauseDeathKey: 116,
-      causeOfDeath: "อุบัติเหตุจากการขนส่ง",
-      year: 2557,
-      deathMale: 104,
-      deathFemale: 24,
-      deathRatePer100000MalePopulation: 33.4,
-      deathRatePer100000FemalePopulation: 7.5,
-    },
-    {
-      provinceKey: 96,
-      provinceName: "นราธิวาส",
-      pronvinceNameEng: "Narathiwat",
-      regionKey: 4,
-      region: "ภาคตะวันออกเฉียงเหนือ",
-      regionEng: "Northeastern",
-      diseaseCauseDeathKey: 20,
-      causeOfDeath: "อื่นๆ",
-      year: 2559,
-      deathMale: 0,
-      deathFemale: 0,
-      deathRatePer100000MalePopulation: 0,
-      deathRatePer100000FemalePopulation: 0,
-    },
-  ];
+const DeathFilter = (props) => {
+  const { yearLists, currentYear, setCurrentYear } = props;
 
+  return (
+    <div>
+      <div className="mt-4">
+        เลือกปีพ.ศ.{" "}
+        <select
+          onChange={(e) => setCurrentYear(e.target.value)}
+          value={currentYear}
+        >
+          {yearLists?.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="">การเสียชีวิตของปีพ.ศ. {currentYear}</div>
+    </div>
+  );
+};
+
+const DeathCause5 = () => {
+  const yearLists = [
+    ...new Set(ThailandDeathCause.thailand.map((r) => r.year)),
+  ].sort((a, b) => a - b);
+  console.log("yearLists", yearLists);
+  const [currentYear, setCurrentYear] = useState(2559);
+
+  const deathCauseDatas = ThailandDeathCause.thailand;
+  console.log("deathCauseDatas", deathCauseDatas);
   const totalDeath = deathCauseDatas.reduce(
     (acc, r) => acc + r.deathMale + r.deathFemale,
     0
@@ -163,7 +148,7 @@ const DeathCause4 = () => {
   const provinceLists = [
     ...new Set(deathCauseDatas.map((r) => r.provinceName)),
   ];
-  console.log(provinceLists);
+  console.log("provinceLists", provinceLists);
 
   const deathByProvinces = provinceLists.map((province) => {
     const totalDeath = deathCauseDatas
@@ -190,13 +175,18 @@ const DeathCause4 = () => {
       deathMale: totalDeath.deathMale,
     };
   });
-  console.log(deathByProvinces);
+  console.log("deathByProvinces", deathByProvinces);
 
   return (
     <div className="p-4">
       <h1 className="font-bold text-xl">
         จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554 - 2559
       </h1>
+      <DeathFilter
+        yearLists={yearLists}
+        currentYear={currentYear}
+        setCurrentYear={setCurrentYear}
+      />
       <div className="mt-4">ปีพ.ศ. {currentYear}</div>
       <div className="flex space-x-4 mt-4">
         <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
@@ -210,4 +200,4 @@ const DeathCause4 = () => {
   );
 };
 
-export default DeathCause4;
+export default DeathCause5;
