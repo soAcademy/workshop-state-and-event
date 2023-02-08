@@ -1,4 +1,5 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import ThailandDeathCause from "./thailand-death-cause.json";
 
 // todo 1 : สร้าง components ตามสิ่งที่เราต้องการโชว์
 // 1.1 components 1: เราจะใส่ "ตาราง" ที่แสดงจำนวนผู้เสียชีวิตแยกตามสาเหตุการเสียชีวิต
@@ -53,75 +54,58 @@ const DeathChart = () => (
     <div>แนวโน้มการเสียชีวิต</div>
   </div>
 );
+// todo 5.4 : สร้าง components DeathFilter รับ props มาจาก ข้อ 5.3
+const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
+  <div>
+    <div className="mt-4">
+      เลือกปีพ.ศ.{" "}
+      <select
+        // 5.4.2 :  ดัก event onChange เมื่อมีการเปลี่ยนแปลงค่าใน select ให้เอาค่าใน select ไป setCurrentYear
+        onChange={(e) => setCurrentYear(e.target.value)}
+        value={currentYear}
+      >
+        {/* 5.4.1 : map yearLists ใส่ select option */}
+        {yearLists.map((year) => (
+          <option key={year} value={year}>
+            {year}
+          </option>
+        ))}
+      </select>
+    </div>
+    <div className="">การเสียชีวิตของปีพ.ศ. {currentYear}</div>
+  </div>
+);
 
-const DeathCause1 = () => {
+const DeathCause5 = () => {
   // todo 4 : ดึงดาต้าจาก JSON (บางส่วน) เพื่อมาลองคำนวณตัวเลข
-  const deathCauseDatas = [
-    {
-      provinceKey: 19,
-      provinceName: "สระบุรี",
-      pronvinceNameEng: "Saraburi",
-      regionKey: 3,
-      region: "ภาคเหนือ",
-      regionEng: "Northern",
-      diseaseCauseDeathKey: 53,
-      causeOfDeath: "มะเร็ง และเนื้องอกทุกชนิด",
-      year: 2557,
-      deathMale: 384,
-      deathFemale: 284,
-      deathRatePer100000MalePopulation: 123.2,
-      deathRatePer100000FemalePopulation: 89.1,
-    },
-    {
-      provinceKey: 21,
-      provinceName: "ระยอง",
-      pronvinceNameEng: "Rayong",
-      regionKey: 5,
-      region: "ภาคใต้",
-      regionEng: "Southern",
-      diseaseCauseDeathKey: 48,
-      causeOfDeath: "ปอดอักเสบและโรคอื่นๆ ของปอด",
-      year: 2556,
-      deathMale: 134,
-      deathFemale: 75,
-      deathRatePer100000MalePopulation: 41.5,
-      deathRatePer100000FemalePopulation: 22.6,
-    },
-    {
-      provinceKey: 30,
-      provinceName: "นครราชสีมา",
-      pronvinceNameEng: "Nakhon Ratchasima",
-      regionKey: 2,
-      region: "ภาคกลาง",
-      regionEng: "Central",
-      diseaseCauseDeathKey: 53,
-      causeOfDeath: "มะเร็ง และเนื้องอกทุกชนิด",
-      year: 2556,
-      deathMale: 1523,
-      deathFemale: 1023,
-      deathRatePer100000MalePopulation: 1.59,
-      deathRatePer100000FemalePopulation: 13.53,
-    },
-    {
-      provinceKey: 30,
-      provinceName: "นครราชสีมา",
-      pronvinceNameEng: "Nakhon Ratchasima",
-      regionKey: 2,
-      region: "ภาคกลาง",
-      regionEng: "Central",
-      diseaseCauseDeathKey: 115,
-      causeOfDeath:
-        "อุบัติเหตุ เหตุการณ์ที่ไม่สามารถระบุเจตนาและปัจจัยเสริมที่มีความสัมพันธ์กับสาเหตุการตาย",
-      year: 2556,
-      deathMale: 856,
-      deathFemale: 213,
-      deathRatePer100000MalePopulation: 8.76,
-      deathRatePer100000FemalePopulation: 2.82,
-    },
-  ];
+  // todo 5 : import file json แล้วเอามาวางแทน mock up
+  const deathCauseDatas = ThailandDeathCause;
+  //// [
+  ////   {
+  ////     provinceKey: 19,
+  ////     provinceName: "สระบุรี",
+  ////     pronvinceNameEng: "Saraburi",
+  ////     regionKey: 3,
+  ////     region: "ภาคเหนือ",
+  ////     regionEng: "Northern",
+  ////     diseaseCauseDeathKey: 53,
+  ////     causeOfDeath: "มะเร็ง และเนื้องอกทุกชนิด",
+  ////     year: 2557,
+  ////     deathMale: 384,
+  ////     deathFemale: 284,
+  ////     deathRatePer100000MalePopulation: 123.2,
+  ////     deathRatePer100000FemalePopulation: 89.1,
+  ////   },
+  //// ];
 
   // todo 3: Mock up Data ที่ต้องการเอาไปใส่ใน component แล้วส่ง props เพื่อเอาไปคำนวณ
-  const currentYear = "2559";
+  // todo 5.1 : ดึง unique years จัดเรียงปีให้เรียบร้อย เพราะจะเอาไปทำ option component แล้วเอาไป filter ดูข้อมูลแต่ละปี
+  const yearLists = [...new Set(ThailandDeathCause.map((r) => r.year))].sort(
+    (a, b) => a - b
+  );
+  console.log("yearLists : ", yearLists);
+  // todo 5.2 : เปลี่ยน ตัวแปร currentYear ให้เป้น state เอาไว้เก็บค่าการเปลี่ยนแปลงจากการเลือก option year
+  const [currentYear, setCurrentYear] = useState(2559);
   // todo 4.1 คำนวณ total death ใหม่
   // const totalDeath = 400800;
   const totalDeath = deathCauseDatas.reduce(
@@ -145,7 +129,7 @@ const DeathCause1 = () => {
     const filteredCauses = deathCauseDatas.filter(
       (r) => r.causeOfDeath === cause
     );
-    console.log("filteredCause : ",filteredCauses)
+    console.log("filteredCause : ", filteredCauses);
     // 4.2.2.2 - เสร็จแล้ว เอา filtered array มา รีดิวส์ เพื่อ sum รวม จำนวนคนตาย
     const totalDeath = filteredCauses.reduce(
       (acc, r) => ({
@@ -159,7 +143,7 @@ const DeathCause1 = () => {
         deathMale: 0,
       }
     );
-    // 4.2.2.3 
+    // 4.2.2.3
     return {
       cause,
       death: totalDeath.death,
@@ -211,7 +195,13 @@ const DeathCause1 = () => {
       <h1 className="font-bold text-xl">
         จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554 - 2559
       </h1>
-      <div className="mt-4">ปีพ.ศ. 2559</div>
+      {/* 5.3 แทนที่ div พศ ด้วย component DeathFilter */}
+      <DeathFilter
+        yearLists={yearLists}
+        currentYear={currentYear}
+        setCurrentYear={setCurrentYear}
+      />
+      {/* <div className="mt-4">ปีพ.ศ. 2559</div> */}
       <div className="flex space-x-4 mt-4">
         <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
         <DeathByProvince
@@ -224,4 +214,4 @@ const DeathCause1 = () => {
   );
 };
 
-export default DeathCause1;
+export default DeathCause5;
