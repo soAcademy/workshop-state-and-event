@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import thailandDeathCause from "../DeathCauseAnswer/thailand-death-cause.json";
 import ReactECharts from "echarts-for-react";
 
-const DeathByCause = ({ totalDeath, deathByCauses }) => (
+const DeathByCause = ({ totalDeath, deathByCauses, cause, setCause }) => (
   <div className="bg-blue-100 w-1/3 p-4">
     <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
     <table className="w-full">
@@ -14,7 +14,12 @@ const DeathByCause = ({ totalDeath, deathByCauses }) => (
         </tr>
         {deathByCauses?.map((r, idx) => (
           <tr key={idx}>
-            <td>{r.cause}</td>
+            <td
+              onClick={() => setCause(r)}
+              className="cursor-pointer hover:bg-teal-300 active:bg-red-300"
+            >
+              {r.cause}
+            </td>
             <td>{r.death.toLocaleString()}</td>
             <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
           </tr>
@@ -46,64 +51,12 @@ const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
   </div>
 );
 
-const DeathChart = () => (
+const DeathChart = ({ chartOption1, chartOption2 }) => (
   <div className="bg-green-100 w-1/3 p-4">
     <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
-    <ReactECharts
-      option={{
-        xAxis : {
-          type : "category",
-          data : [2554,2555,2556],
-          name : "ปีพ.ศ."
-        },
-        yAxis : {
-          type : "value",
-          name : "จำนวนผู้เสียชีวิต",
-          max : "dataMax",
-          min : "dataMin",
-        },
-        series : [
-          {
-            data : [10000,12000,3000],
-            type : "line",
-            smooth : true,
-            lineStyle : {color: "#bf444c",width :5, type:"dashed"},
-          },
-        ],
-        tooltip:{
-          trigger : "axis",
-        }
-      }}
-    />
-    <div>การเสียชีวิตตามเพศ</div>
-    <ReactECharts
-      option={{
-        tooltip:{
-          trigger : "item",
-        },
-        legend: {
-          orient : "vertical",
-          left : "left",
-        },
-        series: [
-          {
-            type: "pie",
-            radius: "50%",
-            data : [
-              { value: 10000, name: "ชาย"},
-              { value: 12000, name: "หญิง"},
-            ],
-            emphasis : {
-              itemStyle : {
-                shadowBlur :10,
-                shadowOffsetX :0,
-                shadowColor :"rgba(0, 0, 0, 0.5)",
-              },
-            }
-          }
-        ],
-      }}
-    />
+    <ReactECharts option={chartOption1} />
+    <div className="font-bold mb-2">การเสียชีวิตตามเพศ</div>
+    <ReactECharts option={chartOption2} />
   </div>
 );
 
@@ -128,7 +81,7 @@ const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => {
   );
 };
 
-const DeathCause6 = () => {
+const DeathCause8 = () => {
   const yearLists = [...new Set(thailandDeathCause.map((r) => r.year))].sort(
     (a, b) => a - b
   );
@@ -136,6 +89,9 @@ const DeathCause6 = () => {
   const [totalDeath, setTotalDeath] = useState(0);
   const [deathByCauses, setDeathByCauses] = useState([]);
   const [deathByProvinces, setDeathByProvinces] = useState([]);
+  const [chartOption1, setChartOption1] = useState({});
+  const [chartOption2, setChartOption2] = useState({});
+  const [cause, setCause] = useState();
 
   useEffect(() => {
     const deathCauseDatas = thailandDeathCause.filter(
@@ -184,8 +140,12 @@ const DeathCause6 = () => {
     ];
     const _deathByProvinces = provinceLists
       .map((province) => {
-        const totalDeath = thailandDeathCause
-          .filter((r) => r.provinceName === province)
+        const totalDeath = deathCauseDatas
+          .filter(
+            (r) =>
+              r.provinceName === province &&
+              (cause === undefined || cause === r.causeOfDeath)
+          )
           // console.log("filter",totalDeath);
           .reduce(
             (acc, r) => ({
@@ -205,11 +165,104 @@ const DeathCause6 = () => {
       })
       .filter((r) => r.death > 0)
       .sort((a, b) => b.death - a.death);
-    console.log(deathByProvinces);
+    // console.log(deathByProvinces);
+
+    const _deathByYear = yearLists
+      ?.map((year) => {
+        const totalDeath = thailandDeathCause
+          ?.filter((r) => r.year === year)
+          .reduce(
+            (acc, r) => ({
+              death: acc.death + r.deathFemale + r.deathMale,
+              deathFemale: acc.deathFemale + r.deathFemale,
+              deathMale: acc.deathFemale + r.deathMale,
+            }),
+            {
+              death: 0,
+              deathFemale: 0,
+              deathMale: 0,
+            }
+          );
+        return {
+          year,
+          death: totalDeath.death,
+          deathFemale: totalDeath.deathFemale,
+          deathMale: totalDeath.deathMale,
+        };
+      })
+      .sort((a, b) => a.year - b.year);
+    console.log("deathByYear", _deathByYear);
+
+    const _chartOption1 = {
+      xAxis: {
+        type: "category",
+        data: _deathByYear.map((r) => r.year),
+        name: "ปีพ.ศ.",
+      },
+      yAxis: {
+        type: "value",
+        name: "จำนวนผู้เสียชีวิต",
+        max: "dataMax",
+        min: "dataMin",
+      },
+      series: [
+        {
+          data: _deathByYear.map((r) => r.death),
+          type: "line",
+          smooth: true,
+          lineStyle: { color: "#bf444c", width: 5, type: "dashed" },
+        },
+      ],
+      tooltip: {
+        trigger: "axis",
+      },
+    };
+
+    const _deathBySex = deathCauseDatas.reduce(
+      (acc, r) => ({
+        death: acc.death + r.deathFemale + r.deathMale,
+        deathFemale: acc.deathFemale + r.deathFemale,
+        deathMale: acc.deathMale + r.deathMale,
+      }),
+      {
+        death: 0,
+        deathFemale: 0,
+        deathMale: 0,
+      }
+    );
+    console.log("_deathBySex", _deathBySex);
+    const _chartOption2 = {
+      tooltip: {
+        trigger: "item",
+      },
+      legend: {
+        orient: "vertical",
+        left: "left",
+      },
+      series: [
+        {
+          type: "pie",
+          radius: "50%",
+          data: [
+            { value: _deathBySex.deathMale, name: "ชาย" },
+            { value: _deathBySex.deathFemale, name: "หญิง" },
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: "rgba(0, 0, 0, 0.5)",
+            },
+          },
+        },
+      ],
+    };
 
     setTotalDeath(_totalDeath);
     setDeathByCauses(_deathByCauses);
     setDeathByProvinces(_deathByProvinces);
+    setChartOption1(_chartOption1);
+    setChartOption2(_chartOption2);
   }, [currentYear]);
   return (
     <div className="p-4">
@@ -222,17 +275,15 @@ const DeathCause6 = () => {
         setCurrentYear={setCurrentYear}
       />
       <div className="flex space-x-4 mt-4">
-        <DeathByCause 
-          totalDeath={totalDeath} 
-          deathByCauses={deathByCauses} />
+        <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
         <DeathByProvince
           totalDeath={totalDeath}
           deathByProvinces={deathByProvinces}
         />
-        <DeathChart />
+        <DeathChart chartOption1={chartOption1} chartOption2={chartOption2} />
       </div>
     </div>
   );
 };
 
-export default DeathCause6;
+export default DeathCause8;
