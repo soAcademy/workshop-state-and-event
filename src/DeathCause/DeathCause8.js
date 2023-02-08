@@ -6,18 +6,22 @@ const DeathsByCauseTable = ({ totalDeath, deathsByCause, currentYear }) => {
   return (
     <div>
       <h2 className="mb-2 text-xl">สาเหตุการเสียชีวิตปี {currentYear}</h2>
-      <table className="w-full font-nstl text-sm">
+      <table className="w-full text-left font-nstl text-sm text-gray-900">
         <tbody>
-          <tr>
-            <td>ทั้งหมด</td>
-            <td>{totalDeath.toLocaleString("TH")}</td>
-            <td>100%</td>
+          <tr className="border-b bg-white">
+            <td className="px-6 py-4">ทั้งหมด</td>
+            <td className="px-6 py-4">{totalDeath.toLocaleString("TH")}</td>
+            <td className="px-6 py-4">100%</td>
           </tr>
           {deathsByCause.map((deathByCause, idx) => (
-            <tr key={idx}>
-              <td>{deathByCause.causeOfDeath.toLocaleString("TH")}</td>
-              <td>{deathByCause.death.toLocaleString("TH")}</td>
-              <td>
+            <tr key={idx} className="border-b bg-white">
+              <td className="px-6 py-4">
+                {deathByCause.causeOfDeath.toLocaleString("TH")}
+              </td>
+              <td className="px-6 py-4">
+                {deathByCause.death.toLocaleString("TH")}
+              </td>
+              <td className="px-6 py-4">
                 {((deathByCause.death * 100) / totalDeath)
                   .toFixed(2)
                   .toLocaleString("TH")}
@@ -41,18 +45,22 @@ const DeathsByProvinceTable = ({
       <h2 className="mb-2 text-xl">
         จำนวนผู้เสียชีวิตปี {currentYear} แยกตามจังหวัด
       </h2>
-      <table className="w-full font-nstl text-sm">
+      <table className="w-full text-left font-nstl text-sm text-gray-900">
         <tbody>
-          <tr>
-            <td>ทั้งหมด</td>
-            <td>{totalDeath.toLocaleString("TH")}</td>
-            <td>100%</td>
+          <tr className="border-b bg-white">
+            <td className="px-6 py-4">ทั้งหมด</td>
+            <td className="px-6 py-4">{totalDeath.toLocaleString("TH")}</td>
+            <td className="px-6 py-4">100%</td>
           </tr>
           {deathsByProvince.map((deathByProvince, idx) => (
-            <tr key={idx}>
-              <td>{deathByProvince.provinceName.toLocaleString("TH")}</td>
-              <td>{deathByProvince.death.toLocaleString("TH")}</td>
-              <td>
+            <tr key={idx} className="border-b bg-white">
+              <td className="px-6 py-4">
+                {deathByProvince.provinceName.toLocaleString("TH")}
+              </td>
+              <td className="px-6 py-4">
+                {deathByProvince.death.toLocaleString("TH")}
+              </td>
+              <td className="px-6 py-4">
                 {((deathByProvince.death * 100) / totalDeath)
                   .toFixed(2)
                   .toLocaleString("TH")}
