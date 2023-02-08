@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThailandDeathCause from "./thailand-death-cause.json";
 
 const DeathByCause = ({ totalDeath, deathByCauses }) => (
@@ -55,10 +55,7 @@ const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
   <div>
     <div className="mt-4">
       เลือกปีพ.ศ.{" "}
-      <select
-        onChange={(e) => setCurrentYear(e.target.value)}
-        value={currentYear}
-      >
+      <select onChange={(e) => setCurrentYear(e.target.value)} value={currentYear}>
         {yearLists.map((year) => (
           <option key={year} value={year}>
             {year}
@@ -70,79 +67,90 @@ const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
   </div>
 );
 
-const DeathCause5 = () => {
+const DeathCause6 = () => {
   const yearLists = [...new Set(ThailandDeathCause.map((r) => r.year))];
-  const [currentYear, setCurrentYear] = useState(2559);
+  const [currentYear, setCurrentYear] = useState(2558);
+  const [totalDeath, setTotalDeath] = useState(0);
+  const [deathByCauses, setDeathByCauses] = useState([]);
+  const [deathByProvinces, setDeathByProvinces] = useState([]);
 
-  const deathCauseDatas = ThailandDeathCause;
-  const totalDeath = deathCauseDatas.reduce(
-    (acc, r) => acc + r.deathMale + r.deathFemale,
-    0
-  );
+  useEffect(() => {
+    const deathCauseDatas = ThailandDeathCause.filter(
+      (r) => r.year == currentYear
+    );
+    const _totalDeath = deathCauseDatas.reduce(
+      (acc, r) => acc + r.deathMale + r.deathFemale,
+      0
+    );
 
-  const deathCauseLists = [
-    ...new Set(deathCauseDatas.map((r) => r.causeOfDeath)),
-  ];
-  console.log(deathCauseLists);
+    const deathCauseLists = [
+      ...new Set(deathCauseDatas.map((r) => r.causeOfDeath)),
+    ];
+    // console.log(_deathCauseLists);
 
-  const deathByCauses = deathCauseLists
-    .map((cause) => {
-      const totalDeath = deathCauseDatas
-        .filter((r) => r.causeOfDeath === cause)
-        .reduce(
-          (acc, r) => ({
-            death: acc.death + r.deathFemale + r.deathMale,
-            deathFemale: acc.deathFemale + r.deathFemale,
-            deathMale: acc.deathMale + r.deathMale,
-          }),
-          {
-            death: 0,
-            deathFemale: 0,
-            deathMale: 0,
-          }
-        );
-      return {
-        cause,
-        death: totalDeath.death,
-        deathFemale: totalDeath.deathFemale,
-        deathMale: totalDeath.deathMale,
-      };
-    })
-    .filter((r) => r.death > 0)
-    .sort((a, b) => b.death - a.death);
-  console.log(deathByCauses);
+    const _deathByCauses = deathCauseLists
+      .map((cause) => {
+        const totalDeath = deathCauseDatas
+          .filter((r) => r.causeOfDeath === cause)
+          .reduce(
+            (acc, r) => ({
+              death: acc.death + r.deathFemale + r.deathMale,
+              deathFemale: acc.deathFemale + r.deathFemale,
+              deathMale: acc.deathMale + r.deathMale,
+            }),
+            {
+              death: 0,
+              deathFemale: 0,
+              deathMale: 0,
+            }
+          );
+        return {
+          cause,
+          death: totalDeath.death,
+          deathFemale: totalDeath.deathFemale,
+          deathMale: totalDeath.deathMale,
+        };
+      })
+      .filter((r) => r.death > 0)
+      .sort((a, b) => b.death - a.death);
+    // console.log(_deathByCauses);
 
-  const provinceLists = [
-    ...new Set(deathCauseDatas.map((r) => r.provinceName)),
-  ];
-  console.log(provinceLists);
+    const provinceLists = [
+      ...new Set(deathCauseDatas.map((r) => r.provinceName)),
+    ];
+    // console.log(_provinceLists);
 
-  const deathByProvinces = provinceLists
-    .map((province) => {
-      const totalDeath = deathCauseDatas
-        .filter((r) => r.provinceName === province)
-        .reduce(
-          (acc, r) => ({
-            death: acc.death + r.deathFemale + r.deathMale,
-            deathFemale: acc.deathFemale + r.deathFemale,
-            deathMale: acc.deathMale + r.deathMale,
-          }),
-          {
-            death: 0,
-            deathFemale: 0,
-            deathMale: 0,
-          }
-        );
-      return {
-        province,
-        death: totalDeath.death,
-        deathFemale: totalDeath.deathFemale,
-        deathMale: totalDeath.deathMale,
-      };
-    })
-    .filter((r) => r.death > 0)
-    .sort((a, b) => b.death - a.death);
-  console.log(deathByProvinces);
+    const _deathByProvinces = provinceLists
+      .map((province) => {
+        const totalDeath = deathCauseDatas
+          .filter((r) => r.provinceName === province)
+          .reduce(
+            (acc, r) => ({
+              death: acc.death + r.deathFemale + r.deathMale,
+              deathFemale: acc.deathFemale + r.deathFemale,
+              deathMale: acc.deathMale + r.deathMale,
+            }),
+            {
+              death: 0,
+              deathFemale: 0,
+              deathMale: 0,
+            }
+          );
+        return {
+          province,
+          death: totalDeath.death,
+          deathFemale: totalDeath.deathFemale,
+          deathMale: totalDeath.deathMale,
+        };
+      })
+      .filter((r) => r.death > 0)
+      .sort((a, b) => b.death - a.death);
+    // console.log(_deathByProvinces);
+
+    setTotalDeath(_totalDeath);
+    setDeathByCauses(_deathByCauses);
+    setDeathByProvinces(_deathByProvinces);
+  }, [currentYear]);
 
   return (
     <div className="p-4">
@@ -166,4 +174,4 @@ const DeathCause5 = () => {
   );
 };
 
-export default DeathCause5;
+export default DeathCause6;

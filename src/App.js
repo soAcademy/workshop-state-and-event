@@ -32,6 +32,7 @@ import DeathCause2 from "./DeathCauseAnswer/DeathCause2";
 import DeathCause3 from "./DeathCauseAnswer/DeathCause3";
 import DeathCause4 from "./DeathCauseAnswer/DeathCause4";
 import DeathCause5 from "./DeathCauseAnswer/DeathCause5";
+import DeathCause6 from "./DeathCauseAnswer/DeathCause6";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
@@ -70,7 +71,7 @@ const App = () => {
       {/* <DeathCause2 /> */}
       {/* <DeathCause3 /> */}
       {/* <DeathCause4 /> */}
-      <DeathCause5 />
+      <DeathCause6 />
     </>
   );
 };
