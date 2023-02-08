@@ -106,6 +106,7 @@ const DeathCharts = ({ optionForDeathTrend, optionForDeathsByGender }) => {
     <div>
       <h2 className="mb-2 text-xl">แนวโน้มการเสียชีวิต</h2>
       <EChartsReact option={optionForDeathTrend} />
+      <h2 className="mb-2 text-xl">จำนวนผู้เสียชีวิตแยกตามเพศ</h2>
       <EChartsReact option={optionForDeathsByGender} />
     </div>
   );
@@ -309,8 +310,18 @@ const DeathCause8 = () => {
           type: "pie",
           radius: "50%",
           data: [
-            { value: 1048, name: "เพศชาย" },
-            { value: 735, name: "เพศหญิง" },
+            {
+              value: deaths
+                .filter((death) => death.year === currentYear)
+                .reduce((acc, death) => acc + death.deathMale, 0),
+              name: "เพศชาย",
+            },
+            {
+              value: deaths
+                .filter((death) => death.year === currentYear)
+                .reduce((acc, death) => acc + death.deathFemale, 0),
+              name: "เพศหญิง",
+            },
           ],
           emphasis: {
             itemStyle: {
