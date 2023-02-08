@@ -4,6 +4,9 @@ import Zipcode3 from './Zipcode/Zipcode3';
 import Zipcode4 from './Zipcode/Zipcode4';
 import Zipcode5 from './Zipcode/Zipcode5';
 import Zipcode6 from './Zipcode/Zipcode6';
+import Zipcode7 from './Zipcode/Zipcode7';
+import Zipcode8 from './Zipcode/Zipcode8';
+
 const App = () => {
   return (
     <>
@@ -13,7 +16,9 @@ const App = () => {
       {/* <Zipcode3 /> */}
       {/* <Zipcode4 /> */}
       {/* <Zipcode5 /> */}
-      <Zipcode6 /> 
+      {/* <Zipcode6 />  */}
+      {/* <Zipcode7 /> */}
+      <Zipcode8 />
 
     </>
   );
