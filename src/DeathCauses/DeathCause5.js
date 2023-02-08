@@ -75,7 +75,7 @@ const DeathCause5 = () => {
   const yearsLists = ThailandDeathCause.map(r => r.year);
   const years = [...new Set(yearsLists)].sort((a,b) => a-b);
   // เอา years อันนี้ไปใส่ในข้างล่าง return เพื่อแสดงปี แล้วเราก็ .sort ให้มันเรียงจากน้อยไปหามาก
-  const [currentYear, setCurrentYear] = useState(2559);
+  const [currentYear, setCurrentYear] = useState(2558);
 
   const deathCauseDatas = ThailandDeathCause;
   const totalDeath = deathCauseDatas.reduce(

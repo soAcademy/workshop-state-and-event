@@ -31,8 +31,8 @@
 // import DeathCause2 from "./DeathCauses/DeathCause2";
 // import DeathCause3 from "./DeathCauses/DeathCause3";
 // import DeathCause4 from "./DeathCauses/DeathCause4";
-import DeathCause5 from "./DeathCauses/DeathCause5";
-// import DeathCause6 from "./DeathCauses/DeathCause6";
+// import DeathCause5 from "./DeathCauses/DeathCause5";
+import DeathCause6 from "./DeathCauses/DeathCause6";
 // import DeathCause7 from "./DeathCauses/DeathCause7";
 // import DeathCause8 from "./DeathCauses/DeathCause8";
 // import DeathCause1 from "./DeathCauses/DeathCause1";
@@ -76,8 +76,8 @@ const App = () => {
       {/* <DeathCause2 /> */}
       {/* <DeathCause3 /> */}
       {/* <DeathCause4 /> */}
-      <DeathCause5/>
-      {/* <DeathCause6 /> */}
+      {/* <DeathCause5/> */}
+      <DeathCause6 />
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
 
