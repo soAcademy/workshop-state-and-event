@@ -2,12 +2,12 @@
 // import Dashboard from "./Dashboard/Dashboard";
 // import Accordian3 from "./Accordian/Accordian3"
 // import Accordian1 from "./Playground/accordian";
-import DeathCause5 from "./DeathCause/DeathCause5_Dew";
-// import Zipcode8 from "./Zipcode/Zip8_Autosuggest";
+import DeathCause6 from "./DeathCause/DeathCause6_Dew";
+// import Zipcode8 frm "./Zipcode/Zip8_Autosuggest";
 const App0 = () => {
   return (
     <div>
-      <DeathCause5/>
+      <DeathCause6/>
       {/* <Zipcode8/> */}
      
     </div>
