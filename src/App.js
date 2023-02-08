@@ -93,7 +93,9 @@
 // import Zipcode8 from "./Zipcode/Zipcode8";
 
 // import DeathCause1 from "./DeathCause/DeathCause1";
-import DeathCause2 from "./DeathCause/DeathCause2";
+// import DeathCause2 from "./DeathCause/DeathCause2";
+import DeathCause3 from "./DeathCause/DeathCause3";
+// import DeathCause4 from "./DeathCause/DeathCause4";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
@@ -155,7 +157,9 @@ const App = () => (
     {/* <Zipcode7 /> */}
     {/* <Zipcode8 /> */}
     {/* <DeathCause1 /> */}
-    <DeathCause2 />
+    {/* <DeathCause2 /> */}
+    <DeathCause3 />
+    {/* <DeathCause4 /> */}
   </div>
 );
 
