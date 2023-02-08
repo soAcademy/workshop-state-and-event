@@ -1,35 +1,43 @@
-// import State3 from "./StatesAnswer/State3";
-// import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
-// import LocalStorage2 from "./LocalStorageAnswer/LocalStorage2";
-// import LocalStorage3 from "./LocalStorageAnswer/LocalStorage3";
-// import LocalStorage4 from "./LocalStorageAnswer/LocalStorage4";
-// import ToDoList1 from "./ToDoListAnswers/ToDoList1";
-// import ToDoList2 from "./ToDoListAnswers/ToDoList2";
-// import ToDoList3 from "./ToDoListAnswers/ToDoList3";
-// import ToDoList4 from "./ToDoListAnswers/ToDoList4";
-// import ToDoList5 from "./ToDoListAnswers/ToDoList5";
-// import Chart1 from "./ChartsAnswer/Chart1";
-// import Chart2 from "./ChartsAnswer/Chart2";
-// import Chart3 from "./ChartsAnswer/Chart3";
-// import Accordian1 from "./AccordiansAnswer/Accordian1";
-// import Accordian2 from "./AccordiansAnswer/Accordian2";
-// import Accordian3 from "./AccordiansAnswer/Accordian3";
-// import Trivia1 from "./TriviaAnswer/Trivia1";
-// import Trivia2 from "./TriviaAnswer/Trivia2";
-// import Trivia3 from "./TriviaAnswer/Trivia3";
-// import Trivia4 from "./TriviaAnswer/Trivia4";
-// import Trivia5 from "./TriviaAnswer/Trivia5";
-// import Zipcode1 from "./ZipcodeAnswer/Zipcode1";
-// import Zipcode2 from "./ZipcodeAnswer/Zipcode2";
-// import Zipcode3 from "./ZipcodeAnswer/Zipcode3";
-// import Zipcode4 from "./ZipcodeAnswer/Zipcode4";
-// import Zipcode5 from "./ZipcodeAnswer/Zipcode5";
-// import Zipcode6 from "./ZipcodeAnswer/Zipcode6";
-// import Zipcode7 from "./ZipcodeAnswer/Zipcode7";
-// import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
+// import State3 from "./States/State3";
+// import LocalStorage1 from "./LocalStorage/LocalStorage1";
+// import LocalStorage2 from "./LocalStorage/LocalStorage2";
+// import LocalStorage3 from "./LocalStorage/LocalStorage3";
+// import LocalStorage4 from "./LocalStorage/LocalStorage4";
+// import ToDoList1 from "./ToDoList/ToDoList1";
+// import ToDoList2 from "./ToDoList/ToDoList2";
+// import ToDoList3 from "./ToDoList/ToDoList3";
+// import ToDoList4 from "./ToDoList/ToDoList4";
+// import ToDoList5 from "./ToDoList/ToDoList5";
+// import Chart1 from "./Charts/Chart1";
+// import Chart2 from "./Charts/Chart2";
+// import Chart3 from "./Charts/Chart3";
+// import Accordian1 from "./Accordians/Accordian1";
+// import Accordian2 from "./Accordians/Accordian2";
+// import Accordian3 from "./Accordians/Accordian3";
+// import Trivia1 from "./Trivia/Trivia1";
+// import Trivia2 from "./Trivia/Trivia2";
+// import Trivia3 from "./Trivia/Trivia3";
+// import Trivia4 from "./Trivia/Trivia4";
+// import Trivia5 from "./Trivia/Trivia5";
+// import Zipcode1 from "./Zipcode/Zipcode1";
+// import Zipcode2 from "./Zipcode/Zipcode2";
+// import Zipcode3 from "./Zipcode/Zipcode3";
+// import Zipcode4 from "./Zipcode/Zipcode4";
+// import Zipcode5 from "./Zipcode/Zipcode5";
+// import Zipcode6 from "./Zipcode/Zipcode6";
+// import Zipcode7 from "./Zipcode/Zipcode7";
+// import Zipcode8 from "./Zipcode/Zipcode8";
+// import DeathCause1 from "./DeathCause/DeathCause1";
+// import DeathCause2 from "./DeathCauses/DeathCause2";
+// import DeathCause3 from "./DeathCauses/DeathCause3";
+// import DeathCause4 from "./DeathCauses/DeathCause4";
+import DeathCause5 from "./DeathCauses/DeathCause5";
+// import DeathCause6 from "./DeathCauses/DeathCause6";
+// import DeathCause7 from "./DeathCauses/DeathCause7";
+// import DeathCause8 from "./DeathCauses/DeathCause8";
 // import DeathCause1 from "./DeathCauses/DeathCause1";
 // import DeathCause2 from "./DeathCauses/DeathCause2";
-import DeathCause3 from "./DeathCauses/DeathCause3";
+// import DeathCause3 from "./DeathCauses/DeathCause3";
 // import DeathCause4 from "./DeathCauses/DeathCause4";
 
 const App = () => {
@@ -66,8 +74,13 @@ const App = () => {
       {/* <Zipcode8 /> */}
       {/* <DeathCause1 /> */}
       {/* <DeathCause2 /> */}
-      <DeathCause3 />
+      {/* <DeathCause3 /> */}
       {/* <DeathCause4 /> */}
+      <DeathCause5/>
+      {/* <DeathCause6 /> */}
+      {/* <DeathCause7 /> */}
+      {/* <DeathCause8 /> */}
+
     </>
   );
 };

@@ -1,5 +1,8 @@
+import ThailandDeathCause from "./thailand-death-cause.json";
+// เอาข้อมูล Hard code มาทำเป็นตัวแปร แบบเอาข้อมูลจริงบางส่วนมา Mock เพื่อดูโครงสร้าง
+
 const DeathByCause = ({ totalDeath, deathByCauses }) => (
-  <div className="bg-blue-100 w-1/3 p-4">
+  <div className="bg-blue-100 w-1/3">
     <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
     <table className="w-full">
       <tbody>
@@ -21,7 +24,7 @@ const DeathByCause = ({ totalDeath, deathByCauses }) => (
 );
 
 const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
-  <div className="bg-amber-100 w-1/3 p-4">
+  <div className="bg-amber-100 w-1/3">
     <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
     <table className="w-full">
       <tbody>
@@ -43,14 +46,13 @@ const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
 );
 
 const DeathChart = () => (
-  <div className="bg-green-100 w-1/3 p-4">
+  <div className="bg-green-100 w-1/3">
     <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
   </div>
 );
 
 const DeathCause4 = () => {
   const currentYear = "2559";
-
   const deathCauseDatas = [
     {
       provinceKey: 19,
@@ -103,23 +105,10 @@ const DeathCause4 = () => {
     0
   );
 
-
-  // const deathByCauses = [
-  //   {
-  //     cause: "วัณโรคทุกชนิด",
-  //     death: 189000,
-  //   },
-  //   {
-  //     cause: "เบาหวาน",
-  //     death: 130000,
-  //   },
-  // ];
-
   const deathCauseLists = [
     ...new Set(deathCauseDatas.map((r) => r.causeOfDeath)),
   ];
-  console.log(deathCauseLists);
-
+  // console.log(deathCauseLists);
   const deathByCauses = deathCauseLists.map((cause) => {
     const totalDeath = deathCauseDatas
       .filter((r) => r.causeOfDeath === cause)
@@ -142,21 +131,14 @@ const DeathCause4 = () => {
       deathMale: totalDeath.deathMale,
     };
   });
-  console.log(deathByCauses);
+  // console.log(deathByCauses);
 
 
-
-  // const deathByProvinces = [
-  //   {
-  //     province: "กรุงเทพมหานคร",
-  //     death: 189000,
-  //   },
-  //   {
-  //     province: "เชียงใหม่",
-  //     death: 109000,
-  //   },
-  // ];
-
+  
+  const provinceLists = [
+    ...new Set(deathCauseDatas.map((r) => r.provinceName)),
+  ];
+  // console.log(provinceLists);
   const deathByProvinces = provinceLists.map((province) => {
     const totalDeath = deathCauseDatas
       .filter((r) => r.provinceName === province)
@@ -179,24 +161,25 @@ const DeathCause4 = () => {
       deathMale: totalDeath.deathMale,
     };
   });
-  console.log(deathByProvinces);
+  // console.log(deathByProvinces);
 
   return (
-    <div className="p-4">
-      <h1 className="font-bold text-xl">
-        จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554 - 2559
-      </h1>
-      <div className="mt-4">ปีพ.ศ. {currentYear}</div>
-      <div className="flex space-x-4 mt-4">
-        <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
-        <DeathByProvince
-          totalDeath={totalDeath}
-          deathByProvinces={deathByProvinces}
-        />
-        <DeathChart />
+    <>
+      <div className="p-4">
+        <h1 className="font-bold text-xl">
+          จำนวนผู้เสียชีวิต สาเหตุ และอัตราการเสียชีวิต ระหว่างปี 2554 - 2559
+        </h1>
+        <div className="mt-4"> ปี พ.ศ. {currentYear}</div>
+        <div className="flex space-x-4 mt-4">
+          <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
+          <DeathByProvince
+            totalDeath={totalDeath}
+            deathByProvinces={deathByProvinces}
+          />
+          <DeathChart />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
-
 export default DeathCause4;
