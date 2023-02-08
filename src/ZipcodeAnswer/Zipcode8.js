@@ -30,7 +30,11 @@ const ZipcodeHome = ({
               <div
                 key={idx}
                 className="py-1 hover:cursor-pointer hover:bg-blue-100 active:bg-blue-200"
-                onClick={() => navigator.clipboard.writeText(r.zipcode)}
+                onClick={() =>
+                  navigator.clipboard.writeText(
+                    `ต.${r.subdistrict} อ.${r.district} จ.${r.province} ${r.zipcode}`
+                  )
+                }
               >
                 <span className="px-4">
                   ต.{r.subdistrict} อ.{r.district} จ.{r.province} {r.zipcode}
@@ -117,6 +121,12 @@ const Zipcode8 = () => {
   const [search, setSearch] = useState();
   const [searchDatas, setSearchDatas] = useState([]);
 
+  // Event based driven
+  // 1 -> 2 -> 3 -> 4
+  // onClick = () => {setProvince()}
+  // useEffect(() => {updateDistrict()}, [province, filter])
+  // useEffect(() => {calculateData()}, [province, searchTerm])
+
   useEffect(() => {
     const _districts = [
       ...new Map(
@@ -130,14 +140,18 @@ const Zipcode8 = () => {
   }, [province]);
 
   useEffect(() => {
-    const _searchDatas = search?.length >= 3 ? ThailandZipcodeData.filter(
-      (r) =>
-        r.province.includes(search) ||
-        r.district.includes(search) ||
-        r.subdistrict.includes(search) ||
-        String(r.zipcode).includes(search)
-    ) : [];
+    const _searchDatas =
+      search?.length >= 3
+        ? ThailandZipcodeData.filter(
+            (r) =>
+              r.province.includes(search) ||
+              r.district.includes(search) ||
+              r.subdistrict.includes(search) ||
+              String(r.zipcode).includes(search)
+          )
+        : [];
     setSearchDatas(_searchDatas);
+    console.log(_searchDatas);
   }, [search]);
 
   return (
@@ -163,3 +177,64 @@ const Zipcode8 = () => {
 };
 
 export default Zipcode8;
+
+// const carts = [
+//   {
+//     id: 100,
+//     quantity: 1
+//   }
+// ]
+
+// const product = {
+//   id: 101,
+//   quantity: 2
+// }
+
+// const carts = [
+//   {
+//     id: 100,
+//     quantity: 1
+//   },
+//   {
+//     id: 101,
+//     quantity: 2
+//   }
+// ]
+
+// const product = {
+//   id: 101,
+//   quantity: 2
+// }
+
+// const carts = [
+//   {
+//     id: 100,
+//     quantity: 1
+//   },
+//   {
+//     id: 101,
+//     quantity: 4
+//   }
+// ]
+
+// if ถ้ามีอยู่แล้ว then ให้เพิ่ม quantity
+// else ถ้ายังไม่มีให้สร้างใหม่
+
+// const idx = carts.findIndex((r) => r.id === product.id);
+
+// ถ้ามันมี idx >= 0 (เป็นค่า index)
+// ถ้าไม่มี idx === -1
+
+// แล้วเราจะเอา product join กับ cart ได้ไง
+
+// const tempCarts = [...carts];
+// const idx = carts.findIndex((r) => r.id === product.id);
+
+// if (idx >=0) {
+//   tempCarts[idx].quantity += product.quantity;
+// } else {
+//   tempCarts.push(product);
+//   // setCarts([...tempCarts, ...product])
+//   setCarts([...tempCarts, {id: product.id, quantity: product.quantity}])
+// }
+// setCarts(tempCarts);
