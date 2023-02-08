@@ -108,6 +108,7 @@ const DeathCause4 = () => {
   const deathByCauses = deathCauseLists.map((cause) => {
     const totalDeath = deathCauseDatas
       .filter((r) => r.causeOfDeath === cause)
+      // console.log("totalDeath by cause",totalDeath)
       .reduce(
         (acc, r) => ({
           death: acc.death + r.deathFemale + r.deathMale,
@@ -120,11 +121,6 @@ const DeathCause4 = () => {
           deathMale: 0,
         }
       );
-      // totalDeath = {
-      //   death: 1000,
-      //   deathFemale: 150,
-      //   deathMale: 850
-      // }
     return {
       cause,
       death: totalDeath.death,
@@ -140,7 +136,8 @@ const DeathCause4 = () => {
   ];
   const deathByProvinces = provinceLists.map((province) => {
     const totalDeath = deathCauseDatas
-      .filter((r) => r.provinceName === province)
+      .filter((r) => r.provinceName === province)   
+      // console.log("filter",totalDeath);
       .reduce(
         (acc, r) => ({
           death: acc.death + r.deathFemale + r.deathMale,
@@ -149,6 +146,7 @@ const DeathCause4 = () => {
         }),
         { death: 0, deathFemale: 0, deathMale: 0 }
       );
+      console.log("totalDeath after reduce",totalDeath);
       return {
         province,
         death : totalDeath.death,
@@ -164,7 +162,9 @@ const DeathCause4 = () => {
       </h1>
       <div className="mt-4">ปีพ.ศ. {currentYear}</div>
       <div className="flex space-x-4 mt-4">
-        <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
+        <DeathByCause 
+          totalDeath={totalDeath} 
+          deathByCauses={deathByCauses} />
         <DeathByProvince
           totalDeath={totalDeath}
           deathByProvinces={deathByProvinces}
