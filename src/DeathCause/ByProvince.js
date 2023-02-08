@@ -1,8 +1,16 @@
-const ByProvince = ({ yearSelected, datasByProveince, sumByProvince }) => {
+const ByProvince = ({
+  yearSelected,
+  datasByProveince,
+  sumByProvince,
+  filCause,
+}) => {
   return (
     <div className="provinceBlock w-full md:w-3/12 flex flex-col border-2 rounded-lg p-4">
       <h1 className="text-lg font-bold mb-2">
-        จำนวนผู้เสียชีวิตแยกตามจังหวัดปี {yearSelected}
+        จำนวนผู้เสียชีวิตแยกตามจังหวัดปี{" "}
+        <span className="underline">{yearSelected}</span>{" "}
+        {filCause !== undefined && `สาเหตุการเสียชีวิต `}
+        <span className="underline">{filCause}</span>
       </h1>
       <div className="blockCause flex justify-between gap-x-2 mb-1">
         <div className="provinceName">ทั้งหมด</div>
@@ -16,10 +24,11 @@ const ByProvince = ({ yearSelected, datasByProveince, sumByProvince }) => {
         </div>
       </div>
 
-      {datasByProveince.map((data) => {
-        return (
-          <div key={data.province}>
-            {data.amount > 0 && (
+      {datasByProveince
+        .filter((r) => r.amount > 0)
+        .map((data) => {
+          return (
+            <div key={data.province}>
               <div className="blockCause flex justify-between gap-x-2 mb-1">
                 <div className="provinceName truncate">{data.province}</div>
                 <div className="tbAmount flex gap-x-1">
@@ -31,10 +40,9 @@ const ByProvince = ({ yearSelected, datasByProveince, sumByProvince }) => {
                   </div>
                 </div>
               </div>
-            )}
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
     </div>
   );
 };
