@@ -54,7 +54,6 @@ const DeathCause2 = () => {
   const DeathChart = () => (
     <div className="bg-green-400 w-1/3 p-4">
       <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
-      <table></table>
     </div>
   );
 

@@ -6,7 +6,7 @@ import DeathCause4 from "./DeathCause/DeathCause4";
 const App = () => {
   return (
     <>
-      <DeathCause2 />
+      <DeathCause3 />
     </>
   );
 };
