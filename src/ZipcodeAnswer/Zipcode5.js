@@ -3,13 +3,7 @@ import ThailandZipcodeData from "./thailand-zipcode.json";
 const ZipcodeHome = ({ provinces }) => (
   <>
     <h1 className="text-2xl pt-3 font-bold">ค้นหารหัสไปรษณีย์</h1>
-    <div>
-      <input
-        type="text"
-        className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
-        placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
-      />
-    </div>
+
     <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
       <h2 className="text-xl mt-4 font-bold">เลือกจังหวัด</h2>
       <div className="grid grid-cols-4 mt-4">
@@ -26,13 +20,7 @@ const ZipcodeProvince = ({ province, districts }) => (
     <h1 className="text-2xl pt-3 font-bold">
       รหัสไปรษณีย์ในจังหวัด {province}
     </h1>
-    <div>
-      <input
-        type="text"
-        className="border-2 border-gray-400 rounded-lg p-2 mt-4 w-1/3"
-        placeholder="ค้นหา ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
-      />
-    </div>
+
     <div className="w-2/3 mx-auto bg-gray-100 p-4 mt-8 rounded-lg text-left">
       <table className="w-full">
         <thead>
@@ -63,7 +51,6 @@ const ZipcodeProvince = ({ province, districts }) => (
 const Zipcode5 = () => {
   const provinces = [...new Set(ThailandZipcodeData.map((r) => r.province))];
   const province = "กรุงเทพมหานคร";
-  // const districts = ThailandZipcodeData.filter((r) => r.province === province);
   const districts = [
     ...new Map(
       ThailandZipcodeData.filter((r) => r.province === province).map((r) => [
@@ -72,6 +59,11 @@ const Zipcode5 = () => {
       ])
     ).values(),
   ];
+
+  // [...new Set([1, 1, 2, 2, 3, 3])]
+  // [...new Map([["key1", "value1"], ["key2", "value2"]]).values()]
+  
+ 
 
   return (
     <div className="w-full text-center">
