@@ -89,7 +89,7 @@ const DeathCause6 = () => {
     const deathCauseDatas = ThailandDeathCause.filter(
       (r) => r.year == currentYear
       // == หน้าตาเหมือนกันก็พอ
-      // === type ต้องตรงกันด้วย
+      // === type ต้องตรงกันด้วย เช่น number = number
       // = assign
     );
     const _totalDeath = deathCauseDatas.reduce(
