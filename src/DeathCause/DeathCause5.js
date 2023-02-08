@@ -181,7 +181,7 @@ const DeathCause5 = () => {
       <div className="mb-2 flex content-center gap-x-2">
         <label
           htmlFor="year"
-          className="mb-2 block basis-1/4 text-sm font-medium text-gray-900"
+          className="block basis-1/4 self-center text-sm font-medium text-gray-900"
         >
           เลือกปี :
         </label>
