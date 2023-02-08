@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import thailandDeathCause from "../DeathCauseAnswer/thailand-death-cause.json";
+import ReactECharts from "echarts-for-react";
 
 const DeathByCause = ({ totalDeath, deathByCauses }) => (
   <div className="bg-blue-100 w-1/3 p-4">
@@ -48,6 +49,61 @@ const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
 const DeathChart = () => (
   <div className="bg-green-100 w-1/3 p-4">
     <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
+    <ReactECharts
+      option={{
+        xAxis : {
+          type : "category",
+          data : [2554,2555,2556],
+          name : "ปีพ.ศ."
+        },
+        yAxis : {
+          type : "value",
+          name : "จำนวนผู้เสียชีวิต",
+          max : "dataMax",
+          min : "dataMin",
+        },
+        series : [
+          {
+            data : [10000,12000,3000],
+            type : "line",
+            smooth : true,
+            lineStyle : {color: "d5ceeb",width :5, type:"dashed"},
+          },
+        ],
+        tooltip:{
+          trigger : "axis",
+        }
+      }}
+    />
+    <div>การเสียชีวิตตามเพศ</div>
+    <ReactECharts
+      option={{
+        tooltip:{
+          trigger : "item",
+        },
+        legend: {
+          orient : "vertical",
+          left : "left",
+        },
+        series: [
+          {
+            type: "pie",
+            radius: "50%",
+            data : [
+              { value: 10000, name: "ชาย"},
+              { value: 12000, name: "หญิง"},
+            ],
+            emphasis : {
+              itemStyle : {
+                shadowBlur :10,
+                shadowOffsetX :0,
+                shadowColor :"rgba(0, 0, 0, 0.5)",
+              },
+            }
+          }
+        ],
+      }}
+    />
   </div>
 );
 
@@ -96,7 +152,7 @@ const DeathCause6 = () => {
     console.log("deathCauseLists", deathCauseLists);
     const _deathByCauses = deathCauseLists
       .map((cause) => {
-        const totalDeath = thailandDeathCause
+        const _totalDeath = thailandDeathCause
           .filter((r) => r.causeOfDeath === cause)
           // console.log("totalDeath by cause",totalDeath)
           .reduce(
@@ -114,9 +170,9 @@ const DeathCause6 = () => {
 
         return {
           cause,
-          death: totalDeath.death,
-          deathFemale: totalDeath.deathFemale,
-          deathMale: totalDeath.deathMale,
+          death: _totalDeath.death,
+          deathFemale: _totalDeath.deathFemale,
+          deathMale: _totalDeath.deathMale,
         };
       })
       .filter((r) => r.death > 0)
@@ -166,7 +222,9 @@ const DeathCause6 = () => {
         setCurrentYear={setCurrentYear}
       />
       <div className="flex space-x-4 mt-4">
-        <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
+        <DeathByCause 
+          totalDeath={totalDeath} 
+          deathByCauses={deathByCauses} />
         <DeathByProvince
           totalDeath={totalDeath}
           deathByProvinces={deathByProvinces}
