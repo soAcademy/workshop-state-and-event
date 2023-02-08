@@ -33,7 +33,7 @@ const ZipcodeHome = ({
                 onClick={() => navigator.clipboard.writeText(r.zipcode)}
               >
                 <span className="px-4">
-                  ต.{r.subdistrict} อ.{r.district} จ.{r.province} {r.zipcode}
+                  'ต.{r.subdistrict} อ.{r.district} จ.{r.province} {r.zipcode}'
                 </span>
               </div>
             ))}
