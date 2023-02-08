@@ -1,60 +1,67 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import ThailandDeathCause from "./thailand-death-cause.json";
 
-const DeathByCause = ({ totalDeath, deathByCauses }) => (
-  <div className="bg-blue-100 w-1/3 p-4">
-    <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
-    <table className="w-full">
-      <tbody>
-        <tr>
-          <td>ทั้งหมด</td>
-          <td>{totalDeath.toLocaleString()}</td>
-          <td>100%</td>
-        </tr>
-        {deathByCauses?.map((r, idx) => (
-          <tr key={idx}>
-            <td>{r.cause}</td>
-            <td>{r.death.toLocaleString()}</td>
-            <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
+const DeathByCause = (props) => {
+  const { deathByCauses, totalDeath } = props;
+  return (
+    <div className="bg-yellow-300 w-1/3 p-4">
+      <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
+      <table>
+        <tbody>
+          <tr>
+            <td>ทั้งหมด</td>
+            <td>{totalDeath.toLocaleString()}</td>
+            <td>100%</td>
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+          {deathByCauses.map((r, idx) => (
+            <tr key={idx}>
+              <td>{r.cause}</td>
+              <td>{r.death}</td>
+              <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
-  <div className="bg-amber-100 w-1/3 p-4">
-    <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
-    <table className="w-full">
-      <tbody>
-        <tr>
-          <td>ทั้งหมด</td>
-          <td>{totalDeath.toLocaleString()}</td>
-          <td>100%</td>
-        </tr>
-        {deathByProvinces?.map((r, idx) => (
-          <tr key={idx}>
-            <td>{r.province}</td>
-            <td>{r.death.toLocaleString()}</td>
-            <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
+const DeathByProvince = (props) => {
+  const { totalDeath, deathByProvinces } = props;
+  return (
+    <div className="bg-sky-400 w-1/3 p-4">
+      <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
+      <table>
+        <tbody>
+          <tr>
+            <td>ทั้งหมด</td>
+            <td>{totalDeath.toLocaleString()}</td>
+            <td>100%</td>
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+          {deathByProvinces.map((r, idx) => (
+            <tr key={idx}>
+              <td>{r.province}</td>
+              <td>{r.death.toLocaleString()}</td>
+              <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 const DeathChart = () => (
-  <div className="bg-green-100 w-1/3 p-4">
-    <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
+  <div className="bg-green-400 w-1/3 p-4">
+    <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
   </div>
 );
 
-const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
-  <div>
+const DeathFilter = (props) => {
+  const { yearLists, currentYear, setCurrentYear } = props;
+  return (
     <div className="mt-4">
-      เลือกปีพ.ศ.{" "}
+      เลือกปีพ.ศ.
       <select
         onChange={(e) => setCurrentYear(e.target.value)}
         value={currentYear}
@@ -66,13 +73,11 @@ const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
         ))}
       </select>
     </div>
-    <div className="">การเสียชีวิตของปีพ.ศ. {currentYear}</div>
-  </div>
-);
+  );
+};
 
 const DeathCause5 = () => {
   const yearLists = [...new Set(ThailandDeathCause.map((r) => r.year))];
-
   const [currentYear, setCurrentYear] = useState(2559);
 
   const deathCauseDatas = ThailandDeathCause;
@@ -81,10 +86,12 @@ const DeathCause5 = () => {
     0
   );
 
+  // ------------------------------------
   const deathCauseLists = [
     ...new Set(deathCauseDatas.map((r) => r.causeOfDeath)),
   ];
   console.log(deathCauseLists);
+  // หา unique สาเหตุการตาย
 
   const deathByCauses = deathCauseLists
     .map((cause) => {
@@ -101,6 +108,7 @@ const DeathCause5 = () => {
             deathFemale: 0,
             deathMale: 0,
           }
+          // death = ค่า key ที่เราปั้นขึ้นมาตอน reduce
         );
       return {
         cause,
@@ -111,13 +119,13 @@ const DeathCause5 = () => {
     })
     .filter((r) => r.death > 0)
     .sort((a, b) => b.death - a.death);
-  console.log(deathByCauses);
 
+  // --------------------------------------
   const provinceLists = [
-    ...new Set(deathCauseDatas.map((r) => r.provinceName)),
+    ...new Set(ThailandDeathCause.map((r) => r.provinceName)),
   ];
-  console.log(provinceLists);
-
+  // console.log(provinceLists);
+  // หา unique ของจังหวัดแต่ละจังหวัด
   const deathByProvinces = provinceLists
     .map((province) => {
       const totalDeath = deathCauseDatas
@@ -143,8 +151,7 @@ const DeathCause5 = () => {
     })
     .filter((r) => r.death > 0)
     .sort((a, b) => b.death - a.death);
-  console.log(deathByProvinces);
-
+  console.log("deathByProvinces", deathByProvinces);
   return (
     <div className="p-4">
       <h1 className="font-bold text-xl">
@@ -155,6 +162,7 @@ const DeathCause5 = () => {
         currentYear={currentYear}
         setCurrentYear={setCurrentYear}
       />
+      <div className="mt-4">{currentYear}</div>
       <div className="flex space-x-4 mt-4">
         <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
         <DeathByProvince

@@ -131,6 +131,7 @@ const DeathCause4 = () => {
           deathFemale: 0,
           deathMale: 0,
         }
+        // death = ค่า key ที่เราปั้นขึ้นมาตอน reduce
       );
     return {
       cause,
@@ -139,6 +140,7 @@ const DeathCause4 = () => {
       deathMale: totalDeath.deathMale,
     };
   });
+
   // --------------------------------------
   const provinceLists = [
     ...new Set(deathCauseDatas.map((r) => r.provinceName)),
