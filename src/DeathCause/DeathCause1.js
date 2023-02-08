@@ -1,25 +1,6 @@
 const DeathByCause = () => (
   <div className="bg-gray-100 w-1/3 mr-2 p-2">
     <div className="text-center font-bold mb-2">สาเหตุการเสียชีวิต</div>
-    <table className="w-full">
-      <tbody>
-        <tr>
-          <td>ทั้งหมด</td>
-          <td>408,000</td>
-          <td>100%</td>
-        </tr>
-        <tr>
-          <td>วัณโรคทุกชนิด</td>
-          <td>189,000</td>
-          <td>3.48%</td>
-        </tr>
-        <tr>
-          <td>เบาหวาน</td>
-          <td>130,000</td>
-          <td>2.48%</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 );
 const DeathByProvince = () => (
@@ -27,25 +8,6 @@ const DeathByProvince = () => (
     <div className="text-center font-bold mb-2">
       จำนวนผู้เสียชีวิตแยกตามจังหวัด
     </div>
-    <table className="w-full">
-      <tbody>
-        <tr>
-          <td>ทั้งหมด</td>
-          <td>408,000 คน</td>
-          <td>100%</td>
-        </tr>
-        <tr>
-          <td>กรุงเทพมหานคร</td>
-          <td>189,000 คน</td>
-          <td>3.48%</td>
-        </tr>
-        <tr>
-          <td>เชียงใหม่</td>
-          <td>109,000 คน</td>
-          <td>1.48%</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 );
 const DeathChart = () => (
