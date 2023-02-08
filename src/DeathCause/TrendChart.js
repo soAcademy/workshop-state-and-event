@@ -27,7 +27,7 @@ const TrendChart = ({ sumTrendByYear }) => {
   return (
     <div className="trendDeath w-full h-fit border-2 rounded-lg p-4">
       <h1 className="text-lg font-bold mb-2">แนวโน้มการเสียชีวิต</h1>
-      <ReactECharts style={{ height: "200px" }} option={options} />
+      <ReactECharts style={{ height: "250px" }} option={options} />
     </div>
   );
 };

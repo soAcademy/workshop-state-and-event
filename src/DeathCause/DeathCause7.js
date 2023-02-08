@@ -6,7 +6,7 @@ import ByProvince from "./ByProvince";
 import TrendChart from "./TrendChart";
 import GenderChart from "./GenderChart";
 
-const DeathCause6 = () => {
+const DeathCause7 = () => {
   // const [yearSelected, setYearSelected] = useState(0);
   const [yearSelected, setYearSelected] = useState(0);
   const [yearsList, setYearsList] = useState([]);
@@ -119,12 +119,12 @@ const DeathCause6 = () => {
           sumByProvince={sumByProvince}
         />
         <div className="chartBlock w-full md:w-4/12 flex flex-col gap-y-1">
-          {/* <TrendChart sumTrendByYear={sumTrendByYear} /> */}
-          {/* {sumByYear > 0 && <GenderChart datasByYear={datasByYear} />} */}
+          <TrendChart sumTrendByYear={sumTrendByYear} />
+          {sumByYear > 0 && <GenderChart datasByYear={datasByYear} />}
         </div>
       </div>
     </div>
   );
 };
 
-export default DeathCause6;
+export default DeathCause7;

@@ -35,8 +35,8 @@ import Dashboard from "./Dashboard/Dashboard";
 // import DeathCause3 from "./DeathCause/DeathCause3";
 // import DeathCause4 from "./DeathCause/DeathCause4";
 // import DeathCause5 from "./DeathCause/DeathCause5";
-import DeathCause6 from "./DeathCause/DeathCause6";
-// import DeathCause7 from "./DeathCause/DeathCause7";
+// import DeathCause6 from "./DeathCause/DeathCause6";
+import DeathCause7 from "./DeathCause/DeathCause7";
 
 const App = () => {
   return (
@@ -104,7 +104,8 @@ const App = () => {
       {/* {<DeathCause3/>} */}
       {/* {<DeathCause4 />} */}
       {/* {<DeathCause5/>} */}
-      {<DeathCause6/>}
+      {/* {<DeathCause6/>} */}
+      {<DeathCause7/>}
     </div>
   );
 };

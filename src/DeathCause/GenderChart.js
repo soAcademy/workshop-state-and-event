@@ -53,7 +53,7 @@ const GenderChart = ({ datasByYear }) => {
   return (
     <div className="deathByGender w-full h-fit border-2 rounded-lg p-4">
       <h1 className="text-lg font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามเพศ</h1>
-      <ReactECharts style={{ height: "200px" }} option={options} />
+      <ReactECharts style={{ height: "250px" }} option={options} />
     </div>
   );
 };
