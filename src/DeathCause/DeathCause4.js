@@ -123,7 +123,7 @@ const DeathCause1 = () => {
   // todo 3: Mock up Data ที่ต้องการเอาไปใส่ใน component แล้วส่ง props เพื่อเอาไปคำนวณ
   const currentYear = "2559";
   // todo 4.1 คำนวณ total death ใหม่
-  // const totalDeath = 400800;
+  // const totalDeath = 400800; 
   const totalDeath = deathCauseDatas.reduce(
     (acc, r) => acc + r.deathMale + r.deathFemale,
     0
