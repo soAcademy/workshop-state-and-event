@@ -33,7 +33,8 @@
 // import DeathCause4 from "./DeathCauseAnswer/DeathCause4";
 // import DeathCause1 from "./DeathCause/DeathCause1";
 // import DeathCause2 from "./DeathCause/DeathCause2";
-import DeathCause3 from "./DeathCause/DeathCause3";
+// import DeathCause3 from "./DeathCause/DeathCause3";
+import DeathCause4 from "./DeathCause/DeathCause4";
 
 const App = () => {
   return (
@@ -69,12 +70,11 @@ const App = () => {
       {/* <Zipcode8 /> */}
       {/* <DeathCause1 /> */}
       {/* <DeathCause2 /> */}
-      <DeathCause3 />
-      {/* <DeathCause4 /> */}
+      {/* <DeathCause3 /> */}
+      <DeathCause4 />
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
-
     </>
   );
 };
