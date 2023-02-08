@@ -31,7 +31,7 @@
 // import DeathCause2 from "./DeathCauseAnswer/DeathCause2";
 // import DeathCause3 from "./DeathCauseAnswer/DeathCause3";
 // import DeathCause4 from "./DeathCauseAnswer/DeathCause4";
-
+import DeathCause1 from "./DeathCause/DeathCause1";
 
 const App = () => {
   return (
