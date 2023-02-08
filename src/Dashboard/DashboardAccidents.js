@@ -3,6 +3,8 @@ import accident from "./accident.json";
 import AccidentGenderPie from "./AccidentGenderPie";
 import AccidentVehicleBar from "./AccidentVehicleBar";
 import AccidentProvinceStackedBar from "./AccidentProvinceStackedBar";
+import { longdo, map, LongdoMap } from './longdo-map/LongdoMap';
+const Popup = () => <div>Hel</div>
 const DashboardAccidents = () => {
   const [statBarOpened, setStatBarOpened] = useState(false);
   const [accidentData, setAccidentData] = useState(accident);
@@ -49,6 +51,18 @@ const DashboardAccidents = () => {
     });
     setProvinceStat(_provinceStat);
   }, [accidentData]);
+  // const marker1 = new longdo.Marker({ lon: 98.890434, lat: 8.916207 },
+  //   {
+  //     title: 'Custom Marker',
+  //     icon: {
+  //       url: 'https://raw.githubusercontent.com/soAcademy/workshop-state-and-event/feature/202310/public/18-189422_red-dot-png-circle.png',
+  //     },
+  //     popup: {
+  //       html: '<div style="background: #eeeeff;">popup</div>'
+  //     }
+  //   });
+  //   map.Overlays.add(marker1);
+
 
   return (
     <div>
