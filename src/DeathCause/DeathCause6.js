@@ -3,7 +3,7 @@ import ThailandDeathCause from "../DeathCauseAnswer/thailand-death-cause.json";
 
 const DeathByCause = (props) => {
   return (
-    <div className="bg-cyan-100 w-1/3 p-4">
+    <div className="bg-cyan-100 w-1/3 p-4 rounded">
       <div className="font-semibold mb-2 text-center">
         <p>สาเหตุการเสียชีวิต</p>
       </div>
@@ -31,7 +31,7 @@ const DeathByCause = (props) => {
 
 const DeathByProvince = (props) => {
   return (
-    <div className="bg-red-100 w-1/3 p-4">
+    <div className="bg-red-100 w-1/3 p-4 rounded">
       <div className="font-semibold mb-2 text-center">
         <p>จำนวนผู้เสียชีวิตแยกตามจังหวัด</p>
       </div>
@@ -59,7 +59,7 @@ const DeathByProvince = (props) => {
 
 const DeathChart = () => {
   return (
-    <div className="bg-emerald-100 w-1/3 p-4">
+    <div className="bg-emerald-100 w-1/3 p-4 rounded">
       <div className="font-semibold mb-2 text-center">
         <p>แนวโน้มการเสียชีวิต</p>
       </div>
@@ -104,7 +104,8 @@ const DeathCause6 = () => {
   console.log("yearsUnique", yearsUnique);
 
   useEffect(() => {
-    // MockData เพื่อนำว่าใช้งาน หลังจากทำ mock ดีแล้วให้นำข้อมูลจริงมาแทนที่
+    // MockData เพื่อนำว่าใช้งาน หลังจากทำ mock ดีแล้วให้นำข้อมูลจริงมาแทนที่ 
+    // เมื่ออยู่ใน useEffect แล้ว การ filter ปีตาม currentYear เพื่อให้ข้อมูลเปลี่ยนตามปีที่ต้องการ
     const deathCauseDataset = ThailandDeathCause.filter(
       (r) => r.year == currentYear // === ต้องตรง type ด้วย
     );

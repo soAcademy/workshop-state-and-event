@@ -331,6 +331,7 @@ const Dashboard1 = () => {
     .map((r) => Object.values(r))
     .flat()
     .sort((a, b) => a.year - b.year);
+    console.log("year", yearsData);
 
   const totalDeathFemale = DataThaiDeath.reduce((acc, r) => {
     acc += r.deathFemale;
