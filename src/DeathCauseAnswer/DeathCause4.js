@@ -50,7 +50,6 @@ const DeathChart = () => (
 
 const DeathCause4 = () => {
   const currentYear = "2559";
-  const totalDeath = 400800;
 
   const deathCauseDatas = [
     {
@@ -99,6 +98,11 @@ const DeathCause4 = () => {
       deathRatePer100000FemalePopulation: 0,
     },
   ];
+  const totalDeath = deathCauseDatas.reduce(
+    (acc, r) => acc + r.deathMale + r.deathFemale,
+    0
+  );
+
 
   // const deathByCauses = [
   //   {

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ThailandDeathCause from "./thailand-death-cause.json";
 
 const DeathByCause = ({ totalDeath, deathByCauses }) => (
@@ -50,11 +51,31 @@ const DeathChart = () => (
   </div>
 );
 
+const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
+  <div>
+    <div className="mt-4">
+      เลือกปีพ.ศ.{" "}
+      <select onChange={(e) => setCurrentYear(e.target.value)}>
+        {yearLists.map((year) => (
+          <option key={year} value={year} selected={year == currentYear}>
+            {year}
+          </option>
+        ))}
+      </select>
+    </div>
+    <div className="">การเสียชีวิตของปีพ.ศ. {currentYear}</div>
+  </div>
+);
+
 const DeathCause5 = () => {
-  const currentYear = "2559";
-  const totalDeath = 400800;
+  const yearLists = [...new Set(ThailandDeathCause.map((r) => r.year))];
+  const [currentYear, setCurrentYear] = useState(2559);
 
   const deathCauseDatas = ThailandDeathCause;
+  const totalDeath = deathCauseDatas.reduce(
+    (acc, r) => acc + r.deathMale + r.deathFemale,
+    0
+  );
 
   const deathCauseLists = [
     ...new Set(deathCauseDatas.map((r) => r.causeOfDeath)),
@@ -125,7 +146,11 @@ const DeathCause5 = () => {
       <h1 className="font-bold text-xl">
         จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554 - 2559
       </h1>
-      <div className="mt-4">ปีพ.ศ. {currentYear}</div>
+      <DeathFilter
+        yearLists={yearLists}
+        currentYear={currentYear}
+        setCurrentYear={setCurrentYear}
+      />
       <div className="flex space-x-4 mt-4">
         <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
         <DeathByProvince
