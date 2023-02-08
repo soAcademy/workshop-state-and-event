@@ -64,7 +64,7 @@ const DeadChart = () => {
   );
 };
 
-const DeathCause1 = () => {
+const DeathCause2 = () => {
   return (
     <>
       <div className="p-4">
@@ -81,4 +81,4 @@ const DeathCause1 = () => {
     </>
   );
 };
-export default DeathCause1;
+export default DeathCause2;
