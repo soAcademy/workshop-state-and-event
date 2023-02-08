@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import EChartsReact from "echarts-for-react";
 import deaths from "./thailand-death-cause.json";
 
-const DeathsByCauseTable = ({ totalDeath, deathsByCause }) => {
+const DeathsByCauseTable = ({ totalDeath, deathsByCause, currentYear }) => {
   return (
     <div>
-      <h2 className="mb-2 text-xl">สาเหตุการเสียชีวิต</h2>
-      <table className="font-nstl text-sm">
+      <h2 className="mb-2 text-xl">สาเหตุการเสียชีวิตปี {currentYear}</h2>
+      <table className="w-full font-nstl text-sm">
         <tbody>
           <tr>
             <td>ทั้งหมด</td>
@@ -31,11 +31,17 @@ const DeathsByCauseTable = ({ totalDeath, deathsByCause }) => {
   );
 };
 
-const DeathsByProvinceTable = ({ totalDeath, deathsByProvince }) => {
+const DeathsByProvinceTable = ({
+  totalDeath,
+  deathsByProvince,
+  currentYear,
+}) => {
   return (
     <div>
-      <h2 className="mb-2 text-xl">จำนวนผู้เสียชีวิตแยกตามจังหวัด</h2>
-      <table className="font-nstl text-sm">
+      <h2 className="mb-2 text-xl">
+        จำนวนผู้เสียชีวิตปี {currentYear} แยกตามจังหวัด
+      </h2>
+      <table className="w-full font-nstl text-sm">
         <tbody>
           <tr>
             <td>ทั้งหมด</td>
@@ -59,7 +65,11 @@ const DeathsByProvinceTable = ({ totalDeath, deathsByProvince }) => {
     </div>
   );
 };
-const DeathCharts = ({ optionForDeathTrend, optionForDeathsByGender }) => {
+const DeathCharts = ({
+  optionForDeathTrend,
+  optionForDeathsByGender,
+  currentYear,
+}) => {
   // const optionForDeathTrend = {
   //   xAxis: {
   //     type: "category",
@@ -106,7 +116,9 @@ const DeathCharts = ({ optionForDeathTrend, optionForDeathsByGender }) => {
     <div>
       <h2 className="mb-2 text-xl">แนวโน้มการเสียชีวิต</h2>
       <EChartsReact option={optionForDeathTrend} />
-      <h2 className="mb-2 text-xl">จำนวนผู้เสียชีวิตแยกตามเพศ</h2>
+      <h2 className="mb-2 text-xl">
+        จำนวนผู้เสียชีวิตปี {currentYear} แยกตามเพศ
+      </h2>
       <EChartsReact option={optionForDeathsByGender} />
     </div>
   );
@@ -380,14 +392,17 @@ const DeathCause8 = () => {
         <DeathsByCauseTable
           totalDeath={totalDeath}
           deathsByCause={deathsByCause}
+          currentYear={currentYear}
         />
         <DeathsByProvinceTable
           totalDeath={totalDeath}
           deathsByProvince={deathsByProvince}
+          currentYear={currentYear}
         />
         <DeathCharts
           optionForDeathTrend={optionForDeathTrend}
           optionForDeathsByGender={optionForDeathsByGender}
+          currentYear={currentYear}
         />
       </div>
     </>
