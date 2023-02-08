@@ -4,7 +4,7 @@ import ThailandDeathCause from "./thailand-death-cause.json";
 const DeathByCause = (props) => {
   const { deathByCauses, totalDeath } = props;
   return (
-    <div className="bg-yellow-300 w-1/3 p-4">
+    <div className="bg-yellow-200 w-1/3 p-4">
       <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
       <table>
         <tbody>
@@ -29,7 +29,7 @@ const DeathByCause = (props) => {
 const DeathByProvince = (props) => {
   const { totalDeath, deathByProvinces } = props;
   return (
-    <div className="bg-sky-400 w-1/3 p-4">
+    <div className="bg-sky-200 w-1/3 p-4">
       <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
       <table>
         <tbody>
@@ -52,8 +52,8 @@ const DeathByProvince = (props) => {
 };
 
 const DeathChart = () => (
-  <div className="bg-green-400 w-1/3 p-4">
-    <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
+  <div className="bg-green-200 w-1/3 p-4">
+    <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
   </div>
 );
 
@@ -162,7 +162,7 @@ const DeathCause5 = () => {
         currentYear={currentYear}
         setCurrentYear={setCurrentYear}
       />
-      <div className="mt-4">{currentYear}</div>
+      <div className="mt-4">การเสียชีวิตของปี {currentYear}</div>
       <div className="flex space-x-4 mt-4">
         <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
         <DeathByProvince
