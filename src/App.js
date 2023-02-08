@@ -19,14 +19,18 @@
 // import Trivia3 from "./TriviaAnswer/Trivia3";
 // import Trivia4 from "./TriviaAnswer/Trivia4";
 // import Trivia5 from "./TriviaAnswer/Trivia5";
-// import Zipcode1 from "./Zipcode/Zipcode1";
-// import Zipcode2 from "./Zipcode/Zipcode2";
-// import Zipcode3 from "./Zipcode/Zipcode3";
-// import Zipcode4 from "./Zipcode/Zipcode4";
-// import Zipcode5 from "./Zipcode/Zipcode5";
-// import Zipcode6 from "./Zipcode/Zipcode6";
-// import Zipcode7 from "./Zipcode/Zipcode7";
-import Zipcode8 from "./Zipcode/Zipcode8";
+// import Zipcode1 from "./ZipcodeAnswer/Zipcode1";
+// import Zipcode2 from "./ZipcodeAnswer/Zipcode2";
+// import Zipcode3 from "./ZipcodeAnswer/Zipcode3";
+// import Zipcode4 from "./ZipcodeAnswer/Zipcode4";
+// import Zipcode5 from "./ZipcodeAnswer/Zipcode5";
+// import Zipcode6 from "./ZipcodeAnswer/Zipcode6";
+// import Zipcode7 from "./ZipcodeAnswer/Zipcode7";
+// import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
+// import DeathCause1 from "./DeathCauses/DeathCause1";
+// import DeathCause2 from "./DeathCauses/DeathCause2";
+import DeathCause3 from "./DeathCauses/DeathCause3";
+// import DeathCause4 from "./DeathCauses/DeathCause4";
 
 const App = () => {
   return (
@@ -59,7 +63,11 @@ const App = () => {
       {/* <Zipcode5 /> */}
       {/* <Zipcode6 /> */}
       {/* <Zipcode7 /> */}
-      <Zipcode8 />
+      {/* <Zipcode8 /> */}
+      {/* <DeathCause1 /> */}
+      {/* <DeathCause2 /> */}
+      <DeathCause3 />
+      {/* <DeathCause4 /> */}
     </>
   );
 };
