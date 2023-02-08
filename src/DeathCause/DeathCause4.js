@@ -68,23 +68,91 @@ const DeathCharts = () => {
 const DeathCause4 = () => {
   const currentYear = 2559;
 
-  const totalDeath = 408009;
+  // const totalDeath = 408009;
+  const totalDeath = deaths.reduce(
+    (acc, death) => acc + death.deathMale + death.deathFemale,
+    0
+  );
 
-  const deathsByCause = [
-    {
-      causeOfDeath: "วัณโรคทุกชนิด",
-      death: 189009,
-    },
-    { causeOfDeath: "โรคเกี่ยวกับตับและตับอ่อน", death: 158809 },
+  const deathCauses = [...new Set(deaths.map((death) => death.causeOfDeath))];
+
+  // console.log(deathCauses);
+
+  const deathsByCause = deathCauses
+    .map((deathCause) => {
+      const _deathsForCause = deaths
+        .filter((death) => death.causeOfDeath === deathCause)
+        .reduce(
+          (acc, death) => ({
+            deathMale: acc.deathMale + death.deathMale,
+            deathFemale: acc.deathFemale + death.deathFemale,
+            death: acc.death + death.deathMale + death.deathFemale,
+          }),
+          {
+            deathMale: 0,
+            deathFemale: 0,
+            death: 0,
+          }
+        );
+      return {
+        causeOfDeath: deathCause,
+        deathMale: _deathsForCause.deathMale,
+        deathFemale: _deathsForCause.deathFemale,
+        death: _deathsForCause.death,
+      };
+    })
+    .sort((a, b) => b.death - a.death);
+
+  // console.log(deathsByCause);
+
+  // const deathsByCause = [
+  //   {
+  //     causeOfDeath: "วัณโรคทุกชนิด",
+  //     death: 189009,
+  //   },
+  //   { causeOfDeath: "โรคเกี่ยวกับตับและตับอ่อน", death: 158809 },
+  // ];
+
+  const deathProvinces = [
+    ...new Set(deaths.map((death) => death.provinceName)),
   ];
 
-  const deathsByProvince = [
-    {
-      provinceName: "กรุงเทพมหานคร",
-      death: 52302,
-    },
-    { provinceName: "เชียงใหม่", death: 48512 },
-  ];
+  // console.log(deathCauses);
+
+  const deathsByProvince = deathProvinces
+    .map((deathProvince) => {
+      const _deathsForProvince = deaths
+        .filter((death) => death.provinceName === deathProvince)
+        .reduce(
+          (acc, death) => ({
+            deathMale: acc.deathMale + death.deathMale,
+            deathFemale: acc.deathFemale + death.deathFemale,
+            death: acc.death + death.deathMale + death.deathFemale,
+          }),
+          {
+            deathMale: 0,
+            deathFemale: 0,
+            death: 0,
+          }
+        );
+      return {
+        provinceName: deathProvince,
+        deathMale: _deathsForProvince.deathMale,
+        deathFemale: _deathsForProvince.deathFemale,
+        death: _deathsForProvince.death,
+      };
+    })
+    .sort((a, b) => b.death - a.death);
+
+  // console.log(deathsByProvince);
+
+  // const deathsByProvince = [
+  //   {
+  //     provinceName: "กรุงเทพมหานคร",
+  //     death: 52302,
+  //   },
+  //   { provinceName: "เชียงใหม่", death: 48512 },
+  // ];
 
   return (
     <>
