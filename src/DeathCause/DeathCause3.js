@@ -3,7 +3,7 @@ import React from "react";
 const DeathByCause = (props) => {
   return (
     <div className="bg-cyan-100 w-1/3 p-4">
-      <div className="font-semibold mb-2">
+      <div className="font-semibold mb-2 text-center">
         <p>สาเหตุการเสียชีวิต</p>
       </div>
       <table className="w-full">
@@ -11,13 +11,13 @@ const DeathByCause = (props) => {
           <tr>
             <td>ทั้งหมด</td>
             <td>{props.totalDeath}</td>
-            <td>100%</td>
+            <td className="text-right">100%</td>
           </tr>
           {props.deathByCauses?.map((r, idx) => (
             <tr key={idx}>
               <td>{r.cause}</td>
               <td>{r.death}</td>
-              <td>{((r.death / props.totalDeath) * 100).toFixed(2)}%</td>
+              <td className="text-right">{((r.death / props.totalDeath) * 100).toFixed(2)}%</td>
             </tr>
           ))}
         </tbody>
@@ -29,7 +29,7 @@ const DeathByCause = (props) => {
 const DeathByProvince = (props) => {
   return (
     <div className="bg-red-100 w-1/3 p-4">
-      <div className="font-semibold mb-2">
+      <div className="font-semibold mb-2 text-center">
         <p>จำนวนผู้เสียชีวิตแยกตามจังหวัด</p>
       </div>
       <table className="w-full">
@@ -37,13 +37,13 @@ const DeathByProvince = (props) => {
           <tr>
             <td>ทั้งหมด</td>
             <td>{props.totalDeath}</td>
-            <td>100%</td>
+            <td className="text-right">100%</td>
           </tr>
           {props.deathByProvinces?.map((r, idx) => (
             <tr key={idx}>
               <td>{r.province}</td>
               <td>{r.death}</td>
-              <td>{((r.death / props.totalDeath) * 100).toFixed(2)}%</td>
+              <td className="text-right">{((r.death / props.totalDeath) * 100).toFixed(2)}%</td>
             </tr>
           ))}
         </tbody>
@@ -55,7 +55,7 @@ const DeathByProvince = (props) => {
 const DeathChart = () => {
   return (
     <div className="bg-emerald-100 w-1/3 p-4">
-      <div className="font-semibold mb-2">
+      <div className="font-semibold mb-2 text-center">
         <p>แนวโน้มการเสียชีวิต</p>
       </div>
     </div>
@@ -95,7 +95,7 @@ const DeathCause3 = () => {
       <div className="mt-4">
         <p>ปี พ.ศ. {currentYear}</p>
       </div>
-      <div className="flex mt-4 space-x-4 text-center">
+      <div className="flex mt-4 space-x-4">
         <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
         <DeathByProvince
           totalDeath={totalDeath}

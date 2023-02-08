@@ -50,7 +50,6 @@ const DeathChart = () => (
 
 const DeathCause4 = () => {
   const currentYear = "2559";
-  const totalDeath = 400800;
 
   const deathCauseDatas = [
     {
@@ -99,6 +98,11 @@ const DeathCause4 = () => {
       deathRatePer100000FemalePopulation: 0,
     },
   ];
+  const totalDeath = deathCauseDatas.reduce(
+    (acc, r) => acc + r.deathMale + r.deathFemale,
+    0
+  );
+
 
   // const deathByCauses = [
   //   {
@@ -114,13 +118,14 @@ const DeathCause4 = () => {
   const deathCauseLists = [
     ...new Set(deathCauseDatas.map((r) => r.causeOfDeath)),
   ];
+  console.log(deathCauseLists);
 
-  const deathByCauses = deathCauseLists.map((causeOfDeath) => {
+  const deathByCauses = deathCauseLists.map((cause) => {
     const totalDeath = deathCauseDatas
-      .filter((r) => r.causeOfDeath === causeOfDeath)
+      .filter((r) => r.causeOfDeath === cause)
       .reduce(
         (acc, r) => ({
-          death: acc.death + r.death,
+          death: acc.death + r.deathFemale + r.deathMale,
           deathFemale: acc.deathFemale + r.deathFemale,
           deathMale: acc.deathMale + r.deathMale,
         }),
@@ -131,16 +136,18 @@ const DeathCause4 = () => {
         }
       );
     return {
-      causeOfDeath,
+      cause,
       death: totalDeath.death,
       deathFemale: totalDeath.deathFemale,
       deathMale: totalDeath.deathMale,
     };
   });
+  console.log(deathByCauses);
 
   const provinceLists = [
     ...new Set(deathCauseDatas.map((r) => r.provinceName)),
   ];
+  console.log(provinceLists);
 
   // const deathByProvinces = [
   //   {
@@ -158,7 +165,7 @@ const DeathCause4 = () => {
       .filter((r) => r.provinceName === province)
       .reduce(
         (acc, r) => ({
-          death: acc.death + r.death,
+          death: acc.death + r.deathFemale + r.deathMale,
           deathFemale: acc.deathFemale + r.deathFemale,
           deathMale: acc.deathMale + r.deathMale,
         }),
@@ -169,12 +176,13 @@ const DeathCause4 = () => {
         }
       );
     return {
-      causeOfDeath: r.causeOfDeath,
+      province,
       death: totalDeath.death,
       deathFemale: totalDeath.deathFemale,
       deathMale: totalDeath.deathMale,
     };
   });
+  console.log(deathByProvinces);
 
   return (
     <div className="p-4">

@@ -71,6 +71,10 @@ const App = () => {
       {/* <DeathCause2 /> */}
       <DeathCause3 />
       {/* <DeathCause4 /> */}
+      {/* <DeathCause6 /> */}
+      {/* <DeathCause7 /> */}
+      {/* <DeathCause8 /> */}
+
     </>
   );
 };
