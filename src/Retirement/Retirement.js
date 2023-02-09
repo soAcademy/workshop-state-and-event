@@ -43,14 +43,11 @@ const Retirement = () => {
       console.log("pastPortfolioValue", pastPortfolioValue);
 
       //Check เกษียณยัง? ถ้ายังจะลงเพิ่ม ถ้าแล้วจะไม่ลง
-      const investThisYearValue =
-        yearIndex < retiredAge - currentAge ? investmentPerYear : 0;
+      const investThisYearValue = r < retiredAge ? investmentPerYear : 0;
       console.log("investThisYearValue", investThisYearValue);
       //Check เกษียณยัง? ถ้ายังจะไม่คิดเงินใช้จ่าย ถ้าแล้วจะดึงเงินออกทุกปี
       const livingCostPerYear =
-        yearIndex < retiredAge - currentAge
-          ? 0
-          : tempFinancialPlans[yearIndex].livingCostPerYear;
+        r < retiredAge ? 0 : tempFinancialPlans[yearIndex].livingCostPerYear;
       console.log("livingCostPerYear", livingCostPerYear);
 
       const value =
