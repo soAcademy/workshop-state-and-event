@@ -28,7 +28,7 @@
 // import Zipcode7 from "./Zipcodes/Zipcode7";
 // import Zipcode8 from "./Zipcodes/Zipcode8";
 
-import Dashboard from "./Dashboard/Dashboard";
+// import Dashboard from "./Dashboard/Dashboard";
 
 // import DeathCause1 from "./DeathCause/DeathCause1";
 // import DeathCause2 from "./DeathCause/DeathCause2";
@@ -37,7 +37,15 @@ import Dashboard from "./Dashboard/Dashboard";
 // import DeathCause5 from "./DeathCause/DeathCause5";
 // import DeathCause6 from "./DeathCause/DeathCause6";
 // import DeathCause7 from "./DeathCause/DeathCause7";
-import DeathCause8 from "./DeathCause/DeathCause8";
+// import DeathCause8 from "./DeathCause/DeathCause8";
+
+// import Retirement1 from "./Retirement/Retirement1";
+import Retirement2 from "./Retirement/Retirement2";
+// import Retirement3 from "./Retirement/Retirement3";
+// import Retirement4 from "./Retirement/Retirement4";
+// import Retirement5 from "./Retirement/Retirement5";
+// import Retirement6 from "./Retirement/Retirement6";
+// import Retirement7 from "./Retirement/Retirement7";
 
 const App = () => {
   return (
@@ -107,7 +115,16 @@ const App = () => {
       {/* {<DeathCause5/>} */}
       {/* {<DeathCause6/>} */}
       {/* {<DeathCause7/>} */}
-      {<DeathCause8/>}
+      {/* {<DeathCause8/>} */}
+
+      {/* <Retirement1 /> */}
+      <Retirement2 />
+      {/* <Retirement3 /> */}
+      {/* <Retirement4 /> */}
+      {/* <Retirement5 /> */}
+      {/* <Retirement6 /> */}
+      {/* <Retirement7 /> */}
+      {/* <Retirement8 /> */}
     </div>
   );
 };
