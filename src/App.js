@@ -104,7 +104,8 @@
 // import Retirement1 from "./Retirement/Retirement1";
 // import Retirement2 from "./Retirement/Retirement2";
 // import Retirement3 from "./Retirement/Retirement3";
-import Retirement4 from "./Retirement/Retirement4";
+// import Retirement4 from "./Retirement/Retirement4";
+import Retirement5 from "./Retirement/Retirement5";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
@@ -176,7 +177,8 @@ const App = () => (
     {/* <Retirement1 /> */}
     {/* <Retirement2 /> */}
     {/* <Retirement3 /> */}
-    <Retirement4 />
+    {/* <Retirement4 /> */}
+    <Retirement5 />
   </div>
 );
 
