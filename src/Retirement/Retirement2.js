@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
 const Retirement2 = () => {
-  const [currentAge, setCurrentAge] = useState(0);
-  const [lifeSpan, setLifeSpan] = useState(0);
-  const [retirementAge, setRetirementAge] = useState(0);
-  const [monthlySpending, setMonthlySpending] = useState(0);
-  const [inflationRate, setInflationRate] = useState(0);
+  const [currentAge, setCurrentAge] = useState(25);
+  const [lifeSpan, setLifeSpan] = useState(75);
+  const [retirementAge, setRetirementAge] = useState(55);
+  const [monthlySpending, setMonthlySpending] = useState(30000);
+  const [inflationRate, setInflationRate] = useState(4.27);
   const [retirementSavings, setRetirementSavings] = useState(40000000);
 
   useEffect(
@@ -34,6 +34,7 @@ const Retirement2 = () => {
             type="number"
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             id="currentAge"
+            value={currentAge}
           />
         </div>
         <div className="mb-6">
@@ -48,6 +49,7 @@ const Retirement2 = () => {
             onChange={(e) => setLifeSpan(Number(e.target.value))}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             id="lifeSpan"
+            value={lifeSpan}
           />
         </div>
         <div className="mb-6">
@@ -62,6 +64,7 @@ const Retirement2 = () => {
             onChange={(e) => setRetirementAge(Number(e.target.value))}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             id="retirementAge"
+            value={retirementAge}
           />
         </div>
         <div className="mb-6">
@@ -76,6 +79,7 @@ const Retirement2 = () => {
             onChange={(e) => setMonthlySpending(Number(e.target.value))}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             id="monthlySpending"
+            value={monthlySpending}
           />
         </div>
         <div className="mb-6">
@@ -90,6 +94,7 @@ const Retirement2 = () => {
             onChange={(e) => setInflationRate(Number(e.target.value))}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             id="inflationRate"
+            value={inflationRate}
           />
         </div>
         {/* <button>คำนวณ</button> */}
