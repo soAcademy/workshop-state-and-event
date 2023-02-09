@@ -23,8 +23,7 @@ const Retirement5 = () => {
         (1 + Number(inflation) / 100) ** (idx + 1),
     }));
 
-    const _investmentPlans = lifeSpans.reduce((acc, r) => {
-      const yearIndex = acc.length;
+    const _investmentPlans = [...lifeSpans.keys()].reduce((acc, yearIndex) => {
       const pastPortfolioValue = yearIndex > 0 ? acc[yearIndex - 1] : 0;
       const investThisYearValue =
         yearIndex < Number(lifeAge) - Number(currentAge)
@@ -39,6 +38,7 @@ const Retirement5 = () => {
         (1 + Number(investmentReturnRate) / 100);
       return [...acc, value];
     }, []);
+    console.log(_investmentPlans);
 
     const _financialPlans = _financialPlans0.map((r, idx) => ({
       ...r,
