@@ -8,38 +8,80 @@ const Retirement = () => {
   const [inflationRate, setInflationRate] = useState("4.4");
   const [retirementSavings, setRetirementSavings] = useState(40000000);
   const [financialTable, setFinancialTable] = useState([]);
+  const [investmentPerYear, setInvestmentPerYear] = useState(25000);
+  const [investmentReturn, setInvestmentReturn] = useState("6");
 
   const calRetirementSavings = () => {
     const presentExpensePerYear = expensePerMonth * 12;
     console.log("presentExpensePerYear", presentExpensePerYear);
 
     const ages = [];
-    for (let i = retiredAge; i <= dieAge; i++) {
+    for (let i = currentAge; i < dieAge; i++) {
       ages.push(i);
     }
 
     console.log("ages", ages);
 
     const tempFinancialPlans = ages.map((r, idx) => ({
-      age: r,
+      age: r + 1,
       livingCostPerYear:
-        presentExpensePerYear *
-        (1 + Number(inflationRate) / 100) ** (r - currentAge),
+        presentExpensePerYear * (1 + Number(inflationRate) / 100) ** (idx + 1),
     }));
     console.log("tempFinancialPlans", tempFinancialPlans);
-    setFinancialTable(tempFinancialPlans);
+    // setFinancialTable(tempFinancialPlans);
 
-    const tempRetirementSavings = tempFinancialPlans.reduce(
-      (acc, r) => acc + r.livingCostPerYear,
-      0
-    );
+    const tempRetirementSavings = tempFinancialPlans
+      .filter((r) => r.age >= retiredAge)
+      .reduce((acc, r) => acc + r.livingCostPerYear, 0);
     setRetirementSavings(tempRetirementSavings);
     console.log("tempRetirementSavings", tempRetirementSavings);
+
+    const tempInvestmentPlans = ages.reduce((acc, r) => {
+      const yearIndex = acc.length;
+      console.log("yearIndex", yearIndex);
+      const pastPortfolioValue = yearIndex > 0 ? acc[yearIndex - 1] : 0;
+      console.log("pastPortfolioValue", pastPortfolioValue);
+
+      //Check เกษียณยัง? ถ้ายังจะลงเพิ่ม ถ้าแล้วจะไม่ลง
+      const investThisYearValue =
+        yearIndex < retiredAge - currentAge ? investmentPerYear : 0;
+      console.log("investThisYearValue", investThisYearValue);
+      //Check เกษียณยัง? ถ้ายังจะไม่คิดเงินใช้จ่าย ถ้าแล้วจะดึงเงินออกทุกปี
+      const livingCostPerYear =
+        yearIndex < retiredAge - currentAge
+          ? 0
+          : tempFinancialPlans[yearIndex].livingCostPerYear;
+      console.log("livingCostPerYear", livingCostPerYear);
+
+      const value =
+        (Number(pastPortfolioValue) +
+          Number(investThisYearValue) -
+          Number(livingCostPerYear)) *
+        (1 + Number(investmentReturn) / 100);
+      console.log("value", value);
+      return [...acc, value];
+    }, []);
+    console.log("tempInvestmentPlans", tempInvestmentPlans);
+
+    const tempFinancialPlans2 = tempFinancialPlans.map((r, idx) => ({
+      ...r,
+      investmentValue: tempInvestmentPlans[idx],
+    }));
+    console.log("tempFinancialPlans2", tempFinancialPlans2);
+    setFinancialTable(tempFinancialPlans2);
   };
 
   useEffect(() => {
     calRetirementSavings();
-  }, [currentAge, dieAge, retiredAge, expensePerMonth, inflationRate]);
+  }, [
+    currentAge,
+    dieAge,
+    retiredAge,
+    expensePerMonth,
+    inflationRate,
+    investmentPerYear,
+    investmentReturn,
+  ]);
   return (
     <>
       <div className="text-center m-6 w-full">
@@ -91,6 +133,24 @@ const Retirement = () => {
                 onChange={(e) => setInflationRate(e.target.value)}
               />
             </div>
+            <div>
+              <p className="mt-2">เงินลงทุนต่อปี</p>
+              <input
+                type="text"
+                className="bg-white rounded mt-2"
+                value={investmentPerYear}
+                onChange={(e) => setInvestmentPerYear(e.target.value)}
+              />
+            </div>
+            <div>
+              <p className="mt-2">อัตราผลตอบแทนการลงทุนต่อปี %</p>
+              <input
+                type="text"
+                className="bg-white rounded mt-2"
+                value={investmentReturn}
+                onChange={(e) => setInvestmentReturn(e.target.value)}
+              />
+            </div>
           </div>
         </div>
         <div className="mt-4 font-bold">
@@ -105,7 +165,10 @@ const Retirement = () => {
             <thead className="bg-blue-200 border border-black">
               <tr>
                 <td className="p-4 border border-black font-bold">อายุ</td>
-                <td className="p-4 font-bold">ค่าใช้จ่ายต่อปี</td>
+                <td className="p-4 border border-black font-bold">
+                  ค่าใช้จ่ายต่อปี
+                </td>
+                <td className="p-4 font-bold">มูลค่าพอร์ตการลงทุน</td>
               </tr>
             </thead>
             <tbody className="bg-gray-200 border border-black">
@@ -114,6 +177,9 @@ const Retirement = () => {
                   <td className="p-2 border border-black">{r.age}</td>
                   <td className="p-2 border border-black">
                     {Math.round(r.livingCostPerYear).toLocaleString()} บาท
+                  </td>
+                  <td className="p-2 border border-black">
+                    {Math.round(r.investmentValue).toLocaleString()} บาท
                   </td>
                 </tr>
               ))}
