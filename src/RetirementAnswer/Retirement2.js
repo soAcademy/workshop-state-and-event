@@ -6,6 +6,7 @@ const Retirement2 = () => {
   const [retireAge, setRetireAge] = useState("60");
   const [livingCostPerMonth, setLivingCostPerMonth] = useState("30000");
   const [inflation, setInflation] = useState("4.72");
+  const [retirementSaving, setRetirementSaving] = useState("40000000");
 
   const calculateRetirementSaving = () => {
     console.log("Retirement");
@@ -83,10 +84,11 @@ const Retirement2 = () => {
       </div>
       <div className="w-1/2 mx-auto text-center mt-8">
         <h2 className="text-lg font-bold">
-          คุณต้องมีเงินเก็บตอนอายุ 60 ปี จำนวน
+          คุณต้องมีเงินเก็บตอนอายุ {retireAge} ปี จำนวน
         </h2>
         <h1 className="text-5xl font-bold text-red-700 mt-4">
-          40,000,000 ล้านบาท
+          {new Intl.NumberFormat("th-TH").format(retirementSaving)}
+          {" "}ล้านบาท
         </h1>
       </div>
     </div>
