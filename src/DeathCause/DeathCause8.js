@@ -4,22 +4,29 @@ import ReactECharts from "echarts-for-react";
 
 // todo 1 : สร้าง components ตามสิ่งที่เราต้องการโชว์
 // 1.1 components 1: เราจะใส่ "ตาราง" ที่แสดงจำนวนผู้เสียชีวิตแยกตามสาเหตุการเสียชีวิต
-const DeathByCause = ({ totalDeath, deathByCauses }) => (
-  <div className="bg-blue-100 w-1/3">
-    <div>จำนวนผู้เสียชีวิตแยกตามสาเหตุการเสียชีวิต</div>
+const DeathByCause = ({ totalDeath, deathByCauses, setSelectedCause }) => (
+  <div className="bg-gray-100 w-1/3">
+    <div className="p-2 bg-gray-200 text-lg font-bold">จำนวนผู้เสียชีวิตแยกตามสาเหตุการเสียชีวิต</div>
     {/* 1.1.1 mock up table use html tag */}
     <table className="w-full">
       <tbody>
-        <tr>
+        <tr
+          className="hover:bg-white hover:cursor-pointer border-b border-white"
+          onClick={() => setSelectedCause(undefined)}
+        >
           <td>ทั้งหมด</td>
-          <td>{totalDeath.toLocaleString()}</td>
-          <td>100%</td>
+          <td className="bg-pink-200">{totalDeath.toLocaleString()}</td>
+          <td className="bg-sky-200">100%</td>
         </tr>
         {deathByCauses?.map((cause, idx) => (
-          <tr key={idx}>
+          <tr
+            key={idx}
+            className="hover:bg-white hover:cursor-pointer border-b border-white"
+            onClick={() => setSelectedCause(cause.cause)}
+          >
             <td>{cause.cause}</td>
-            <td>{cause.death.toLocaleString()}</td>
-            <td>{((cause.death / totalDeath) * 100).toFixed(2)}%</td>
+            <td className="bg-pink-200">{cause.death.toLocaleString()}</td>
+            <td className="bg-sky-200">{((cause.death / totalDeath) * 100).toFixed(2)}%</td>
           </tr>
         ))}
       </tbody>
@@ -28,21 +35,23 @@ const DeathByCause = ({ totalDeath, deathByCauses }) => (
 );
 // 1.2 components 2: เราจะใส่ "ตาราง" ที่แสดงจำนวนผู้เสียชีวิตแยกตามจังหวัด
 const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
-  <div className="bg-amber-100 w-1/3">
-    <div>จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
+  <div className="bg-gray-100 w-1/3">
+    <div className="p-2 bg-gray-200 text-lg font-bold">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
     {/* 1.2.1 mock up table use html tag */}
     <table className="w-full">
       <tbody>
-        <tr>
+        <tr className=" border-b border-white">
           <td>ทั้งหมด</td>
-          <td>{totalDeath.toLocaleString()}</td>
-          <td>100%</td>
+          <td className="bg-pink-200">{totalDeath.toLocaleString()}</td>
+          <td className="bg-sky-200">100%</td>
         </tr>
         {deathByProvinces?.map((province, idx) => (
-          <tr key={idx}>
+          <tr key={idx} className=" border-b border-white">
             <td>{province.province}</td>
-            <td>{province.death.toLocaleString()}</td>
-            <td>{((province.death / totalDeath) * 100).toFixed(2)}%</td>
+            <td className="bg-pink-200">{province.death.toLocaleString()}</td>
+            <td className="bg-sky-200">
+              {((province.death / totalDeath) * 100).toFixed(2)}%
+            </td>
           </tr>
         ))}
       </tbody>
@@ -51,66 +60,14 @@ const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
 );
 // todo 7. import ReactECharts from "echarts-for-react"; MockUp หน้าตา Data ที่จะเอาไปใส่ Chart
 // 1.3 components 3: เราจะใส่ "กราฟ" ที่แสดงแนวโน้มการเสียชีวิต
-const DeathChart = ({deathByYears,deathBySex}) => (
-  <div className="bg-green-100 w-1/3 p-4">
-    <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
+const DeathChart = ({ chartOption1, chartOption2 }) => (
+  <div className="bg-gray-100 w-1/3">
+    <div className="p-2 bg-gray-200 text-lg font-bold mb-2">แนวโน้มการเสียชีวิต</div>
     {/* 7.1 : line Charts */}
-    <ReactECharts
-      option={{
-        xAxis: {
-          type: "category",
-          data: deathByYears.map((r) => r.year),
-          name: "ปีพ.ศ.",
-        },
-        yAxis: {
-          type: "value",
-          name: "จำนวนผู้เสียชีวิต",
-          max: "dataMax",
-          min: "dataMin",
-        },
-        series: [
-          {
-            data: deathByYears.map((r) => r.death),
-            type: "line",
-            smooth: true,
-            lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
-          },
-        ],
-        tooltip: {
-          trigger: "axis",
-        },
-      }}
-    />
+    <ReactECharts option={chartOption1} />
     <div className="font-bold mb-2">การเสียชีวิตตามเพศ</div>
     {/* 7.2 : Pie Charts */}
-    <ReactECharts
-      option={{
-        tooltip: {
-          trigger: "item",
-        },
-        legend: {
-          orient: "vertical",
-          left: "left",
-        },
-        series: [
-          {
-            type: "pie",
-            radius: "50%",
-            data: [
-              { value: deathBySex.deathMale, name: "ชาย" },
-              { value: deathBySex.deathFemale, name: "หญิง" },
-            ],
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)",
-              },
-            },
-          },
-        ],
-      }}
-    />
+    <ReactECharts option={chartOption2} />
   </div>
 );
 // todo 5.4 : สร้าง components DeathFilter รับ props มาจาก ข้อ 5.3
@@ -135,7 +92,7 @@ const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
   </div>
 );
 
-const DeathCause6 = () => {
+const DeathCause8 = () => {
   // todo 3: Mock up Data ที่ต้องการเอาไปใส่ใน component แล้วส่ง props เพื่อเอาไปคำนวณ
   // todo 5.1 : ดึง unique years จัดเรียงปีให้เรียบร้อย เพราะจะเอาไปทำ option component แล้วเอาไป filter ดูข้อมูลแต่ละปี
   const yearLists = [...new Set(ThailandDeathCause.map((r) => r.year))].sort(
@@ -149,9 +106,15 @@ const DeathCause6 = () => {
   const [totalDeath, setTotalDeath] = useState(0);
   const [deathByCauses, setDeathByCauses] = useState([]);
   const [deathByProvinces, setDeathByProvinces] = useState([]);
-  // todo 8 : สร้าง state deathByYears เอาไว่ส่งไปใช้ใน line chart / deathBySex เอาไว้ใช้กับ pie chart
-  const [deathByYears, setDeathByYears] = useState(0);
-  const [deathBySex, setDeathBySex] = useState(0);
+  // todo 8 : สร้าง state chartOption1 เอาไว่ส่งไปใช้ใน line chart / chartOption2 เอาไว้ใช้กับ pie chart
+  const [chartOption1, setChartOption1] = useState({});
+  const [chartOption2, setChartOption2] = useState({});
+  const [selectedCause, setSelectedCause] = useState();
+
+  useEffect(() => {
+    setSelectedCause(undefined);
+  }, [currentYear]);
+
   // todo 6 : สร้าง useEffect ที่มาตรวจจับการเปลี่ยนแปลงของ current year
   useEffect(() => {
     // todo 6.1 : ยกก้อน calculate ทั้งก้อนมาใส่ไว้ในนี้
@@ -228,7 +191,13 @@ const DeathCause6 = () => {
     const _deathByProvinces = provinceLists
       .map((province) => {
         const totalDeath = deathCauseDatas
-          .filter((r) => r.provinceName === province)
+          .filter(
+            (r) =>
+              r.provinceName === province &&
+              (selectedCause === undefined
+                ? true
+                : r.causeOfDeath === selectedCause)
+          )
           .reduce(
             (acc, r) => ({
               death: acc.death + r.deathFemale + r.deathMale,
@@ -250,7 +219,7 @@ const DeathCause6 = () => {
       }) // todo 4.3.3 กรองเอาจังหวัดที่ไม่มีผู้ตายออก แล้วก็เรียงจากมากไปน้อย
       .filter((r) => r.death > 0)
       .sort((a, b) => b.death - a.death);
-    console.log(deathByProvinces);
+    // console.log(deathByProvinces);
     // todo 8.1 : calculate deathByYears
     const _deathByYears = yearLists
       .map((year) => {
@@ -277,6 +246,31 @@ const DeathCause6 = () => {
       })
       .sort((a, b) => a.year - b.year);
 
+    const _chartOption1 = {
+      xAxis: {
+        type: "category",
+        data: _deathByYears.map((r) => r.year),
+        name: "ปีพ.ศ.",
+      },
+      yAxis: {
+        type: "value",
+        name: "จำนวนผู้เสียชีวิต",
+        max: "dataMax",
+        min: "dataMin",
+      },
+      series: [
+        {
+          data: _deathByYears.map((r) => r.death),
+          type: "line",
+          smooth: true,
+          lineStyle: { color: "#fcba03", width: 5, type: "dashed" },
+        },
+      ],
+      tooltip: {
+        trigger: "axis",
+      },
+    };
+
     // todo 8.2 : calculate deathBySex
     const _deathBySex = deathCauseDatas.reduce(
       (acc, r) => ({
@@ -292,14 +286,41 @@ const DeathCause6 = () => {
     );
     console.log(_deathBySex);
 
+    const _chartOption2 = {
+      tooltip: {
+        trigger: "item",
+      },
+      legend: {
+        orient: "vertical",
+        left: "left",
+      },
+      series: [
+        {
+          type: "pie",
+          radius: "50%",
+          data: [
+            { value: _deathBySex.deathMale, name: "ชาย" },
+            { value: _deathBySex.deathFemale, name: "หญิง" },
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: "rgba(0, 0, 0, 0.5)",
+            },
+          },
+        },
+      ],
+    };
+
     // todo 6.4 : after effect ===> setState 6.3
     setTotalDeath(_totalDeath);
     setDeathByCauses(_deathByCauses);
     setDeathByProvinces(_deathByProvinces);
     //  todo 8.3 : after effect ===> setState 8
-    setDeathByYears(_deathByYears);
-    setDeathBySex(_deathBySex);
-  }, [currentYear]);
+    setChartOption1(_chartOption1);
+    setChartOption2(_chartOption2);
+  }, [currentYear, selectedCause]);
 
   // todo 2: วาง layout ในส่วน render แยกออกเป็น component
   return (
@@ -315,15 +336,20 @@ const DeathCause6 = () => {
       />
       {/* <div className="mt-4">ปีพ.ศ. 2559</div> */}
       <div className="flex space-x-4 mt-4">
-        <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
+        <DeathByCause
+          totalDeath={totalDeath}
+          deathByCauses={deathByCauses}
+          selectedCause={selectedCause}
+          setSelectedCause={setSelectedCause}
+        />
         <DeathByProvince
           totalDeath={totalDeath}
           deathByProvinces={deathByProvinces}
         />
-        <DeathChart deathByYears={deathByYears} deathBySex={deathBySex}/>
+        <DeathChart chartOption1={chartOption1} chartOption2={chartOption2} />
       </div>
     </div>
   );
 };
 
-export default DeathCause6;
+export default DeathCause8;
