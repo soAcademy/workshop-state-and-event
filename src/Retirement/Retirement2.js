@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Retirement2 = () => {
   const [currentAge, setCurrentAge] = useState(0);
@@ -7,6 +7,11 @@ const Retirement2 = () => {
   const [monthlySpending, setMonthlySpending] = useState(0);
   const [inflationRate, setInflationRate] = useState(0);
   const [retirementSavings, setRetirementSavings] = useState(40000000);
+
+  useEffect(
+    () => console.log("Variable changed"),
+    [currentAge, lifeSpan, retirementAge, monthlySpending, inflationRate]
+  );
 
   return (
     <>
@@ -81,7 +86,7 @@ const Retirement2 = () => {
             อัตราเงินเฟ้อ
           </label>
           <input
-            type="text"
+            type="number"
             onChange={(e) => setInflationRate(Number(e.target.value))}
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             id="inflationRate"
