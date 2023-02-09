@@ -26,7 +26,7 @@ const Retirement5 = () => {
     const _investmentPlans = lifeSpans.reduce((acc, yearIndex) => {
       const pastPortfolioValue = yearIndex > 0 ? acc[yearIndex - 1] : 0;
       const investThisYearValue =
-        yearIndex < Number(lifeAge) - Number(currentAge)
+        yearIndex < Number(retireAge) - Number(currentAge)
           ? Number(investmentPerYear)
           : 0;
       const livingCostPerYear =
