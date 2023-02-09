@@ -38,6 +38,7 @@ import DeathCause8 from "./DeathCauseAnswer/DeathCause8";
 import Retirement1 from "./RetirementAnswer/Retirement1";
 import Retirement2 from "./RetirementAnswer/Retirement2";
 import Retirement3 from "./RetirementAnswer/Retirement3";
+import Retirement4 from "./RetirementAnswer/Retirement4";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
@@ -82,7 +83,8 @@ const App = () => {
       {/* <DeathCause8 /> */}
       {/* <Retirement1 /> */}
       {/* <Retirement2 /> */}
-      <Retirement3 />
+      {/* <Retirement3 /> */}
+      <Retirement4 />
     </>
   );
 };
