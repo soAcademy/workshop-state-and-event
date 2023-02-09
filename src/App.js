@@ -34,11 +34,15 @@
 // import DeathCause5 from "./DeathCauses/DeathCause5";
 // import DeathCause6 from "./DeathCauses/DeathCause6";
 // import DeathCause7 from "./DeathCauses/DeathCause7";
-import DeathCause8 from "./DeathCauses/DeathCause8";
+// import DeathCause8 from "./DeathCauses/DeathCause8";
 // import DeathCause1 from "./DeathCauses/DeathCause1";
 // import DeathCause2 from "./DeathCauses/DeathCause2";
 // import DeathCause3 from "./DeathCauses/DeathCause3";
 // import DeathCause4 from "./DeathCauses/DeathCause4";
+// import Retirement1 from "./Retirement/Retirement1";
+// import Retirement2 from "./Retirement/Retirement2";
+// import Retirement3 from "./Retirement/Retirement3";
+import Retirement4 from "./Retirement/Retirement4";
 
 const App = () => {
   return (
@@ -79,7 +83,11 @@ const App = () => {
       {/* <DeathCause5/> */}
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
-      <DeathCause8 />
+      {/* <DeathCause8 /> */}
+      {/* <Retirement1 /> */}
+      {/* <Retirement2/> */}
+      {/* <Retirement3/>  */}
+      <Retirement4/>
 
     </>
   );
