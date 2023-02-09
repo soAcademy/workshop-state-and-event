@@ -5,31 +5,27 @@ const Retirement3 = () => {
   const [lifeSpan, setLifeSpan] = useState(75);
   const [retirementAge, setRetirementAge] = useState(55);
   const [monthlySpending, setMonthlySpending] = useState(30000);
-  const [inflationRate, setInflationRate] = useState(4.27); // 4.72
+  const [inflationRate, setInflationRate] = useState(4.27);
   const [retirementSavings, setRetirementSavings] = useState(40000000);
-  const [
-    listOfAnnualSpendingsWithInflation,
-    setListOfAnnualSpendingsWithInflation,
-  ] = useState([]);
 
   useEffect(() => {
     // console.log("Variable changed")
-    const _listOfAnnualSpendingsWithInflation = [
+    const listOfAnnualSpendingsWithInflation = [
       ...new Array(lifeSpan - currentAge).keys(),
     ].map((yearIndex) => ({
       age: yearIndex + currentAge,
       spending: (1 + inflationRate / 100) ** yearIndex * monthlySpending * 12,
     }));
 
-    console.log(_listOfAnnualSpendingsWithInflation);
+    // console.log(listOfAnnualSpendingsWithInflation);
 
-    const _retirementSavings = _listOfAnnualSpendingsWithInflation
+    const totalRetirementSavings = listOfAnnualSpendingsWithInflation
       .filter((annualSpending) => annualSpending.age >= retirementAge)
       .reduce((acc, annualSpending) => acc + annualSpending.spending, 0);
 
     // console.log(totalRetirementSavings);
-    setListOfAnnualSpendingsWithInflation(_listOfAnnualSpendingsWithInflation);
-    setRetirementSavings(_retirementSavings);
+
+    setRetirementSavings(totalRetirementSavings);
   }, [currentAge, lifeSpan, retirementAge, monthlySpending, inflationRate]);
 
   return (
@@ -124,39 +120,6 @@ const Retirement3 = () => {
       <p className="text-center text-2xl text-red-600">
         {Number(retirementSavings.toFixed(2)).toLocaleString("TH")} บาท
       </p>
-      <div className="relative overflow-x-auto">
-        <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-          <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th className="px-6 py-3">อายุ</th>
-              <th className="px-6 py-3">ค่าใช้จ่ายต่อปี</th>
-            </tr>
-          </thead>
-          <tbody>
-            {listOfAnnualSpendingsWithInflation.map((annualSpending) => (
-              <tr
-                className={`border-b dark:border-gray-700 dark:bg-gray-800
-                  ${
-                    annualSpending.age < retirementAge
-                      ? "bg-green-100 dark:bg-green-800"
-                      : "bg-orange-100 dark:bg-orange-800"
-                  }`}
-              >
-                <td className="px-6 py-4">{annualSpending.age}</td>
-                <td className="px-6 py-4 text-right">
-                  {/* {Number(annualSpending.spending.toFixed(2)).toLocaleString(
-                    "TH"
-                  )} */}
-                  {Intl.NumberFormat("en-TH", {
-                    style: "currency",
-                    currency: "THB",
-                  }).format(annualSpending.spending.toFixed(2))}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
     </>
   );
 };

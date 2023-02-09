@@ -5,11 +5,8 @@ const Retirement4 = () => {
   const [lifeSpan, setLifeSpan] = useState(75);
   const [retirementAge, setRetirementAge] = useState(55);
   const [monthlySpending, setMonthlySpending] = useState(30000);
-  const [inflationRate, setInflationRate] = useState(4.72); // 4.27
+  const [inflationRate, setInflationRate] = useState(4.27); // 4.72
   const [retirementSavings, setRetirementSavings] = useState(40000000);
-  const [investmentAmount, setInvestmentAmount] = useState(20000);
-  const [benefitRate, setBenefitRate] = useState(8);
-
   const [
     listOfAnnualSpendingsWithInflation,
     setListOfAnnualSpendingsWithInflation,
@@ -19,57 +16,21 @@ const Retirement4 = () => {
     // console.log("Variable changed")
     const _listOfAnnualSpendingsWithInflation = [
       ...new Array(lifeSpan - currentAge).keys(),
-    ]
-      .map((yearIndex) => ({
-        age: yearIndex + currentAge,
-        spending: (1 + inflationRate / 100) ** yearIndex * monthlySpending * 12,
-        portfolioValueByYear:
-          yearIndex + currentAge < retirementAge
-            ? (1 + benefitRate / 100) ** yearIndex * investmentAmount * 12
-            : 0,
-      }))
-      .reduce((accArray, annualSpending, idx) => {
-        return [
-          ...accArray,
-          {
-            age: annualSpending.age,
-            spending: annualSpending.spending,
-            portfolioValueByYear: annualSpending.portfolioValueByYear,
-            remainingPortfolio:
-              (idx > 0
-                ? annualSpending.portfolioValueByYear +
-                  accArray[idx - 1].remainingPortfolio
-                : annualSpending.portfolioValueByYear) -
-              (annualSpending.age < retirementAge
-                ? 0
-                : annualSpending.spending),
-          },
-        ];
-      }, []);
+    ].map((yearIndex) => ({
+      age: yearIndex + currentAge,
+      spending: (1 + inflationRate / 100) ** yearIndex * monthlySpending * 12,
+    }));
 
-    // console.log(_list);
-
-    // console.log(_listOfAnnualSpendingsWithInflation);
+    console.log(_listOfAnnualSpendingsWithInflation);
 
     const _retirementSavings = _listOfAnnualSpendingsWithInflation
       .filter((annualSpending) => annualSpending.age >= retirementAge)
       .reduce((acc, annualSpending) => acc + annualSpending.spending, 0);
 
     // console.log(totalRetirementSavings);
-
-    // const
-
     setListOfAnnualSpendingsWithInflation(_listOfAnnualSpendingsWithInflation);
     setRetirementSavings(_retirementSavings);
-  }, [
-    currentAge,
-    lifeSpan,
-    retirementAge,
-    monthlySpending,
-    inflationRate,
-    investmentAmount,
-    benefitRate,
-  ]);
+  }, [currentAge, lifeSpan, retirementAge, monthlySpending, inflationRate]);
 
   return (
     <>
@@ -145,7 +106,7 @@ const Retirement4 = () => {
             htmlFor="inflationRate"
             className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
           >
-            อัตราเงินเฟ้อต่อปี
+            อัตราเงินเฟ้อ
           </label>
           <input
             type="number"
@@ -156,37 +117,6 @@ const Retirement4 = () => {
           />
         </div>
         {/* <button>คำนวณ</button> */}
-        <div></div>
-        <div className="mb-6">
-          <label
-            htmlFor="investmentAmount"
-            className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-          >
-            จำนวนเงินลงทุนต่อเดือน
-          </label>
-          <input
-            type="number"
-            onChange={(e) => setInvestmentAmount(Number(e.target.value))}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            id="investmentAmount"
-            value={investmentAmount}
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="benefitRate"
-            className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-          >
-            อัตราผลตอบแทนการลงทุนต่อปี
-          </label>
-          <input
-            type="number"
-            onChange={(e) => setBenefitRate(Number(e.target.value))}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            id="benefitRate"
-            value={benefitRate}
-          />
-        </div>
       </form>
       <p className="text-center">
         คุณต้องมีเงินเก็บตอนอายุ {retirementAge} ปี จำนวน
@@ -195,20 +125,16 @@ const Retirement4 = () => {
         {Number(retirementSavings.toFixed(2)).toLocaleString("TH")} บาท
       </p>
       <div className="relative overflow-x-auto">
-        <table className="w-full text-left font-nstl text-sm text-gray-500 dark:text-gray-400">
+        <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
           <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th className="px-6 py-3">อายุ</th>
               <th className="px-6 py-3">ค่าใช้จ่ายต่อปี</th>
-              <th className="px-6 py-3">จำนวนเงินลงทุนรวมผลตอบแทนต่อปี</th>
-              {/* <th className="px-6 py-3">จำนวนเงินลงทุนรวมผลตอบแทนสะสม</th> */}
-              <th className="px-6 py-3">มูลค่าพอร์ตคงเหลือ</th>
             </tr>
           </thead>
           <tbody>
             {listOfAnnualSpendingsWithInflation.map((annualSpending) => (
               <tr
-                key={annualSpending.age}
                 className={`border-b dark:border-gray-700 dark:bg-gray-800
                   ${
                     annualSpending.age < retirementAge
@@ -225,24 +151,6 @@ const Retirement4 = () => {
                     style: "currency",
                     currency: "THB",
                   }).format(annualSpending.spending.toFixed(2))}
-                </td>
-                <td className="px-6 py-4 text-right">
-                  {Intl.NumberFormat("en-TH", {
-                    style: "currency",
-                    currency: "THB",
-                  }).format(annualSpending.portfolioValueByYear.toFixed(2))}
-                </td>
-                <td
-                  className={`px-6 py-4 text-right ${
-                    annualSpending.remainingPortfolio >= 0
-                      ? "text-gray-500 dark:text-gray-400"
-                      : "text-red-500 dark:text-red-300"
-                  }`}
-                >
-                  {Intl.NumberFormat("en-TH", {
-                    style: "currency",
-                    currency: "THB",
-                  }).format(annualSpending.remainingPortfolio.toFixed(2))}
                 </td>
               </tr>
             ))}
