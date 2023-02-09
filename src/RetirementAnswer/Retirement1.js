@@ -53,7 +53,7 @@ const Retirement1 = () => {
               <label>อัตราเงินเฟ้อต่อปี (%)</label>
               <br />
               <input
-                type="number"
+                type="text"
                 name="inflation"
                 className="p-2 w-full mt-2"
                 placeholder="4.72"
