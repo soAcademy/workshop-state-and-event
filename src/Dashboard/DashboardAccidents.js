@@ -133,9 +133,9 @@ const DashboardAccidents = () => {
       </div>
       <button
         onClick={() => setStatBarOpened(!statBarOpened)}
-        className={`fixed top-5 right-0 w-8 bg-white shadow-md h-10 
+        className={`fixed top-1/2 right-0 w-8 bg-white shadow-md h-10 
         items-center flex justify-center duration-500 transform-translate" 
-        ${statBarOpened ? "-translate-x-[415px]" : ""}`}
+        ${statBarOpened ? "-translate-x-[400px] md:-translate-x-[415px]" : ""}`}
       >
         <p className="font-bold text-xl">{statBarOpened ? ">" : "<"}</p>
       </button>

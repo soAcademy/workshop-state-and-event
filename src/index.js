@@ -12,6 +12,7 @@ import AppAccordian from "./AppAccordian";
 import AppTrivia from "./AppTrivia";
 import Map from "./Dashboard/Map";
 import * as serviceWorker from './serviceWorker';
+import AppRetirement from "./AppRetirement";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,9 +21,10 @@ root.render(
     {/* <AppToDoList /> */}
     {/* <AppChart /> */}
     {/* <Map /> */}
-    <AppDashBoard />
+    {/* <AppDashBoard /> */}
     {/* <AppAccordian /> */}
     {/* <AppTrivia /> */}
+    <AppRetirement />
   </React.StrictMode>
 );
 
