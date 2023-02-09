@@ -6,33 +6,60 @@ const Retirement2 = () => {
   const [ageRet, setAgeRet] = useState(60);
   const [expense, setExpense] = useState(30000);
   const [inflat, setInflat] = useState(4.72);
+  const [invest, setInvest] = useState(10000);
+  const [rate, setRate] = useState(7);
+
   const [savingYears, setSavingYears] = useState([]);
   const [resSaving, setResSaving] = useState(0);
 
   useEffect(() => {
-    console.log(ageNow, ageEOL, ageRet, expense, inflat);
+    // console.log(ageNow, ageEOL, ageRet, expense, inflat, invest, rate);
 
     if (ageEOL >= ageRet && ageRet >= ageNow && ageNow > 0) {
-      const rangeAge = ageEOL - ageNow + 1;
-      // console.log(rangeAge);
+      //financial plan
+      const financialPlan = [...Array(ageEOL - ageNow + 1)]
+        ?.map((r, idx) => ({
+          age: ageNow + idx,
+          savPerYr:
+            expense * 12 * Math.pow(1 + inflat / 100, ageNow + idx - ageNow),
+        }))
+        .reduce((acc, r, idx) => {
+          // console.log(acc);
+          return idx === 0
+            ? [
+                {
+                  age: r.age,
+                  savPerYr: r.savPerYr,
+                  savPlan: invest * 12 * (1 + rate / 100),
+                },
+              ]
+            : [
+                ...acc,
+                {
+                  age: r.age,
+                  savPerYr: r.savPerYr,
+                  savPlan:
+                    r.age <= ageRet
+                      ? (acc[acc.length - 1].savPlan + invest * 12) *
+                        (1 + rate / 100)
+                      : (acc[acc.length - 1].savPlan - r.savPerYr) *
+                        (1 + rate / 100),
+                },
+              ];
+        }, []);
+      // console.log(financialPlan);
+      setSavingYears(financialPlan);
 
-      const savingYears = [...Array(rangeAge)]?.map((r, idx) => ({
-        age: ageNow + idx,
-        savPerYr:
-          expense * 12 * Math.pow(1 + inflat / 100, ageNow + idx - ageNow),
-      }));
-      console.log(savingYears);
-      setSavingYears(savingYears);
-
-      const sumRetReq = savingYears.reduce((acc, r) => {
-        return r.age >= ageRet ? acc + r.savPerYr : acc;
-      }, 0);
+      const sumRetReq = financialPlan.reduce(
+        (acc, r) => (r.age > ageRet ? acc + r.savPerYr : acc),
+        0
+      );
       // console.log(sumRetReq);
       setResSaving(sumRetReq);
     } else {
       setResSaving(0);
     }
-  }, [ageNow, ageEOL, ageRet, expense, inflat]);
+  }, [ageNow, ageEOL, ageRet, expense, inflat, invest, rate]);
 
   return (
     <div className="w-full h-full flex justify-center font-prompt p-14">
@@ -45,10 +72,10 @@ const Retirement2 = () => {
             <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                  คุณอายุเท่าไร
+                  คุณอายุเท่าไร (ปี)
                 </label>
                 <input
-                  type="text"
+                  type="Number"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                   required
                   value={ageNow}
@@ -57,10 +84,10 @@ const Retirement2 = () => {
               </div>
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                  มีอายุถึงกี่ปี
+                  มีอายุถึงกี่ปี (ปี)
                 </label>
                 <input
-                  type="text"
+                  type="Number"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                   required
                   value={ageEOL}
@@ -69,10 +96,10 @@ const Retirement2 = () => {
               </div>
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                  เกษียณตอนอายุ
+                  เกษียณตอนอายุ (ปี)
                 </label>
                 <input
-                  type="text"
+                  type="Number"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                   required
                   value={ageRet}
@@ -81,22 +108,25 @@ const Retirement2 = () => {
               </div>
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                  ค่าใช้จ่ายต่อเดือน
+                  ค่าใช้จ่ายต่อเดือน (บาท)
                 </label>
                 <input
-                  type="text"
+                  type="Number"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                   required
                   value={expense}
                   onChange={(e) => setExpense(Number(e.target.value))}
                 />
+                <div className="text-sm text-gray-400 pl-3">
+                  ปีละ {(expense * 12).toLocaleString("TH")} บาท
+                </div>
               </div>
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                  อัตราเงินเฟ้อ
+                  อัตราเงินเฟ้อ (%)
                 </label>
                 <input
-                  type="text"
+                  type="Number"
                   step="0.01"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                   required
@@ -104,14 +134,36 @@ const Retirement2 = () => {
                   onChange={(e) => setInflat(Number(e.target.value))}
                 />
               </div>
-            </div>
-            <div className="w-full">
-              {/* <button
-              type="submit"
-              className="w-full bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-            >
-              คำนวน
-            </button> */}
+
+              <div></div>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                  เงินลงทุนต่อเดือน (บาท)
+                </label>
+                <input
+                  type="Number"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                  required
+                  value={invest}
+                  onChange={(e) => setInvest(Number(e.target.value))}
+                />
+                <div className="text-sm text-gray-400 pl-3">
+                  ปีละ {(invest * 12).toLocaleString("TH")} บาท
+                </div>
+              </div>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                  อัตราผลตอบแทนการลงทุนต่อปี (%)
+                </label>
+                <input
+                  type="Number"
+                  step="0.01"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                  required
+                  value={rate}
+                  onChange={(e) => setRate(Number(e.target.value))}
+                />
+              </div>
             </div>
           </form>
           <div>
@@ -126,32 +178,47 @@ const Retirement2 = () => {
           </div>
         </div>
 
-        <div className="text-sm bg-gray-100 rounded-lg shadow-lg p-4">
-          <table className="w-full border-collapse border border-slate-400">
-            <thead>
-              <tr>
-                <th className="bg-gray-200 border border-slate-300 py-1">
-                  ปีที่
-                </th>
-                <th className="bg-gray-200 border border-slate-300 py-1">
-                  ค่าใช้จ่ายต่อปี
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {savingYears.map((year) => (
-                <tr key={year.age}>
-                  <td className="text-center border border-slate-300 py-1">
-                    {year.age}
-                  </td>
-                  <td className="text-center border border-slate-300 py-1">
-                    {Math.round(year.savPerYr).toLocaleString("TH")}
-                  </td>
+        {resSaving > 0 && (
+          <div className="text-sm bg-gray-100 rounded-lg shadow-lg p-4">
+            <table className="w-full border-collapse border border-slate-400">
+              <thead className="sticky top-0">
+                <tr>
+                  <th className="bg-gray-200 border border-slate-300 py-1">
+                    อายุ (ปี)
+                  </th>
+                  <th className="bg-gray-200 border border-slate-300 py-1">
+                    ค่าใช้จ่ายต่อปี (บาท)
+                  </th>
+                  <th className="bg-gray-200 border border-slate-300 py-1">
+                    เงินเก็บสิ้นปี (บาท)
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {savingYears.map((year) => (
+                  <tr
+                    key={year.age}
+                    className={`${year.age > ageRet ? `bg-gray-200` : ``}`}
+                  >
+                    <td className="text-center border border-slate-300 py-1">
+                      {year.age}
+                    </td>
+                    <td className="text-center border border-slate-300 py-1">
+                      {Math.round(year.savPerYr).toLocaleString("TH")}
+                    </td>
+                    <td
+                      className={`text-center border border-slate-300 py-1 ${
+                        year.savPlan < 0 ? `text-red-400` : `text-black`
+                      }`}
+                    >
+                      {Math.round(year.savPlan).toLocaleString("TH")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
