@@ -3,50 +3,69 @@ import { useState, useEffect } from "react";
 const Retirement1 = () => {
   const [currentAge, setCurrentAge] = useState(25);
   const [lifeAge, setLifeAge] = useState(70);
-  const [retireAge, setRetireAge] = useState(0);
-  const [monthlyExpense, setMonthlyExpense] = useState(30000);
+  const [retireAge, setRetireAge] = useState(55);
+  const [monthlyExpense, setMonthlyExpense] = useState(70000);
   const [inflat, setInflat] = useState(4.2);
-  const [retireSaving, setRetireSaving] = useState(60)
-  const [financialPlan, setFinancialPlan] = useState([])
-  const [invest, setInvest] = useState(50000)
-  const [port, setPort] = useState(7)
+  const [retireSaving, setRetireSaving] = useState(60);
+  const [financialPlan, setFinancialPlan] = useState([]);
+  const [invest, setInvest] = useState(50000);
+  const [port, setPort] = useState(7);
 
+  const lifeSpans = [...Array(Number(lifeAge) - Number(currentAge)).keys()];
 
-  const retireAmountCalcuation = () => {
-    const _financialPlan = [...Array(Number(lifeAge) - Number(currentAge))].map(
-      (r, idx) => ({
-        age: Number(currentAge) + idx + 1,
-        yearlyExpense:
-          Number(monthlyExpense) * 12 * (1 + Number(inflat / 100)) ** idx,
-      })
-    );
-    console.log("_financialPlan:", _financialPlan)
+  const retireAmountCalculation = () => {
+    const _financialPlan = lifeSpans.map((r, idx) => ({
+      age: Number(currentAge) + idx + 1,
+      yearlyExpense:
+        Number(monthlyExpense) * 12 * (1 + Number(inflat / 100)) ** idx,
+    }));
+    console.log("_financialPlan", _financialPlan);
+
 
 
     const _retireSaving = _financialPlan
       .filter((r) => r.age >= Number(retireAge))
-      .reduce((acc, r) => acc + r.yearlyExpense, 0);
+      // .reduce((acc, r) => acc + r.yearlyExpense, 0);
 
     
-    setRetireSaving(_retireSaving)
+
+    setRetireSaving(_retireSaving);
     console.log("retireSaving:", retireSaving);
-    setFinancialPlan(_financialPlan)
-    console.log("financialPlan:", financialPlan)
-  };
+    setFinancialPlan(_financialPlan);
+    console.log("financialPlan:", financialPlan);
+
+    
+};
 
   // const investAmountCalcuation = () => {
-    const _financialPlanB = [...Array(Number(lifeAge) - Number(currentAge))].reduce(
-      (acc, yridx) => ({
-      const investAcc = yridx > 0 ? acc[yridx-1] : 0;
-      
-      conts result = ((investAcc - yearlyExpense + invest)*(1 + Number(port))/100)
-      return (
-        ...acc,result
-      )  
-      
-      })
-    );
-    console.log(_financialPlanB)
+  // const _financialPlanB = [...Array(Number(lifeAge) - Number(currentAge)).keys()].reduce(
+  //   (acc, yridx) => {
+  //   const investAcc = yridx > 0 ? acc[yridx-1] : 0;
+  //   const yearlyExpense = yridx < Number(retireAge) - Number(currentAge) ? 0 : _financialPlan[yridx].yearlyExpense;
+  //   const invest = yridx > Number(retireAge) - Number(currentAge) ? 0 : Number(invest);
+
+  //   conts result = ((investAcc - yearlyExpense + invest)*(1 + Number(port))/100)
+  //   return (
+  //     ...acc,result
+  //   )
+
+  //   },[]
+  // );
+  const investmentPlans = lifeSpans.reduce((acc, yearIndex) => {
+    return [...acc
+  
+    ]
+    
+   
+    // const pastPortfolioValue = yearIndex > 0 ? acc[yearIndex] : 0;
+    // const isNotRetire = yearIndex < Number(retireAge) - Number(currentAge);
+    // const investThisYearValue = isNotRetire ? Number(invest) : 0;
+    // const livingCostPerYear = isNotRetire
+    //   ? 0
+    //   : financialPlan[yearIndex].yearlyExpense;
+},[]);
+  console.log("investmentPlans:", investmentPlans);
+  
 
   useEffect(() => {
     if (
@@ -56,13 +75,13 @@ const Retirement1 = () => {
       currentAge <= retireAge &&
       retireAge <= lifeAge &&
       monthlyExpense > 0 &&
-      inflat > 0
+      inflat > 0 &&
+      invest > 0 &&
+      port > 0
     ) {
-      retireAmountCalcuation();
+      retireAmountCalculation();
     }
-  }, [currentAge, lifeAge, retireAge, monthlyExpense, inflat]);
-
-
+  }, [currentAge, lifeAge, retireAge, monthlyExpense, inflat, invest, port]);
 
   return (
     <div className="">
@@ -112,11 +131,11 @@ const Retirement1 = () => {
         </div>
         {/* <button className="rounded-lg mx-auto text-2xl font-bold">คำนวณ</button> หาวิธีให้อยู่ตรงกลาง*/}
         <div className="grid grid-cols-2">
-        <div className="text-xl pt-3">
+          <div className="text-xl pt-3">
             มูลค่าเงินลงทุนต่อปี{" "}
             <input
               type="Number"
-              defaultValue={inflat}
+              defaultValue={invest}
               onChange={(e) => setInvest(Number(e.target.value))}
             />
           </div>
@@ -124,11 +143,11 @@ const Retirement1 = () => {
             อัตราผลตอบแทนต่อปี{" "}
             <input
               type="Number"
-              defaultValue={inflat}
+              defaultValue={port}
               onChange={(e) => setPort(Number(e.target.value))}
             />
           </div>
-          </div>
+        </div>
       </div>
       <div className="text-center text-2xl mt-3 font-bold">
         คุณต้องมีเงินเก็บตอนอายุ {retireAge}ปี จำนวน
