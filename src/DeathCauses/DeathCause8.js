@@ -3,13 +3,15 @@ import ThailandDeathCause from "./thailand-death-cause.json";
 import ReactECharts from "echarts-for-react";
 // อันนี้เอา Hardcode ของ Chart ออก แล้วก็ Map ข้อมูลเข้าไปในกราฟ แล้วก็คลิกแล้วทำให้ข้อมูลที่มีลูกเล่นด้วยเวลาเราเล่น
 
-const DeathByCause = ({totalDeath, deathByCauses, setSelectedCause,}) => (
+const DeathByCause = ({ totalDeath, deathByCauses, setSelectedCause }) => (
   <div className="bg-blue-100 w-1/3 p-4">
     <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
     <table className="w-full table-auto">
       <tbody>
-      <tr className="hover:bg-red-100 hover:cursor-pointer"
-            onClick={() => setSelectedCause(undefined)}>
+        <tr
+          className="hover:bg-red-100 hover:cursor-pointer"
+          onClick={() => setSelectedCause(undefined)}
+        >
           <td>ทั้งหมด</td>
           <td>{totalDeath.toLocaleString()}</td>
           <td>100%</td>
@@ -146,36 +148,37 @@ const DeathCause8 = () => {
     // console.log(_provinceLists);
 
     const _deathByProvinces = provinceLists
-    .map((province) => {
-      const totalDeath = deathCauseDatas
-        .filter(
-          (r) =>
-            r.provinceName === province &&
-            (selectedCause === undefined
-              ? true: r.causeOfDeath === selectedCause)
-        )
-        .reduce(
-          (acc, r) => ({
-            death: acc.death + r.deathFemale + r.deathMale,
-            deathFemale: acc.deathFemale + r.deathFemale,
-            deathMale: acc.deathMale + r.deathMale,
-          }),
-          {
-            death: 0,
-            deathFemale: 0,
-            deathMale: 0,
-          }
-        );
-      return {
-        province,
-        death: totalDeath.death,
-        deathFemale: totalDeath.deathFemale,
-        deathMale: totalDeath.deathMale,
-      };
-    })
-    .filter((r) => r.death > 0)
-    .sort((a, b) => b.death - a.death);
-  // console.log(_deathByProvinces);
+      .map((province) => {
+        const totalDeath = deathCauseDatas
+          .filter(
+            (r) =>
+              r.provinceName === province &&
+              (selectedCause === undefined
+                ? true
+                : r.causeOfDeath === selectedCause)
+          )
+          .reduce(
+            (acc, r) => ({
+              death: acc.death + r.deathFemale + r.deathMale,
+              deathFemale: acc.deathFemale + r.deathFemale,
+              deathMale: acc.deathMale + r.deathMale,
+            }),
+            {
+              death: 0,
+              deathFemale: 0,
+              deathMale: 0,
+            }
+          );
+        return {
+          province,
+          death: totalDeath.death,
+          deathFemale: totalDeath.deathFemale,
+          deathMale: totalDeath.deathMale,
+        };
+      })
+      .filter((r) => r.death > 0)
+      .sort((a, b) => b.death - a.death);
+    // console.log(_deathByProvinces);
     // อันนี้แหละคือตัวที่ทำให้ตอนที่เราจังหวัดมันเปลี่ยน
 
     const _deathByYears = years
