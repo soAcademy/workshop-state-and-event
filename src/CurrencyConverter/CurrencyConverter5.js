@@ -27,39 +27,25 @@ const CurrencyConverter5 = () => {
   const [optionForExchangeRates, setOptionForExchangeRates] = useState({});
 
   useEffect(() => {
-    // console.log(encodeURIComponent(MIDMARKET_CONVERTER));
+    // axios({
+    //   method: "GET",
+    //   url: anyOriginUrl(MIDMARKET_CONVERTER),
+    // }).then((response) => {
+    //   console.log(response);
+    //   // setConverter(response);
+    // });
 
-    axios({
-      method: "GET",
-      url: anyOriginUrl(MIDMARKET_CONVERTER),
-      // url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
-      //   "https://www.xe.com/api/protected/midmarket-converter/"
-      // )}`,
-      headers: { authorization: AUTH_HEADER },
-    }).then((response) => {
-      // console.log(response);
-      setConverter(response.data);
-      const currencyArray = Object.keys(midmarketConverter.rates);
+    setConverter(midmarketConverter);
+    const currencyArray = Object.keys(midmarketConverter.rates);
 
-      // console.log(currencyArray);
+    // console.log(currencyArray);
 
-      setCurrencyList(currencyArray);
-      // console.log(converter?.rates);
-      // console.log(converter?.rates[fromCurrency]);
-      setFromCurrencyRate(converter?.rates[fromCurrency]);
-      setToCurrencyRate(converter?.rates[toCurrency]);
-    });
-
-    // setConverter(midmarketConverter);
-    // const currencyArray = Object.keys(midmarketConverter.rates);
-
-    // // console.log(currencyArray);
-
-    // setCurrencyList(currencyArray);
-    // // console.log(converter?.rates);
-    // // console.log(converter?.rates[fromCurrency]);
-    // setFromCurrencyRate(converter?.rates[fromCurrency]);
-    // setToCurrencyRate(converter?.rates[toCurrency]);
+    setCurrencyList(currencyArray);
+    // console.log(converter?.rates);
+    // console.log(converter?.rates[fromCurrency]);
+    setFromCurrencyRate(converter?.rates[fromCurrency]);
+    setToCurrencyRate(converter?.rates[toCurrency]);
+    // setAmount();
   }, [converter, fromCurrency, toCurrency]);
 
   useEffect(() => {

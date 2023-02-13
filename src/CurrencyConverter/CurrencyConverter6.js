@@ -1,41 +1,99 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+import EChartsReact from "echarts-for-react";
 import midmarketConverter from "./midmarket-converter.json";
+import statistics from "./statistics-THB-USD.json";
+import chartingRates from "./charting-rates-THB-USD.json";
 
 const MIDMARKET_CONVERTER =
   "https://www.xe.com/api/protected/midmarket-converter/";
 
+const AUTH_HEADER =
+  "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+
 const anyOriginUrl = (url) =>
   `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(url)}`;
 
-const CurrencyConverter4 = () => {
+const CurrencyConverter6 = () => {
   const [converter, setConverter] = useState(undefined);
+  const [statData, setStatData] = useState(undefined);
+  const [chartData, setChartData] = useState(undefined);
   const [amount, setAmount] = useState(1);
   const [currencyList, setCurrencyList] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("THB");
   const [toCurrency, setToCurrency] = useState("USD");
   const [fromCurrencyRate, setFromCurrencyRate] = useState(1);
   const [toCurrencyRate, setToCurrencyRate] = useState(1);
+  const [optionForExchangeRates, setOptionForExchangeRates] = useState({});
 
   useEffect(() => {
-    setConverter(midmarketConverter);
-    const currencyArray = Object.keys(midmarketConverter.rates);
+    // console.log(encodeURIComponent(MIDMARKET_CONVERTER));
 
-    // console.log(currencyArray);
+    axios({
+      method: "GET",
+      url: anyOriginUrl(MIDMARKET_CONVERTER),
+      // url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+      //   "https://www.xe.com/api/protected/midmarket-converter/"
+      // )}`,
+      headers: { authorization: AUTH_HEADER },
+    }).then((response) => {
+      // console.log(response);
+      setConverter(response.data);
+      const currencyArray = Object.keys(midmarketConverter.rates);
 
-    setCurrencyList(currencyArray);
-    // console.log(converter?.rates);
-    // console.log(converter?.rates[fromCurrency]);
-    setFromCurrencyRate(converter?.rates[fromCurrency]);
-    setToCurrencyRate(converter?.rates[toCurrency]);
-    // setAmount();
+      // console.log(currencyArray);
+
+      setCurrencyList(currencyArray);
+      // console.log(converter?.rates);
+      // console.log(converter?.rates[fromCurrency]);
+      setFromCurrencyRate(converter?.rates[fromCurrency]);
+      setToCurrencyRate(converter?.rates[toCurrency]);
+    });
+
+    // setConverter(midmarketConverter);
+    // const currencyArray = Object.keys(midmarketConverter.rates);
+
+    // // console.log(currencyArray);
+
+    // setCurrencyList(currencyArray);
+    // // console.log(converter?.rates);
+    // // console.log(converter?.rates[fromCurrency]);
+    // setFromCurrencyRate(converter?.rates[fromCurrency]);
+    // setToCurrencyRate(converter?.rates[toCurrency]);
   }, [converter, fromCurrency, toCurrency]);
+
+  useEffect(() => {
+    setStatData(statistics);
+    setChartData(chartingRates);
+
+    const _optionForExchangeRates = {
+      xAxis: {
+        type: "category",
+        data: [
+          ...new Array(chartingRates.batchList[0].rates.length - 1).keys(),
+        ],
+      },
+      yAxis: {
+        type: "value",
+      },
+      series: [
+        {
+          data: chartingRates.batchList[0].rates.slice(1).reverse(),
+          type: "line",
+          smooth: true,
+        },
+      ],
+    };
+
+    setOptionForExchangeRates(_optionForExchangeRates);
+  }, [statData]);
 
   // const handleCalculateClick = () => {};
 
   return (
     <div className="">
       <div className="mx-auto my-8 w-3/4 bg-gray-100 p-6">
-        <h1 className="text-center text-xl font-bold">คำนวนอัตราแลกเปลี่ยน</h1>
+        <h1 className="text-center text-xl font-bold">คำนวณอัตราแลกเปลี่ยน</h1>
         <form>
           <div className="my-4 flex space-x-8">
             <div className="w-1/2">
@@ -129,42 +187,43 @@ const CurrencyConverter4 = () => {
         <div>
           <h3 className="my-4 text-sm font-bold">1 วัน</h3>
           <p className="my-4 text-lg font-bold">
-            1 {fromCurrency} = 0.0249101 {toCurrency}
+            1 {fromCurrency} = {statData?.last1Days.average} {toCurrency}
           </p>
           <p className="my-4 text-sm font-bold">
-            1 {toCurrency} = 32.0190 {fromCurrency}
+            1 {toCurrency} = {1 / statData?.last1Days.average} {fromCurrency}
           </p>
         </div>
         <div>
           <h3 className="my-4 text-sm font-bold">7 วัน</h3>
           <p className="my-4 text-lg font-bold">
-            1 {fromCurrency} = 0.0249101 {toCurrency}
+            1 {fromCurrency} = {statData?.last7Days.average} {toCurrency}
           </p>
           <p className="my-4 text-sm font-bold">
-            1 {toCurrency} = 32.0190 {fromCurrency}
+            1 {toCurrency} = {1 / statData?.last7Days.average} {fromCurrency}
           </p>
         </div>
         <div>
           <h3 className="my-4 text-sm font-bold">30 วัน</h3>
           <p className="my-4 text-lg font-bold">
-            1 {fromCurrency} = 0.0249101 {toCurrency}
+            1 {fromCurrency} = {statData?.last30Days.average} {toCurrency}
           </p>
           <p className="my-4 text-sm font-bold">
-            1 {toCurrency} = 32.0190 {fromCurrency}
+            1 {toCurrency} = {1 / statData?.last30Days.average} {fromCurrency}
           </p>
         </div>
         <div>
           <h3 className="my-4 text-sm font-bold">60 วัน</h3>
           <p className="text-ls my-4 font-bold">
-            1 {fromCurrency} = 0.0249101 {toCurrency}
+            1 {fromCurrency} = {statData?.last60Days.average} {toCurrency}
           </p>
           <p className="my-4 text-sm font-bold">
-            1 {toCurrency} = 32.0190 {fromCurrency}
+            1 {toCurrency} = {1 / statData?.last60Days.average} {fromCurrency}
           </p>
         </div>
       </div>
+      <EChartsReact option={optionForExchangeRates} />
     </div>
   );
 };
 
-export default CurrencyConverter4;
+export default CurrencyConverter6;
