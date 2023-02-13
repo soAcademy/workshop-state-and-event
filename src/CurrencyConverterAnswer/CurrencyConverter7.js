@@ -5,6 +5,7 @@ import axios from "axios";
 const useFetchExchangeRate = ({ authToken }) => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
+  console.log("useFetchExchangeRate");
   useEffect(() => {
     axios({
       url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
@@ -14,9 +15,10 @@ const useFetchExchangeRate = ({ authToken }) => {
         Authorization: authToken,
       },
     }).then((res) => {
+      console.log("useFetchExchangeRate", res.data);
       const _exchangeRates = res.data;
       const _currencyLists = Object.keys(_exchangeRates.rates);
-      console.log(_currencyLists);
+      console.log("currencyLists", _currencyLists);
       setExchangeRates(_exchangeRates);
       setCurrencyLists(_currencyLists);
     });
@@ -129,7 +131,7 @@ const CurrencyConverter7 = () => {
   const authToken =
     "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
-  const { exchangeRates, currencyLists } = useFetchExchangeRate(authToken);
+  const { exchangeRates, currencyLists } = useFetchExchangeRate({ authToken });
   const {
     fromCurrency,
     setFromCurrency,
