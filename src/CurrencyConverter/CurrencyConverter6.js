@@ -2,11 +2,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import EChartsReact from "echarts-for-react";
 // import midmarketConverter from "./midmarket-converter.json";
-import statistics from "./statistics-THB-USD.json";
-import chartingRates from "./charting-rates-THB-USD.json";
+// import statistics from "./statistics-THB-USD.json";
+// import chartingRates from "./charting-rates-THB-USD.json";
 
 const MIDMARKET_CONVERTER =
   "https://www.xe.com/api/protected/midmarket-converter/";
+
+const STATISTICS = "https://www.xe.com/api/protected/statistics/";
+
+const CHARTING_RATES = "https://www.xe.com/api/protected/charting-rates/";
 
 const AUTH_HEADER =
   "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
@@ -27,69 +31,84 @@ const CurrencyConverter6 = () => {
   const [optionForExchangeRates, setOptionForExchangeRates] = useState({});
 
   useEffect(() => {
-    // console.log(encodeURIComponent(MIDMARKET_CONVERTER));
-
     axios({
       method: "GET",
       url: anyOriginUrl(MIDMARKET_CONVERTER),
-      // url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
-      //   "https://www.xe.com/api/protected/midmarket-converter/"
-      // )}`,
       headers: { authorization: AUTH_HEADER },
     }).then((response) => {
-      // console.log(response);
       setConverter(response.data);
-      // const currencyArray = Object.keys(converter?.rates);
-
-      // console.log(currencyArray);
-
-      // setCurrencyList(currencyArray);
       setCurrencyList(Object.keys(response.data.rates));
-      // console.log(converter?.rates);
-      // console.log(converter?.rates[fromCurrency]);
       setFromCurrencyRate(response.data.rates[fromCurrency]);
       setToCurrencyRate(response.data.rates[toCurrency]);
     });
-
-    // setConverter(midmarketConverter);
-    // const currencyArray = Object.keys(midmarketConverter.rates);
-
-    // // console.log(currencyArray);
-
-    // setCurrencyList(currencyArray);
-    // // console.log(converter?.rates);
-    // // console.log(converter?.rates[fromCurrency]);
-    // setFromCurrencyRate(converter?.rates[fromCurrency]);
-    // setToCurrencyRate(converter?.rates[toCurrency]);
   }, [fromCurrency, toCurrency]);
 
   useEffect(() => {
-    setStatData(statistics);
-    setChartData(chartingRates);
+    axios({
+      method: "GET",
+      url: anyOriginUrl(`${STATISTICS}?from=${fromCurrency}&to=${toCurrency}`),
+      headers: { authorization: AUTH_HEADER },
+    }).then((response) => {
+      // console.log(response.data);
+      setStatData(response.data);
+    });
+    // setStatData(statistics);
 
-    const _optionForExchangeRates = {
-      xAxis: {
-        type: "category",
-        data: [
-          ...new Array(chartingRates.batchList[0].rates.length - 1).keys(),
-        ],
-      },
-      yAxis: {
-        type: "value",
-      },
-      series: [
-        {
-          data: chartingRates.batchList[0].rates.slice(1).reverse(),
-          type: "line",
-          smooth: true,
+    axios({
+      method: "GET",
+      url: anyOriginUrl(
+        `${CHARTING_RATES}?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
+      ),
+      headers: { authorization: AUTH_HEADER },
+    }).then((response) => {
+      console.log(response.data);
+      setChartData(response.data);
+
+      const _optionForExchangeRates = {
+        xAxis: {
+          name: "Date",
+          type: "category",
+          data: [
+            ...new Array(response.data.batchList[0].rates.length - 1).keys(),
+          ],
         },
-      ],
-    };
+        yAxis: { name: `${fromCurrency} to ${toCurrency}`, type: "value" },
+        series: [
+          {
+            name: `${fromCurrency} to ${toCurrency}`,
+            data: response.data.batchList[0].rates.slice(1).reverse(),
+            type: "line",
+            smooth: true,
+          },
+        ],
+        tooltip: { trigger: "axis" },
+      };
 
-    setOptionForExchangeRates(_optionForExchangeRates);
-  }, [statData]);
+      setOptionForExchangeRates(_optionForExchangeRates);
+    });
+    // setChartData(chartingRates);
 
-  // const handleCalculateClick = () => {};
+    // const _optionForExchangeRates = {
+    //   xAxis: {
+    //     type: "category",
+    //     data: [
+    //       ...new Array(chartingRates.batchList[0].rates.length - 1).keys(),
+    //     ],
+    //   },
+    //   yAxis: {
+    //     type: "value",
+    //   },
+    //   series: [
+    //     {
+    //       data: chartingRates.batchList[0].rates.slice(1).reverse(),
+    //       type: "line",
+    //       smooth: true,
+    //     },
+    //   ],
+    // };
+
+    // setOptionForExchangeRates(_optionForExchangeRates);
+  }, [fromCurrency, toCurrency]);
 
   return (
     <div className="">
