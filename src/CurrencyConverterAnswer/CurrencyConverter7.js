@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import ReactECharts from "echarts-for-react";
 import axios from "axios";
+// ขั้นตอนการ custom hook
 
+// เอาเรทการแลกเปลี่ยนมา
 const useFetchExchangeRate = ({ authToken }) => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
@@ -16,6 +18,7 @@ const useFetchExchangeRate = ({ authToken }) => {
     }).then((res) => {
       const _exchangeRates = res.data;
       const _currencyLists = Object.keys(_exchangeRates.rates);
+      console.log("res", res);
       console.log(_currencyLists);
       setExchangeRates(_exchangeRates);
       setCurrencyLists(_currencyLists);
@@ -129,6 +132,7 @@ const CurrencyConverter7 = () => {
   const authToken =
     "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
+  // เรียกใช้งาน custom hook
   const { exchangeRates, currencyLists } = useFetchExchangeRate(authToken);
   const {
     fromCurrency,
@@ -153,6 +157,9 @@ const CurrencyConverter7 = () => {
     fromCurrency,
     toCurrency,
   });
+
+  // custom hook ตั้งชื่อ func มี use นำหน้า
+  // ไม่เรียก hook ในตัว hook
 
   return (
     <div className="">

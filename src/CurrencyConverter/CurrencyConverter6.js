@@ -3,8 +3,9 @@ import ExchangeRatesData from "./exchange-rates.json";
 import ExchangeStatistic from "./exchange-statistic.json";
 import ReactECharts from "echarts-for-react";
 import ExchangeChart from "./exchange-chart.json";
+import axios from "axios";
 
-const CurrencyConverter5 = () => {
+const CurrencyConverter6 = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("THB");
@@ -15,6 +16,25 @@ const CurrencyConverter5 = () => {
   const [toCurrencyRate, setToCurrencyRate] = useState();
   const [exchangeStatistic, setExchangeRatesStatistic] = useState();
   const [chartOption, setChartOption] = useState({});
+  const authToken =
+    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+
+  useEffect(() => {
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        "https://www.xe.com/api/protected/midmarket-converter/"
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      const _exchangeRates = res.data;
+      const _currencyLists = Object.keys(_exchangeRates.rates);
+      console.log(_currencyLists);
+      setExchangeRates(_exchangeRates);
+      setCurrencyLists(_currencyLists);
+    });
+  }, []);
 
   useEffect(() => {
     const _exchangeRates = ExchangeRatesData;
@@ -38,39 +58,64 @@ const CurrencyConverter5 = () => {
     const _exchangeStatistic = ExchangeStatistic;
     const _exchangeChart = ExchangeChart;
 
-    const _chartOption = {
-      xAxis: {
-        type: "category",
-        data: [..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys()].map(
-          (r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1
-        ),
-        name: "วันที่",
-      },
-      yAxis: {
-        type: "value",
-        name: "อัตราแรกเปลี่ยน",
-        max: "dataMax",
-        min: "dataMin",
-      },
-      series: [
-        {
-          data: _exchangeChart?.batchList[0]?.rates?.slice(1).reverse(),
-          // ตัดก้อนแรกออกไปด้วยคำสั่ง slice และเรียงจากบนลงล่างใหม่ด้วยคำสั่ง reverse
-          type: "line",
-          smooth: true,
-          lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
-        },
-      ],
-      tooltip: {
-        trigger: "axis",
-      },
-    };
-
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
     setExchangeRatesStatistic(_exchangeStatistic);
-    setChartOption(_chartOption);
+
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/statistics/?from=${fromCurrency}&to=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+      // ยิงเอา statistic
+    }).then((res) => {
+      setExchangeRatesStatistic(res.data);
+    });
+
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+      // ยิงแล้ว res มาสร้างเป็น chart
+    })
+      .then((res) => {
+        const _exchangeChart = res.data;
+        const _chartOption = {
+          xAxis: {
+            type: "category",
+            data: [
+              ..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys(),
+            ].map((r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1),
+            name: "วันที่",
+          },
+          yAxis: {
+            type: "value",
+            name: "อัตราแรกเปลี่ยน",
+            max: "dataMax",
+            min: "dataMin",
+          },
+          series: [
+            {
+              data: _exchangeChart?.batchList[0]?.rates?.slice(1).reverse(),
+              type: "line",
+              smooth: true,
+              lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+            },
+          ],
+          tooltip: {
+            trigger: "axis",
+          },
+        };
+
+        setChartOption(_chartOption);
+      })
+      .catch((err) => console.log(err));
   }, [amount, fromCurrency, toCurrency, exchangeRates]);
   // listening exchangerate to make it's not show NaN
 
@@ -212,4 +257,4 @@ const CurrencyConverter5 = () => {
   );
 };
 
-export default CurrencyConverter5;
+export default CurrencyConverter6;

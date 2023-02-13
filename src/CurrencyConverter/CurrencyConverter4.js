@@ -38,12 +38,14 @@ const CurrencyConverter4 = () => {
     setToCurrencyRate(_toCurrencyRate);
     setExchangeRatesStatistic(_exchangeStatistic);
   }, [amount, fromCurrency, toCurrency, exchangeRates]);
-  // listening exchange rate
+  // listening exchangerate to make it's not show NaN
 
   return (
     <div className="">
-      <div className="w-1/2 mx-auto bg-gray-100 mt-8 p-6">
-        <h1 className="font-bold text-xl text-center">คำนวนอัตราแลกเปลี่ยน</h1>
+      <div className="w-1/2 mx-auto bg-green-500 mt-8 p-6 rounded-[20px] shadow-lg border-2 border-sky-500">
+        <h1 className="font-bold text-xl text-center underline">
+          คำนวนอัตราแลกเปลี่ยน
+        </h1>
         <form>
           <div className="flex mt-4 space-x-8">
             <div className="w-1/3">
@@ -53,7 +55,7 @@ const CurrencyConverter4 = () => {
               <input
                 type="number"
                 name="amount"
-                className="p-2 w-full mt-2"
+                className="p-2 w-full mt-2 rounded-[10px]"
                 placeholder="1"
                 onChange={(e) => setAmount(Number(e.target.value))}
                 value={amount}
@@ -66,7 +68,7 @@ const CurrencyConverter4 = () => {
               <select
                 value={fromCurrency}
                 onChange={(e) => setFromCurrency(e.target.value)}
-                className="p-2 pb-3 w-full mt-2"
+                className="p-2 pb-3 w-full mt-2 rounded-[10px]"
               >
                 {currencyLists
                   ?.filter((r) => r !== toCurrency)
@@ -86,7 +88,7 @@ const CurrencyConverter4 = () => {
               <select
                 value={toCurrency}
                 onChange={(e) => setToCurrency(e.target.value)}
-                className="p-2 pb-3 w-full mt-2"
+                className="p-2 pb-3 w-full mt-2 rounded-[10px]"
               >
                 {currencyLists
                   ?.filter((r) => r !== fromCurrency)
@@ -104,7 +106,7 @@ const CurrencyConverter4 = () => {
             <div>
               {amount} {fromCurrency} =
             </div>
-            <div className="font-bold text-xl">
+            <div className="font-bold text-xl text-white">
               {amountConvert} {toCurrency}
             </div>
             <div>
@@ -115,12 +117,12 @@ const CurrencyConverter4 = () => {
           {/* -------------------------------------- */}
 
           <div className="text-center mt-8">
-            <button
+            {/* <button
               type="submit"
               className="bg-yellow-400 hover:bg-yellow-500 active:bg-amber-400 p-4 w-32 font-bold text-xl"
             >
               คำนวน
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
