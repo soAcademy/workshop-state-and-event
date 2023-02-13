@@ -44,6 +44,7 @@ import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
 import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
 import CurrencyConverter3 from "./CurrencyConverterAnswer/CurrencyConverter3";
 import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
+import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
@@ -94,7 +95,8 @@ const App = () => {
       {/* <CurrencyConverter1 /> */}
       {/* <CurrencyConverter2 /> */}
       {/* <CurrencyConverter3 /> */}
-      <CurrencyConverter4 />
+      {/* <CurrencyConverter4 /> */}
+      <CurrencyConverter5 />
     </>
   );
 };
