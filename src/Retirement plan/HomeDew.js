@@ -29,7 +29,7 @@ const Table = ({ dataFortable }) => {
   );
 };
 
-const Test = () => {
+const RetirementPlanDew = () => {
   const [currentAge, setCurrentAge] = useState("32");
   const [dieAge, setDieAge] = useState("80");
   const [retireAge, setRetireAge] = useState("60");
@@ -211,4 +211,4 @@ const Test = () => {
     </>
   );
 };
-export default Test;
+export default RetirementPlanDew;
