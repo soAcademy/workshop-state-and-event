@@ -1,12 +1,41 @@
+import { useState, useEffect } from "react";
+import ExchangeRateData from "./exchange-rates.json";
 const CurrencyConverter1 = () => {
+  const [exchangeRates, setExchangeRates] = useState();
+  const [currencyLists, setCurrencyLists] = useState([]);
+  const [fromCurrency, setFromCurrency] = useState("THB");
+  const [toCurrency, setToCurrency] = useState("USD");
+  const [amount, setAmount] = useState(1);
+  const [amountConvert,setAmountConvert]= useState(0);
+  const [fromCurrencyRate,setFromCurrencyRate]=useState();
+  const [toCurrencyRate, setToCurrencyRate] = useState();
+
+  useEffect(() => {
+    const _exchangeRates = ExchangeRateData;
+    const _currencyLists = Object.keys(_exchangeRates.rates);
+    // console.log(_currencyLists);
+    console.log("_exchangeRates",_exchangeRates);
+    setExchangeRates(_exchangeRates);
+    setCurrencyLists(_currencyLists);
+  }, []);
+
+  useEffect(() => {
+    const _fromCurrencyRate = exchangeRates?.rates[fromCurrency]
+    const _toCurrencyRate = exchangeRates?.rates[toCurrency];
+    const _amountConvert = (amount / _fromCurrencyRate)*_toCurrencyRate;
+    setAmountConvert(_amountConvert);
+    setFromCurrencyRate(_fromCurrencyRate);
+    setToCurrencyRate(_toCurrencyRate);
+  },[amount, fromCurrency,toCurrency]);
+
   return (
     <>
-      <div className="p-5 font-kanit">
-        <div className="flex text-center">
-        <div className="text-center text-2xl font-bold p-2 ">
-          คำนวนอัตราแลกเปลี่ยน
-        </div>
-        <div><img className="h-[50px]" src="doreamon555.png"/></div>
+      <div className="p-5 font-kanit bg-gradient-to-r from-slate-500 to-slate-300 h-screen">
+        <div className="flex justify-center ">
+          <div className=" text-2xl font-bold p-2 ">คำนวนอัตราแลกเปลี่ยน</div>
+          <div className="">
+            <img className="h-[50px]" src="doreamon555.png" />
+          </div>
         </div>
         <div className="bg-gradient-to-r from-cyan-500 to-cyan-300 w-1/2 mx-auto rounded-lg shadow-lg">
           <form>
@@ -14,19 +43,52 @@ const CurrencyConverter1 = () => {
               <div className="p-2">
                 <div className="font-bold ">จำนวน</div>
                 <div>
-                  <input className="w-full p-2" placeholder="1" />
+                 
+                  <input
+                    className="w-full p-2 rounded-lg"
+                    placeholder="1"
+                    text="number"
+                    value={amount}
+                    onChange={(e) => setAmount(Number(e.target.value))}
+                  />
                 </div>
               </div>
               <div className="p-2">
                 <div className="font-bold ">จาก</div>
                 <div>
-                  <input className="w-full p-2" placeholder="THB" />
+                 
+                  <select
+                    className="p-2 w-full rounded-lg"
+                    value={fromCurrency}
+                    onChange={(e) =>{console.log(e.target.value); setFromCurrency(e.target.value)}}
+                  >
+                    {currencyLists
+                      ?.filter((r) => r !== toCurrency)
+                      ?.map((r, idx) => (
+                        <option key={idx} value={r}>
+                          {r}
+                        </option>
+                      ))}
+                  </select>
                 </div>
               </div>
               <div className="p-2 ">
                 <div className="font-bold ">ไป</div>
                 <div>
-                  <input className="w-full p-2" placeholder="USD" />
+                
+                  <select
+                    className="p-2  w-full rounded-lg"
+                    value={toCurrency}
+                    onChange={(e) => setToCurrency(e.target.value)}
+                  >
+                    {currencyLists
+                      ?.filter((r) => r !== fromCurrency)
+                      ?.map((r, idx) => (
+                        <option key={idx} value={r}>
+                          {r}
+                        </option>
+                      ))}
+                  </select>
                 </div>
               </div>
             </div>
@@ -40,40 +102,38 @@ const CurrencyConverter1 = () => {
             </div>
           </form>
           <div className="p-2">
-            <div>1 THB = </div>
-            <div className="font-bold text-xl">0.0249101 USD</div>
-            <div>1 USD = 32.0190 THB</div>
-
+          1 {toCurrency} = {(1 / fromCurrencyRate) * toCurrencyRate}{" "}
+              {fromCurrency}
           </div>
         </div>
         <div className="flex flex-col  w-1/2 mx-auto mt-6">
           <div>
-        <h2 className="font-bold text-left text-xl">
-          อัตราแลกเปลี่ยนย้อนหลัง
-        </h2>
-        </div>
-        <div className="grid grid-cols-2 w-full  mx-auto">
-          <div className="w-full p-2">
-            <div>1 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-            <div>1 USD = 32.0190 THB</div>
+            <h2 className="font-bold text-left text-xl">
+              อัตราแลกเปลี่ยนย้อนหลัง
+            </h2>
           </div>
-          <div className="w-full p-2">
-            <div>7 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-            <div>1 USD = 32.0190 THB</div>
+          <div className="grid grid-cols-2 w-full  mx-auto">
+            <div className="w-full p-2">
+              <div>1 วัน</div>
+              <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
+              <div>1 USD = 32.0190 THB</div>
+            </div>
+            <div className="w-full p-2">
+              <div>7 วัน</div>
+              <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
+              <div>1 USD = 32.0190 THB</div>
+            </div>
+            <div className="w-full p-2">
+              <div>30 วัน</div>
+              <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
+              <div>1 USD = 32.0190 THB</div>
+            </div>
+            <div className="w-full p-2">
+              <div>60 วัน</div>
+              <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
+              <div>1 USD = 32.0190 THB</div>
+            </div>
           </div>
-          <div className="w-full p-2">
-            <div>30 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-            <div>1 USD = 32.0190 THB</div>
-          </div>
-          <div className="w-full p-2">
-            <div>60 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-            <div>1 USD = 32.0190 THB</div>
-          </div>
-        </div>
         </div>
       </div>
     </>
