@@ -168,32 +168,32 @@ const CurrencyConverter6 = () => {
           <div className="w-1/2">
             <div>1 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last1Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last1Days?.average} {toCurrency}
             </div>
-            <div>1 USD = {1 / exchangeStatistic?.last1Days?.average} THB </div>
+            <div>1 {toCurrency} = {1 / exchangeStatistic?.last1Days?.average} {fromCurrency} </div>
           </div>
           <div className="w-1/2">
             <div>7 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last7Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last7Days?.average} {toCurrency}
             </div>
-            <div>1 USD ={1 / exchangeStatistic?.last7Days?.average} THB </div>
+            <div>1 {toCurrency} ={1 / exchangeStatistic?.last7Days?.average} {fromCurrency} </div>
           </div>
         </div>
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>30 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last30Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last30Days?.average} {toCurrency}
             </div>
-            <div>1 USD = {1 / exchangeStatistic?.last30Days?.average} THB </div>
+            <div>1 {toCurrency} = {1 / exchangeStatistic?.last30Days?.average} {fromCurrency} </div>
           </div>
           <div className="w-1/2">
             <div>60 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last60Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last60Days?.average} {toCurrency}
             </div>
-            <div>1 USD ={1 / exchangeStatistic?.last60Days?.average} THB </div>
+            <div>1 {toCurrency} ={1 / exchangeStatistic?.last60Days?.average} {fromCurrency} </div>
           </div>
         </div>
         <div className="mt-4">
