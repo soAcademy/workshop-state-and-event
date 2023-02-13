@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+
 // import ToDoList1 from "./ToDoList/ToDoList1";
 // import ToDoList2 from "./ToDoList/ToDoList2";
 // import ToDoList3 from "./ToDoList/ToDoList3";
@@ -32,7 +34,7 @@ import DeathCause6 from "./DeathCause/DeathCause6";
 import DeathCause7 from "./DeathCause/DeathCause7";
 import DeathCause8 from "./DeathCause/DeathCause8";
 import Retirement from "./Retirement/Retirement";
-import React, { useState, useEffect } from "react";
+import Converter from "./CurrencyConverter/Converter";
 
 const App = () => {
   return (
@@ -64,7 +66,8 @@ const App = () => {
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
-      <Retirement />
+      {/* <Retirement /> */}
+      <Converter />
     </>
   );
 };
