@@ -1,52 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ReactECharts from "echarts-for-react";
+import ExchangeRatesData from "./exchange-rates.json";
 
 const Converter = () => {
-  const [inputValue, setInputValue] = useState(1);
+  const [exchangeRates, setExchangeRates] = useState();
+  const [currencyList, setCurrencyList] = useState([]);
 
   useEffect(() => {
-    const config = {
-      method: "get",
-      url: "https://www.xe.com/api/protected/midmarket-converter/",
-      headers: {
-        Authorization:
-          "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=",
-      },
-    };
+    const tempExchangeRates = ExchangeRatesData;
+    console.log("tempExchangeRates", tempExchangeRates);
 
-    axios(config).then((response) => {
-      console.log("RESP", response.data);
-    });
-  }, []);
+    const tempCurrencyList = Object.keys(tempExchangeRates.rates);
+    console.log("tempCurrencyList", tempCurrencyList);
 
-  useEffect(() => {
-    const config = {
-      method: "get",
-      url: "https://www.xe.com/api/protected/statistics/?from=CHF&to=GBP",
-      headers: {
-        Authorization:
-          "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=",
-      },
-    };
-
-    axios(config).then((response) => {
-      console.log("RESP", response.data);
-    });
-  }, []);
-
-  useEffect(() => {
-    const config = {
-      method: "get",
-      url: "https://www.xe.com/api/protected/charting-rates/?fromCurrency=CHF&toCurrency=GBP\n",
-      headers: {
-        Authorization:
-          "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=",
-      },
-    };
-
-    axios(config).then((response) => {
-      console.log("RESP", response.data);
-    });
+    setExchangeRates(tempExchangeRates);
+    setCurrencyList(tempCurrencyList);
   }, []);
 
   return (
@@ -56,20 +25,24 @@ const Converter = () => {
         <div className="bg-gray-200 p-4 rounded mt-6 mx-auto w-3/4">
           <div className="flex justify-evenly">
             <div>
-              <p className="text-left">จำนวน</p>
-              <input
-                className="rounded mt-2"
-                type="number"
-                value={inputValue}
-              ></input>
+              <p className="text-left px-2">จำนวน</p>
+              <input className="rounded mt-2" type="number"></input>
             </div>
             <div>
               <p className="text-left">จาก</p>
-              <input className="rounded mt-2" type="text"></input>
+              <select className="rounded mt-2 px-2">
+                {currencyList.map((r) => (
+                  <option>{r}</option>
+                ))}
+              </select>
             </div>
             <div>
               <p className="text-left">ไป</p>
-              <input className="rounded mt-2" type="text"></input>
+              <select className="rounded mt-2 px-2">
+                {currencyList.map((r) => (
+                  <option>{r}</option>
+                ))}
+              </select>
             </div>
           </div>
           <button className="bg-blue-200 text-xl font-bold p-2 rounded mt-4">
@@ -101,7 +74,7 @@ const Converter = () => {
             <p>1USD = 32.19 THB</p>
           </div>
         </div>
-        <div className="mt-6">Graph</div>
+        <div className="mt-6">{/* <ReactECharts option={option} /> */}</div>
       </div>
     </>
   );
