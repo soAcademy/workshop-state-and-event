@@ -1,32 +1,110 @@
 import { useState, useEffect } from "react";
 import ExchangeRateData from "./exchange-rates.json";
+import ExchangeStatistic from "./exchange-static.json";
+import ExchangeChart from "./exchange-chart.json";
+import ReactECharts from "echarts-for-react";
+import axios from "axios";
+
 const CurrencyConverter1 = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("THB");
   const [toCurrency, setToCurrency] = useState("USD");
   const [amount, setAmount] = useState(1);
-  const [amountConvert,setAmountConvert]= useState(0);
-  const [fromCurrencyRate,setFromCurrencyRate]=useState();
+  const [amountConvert, setAmountConvert] = useState(0);
+  const [fromCurrencyRate, setFromCurrencyRate] = useState();
   const [toCurrencyRate, setToCurrencyRate] = useState();
+  const [exchangeStatistic, setExchangeRatesStatistic] = useState();
+  const [chartOption, setChartOption] = useState({});
+  const authToken =
+    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
   useEffect(() => {
-    const _exchangeRates = ExchangeRateData;
-    const _currencyLists = Object.keys(_exchangeRates.rates);
-    // console.log(_currencyLists);
-    console.log("_exchangeRates",_exchangeRates);
-    setExchangeRates(_exchangeRates);
-    setCurrencyLists(_currencyLists);
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        "https://www.xe.com/api/protected/midmarket-converter/"
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      const _exchangeRates = res.data;
+      const _currencyLists = Object.keys(_exchangeRates.rates);
+      // console.log(_currencyLists);
+      console.log("_exchangeRates", _exchangeRates);
+      setExchangeRates(_exchangeRates);
+      setCurrencyLists(_currencyLists);
+      console.log("exchangeRates", exchangeRates);
+    });
   }, []);
 
   useEffect(() => {
-    const _fromCurrencyRate = exchangeRates?.rates[fromCurrency]
+    const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
     const _toCurrencyRate = exchangeRates?.rates[toCurrency];
-    const _amountConvert = (amount / _fromCurrencyRate)*_toCurrencyRate;
+    const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
+
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/statistics/?from=${fromCurrency}&to=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      setExchangeRatesStatistic(res.data);
+    });
+
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      const _exchangeChart = res.data;
+      const _chartOption = {
+        xAxis: {
+          type: "category",
+          data: [..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys()].map(
+            (r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1
+          ),
+          name: "วันที่",
+        },
+        yAxis: {
+          type: "value",
+          name: "อัตราแลกเปลี่ยน",
+          max: "dataMax",
+          min: "dataMin",
+          splitArea: {
+            interval: "auto",
+            show: false,
+            areaStyle: {
+              color: ['rgba(250,250,250,0.3)']
+            },
+          },
+        },
+        series: [
+          {
+            data: _exchangeChart?.batchList[0]?.rates?.slice(1).reverse(),
+            type: "line",
+            smooth: true,
+            lineStyle: { color: "#fac858", width: 2, type: "solid" },
+          },
+        ],
+        textStyle: { color: "#ffffff" },
+        tooltip: {
+          trigger: "axis",
+        },
+      };
+      setChartOption(_chartOption);
+    });
+
+    //ก้อนนี้คำนวณได้เลย ่ ไม่ต้องต่อ api
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
-  },[amount, fromCurrency,toCurrency]);
+  }, [amount, fromCurrency, toCurrency, exchangeRates]);
 
   return (
     <>
@@ -37,13 +115,12 @@ const CurrencyConverter1 = () => {
             <img className="h-[50px]" src="doreamon555.png" />
           </div>
         </div>
-        <div className="bg-gradient-to-r from-cyan-500 to-cyan-300 w-1/2 mx-auto rounded-lg shadow-lg">
+        <div className="bg-gradient-to-r from-cyan-500 to-cyan-300 w-1/2  mx-auto rounded-lg shadow-lg">
           <form>
             <div className="grid grid-cols-3 space-x-2 p-2">
               <div className="p-2">
                 <div className="font-bold ">จำนวน</div>
                 <div>
-                 
                   <input
                     className="w-full p-2 rounded-lg"
                     placeholder="1"
@@ -56,11 +133,13 @@ const CurrencyConverter1 = () => {
               <div className="p-2">
                 <div className="font-bold ">จาก</div>
                 <div>
-                 
                   <select
                     className="p-2 w-full rounded-lg"
                     value={fromCurrency}
-                    onChange={(e) =>{console.log(e.target.value); setFromCurrency(e.target.value)}}
+                    onChange={(e) => {
+                      console.log(e.target.value);
+                      setFromCurrency(e.target.value);
+                    }}
                   >
                     {currencyLists
                       ?.filter((r) => r !== toCurrency)
@@ -75,7 +154,6 @@ const CurrencyConverter1 = () => {
               <div className="p-2 ">
                 <div className="font-bold ">ไป</div>
                 <div>
-                
                   <select
                     className="p-2  w-full rounded-lg"
                     value={toCurrency}
@@ -102,8 +180,17 @@ const CurrencyConverter1 = () => {
             </div>
           </form>
           <div className="p-2">
-          1 {toCurrency} = {(1 / fromCurrencyRate) * toCurrencyRate}{" "}
+            <div>
+              {amount} {fromCurrency} =
+            </div>
+            <div className="font-bold text">
+              {" "}
+              {amountConvert} {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} = {(1 / fromCurrencyRate) * toCurrencyRate}{" "}
               {fromCurrency}
+            </div>
           </div>
         </div>
         <div className="flex flex-col  w-1/2 mx-auto mt-6">
@@ -115,25 +202,36 @@ const CurrencyConverter1 = () => {
           <div className="grid grid-cols-2 w-full  mx-auto">
             <div className="w-full p-2">
               <div>1 วัน</div>
-              <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
+              <div className="font-bold text-xl">
+                1 THB = {exchangeStatistic?.last1Days?.average?.toFixed(5)} USD
+              </div>
               <div>1 USD = 32.0190 THB</div>
             </div>
             <div className="w-full p-2">
               <div>7 วัน</div>
-              <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-              <div>1 USD = 32.0190 THB</div>
+              <div className="font-bold text-xl">
+                1 THB = {exchangeStatistic?.last7Days?.average?.toFixed(5)} USD
+              </div>
+              <div>1 USD = {1 / exchangeStatistic?.last7Days?.average} THB</div>
             </div>
             <div className="w-full p-2">
               <div>30 วัน</div>
-              <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-              <div>1 USD = 32.0190 THB</div>
+              <div className="font-bold text-xl">
+                1 THB = {exchangeStatistic?.last30Days?.average?.toFixed(5)} USD
+              </div>
+              <div>1 USD = {exchangeStatistic?.last30Days?.average} THB</div>
             </div>
             <div className="w-full p-2">
               <div>60 วัน</div>
-              <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-              <div>1 USD = 32.0190 THB</div>
+              <div className="font-bold text-xl">
+                1 THB = {exchangeStatistic?.last60Days?.average?.toFixed(5)} USD
+              </div>
+              <div>1 USD = {exchangeStatistic?.last60Days?.average} THB</div>
             </div>
           </div>
+        </div>
+        <div className="mt-4">
+          <ReactECharts option={chartOption} />
         </div>
       </div>
     </>

@@ -1,0 +1,57 @@
+{
+  "last1Days": {
+      "to": "EUR",
+      "high": 0.6465673846,
+      "low": 0.6462356288,
+      "average": 0.6464015067,
+      "standardDeviation": -1,
+      "volatility": -1,
+      "highTimestamp": "2023-02-11T00:00:00Z",
+      "lowTimestamp": "2023-02-12T00:00:00Z",
+      "dataPoints": 2
+  },
+  "last7Days": {
+      "to": "EUR",
+      "high": 0.6491332504,
+      "low": 0.6402307331,
+      "average": 0.6447665469,
+      "standardDeviation": 0.0031677101,
+      "volatility": 0.4650143719,
+      "highTimestamp": "2023-02-08T00:00:00Z",
+      "lowTimestamp": "2023-02-05T00:00:00Z",
+      "dataPoints": 8
+  },
+  "last30Days": {
+      "to": "EUR",
+      "high": 0.6561932273,
+      "low": 0.6379857927,
+      "average": 0.6460327408,
+      "standardDeviation": 0.0047844111,
+      "volatility": 0.4856086017,
+      "highTimestamp": "2023-01-28T00:00:00Z",
+      "lowTimestamp": "2023-01-20T00:00:00Z",
+      "dataPoints": 31
+  },
+  "last60Days": {
+      "to": "EUR",
+      "high": 0.6561932273,
+      "low": 0.6292545059,
+      "average": 0.641396139,
+      "standardDeviation": 0.0070157771,
+      "volatility": 0.4860587879,
+      "highTimestamp": "2023-01-28T00:00:00Z",
+      "lowTimestamp": "2022-12-25T00:00:00Z",
+      "dataPoints": 61
+  },
+  "last90Days": {
+      "to": "EUR",
+      "high": 0.6561932273,
+      "low": 0.6292545059,
+      "average": 0.642842137,
+      "standardDeviation": 0.0063980261,
+      "volatility": 0.4794447727,
+      "highTimestamp": "2023-01-28T00:00:00Z",
+      "lowTimestamp": "2022-12-25T00:00:00Z",
+      "dataPoints": 91
+  }
+}

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import ReactECharts from "echarts-for-react";
 import ExchangeRatesData from "./exchange-rates.json";
 import ExchangeStatistic from "./exchange-statistic.json";
+import ExchangeChart from "./exchange-chart.json";
 
-const CurrencyConverter4 = () => {
+const CurrencyConverter5 = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("THB");
@@ -12,6 +14,7 @@ const CurrencyConverter4 = () => {
   const [fromCurrencyRate, setFromCurrencyRate] = useState();
   const [toCurrencyRate, setToCurrencyRate] = useState();
   const [exchangeStatistic, setExchangeRatesStatistic] = useState();
+  const [chartOption, setChartOption] = useState({});
 
   useEffect(() => {
     const _exchangeRates = ExchangeRatesData;
@@ -22,19 +25,44 @@ const CurrencyConverter4 = () => {
   }, []);
 
   useEffect(() => {
-    // THB -> JPY
-    // THB -> USD, USD -> JPY
-    // 1 / THB -> * JPY
-    // 1 / 33.81 * 132
     const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
     const _toCurrencyRate = exchangeRates?.rates[toCurrency];
     console.log(fromCurrencyRate, toCurrencyRate);
     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
     const _exchangeStatistic = ExchangeStatistic;
+    const _exchangeChart = ExchangeChart;
+    const _chartOption = {
+      xAxis: {
+        type: "category",
+        data: [..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys()].map(
+          (r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1
+        ),
+        name: "วันที่",
+      },
+      yAxis: {
+        type: "value",
+        name: "อัตราแรกเปลี่ยน",
+        max: "dataMax",
+        min: "dataMin",
+      },
+      series: [
+        {
+          data: _exchangeChart?.batchList[0]?.rates?.slice(1).reverse(),
+          type: "line",
+          smooth: true,
+          lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+        },
+      ],
+      tooltip: {
+        trigger: "axis",
+      },
+    };
+
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
     setExchangeRatesStatistic(_exchangeStatistic);
+    setChartOption(_chartOption);
   }, [amount, fromCurrency, toCurrency]);
 
   return (
@@ -137,9 +165,12 @@ const CurrencyConverter4 = () => {
             <div>1 USD ={1 / exchangeStatistic?.last60Days?.average} THB </div>
           </div>
         </div>
+        <div className="mt-4">
+          <ReactECharts option={chartOption} />
+        </div>
       </div>
     </div>
   );
 };
 
-export default CurrencyConverter4;
+export default CurrencyConverter5;
