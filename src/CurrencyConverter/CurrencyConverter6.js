@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import EChartsReact from "echarts-for-react";
-import midmarketConverter from "./midmarket-converter.json";
+// import midmarketConverter from "./midmarket-converter.json";
 import statistics from "./statistics-THB-USD.json";
 import chartingRates from "./charting-rates-THB-USD.json";
 
@@ -15,9 +15,9 @@ const anyOriginUrl = (url) =>
   `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(url)}`;
 
 const CurrencyConverter6 = () => {
-  const [converter, setConverter] = useState(undefined);
-  const [statData, setStatData] = useState(undefined);
-  const [chartData, setChartData] = useState(undefined);
+  const [converter, setConverter] = useState();
+  const [statData, setStatData] = useState();
+  const [chartData, setChartData] = useState();
   const [amount, setAmount] = useState(1);
   const [currencyList, setCurrencyList] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("THB");
@@ -39,15 +39,16 @@ const CurrencyConverter6 = () => {
     }).then((response) => {
       // console.log(response);
       setConverter(response.data);
-      const currencyArray = Object.keys(midmarketConverter.rates);
+      // const currencyArray = Object.keys(converter?.rates);
 
       // console.log(currencyArray);
 
-      setCurrencyList(currencyArray);
+      // setCurrencyList(currencyArray);
+      setCurrencyList(Object.keys(response.data.rates));
       // console.log(converter?.rates);
       // console.log(converter?.rates[fromCurrency]);
-      setFromCurrencyRate(converter?.rates[fromCurrency]);
-      setToCurrencyRate(converter?.rates[toCurrency]);
+      setFromCurrencyRate(response.data.rates[fromCurrency]);
+      setToCurrencyRate(response.data.rates[toCurrency]);
     });
 
     // setConverter(midmarketConverter);
@@ -60,7 +61,7 @@ const CurrencyConverter6 = () => {
     // // console.log(converter?.rates[fromCurrency]);
     // setFromCurrencyRate(converter?.rates[fromCurrency]);
     // setToCurrencyRate(converter?.rates[toCurrency]);
-  }, [converter, fromCurrency, toCurrency]);
+  }, [fromCurrency, toCurrency]);
 
   useEffect(() => {
     setStatData(statistics);
