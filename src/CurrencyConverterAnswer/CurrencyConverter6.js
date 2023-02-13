@@ -94,8 +94,6 @@ const CurrencyConverter6 = () => {
   
       setChartOption(_chartOption);
     });
-
-   
   }, [amount, fromCurrency, toCurrency]);
 
   return (
