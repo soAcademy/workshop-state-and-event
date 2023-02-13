@@ -99,8 +99,8 @@ const App = () => {
       {/* <CurrencyConverter3 /> */}
       {/* <CurrencyConverter4 /> */}
       {/* <CurrencyConverter5 /> */}
-      {/* <CurrencyConverter6 /> */}
-      <CurrencyConverter7 />
+      <CurrencyConverter6 />
+      {/* <CurrencyConverter7 /> */}
     </>
   );
 };

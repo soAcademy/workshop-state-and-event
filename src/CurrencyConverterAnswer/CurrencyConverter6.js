@@ -156,7 +156,7 @@ const CurrencyConverter6 = () => {
               {amountConvert} {toCurrency}
             </div>
             <div>
-              1 {toCurrency} = {(1 / fromCurrencyRate) * toCurrencyRate}{" "}
+              1 {toCurrency} = {(1 / toCurrencyRate) * fromCurrencyRate}{" "}
               {fromCurrency}
             </div>
           </div>
