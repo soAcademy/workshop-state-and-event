@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ExchangeRatesData from "./exchange-rates.json";
 
-const CurrencyConverter1 = () => {
+const CurrencyConverter2 = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
 
@@ -22,27 +22,34 @@ const CurrencyConverter1 = () => {
             <div className="w-1/3">
               <label>จำนวน</label>
               <br />
-              <select className="p-2 pb-3 w-full mt-2">
-                {currencyLists?.map((r) => (
-                  <option value={r}>{r}</option>
-                ))}
-              </select>
+              <input
+                type="number"
+                name="amount"
+                className="p-2 w-full mt-2"
+                placeholder="1"
+              ></input>
             </div>
             <div className="w-1/3">
               <label>จาก</label>
               <br />
               <select className="p-2 pb-3 w-full mt-2">
-                {currencyLists?.map((r) => (
-                  <option value={r}>{r}</option>
+                {currencyLists?.map((r, idx) => (
+                  <option key={`2${idx}${r}`} value={r}>
+                    {r}
+                  </option>
                 ))}
+
+                {/* value ใน option ทำให้เราได้ค่าใน select */}
               </select>
             </div>
             <div className="w-1/3">
               <label>ไป</label>
               <br />
               <select className="p-2 pb-3 w-full mt-2">
-                {currencyLists?.map((r) => (
-                  <option value={r}>{r}</option>
+                {currencyLists?.map((r, idx) => (
+                  <option key={`3${idx}${r}`} value={r}>
+                    {r}
+                  </option>
                 ))}
               </select>
             </div>
@@ -88,4 +95,4 @@ const CurrencyConverter1 = () => {
   );
 };
 
-export default CurrencyConverter1;
+export default CurrencyConverter2;

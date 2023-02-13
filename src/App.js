@@ -1,7 +1,5 @@
-import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
-import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
-import CurrencyConverter3 from "./CurrencyConverterAnswer/CurrencyConverter3";
-import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
+import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
+import CurrencyConverter2 from "./CurrencyConverter/CurrencyConvert2";
 
 const App = () => {
   return (
