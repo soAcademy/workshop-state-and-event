@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import ExchangeData from "./ExchangeData.json";
+import { BsArrowLeftRight } from "react-icons/bs";
 
 const Exchange = () => {
+  const [exchangeRate, setExchangeRate] = useState();
+  const [currencyList, setCurrencyList] = useState([]);
+  const [formCurrency, setFormCurrency] = useState("THB");
+  const [toCurrency, setToCurrency] = useState("USD");
+
+  useEffect(() => {
+    const _exchangeRate = ExchangeData;
+    const _currencyList = Object.keys(_exchangeRate.rates).sort(
+      (a, b) => a - b
+    );
+    console.log("temp currencyList : ", _currencyList);
+    setExchangeRate(_exchangeRate);
+    setCurrencyList(_currencyList);
+  }, []);
+
   return (
     <div className="">
       <div className="w-1/2 mx-auto bg-gray-100 mt-8 p-6">
@@ -20,22 +37,37 @@ const Exchange = () => {
             <div className="w-1/3">
               <label>จาก</label>
               <br />
-              <input
+              <select
                 type="text"
                 name="lifeAge"
                 className="p-2 w-full mt-2"
-                placeholder="THB"
-              ></input>
+                placeholder={formCurrency}
+              >
+                {currencyList.map((currency) => (
+                  <option value={currency} key={currency}>
+                    {currency}
+                  </option>
+                ))}
+              </select>
             </div>
+            <button className="text-lg mt-8">
+              <BsArrowLeftRight />
+            </button>
             <div className="w-1/3">
               <label>ไป</label>
               <br />
-              <input
+              <select
                 type="text"
                 name="lifeAge"
                 className="p-2 w-full mt-2"
-                placeholder="USD"
-              ></input>
+                placeholder={toCurrency}
+              >
+                {currencyList.map((currency) => (
+                  <option value={currency} key={currency}>
+                    {currency}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div className="text-center mt-8">
@@ -49,9 +81,7 @@ const Exchange = () => {
         </form>
       </div>
       <div className="w-1/2 mx-auto  mt-8">
-        <h2 className="text-lg font-bold">
-          อัตราแลกเปลี่ยนย้อนหลัง
-        </h2>
+        <h2 className="text-lg font-bold">อัตราแลกเปลี่ยนย้อนหลัง</h2>
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>1 วัน</div>
@@ -78,7 +108,7 @@ const Exchange = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Exchange
+export default Exchange;
