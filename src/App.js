@@ -29,7 +29,8 @@
 // import DeathCause6 from "./DeathCause/DeathCause6"
 // import DeathCause7 from "./DeathCause/DeathCause7"
 // import DeathCause8 from "./DeathCause/DeathCause8"
-import Retirement from "./Retirement/Retirement";
+// import Retirement from "./Retirement/Retirement";
+import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
 
 const App = () => {
   return (
@@ -63,7 +64,8 @@ const App = () => {
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
       {/* <DeathCause8/> */}
-      <Retirement/>
+      {/* <Retirement/> */}
+      <CurrencyConverter1/>
     </>
   );
 };
