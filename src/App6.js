@@ -6,21 +6,22 @@ import DeathCause5 from "./DeathCause/DeathCause5";
 import DeathCause6 from "./DeathCause/DeathCause6";
 import DeathCause7 from "./DeathCause/DeathCause7";
 import DeathCause8 from "./DeathCause/DeathCause8";
-import Retirement1 from "./Retirement/Retirement1";
-import Retirement2 from "./Retirement/Retirement2";
-import Retirement3 from "./Retirement/Retirement3";
 
 const App = () => {
   return (
     <>
 
-      {/* <Retirement1 /> */}
-      <Retirement2 />
-      {/* <Retirement3 /> */}
+      {/* <DeathCause1 /> */}
+      {/* <DeathCause2 /> */}
+      {/* <DeathCause3 /> */}
+      {/* <DeathCause4 /> */}
+      {/* <DeathCause5 /> */}
+      {/* <DeathCause6 /> */}
+      {/* <DeathCause7 /> */}
+      <DeathCause8 />
       
     </>
   );
 };
 
 export default App;
-
