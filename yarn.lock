@@ -1201,6 +1201,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@fontsource/kanit@^4.5.10":
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@fontsource/kanit/-/kanit-4.5.10.tgz#603bd61ad3a648edbf5f584ed67f4bbd0c332500"
+  integrity sha512-spOSUiwTw6Y7pD0mU6mzydiG5i3SUilXbzISCJKAWWDGljGpTF724lGHUdQ/QFiLrPo9KAYbThcwbNKGUx+/NA==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
