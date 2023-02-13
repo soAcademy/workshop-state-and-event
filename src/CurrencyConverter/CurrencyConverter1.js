@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ExchangeRatesData from "./exchange-rates.json";
+import ExchangeStatistic from "./exchange-statistic.json";
 
 const CurrencyConverter1 = () => {
   const [exchangeRates, setExchangeRates] = useState();
@@ -7,6 +8,10 @@ const CurrencyConverter1 = () => {
   const [fromCurrency, setFromCurrency] = useState("THB");
   const [toCurrency, setToCurrency] = useState("USD");
   const [amount, setAmount] = useState(1);
+  const [amountConvert, setAmountConvert] = useState(0);
+  const [fromCurrencyRate, setFromCurrencyRate] = useState();
+  const [toCurrencyRate, setToCurrencyRate] = useState();
+  const [exchangeStatistic, setExchangeRatesStatistic] = useState();
 
   useEffect(() => {
     const _exchangeRates = ExchangeRatesData;
@@ -15,6 +20,22 @@ const CurrencyConverter1 = () => {
     setExchangeRates(_exchangeRates);
     setCurrencyLists(_currencyLists);
   }, []);
+
+  useEffect(() => {
+    const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
+    const _toCurrencyRate = exchangeRates?.rates[toCurrency];
+    console.log(
+      "fromCurrencyRate, toCurrencyRate",
+      fromCurrencyRate,
+      toCurrencyRate
+    );
+    const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
+    const _exchangeStatistic = ExchangeStatistic;
+    setAmountConvert(_amountConvert);
+    setFromCurrencyRate(_fromCurrencyRate);
+    setToCurrencyRate(_toCurrencyRate);
+    setExchangeRatesStatistic(_exchangeStatistic);
+  }, [amount, fromCurrency, toCurrency]);
 
   return (
     <div className="font-kanit">
@@ -25,6 +46,7 @@ const CurrencyConverter1 = () => {
             <div className="w-1/3">
               <label>จำนวน</label>
               <br />
+              {amount}
               <input
                 type="number"
                 name="amount"
@@ -36,6 +58,7 @@ const CurrencyConverter1 = () => {
             <div className="w-1/3">
               <label>จาก</label>
               <br />
+              {fromCurrency}
               <select
                 className="p-2 w-full mt-2"
                 value={fromCurrency}
@@ -53,6 +76,7 @@ const CurrencyConverter1 = () => {
             <div className="w-1/3">
               <label>ไป</label>
               <br />
+              {toCurrency}
               <select
                 className="p-2 w-full mt-2"
                 value={toCurrency}
@@ -60,19 +84,34 @@ const CurrencyConverter1 = () => {
               >
                 {currencyLists
                   ?.filter((r) => r !== fromCurrency)
-                  .map((r,idx) => (
-                    <option key={idx} value={r}>{r}</option>
+                  .map((r, idx) => (
+                    <option key={idx} value={r}>
+                      {r}
+                    </option>
                   ))}
               </select>
             </div>
           </div>
-          <div className="text-center mt-8">
+          {/* <div className="text-center mt-8">
             <button
               type="submit"
               className="bg-blue-400 hover:bg-blue-500 active:bg-sky-400 p-4 w-32 font-bold text-xl"
             >
               คำนวน
             </button>
+          </div> */}
+          <div className="mt-8">
+            <div>
+              {amount} {fromCurrency} =
+            </div>
+            <div className="font-bold text-xl">
+              {amountConvert.toFixed(2)} {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} ={" "}
+              {((1 / fromCurrencyRate) * toCurrencyRate).toFixed(2)}{" "}
+              {fromCurrency}
+            </div>
           </div>
         </form>
       </div>
@@ -81,25 +120,54 @@ const CurrencyConverter1 = () => {
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>1 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.024 USD</div>
-            <div>1 USD = 32THB </div>
+            <div className="font-bold text-xl">
+              1 {fromCurrency} ={" "}
+              {exchangeStatistic.last1Days.average.toFixed(4)} {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} ={" "}
+              {(1 / exchangeStatistic.last1Days.average).toFixed(4)}{" "}
+              {fromCurrency}
+            </div>
           </div>
           <div className="w-1/2">
             <div>7 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.024 USD</div>
-            <div>1 USD = 32. THB </div>
+            <div className="font-bold text-xl">
+              1 {fromCurrency} ={" "}
+              {exchangeStatistic.last7Days.average.toFixed(4)} {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} ={" "}
+              {(1 / exchangeStatistic.last7Days.average).toFixed(4)}{" "}
+              {fromCurrency}
+            </div>
           </div>
         </div>
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>30 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.024 USD</div>
-            <div>1 USD = 32 THB </div>
+            <div className="font-bold text-xl">
+              1 {fromCurrency} ={" "}
+              {exchangeStatistic.last30Days.average.toFixed(4)} {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} ={" "}
+              {(1 / exchangeStatistic.last30Days.average).toFixed(4)}{" "}
+              {fromCurrency}
+            </div>
           </div>
+
           <div className="w-1/2">
             <div>60 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.024 USD</div>
-            <div>1 USD = 32 THB </div>
+            <div className="font-bold text-xl">
+              1 {fromCurrency} ={" "}
+              {exchangeStatistic.last60Days.average.toFixed(4)} {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} ={" "}
+              {(1 / exchangeStatistic.last60Days.average).toFixed(4)}{" "}
+              {fromCurrency}
+            </div>
           </div>
         </div>
       </div>
