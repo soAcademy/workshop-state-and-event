@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 const Retirement2 = () => {
   const [currentAge, setCurrentAge] = useState("24");
-  const [lifeAge, setLifeAge] = useState("30");
-  const [retireAge, setRetireAge] = useState("28");
+  const [lifeAge, setLifeAge] = useState("75");
+  const [retireAge, setRetireAge] = useState("60");
   const [costPerMonth, setCostPerMonth] = useState("25000");
   const [inflation, setInflation] = useState("4.27");
   const [retirementSavings, setRetirementSavings] = useState("");
@@ -155,10 +155,10 @@ const Retirement2 = () => {
       </div>
       <div className="text-center mt-5">
         <p className="font-semibold text-lg">
-          คุณต้องมีเงินเก็บตอนอายุ 60 ปี จำนวน
+          คุณต้องมีเงินเก็บตอนอายุ {retireAge} ปี จำนวน
         </p>
         <p className="font-semibold text-3xl text-red-500 my-5">
-          {retirementSavings.toLocaleString()} บาท
+          {Math.round(retirementSavings).toLocaleString()} บาท
         </p>
       </div>
       <div className="w-full mt-5">
@@ -177,12 +177,12 @@ const Retirement2 = () => {
           <tbody>
             {ageAndCost?.map((r, idx) => (
               <tr key={idx}>
-                <td className="p-2 border-2 text-center">{r.age}</td>
-                <td className="p-2 border-2 text-right">
-                  {r.livingCostPerYear.toLocaleString()}
+                <td className="p-2 border-2 text-center text-lg">{r.age}</td>
+                <td className="p-2 border-2 text-right text-lg">
+                  {Math.round(r.livingCostPerYear).toLocaleString()}
                 </td>
-                <td className="p-2 border-2 text-right">
-                  {r.investment.toLocaleString()}
+                <td className="p-2 border-2 text-right text-lg">
+                  {Math.round(r.investment).toLocaleString()}
                 </td>
               </tr>
             ))}
