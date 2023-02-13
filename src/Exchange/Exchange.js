@@ -6,10 +6,20 @@ import ExchangeChart from "./ExchangeChart.json";
 import ReactECharts from "echarts-for-react";
 import axios from "axios";
 
-const useFetchExchangeRate = ({ authToken }) => {
+const Exchange = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
-  console.log("useFetchExchangeRate");
+  const [fromCurrency, setFromCurrency] = useState("THB");
+  const [toCurrency, setToCurrency] = useState("USD");
+  const [amount, setAmount] = useState(1);
+  const [amountConvert, setAmountConvert] = useState(0);
+  const [fromCurrencyRate, setFromCurrencyRate] = useState();
+  const [toCurrencyRate, setToCurrencyRate] = useState();
+  const [exchangeStatistic, setExchangeRatesStatistic] = useState();
+  const [chartOption, setChartOption] = useState({});
+  const authToken =
+    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+
   useEffect(() => {
     axios({
       url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
@@ -19,56 +29,23 @@ const useFetchExchangeRate = ({ authToken }) => {
         Authorization: authToken,
       },
     }).then((res) => {
-      console.log("useFetchExchangeRate", res.data);
       const _exchangeRates = res.data;
       const _currencyLists = Object.keys(_exchangeRates.rates);
-      console.log("currencyLists", _currencyLists);
+      console.log(_currencyLists);
       setExchangeRates(_exchangeRates);
       setCurrencyLists(_currencyLists);
     });
   }, []);
-
-  return { exchangeRates, currencyLists };
-};
-
-const useConvertExchangeRate = ({ exchangeRates }) => {
-  const [fromCurrency, setFromCurrency] = useState("THB");
-  const [toCurrency, setToCurrency] = useState("USD");
-  const [amount, setAmount] = useState(1);
-  const [amountConvert, setAmountConvert] = useState(0);
-  const [fromCurrencyRate, setFromCurrencyRate] = useState();
-  const [toCurrencyRate, setToCurrencyRate] = useState();
 
   useEffect(() => {
     const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
     const _toCurrencyRate = exchangeRates?.rates[toCurrency];
     console.log(fromCurrencyRate, toCurrencyRate);
     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
-
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
-  }, [amount, fromCurrency, toCurrency, exchangeRates]);
-  return {
-    fromCurrency,
-    setFromCurrency,
-    toCurrency,
-    setToCurrency,
-    amount,
-    setAmountConvert,
-    amountConvert,
-    setAmountConvert,
-    fromCurrencyRate,
-    setFromCurrencyRate,
-    toCurrencyRate,
-    setToCurrencyRate,
-  };
-};
 
-const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
-  const [exchangeStatistic, setExchangeRatesStatistic] = useState();
-  console.log("useExchangeStatistic");
-  useEffect(() => {
     axios({
       url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
         `https://www.xe.com/api/protected/statistics/?from=${fromCurrency}&to=${toCurrency}`
@@ -79,15 +56,7 @@ const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
     }).then((res) => {
       setExchangeRatesStatistic(res.data);
     });
-  }, [fromCurrency, toCurrency]);
-  return [exchangeStatistic];
-};
 
-const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
-  const [chartOption, setChartOption] = useState({});
-  console.log("useChartOption");
-
-  useEffect(() => {
     axios({
       url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
         `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
@@ -97,11 +66,14 @@ const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
       },
     }).then((res) => {
       const _exchangeChart = res.data;
+      const something = _exchangeChart?.batchList[0]?.rates?.slice(1);
+      console.log("something : ", something);
       const _chartOption = {
         xAxis: {
           type: "category",
           data: [..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys()].map(
             (r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1
+
           ),
           name: "วันที่",
         },
@@ -126,46 +98,13 @@ const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
 
       setChartOption(_chartOption);
     });
-  }, [fromCurrency, toCurrency]);
-
-  return [chartOption];
-};
-
-const Exchange = () => {
-  const authToken =
-    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
-
-  const { exchangeRates, currencyLists } = useFetchExchangeRate({ authToken });
-  const {
-    fromCurrency,
-    setFromCurrency,
-    toCurrency,
-    setToCurrency,
-    amount,
-    setAmount,
-    amountConvert,
-    fromCurrencyRate,
-    toCurrencyRate,
-  } = useConvertExchangeRate({ exchangeRates });
-
-  const [exchangeStatistic] = useExchangeStatistic({
-    authToken,
-    fromCurrency,
-    toCurrency,
-  });
-
-  const [chartOption] = useChartOption({
-    authToken,
-    fromCurrency,
-    toCurrency,
-  });
+  }, [amount, fromCurrency, toCurrency, exchangeRates]);
 
   const switchCurrency = () => {
     // USD => THB || THB => USD
     // TEMP => USD || THB = TEMP(USD)
 
     const temp = fromCurrency; //ต้นทาง
-    console.log(temp, fromCurrency, toCurrency);
     setFromCurrency(toCurrency);
     setToCurrency(temp);
   };
