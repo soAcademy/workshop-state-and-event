@@ -107,7 +107,8 @@
 // import Retirement4 from "./Retirement/Retirement4";
 // import Retirement5 from "./Retirement/Retirement5";
 
-import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
+// import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
+import CurrencyConverter2 from "./CurrencyConverter/CurrencyConverter2";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
@@ -181,7 +182,8 @@ const App = () => (
     {/* <Retirement3 /> */}
     {/* <Retirement4 /> */}
     {/* <Retirement5 /> */}
-    <CurrencyConverter1 />
+    {/* <CurrencyConverter1 /> */}
+    <CurrencyConverter2 />
   </div>
 );
 
