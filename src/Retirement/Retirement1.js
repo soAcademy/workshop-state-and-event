@@ -7,9 +7,9 @@ const Retirement1 = () => {
   const [monthlyExpense, setMonthlyExpense] = useState(30000);
   const [inflat, setInflat] = useState(4.2);
   const [retireSaving, setRetireSaving] = useState(60)
-  const [financialPlan, setFinancialPlan] = useState([])
+  const [financialPlans, setFinancialPlans] = useState([])
   const [invest, setInvest] = useState(50000)
-  const [port, setPort] = useState(7)
+  const [investmentReturnRate, setInvestmentReturnRate] = useState(7)
 
 
   const retireAmountCalcuation = () => {
@@ -30,23 +30,34 @@ const Retirement1 = () => {
     
     setRetireSaving(_retireSaving)
     console.log("retireSaving:", retireSaving);
-    setFinancialPlan(_financialPlan)
-    console.log("financialPlan:", financialPlan)
-  };
 
-  // const investAmountCalcuation = () => {
-    const _financialPlanB = [...Array(Number(lifeAge) - Number(currentAge))].reduce(
-      (acc, yridx) => ({
-      const investAcc = yridx > 0 ? acc[yridx-1] : 0;
-      
-      conts result = ((investAcc - yearlyExpense + invest)*(1 + Number(port))/100)
-      return (
-        ...acc,result
-      )  
-      
-      })
-    );
-    console.log(_financialPlanB)
+  const _investmentPlans = [...Array(Number(lifeAge) - Number(currentAge))].reduce((acc, yearIndex) => {
+    const pastPortfolioValue = yearIndex > 0 ? acc[yearIndex - 1] : 0;
+    const isNotRetire = yearIndex < Number(retireAge) - Number(currentAge);
+    const investThisYearValue = isNotRetire ? Number(invest) : 0;
+    const livingCostPerYear = isNotRetire
+      ? 0
+      : _financialPlan[yearIndex].yearlyExpense;
+    const value =
+      (pastPortfolioValue + investThisYearValue - livingCostPerYear) *
+      (1 + Number(investmentReturnRate) / 100);
+    // console.log("pastPortfolioValue:",pastPortfolioValue)
+    console.log("acc:",acc)
+    return [...acc, value];
+  }, []);
+  console.log("_investmentPlans:",_investmentPlans);
+
+  const _financialPlans = _financialPlan.map((r, idx) => ({
+    ...r,
+    investmentValue: _investmentPlans[idx],
+  }));
+
+  console.log(_investmentPlans);
+
+  console.log("financialPlans:",_financialPlans);
+  setFinancialPlans(_financialPlans);
+
+};
 
   useEffect(() => {
     if (
@@ -73,7 +84,8 @@ const Retirement1 = () => {
             คุณอายุเท่าไร{" "}
             <input
               type="Number"
-              defaultValue={currentAge}
+              name="currentAge"
+              value={currentAge}
               onChange={(e) => setCurrentAge(Number(e.target.value))}
             />
           </div>
@@ -81,7 +93,8 @@ const Retirement1 = () => {
             มีอายุถึงกี่ปี{" "}
             <input
               type="Number"
-              defaultValue={lifeAge}
+              name="lifeAge"
+              value={lifeAge}
               onChange={(e) => setLifeAge(Number(e.target.value))}
             />
           </div>
@@ -89,7 +102,8 @@ const Retirement1 = () => {
             เกษียณตอนอายุ{" "}
             <input
               type="Number"
-              defaultValue={retireAge}
+              name="retireAge"
+              value={retireAge}
               onChange={(e) => setRetireAge(Number(e.target.value))}
             />
           </div>
@@ -97,7 +111,8 @@ const Retirement1 = () => {
             ค่าใช้จ่ายต่อเดือน{" "}
             <input
               type="Number"
-              defaultValue={monthlyExpense}
+              name="monthlyExpenses"
+              value={monthlyExpense}
               onChange={(e) => setMonthlyExpense(Number(e.target.value))}
             />
           </div>
@@ -105,7 +120,8 @@ const Retirement1 = () => {
             อัตราเงินเฟ้อ{" "}
             <input
               type="Number"
-              defaultValue={inflat}
+              name="inflat"
+              value={inflat}
               onChange={(e) => setInflat(Number(e.target.value))}
             />
           </div>
@@ -116,7 +132,8 @@ const Retirement1 = () => {
             มูลค่าเงินลงทุนต่อปี{" "}
             <input
               type="Number"
-              defaultValue={inflat}
+              name="invest"
+              value={invest}
               onChange={(e) => setInvest(Number(e.target.value))}
             />
           </div>
@@ -124,8 +141,9 @@ const Retirement1 = () => {
             อัตราผลตอบแทนต่อปี{" "}
             <input
               type="Number"
-              defaultValue={inflat}
-              onChange={(e) => setPort(Number(e.target.value))}
+              name="investmentReturnRate"
+              defaultValue={investmentReturnRate}
+              onChange={(e) => setInvestmentReturnRate(Number(e.target.value))}
             />
           </div>
           </div>
@@ -145,7 +163,7 @@ const Retirement1 = () => {
             </tr>
           </thead>
           <tbody>
-            {financialPlan.map((r) => (
+            {financialPlans.map((r) => (
               <tr key={r.age} className="border border-1 border-black">
                 <td className="border border-1 border-black">{r.age}</td>
                 <td>{r.yearlyExpense.toLocaleString("th")}</td>

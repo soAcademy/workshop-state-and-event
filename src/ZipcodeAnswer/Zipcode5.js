@@ -60,6 +60,7 @@ const Zipcode5 = () => {
     ).values(),
   ];
 
+  console.log("districts:",districts);
   // [...new Set([1, 1, 2, 2, 3, 3])]
   // [...new Map([["key1", "value1"], ["key2", "value2"]]).values()]
   

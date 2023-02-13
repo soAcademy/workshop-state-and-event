@@ -35,6 +35,12 @@ import DeathCause5 from "./DeathCauseAnswer/DeathCause5";
 import DeathCause6 from "./DeathCauseAnswer/DeathCause6";
 import DeathCause7 from "./DeathCauseAnswer/DeathCause7";
 import DeathCause8 from "./DeathCauseAnswer/DeathCause8";
+// import Retirement1 from "./RetirementAnswer/Retirement1";
+import Retirement2 from "./RetirementAnswer/Retirement2";
+import Retirement3 from "./RetirementAnswer/Retirement3";
+import Retirement4 from "./RetirementAnswer/Retirement4";
+import Retirement5 from "./RetirementAnswer/Retirement5";
+// import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 import Retirement1 from "./Retirement/Retirement1"
 
@@ -92,12 +98,15 @@ const App = () => {
       {/* <DeathCause2 /> */}
       {/* <DeathCause3 /> */}
       {/* <DeathCause4 /> */}
+      {/* <DeathCause5 /> */}
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
-
       <Retirement1 />
-
+      {/* <Retirement2 /> */}
+      {/* <Retirement3 /> */}
+      {/* <Retirement4 /> */}
+      {/* <Retirement5 /> */}
     </>
   );
 };
