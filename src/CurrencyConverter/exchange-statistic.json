@@ -1,0 +1,57 @@
+{
+  "last1Days": {
+    "to": "GBP",
+    "high": 0.8967404622,
+    "low": 0.8963103426,
+    "average": 0.8965254024,
+    "standardDeviation": -1,
+    "volatility": -1,
+    "highTimestamp": "2023-02-11T00:00:00Z",
+    "lowTimestamp": "2023-02-12T00:00:00Z",
+    "dataPoints": 2
+  },
+  "last7Days": {
+    "to": "GBP",
+    "high": 0.9000902459,
+    "low": 0.8950655371,
+    "average": 0.8969753338,
+    "standardDeviation": 0.001844577,
+    "volatility": 0.2854258591,
+    "highTimestamp": "2023-02-08T00:00:00Z",
+    "lowTimestamp": "2023-02-10T00:00:00Z",
+    "dataPoints": 8
+  },
+  "last30Days": {
+    "to": "GBP",
+    "high": 0.9000902459,
+    "low": 0.8748001876,
+    "average": 0.8854064221,
+    "standardDeviation": 0.0087194364,
+    "volatility": 0.3436086948,
+    "highTimestamp": "2023-02-08T00:00:00Z",
+    "lowTimestamp": "2023-01-28T00:00:00Z",
+    "dataPoints": 31
+  },
+  "last60Days": {
+    "to": "GBP",
+    "high": 0.9000902459,
+    "low": 0.8711620046,
+    "average": 0.8872374951,
+    "standardDeviation": 0.0079802519,
+    "volatility": 0.4119730959,
+    "highTimestamp": "2023-02-08T00:00:00Z",
+    "lowTimestamp": "2022-12-14T00:00:00Z",
+    "dataPoints": 61
+  },
+  "last90Days": {
+    "to": "GBP",
+    "high": 0.9020332079,
+    "low": 0.8683352142,
+    "average": 0.8842833719,
+    "standardDeviation": 0.009123041,
+    "volatility": 0.4051921188,
+    "highTimestamp": "2022-11-15T00:00:00Z",
+    "lowTimestamp": "2022-12-05T00:00:00Z",
+    "dataPoints": 91
+  }
+}
