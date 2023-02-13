@@ -13,7 +13,7 @@ const Retirement5 = () => {
 
   const calculateRetirementSaving = () => {
     console.log("Retirement");
-    const lifeSpans = [...Array(Number(lifeAge) - Number(currentAge))];
+    const lifeSpans = [...Array(Number(lifeAge) - Number(currentAge)).keys()];
 
     const _financialPlans0 = lifeSpans.map((r, idx) => ({
       age: Number(currentAge) + idx + 1,
@@ -23,22 +23,19 @@ const Retirement5 = () => {
         (1 + Number(inflation) / 100) ** (idx + 1),
     }));
 
-    const _investmentPlans = lifeSpans.reduce((acc, r) => {
-      const yearIndex = acc.length;
+    const _investmentPlans = lifeSpans.reduce((acc, yearIndex) => {
       const pastPortfolioValue = yearIndex > 0 ? acc[yearIndex - 1] : 0;
-      const investThisYearValue =
-        yearIndex < Number(lifeAge) - Number(currentAge)
-          ? Number(investmentPerYear)
-          : 0;
-      const livingCostPerYear =
-        yearIndex < Number(retireAge) - Number(currentAge)
-          ? 0
-          : _financialPlans0[yearIndex].livingCostPerYear;
+      const isNotRetire = yearIndex < Number(retireAge) - Number(currentAge);
+      const investThisYearValue = isNotRetire ? Number(investmentPerYear) : 0;
+      const livingCostPerYear = isNotRetire
+        ? 0
+        : _financialPlans0[yearIndex].livingCostPerYear;
       const value =
         (pastPortfolioValue + investThisYearValue - livingCostPerYear) *
         (1 + Number(investmentReturnRate) / 100);
       return [...acc, value];
     }, []);
+    console.log(_investmentPlans);
 
     const _financialPlans = _financialPlans0.map((r, idx) => ({
       ...r,

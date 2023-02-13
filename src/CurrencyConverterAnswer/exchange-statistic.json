@@ -1,0 +1,57 @@
+{
+  "last1Days": {
+    "to": "USD",
+    "high": 0.0297347679,
+    "low": 0.0297025021,
+    "average": 0.029718635,
+    "standardDeviation": -1,
+    "volatility": -1,
+    "highTimestamp": "2023-02-11T00:00:00Z",
+    "lowTimestamp": "2023-02-12T00:00:00Z",
+    "dataPoints": 2
+  },
+  "last7Days": {
+    "to": "USD",
+    "high": 0.0299589262,
+    "low": 0.0296200972,
+    "average": 0.0297902407,
+    "standardDeviation": 0.0001038324,
+    "volatility": 0.4489419407,
+    "highTimestamp": "2023-02-05T00:00:00Z",
+    "lowTimestamp": "2023-02-07T00:00:00Z",
+    "dataPoints": 8
+  },
+  "last30Days": {
+    "to": "USD",
+    "high": 0.0306161983,
+    "low": 0.0296200972,
+    "average": 0.0302676046,
+    "standardDeviation": 0.000315649,
+    "volatility": 0.4120756486,
+    "highTimestamp": "2023-01-21T00:00:00Z",
+    "lowTimestamp": "2023-02-07T00:00:00Z",
+    "dataPoints": 31
+  },
+  "last60Days": {
+    "to": "USD",
+    "high": 0.0306161983,
+    "low": 0.0284997207,
+    "average": 0.0296690959,
+    "standardDeviation": 0.0007153919,
+    "volatility": 0.4813200058,
+    "highTimestamp": "2023-01-21T00:00:00Z",
+    "lowTimestamp": "2022-12-16T00:00:00Z",
+    "dataPoints": 61
+  },
+  "last90Days": {
+    "to": "USD",
+    "high": 0.0306161983,
+    "low": 0.0275519784,
+    "average": 0.0292039568,
+    "standardDeviation": 0.0009201636,
+    "volatility": 0.5130568173,
+    "highTimestamp": "2023-01-21T00:00:00Z",
+    "lowTimestamp": "2022-11-22T00:00:00Z",
+    "dataPoints": 91
+  }
+}
