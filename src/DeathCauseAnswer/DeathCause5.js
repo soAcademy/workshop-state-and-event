@@ -71,8 +71,9 @@ const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
 );
 
 const DeathCause5 = () => {
-  const yearLists = [...new Set(ThailandDeathCause.map((r) => r.year))];
-
+  const yearLists = [...new Set(ThailandDeathCause.map((r) => r.year))].sort(
+    (a, b) => b - a
+  );
   const [currentYear, setCurrentYear] = useState(2559);
 
   const deathCauseDatas = ThailandDeathCause;
