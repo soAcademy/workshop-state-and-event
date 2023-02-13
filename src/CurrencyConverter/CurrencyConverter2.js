@@ -1,30 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import ExchangeRatesData from "./exchange-rates.json";
 
+const CurrencyConverter2 = () => {
+  const [exchangeRates, setExchangeRates] = useState();
+  const [currencyLists, setCurrencyLists] = useState();
 
-const CurrencyConverter1 = () => {
+  useEffect(() => {
+    const tmpExchangeRates = ExchangeRatesData;
+    const tmpCurrencyLists = Object.keys(tmpExchangeRates.rates); 
+    // Object.keys เพื่อต้องการเอาชื่อของ สกุลเงินมาแสดง
+    console.log("CurrencyLists", tmpCurrencyLists);
+    setCurrencyLists(tmpCurrencyLists);
+    setExchangeRates(tmpExchangeRates);
+  }, []);
 
   return (
     <div className="w-full">
       <div className="text-center mt-5">
         <p className="font-semibold text-xl">คำนวนอัตราแลกเปลี่ยน</p>
       </div>
-      <div className="bg-slate-200 m-auto w-2/3 p-4 mt-5 rounded">
-        <div className="flex text-center">
+      <div className="bg-slate-100 m-auto w-2/3 p-4 mt-5 rounded">
+        <div className="flex text-center space-x-2">
           <div className="w-1/3">
-            <p className="text-left pl-5">จำนวน</p>
-            <input className="w-4/5 mt-3 rounded pl-1" placeholder="1" />
+            <p className="text-left">จำนวน</p>
+            <input className="w-full mt-3 rounded pl-1" placeholder="1" />
           </div>
           <div className="w-1/3">
-            <p className="text-left pl-5">จาก</p>
-            <input className="w-4/5 mt-3 rounded pl-1" placeholder="THB" />
+            <p className="text-left">จาก</p>
+            <select className="w-full mt-3 rounded cursor-pointer">
+              {currencyLists?.map((r) => (
+                <option value={r}>{r}</option>
+              ))}
+            </select>
           </div>
           <div className="w-1/3">
-            <p className="text-left pl-5">ไป</p>
-            <input className="w-4/5 mt-3 rounded pl-1" placeholder="USD" />
+            <p className="text-left">ไป</p>
+            <select className="w-full mt-3 rounded cursor-pointer">
+              {currencyLists?.map((r) => (
+                <option value={r}>{r}</option>
+              ))}
+            </select>
           </div>
         </div>
         <div className="text-center mt-10">
-          <button className="bg-yellow-300 w-36 h-10 text-lg rounded">
+          <button className="bg-yellow-300 w-36 h-10 text-lg rounded hover:bg-yellow-200 cursor-pointer">
             คำนวน
           </button>
         </div>
@@ -66,4 +85,4 @@ const CurrencyConverter1 = () => {
   );
 };
 
-export default CurrencyConverter1;
+export default CurrencyConverter2;
