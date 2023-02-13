@@ -30,12 +30,12 @@ const CurrencyConverter5 = () => {
     console.log(fromCurrencyRate, toCurrencyRate);
     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
     const _exchangeStatistic = ExchangeStatistic;
-    const _exchangeCart = ExchangeChart;
+    const _exchangeChart = ExchangeChart;
     const _chartOption = {
       xAxis: {
         type: "category",
-        data: [..._exchangeCart?.batchList[0]?.rates?.slice(1)?.keys()].map(
-          (r) => r - _exchangeCart?.batchList[0]?.rates?.length - 1
+        data: [..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys()].map(
+          (r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1
         ),
         name: "วันที่",
       },
@@ -47,7 +47,7 @@ const CurrencyConverter5 = () => {
       },
       series: [
         {
-          data: _exchangeCart?.batchList[0]?.rates?.slice(1).reverse(),
+          data: _exchangeChart?.batchList[0]?.rates?.slice(1).reverse(),
           type: "line",
           smooth: true,
           lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },

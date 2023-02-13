@@ -25,6 +25,7 @@ const CurrencyConverter3 = () => {
             <div className="w-1/3">
               <label>จำนวน</label>
               <br />
+              {amount}
               <input
                 type="number"
                 name="amount"
@@ -36,6 +37,7 @@ const CurrencyConverter3 = () => {
             <div className="w-1/3">
               <label>จาก</label>
               <br />
+              {fromCurrency}
               <select
                 className="p-2 pb-3 w-full mt-2"
                 value={fromCurrency}
@@ -53,6 +55,7 @@ const CurrencyConverter3 = () => {
             <div className="w-1/3">
               <label>ไป</label>
               <br />
+              {toCurrency}
               <select
                 className="p-2 pb-3 w-full mt-2"
                 value={toCurrency}
