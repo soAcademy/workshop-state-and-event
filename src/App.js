@@ -41,6 +41,7 @@ import Retirement3 from "./RetirementAnswer/Retirement3";
 import Retirement4 from "./RetirementAnswer/Retirement4";
 import Retirement5 from "./RetirementAnswer/Retirement5";
 import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
+import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
@@ -88,7 +89,8 @@ const App = () => {
       {/* <Retirement3 /> */}
       {/* <Retirement4 /> */}
       {/* <Retirement5 /> */}
-      <CurrencyConverter1 />
+      {/* <CurrencyConverter1 /> */}
+      <CurrencyConverter2 />
     </>
   );
 };
