@@ -40,13 +40,13 @@
 // import Retirement3 from "./RetirementAnswer/Retirement3";
 // import Retirement4 from "./RetirementAnswer/Retirement4";
 // import Retirement5 from "./RetirementAnswer/Retirement5";
-import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
-// import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
-// import CurrencyConverter3 from "./CurrencyConverterAnswer/CurrencyConverter3";
-// import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
-// import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
-// import CurrencyConverter6 from "./CurrencyConverterAnswer/CurrencyConverter6";
-// import CurrencyConverter7 from "./CurrencyConverterAnswer/CurrencyConverter7";
+import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
+// import CurrencyConverter2 from "./CurrencyConverter/CurrencyConverter2";
+// import CurrencyConverter3 from "./CurrencyConverter/CurrencyConverter3";
+// import CurrencyConverter4 from "./CurrencyConverter/CurrencyConverter4";
+// import CurrencyConverter5 from "./CurrencyConverter/CurrencyConverter5";
+// import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
+// import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
@@ -85,17 +85,6 @@ const App = () => {
       {/* <DeathCause2 /> */}
       {/* <DeathCause3 /> */}
       {/* <DeathCause4 /> */}
-<<<<<<< HEAD
-      {/* <DeathCause5/> */}
-      {/* <DeathCause6 /> */}
-      {/* <DeathCause7 /> */}
-      <DeathCause8 />
-      {/* <Retirement1 /> */}
-      {/* <Retirement2/> */}
-      {/* <Retirement3/>  */}
-      {/* <Retirement4/> */}
-
-=======
       {/* <DeathCause5 /> */}
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
@@ -105,14 +94,13 @@ const App = () => {
       {/* <Retirement3 /> */}
       {/* <Retirement4 /> */}
       {/* <Retirement5 /> */}
-      {/* <CurrencyConverter1 /> */}
+      <CurrencyConverter1 />
       {/* <CurrencyConverter2 /> */}
       {/* <CurrencyConverter3 /> */}
       {/* <CurrencyConverter4 /> */}
       {/* <CurrencyConverter5 /> */}
-      <CurrencyConverter6 />
+      {/* <CurrencyConverter6 /> */}
       {/* <CurrencyConverter7 /> */}
->>>>>>> d904f0bdb1eef8760e57a714fc1bca764d19655a
     </>
   );
 };
