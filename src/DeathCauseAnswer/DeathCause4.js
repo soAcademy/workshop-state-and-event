@@ -99,10 +99,10 @@ const DeathCause4 = () => {
     },
   ];
   const totalDeath = deathCauseDatas.reduce(
-    (acc, r) => acc + r.deathMale + r.deathFemale,
+    (acc, r) => acc + r.deathMale + r.deathFemale, //Question
     0
   );
-
+console.log("totalDeath:",totalDeath);
 
   // const deathByCauses = [
   //   {
@@ -118,22 +118,20 @@ const DeathCause4 = () => {
   const deathCauseLists = [
     ...new Set(deathCauseDatas.map((r) => r.causeOfDeath)),
   ];
-  console.log(deathCauseLists);
+  console.log("deathCauseLists:",deathCauseLists);
 
   const deathByCauses = deathCauseLists.map((cause) => {
     const totalDeath = deathCauseDatas
       .filter((r) => r.causeOfDeath === cause)
       .reduce(
         (acc, r) => ({
-          death: acc.death + r.deathFemale + r.deathMale,
-          deathFemale: acc.deathFemale + r.deathFemale,
-          deathMale: acc.deathMale + r.deathMale,
+          death: acc + r.deathFemale + r.deathMale, //Question
+          deathFemale: acc + r.deathFemale, //Question
+          deathMale: acc + r.deathMale, //Question
         }),
-        {
-          death: 0,
-          deathFemale: 0,
-          deathMale: 0,
-        }
+        
+        0
+  
       );
     return {
       cause,
@@ -142,12 +140,12 @@ const DeathCause4 = () => {
       deathMale: totalDeath.deathMale,
     };
   });
-  console.log(deathByCauses);
+  console.log("deathByCauses",deathByCauses);
 
   const provinceLists = [
     ...new Set(deathCauseDatas.map((r) => r.provinceName)),
   ];
-  console.log(provinceLists);
+  console.log("provinceLists",provinceLists);
 
   // const deathByProvinces = [
   //   {
@@ -182,7 +180,7 @@ const DeathCause4 = () => {
       deathMale: totalDeath.deathMale,
     };
   });
-  console.log(deathByProvinces);
+  console.log("deathByProvinces",deathByProvinces);
 
   return (
     <div className="p-4">

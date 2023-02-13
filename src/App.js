@@ -41,13 +41,13 @@ import Retirement3 from "./RetirementAnswer/Retirement3";
 import Retirement4 from "./RetirementAnswer/Retirement4";
 import Retirement5 from "./RetirementAnswer/Retirement5";
 import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
-import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
-import CurrencyConverter3 from "./CurrencyConverterAnswer/CurrencyConverter3";
-import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
+// import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
+// import CurrencyConverter3 from "./CurrencyConverterAnswer/CurrencyConverter3";
+// import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
 import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
-import Retirement1 from "./Retirement/Retirement1"
+import CurrencyConverter4 from "./CurrencyConverter/CurrencyConverter4"
 
 const App = () => {
   return (
@@ -59,6 +59,8 @@ const App = () => {
       {/* <State5 /> */}
       {/* <State6 />   */}
       {/* <State7 /> */}
+
+      {/* <Event4 /> */}
 
       {/* <Prop1 /> */}
       {/* <Prop3 /> */}
@@ -107,7 +109,7 @@ const App = () => {
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
-      <Retirement1 />
+      {/* <Retirement1 /> */}
       {/* <Retirement2 /> */}
       {/* <Retirement3 /> */}
       {/* <Retirement4 /> */}
@@ -115,8 +117,7 @@ const App = () => {
       {/* <CurrencyConverter1 /> */}
       {/* <CurrencyConverter2 /> */}
       {/* <CurrencyConverter3 /> */}
-      {/* <CurrencyConverter4 /> */}
-      <CurrencyConverter5 />
+      <CurrencyConverter4 />
     </>
   );
 };
