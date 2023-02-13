@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import ReactECharts from "echarts-for-react";
 import ExchangeRatesData from "./exchange-rates.json";
 import ExchangeStatistic from "./exchange-statistic.json";
+import ExchangeChart from "./exchange-chart.json";
+import axios from "axios";
 
-const CurrencyConverter4 = () => {
+const CurrencyConverter6 = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("THB");
@@ -12,29 +15,85 @@ const CurrencyConverter4 = () => {
   const [fromCurrencyRate, setFromCurrencyRate] = useState();
   const [toCurrencyRate, setToCurrencyRate] = useState();
   const [exchangeStatistic, setExchangeRatesStatistic] = useState();
+  const [chartOption, setChartOption] = useState({});
+  const authToken =
+    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
   useEffect(() => {
-    const _exchangeRates = ExchangeRatesData;
-    const _currencyLists = Object.keys(_exchangeRates.rates);
-    console.log(_currencyLists);
-    setExchangeRates(_exchangeRates);
-    setCurrencyLists(_currencyLists);
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        "https://www.xe.com/api/protected/midmarket-converter/"
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      const _exchangeRates = res.data;
+      const _currencyLists = Object.keys(_exchangeRates.rates);
+      console.log(_currencyLists);
+      setExchangeRates(_exchangeRates);
+      setCurrencyLists(_currencyLists);
+    });
   }, []);
 
   useEffect(() => {
-    // THB -> JPY
-    // THB -> USD, USD -> JPY
-    // 1 / THB -> * JPY
-    // 1 / 33.81 * 132
     const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
     const _toCurrencyRate = exchangeRates?.rates[toCurrency];
     console.log(fromCurrencyRate, toCurrencyRate);
     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
-    const _exchangeStatistic = ExchangeStatistic;
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
-    setExchangeRatesStatistic(_exchangeStatistic);
+
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/statistics/?from=${fromCurrency}&to=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      setExchangeRatesStatistic(res.data);
+    });
+
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      const _exchangeChart = res.data;
+      const _chartOption = {
+        xAxis: {
+          type: "category",
+          data: [..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys()].map(
+            (r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1
+          ),
+          name: "วันที่",
+        },
+        yAxis: {
+          type: "value",
+          name: "อัตราแรกเปลี่ยน",
+          max: "dataMax",
+          min: "dataMin",
+        },
+        series: [
+          {
+            data: _exchangeChart?.batchList[0]?.rates?.slice(1).reverse(),
+            type: "line",
+            smooth: true,
+            lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+          },
+        ],
+        tooltip: {
+          trigger: "axis",
+        },
+      };
+  
+      setChartOption(_chartOption);
+    });
   }, [amount, fromCurrency, toCurrency]);
 
   return (
@@ -109,37 +168,40 @@ const CurrencyConverter4 = () => {
           <div className="w-1/2">
             <div>1 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last1Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last1Days?.average} {toCurrency}
             </div>
-            <div>1 USD = {1 / exchangeStatistic?.last1Days?.average} THB </div>
+            <div>1 {toCurrency} = {1 / exchangeStatistic?.last1Days?.average} {fromCurrency} </div>
           </div>
           <div className="w-1/2">
             <div>7 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last7Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last7Days?.average} {toCurrency}
             </div>
-            <div>1 USD ={1 / exchangeStatistic?.last7Days?.average} THB </div>
+            <div>1 {toCurrency} ={1 / exchangeStatistic?.last7Days?.average} {fromCurrency} </div>
           </div>
         </div>
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>30 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last30Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last30Days?.average} {toCurrency}
             </div>
-            <div>1 USD = {1 / exchangeStatistic?.last30Days?.average} THB </div>
+            <div>1 {toCurrency} = {1 / exchangeStatistic?.last30Days?.average} {fromCurrency} </div>
           </div>
           <div className="w-1/2">
             <div>60 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last60Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last60Days?.average} {toCurrency}
             </div>
-            <div>1 USD ={1 / exchangeStatistic?.last60Days?.average} THB </div>
+            <div>1 {toCurrency} ={1 / exchangeStatistic?.last60Days?.average} {fromCurrency} </div>
           </div>
+        </div>
+        <div className="mt-4">
+          <ReactECharts option={chartOption} />
         </div>
       </div>
     </div>
   );
 };
 
-export default CurrencyConverter4;
+export default CurrencyConverter6;
