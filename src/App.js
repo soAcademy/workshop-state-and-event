@@ -44,7 +44,8 @@
 // import Retirement1 from "./Retirement/Retirement1";
 // import Retirement2 from "./Retirement/Retirement2";
 
-import CurrencyConvertor1 from "./CurrencyConvertor/CurrencyConvertor1";
+// import CurrencyConvertor1 from "./CurrencyConvertor/CurrencyConvertor1";
+import CurrencyConvertor4 from "./CurrencyConvertor/CurrencyConvertor4"
 
 const App = () => {
   return (
@@ -121,7 +122,8 @@ const App = () => {
 
       {/* <WorldMap /> */}
 
-      <CurrencyConvertor1 />
+      {/* <CurrencyConvertor1 /> */}
+      <CurrencyConvertor4 />
     </div>
   );
 };
