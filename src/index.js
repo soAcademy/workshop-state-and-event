@@ -12,7 +12,7 @@ import AppAccordian from "./AppAccordian";
 import AppTrivia from "./AppTrivia";
 import Map from "./Dashboard/Map";
 import * as serviceWorker from './serviceWorker';
-import AppRetirement from "./AppRetirement";
+import AppCalculator from "./AppCalculator";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,7 +24,7 @@ root.render(
     {/* <AppDashBoard /> */}
     {/* <AppAccordian /> */}
     {/* <AppTrivia /> */}
-    <AppRetirement />
+    <AppCalculator />
   </React.StrictMode>
 );
 

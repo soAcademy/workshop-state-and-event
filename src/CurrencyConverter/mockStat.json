@@ -1,0 +1,57 @@
+{
+  "last1Days": {
+    "to": "THB",
+    "high": 33.6671973287,
+    "low": 33.5802908327,
+    "average": 33.6237440807,
+    "standardDeviation": -1,
+    "volatility": -1,
+    "highTimestamp": "2023-02-12T00:00:00Z",
+    "lowTimestamp": "2023-02-13T00:00:00Z",
+    "dataPoints": 2
+  },
+  "last7Days": {
+    "to": "THB",
+    "high": 33.7608615376,
+    "low": 33.4994236552,
+    "average": 33.5935543543,
+    "standardDeviation": 0.0887195757,
+    "volatility": 0.4401308655,
+    "highTimestamp": "2023-02-07T00:00:00Z",
+    "lowTimestamp": "2023-02-09T00:00:00Z",
+    "dataPoints": 8
+  },
+  "last30Days": {
+    "to": "THB",
+    "high": 33.7608615376,
+    "low": 32.6624484468,
+    "average": 33.0570650822,
+    "standardDeviation": 0.3604235066,
+    "volatility": 0.3665606032,
+    "highTimestamp": "2023-02-07T00:00:00Z",
+    "lowTimestamp": "2023-01-21T00:00:00Z",
+    "dataPoints": 31
+  },
+  "last60Days": {
+    "to": "THB",
+    "high": 35.0880631418,
+    "low": 32.6624484468,
+    "average": 33.7077843992,
+    "standardDeviation": 0.808526625,
+    "volatility": 0.4817293351,
+    "highTimestamp": "2022-12-16T00:00:00Z",
+    "lowTimestamp": "2023-01-21T00:00:00Z",
+    "dataPoints": 61
+  },
+  "last90Days": {
+    "to": "THB",
+    "high": 36.2950342028,
+    "low": 32.6624484468,
+    "average": 34.2485850357,
+    "standardDeviation": 1.064770961,
+    "volatility": 0.504669966,
+    "highTimestamp": "2022-11-22T00:00:00Z",
+    "lowTimestamp": "2023-01-21T00:00:00Z",
+    "dataPoints": 91
+  }
+}
