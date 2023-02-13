@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import ExchangeRatesData from "./exchange-rates.json";
 
-const CurrencyConverter2 = () => {
+const CurrencyConverter3 = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
+  const [fromCurrency, setFromCurrency] = useState("THB");
+  const [toCurrency, setToCurrency] = useState("USD");
+  const [amount, setAmount] = useState(1);
 
   useEffect(() => {
     const _exchangeRates = ExchangeRatesData;
@@ -26,25 +29,42 @@ const CurrencyConverter2 = () => {
                 type="number"
                 name="amount"
                 className="p-2 w-full mt-2"
-                placeholder="1"
-              ></input>
+                onChange={(e) => setAmount(Number(e.target.value))}
+                value={amount}
+              />
             </div>
             <div className="w-1/3">
               <label>จาก</label>
               <br />
-              <select className="p-2 pb-3 w-full mt-2">
-                {currencyLists?.map((r) => (
-                  <option value={r}>{r}</option>
-                ))}
+              <select
+                className="p-2 pb-3 w-full mt-2"
+                value={fromCurrency}
+                onChange={(e) => setFromCurrency(e.target.value)}
+              >
+                {currencyLists
+                  ?.filter((r) => r !== toCurrency)
+                  ?.map((r, idx) => (
+                    <option key={idx} value={r}>
+                      {r}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className="w-1/3">
               <label>ไป</label>
               <br />
-              <select className="p-2 pb-3 w-full mt-2">
-                {currencyLists?.map((r) => (
-                  <option value={r}>{r}</option>
-                ))}
+              <select
+                className="p-2 pb-3 w-full mt-2"
+                value={toCurrency}
+                onChange={(e) => setToCurrency(e.target.value)}
+              >
+                {currencyLists
+                  ?.filter((r) => r !== fromCurrency)
+                  ?.map((r, idx) => (
+                    <option key={idx} value={r}>
+                      {r}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
@@ -89,4 +109,4 @@ const CurrencyConverter2 = () => {
   );
 };
 
-export default CurrencyConverter2;
+export default CurrencyConverter3;

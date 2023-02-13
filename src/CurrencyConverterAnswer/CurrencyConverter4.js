@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import ExchangeRatesData from "./exchange-rates.json";
 
-const CurrencyConverter2 = () => {
+const CurrencyConverter4 = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
+  const [fromCurrency, setFromCurrency] = useState("THB");
+  const [toCurrency, setToCurrency] = useState("USD");
+  const [amount, setAmount] = useState(1);
+  const [amountConvert, setAmountConvert] = useState(0);
+  const [fromCurrencyRate, setFromCurrencyRate] = useState();
+  const [toCurrencyRate, setToCurrencyRate] = useState();
 
   useEffect(() => {
     const _exchangeRates = ExchangeRatesData;
@@ -12,6 +18,16 @@ const CurrencyConverter2 = () => {
     setExchangeRates(_exchangeRates);
     setCurrencyLists(_currencyLists);
   }, []);
+
+  useEffect(() => {
+    const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
+    const _toCurrencyRate = exchangeRates?.rates[toCurrency];
+    console.log(fromCurrencyRate, toCurrencyRate);
+    const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
+    setAmountConvert(_amountConvert);
+    setFromCurrencyRate(_fromCurrencyRate);
+    setToCurrencyRate(_toCurrencyRate);
+  }, [amount, fromCurrency, toCurrency]);
 
   return (
     <div className="">
@@ -26,35 +42,56 @@ const CurrencyConverter2 = () => {
                 type="number"
                 name="amount"
                 className="p-2 w-full mt-2"
-                placeholder="1"
-              ></input>
+                onChange={(e) => setAmount(Number(e.target.value))}
+                value={amount}
+              />
             </div>
             <div className="w-1/3">
               <label>จาก</label>
               <br />
-              <select className="p-2 pb-3 w-full mt-2">
-                {currencyLists?.map((r) => (
-                  <option value={r}>{r}</option>
-                ))}
+              <select
+                className="p-2 pb-3 w-full mt-2"
+                value={fromCurrency}
+                onChange={(e) => setFromCurrency(e.target.value)}
+              >
+                {currencyLists
+                  ?.filter((r) => r !== toCurrency)
+                  ?.map((r, idx) => (
+                    <option key={idx} value={r}>
+                      {r}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className="w-1/3">
               <label>ไป</label>
               <br />
-              <select className="p-2 pb-3 w-full mt-2">
-                {currencyLists?.map((r) => (
-                  <option value={r}>{r}</option>
-                ))}
+              <select
+                className="p-2 pb-3 w-full mt-2"
+                value={toCurrency}
+                onChange={(e) => setToCurrency(e.target.value)}
+              >
+                {currencyLists
+                  ?.filter((r) => r !== fromCurrency)
+                  ?.map((r, idx) => (
+                    <option key={idx} value={r}>
+                      {r}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
-          <div className="text-center mt-8">
-            <button
-              type="submit"
-              className="bg-yellow-400 hover:bg-yellow-500 active:bg-amber-400 p-4 w-32 font-bold text-xl"
-            >
-              คำนวน
-            </button>
+          <div className="mt-8">
+            <div>
+              {amount} {fromCurrency} =
+            </div>
+            <div className="font-bold text-xl">
+              {amountConvert} {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} = {(1 / fromCurrencyRate) * toCurrencyRate}{" "}
+              {fromCurrency}
+            </div>
           </div>
         </form>
       </div>
@@ -89,4 +126,4 @@ const CurrencyConverter2 = () => {
   );
 };
 
-export default CurrencyConverter2;
+export default CurrencyConverter4;
