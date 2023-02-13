@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ExchangeRatesData from "./exchange-rates.json";
 
+// set ค่าที่ได้รับมาจาก input และ select ใส่ใน useState
+
 const CurrencyConverter3 = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
@@ -41,14 +43,16 @@ const CurrencyConverter3 = () => {
               {fromCurrency}
               <select
                 value={fromCurrency}
-                onChange={(e) => setFromCurrency()}
+                onChange={(e) => setFromCurrency(e.target.value)}
                 className="p-2 pb-3 w-full mt-2"
               >
-                {currencyLists?.map((r, idx) => (
-                  <option key={`2${idx}${r}`} value={r}>
-                    {r}
-                  </option>
-                ))}
+                {currencyLists
+                  ?.filter((r) => r !== toCurrency)
+                  ?.map((r, idx) => (
+                    <option key={`2${idx}${r}`} value={r}>
+                      {r}
+                    </option>
+                  ))}
 
                 {/* value ใน option ทำให้เราได้ค่าใน select */}
               </select>
@@ -59,14 +63,16 @@ const CurrencyConverter3 = () => {
               {toCurrency}
               <select
                 value={toCurrency}
-                onChange={(e) => setToCurrency()}
+                onChange={(e) => setToCurrency(e.target.value)}
                 className="p-2 pb-3 w-full mt-2"
               >
-                {currencyLists?.map((r, idx) => (
-                  <option key={`3${idx}${r}`} value={r}>
-                    {r}
-                  </option>
-                ))}
+                {currencyLists
+                  ?.filter((r) => r !== fromCurrency)
+                  ?.map((r, idx) => (
+                    <option key={`3${idx}${r}`} value={r}>
+                      {r}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
