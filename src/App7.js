@@ -31,21 +31,6 @@
 // import DeathCause2 from "./DeathCauseAnswer/DeathCause2";
 // import DeathCause3 from "./DeathCauseAnswer/DeathCause3";
 // import DeathCause4 from "./DeathCauseAnswer/DeathCause4";
-// import DeathCause5 from "./DeathCauseAnswer/DeathCause5";
-// import DeathCause6 from "./DeathCauseAnswer/DeathCause6";
-// import DeathCause7 from "./DeathCauseAnswer/DeathCause7";
-// import DeathCause8 from "./DeathCauseAnswer/DeathCause8";
-// import Retirement1 from "./RetirementAnswer/Retirement1";
-// import Retirement2 from "./RetirementAnswer/Retirement2";
-// import Retirement3 from "./RetirementAnswer/Retirement3";
-// import Retirement4 from "./RetirementAnswer/Retirement4";
-// import Retirement5 from "./RetirementAnswer/Retirement5";
-// import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
-// import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
-// import DeathCause1 from "./DeathCauseAnswer/DeathCause1";
-// import DeathCause2 from "./DeathCauseAnswer/DeathCause2";
-// import DeathCause3 from "./DeathCauseAnswer/DeathCause3";
-// import DeathCause4 from "./DeathCauseAnswer/DeathCause4";
 // import DeathCause8 from "./DeathCauseAnswer/DeathCause8";
 // import DeathCause1 from "./DeathCause/DeathCause1";
 // import DeathCause2 from "./DeathCause/DeathCause2";
@@ -56,7 +41,7 @@
 // import DeathCause7 from "./DeathCause/DeathCause7";
 // import DeathCause8 from "./DeathCause/DeathCause8";
 // import Retirement1 from "./Retirement/Retirement1";
-// import Retirement2 from "./Retirement/Retirement2";
+import Retirement2 from "./Retirement/Retirement2";
 
 const App = () => {
   return (
@@ -99,11 +84,7 @@ const App = () => {
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
       {/* <Retirement1 /> */}
-      {/* <Retirement2 /> */}
-      {/* <Retirement3 /> */}
-      {/* <Retirement4 /> */}
-      {/* <Retirement5 /> */}
-      <CurrencyConverter1 />
+      <Retirement2 />
     </>
   );
 };
