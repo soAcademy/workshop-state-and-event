@@ -7,7 +7,7 @@ const Retirement2 = () => {
   const [expense, setExpense] = useState(30000);
   const [inflat, setInflat] = useState(4.72);
   const [invest, setInvest] = useState(10000);
-  const [rate, setRate] = useState(7);
+  const [rate, setRate] = useState(7.00);
 
   const [savingYears, setSavingYears] = useState([]);
   const [resSaving, setResSaving] = useState(0);

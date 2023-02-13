@@ -1,3 +1,5 @@
+// import WorldMap from "./WorldMap/WorldMap";
+
 // import State3 from "./StatesAnswer/State3";
 // import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
 // import LocalStorage2 from "./LocalStorageAnswer/LocalStorage2";
@@ -40,12 +42,9 @@
 // import DeathCause8 from "./DeathCause/DeathCause8";
 
 // import Retirement1 from "./Retirement/Retirement1";
-import Retirement2 from "./Retirement/Retirement2";
-// import Retirement3 from "./Retirement/Retirement3";
-// import Retirement4 from "./Retirement/Retirement4";
-// import Retirement5 from "./Retirement/Retirement5";
-// import Retirement6 from "./Retirement/Retirement6";
-// import Retirement7 from "./Retirement/Retirement7";
+// import Retirement2 from "./Retirement/Retirement2";
+
+import CurrencyConvertor1 from "./CurrencyConvertor/CurrencyConvertor1";
 
 const App = () => {
   return (
@@ -118,13 +117,11 @@ const App = () => {
       {/* {<DeathCause8/>} */}
 
       {/* <Retirement1 /> */}
-      <Retirement2 />
-      {/* <Retirement3 /> */}
-      {/* <Retirement4 /> */}
-      {/* <Retirement5 /> */}
-      {/* <Retirement6 /> */}
-      {/* <Retirement7 /> */}
-      {/* <Retirement8 /> */}
+      {/* <Retirement2 /> */}
+
+      {/* <WorldMap /> */}
+
+      <CurrencyConvertor1 />
     </div>
   );
 };

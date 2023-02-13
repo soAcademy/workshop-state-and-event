@@ -6,9 +6,12 @@
     "axios": "^1.2.3",
     "echarts": "^5.4.1",
     "echarts-for-react": "^3.0.2",
+    "leaflet": "^1.9.3",
+    "leaflet-rotatedmarker": "^0.2.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.7.1",
+    "react-leaflet": "^4.2.0",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
