@@ -1,105 +1,24 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-// import currency from "./mockCurrency.json";
-import stat from "./mockStat.json";
 import FxStat from "./FxStat";
 import FxChart from "./FxChart";
 import { AiOutlineSwap } from "react-icons/ai";
-
+import useFxRates from "./useFxRates";
+import useFxResult from "./useFxResult";
+import useFxStat from "./useFxStat";
+import useFxChartData from "./useFxChartData";
 const CurrencyConverter = () => {
-  const [amount, setAmount] = useState(1);
-  const [from, setFrom] = useState("USD");
-  const [to, setTo] = useState("THB");
-  const [fxRates, setFxRates] = useState({ rates: [] });
-  const [options, setOptions] = useState([]);
-  const [stats, setStats] = useState(stat);
-  const [result, setResult] = useState();
-  const [chart, setChart] = useState({
-    timestamp: "",
-    batchList: [{ rates: [] }],
-  });
-
-  const rates = () => (1 / fxRates.rates[from]) * fxRates.rates[to];
+  const authToken =
+    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+  const { fxRates, options } = useFxRates({ authToken });
+  const { amount, setAmount, from, setFrom, to, setTo, result, rates } =
+    useFxResult({ fxRates });
+  const stats = useFxStat({from,to,authToken})
+  const chartData = useFxChartData({from,to,authToken})
   const switchVar = () => {
     const temp = from;
     setFrom(to);
     setTo(temp);
   };
 
-  useEffect(() => {
-    const _options = Object.keys(fxRates.rates);
-    setOptions(_options);
-  }, [fxRates]);
-
-  useEffect(() => {
-    const _result = Number(amount) * rates();
-    setResult(_result);
-  }, [amount, from, to]);
-
-  useEffect(() => {
-    const config = {
-      method: "get",
-      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
-        `https://www.xe.com/api/protected/statistics/?from=${from}&to=${to}`
-      )}`,
-      headers: {
-        Authorization:
-          "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=",
-      },
-    };
-
-    axios(config)
-      .then(function (response) {
-        setStats(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-        setStats(false);
-      });
-  }, [from, to]);
-
-  useEffect(() => {
-    const config = {
-      method: "get",
-      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
-        `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${from}&toCurrency=${to}&crypto=true`
-      )}`,
-      headers: {
-        Authorization:
-          "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=",
-      },
-    };
-
-    axios(config)
-      .then(function (response) {
-        setChart(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [from, to]);
-
-  useEffect(() => {
-    const config = {
-      method: "get",
-      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
-        "https://www.xe.com/api/protected/midmarket-converter/"
-      )}`,
-      headers: {
-        Authorization:
-          "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=",
-      },
-    };
-
-    axios(config)
-      .then(function (response) {
-        setFxRates(response.data);
-        setOptions(Object.keys(response.data.rates));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
   return (
     <>
       <div className="flex flex-col font-kanit">
@@ -184,7 +103,7 @@ const CurrencyConverter = () => {
           <p className="text-xl">อัตราแลกเปลี่ยนย้อนหลัง</p>
           <FxStat from={from} to={to} stats={stats} />
         </div>
-        <FxChart chart={chart} />
+        <FxChart chartData={chartData} />
       </div>
     </>
   );

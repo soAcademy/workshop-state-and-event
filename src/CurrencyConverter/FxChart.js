@@ -1,7 +1,7 @@
 import EChartsReact from "echarts-for-react";
 import React, { useState } from 'react';
 
-const FxChart = ({ chart }) => {
+const FxChart = ({ chartData }) => {
   const [timeframe, setTimeframe] = useState("1 Day");
   const interval =
     timeframe === 1
@@ -13,7 +13,7 @@ const FxChart = ({ chart }) => {
       : timeframe === 4
       ? 3600000
       : 86400000;
-  const data = chart["batchList"].find((e) => e.interval === interval);
+  const data = chartData["batchList"].find((e) => e.interval === interval);
   const timestamp = data?.startTime;
   const timeArray = data?.rates
     ?.slice(1)
@@ -23,7 +23,7 @@ const FxChart = ({ chart }) => {
       return dateref;
     })
     .reverse();
-  const options = chart && {
+  const options = chartData && {
     xAxis: {
       type: "category",
       data: timeArray?.map((e) => e),
