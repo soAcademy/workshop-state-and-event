@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import ExchangeRatesData from "./exchange-rates.json";
+import ExchangeStatisticData from "./exchange-statistic.json";
 
-const CurrencyConverter3 = () => {
+const CurrencyConverter4 = () => {
   const [exchangeRates, setExchangeRates] = useState();
-  const [currencyLists, setCurrencyLists] = useState();
+  const [currencyLists, setCurrencyLists] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("THB");
   const [toCurrency, setToCurrency] = useState("USD");
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState(Number(1));
+  const [fromCurrencyRated, setFromCurrencyRated] = useState();
+  const [toCurrencyRated, setToCurrencyRated] = useState();
+  const [amountConverted, setAmountConverted] = useState(0);
+  const [exchangeStatistic, setExchangeStatistic] = useState();
 
   useEffect(() => {
     const tmpExchangeRates = ExchangeRatesData;
@@ -16,6 +21,20 @@ const CurrencyConverter3 = () => {
     setCurrencyLists(tmpCurrencyLists);
     setExchangeRates(tmpExchangeRates);
   }, []);
+
+  useEffect(() => {
+    const tmpFromCurrencyRated = exchangeRates?.rates[fromCurrency];
+    const tmpToCurrencyRated = exchangeRates?.rates[toCurrency];
+    console.log("From", tmpFromCurrencyRated, "To", tmpToCurrencyRated);
+    const tmpAmountConverted =
+      (amount / tmpFromCurrencyRated) * tmpToCurrencyRated;
+    console.log("AmountConverted", tmpAmountConverted);
+    const tmpExchangeStatistics = ExchangeStatisticData;
+    setFromCurrencyRated(tmpFromCurrencyRated);
+    setToCurrencyRated(tmpToCurrencyRated);
+    setAmountConverted(Number(tmpAmountConverted));
+    setExchangeStatistic(tmpExchangeStatistics);
+  }, [amount, fromCurrency, toCurrency, exchangeRates]);
 
   return (
     <div className="w-full">
@@ -77,13 +96,21 @@ const CurrencyConverter3 = () => {
           </button>
         </div>
         <div className="mt-5">
-          <p>1 THB =</p>
+          <p>
+            {amount} {fromCurrency} =
+          </p>
         </div>
         <div className="mt-3">
-          <p className="text-xl font-semibold">0.0249101 USD</p>
+          <p className="text-xl font-semibold">
+            {amountConverted?.toFixed(3)} {toCurrency}
+          </p>
         </div>
         <div className="mt-3">
-          <p>1 USD = 32.0190 THB </p>
+          <p>
+            1 {toCurrency} ={" "}
+            {((1 / fromCurrencyRated) * toCurrencyRated).toFixed(3)}{" "}
+            {fromCurrency}
+          </p>
         </div>
       </div>
       <div className="m-auto w-2/3 mt-10">
@@ -93,19 +120,47 @@ const CurrencyConverter3 = () => {
         <div className="flex">
           <div className="w-6/12">
             <p>1 วัน</p>
-            <p className="text-xl font-semibold mt-3">1 THB = 0.0249101 USD</p>
-            <p className="mt-3">1 USD = 32.0190 THB </p>
+            <p className="text-xl font-semibold mt-3">
+              1 {fromCurrency} ={" "}
+              {exchangeStatistic?.last1Days.average.toFixed(3)} {toCurrency}
+            </p>
+            <p className="mt-3">
+              1 {toCurrency} ={" "}
+              {(1 / exchangeStatistic?.last1Days.average).toFixed(3)}{" "}
+              {fromCurrency}
+            </p>
             <p className="mt-7">30 วัน</p>
-            <p className="text-xl font-semibold mt-3">1 THB = 0.0249101 USD</p>
-            <p className="mt-3">1 USD = 32.0190 THB </p>
+            <p className="text-xl font-semibold mt-3">
+              1 {fromCurrency} ={" "}
+              {exchangeStatistic?.last30Days.average.toFixed(3)} {toCurrency}
+            </p>
+            <p className="mt-3">
+              1 {toCurrency} ={" "}
+              {(1 / exchangeStatistic?.last30Days.average).toFixed(3)}{" "}
+              {fromCurrency}
+            </p>
           </div>
           <div className="w-6/12">
             <p>7 วัน</p>
-            <p className="text-xl font-semibold mt-3">1 THB = 0.0249101 USD</p>
-            <p className="mt-3">1 USD = 32.0190 THB </p>
+            <p className="text-xl font-semibold mt-3">
+              1 {fromCurrency} ={" "}
+              {exchangeStatistic?.last7Days.average.toFixed(3)} {toCurrency}
+            </p>
+            <p className="mt-3">
+              1 {toCurrency} ={" "}
+              {(1 / exchangeStatistic?.last7Days.average).toFixed(3)}{" "}
+              {fromCurrency}
+            </p>
             <p className="mt-7">60 วัน</p>
-            <p className="text-xl font-semibold mt-3">1 THB = 0.0249101 USD</p>
-            <p className="mt-3">1 USD = 32.0190 THB </p>
+            <p className="text-xl font-semibold mt-3">
+              1 {fromCurrency} ={" "}
+              {exchangeStatistic?.last60Days.average.toFixed(3)} {toCurrency}
+            </p>
+            <p className="mt-3">
+              1 {toCurrency} ={" "}
+              {(1 / exchangeStatistic?.last60Days.average).toFixed(3)}{" "}
+              {fromCurrency}
+            </p>
           </div>
         </div>
       </div>
@@ -114,4 +169,4 @@ const CurrencyConverter3 = () => {
   );
 };
 
-export default CurrencyConverter3;
+export default CurrencyConverter4;
