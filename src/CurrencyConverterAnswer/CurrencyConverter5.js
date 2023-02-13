@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import ReactECharts from "echarts-for-react";
 import ExchangeRatesData from "./exchange-rates.json";
 import ExchangeStatistic from "./exchange-statistic.json";
+import ExchangeChart from "./exchange-chart.json";
 
-const CurrencyConverter4 = () => {
+const CurrencyConverter5 = () => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("THB");
@@ -12,6 +14,7 @@ const CurrencyConverter4 = () => {
   const [fromCurrencyRate, setFromCurrencyRate] = useState();
   const [toCurrencyRate, setToCurrencyRate] = useState();
   const [exchangeStatistic, setExchangeRatesStatistic] = useState();
+  const [chartOption, setChartOption] = useState({});
 
   useEffect(() => {
     const _exchangeRates = ExchangeRatesData;
@@ -27,10 +30,39 @@ const CurrencyConverter4 = () => {
     console.log(fromCurrencyRate, toCurrencyRate);
     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
     const _exchangeStatistic = ExchangeStatistic;
+    const _exchangeCart = ExchangeChart;
+    const _chartOption = {
+      xAxis: {
+        type: "category",
+        data: [..._exchangeCart?.batchList[0]?.rates?.slice(1)?.keys()].map(
+          (r) => r - _exchangeCart?.batchList[0]?.rates?.length - 1
+        ),
+        name: "วันที่",
+      },
+      yAxis: {
+        type: "value",
+        name: "อัตราแรกเปลี่ยน",
+        max: "dataMax",
+        min: "dataMin",
+      },
+      series: [
+        {
+          data: _exchangeCart?.batchList[0]?.rates?.slice(1).reverse(),
+          type: "line",
+          smooth: true,
+          lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+        },
+      ],
+      tooltip: {
+        trigger: "axis",
+      },
+    };
+
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
     setExchangeRatesStatistic(_exchangeStatistic);
+    setChartOption(_chartOption);
   }, [amount, fromCurrency, toCurrency]);
 
   return (
@@ -105,37 +137,40 @@ const CurrencyConverter4 = () => {
           <div className="w-1/2">
             <div>1 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic.last1Days.average} USD
+              1 THB = {exchangeStatistic?.last1Days?.average} USD
             </div>
-            <div>1 USD = {1 / exchangeStatistic.last1Days.average} THB </div>
+            <div>1 USD = {1 / exchangeStatistic?.last1Days?.average} THB </div>
           </div>
           <div className="w-1/2">
             <div>7 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic.last7Days.average} USD
+              1 THB = {exchangeStatistic?.last7Days?.average} USD
             </div>
-            <div>1 USD ={1 / exchangeStatistic.last7Days.average} THB </div>
+            <div>1 USD ={1 / exchangeStatistic?.last7Days?.average} THB </div>
           </div>
         </div>
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>30 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic.last30Days.average} USD
+              1 THB = {exchangeStatistic?.last30Days?.average} USD
             </div>
-            <div>1 USD = {1 / exchangeStatistic.last30Days.average} THB </div>
+            <div>1 USD = {1 / exchangeStatistic?.last30Days?.average} THB </div>
           </div>
           <div className="w-1/2">
             <div>60 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic.last60Days.average} USD
+              1 THB = {exchangeStatistic?.last60Days?.average} USD
             </div>
-            <div>1 USD ={1 / exchangeStatistic.last60Days.average} THB </div>
+            <div>1 USD ={1 / exchangeStatistic?.last60Days?.average} THB </div>
           </div>
+        </div>
+        <div className="mt-4">
+          <ReactECharts option={chartOption} />
         </div>
       </div>
     </div>
   );
 };
 
-export default CurrencyConverter4;
+export default CurrencyConverter5;
