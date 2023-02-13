@@ -40,22 +40,13 @@ import Retirement2 from "./RetirementAnswer/Retirement2";
 import Retirement3 from "./RetirementAnswer/Retirement3";
 import Retirement4 from "./RetirementAnswer/Retirement4";
 import Retirement5 from "./RetirementAnswer/Retirement5";
+import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
+// import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
+import CurrencyConverter3 from "./CurrencyConverterAnswer/CurrencyConverter3";
+import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
+// import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
-// import DeathCause1 from "./DeathCauseAnswer/DeathCause1";
-// import DeathCause2 from "./DeathCauseAnswer/DeathCause2";
-// import DeathCause3 from "./DeathCauseAnswer/DeathCause3";
-// import DeathCause4 from "./DeathCauseAnswer/DeathCause4";
-// import DeathCause5 from "./DeathCauseAnswer/DeathCause5";
-// import DeathCause6 from "./DeathCauseAnswer/DeathCause6";
-// import DeathCause7 from "./DeathCauseAnswer/DeathCause7";
-// import DeathCause8 from "./DeathCauseAnswer/DeathCause8";
-
-import Event4 from "./EventsAnswer/Event4";
-
-
-
-// import Retirement1 from "./Retirement/Retirement1"
-import CurrencyConverter from "./CurrencyConverter/CurrencyConverter1";
+import CurrencyConverter2 from "./CurrencyConverter/CurrencyConverter2"
 
 const App = () => {
   return (
@@ -122,7 +113,10 @@ const App = () => {
       {/* <Retirement3 /> */}
       {/* <Retirement4 /> */}
       {/* <Retirement5 /> */}
-      <CurrencyConverter />
+      {/* <CurrencyConverter1 /> */}
+      <CurrencyConverter2 />
+      {/* <CurrencyConverter3 /> */}
+      {/* <CurrencyConverter4 /> */}
     </>
   );
 };
