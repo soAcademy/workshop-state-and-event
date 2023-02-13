@@ -7,8 +7,10 @@ const DeathByCause = ({ totalDeath, deathByCauses, setSelectedCause }) => (
     <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
     <table className="w-full table-auto">
       <tbody>
-        <tr className="hover:bg-red-100 hover:cursor-pointer"
-            onClick={() => setSelectedCause(undefined)}>
+        <tr
+          className="hover:bg-red-100 hover:cursor-pointer"
+          onClick={() => setSelectedCause(undefined)}
+        >
           <td>ทั้งหมด</td>
           <td>{totalDeath.toLocaleString()}</td>
           <td>100%</td>

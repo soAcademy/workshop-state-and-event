@@ -3,19 +3,26 @@ import ThailandDeathCause from "./thailand-death-cause.json";
 import ReactECharts from "echarts-for-react";
 
 const DeathByCause = (props) => {
-  const { totalDeath, deathByCauses } = props;
+  const { totalDeath, deathByCauses, setSelectedCause } = props;
   return (
     <div className="bg-blue-100 w-1/3 p-4">
       <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
       <table className="w-full">
         <tbody>
-          <tr>
+          <tr
+            className="hover:bg-red-100 hover:cursor-pointer"
+            onClick={() => setSelectedCause(undefined)}
+          >
             <td>ทั้งหมด</td>
             <td>{totalDeath.toLocaleString()}</td>
             <td>100%</td>
           </tr>
           {deathByCauses?.map((r, idx) => (
-            <tr key={idx}>
+            <tr
+              key={idx}
+              className="hover:bg-red-100 hover:cursor-pointer"
+              onClick={() => setSelectedCause(r.cause)}
+            >
               <td>{r.cause}</td>
               <td>{r.death.toLocaleString()}</td>
               <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
@@ -97,6 +104,12 @@ const DeathCause8 = () => {
   const [deathByProvinces, setDeathByProvinces] = useState([]);
   const [chartOption1, setChartOption1] = useState({});
   const [chartOption2, setChartOption2] = useState({});
+  const [selectedCause, setSelectedCause] = useState();
+
+  // useEffect หากเปลี่ยนปีให้ ให้ DeathByProvince กลับไปเหมือนเดิม
+  useEffect(() => {
+    setSelectedCause(undefined);
+  }, [currentYear]);
 
   // ใส่ useEffect เพื่อเลือก currentYear แล้วเปลี่ยน deathByProvinces,deathByCauses,totalDeath
 
@@ -174,7 +187,11 @@ const DeathCause8 = () => {
     const _deathByProvinces = provinceLists
       .map((province) => {
         const totalDeath = deathCauseDatas
-          .filter((r) => r.provinceName === province)
+          .filter(
+            (r) =>
+              r.provinceName === province &&
+              (selectedCause === undefined || selectedCause === r.causeOfDeath)
+          )
           .reduce(
             (acc, r) => {
               return {
@@ -298,7 +315,7 @@ const DeathCause8 = () => {
     setDeathByProvinces(_deathByProvinces);
     setChartOption1(_chartOption1);
     setChartOption2(_chartOption2);
-  }, [currentYear]);
+  }, [currentYear, selectedCause]);
 
   return (
     <div className="p-4">
@@ -312,7 +329,12 @@ const DeathCause8 = () => {
       />
       <div className="mt-4">ปีพ.ศ. {currentYear}</div>
       <div className="flex space-x-4 mt-4">
-        <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
+        <DeathByCause
+          totalDeath={totalDeath}
+          deathByCauses={deathByCauses}
+          selectedCause={selectedCause}
+          setSelectedCause={setSelectedCause}
+        />
         <DeathByProvince
           totalDeath={totalDeath}
           deathByProvinces={deathByProvinces}
