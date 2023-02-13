@@ -36,6 +36,7 @@ const CurrencyConverter3 = () => {
                 type="number"
                 id="amount"
                 name="amount"
+                value={amount}
                 onChange={(e) => setAmount(Number(e.target.value))}
                 className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                 placeholder="30"
@@ -47,6 +48,7 @@ const CurrencyConverter3 = () => {
               <select
                 id="fromCurrency"
                 name="fromCurrency"
+                value={fromCurrency}
                 onChange={(e) => {
                   setFromCurrency(
                     e.target.options[e.target.options.selectedIndex].value
@@ -69,6 +71,7 @@ const CurrencyConverter3 = () => {
               <select
                 id="toCurrency"
                 name="toCurrency"
+                value={toCurrency}
                 onChange={(e) => {
                   setToCurrency(
                     e.target.options[e.target.options.selectedIndex].value
