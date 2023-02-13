@@ -92,9 +92,9 @@ const App = () => {
       {/* <Retirement4 /> */}
       {/* <Retirement5 /> */}
       {/* <CurrencyConverter1 /> */}
-      <CurrencyConverter2 />
+      {/* <CurrencyConverter2 /> */}
       {/* <CurrencyConverter3 /> */}
-      {/* <CurrencyConverter4 /> */}
+      <CurrencyConverter4 />
     </>
   );
 };

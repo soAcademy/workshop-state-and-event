@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ExchangeRatesData from "./exchange-rates.json";
+import ExchangeStatistic from "./exchange-statistic.json";
 
 const CurrencyConverter4 = () => {
   const [exchangeRates, setExchangeRates] = useState();
@@ -10,6 +11,7 @@ const CurrencyConverter4 = () => {
   const [amountConvert, setAmountConvert] = useState(0);
   const [fromCurrencyRate, setFromCurrencyRate] = useState();
   const [toCurrencyRate, setToCurrencyRate] = useState();
+  const [exchangeStatistic, setExchangeRatesStatistic] = useState();
 
   useEffect(() => {
     const _exchangeRates = ExchangeRatesData;
@@ -24,9 +26,11 @@ const CurrencyConverter4 = () => {
     const _toCurrencyRate = exchangeRates?.rates[toCurrency];
     console.log(fromCurrencyRate, toCurrencyRate);
     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
+    const _exchangeStatistic = ExchangeStatistic;
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
+    setExchangeRatesStatistic(_exchangeStatistic);
   }, [amount, fromCurrency, toCurrency]);
 
   return (
@@ -100,25 +104,33 @@ const CurrencyConverter4 = () => {
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>1 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-            <div>1 USD = 32.0190 THB </div>
+            <div className="font-bold text-xl">
+              1 THB = {exchangeStatistic.last1Days.average} USD
+            </div>
+            <div>1 USD = {1 / exchangeStatistic.last1Days.average} THB </div>
           </div>
           <div className="w-1/2">
             <div>7 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-            <div>1 USD = 32.0190 THB </div>
+            <div className="font-bold text-xl">
+              1 THB = {exchangeStatistic.last7Days.average} USD
+            </div>
+            <div>1 USD ={1 / exchangeStatistic.last7Days.average} THB </div>
           </div>
         </div>
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>30 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-            <div>1 USD = 32.0190 THB </div>
+            <div className="font-bold text-xl">
+              1 THB = {exchangeStatistic.last30Days.average} USD
+            </div>
+            <div>1 USD = {1 / exchangeStatistic.last30Days.average} THB </div>
           </div>
           <div className="w-1/2">
             <div>60 วัน</div>
-            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
-            <div>1 USD = 32.0190 THB </div>
+            <div className="font-bold text-xl">
+              1 THB = {exchangeStatistic.last60Days.average} USD
+            </div>
+            <div>1 USD ={1 / exchangeStatistic.last60Days.average} THB </div>
           </div>
         </div>
       </div>
