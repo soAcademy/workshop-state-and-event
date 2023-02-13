@@ -40,6 +40,11 @@ import Retirement2 from "./RetirementAnswer/Retirement2";
 import Retirement3 from "./RetirementAnswer/Retirement3";
 import Retirement4 from "./RetirementAnswer/Retirement4";
 import Retirement5 from "./RetirementAnswer/Retirement5";
+import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
+import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
+import CurrencyConverter3 from "./CurrencyConverterAnswer/CurrencyConverter3";
+import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
+import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 import Retirement1 from "./Retirement/Retirement1"
@@ -107,6 +112,11 @@ const App = () => {
       {/* <Retirement3 /> */}
       {/* <Retirement4 /> */}
       {/* <Retirement5 /> */}
+      {/* <CurrencyConverter1 /> */}
+      {/* <CurrencyConverter2 /> */}
+      {/* <CurrencyConverter3 /> */}
+      {/* <CurrencyConverter4 /> */}
+      <CurrencyConverter5 />
     </>
   );
 };
