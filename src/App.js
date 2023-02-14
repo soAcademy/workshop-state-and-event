@@ -47,6 +47,9 @@ import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
 import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
 import CurrencyConverter6 from "./CurrencyConverterAnswer/CurrencyConverter6";
 import CurrencyConverter7 from "./CurrencyConverterAnswer/CurrencyConverter7";
+import CustomHook1 from "./CustomHookAnswer/CustomHook1";
+import CustomHook2 from "./CustomHookAnswer/CustomHook2";
+import CustomHook3 from "./CustomHookAnswer/CustomHook3";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
@@ -99,8 +102,11 @@ const App = () => {
       {/* <CurrencyConverter3 /> */}
       {/* <CurrencyConverter4 /> */}
       {/* <CurrencyConverter5 /> */}
-      <CurrencyConverter6 />
+      {/* <CurrencyConverter6 /> */}
       {/* <CurrencyConverter7 /> */}
+      {/* <CustomHook1 /> */}
+      {/* <CustomHook2 /> */}
+      <CustomHook3 />
     </>
   );
 };
