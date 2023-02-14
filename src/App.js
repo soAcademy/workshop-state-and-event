@@ -46,10 +46,12 @@
 
 // import CurrencyConvertor1 from "./CurrencyConvertor/CurrencyConvertor1";
 // import CurrencyConvertor4 from "./CurrencyConvertor/CurrencyConvertor4"
-import CustomHook1 from "./CustomHook/CustomHook1";
-import CustomHook2 from "./CustomHook/CustomHook2";
-import CustomHook3 from "./CustomHook/CustomHook3";
-import CustomHook4 from "./CustomHook/CustomHook4";
+import CurrencyConvertor7 from "./CurrencyConvertor/CurrencyConvertor7"
+
+// import CustomHook1 from "./CustomHook/CustomHook1";
+// import CustomHook2 from "./CustomHook/CustomHook2";
+// import CustomHook3 from "./CustomHook/CustomHook3";
+// import CustomHook4 from "./CustomHook/CustomHook4";
 
 const App = () => {
   return (
@@ -128,11 +130,12 @@ const App = () => {
 
       {/* <CurrencyConvertor1 /> */}
       {/* <CurrencyConvertor4 /> */}
+      <CurrencyConvertor7 />
 
       {/* <CustomHook1/> */}
       {/* <CustomHook2/> */}
       {/* <CustomHook3/> */}
-      <CustomHook4/>
+      {/* <CustomHook4/> */}
     </div>
   );
 };
