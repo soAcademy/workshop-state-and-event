@@ -42,11 +42,11 @@
 // import DeathCause8 from "./DeathCause/DeathCause8";
 
 // import Retirement1 from "./Retirement/Retirement1";
-import Retirement2 from "./Retirement/Retirement2";
+// import Retirement2 from "./Retirement/Retirement2";
 
 // import CurrencyConvertor1 from "./CurrencyConvertor/CurrencyConvertor1";
 // import CurrencyConvertor4 from "./CurrencyConvertor/CurrencyConvertor4"
-// import CurrencyConvertor7 from "./CurrencyConvertor/CurrencyConvertor7"
+import CurrencyConvertor7 from "./CurrencyConvertor/CurrencyConvertor7"
 
 // import CustomHook1 from "./CustomHook/CustomHook1";
 // import CustomHook2 from "./CustomHook/CustomHook2";
@@ -124,13 +124,13 @@ const App = () => {
       {/* {<DeathCause8/>} */}
 
       {/* <Retirement1 /> */}
-      <Retirement2 />
+      {/* <Retirement2 /> */}
 
       {/* <WorldMap /> */}
 
       {/* <CurrencyConvertor1 /> */}
       {/* <CurrencyConvertor4 /> */}
-      {/* <CurrencyConvertor7 /> */}
+      <CurrencyConvertor7 />
 
       {/* <CustomHook1/> */}
       {/* <CustomHook2/> */}

@@ -3,7 +3,7 @@ import {
   useFetchEachExchange,
   useStatistics,
   useChart,
-} from "./useCustom";
+} from "./hooks";
 // import { FaExchangeAlt } from "react-icons/fa";
 // import ExchangeRate from "./ExchangeRates.json";
 import ReactECharts from "echarts-for-react";
