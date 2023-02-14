@@ -1,115 +1,124 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
 import EChartsReact from "echarts-for-react";
+// import {
+//   MIDMARKET_CONVERTER,
+//   STATISTICS,
+//   CHARTING_RATES,
+//   AUTH_HEADER,
+//   anyOriginUrl,
+// } from "./const";
+import { useMidmarketConverter } from "./useMidmarketConverter.";
+import { useStatistic } from "./useStatistic";
 // import midmarketConverter from "./midmarket-converter.json";
 // import statistics from "./statistics-THB-USD.json";
 // import chartingRates from "./charting-rates-THB-USD.json";
 
-const MIDMARKET_CONVERTER =
-  "https://www.xe.com/api/protected/midmarket-converter/";
+// const MIDMARKET_CONVERTER =
+//   "https://www.xe.com/api/protected/midmarket-converter/";
 
-const STATISTICS = "https://www.xe.com/api/protected/statistics/";
+// const STATISTICS = "https://www.xe.com/api/protected/statistics/";
 
-const CHARTING_RATES = "https://www.xe.com/api/protected/charting-rates/";
+// const CHARTING_RATES = "https://www.xe.com/api/protected/charting-rates/";
 
-const AUTH_HEADER =
-  "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+// const AUTH_HEADER =
+//   "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
-const anyOriginUrl = (url) =>
-  `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(url)}`;
+// const anyOriginUrl = (url) =>
+//   `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(url)}`;
 
-const useMidmarketConverter = () => {
-  const [converter, setConverter] = useState();
-  const [amount, setAmount] = useState(1);
-  const [currencyList, setCurrencyList] = useState([]);
-  const [fromCurrency, setFromCurrency] = useState("THB");
-  const [toCurrency, setToCurrency] = useState("USD");
-  const [fromCurrencyRate, setFromCurrencyRate] = useState(1);
-  const [toCurrencyRate, setToCurrencyRate] = useState(1);
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: anyOriginUrl(MIDMARKET_CONVERTER),
-      headers: { authorization: AUTH_HEADER },
-    }).then((response) => {
-      setConverter(response.data);
-      setCurrencyList(Object.keys(response.data.rates));
-      setFromCurrencyRate(response.data.rates[fromCurrency]);
-      setToCurrencyRate(response.data.rates[toCurrency]);
-    });
-  }, [fromCurrency, toCurrency]);
-  return {
-    converter,
-    setConverter,
-    amount,
-    setAmount,
-    currencyList,
-    setCurrencyList,
-    fromCurrency,
-    setFromCurrency,
-    toCurrency,
-    setToCurrency,
-    fromCurrencyRate,
-    setFromCurrencyRate,
-    toCurrencyRate,
-    setToCurrencyRate,
-  };
-};
+// const useMidmarketConverter = () => {
+//   const [converter, setConverter] = useState();
+//   const [amount, setAmount] = useState(1);
+//   const [currencyList, setCurrencyList] = useState([]);
+//   const [fromCurrency, setFromCurrency] = useState("THB");
+//   const [toCurrency, setToCurrency] = useState("USD");
+//   const [fromCurrencyRate, setFromCurrencyRate] = useState(1);
+//   const [toCurrencyRate, setToCurrencyRate] = useState(1);
+//   useEffect(() => {
+//     axios({
+//       method: "GET",
+//       url: anyOriginUrl(MIDMARKET_CONVERTER),
+//       headers: { authorization: AUTH_HEADER },
+//     }).then((response) => {
+//       setConverter(response.data);
+//       setCurrencyList(Object.keys(response.data.rates));
+//       setFromCurrencyRate(response.data.rates[fromCurrency]);
+//       setToCurrencyRate(response.data.rates[toCurrency]);
+//     });
+//   }, [fromCurrency, toCurrency]);
+//   return {
+//     converter,
+//     setConverter,
+//     amount,
+//     setAmount,
+//     currencyList,
+//     setCurrencyList,
+//     fromCurrency,
+//     setFromCurrency,
+//     toCurrency,
+//     setToCurrency,
+//     fromCurrencyRate,
+//     setFromCurrencyRate,
+//     toCurrencyRate,
+//     setToCurrencyRate,
+//   };
+// };
 
-const useStatistic = ({ fromCurrency, toCurrency }) => {
-  const [statData, setStatData] = useState();
-  const [chartData, setChartData] = useState();
-  const [optionForExchangeRates, setOptionForExchangeRates] = useState({});
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: anyOriginUrl(`${STATISTICS}?from=${fromCurrency}&to=${toCurrency}`),
-      headers: { authorization: AUTH_HEADER },
-    }).then((response) => {
-      // console.log(response.data);
-      setStatData(response.data);
-    });
-    // setStatData(statistics);
-    axios({
-      method: "GET",
-      url: anyOriginUrl(
-        `${CHARTING_RATES}?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
-      ),
-      headers: { authorization: AUTH_HEADER },
-    }).then((response) => {
-      console.log(response.data);
-      setChartData(response.data);
-      const _optionForExchangeRates = {
-        xAxis: {
-          name: "Date",
-          type: "category",
-          data: [
-            ...new Array(response.data.batchList[0].rates.length - 1).keys(),
-          ],
-        },
-        yAxis: { name: `${fromCurrency} to ${toCurrency}`, type: "value" },
-        series: [
-          {
-            name: `${fromCurrency} to ${toCurrency}`,
-            data: response.data.batchList[0].rates.slice(1).reverse(),
-            type: "line",
-            smooth: true,
-          },
-        ],
-        tooltip: { trigger: "axis" },
-      };
-      setOptionForExchangeRates(_optionForExchangeRates);
-    });
-  }, [fromCurrency, toCurrency]);
-  return {
-    statData,
-    setStatData,
-    chartData,
-    setChartData,
-    optionForExchangeRates,
-    setOptionForExchangeRates,
-  };
-};
+// const useStatistic = ({ fromCurrency, toCurrency }) => {
+//   const [statData, setStatData] = useState();
+//   const [chartData, setChartData] = useState();
+//   const [optionForExchangeRates, setOptionForExchangeRates] = useState({});
+//   useEffect(() => {
+//     axios({
+//       method: "GET",
+//       url: anyOriginUrl(`${STATISTICS}?from=${fromCurrency}&to=${toCurrency}`),
+//       headers: { authorization: AUTH_HEADER },
+//     }).then((response) => {
+//       // console.log(response.data);
+//       setStatData(response.data);
+//     });
+//     // setStatData(statistics);
+//     axios({
+//       method: "GET",
+//       url: anyOriginUrl(
+//         `${CHARTING_RATES}?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
+//       ),
+//       headers: { authorization: AUTH_HEADER },
+//     }).then((response) => {
+//       console.log(response.data);
+//       setChartData(response.data);
+//       const _optionForExchangeRates = {
+//         xAxis: {
+//           name: "Date",
+//           type: "category",
+//           data: [
+//             ...new Array(response.data.batchList[0].rates.length - 1).keys(),
+//           ],
+//         },
+//         yAxis: { name: `${fromCurrency} to ${toCurrency}`, type: "value" },
+//         series: [
+//           {
+//             name: `${fromCurrency} to ${toCurrency}`,
+//             data: response.data.batchList[0].rates.slice(1).reverse(),
+//             type: "line",
+//             smooth: true,
+//           },
+//         ],
+//         tooltip: { trigger: "axis" },
+//       };
+//       setOptionForExchangeRates(_optionForExchangeRates);
+//     });
+//   }, [fromCurrency, toCurrency]);
+//   return {
+//     statData,
+//     setStatData,
+//     chartData,
+//     setChartData,
+//     optionForExchangeRates,
+//     setOptionForExchangeRates,
+//   };
+// };
 
 // const useCurrencyConverter = () => {
 //   const [converter, setConverter] = useState();
@@ -294,29 +303,29 @@ const CurrencyConverter7 = () => {
   // } = useCurrencyConverter();
 
   const {
-    converter,
-    setConverter,
+    // converter,
+    // setConverter,
     amount,
     setAmount,
     currencyList,
-    setCurrencyList,
+    // setCurrencyList,
     fromCurrency,
     setFromCurrency,
     toCurrency,
     setToCurrency,
     fromCurrencyRate,
-    setFromCurrencyRate,
+    // setFromCurrencyRate,
     toCurrencyRate,
-    setToCurrencyRate,
+    // setToCurrencyRate,
   } = useMidmarketConverter();
 
   const {
     statData,
-    setStatData,
-    chartData,
-    setChartData,
+    // setStatData,
+    // chartData,
+    // setChartData,
     optionForExchangeRates,
-    setOptionForExchangeRates,
+    // setOptionForExchangeRates,
   } = useStatistic({ fromCurrency, toCurrency });
 
   return (
