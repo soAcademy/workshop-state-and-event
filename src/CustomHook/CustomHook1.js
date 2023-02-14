@@ -25,15 +25,16 @@ const useTitle = (defaultText) => {
     setTitle,
   };
 };
+// return object
 
 const CustomHook1 = () => {
-  const { title, setTitle } = useTitle("Bin");
-
+  const { title, setTitle } = useTitle("boeing");
+  // เรียกใช้งาน
   return (
     <div className="bg-red-200">
       <p>{title}</p>
       <p>
-        <button className="p-4 bg-blue-200" onClick={() => setTitle("Jam")}>
+        <button className="p-4 bg-blue-200" onClick={() => setTitle("mike")}>
           Change Title
         </button>
       </p>
