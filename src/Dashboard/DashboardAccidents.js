@@ -4,6 +4,7 @@ import AccidentGenderPie from "./AccidentGenderPie";
 import AccidentVehicleBar from "./AccidentVehicleBar";
 import AccidentProvinceStackedBar from "./AccidentProvinceStackedBar";
 import Map from "./Map";
+import { AiOutlineClose } from "react-icons/ai";
 
 const DashboardAccidents = () => {
   const [statBarOpened, setStatBarOpened] = useState(false);
@@ -111,7 +112,7 @@ const DashboardAccidents = () => {
           className="mx-2 rounded px-2 outline outline-1 outline-slate-300"
           id="start"
         >
-          {uniqueYears.map((e,idx) => {
+          {uniqueYears.map((e, idx) => {
             return e && <option key={idx}>{e}</option>;
           })}
         </select>
@@ -165,8 +166,9 @@ const DashboardAccidents = () => {
       <button
         onClick={() => setStatBarOpened(!statBarOpened)}
         className={`transform-translate" fixed top-1/2 right-0 flex h-10 w-8 
-        items-center justify-center bg-white shadow-md duration-500 
-        ${statBarOpened ? "-translate-x-[400px] md:-translate-x-[415px]" : ""}`}
+        items-center justify-center bg-white shadow-md shadow-slate-400 
+        outline outline-1 outline-slate-200 duration-500 
+        ${statBarOpened ? "-translate-x-[400px] md:-translate-x-[400px]" : ""}`}
       >
         <p className="text-xl font-bold">{statBarOpened ? ">" : "<"}</p>
       </button>
@@ -175,7 +177,15 @@ const DashboardAccidents = () => {
         ${statBarOpened ? "" : "translate-x-full"}`}
       >
         <div className="w-[400px] p-4">
-          <p className="text-xl font-bold">สถิติ</p>
+          <div className="flex justify-between">
+            <p className="text-xl font-bold">สถิติ</p>
+            <button
+              onClick={() => setStatBarOpened(false)}
+              className="text-xl font-bold"
+            >
+              <AiOutlineClose />
+            </button>
+          </div>
           <div className="text-sm">
             <p className="text-[16px] font-semibold">เพศ</p>
             <p>ชาย : {genderStat.male.toLocaleString()} คน</p>
