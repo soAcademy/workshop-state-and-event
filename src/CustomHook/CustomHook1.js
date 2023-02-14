@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const useTitle = () => {
-  const [title, setTitle] = useState();
+const useTitle = (text) => {
+  const [title, setTitle] = useState(text);
   return { title, setTitle };
 };
 
