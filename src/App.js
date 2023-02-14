@@ -44,10 +44,12 @@ import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
 // import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
 // import CurrencyConverter3 from "./CurrencyConverterAnswer/CurrencyConverter3";
 // import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
-import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
+// import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
+// import CurrencyConverter6 from "./CurrencyConverterAnswer/CurrencyConverter6";
+import CurrencyConverter7 from "./CurrencyConverterAnswer/CurrencyConverter7";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
-import CurrencyConverter4 from "./CurrencyConverter/CurrencyConverter4"
+import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6"
 
 const App = () => {
   return (
@@ -117,7 +119,10 @@ const App = () => {
       {/* <CurrencyConverter1 /> */}
       {/* <CurrencyConverter2 /> */}
       {/* <CurrencyConverter3 /> */}
-      <CurrencyConverter4 />
+      {/* <CurrencyConverter4 /> */}
+      {/* <CurrencyConverter5 /> */}
+      <CurrencyConverter6 />
+      {/* <CurrencyConverter7 /> */}
     </>
   );
 };

@@ -1,23 +1,24 @@
 import { useState, useEffect } from "react";
+import ExchangeRateData from "./Exchange-rates.json";
+import image from "../CurrencyConverter/image.jpg";
+import ExchangeStatistic from "./Exchange-statistic.json";
 import ReactECharts from "echarts-for-react";
-import ExchangeRatesData from "./exchange-rates.json";
-import ExchangeStatistic from "./exchange-statistic.json";
-import ExchangeChart from "./exchange-chart.json";
+import ExchangeChart from "./Exchange-chart.json";
 
-const CurrencyConverter5 = () => {
-  const [exchangeRates, setExchangeRates] = useState();
-  const [currencyLists, setCurrencyLists] = useState([]);
+const CurrencyConverter = () => {
+  const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState("THB");
   const [toCurrency, setToCurrency] = useState("USD");
-  const [amount, setAmount] = useState(1);
-  const [amountConvert, setAmountConvert] = useState(0);
+  const [exchangeRates, setExchangeRates] = useState();
+  const [currencyLists, setCurrencyLists] = useState([]);
+  const [amountCovert, setAmountConvert] = useState(0);
   const [fromCurrencyRate, setFromCurrencyRate] = useState();
   const [toCurrencyRate, setToCurrencyRate] = useState();
-  const [exchangeStatistic, setExchangeRatesStatistic] = useState();
+  const [exchangeStatistic, setExchangeStatistic] = useState();
   const [chartOption, setChartOption] = useState({});
 
   useEffect(() => {
-    const _exchangeRates = ExchangeRatesData;
+    const _exchangeRates = ExchangeRateData;
     const _currencyLists = Object.keys(_exchangeRates.rates);
     console.log(_currencyLists);
     setExchangeRates(_exchangeRates);
@@ -27,7 +28,6 @@ const CurrencyConverter5 = () => {
   useEffect(() => {
     const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
     const _toCurrencyRate = exchangeRates?.rates[toCurrency];
-    console.log(fromCurrencyRate, toCurrencyRate);
     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
     const _exchangeStatistic = ExchangeStatistic;
     const _exchangeChart = ExchangeChart;
@@ -61,29 +61,38 @@ const CurrencyConverter5 = () => {
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
-    setExchangeRatesStatistic(_exchangeStatistic);
-    setChartOption(_chartOption);
+    setExchangeStatistic(_exchangeStatistic);
+    setChartOption(_chartOption)
   }, [amount, fromCurrency, toCurrency]);
 
   return (
-    <div className="">
-      <div className="w-1/2 mx-auto bg-gray-100 mt-8 p-6">
-        <h1 className="font-bold text-xl text-center">คำนวนอัตราแลกเปลี่ยน</h1>
+    <>
+      <div
+        className="w-1/2 mx-auto p-6 mt-8 rounded-l "
+        style={{ background: `url(${image})` }}
+      >
+        <div className="text-center">
+          <h1 className="text-center text-xl text-black font-bold bg-white inline-block p-2 rounded-lg ">
+            คำนวนอัตราแลกเปลี่ยน
+          </h1>
+        </div>
         <form>
-          <div className="flex mt-4 space-x-8">
+          <div className="flex mt-4 space-x-4 text-black-500 font-bold bg-slate-400">
             <div className="w-1/3">
-              <label>จำนวน</label>
+              <label className="mb-2">จำนวน</label>
               <br />
+
               <input
+                name="Amount"
                 type="number"
-                name="amount"
-                className="p-2 w-full mt-2"
-                onChange={(e) => setAmount(Number(e.target.value))}
                 value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                className="p-2 w-full mt-2 bg-white"
+                placeholder="1"
               />
             </div>
             <div className="w-1/3">
-              <label>จาก</label>
+              <label className="mb-2">จาก</label>
               <br />
               <select
                 className="p-2 pb-3 w-full mt-2"
@@ -100,7 +109,7 @@ const CurrencyConverter5 = () => {
               </select>
             </div>
             <div className="w-1/3">
-              <label>ไป</label>
+              <label className="mb-2">ไป</label>
               <br />
               <select
                 className="p-2 pb-3 w-full mt-2"
@@ -117,60 +126,66 @@ const CurrencyConverter5 = () => {
               </select>
             </div>
           </div>
-          <div className="mt-8">
-            <div>
-              {amount} {fromCurrency} =
+          <div className="mt-8 bg-yellow-400 inline-block rounded-xl px-5">
+            {/* <button
+            type="submit"
+            className="bg-yellow-400 active:bg-amber-500 hover:bg-blue-400 p-4 w-24 rounded-lg"
+          >
+            คำนวน
+          </button> */}
+            <div className="">
+              {amount} {fromCurrency}
             </div>
-            <div className="font-bold text-xl">
-              {amountConvert} {toCurrency}
+            <div className="font-bond text-xl">
+              {amountCovert.toFixed(2)} {toCurrency}
             </div>
             <div>
-              1 {toCurrency} = {(1 / fromCurrencyRate) * toCurrencyRate}{" "}
+              1 {toCurrency} ={" "}
+              {((1 / fromCurrencyRate) * toCurrencyRate).toFixed(2)}{" "}
               {fromCurrency}
             </div>
           </div>
         </form>
       </div>
-      <div className="w-1/2 mx-auto  mt-8">
-        <h2 className="text-lg font-bold">อัตราแลกเปลี่ยนย้อนหลัง</h2>
-        <div className="flex mt-4">
+      <div className="w-1/2 mx-auto mt-8">
+        <h2 className="font-bold">อัตราแลกเปลี่ยนย้อนหลัง</h2>
+
+        <div className=" grid grid-cols-2">
           <div className="w-1/2">
-            <div>1 วัน</div>
-            <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last1Days?.average} USD
-            </div>
-            <div>1 USD = {1 / exchangeStatistic?.last1Days?.average} THB </div>
+            <p>1 วัน</p>
+            <p className="font-bold">
+              1 JPY = {exchangeStatistic?.last1Days?.average} USD
+            </p>
+            <p>1 USD = {1 / exchangeStatistic?.last1Days?.average} JPY</p>
           </div>
-          <div className="w-1/2">
-            <div>7 วัน</div>
-            <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last7Days?.average} USD
-            </div>
-            <div>1 USD ={1 / exchangeStatistic?.last7Days?.average} THB </div>
+          <div className="">
+            <p>7 วัน</p>
+            <p className="font-bold">
+              1 JPY = {exchangeStatistic?.last7Days?.average} USD
+            </p>
+            <p>1 USD = {1 / exchangeStatistic?.last7Days?.average} JPY</p>
           </div>
-        </div>
-        <div className="flex mt-4">
-          <div className="w-1/2">
-            <div>30 วัน</div>
-            <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last30Days?.average} USD
-            </div>
-            <div>1 USD = {1 / exchangeStatistic?.last30Days?.average} THB </div>
+          <div className="">
+            <p>30 วัน</p>
+            <p className="font-bold">
+              1 JPY = {exchangeStatistic?.last30Days?.average} USD
+            </p>
+            <p>1 USD = {1 / exchangeStatistic?.last30Days?.average} JPY</p>
           </div>
-          <div className="w-1/2">
-            <div>60 วัน</div>
-            <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last60Days?.average} USD
-            </div>
-            <div>1 USD ={1 / exchangeStatistic?.last60Days?.average} THB </div>
+          <div className="">
+            <p>60 วัน</p>
+            <p className="font-bold">
+              1 JPY = {exchangeStatistic?.last60Days?.average} USD
+            </p>
+            <p>1 USD = {exchangeStatistic?.last60Days?.average} JPY</p>
           </div>
         </div>
         <div className="mt-4">
           <ReactECharts option={chartOption} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default CurrencyConverter5;
+export default CurrencyConverter;
