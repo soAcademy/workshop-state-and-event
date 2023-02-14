@@ -34,6 +34,8 @@ import DeathCause6 from "./DeathCause/DeathCause6";
 import DeathCause7 from "./DeathCause/DeathCause7";
 import DeathCause8 from "./DeathCause/DeathCause8";
 import Retirement from "./Retirement/Retirement";
+import Retirement2 from "./Retirement/Retirement2";
+import Retirement3 from "./Retirement/Retirement3";
 import Converter from "./CurrencyConverter/Converter";
 import CustomHook1 from "./CustomHook/CustomHook1";
 import CustomHook2 from "./CustomHook/CustomHook2";
@@ -81,7 +83,9 @@ const App = () => {
       {/* <CustomHook4 /> */}
       {/* <CurrencyConverter7 /> */}
       {/* <CurrencyConverter7_1 /> */}
-      <CurrencyConverter7_2 />
+      {/* <CurrencyConverter7_2 /> */}
+      {/* <Retirement2 /> */}
+      <Retirement3 />
     </>
   );
 };
