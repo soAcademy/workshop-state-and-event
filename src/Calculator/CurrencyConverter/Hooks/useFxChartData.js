@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import EChartsReact from "echarts-for-react";
 
 export const useFxChartData = ({ from, to, authToken }) => {
   const [chartData, setChartData] = useState({

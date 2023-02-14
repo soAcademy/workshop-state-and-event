@@ -1,10 +1,10 @@
-import FxStat from "./FxStat";
-import FxChart from "./FxChart";
+import FxStat from "./Components/FxStat";
+import FxChart from "./Components/FxChart";
 import { AiOutlineSwap } from "react-icons/ai";
-import { useFxRates } from "./useFxRates";
-import { useFxResult } from "./useFxResult";
-import { useFxStat } from "./useFxStat";
-import { useFxChartData } from "./useFxChartData";
+import { useFxRates } from "./Hooks/useFxRates";
+import { useFxResult } from "./Hooks/useFxResult";
+import { useFxStat } from "./Hooks/useFxStat";
+import { useFxChartData } from "./Hooks/useFxChartData";
 const CurrencyConverter = () => {
   const authToken =
     "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";

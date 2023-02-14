@@ -1,8 +1,8 @@
-import CurrencyConverter from "./CurrencyConverter/CurrencyConverter";
-import Retirement from "./Retirement/Retirement";
+import CurrencyConverter from "./Calculator/CurrencyConverter/CurrencyConverter";
+import Retirement from "./Calculator/Retirement/Retirement";
 import React, { useState } from "react";
 
-const AppRetirement = () => {
+const AppCalculator = () => {
   const [page, setPage] = useState("retire");
   return (
     <div>
@@ -30,4 +30,4 @@ const AppRetirement = () => {
   );
 };
 
-export default AppRetirement;
+export default AppCalculator;
