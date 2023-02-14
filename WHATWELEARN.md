@@ -473,3 +473,58 @@ return <button onClick={() => props.setCounter(props.counter + 1)}>Increase</but
 - ก่อน pull request ต้อง pull origin main (หรือ branch ที่เราจะ merge ก่อน) แล้ว resolve conflict ให้เรียบร้อย
 - ข้อความใน commit ควรมี prefix "feat: text", "fix: text" (conventional commit) เพื่อให้รู้ว่า commit นี้ประเภทอะไร
 - package-lock.json กับ yarn.lock ต้อง commit ขึ้น git เสมอ จะได้ไม่มีปัญหาเวลา yarn install
+
+---
+
+## Chart
+- yarn add echarts react-echarts (ใช้ 2 ตัว)
+- วิธีใช้งาน Line chart, Pie chart, Bar chart
+- ทำ Chart decoration ใน key series
+- Key tools จิ้มแล้ว trigger จะมีเลขปรากฎบนกราฟ
+- วิธีทำแกน x, y
+- `import graphic from echart` ทำให้ใส่สีเป็น gradient ได้ ตกแต่สีตรง series วิธีเรียกใช้แปลกๆ ให้ถามพี่เค้ก
+- วิธีเรียกใช้ useEffect กับ echart กรณีที่โหลดข้อมูลผ่าน API
+ทำเป็นตัวแปร State [chart, setChart] แล้วเรียกผ่าน useEffect
+- 
+
+## Javascript
+- แทนที่จะ map ข้อมูลจาก array แต่ให้สร้างเป็น array(n) แล้วค่อย map ข้อมูลทีหลัง เช่น
+```js
+const result = [...Array(100).keys()].map((r, idx) => data[idx])
+```
+- วิธีทำ Unique ของ array of object โดยใช้ 
+```js
+[...new Map(...).values()]
+```
+- localStorage getItem, setItem, deleteItem (ยังไม่ได้สอน)
+- Object.keys() จะได้ key ของ object ออกมาเป็น Array
+```js
+const object = Object.keys({a1: 10, a2: 2, a3: 3})
+// ['a1', 'a2', 'a3']
+```
+```js
+const object = Object.values({a1: 10, a2: 2, a3: 3})
+// [10, 2, 3]
+```
+เราใช้ Object.keys() ใน workshop exchange rate
+- เวลาเรียกข้อมูล object ที่เก็บในตัวแปร state ต้องพยายามใส่ ? เพราะบางทีค่าเริ่มอาจเป็น object ว่าง
+```js
+{exchangeStatistic?.last7Days?.average} 
+```
+- zipcode ใช้ `navigator.clipboard.writeText` สำหรับคัดลอกข้อความลง clipboard
+- reduce จะวนเก็บค่าแต่ละรอบ สามารถ log acc ออกมาดูได้ ค่าจะเพิ่มขึ้นเรื่อยๆ มีการเปลี่ยนแปลง
+- reduce::: acc += r กับ acc + r ใช้ต่างกันยังไง
+```js
+const result = datas.reduce((acc, r) => {
+  acc += r;
+  return acc;
+}, 0)
+```
+```js
+const result = datas.reduce((acc, r) => acc + r, 0)
+```
+```js
+const result = datas.reduce((acc, r) => (acc + r), 0)
+```
+- ถ้าใช้ reduce ต้องกำหนดค่า intialize ให้ กันเพี้ยน
+- useEffect อย่าลืมใส่ [], หรือ [ตัวแปร] ไม่งั้นจะวนลูปไม่หยุด
