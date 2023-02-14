@@ -36,6 +36,7 @@ import DeathCause8 from "./DeathCause/DeathCause8";
 import Retirement from "./Retirement/Retirement";
 import Converter from "./CurrencyConverter/Converter";
 import CustomHook1 from "./CustomHook/CustomHook1";
+import CustomHook2 from "./CustomHook/CustomHook2";
 
 const App = () => {
   return (
@@ -69,7 +70,8 @@ const App = () => {
       {/* <DeathCause8 /> */}
       {/* <Retirement /> */}
       {/* <Converter /> */}
-      <CustomHook1 />
+      {/* <CustomHook1 /> */}
+      <CustomHook2 />
     </>
   );
 };

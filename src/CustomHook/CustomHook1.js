@@ -20,8 +20,8 @@
 
 import React, { useState } from "react";
 
-const useTitle = (defaultText) => {
-  const [title, setTitle] = useState(defaultText);
+const useTitle = () => {
+  const [title, setTitle] = useState("Bin");
   return {
     title,
     setTitle,
