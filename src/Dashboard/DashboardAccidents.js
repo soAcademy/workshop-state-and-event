@@ -148,7 +148,7 @@ const DashboardAccidents = () => {
           ></input>
         </span>
       </div>
-      <div className="fixed top-28 left-5 bg-white p-2 font-bold shadow-md">
+      <div className="fixed top-28 left-5 bg-white p-2 shadow-md">
         ประเภทยานพาหนะ
         <select
           onChange={(e) => {
