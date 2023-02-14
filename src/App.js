@@ -1,12 +1,12 @@
-import State3 from "./StatesAnswer/State3";
-import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
-import LocalStorage2 from "./LocalStorageAnswer/LocalStorage2";
-import LocalStorage3 from "./LocalStorageAnswer/LocalStorage3";
-import LocalStorage4 from "./LocalStorageAnswer/LocalStorage4";
-import ToDoList1 from "./ToDoListAnswers/ToDoList1";
-import ToDoList2 from "./ToDoListAnswers/ToDoList2";
-import ToDoList3 from "./ToDoListAnswers/ToDoList3";
-import ToDoList4 from "./ToDoListAnswers/ToDoList4";
+// import State3 from "./StatesAnswer/State3";
+// import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
+// import LocalStorage2 from "./LocalStorageAnswer/LocalStorage2";
+// import LocalStorage3 from "./LocalStorageAnswer/LocalStorage3";
+// import LocalStorage4 from "./LocalStorageAnswer/LocalStorage4";
+// import ToDoList1 from "./ToDoListAnswers/ToDoList1";
+// import ToDoList2 from "./ToDoListAnswers/ToDoList2";
+// import ToDoList3 from "./ToDoListAnswers/ToDoList3";
+// import ToDoList4 from "./ToDoListAnswers/ToDoList4";
 // import ToDoList5 from "./ToDoListAnswers/ToDoList5";
 // import Chart1 from "./ChartsAnswer/Chart1";
 // import Chart2 from "./ChartsAnswer/Chart2";
@@ -52,7 +52,8 @@ import ToDoList4 from "./ToDoListAnswers/ToDoList4";
 // import CustomHook3 from "./CustomHookAnswer/CustomHook3";
 // import CustomHook4 from "./CustomHookAnswer/CustomHook4";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
-import CustomHook1 from "./CustomHook/CustomHook1";
+// import CustomHook1 from "./CustomHook/CustomHook1";
+import CustomHook2 from "./CustomHook/CustomHook2";
 
 const App = () => {
   return (
@@ -106,8 +107,8 @@ const App = () => {
       {/* <CurrencyConverter5 /> */}
       {/* <CurrencyConverter6 /> */}
       {/* <CurrencyConverter7 /> */}
-      <CustomHook1 />
-      {/* <CustomHook2 /> */}
+      {/* <CustomHook1 /> */}
+      <CustomHook2 />
       {/* <CustomHook3 /> */}
       {/* <CustomHook4 /> */}
     </>
