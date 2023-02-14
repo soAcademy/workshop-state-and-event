@@ -48,6 +48,7 @@
 // import CurrencyConvertor4 from "./CurrencyConvertor/CurrencyConvertor4"
 import CustomHook1 from "./CustomHook/CustomHook1";
 import CustomHook2 from "./CustomHook/CustomHook2";
+import CustomHook3 from "./CustomHook/CustomHook3";
 
 const App = () => {
   return (
@@ -128,7 +129,8 @@ const App = () => {
       {/* <CurrencyConvertor4 /> */}
 
       {/* <CustomHook1/> */}
-      <CustomHook2/>
+      {/* <CustomHook2/> */}
+      <CustomHook3/>
     </div>
   );
 };
