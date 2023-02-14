@@ -3,8 +3,6 @@ import accident from "./accident.json";
 import AccidentGenderPie from "./AccidentGenderPie";
 import AccidentVehicleBar from "./AccidentVehicleBar";
 import AccidentProvinceStackedBar from "./AccidentProvinceStackedBar";
-import { longdo, map, LongdoMap } from "./longdo-map/LongdoMap";
-import React, { Component } from "react";
 import Map from "./Map";
 
 const DashboardAccidents = () => {
@@ -16,8 +14,9 @@ const DashboardAccidents = () => {
     { vehicle: "", province: [] },
   ]);
   const [uniqueYears, setUniqueYears] = useState([]);
-  const [yearQuery, setYearQuery] = useState([]);
-  const [dataFilteredByYear, setDataFilteredByYear] = useState([]);
+  const [yearQuery, setYearQuery] = useState();
+  const [dataFilteredByYear, setDataFilteredByYear] = useState();
+  const [vehicleQuery, setVehicleQuery] = useState("ทั้งหมด");
 
   useEffect(() => {
     const vehicles = [...new Set(accidentData.map((e) => e.vehicle))];
@@ -69,16 +68,24 @@ const DashboardAccidents = () => {
   }, [accidentData]);
 
   useEffect(() => {
-    const _dataFilteredByYear =
-      yearQuery != ""
+    const _dataFilteredByYear = yearQuery
+      ? vehicleQuery !== "ทั้งหมด"
         ? accidentData.filter(
+            (data) =>
+              data.deadyearBudha >= yearQuery[0] &&
+              data.deadyearBudha <= yearQuery[1] &&
+              data.vehicle === vehicleQuery
+          )
+        : accidentData.filter(
             (data) =>
               data.deadyearBudha >= yearQuery[0] &&
               data.deadyearBudha <= yearQuery[1]
           )
-        : accidentData;
+      : vehicleQuery !== "ทั้งหมด"
+      ? accidentData.filter((data) => data.vehicle === vehicleQuery)
+      : accidentData;
     setDataFilteredByYear(_dataFilteredByYear);
-  }, [yearQuery]);
+  }, [yearQuery, vehicleQuery]);
 
   return (
     <div className="font-kanit">
@@ -92,22 +99,27 @@ const DashboardAccidents = () => {
           if (!checkbox.checked) {
             const start = Number(document.querySelector("#start").value);
             const end = Number(document.querySelector("#end").value);
-            console.log("start,end :>> ", start, end);
             setYearQuery([start, end]);
           } else {
-            setYearQuery("");
+            setYearQuery();
           }
         }}
         className="fixed top-16 left-5 bg-white p-2"
       >
         จาก
-        <select className="border rounded px-2 mx-2" id="start">
-          {uniqueYears.map((e) => {
-            return e && <option>{e}</option>;
+        <select
+          className="mx-2 rounded px-2 outline outline-1 outline-slate-300"
+          id="start"
+        >
+          {uniqueYears.map((e,idx) => {
+            return e && <option key={idx}>{e}</option>;
           })}
         </select>
         ถึง
-        <select className="border rounded px-2 mx-2" id="end">
+        <select
+          className="mx-2 rounded px-2 outline outline-1 outline-slate-300"
+          id="end"
+        >
           {uniqueYears
             // .filter((year) => year > document.querySelector("#start").value)
             .map((e) => {
@@ -118,7 +130,7 @@ const DashboardAccidents = () => {
                 ) : (
                   <option
                     disabled
-                    className="text-slate-100 pointer-events-none"
+                    className="pointer-events-none text-slate-100"
                   >
                     {e}
                   </option>
@@ -126,24 +138,43 @@ const DashboardAccidents = () => {
               );
             })}
         </select>
-        <span className="border rounded mx-2 px-2">
+        <span className="mx-2 rounded px-2 outline outline-1 outline-slate-300">
           ทั้งหมด &nbsp;
-          <input id="checkbox" type="checkbox" className="my-auto"></input>
+          <input
+            id="checkbox"
+            type="checkbox"
+            defaultChecked
+            className="my-auto"
+          ></input>
         </span>
+      </div>
+      <div className="fixed top-28 left-5 bg-white p-2 font-bold shadow-md">
+        ประเภทยานพาหนะ
+        <select
+          onChange={(e) => {
+            setVehicleQuery(e.target.value);
+          }}
+          className="mx-2 rounded px-2 outline outline-1 outline-slate-300"
+        >
+          <option>ทั้งหมด</option>
+          {vehicleStat.map((e, idx) => {
+            return <option key={idx}>{e.vehicle}</option>;
+          })}
+        </select>
       </div>
       <button
         onClick={() => setStatBarOpened(!statBarOpened)}
-        className={`fixed top-1/2 right-0 w-8 bg-white shadow-md h-10 
-        items-center flex justify-center duration-500 transform-translate" 
+        className={`transform-translate" fixed top-1/2 right-0 flex h-10 w-8 
+        items-center justify-center bg-white shadow-md duration-500 
         ${statBarOpened ? "-translate-x-[400px] md:-translate-x-[415px]" : ""}`}
       >
-        <p className="font-bold text-xl">{statBarOpened ? ">" : "<"}</p>
+        <p className="text-xl font-bold">{statBarOpened ? ">" : "<"}</p>
       </button>
       <div
-        className={`fixed top-0 right-0 h-full bg-white overflow-y-auto shadow-lg font-kanit duration-500
+        className={`fixed top-0 right-0 h-full overflow-y-auto bg-white font-kanit shadow-lg duration-500
         ${statBarOpened ? "" : "translate-x-full"}`}
       >
-        <div className="p-4 w-[400px]">
+        <div className="w-[400px] p-4">
           <p className="text-xl font-bold">สถิติ</p>
           <div className="text-sm">
             <p className="text-[16px] font-semibold">เพศ</p>

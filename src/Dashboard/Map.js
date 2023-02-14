@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 const Map = ({ dataFilteredByYear }) => {
   useEffect(() => {
     map.Overlays.clear()
-    dataFilteredByYear.map((data, jdx) => {
+    dataFilteredByYear?.map((data, jdx) => {
       const popup = `<div style="background: #ffffff; 
   padding: 1rem;
   height: fit-content;

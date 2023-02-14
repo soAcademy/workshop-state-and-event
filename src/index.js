@@ -22,11 +22,11 @@ root.render(
     {/* <AppToDoList /> */}
     {/* <AppChart /> */}
     {/* <Map /> */}
-    {/* <AppDashBoard /> */}
+    <AppDashBoard />
     {/* <AppAccordian /> */}
     {/* <AppTrivia /> */}
     {/* <AppCalculator /> */}
-    <AppCustomHook />
+    {/* <AppCustomHook /> */}
   </React.StrictMode>
 );
 
