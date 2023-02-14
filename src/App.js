@@ -118,7 +118,7 @@ import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 // import CustomHook1 from "./CustomHookAnswer/CustomHook1";
 // import CustomHook2 from "./CustomHookAnswer/CustomHook2";
 // import CustomHook3 from "./CustomHookAnswer/CustomHook3";
-import CustomHook4 from "./CustomHookAnswer/CustomHook4";
+// import CustomHook4 from "./CustomHookAnswer/CustomHook4";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
