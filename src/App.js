@@ -33,6 +33,7 @@ import DeathCause5 from "./DeathCause/DeathCause5";
 import DeathCause6 from "./DeathCause/DeathCause6";
 import DeathCause7 from "./DeathCause/DeathCause7";
 import DeathCause8 from "./DeathCause/DeathCause8";
+import DeathCause8_1 from "./DeathCause/DeathCause8_1";
 import Retirement from "./Retirement/Retirement";
 import Retirement2 from "./Retirement/Retirement2";
 import Retirement3 from "./Retirement/Retirement3";
@@ -44,6 +45,7 @@ import CustomHook4 from "./CustomHook/CustomHook4";
 import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 import CurrencyConverter7_1 from "./CurrencyConverter/CurrencyConverter7_1";
 import CurrencyConverter7_2 from "./CurrencyConverter/CurrencyConverter7_2";
+import CurrencyConverter7_3 from "./CurrencyConverter/CurrencyConverter7_3";
 
 const App = () => {
   return (
@@ -75,6 +77,7 @@ const App = () => {
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
+      {/* <DeathCause8_1 /> */}
       {/* <Retirement /> */}
       {/* <Converter /> */}
       {/* <CustomHook1 /> */}
@@ -84,8 +87,9 @@ const App = () => {
       {/* <CurrencyConverter7 /> */}
       {/* <CurrencyConverter7_1 /> */}
       {/* <CurrencyConverter7_2 /> */}
+      <CurrencyConverter7_3 />
       {/* <Retirement2 /> */}
-      <Retirement3 />
+      {/* <Retirement3 /> */}
     </>
   );
 };
