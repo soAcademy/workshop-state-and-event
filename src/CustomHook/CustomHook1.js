@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-
-const useTitle = (text) => {
-  const [title, setTitle] = useState(text);
-  return { title, setTitle };
-};
+import { useTitle } from "./useCustomHook";
 
 const CustomHook1 = () => {
   const { title, setTitle } = useTitle('Bin');
