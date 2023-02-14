@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
-import ExchangeRatesData from "./exchange-rates.json";
-import ExchangeStatistic from "./exchange-statistic.json";
+import React from "react";
 import ReactECharts from "echarts-for-react";
-import ExchangeChart from "./exchange-chart.json";
-import axios from "axios";
 import {
-  useFetchExchangeRate,
   useConvertExchangeRate,
-  useExchangeStatistic,
   useChartOption,
-} from "./CurrencyConverter7_1.js";
+  useExchangeStatistic,
+  useFetchExchangeRate,
+} from "../hook_currency/index";
 
 const CurrencyConverter7 = () => {
   const authToken =
