@@ -50,6 +50,7 @@ import CurrencyConverter7 from "./CurrencyConverterAnswer/CurrencyConverter7";
 import CustomHook1 from "./CustomHookAnswer/CustomHook1";
 import CustomHook2 from "./CustomHookAnswer/CustomHook2";
 import CustomHook3 from "./CustomHookAnswer/CustomHook3";
+import CustomHook4 from "./CustomHookAnswer/CustomHook4";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
@@ -106,7 +107,8 @@ const App = () => {
       {/* <CurrencyConverter7 /> */}
       {/* <CustomHook1 /> */}
       {/* <CustomHook2 /> */}
-      <CustomHook3 />
+      {/* <CustomHook3 /> */}
+      <CustomHook4 />
     </>
   );
 };
