@@ -7,6 +7,7 @@ import axios from "axios";
 const useFetchExchangeRate = ({ authToken }) => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
+  console.log("useFetchExchangeRate");
   useEffect(() => {
     axios({
       url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
@@ -16,6 +17,7 @@ const useFetchExchangeRate = ({ authToken }) => {
         Authorization: authToken,
       },
     }).then((res) => {
+      console.log("useFetchExchangeRate", res.data);
       const _exchangeRates = res.data;
       const _currencyLists = Object.keys(_exchangeRates.rates);
       console.log("res", res);
@@ -77,7 +79,7 @@ const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
       setExchangeRatesStatistic(res.data);
     });
   }, [fromCurrency, toCurrency]);
-  return [exchangeStatistic];
+  return { exchangeStatistic };
 };
 
 const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
@@ -125,7 +127,7 @@ const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
     });
   }, [fromCurrency, toCurrency]);
 
-  return [chartOption];
+  return { chartOption };
 };
 
 const CurrencyConverter7 = () => {
@@ -146,13 +148,13 @@ const CurrencyConverter7 = () => {
     toCurrencyRate,
   } = useConvertExchangeRate({ exchangeRates });
 
-  const [exchangeStatistic] = useExchangeStatistic({
+  const { exchangeStatistic } = useExchangeStatistic({
     authToken,
     fromCurrency,
     toCurrency,
   });
 
-  const [chartOption] = useChartOption({
+  const { chartOption } = useChartOption({
     authToken,
     fromCurrency,
     toCurrency,
@@ -221,7 +223,7 @@ const CurrencyConverter7 = () => {
               {amountConvert} {toCurrency}
             </div>
             <div>
-              1 {toCurrency} = {(1 / fromCurrencyRate) * toCurrencyRate}{" "}
+              1 {toCurrency} = {(1 / toCurrencyRate) * fromCurrencyRate}{" "}
               {fromCurrency}
             </div>
           </div>
