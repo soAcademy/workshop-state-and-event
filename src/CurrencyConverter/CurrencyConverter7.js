@@ -8,8 +8,7 @@ import EChartsReact from "echarts-for-react";
 //   AUTH_HEADER,
 //   anyOriginUrl,
 // } from "./const";
-import { useMidmarketConverter } from "./useMidmarketConverter.";
-import { useStatistic } from "./useStatistic";
+import { useMidmarketConverter, useStatistic } from "./hooks";
 // import midmarketConverter from "./midmarket-converter.json";
 // import statistics from "./statistics-THB-USD.json";
 // import chartingRates from "./charting-rates-THB-USD.json";

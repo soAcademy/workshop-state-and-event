@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { MIDMARKET_CONVERTER, AUTH_HEADER, anyOriginUrl } from "./const";
+import {
+  MIDMARKET_CONVERTER,
+  AUTH_HEADER,
+  anyOriginUrl,
+} from "../constants/const";
 
 export const useMidmarketConverter = () => {
   const [converter, setConverter] = useState();

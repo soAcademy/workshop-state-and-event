@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { STATISTICS, CHARTING_RATES, AUTH_HEADER, anyOriginUrl } from "./const";
+import {
+  STATISTICS,
+  CHARTING_RATES,
+  AUTH_HEADER,
+  anyOriginUrl,
+} from "../constants/const";
 
 export const useStatistic = ({ fromCurrency, toCurrency }) => {
   const [statData, setStatData] = useState();

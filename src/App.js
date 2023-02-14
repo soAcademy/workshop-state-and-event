@@ -106,7 +106,7 @@
 // import Retirement3 from "./Retirement/Retirement3";
 // import Retirement4 from "./Retirement/Retirement4";
 // import Retirement5 from "./Retirement/Retirement5";
-import Retirement6 from "./Retirement/Retirement6";
+// import Retirement6 from "./Retirement/Retirement6";
 
 // import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
 // import CurrencyConverter2 from "./CurrencyConverter/CurrencyConverter2";
@@ -114,7 +114,7 @@ import Retirement6 from "./Retirement/Retirement6";
 // import CurrencyConverter4 from "./CurrencyConverter/CurrencyConverter4";
 // import CurrencyConverter5 from "./CurrencyConverter/CurrencyConverter5";
 // import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
-// import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
+import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 
 // import CustomHook1 from "./CustomHookAnswer/CustomHook1";
 // import CustomHook2 from "./CustomHookAnswer/CustomHook2";
@@ -193,14 +193,14 @@ const App = () => (
     {/* <Retirement3 /> */}
     {/* <Retirement4 /> */}
     {/* <Retirement5 /> */}
-    <Retirement6 />
+    {/* <Retirement6 /> */}
     {/* <CurrencyConverter1 /> */}
     {/* <CurrencyConverter2 /> */}
     {/* <CurrencyConverter3 /> */}
     {/* <CurrencyConverter4 /> */}
     {/* <CurrencyConverter5 /> */}
     {/* <CurrencyConverter6 /> */}
-    {/* <CurrencyConverter7 /> */}
+    <CurrencyConverter7 />
     {/* <CustomHook1 /> */}
     {/* <CustomHook2 /> */}
     {/* <CustomHook3 /> */}
