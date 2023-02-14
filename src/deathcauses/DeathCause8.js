@@ -62,7 +62,7 @@ const DeathCauseByProvince = (props) => {
 const DeathChart = (props) => {
   return (
     <div className="bg-red-300 w-1/3 p-4">
-      <div className="font-bold">Likelihood of Death</div>
+      <div className="font-bold">อัตราการเสียชีวิต</div>
       <ReactECharts option={props.chart1} />
 
       <ReactECharts option={props.chart2} />

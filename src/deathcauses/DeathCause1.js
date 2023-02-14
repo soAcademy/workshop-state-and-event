@@ -37,6 +37,7 @@ const DeathChart = () => (
 );
 
 const DeathCause1 = () => {
+  
   return (
     <div className="p-4">
       <h1> จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554 - 2559</h1>

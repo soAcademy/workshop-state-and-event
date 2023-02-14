@@ -14,7 +14,7 @@
 // import Accordian1 from "./AccordiansAnswer/Accordian1";
 // import Accordian2 from "./AccordiansAnswer/Accordian2";
 // import Accordian3 from "./AccordiansAnswer/Accordian3";
-// import Trivia1 from "./TriviaAnswer/Trivia1";
+// import Trivia2_5 from "./trivias2/Trivia2_5";
 // import Trivia2 from "./TriviaAnswer/Trivia2";
 // import Trivia3 from "./TriviaAnswer/Trivia3";
 // import Trivia4 from "./TriviaAnswer/Trivia4";
@@ -29,13 +29,20 @@
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 // import DeathCause1 from "./DeathCauseAnswer/DeathCause1";
 // import DeathCause2 from "./DeathCauseAnswer/DeathCause2";
-// import DeathCause3 from "./DeathCauseAnswer/DeathCause3";
-import DeathCause8 from "./deathcauses/DeathCause8";
+// import DeathCause4 from "./DeathCauseAnswer/DeathCause4";
+// import DeathCause8 from "./deathcauses/DeathCause8";
+// import DeathCause2_1 from "./deathcauses2/DeathCause2_1";
+// import DeathCause2_3 from "./deathcauses2/DeathCause2_3";
+// import DeathCause2_6 from "./deathcauses2/DeathCause2_6";
 // import DeathCause5 from "./DeathCauseAnswer/DeathCause5";
 // import DeathCause6 from "./DeathCauseAnswer/DeathCause6";
 // import DeathCause7 from "./DeathCauseAnswer/DeathCause7";
 // import DeathCause8 from "./DeathCauseAnswer/DeathCause8";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
+// import RetirementPlan1 from "./retirementplan/RetirementPlan1";
+// import Retirement5 from "./retirementplan/Retirement5";
+// import CurrencyConverter3 from "./CurrencyConverter/CurrencyConverter3";
+import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
 
 const App = () => {
   return (
@@ -60,7 +67,7 @@ const App = () => {
       {/* <Trivia2 /> */}
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}
-      {/* <Trivia5 /> */}
+      {/* <Trivia2_5 /> */}
       {/* <Zipcode1 /> */}
       {/* <Zipcode2 /> */}
       {/* <Zipcode3 /> */}
@@ -69,13 +76,16 @@ const App = () => {
       {/* <Zipcode6 /> */}
       {/* <Zipcode7 /> */}
       {/* {/* <Zipcode8 /> */} 
-      <DeathCause8 />
+      {/* <DeathCause2_6 /> */}
       {/* <DeathCause2 /> */}
       {/* <DeathCause3 /> */}
       {/* <DeathCause4 /> */}
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
+      {/* <RetirementPlan1 /> */}
+      {/* <Retirement5 /> */}
+      <CurrencyConverter6 />
 
     </>
   );
