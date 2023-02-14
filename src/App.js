@@ -115,7 +115,8 @@
 // import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
 
 // import CustomHook1 from "./CustomHookAnswer/CustomHook1";
-import CustomHook2 from "./CustomHookAnswer/CustomHook2";
+// import CustomHook2 from "./CustomHookAnswer/CustomHook2";
+import CustomHook3 from "./CustomHookAnswer/CustomHook3";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
@@ -196,7 +197,8 @@ const App = () => (
     {/* <CurrencyConverter5 /> */}
     {/* <CurrencyConverter6 /> */}
     {/* <CustomHook1 /> */}
-    <CustomHook2 />
+    {/* <CustomHook2 /> */}
+    <CustomHook3 />
   </div>
 );
 
