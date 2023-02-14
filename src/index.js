@@ -13,6 +13,7 @@ import AppTrivia from "./AppTrivia";
 import Map from "./Dashboard/Map";
 import * as serviceWorker from './serviceWorker';
 import AppCalculator from "./AppCalculator";
+import AppCustomHook from "./AppCustomHook";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,7 +25,8 @@ root.render(
     {/* <AppDashBoard /> */}
     {/* <AppAccordian /> */}
     {/* <AppTrivia /> */}
-    <AppCalculator />
+    {/* <AppCalculator /> */}
+    <AppCustomHook />
   </React.StrictMode>
 );
 
