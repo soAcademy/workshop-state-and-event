@@ -47,10 +47,16 @@ import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
 import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
 import CurrencyConverter6 from "./CurrencyConverterAnswer/CurrencyConverter6";
 import CurrencyConverter7 from "./CurrencyConverterAnswer/CurrencyConverter7";
-import CustomHook1 from "./CustomHookAnswer/CustomHook1";
-import CustomHook2 from "./CustomHookAnswer/CustomHook2";
-import CustomHook3 from "./CustomHookAnswer/CustomHook3";
-import CustomHook4 from "./CustomHookAnswer/CustomHook4";
+// import CustomHook1 from "./CustomHookAnswer";
+// import CustomHook2 from "./CustomHookAnswer";
+// import CustomHook3 from "./CustomHookAnswer";
+// import CustomHook4 from "./CustomHookAnswer";
+import {
+  CustomHook1,
+  CustomHook2,
+  CustomHook3,
+  CustomHook4,
+} from "./CustomHookAnswer";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 // 1. Pure Function
 // - ฟังก์ชั่นที่ถ้าส่งค่า parameters เหมือนกันไป ไม่ว่าจะเรียกที่ไหน เมื่อไร ก็จะได้ผลลัพธ์ return ค่าเดิมเสมอ
 // - const min = (x, y) => x < y ? x : y;
@@ -9,7 +8,7 @@ import React, { useState } from "react";
 // - ฟังก์ชั่นที่มี Side Effect เรียกแต่ละครั้งอาจได้ผลลัพธ์ไม่เหมือนกัน ต่อให้ส่งค่า parameters เดิมไปก็ตาม
 // - เช่น useState, useEffect, customHook
 
-const CustomHook1 = () => {
+export const CustomHook1 = () => {
   const [title, setTitle] = useState("Bin");
 
   return (
@@ -24,7 +23,7 @@ const CustomHook1 = () => {
   );
 };
 
-export default CustomHook1;
+// export default CustomHook1;
 
 // import React, { useState } from "react";
 
