@@ -10,7 +10,6 @@ import AppDashBoard from "./Dashboard/AppDashBoard";
 import reportWebVitals from "./reportWebVitals";
 import AppAccordian from "./AppAccordian";
 import AppTrivia from "./AppTrivia";
-import Map from "./Dashboard/components/Map";
 import * as serviceWorker from './serviceWorker';
 import AppCalculator from "./Calculator/AppCalculator";
 import AppCustomHook from "./CustomHook/AppCustomHook";
@@ -22,7 +21,6 @@ root.render(
     {/* <AppLocalStorage /> */}
     {/* <AppToDoList /> */}
     {/* <AppChart /> */}
-    {/* <Map /> */}
     <AppDashBoard />
     {/* <AppZipcode /> */}
     {/* <AppAccordian /> */}
