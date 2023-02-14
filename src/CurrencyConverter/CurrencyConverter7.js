@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import image from "../CurrencyConverter/image.jpg";
 import ReactECharts from "echarts-for-react";
 import axios from "axios";
-
+import { useCurrencyList } from "./useCurrcencyList";
+import { useAmountConvert } from "./useAmountConvert";
+import { useExchangeStatistic } from "./useExchangeStatistic";
+import { useChartOption } from "./useChartOption";
 
 // const useCurrencyList = ({ authToken }) => {
 //   const [exchangeRates, setExchangeRates] = useState();
@@ -32,107 +35,107 @@ import axios from "axios";
 //   };
 // };
 
-const useAmountConvert = ({ exchangeRates }) => {
-  const [amountCovert, setAmountConvert] = useState(0);
-  const [fromCurrencyRate, setFromCurrencyRate] = useState();
-  const [toCurrencyRate, setToCurrencyRate] = useState();
-  const [amount, setAmount] = useState(1);
-  const [fromCurrency, setFromCurrency] = useState("THB");
-  const [toCurrency, setToCurrency] = useState("USD");
+// const useAmountConvert = ({ exchangeRates }) => {
+//   const [amountCovert, setAmountConvert] = useState(0);
+//   const [fromCurrencyRate, setFromCurrencyRate] = useState();
+//   const [toCurrencyRate, setToCurrencyRate] = useState();
+//   const [amount, setAmount] = useState(1);
+//   const [fromCurrency, setFromCurrency] = useState("THB");
+//   const [toCurrency, setToCurrency] = useState("USD");
 
-  useEffect(() => {
-    const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
-    const _toCurrencyRate = exchangeRates?.rates[toCurrency];
-    const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
-    setAmountConvert(_amountConvert);
-    setFromCurrencyRate(_fromCurrencyRate);
-    setToCurrencyRate(_toCurrencyRate);
-  }, [amount, fromCurrency, toCurrency]);
+//   useEffect(() => {
+//     const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
+//     const _toCurrencyRate = exchangeRates?.rates[toCurrency];
+//     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
+//     setAmountConvert(_amountConvert);
+//     setFromCurrencyRate(_fromCurrencyRate);
+//     setToCurrencyRate(_toCurrencyRate);
+//   }, [amount, fromCurrency, toCurrency]);
 
-  return {
-    amountCovert,
-    setAmountConvert,
-    fromCurrencyRate,
-    setFromCurrencyRate,
-    toCurrencyRate,
-    setToCurrencyRate,
-    amount,
-    setAmount,
-    fromCurrency,
-    setFromCurrency,
-    toCurrency,
-    setToCurrency,
-  };
-};
+//   return {
+//     amountCovert,
+//     setAmountConvert,
+//     fromCurrencyRate,
+//     setFromCurrencyRate,
+//     toCurrencyRate,
+//     setToCurrencyRate,
+//     amount,
+//     setAmount,
+//     fromCurrency,
+//     setFromCurrency,
+//     toCurrency,
+//     setToCurrency,
+//   };
+// };
 
-const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
-  const [exchangeStatistic, setExchangeStatistic] = useState();
-  useEffect(() => {
-    axios({
-      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
-        `https://www.xe.com/api/protected/statistics/?from=${fromCurrency}&to=${toCurrency}`
-      )}`,
-      headers: {
-        Authorization: authToken,
-      },
-    }).then((res) => {
-      setExchangeStatistic(res.data);
-    });
-  }, [fromCurrency, toCurrency]);
-  return {
-    exchangeStatistic,
-    setExchangeStatistic,
-  };
-};
+// const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
+//   const [exchangeStatistic, setExchangeStatistic] = useState();
+//   useEffect(() => {
+//     axios({
+//       url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+//         `https://www.xe.com/api/protected/statistics/?from=${fromCurrency}&to=${toCurrency}`
+//       )}`,
+//       headers: {
+//         Authorization: authToken,
+//       },
+//     }).then((res) => {
+//       setExchangeStatistic(res.data);
+//     });
+//   }, [fromCurrency, toCurrency]);
+//   return {
+//     exchangeStatistic,
+//     setExchangeStatistic,
+//   };
+// };
 
-const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
-  const [chartOption, setChartOption] = useState({});
-  axios({
-    url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
-      `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
-    )}`,
-    headers: {
-      Authorization: authToken,
-    },
-  }).then(
-    (res) => {
-      const _exchangeChart = res.data;
-      const _chartOption = {
-        xAxis: {
-          type: "category",
-          data: [..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys()].map(
-            (r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1
-          ),
-          name: "วันที่",
-        },
-        yAxis: {
-          type: "value",
-          name: "อัตราแรกเปลี่ยน",
-          max: "dataMax",
-          min: "dataMin",
-        },
-        series: [
-          {
-            data: _exchangeChart?.batchList[0]?.rates?.slice(1).reverse(),
-            type: "line",
-            smooth: true,
-            lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
-          },
-        ],
-        tooltip: {
-          trigger: "axis",
-        },
-      };
+// const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
+//   const [chartOption, setChartOption] = useState({});
+//   axios({
+//     url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+//       `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
+//     )}`,
+//     headers: {
+//       Authorization: authToken,
+//     },
+//   }).then(
+//     (res) => {
+//       const _exchangeChart = res.data;
+//       const _chartOption = {
+//         xAxis: {
+//           type: "category",
+//           data: [..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys()].map(
+//             (r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1
+//           ),
+//           name: "วันที่",
+//         },
+//         yAxis: {
+//           type: "value",
+//           name: "อัตราแรกเปลี่ยน",
+//           max: "dataMax",
+//           min: "dataMin",
+//         },
+//         series: [
+//           {
+//             data: _exchangeChart?.batchList[0]?.rates?.slice(1).reverse(),
+//             type: "line",
+//             smooth: true,
+//             lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+//           },
+//         ],
+//         tooltip: {
+//           trigger: "axis",
+//         },
+//       };
 
-      setChartOption(_chartOption);
-    },
-    [fromCurrency, toCurrency]
-  );
-  return {
-    chartOption,
-    setChartOption,
-  };
-};
+//       setChartOption(_chartOption);
+//     },
+//     [fromCurrency, toCurrency]
+//   );
+//   return {
+//     chartOption,
+//     setChartOption,
+//   };
+// };
 
 const CurrencyConverter7 = () => {
   const authToken =
