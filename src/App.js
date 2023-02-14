@@ -1,9 +1,12 @@
+import CustomHook1 from "./CustomHook/CustomHook1";
+import CustomHook2 from "./CustomHook/CustomHook2";
 import Exchange from "./Exchange/Exchange";
 
 const App = () => {
   return (
     <>
-      <Exchange />
+      {/* <CustomHook1 /> */}
+      <CustomHook2 />
     </>
   );
 };
