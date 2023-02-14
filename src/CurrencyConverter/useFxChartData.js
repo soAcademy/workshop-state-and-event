@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EChartsReact from "echarts-for-react";
-const useFxChartOptions = ({ from, to, authToken }) => {
-  const [chartOptions, setChartOptions] = useState({
+
+export const useFxChartData = ({ from, to, authToken }) => {
+  const [chartData, setChartData] = useState({
     timestamp: "",
     batchList: [{ rates: [] }],
   });
@@ -19,12 +20,11 @@ const useFxChartOptions = ({ from, to, authToken }) => {
 
     axios(config)
       .then(function (response) {
-        setChartOptions(response.data);
+        setChartData(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, [from, to]);
-  return chartOptions;
+  return chartData;
 };
-export default useFxChartOptions;

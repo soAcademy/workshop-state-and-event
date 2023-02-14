@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-const useFxRates = ({ authToken }) => {
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+export const useFxRates = ({ authToken }) => {
   const [options, setOptions] = useState([]);
   const [fxRates, setFxRates] = useState({ rates: [] });
   useEffect(() => {
@@ -25,5 +26,3 @@ const useFxRates = ({ authToken }) => {
   }, []);
   return { fxRates, options };
 };
-
-export default useFxRates;

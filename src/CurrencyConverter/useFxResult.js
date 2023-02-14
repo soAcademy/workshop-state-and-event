@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-const useFxResult = ({ fxRates }) => {
+
+export const useFxResult = ({ fxRates }) => {
   const [amount, setAmount] = useState(1);
   const [from, setFrom] = useState("USD");
   const [to, setTo] = useState("THB");
@@ -12,5 +13,3 @@ const useFxResult = ({ fxRates }) => {
 
   return { amount, setAmount, from, setFrom, to, setTo, result, rates };
 };
-
-export default useFxResult;

@@ -1,18 +1,18 @@
 import FxStat from "./FxStat";
 import FxChart from "./FxChart";
 import { AiOutlineSwap } from "react-icons/ai";
-import useFxRates from "./useFxRates";
-import useFxResult from "./useFxResult";
-import useFxStat from "./useFxStat";
-import useFxChartData from "./useFxChartData";
+import { useFxRates } from "./useFxRates";
+import { useFxResult } from "./useFxResult";
+import { useFxStat } from "./useFxStat";
+import { useFxChartData } from "./useFxChartData";
 const CurrencyConverter = () => {
   const authToken =
     "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
   const { fxRates, options } = useFxRates({ authToken });
   const { amount, setAmount, from, setFrom, to, setTo, result, rates } =
     useFxResult({ fxRates });
-  const stats = useFxStat({from,to,authToken})
-  const chartData = useFxChartData({from,to,authToken})
+  const stats = useFxStat({ from, to, authToken });
+  const chartData = useFxChartData({ from, to, authToken });
   const switchVar = () => {
     const temp = from;
     setFrom(to);

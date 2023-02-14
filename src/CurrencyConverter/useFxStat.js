@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const useFxStat = ({ from, to, authToken }) => {
+export const useFxStat = ({ from, to, authToken }) => {
   const [stats, setStats] = useState();
   useEffect(() => {
     const config = {
@@ -25,4 +25,3 @@ const useFxStat = ({ from, to, authToken }) => {
   }, [from, to]);
   return stats;
 };
-export default useFxStat;
