@@ -45,7 +45,8 @@
 // import Retirement2 from "./Retirement/Retirement2";
 
 // import CurrencyConvertor1 from "./CurrencyConvertor/CurrencyConvertor1";
-import CurrencyConvertor4 from "./CurrencyConvertor/CurrencyConvertor4"
+// import CurrencyConvertor4 from "./CurrencyConvertor/CurrencyConvertor4"
+import CustomHook1 from "./CustomHook/CustomHook1";
 
 const App = () => {
   return (
@@ -123,7 +124,9 @@ const App = () => {
       {/* <WorldMap /> */}
 
       {/* <CurrencyConvertor1 /> */}
-      <CurrencyConvertor4 />
+      {/* <CurrencyConvertor4 /> */}
+
+      <CustomHook1/>
     </div>
   );
 };
