@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useTitle } from "./useCustomHook";
 
 const CustomHook1 = () => {

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export const useTitle = (text) => {
   const [title, setTitle] = useState(text);
@@ -17,5 +18,25 @@ export const useNumSquare = (num) => {
   useEffect(() => {
     setNumSquare(Number(num) ** 2);
   }, [num]);
-  return {numSquare, setNumSquare};
+  return { numSquare, setNumSquare };
+};
+
+export const useData = () => {
+  const [data, setData] = useState("");
+  return { data, setData };
+};
+
+export const useFetch = ({ method, url, setData }) => {
+  const [isFetch, setIsFetch] = useState(false);
+  useEffect(() => {
+    isFetch &&
+      axios({
+        method: method,
+        url: url,
+      }).then((response) => {
+        console.log(response);
+        setData(response);
+      });
+  }, [isFetch]);
+  return { isFetch, setIsFetch };
 };

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useNumber } from "./useCustomHook";
 
 const CustomHook2 = () => {
