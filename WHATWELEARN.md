@@ -528,3 +528,46 @@ const result = datas.reduce((acc, r) => (acc + r), 0)
 ```
 - ถ้าใช้ reduce ต้องกำหนดค่า intialize ให้ กันเพี้ยน
 - useEffect อย่าลืมใส่ [], หรือ [ตัวแปร] ไม่งั้นจะวนลูปไม่หยุด
+- เคส retirement ถ้า input เป็น text เวลาเอาค่ามาบวกกันจะเอา string มาต่อกัน ไม่ใช้ sum ถ้าเป็น number จะ sum
+- เคส retirement ถ้า input เป็น number จะลบให้หมดไม่ได้ แล้วจะใส่ ทศนิยมไม่ได้ เพราะ เรา map onChange กับ value ทันที
+- toFixed ต้องส่งเป็น number ถ้าส่งเป็น string จะพัง เช่น
+```js
+123.3811.toFixed(2) // แบบนี้ได้
+"123.3811".toFixed(2) // แบบนี้พัง
+```
+- toLocaleString('TH-th') ทำให้เลขมี comma
+- toLocaleString ร่วมกับ toFixed ต้องแปลงอันใดอันนึงให้เป็น number ก่อน
+```js
+Number(12345.80933.toFixed(2)).toLocaleString('TH-th')
+```
+- ตัวแปรทีมี _ นำหน้า คือตัวแปรทีสร้างแล้วใช้ครั้งเดียว จะใช้ underscore หรือ temp ก้อได้ เช่น `_data` `tempData` `tmpData`
+- Custom Hook ไว้ refactor โค้ดให้มีระเบียบเรียบร้อย เราจะย้ายตัวแปรพวก useState, useEffect ไปไว้อีกไฟล์นึง แล้ว import มาใช้ โดยจะตั้งชื่อ เช่น `useData`, `useChartOption`
+- จะไม่ควรเรียก custom hook ซ้อน custom hook เช่น
+```js
+const useData = () => {
+  const {chartOption} = useChartOption(); // แบบนี้ไม่ควร
+}
+```
+เราควรสร้าง customHook ให้อิสระต่อกัน แล้วค่อยเรียกใช้จาก Component ที่เดียว
+- ใน folder ต้องมีไฟล์ index.js สำหรับทำ export ไฟล์ย่อยๆ เสมอ
+- วิธีเริ่มต้น refactor ให้ย้าย useState, useEffect ออกไปเป็นก้อนเดียวก่อน ค่อยแยก เป็นทีละ hook ย่อยๆ ทีหลัง
+- Step ในการเขียน App
+  - 1. ปั้น mock html เป็นโครงสร้างคร่าวๆ
+  - 2. mock data มาใส่ก่อน
+  - 3. เริ่มส่งข้อมูล mock data เข้าไปใน component ผ่าน Props
+  - 4. ดึงข้อมูลจาก API ผ่าน useEffect
+- การไปแอบเอา API จากเว็บคนอื่นมาใช้ ในงานโปรเจ็คตัวเอง 
+  - ไปดูที่ Network ดูว่าเค้าเรียก API อะไรบ้าง
+  - ระวังเรื่อง Network Cache ให้ไป disabled cache ใน Network หรือกด Command Shift R
+  - กด filter แท็บ Fetch XHR เพื่อให้ดู API ได้ง่ายขึ้น
+  - ถ้า API เขาต้องการ Token ต้องส่งไปด้วย ส่วนใหญ่จะส่งใน headers ผ่าน key Authorization
+  - เวลาต่อ API ข้างนอก มักจะเจอปัญหา Cross Origin (CORS) ที่ server ปิดไม่ให้เว็บเราดึงข้อมูล วิธีแก้ตรงไปตรงมา บอกให้ server allow http://localhost:3000 วิธีแก้ไม่ตรงมา ต่อผ่าน proxy
+  - Error 500 ที่เจอในเคส Currency Converter เพราะลืมปิด cache ใน Network
+  - วิธีแก้ API ที่ Error แล้วได้ status 500 (from disk cache) ให้ไป reload แบบ empty cache and hard reload
+- การสลับค่า currency ซ้าย ขวา ต้องสร้างตัวแปร temp ขึ้นมารับ แล้วค่อย set ทีหลัง
+```js
+const tempCurrency = fromCurrency;
+setFromCurrency(toCurrency);
+setToCurrency(tempCurrency);
+```
+- useContext ไว้ใช้ส่ง ตัวแปรผ่าน props หลายๆ ชั้น แล้วไม่อยากต้องส่ง props nested ไปเรื่อยๆ ให้สร้าง useContext ขึ้นมาคลุม ที่ใช้ useContext เยอะๆ คือการทำ theme dark mode / light mode
