@@ -1,4 +1,4 @@
-const ByProvince = ({
+export const ByProvince = ({
   yearSelected,
   datasByProveince,
   sumByProvince,
@@ -46,5 +46,3 @@ const ByProvince = ({
     </div>
   );
 };
-
-export default ByProvince;

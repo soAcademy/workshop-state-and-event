@@ -1,6 +1,6 @@
 import ReactECharts from "echarts-for-react";
 
-const GenderChart = ({ datasByYear,yearSelected }) => {
+export const GenderChart = ({ datasByYear,yearSelected }) => {
   // console.log(datasByYear);
   const sumGender = datasByYear.reduce(
     (acc, r) => {
@@ -57,5 +57,3 @@ const GenderChart = ({ datasByYear,yearSelected }) => {
     </div>
   );
 };
-
-export default GenderChart;

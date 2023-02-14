@@ -1,4 +1,4 @@
-const ByCause = ({
+export const ByCause = ({
   yearSelected,
   datasByYear,
   sumByYear,
@@ -58,5 +58,3 @@ const ByCause = ({
     </div>
   );
 };
-
-export default ByCause;

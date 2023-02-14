@@ -1,6 +1,6 @@
 import ReactECharts from "echarts-for-react";
 
-const TrendChart = ({ sumTrendByYear }) => {
+export const TrendChart = ({ sumTrendByYear }) => {
   const options = {
     grid: { top: "30", left: "60", right: "60", bottom: "25" },
     xAxis: {
@@ -31,5 +31,3 @@ const TrendChart = ({ sumTrendByYear }) => {
     </div>
   );
 };
-
-export default TrendChart;

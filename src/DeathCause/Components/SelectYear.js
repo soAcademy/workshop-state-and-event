@@ -1,4 +1,4 @@
-const SelectYear = ({ yearSelected, setYearSelected, yearsList }) => {
+export const SelectYear = ({ yearSelected, setYearSelected, yearsList }) => {
   return (
     <div className="selectYear w-full flex items-center gap-x-2">
       <label htmlFor="selectYear" className="text-sm">
@@ -19,5 +19,3 @@ const SelectYear = ({ yearSelected, setYearSelected, yearsList }) => {
     </div>
   );
 };
-
-export default SelectYear;
