@@ -1,4 +1,4 @@
-const RetirementForm = ({setInput}) => {
+export const RetirementForm = ({setInput}) => {
   return (
     <form
       onChange={(e) => {
@@ -85,4 +85,3 @@ const RetirementForm = ({setInput}) => {
   );
 };
 
-export default RetirementForm;

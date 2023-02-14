@@ -12,8 +12,8 @@ import AppAccordian from "./AppAccordian";
 import AppTrivia from "./AppTrivia";
 import Map from "./Dashboard/Map";
 import * as serviceWorker from './serviceWorker';
-import AppCalculator from "./AppCalculator";
-import AppCustomHook from "./AppCustomHook";
+import AppCalculator from "./Calculator/AppCalculator";
+import AppCustomHook from "./CustomHook/AppCustomHook";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,4 +1,4 @@
-const RetirementTable = ({ result }) => {
+export const RetirementTable = ({ result }) => {
   return (
     <div className="m-10 mx-auto w-2/3 rounded-xl border bg-blue-100">
       <table className="m-5 mx-auto w-full">
@@ -58,4 +58,3 @@ const RetirementTable = ({ result }) => {
   );
 };
 
-export default RetirementTable;

@@ -1,5 +1,5 @@
-import CurrencyConverter from "./Calculator/CurrencyConverter/CurrencyConverter";
-import Retirement from "./Calculator/Retirement/Retirement";
+import CurrencyConverter from "./CurrencyConverter/CurrencyConverter";
+import Retirement from "./Retirement/Retirement";
 import React, { useState } from "react";
 
 const AppCalculator = () => {

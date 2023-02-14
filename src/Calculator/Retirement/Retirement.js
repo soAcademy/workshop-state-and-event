@@ -1,6 +1,5 @@
-import { useCalculator, useInput } from "./Hooks/RetirementCustomHook";
-import RetirementForm from "./Components/RetirementForm";
-import RetirementTable from "./Components/RetirementTable";
+import { useCalculator, useInput } from "./Hooks";
+import { RetirementForm, RetirementTable } from "./Components";
 const Retirement = () => {
   const { input, setInput } = useInput();
   const { result, setResult, sum, calculate } = useCalculator(input);
