@@ -16,7 +16,7 @@ const useFetch = ({ setData }) => {
   useEffect(() => {
     isFetch &&
       axios({
-        method: 'get',
+        method: "get",
         url: "https://api.sampleapis.com/coffee/hot",
       }).then((res) => setData(res.data));
   }, [isFetch]);
@@ -29,7 +29,7 @@ const useFetch = ({ setData }) => {
 //use hook
 const CustomHook4 = () => {
   const { data, setData } = useData();
-  const { setIsFetch } = useFetch({setData});
+  const { setIsFetch } = useFetch({ setData });
   return (
     <>
       <button onClick={() => setIsFetch(true)} className="bg-red-300 p-4 w-1/2">
