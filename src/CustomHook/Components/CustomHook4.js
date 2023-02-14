@@ -1,6 +1,7 @@
 import { useFetch } from "./useCustomHook";
 import { useData } from "./useCustomHook";
-const CustomHook4 = () => {
+
+export const CustomHook4 = () => {
   const {data, setData} = useData();
   const {isFetch, setIsFetch} = useFetch({
     method: "get",
@@ -21,4 +22,3 @@ const CustomHook4 = () => {
     </>
   );
 };
-export default CustomHook4;

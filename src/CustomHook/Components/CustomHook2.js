@@ -1,6 +1,6 @@
 import { useNumber } from "./useCustomHook";
 
-const CustomHook2 = () => {
+export const CustomHook2 = () => {
   const { number1, setNumber1, number2, setNumber2, sum, setSum } = useNumber();
   return (
     <div className="">
@@ -32,4 +32,3 @@ const CustomHook2 = () => {
     </div>
   );
 };
-export default CustomHook2;

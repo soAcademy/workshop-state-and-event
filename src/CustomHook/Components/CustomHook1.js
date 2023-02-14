@@ -1,6 +1,6 @@
 import { useTitle } from "./useCustomHook";
 
-const CustomHook1 = () => {
+export const CustomHook1 = () => {
   const { title, setTitle } = useTitle('Bin');
   return (
     <div className="bg-red-200">
@@ -16,5 +16,3 @@ const CustomHook1 = () => {
     </div>
   );
 };
-
-export default CustomHook1

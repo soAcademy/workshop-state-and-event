@@ -1,6 +1,6 @@
 import { useNumber, useNumSquare } from "./useCustomHook";
 
-const CustomHook3 = () => {
+export const CustomHook3 = () => {
   const { number1, setNumber1 } = useNumber();
   const { numSquare } = useNumSquare(number1);
 
@@ -15,4 +15,3 @@ const CustomHook3 = () => {
     </>
   );
 };
-export default CustomHook3;
