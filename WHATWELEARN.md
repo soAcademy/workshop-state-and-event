@@ -473,3 +473,101 @@ return <button onClick={() => props.setCounter(props.counter + 1)}>Increase</but
 - ก่อน pull request ต้อง pull origin main (หรือ branch ที่เราจะ merge ก่อน) แล้ว resolve conflict ให้เรียบร้อย
 - ข้อความใน commit ควรมี prefix "feat: text", "fix: text" (conventional commit) เพื่อให้รู้ว่า commit นี้ประเภทอะไร
 - package-lock.json กับ yarn.lock ต้อง commit ขึ้น git เสมอ จะได้ไม่มีปัญหาเวลา yarn install
+
+---
+
+## Chart
+- yarn add echarts react-echarts (ใช้ 2 ตัว)
+- วิธีใช้งาน Line chart, Pie chart, Bar chart
+- ทำ Chart decoration ใน key series
+- Key tools จิ้มแล้ว trigger จะมีเลขปรากฎบนกราฟ
+- วิธีทำแกน x, y
+- `import graphic from echart` ทำให้ใส่สีเป็น gradient ได้ ตกแต่สีตรง series วิธีเรียกใช้แปลกๆ ให้ถามพี่เค้ก
+- วิธีเรียกใช้ useEffect กับ echart กรณีที่โหลดข้อมูลผ่าน API
+ทำเป็นตัวแปร State [chart, setChart] แล้วเรียกผ่าน useEffect
+- 
+
+## Javascript
+- แทนที่จะ map ข้อมูลจาก array แต่ให้สร้างเป็น array(n) แล้วค่อย map ข้อมูลทีหลัง เช่น
+```js
+const result = [...Array(100).keys()].map((r, idx) => data[idx])
+```
+- วิธีทำ Unique ของ array of object โดยใช้ 
+```js
+[...new Map(...).values()]
+```
+- localStorage getItem, setItem, deleteItem (ยังไม่ได้สอน)
+- Object.keys() จะได้ key ของ object ออกมาเป็น Array
+```js
+const object = Object.keys({a1: 10, a2: 2, a3: 3})
+// ['a1', 'a2', 'a3']
+```
+```js
+const object = Object.values({a1: 10, a2: 2, a3: 3})
+// [10, 2, 3]
+```
+เราใช้ Object.keys() ใน workshop exchange rate
+- เวลาเรียกข้อมูล object ที่เก็บในตัวแปร state ต้องพยายามใส่ ? เพราะบางทีค่าเริ่มอาจเป็น object ว่าง
+```js
+{exchangeStatistic?.last7Days?.average} 
+```
+- zipcode ใช้ `navigator.clipboard.writeText` สำหรับคัดลอกข้อความลง clipboard
+- reduce จะวนเก็บค่าแต่ละรอบ สามารถ log acc ออกมาดูได้ ค่าจะเพิ่มขึ้นเรื่อยๆ มีการเปลี่ยนแปลง
+- reduce::: acc += r กับ acc + r ใช้ต่างกันยังไง
+```js
+const result = datas.reduce((acc, r) => {
+  acc += r;
+  return acc;
+}, 0)
+```
+```js
+const result = datas.reduce((acc, r) => acc + r, 0)
+```
+```js
+const result = datas.reduce((acc, r) => (acc + r), 0)
+```
+- ถ้าใช้ reduce ต้องกำหนดค่า intialize ให้ กันเพี้ยน
+- useEffect อย่าลืมใส่ [], หรือ [ตัวแปร] ไม่งั้นจะวนลูปไม่หยุด
+- เคส retirement ถ้า input เป็น text เวลาเอาค่ามาบวกกันจะเอา string มาต่อกัน ไม่ใช้ sum ถ้าเป็น number จะ sum
+- เคส retirement ถ้า input เป็น number จะลบให้หมดไม่ได้ แล้วจะใส่ ทศนิยมไม่ได้ เพราะ เรา map onChange กับ value ทันที
+- toFixed ต้องส่งเป็น number ถ้าส่งเป็น string จะพัง เช่น
+```js
+123.3811.toFixed(2) // แบบนี้ได้
+"123.3811".toFixed(2) // แบบนี้พัง
+```
+- toLocaleString('TH-th') ทำให้เลขมี comma
+- toLocaleString ร่วมกับ toFixed ต้องแปลงอันใดอันนึงให้เป็น number ก่อน
+```js
+Number(12345.80933.toFixed(2)).toLocaleString('TH-th')
+```
+- ตัวแปรทีมี _ นำหน้า คือตัวแปรทีสร้างแล้วใช้ครั้งเดียว จะใช้ underscore หรือ temp ก้อได้ เช่น `_data` `tempData` `tmpData`
+- Custom Hook ไว้ refactor โค้ดให้มีระเบียบเรียบร้อย เราจะย้ายตัวแปรพวก useState, useEffect ไปไว้อีกไฟล์นึง แล้ว import มาใช้ โดยจะตั้งชื่อ เช่น `useData`, `useChartOption`
+- จะไม่ควรเรียก custom hook ซ้อน custom hook เช่น
+```js
+const useData = () => {
+  const {chartOption} = useChartOption(); // แบบนี้ไม่ควร
+}
+```
+เราควรสร้าง customHook ให้อิสระต่อกัน แล้วค่อยเรียกใช้จาก Component ที่เดียว
+- ใน folder ต้องมีไฟล์ index.js สำหรับทำ export ไฟล์ย่อยๆ เสมอ
+- วิธีเริ่มต้น refactor ให้ย้าย useState, useEffect ออกไปเป็นก้อนเดียวก่อน ค่อยแยก เป็นทีละ hook ย่อยๆ ทีหลัง
+- Step ในการเขียน App
+  - 1. ปั้น mock html เป็นโครงสร้างคร่าวๆ
+  - 2. mock data มาใส่ก่อน
+  - 3. เริ่มส่งข้อมูล mock data เข้าไปใน component ผ่าน Props
+  - 4. ดึงข้อมูลจาก API ผ่าน useEffect
+- การไปแอบเอา API จากเว็บคนอื่นมาใช้ ในงานโปรเจ็คตัวเอง 
+  - ไปดูที่ Network ดูว่าเค้าเรียก API อะไรบ้าง
+  - ระวังเรื่อง Network Cache ให้ไป disabled cache ใน Network หรือกด Command Shift R
+  - กด filter แท็บ Fetch XHR เพื่อให้ดู API ได้ง่ายขึ้น
+  - ถ้า API เขาต้องการ Token ต้องส่งไปด้วย ส่วนใหญ่จะส่งใน headers ผ่าน key Authorization
+  - เวลาต่อ API ข้างนอก มักจะเจอปัญหา Cross Origin (CORS) ที่ server ปิดไม่ให้เว็บเราดึงข้อมูล วิธีแก้ตรงไปตรงมา บอกให้ server allow http://localhost:3000 วิธีแก้ไม่ตรงมา ต่อผ่าน proxy
+  - Error 500 ที่เจอในเคส Currency Converter เพราะลืมปิด cache ใน Network
+  - วิธีแก้ API ที่ Error แล้วได้ status 500 (from disk cache) ให้ไป reload แบบ empty cache and hard reload
+- การสลับค่า currency ซ้าย ขวา ต้องสร้างตัวแปร temp ขึ้นมารับ แล้วค่อย set ทีหลัง
+```js
+const tempCurrency = fromCurrency;
+setFromCurrency(toCurrency);
+setToCurrency(tempCurrency);
+```
+- useContext ไว้ใช้ส่ง ตัวแปรผ่าน props หลายๆ ชั้น แล้วไม่อยากต้องส่ง props nested ไปเรื่อยๆ ให้สร้าง useContext ขึ้นมาคลุม ที่ใช้ useContext เยอะๆ คือการทำ theme dark mode / light mode

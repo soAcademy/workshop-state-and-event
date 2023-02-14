@@ -1,12 +1,22 @@
+import { useState, useEffect } from "react";
 import ReactECharts from "echarts-for-react";
+import ExchangeRatesData from "./exchange-rates.json";
+import ExchangeStatistic from "./exchange-statistic.json";
+import ExchangeChart from "./exchange-chart.json";
 import axios from "axios";
-// ขั้นตอนการ custom hook
 
-// ก้อนนี้เอาเรทการแลกเปลี่ยนที่ยิง api มาเก็บไว้ใน useState
-const useFetchExchangeRate = ({ authToken }) => {
+const useCurrencyConverter = ({ authToken }) => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
-  console.log("useFetchExchangeRate");
+  const [fromCurrency, setFromCurrency] = useState("THB");
+  const [toCurrency, setToCurrency] = useState("USD");
+  const [amount, setAmount] = useState(1);
+  const [amountConvert, setAmountConvert] = useState(0);
+  const [fromCurrencyRate, setFromCurrencyRate] = useState();
+  const [toCurrencyRate, setToCurrencyRate] = useState();
+  const [exchangeStatistic, setExchangeRatesStatistic] = useState();
+  const [chartOption, setChartOption] = useState({});
+
   useEffect(() => {
     axios({
       url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
@@ -16,26 +26,13 @@ const useFetchExchangeRate = ({ authToken }) => {
         Authorization: authToken,
       },
     }).then((res) => {
-      console.log("useFetchExchangeRate", res.data);
       const _exchangeRates = res.data;
       const _currencyLists = Object.keys(_exchangeRates.rates);
-      console.log("res", res);
       console.log(_currencyLists);
       setExchangeRates(_exchangeRates);
       setCurrencyLists(_currencyLists);
     });
   }, []);
-
-  return { exchangeRates, currencyLists };
-};
-//ก้อนนี้เก็บการคำนวณอัตราการแลกเปลี่ยนจาก สกุลเงินนึงไปอีกสกุลเงินนึง
-const useConvertExchangeRate = ({ exchangeRates }) => {
-  const [fromCurrency, setFromCurrency] = useState("THB");
-  const [toCurrency, setToCurrency] = useState("USD");
-  const [amount, setAmount] = useState(1);
-  const [amountConvert, setAmountConvert] = useState(0);
-  const [fromCurrencyRate, setFromCurrencyRate] = useState();
-  const [toCurrencyRate, setToCurrencyRate] = useState();
 
   useEffect(() => {
     const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
@@ -45,29 +42,7 @@ const useConvertExchangeRate = ({ exchangeRates }) => {
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
-  }, [amount, fromCurrency, toCurrency, exchangeRates]);
 
-  return {
-    fromCurrency,
-    setFromCurrency,
-    toCurrency,
-    setToCurrency,
-    amount,
-    setAmountConvert,
-    amountConvert,
-    setAmountConvert,
-    fromCurrencyRate,
-    setFromCurrencyRate,
-    toCurrencyRate,
-    setToCurrencyRate,
-  };
-};
-
-// ก้อนนี้เก็บการไปยิงเอาข้อมูล statistic มา
-const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
-  const [exchangeStatistic, setExchangeRatesStatistic] = useState();
-  console.log("useExchangeStatistic");
-  useEffect(() => {
     axios({
       url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
         `https://www.xe.com/api/protected/statistics/?from=${fromCurrency}&to=${toCurrency}`
@@ -78,15 +53,7 @@ const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
     }).then((res) => {
       setExchangeRatesStatistic(res.data);
     });
-  }, [fromCurrency, toCurrency]);
-  return { exchangeStatistic };
-};
-//  ก้อนนี้เก็บการไปยิงเอาข้อมูลสำหรับทำ chart
-const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
-  const [chartOption, setChartOption] = useState({});
-  console.log("useChartOption");
 
-  useEffect(() => {
     axios({
       url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
         `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
@@ -125,18 +92,38 @@ const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
 
       setChartOption(_chartOption);
     });
-  }, [fromCurrency, toCurrency]);
+  }, [amount, fromCurrency, toCurrency, exchangeRates]);
 
-  return { chartOption };
+  return {
+    exchangeRates,
+    setExchangeRates,
+    currencyLists,
+    setCurrencyLists,
+    fromCurrency,
+    setFromCurrency,
+    toCurrency,
+    setToCurrency,
+    amount,
+    setAmount,
+    amountConvert,
+    setAmountConvert,
+    fromCurrencyRate,
+    setFromCurrencyRate,
+    toCurrencyRate,
+    setToCurrencyRate,
+    exchangeStatistic,
+    setExchangeRatesStatistic,
+    chartOption,
+    setChartOption,
+  };
 };
 
-const CurrencyConverter7 = () => {
+const CurrencyConverter6 = () => {
   const authToken =
     "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
-  // เรียกใช้งาน custom hook ทุกๆก้อนที่เราทำไว้ในนี้
-  const { exchangeRates, currencyLists } = useFetchExchangeRate(authToken);
   const {
+    currencyLists,
     fromCurrency,
     setFromCurrency,
     toCurrency,
@@ -146,22 +133,9 @@ const CurrencyConverter7 = () => {
     amountConvert,
     fromCurrencyRate,
     toCurrencyRate,
-  } = useConvertExchangeRate({ exchangeRates });
-
-  const { exchangeStatistic } = useExchangeStatistic({
-    authToken,
-    fromCurrency,
-    toCurrency,
-  });
-
-  const { chartOption } = useChartOption({
-    authToken,
-    fromCurrency,
-    toCurrency,
-  });
-
-  // custom hook ตั้งชื่อ func มี use นำหน้า
-  // ไม่เรียก hook ในตัว hook
+    exchangeStatistic,
+    chartOption,
+  } = useCurrencyConverter({ authToken });
 
   return (
     <div className="">
@@ -287,4 +261,4 @@ const CurrencyConverter7 = () => {
   );
 };
 
-export default CurrencyConverter7;
+export default CurrencyConverter6;
