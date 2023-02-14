@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import ExchangeRatesData from "./exchange-rates.json";
 import ExchangeStatistic from "./exchange-statistic.json";
+import ExchangeChart from "./exchange-chart.json";
+import ReactECharts from "echarts-for-react";
+import axios from "axios";
 
 const CurrencyConverter1 = () => {
   const [exchangeRates, setExchangeRates] = useState();
@@ -12,16 +15,32 @@ const CurrencyConverter1 = () => {
   const [fromCurrencyRate, setFromCurrencyRate] = useState();
   const [toCurrencyRate, setToCurrencyRate] = useState();
   const [exchangeStatistic, setExchangeRatesStatistic] = useState();
+  const [chartOption, setChartOption] = useState({});
+  const authToken =
+    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
   useEffect(() => {
-    const _exchangeRates = ExchangeRatesData;
-    const _currencyLists = Object.keys(_exchangeRates.rates);
-    console.log("_currencyLists", _currencyLists);
-    setExchangeRates(_exchangeRates);
-    setCurrencyLists(_currencyLists);
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        "https://www.xe.com/api/protected/midmarket-converter/"
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      const _exchangeRates = res.data;
+      const _currencyLists = Object.keys(_exchangeRates.rates);
+      console.log("_currencyLists", _currencyLists);
+      setExchangeRates(_exchangeRates);
+      setCurrencyLists(_currencyLists);
+    });
   }, []);
 
   useEffect(() => {
+    // THB -> JPY
+    // THB -> USD, USD -> JPY
+    // 1 / THB -> * JPY
+    // 1 / 33.81 * 132
     const _fromCurrencyRate = exchangeRates?.rates[fromCurrency];
     const _toCurrencyRate = exchangeRates?.rates[toCurrency];
     console.log(
@@ -30,12 +49,59 @@ const CurrencyConverter1 = () => {
       toCurrencyRate
     );
     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
-    const _exchangeStatistic = ExchangeStatistic;
     setAmountConvert(_amountConvert);
     setFromCurrencyRate(_fromCurrencyRate);
     setToCurrencyRate(_toCurrencyRate);
-    setExchangeRatesStatistic(_exchangeStatistic);
-  }, [amount, fromCurrency, toCurrency]);
+
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/statistics/?from=${fromCurrency}&to=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      setExchangeRatesStatistic(res.data);
+    });
+
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      const _exchangeChart = res.data;
+      const _chartOption = {
+        xAxis: {
+          type: "category",
+          data: [..._exchangeChart?.batchList[0]?.rates?.slice(1)?.keys()].map(
+            (r) => r - _exchangeChart?.batchList[0]?.rates?.length - 1
+          ),
+          name: "วันที่",
+        },
+        yAxis: {
+          type: "value",
+          name: "อัตราแรกเปลี่ยน",
+          max: "dataMax",
+          min: "dataMin",
+        },
+        series: [
+          {
+            data: _exchangeChart?.batchList[0]?.rates?.slice(1).reverse(),
+            type: "line",
+            smooth: true,
+            lineStyle: { color: "#d5ceeb", width: 5, type: "dashed" },
+          },
+        ],
+        tooltip: {
+          trigger: "axis",
+        },
+      };
+      setChartOption(_chartOption);
+    });
+  }, [amount, fromCurrency, toCurrency, exchangeRates]);
 
   return (
     <div className="font-kanit">
@@ -109,7 +175,7 @@ const CurrencyConverter1 = () => {
             </div>
             <div>
               1 {toCurrency} ={" "}
-              {((1 / fromCurrencyRate) * toCurrencyRate).toFixed(2)}{" "}
+              {((1 / toCurrencyRate) * fromCurrencyRate).toFixed(2)}{" "}
               {fromCurrency}
             </div>
           </div>
@@ -122,11 +188,11 @@ const CurrencyConverter1 = () => {
             <div>1 วัน</div>
             <div className="font-bold text-xl">
               1 {fromCurrency} ={" "}
-              {exchangeStatistic.last1Days.average.toFixed(4)} {toCurrency}
+              {exchangeStatistic?.last1Days.average.toFixed(4)} {toCurrency}
             </div>
             <div>
               1 {toCurrency} ={" "}
-              {(1 / exchangeStatistic.last1Days.average).toFixed(4)}{" "}
+              {(1 / exchangeStatistic?.last1Days.average).toFixed(4)}{" "}
               {fromCurrency}
             </div>
           </div>
@@ -134,11 +200,11 @@ const CurrencyConverter1 = () => {
             <div>7 วัน</div>
             <div className="font-bold text-xl">
               1 {fromCurrency} ={" "}
-              {exchangeStatistic.last7Days.average.toFixed(4)} {toCurrency}
+              {exchangeStatistic?.last7Days.average.toFixed(4)} {toCurrency}
             </div>
             <div>
               1 {toCurrency} ={" "}
-              {(1 / exchangeStatistic.last7Days.average).toFixed(4)}{" "}
+              {(1 / exchangeStatistic?.last7Days.average).toFixed(4)}{" "}
               {fromCurrency}
             </div>
           </div>
@@ -148,11 +214,11 @@ const CurrencyConverter1 = () => {
             <div>30 วัน</div>
             <div className="font-bold text-xl">
               1 {fromCurrency} ={" "}
-              {exchangeStatistic.last30Days.average.toFixed(4)} {toCurrency}
+              {exchangeStatistic?.last30Days.average.toFixed(4)} {toCurrency}
             </div>
             <div>
               1 {toCurrency} ={" "}
-              {(1 / exchangeStatistic.last30Days.average).toFixed(4)}{" "}
+              {(1 / exchangeStatistic?.last30Days.average).toFixed(4)}{" "}
               {fromCurrency}
             </div>
           </div>
@@ -161,14 +227,17 @@ const CurrencyConverter1 = () => {
             <div>60 วัน</div>
             <div className="font-bold text-xl">
               1 {fromCurrency} ={" "}
-              {exchangeStatistic.last60Days.average.toFixed(4)} {toCurrency}
+              {exchangeStatistic?.last60Days.average.toFixed(4)} {toCurrency}
             </div>
             <div>
               1 {toCurrency} ={" "}
-              {(1 / exchangeStatistic.last60Days.average).toFixed(4)}{" "}
+              {(1 / exchangeStatistic?.last60Days.average).toFixed(4)}{" "}
               {fromCurrency}
             </div>
           </div>
+        </div>
+        <div className="mt-4">
+          <ReactECharts option={chartOption} />
         </div>
       </div>
     </div>
