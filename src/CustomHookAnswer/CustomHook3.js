@@ -41,7 +41,11 @@ const useNumSquare = ({ num }) => {
   return { numSquare, setNumSquare };
 };
 
+<<<<<<< HEAD
 const CustomHook3 = () => {
+=======
+export const CustomHook3 = () => {
+>>>>>>> ec4791d4bc61803196a32f5fe037e6c7f71fd71b
   const { num, setNum } = useNum();
   const { numSquare } = useNumSquare({ num });
 
@@ -57,4 +61,8 @@ const CustomHook3 = () => {
   );
 };
 
+<<<<<<< HEAD
 export default CustomHook3;
+=======
+// export default CustomHook3;
+>>>>>>> ec4791d4bc61803196a32f5fe037e6c7f71fd71b

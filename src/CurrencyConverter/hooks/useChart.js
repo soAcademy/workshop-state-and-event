@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
+export const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
   const [chartOption, setChartOption] = useState({});
   console.log("useChartOption");
 

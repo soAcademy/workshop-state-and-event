@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const CustomHook4 = () => {
+export const CustomHook4 = () => {
   const [data, setData] = useState("");
   const [isFetch, setIsFetch] = useState(false);
 
@@ -31,7 +31,7 @@ const CustomHook4 = () => {
   );
 };
 
-export default CustomHook4;
+// export default CustomHook4;
 
 
 // import React, { useState, useEffect } from "react";

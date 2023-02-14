@@ -1,17 +1,17 @@
-// import ExchangeRatesData from "./exchange-rates.json";
-// import ExchangeStatistic from "./exchange-statistic.json";
-// import ExchangeChart from "./exchange-chart.json";
 import ReactECharts from "echarts-for-react";
-import { useCurrencyConverter } from "./hook/useFetchExchangeRate";
+import {
+  useChartOption,
+  useConvertExchangeRate,
+  useExchangeStatistic,
+  useFetchExchangeRate,
+} from "./hooks";
 
 const CurrencyConverter6_1 = () => {
   const authToken =
     "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+  const { exchangeRates, currencyLists } = useFetchExchangeRate({authToken});
+
   const {
-    exchangeRates,
-    setExchangeRates,
-    currencyLists,
-    setCurrencyLists,
     fromCurrency,
     setFromCurrency,
     toCurrency,
@@ -19,16 +19,20 @@ const CurrencyConverter6_1 = () => {
     amount,
     setAmount,
     amountConvert,
-    setAmountConvert,
     fromCurrencyRate,
-    setFromCurrencyRate,
     toCurrencyRate,
-    setToCurrencyRate,
-    exchangeStatistic,
-    setExchangeRatesStatistic,
-    chartOption,
-    setChartOption,
-  } = useCurrencyConverter({ authToken });
+  } = useConvertExchangeRate({ exchangeRates });
+
+  const { exchangeStatistic } = useExchangeStatistic({
+    authToken,
+    fromCurrency,
+    toCurrency,
+  });
+  const { chartOption } = useChartOption({
+    authToken,
+    fromCurrency,
+    toCurrency,
+  });
 
   return (
     <div className="font-kanit">
@@ -41,10 +45,10 @@ const CurrencyConverter6_1 = () => {
               <br />
               {amount}
               <input
-                type="number"
+                type="text"
                 name="amount"
                 className="p-2 w-full mt-2"
-                onChange={(e) => setAmount(Number(e.target.value))}
+                onChange={(e) => setAmount((e.target.value))}
                 value={amount}
               ></input>
             </div>

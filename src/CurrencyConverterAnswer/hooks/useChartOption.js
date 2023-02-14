@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
+export const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
   const [exchangeStatistic, setExchangeRatesStatistic] = useState();
   console.log("useExchangeStatistic");
   useEffect(() => {

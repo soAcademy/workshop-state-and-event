@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 
-const useConvertExchangeRate = ({ exchangeRates }) => {
+export const useConvertExchangeRate = ({ exchangeRates }) => {
   const [fromCurrency, setFromCurrency] = useState("THB");
   const [toCurrency, setToCurrency] = useState("USD");
   const [amount, setAmount] = useState(1);
