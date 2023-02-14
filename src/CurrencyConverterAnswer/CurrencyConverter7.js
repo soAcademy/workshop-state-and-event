@@ -76,7 +76,7 @@ const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
       setExchangeRatesStatistic(res.data);
     });
   }, [fromCurrency, toCurrency]);
-  return [exchangeStatistic];
+  return { exchangeStatistic };
 };
 
 const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
@@ -124,7 +124,7 @@ const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
     });
   }, [fromCurrency, toCurrency]);
 
-  return [chartOption];
+  return { chartOption };
 };
 
 const CurrencyConverter7 = () => {
@@ -144,13 +144,13 @@ const CurrencyConverter7 = () => {
     toCurrencyRate,
   } = useConvertExchangeRate({ exchangeRates });
 
-  const [exchangeStatistic] = useExchangeStatistic({
+  const { exchangeStatistic } = useExchangeStatistic({
     authToken,
     fromCurrency,
     toCurrency,
   });
 
-  const [chartOption] = useChartOption({
+  const { chartOption } = useChartOption({
     authToken,
     fromCurrency,
     toCurrency,
