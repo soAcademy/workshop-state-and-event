@@ -1,11 +1,19 @@
 import ReactECharts from "echarts-for-react";
-import {useCurrencyConverter} from "./useCurrencyConverter"
+import { useFetchExchangeRate } from "./useFetchExchangeRate";
+import { useExchangeCalculation } from "./useExchangeCalculation";
+import { useCurrencyStatistic } from "./useCurrencyStatistic";
+import { useChartOptions } from "./useChartOptions";
+
 // use hook
 const CurrencyConverterHook = () => {
   const authToken =
     "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+  //use hook 1 Fetch
+  const { exchangeRates, currencyLists} = useFetchExchangeRate({
+    authToken,
+  });
+  //use hook 2 Calculate
   const {
-    currencyLists,
     fromCurrency,
     setFromCurrency,
     toCurrency,
@@ -13,11 +21,22 @@ const CurrencyConverterHook = () => {
     amount,
     setAmount,
     amountConvert,
+    setAmountConvert,
     fromCurrencyRate,
+    setFromCurrencyRate,
     toCurrencyRate,
-    exchangeStatistic,
-    chartOption,
-  } = useCurrencyConverter({ authToken });
+    setToCurrencyRate,
+  } = useExchangeCalculation({ exchangeRates });
+  // use hook 3 Static
+  const { exchangeStatistic,  } = useCurrencyStatistic(
+    { authToken, fromCurrency, toCurrency }
+  );
+  // use hook 4 Chart
+  const { chartOption,  } = useChartOptions({
+    authToken,
+    fromCurrency,
+    toCurrency,
+  });
 
   return (
     <>
