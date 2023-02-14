@@ -1,12 +1,4 @@
-import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
-import DeathCause1 from "./DeathCause/DeathCause1";
-import DeathCause2 from "./DeathCause/DeathCause2";
-import DeathCause3 from "./DeathCause/DeathCause3";
-import DeathCause4 from "./DeathCause/DeathCause4";
-import DeathCause5 from "./DeathCause/DeathCause5";
-import DeathCause6 from "./DeathCause/DeathCause6";
-import DeathCause7 from "./DeathCause/DeathCause7";
-import DeathCause8 from "./DeathCause/DeathCause8";
+
 import Retirement1 from "./Retirement/Retirement1";
 import Retirement2 from "./Retirement/Retirement2";
 import Retirement3 from "./Retirement/Retirement3";
@@ -16,6 +8,10 @@ import Currency3 from "./CurrencyConverter/Currency3";
 import Currency4 from "./CurrencyConverter/Currency4";
 import Currency5 from "./CurrencyConverter/Currency5";
 import Currency6 from "./CurrencyConverter/Currency6";
+import CustomHookA1  from "./CustomHook/CustomHookA1";
+import CustomHookA2 from "./CustomHook/CustomHookA2";
+import CustomHookA3 from "./CustomHook/CustomHookA3";
+import CustomHookA4 from "./CustomHook/CustomHookA4"; 
 
 const App = () => {
   return (
@@ -29,7 +25,11 @@ const App = () => {
       {/* <Currency3 /> */}
       {/* <Currency4 /> */}
       {/* <Currency5 /> */}
-      <Currency6 />
+      {/* <Currency6 /> */}
+      {/* <CustomHookA1 /> */}
+      {/* <CustomHookA2 /> */}
+      {/* <CustomHookA3 /> */}
+      <CustomHookA4 />
       
 
     </>

@@ -76,7 +76,11 @@ const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
       setExchangeRatesStatistic(res.data);
     });
   }, [fromCurrency, toCurrency]);
+<<<<<<< HEAD
   return [exchangeStatistic];
+=======
+  return { exchangeStatistic };
+>>>>>>> dccdc233a1db4d2a51feac55ab0f073fbba12db0
 };
 
 const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
@@ -124,7 +128,11 @@ const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
     });
   }, [fromCurrency, toCurrency]);
 
+<<<<<<< HEAD
   return [chartOption];
+=======
+  return { chartOption };
+>>>>>>> dccdc233a1db4d2a51feac55ab0f073fbba12db0
 };
 
 const CurrencyConverter7 = () => {
@@ -144,13 +152,21 @@ const CurrencyConverter7 = () => {
     toCurrencyRate,
   } = useConvertExchangeRate({ exchangeRates });
 
+<<<<<<< HEAD
   const [exchangeStatistic] = useExchangeStatistic({
+=======
+  const { exchangeStatistic } = useExchangeStatistic({
+>>>>>>> dccdc233a1db4d2a51feac55ab0f073fbba12db0
     authToken,
     fromCurrency,
     toCurrency,
   });
 
+<<<<<<< HEAD
   const [chartOption] = useChartOption({
+=======
+  const { chartOption } = useChartOption({
+>>>>>>> dccdc233a1db4d2a51feac55ab0f073fbba12db0
     authToken,
     fromCurrency,
     toCurrency,
@@ -280,4 +296,8 @@ const CurrencyConverter7 = () => {
   );
 };
 
+<<<<<<< HEAD
 export default CurrencyConverter7;
+=======
+export default CurrencyConverter7;
+>>>>>>> dccdc233a1db4d2a51feac55ab0f073fbba12db0
