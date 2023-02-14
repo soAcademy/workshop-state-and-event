@@ -2,15 +2,18 @@ import { useState, useEffect } from "react";
 // import { FaExchangeAlt } from "react-icons/fa";
 // import ExchangeRate from "./ExchangeRates.json";
 import axios from "axios";
+import ReactECharts from "echarts-for-react";
 
 const CurrencyConvertor4 = () => {
   const [amount, setAmount] = useState(1);
-  const [fromCurr, setFromCurr] = useState("THB");
-  const [toCurr, setToCurr] = useState("USD");
+  const [fromCurr, setFromCurr] = useState("USD");
+  const [toCurr, setToCurr] = useState("THB");
   const [options, setOptions] = useState([]);
 
   const [result, setResult] = useState(undefined);
   const [averageArr, setAverageArr] = useState(undefined);
+
+  const [chartOption, setChartOption] = useState({});
 
   useEffect(() => {
     const config = {
@@ -76,6 +79,58 @@ const CurrencyConvertor4 = () => {
       });
   }, [toCurr, fromCurr]);
   // }, []);
+
+  useEffect(() => {
+    const configChart = {
+      method: "get",
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurr}&toCurrency=${toCurr}&crypto=true\n`
+      )}`,
+      headers: {
+        authorization:
+          "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=",
+      },
+    };
+
+    axios(configChart)
+      .then(function (response) {
+        // console.log(response.data);
+        const datas = response.data.batchList[0].rates.slice(1);
+        // console.log(datas);
+        // console.log("max", Math.max(...datas));
+
+        setChartOption({
+          title: {
+            text: `Currency Rate ${fromCurr} to ${toCurr}`,
+          },
+          xAxis: {
+            type: "category",
+            data: Object.keys(datas).reverse(),
+            boundaryGap: false,
+          },
+          yAxis: {
+            type: "value",
+            min: Math.min(...datas),
+          },
+          series: [
+            {
+              data: datas,
+              type: "line",
+            },
+          ],
+          grid: {
+            left: "50",
+            right: "20",
+          },
+          tooltip: {
+            trigger: "axis",
+          },
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [toCurr, fromCurr]);
 
   return (
     // <></>
@@ -167,6 +222,12 @@ const CurrencyConvertor4 = () => {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="charts-block">
+          <div>
+            <ReactECharts option={chartOption} />
           </div>
         </div>
       </div>
