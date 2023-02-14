@@ -100,6 +100,7 @@
 // import DeathCause6 from "./DeathCause/DeathCause6";
 // import DeathCause7 from "./DeathCause/DeathCause7";
 // import DeathCause8 from "./DeathCause/DeathCause8";
+import DeathCause9 from "./DeathCause/DeathCause9";
 
 // import Retirement1 from "./Retirement/Retirement1";
 // import Retirement2 from "./Retirement/Retirement2";
@@ -114,7 +115,7 @@
 // import CurrencyConverter4 from "./CurrencyConverter/CurrencyConverter4";
 // import CurrencyConverter5 from "./CurrencyConverter/CurrencyConverter5";
 // import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
-import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
+// import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 
 // import CustomHook1 from "./CustomHookAnswer/CustomHook1";
 // import CustomHook2 from "./CustomHookAnswer/CustomHook2";
@@ -188,6 +189,7 @@ const App = () => (
     {/* <DeathCause6 /> */}
     {/* <DeathCause7 /> */}
     {/* <DeathCause8 /> */}
+    <DeathCause9 />
     {/* <Retirement1 /> */}
     {/* <Retirement2 /> */}
     {/* <Retirement3 /> */}
@@ -200,7 +202,7 @@ const App = () => (
     {/* <CurrencyConverter4 /> */}
     {/* <CurrencyConverter5 /> */}
     {/* <CurrencyConverter6 /> */}
-    <CurrencyConverter7 />
+    {/* <CurrencyConverter7 /> */}
     {/* <CustomHook1 /> */}
     {/* <CustomHook2 /> */}
     {/* <CustomHook3 /> */}
