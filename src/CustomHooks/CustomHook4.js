@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const useData = () => {
-  const [data, setData] = useState("");
+const useData = (defaultText) => {
+  const [data, setData] = useState(defaultText);
 
   return {
     data,
     setData,
-  }
-}
+  };
+};
 
-const useIsFetch = ({setData}) => {
+const useIsFetch = ({ setData }) => {
   const [isFetch, setIsFetch] = useState(false);
 
   useEffect(() => {
@@ -27,14 +27,12 @@ const useIsFetch = ({setData}) => {
   return {
     isFetch,
     setIsFetch,
-  }
-
-}
-
+  };
+};
 
 const CustomHook4 = () => {
- const {data, setData} = useData()
- const {setIsFetch} = useIsFetch({setData})
+  const { data, setData } = useData("");
+  const { setIsFetch } = useIsFetch({ setData });
 
   return (
     <>
