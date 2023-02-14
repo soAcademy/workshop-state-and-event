@@ -1,7 +1,7 @@
-import zipcodeData from "./thailand-zipcode.json";
+import zipcodeData from "../assets/thailand-zipcode.json";
 import { Link } from "react-router-dom";
 
-const DashboardZipcode = () => {
+export const DashboardZipcode = () => {
   const uniqueProvince = [...new Set(zipcodeData.map((e) => e.province))];
   return (
     <div className="flex flex-col justify-center m-10 font-kanit absolute top-1/4 w-full z-10">
@@ -19,4 +19,3 @@ const DashboardZipcode = () => {
   );
 };
 
-export default DashboardZipcode;

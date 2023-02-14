@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
-import SearchBar from "./SearchBar";
-const Navbar = ({ dataFilteredBySearchTerm, setDataFilteredBySearchTerm }) => {
+import { SearchBar } from "./SearchBar";
+
+export const Navbar = ({ dataFilteredBySearchTerm, setDataFilteredBySearchTerm }) => {
   const _location = useLocation();
   const location = decodeURI(_location.pathname).split("/");
 
@@ -44,4 +45,3 @@ const Navbar = ({ dataFilteredBySearchTerm, setDataFilteredBySearchTerm }) => {
     </div>
   );
 };
-export default Navbar;

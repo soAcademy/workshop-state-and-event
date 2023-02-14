@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import accident from "./accident.json";
-import AccidentGenderPie from "./AccidentGenderPie";
-import AccidentVehicleBar from "./AccidentVehicleBar";
-import AccidentProvinceStackedBar from "./AccidentProvinceStackedBar";
-import Map from "./Map";
+import accident from "./assets/accident.json";
+import {
+  AccidentGenderPie,
+  AccidentProvinceStackedBar,
+  AccidentVehicleBar,
+  Map,
+} from "./components";
 import { AiOutlineClose } from "react-icons/ai";
 
 const DashboardAccidents = () => {

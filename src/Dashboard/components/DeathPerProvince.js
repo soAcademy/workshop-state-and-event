@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const DeathPerProvince = ({
+export const DeathPerProvince = ({
   deathDataFiltered,
   uniqueProvince,
   totalDeath,
@@ -37,15 +37,15 @@ const DeathPerProvince = ({
   }, [uniqueProvince]);
   return (
     <>
-      {deathNumPerProvince.map((e,idx) => {
+      {deathNumPerProvince.map((e, idx) => {
         return (
-          <div className="flex flex-row justify-between w-full my-1" key={idx}>
+          <div className="my-1 flex w-full flex-row justify-between" key={idx}>
             <div className="w-1/2">{e.provinceName}</div>
-            <div className="flex flex-row w-1/2">
-              <div className="bg-blue-500 w-1/2 text-right px-2">
+            <div className="flex w-1/2 flex-row">
+              <div className="w-1/2 bg-blue-500 px-2 text-right">
                 {e.totalDeath}
               </div>
-              <div className="bg-teal-400 w-1/2 px-2">
+              <div className="w-1/2 bg-teal-400 px-2">
                 {((e.totalDeath / totalDeath) * 100).toFixed(2)}%
               </div>
             </div>
@@ -55,4 +55,3 @@ const DeathPerProvince = ({
     </>
   );
 };
-export default DeathPerProvince;

@@ -1,8 +1,8 @@
-import zipcodeData from "./thailand-zipcode.json";
 import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import zipcodeData from "../assets/thailand-zipcode.json";
 
-const SearchBar = ({
+export const SearchBar = ({
   dataFilteredBySearchTerm,
   setDataFilteredBySearchTerm,
 }) => {
@@ -82,4 +82,3 @@ const SearchBar = ({
   );
 };
 
-export default SearchBar;

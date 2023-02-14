@@ -1,10 +1,10 @@
-import { longdo, map, LongdoMap } from "./longdo-map/LongdoMap";
-import accident from "./accident.json";
-import { useState, useEffect } from "react";
+import { longdo, map, LongdoMap } from "../longdo-map/LongdoMap";
+import accident from "../assets/accident.json";
+import { useEffect } from "react";
 
-const Map = ({ dataFilteredByYear }) => {
+export const Map = ({ dataFilteredByYear }) => {
   useEffect(() => {
-    map.Overlays.clear()
+    map.Overlays.clear();
     dataFilteredByYear?.map((data, jdx) => {
       const popup = `<div style="background: #ffffff; 
   padding: 1rem;

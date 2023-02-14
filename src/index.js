@@ -6,14 +6,15 @@ import "./index.css";
 import AppToDoList from "./AppToDoList";
 import AppLocalStorage from "./AppLocalStorage";
 import AppChart from "./AppChart";
-import AppDashBoard from "./AppDashBoard";
+import AppDashBoard from "./Dashboard/AppDashBoard";
 import reportWebVitals from "./reportWebVitals";
 import AppAccordian from "./AppAccordian";
 import AppTrivia from "./AppTrivia";
-import Map from "./Dashboard/Map";
+import Map from "./Dashboard/components/Map";
 import * as serviceWorker from './serviceWorker';
 import AppCalculator from "./Calculator/AppCalculator";
 import AppCustomHook from "./CustomHook/AppCustomHook";
+import AppZipcode from "./Zipcode/AppZipcode";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,10 +23,11 @@ root.render(
     {/* <AppToDoList /> */}
     {/* <AppChart /> */}
     {/* <Map /> */}
-    {/* <AppDashBoard /> */}
+    <AppDashBoard />
+    {/* <AppZipcode /> */}
     {/* <AppAccordian /> */}
     {/* <AppTrivia /> */}
-    <AppCalculator />
+    {/* <AppCalculator /> */}
     {/* <AppCustomHook /> */}
   </React.StrictMode>
 );

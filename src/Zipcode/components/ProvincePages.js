@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
-import mockZipCode from "./thailand-zipcode.json";
-const ProvincePages = () => {
+import zipcodeData from "../assets/thailand-zipcode.json";
+
+export const ProvincePages = () => {
   const copy = (id) => {
     const copyText = document.querySelector("#" + id);
     navigator.clipboard.writeText(copyText.innerHTML);
@@ -8,7 +9,7 @@ const ProvincePages = () => {
   const { province } = useParams();
   const uniqueDistricts = [
     ...new Set(
-      mockZipCode.filter((e) => e.province === province).map((e) => e.district)
+      zipcodeData.filter((e) => e.province === province).map((e) => e.district)
     ),
   ];
   return (
@@ -28,7 +29,7 @@ const ProvincePages = () => {
         </thead>
         <tbody>
           {uniqueDistricts.map((district, idx) => {
-            const data = mockZipCode.find((item) => item.district === district);
+            const data = zipcodeData.find((item) => item.district === district);
             return (
               <tr key={idx} className="border-2">
                 <td className="text-center border-2">{idx + 1}</td>
@@ -66,4 +67,3 @@ const ProvincePages = () => {
   );
 };
 
-export default ProvincePages;

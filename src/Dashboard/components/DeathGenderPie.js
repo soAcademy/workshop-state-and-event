@@ -1,10 +1,10 @@
 import ReactECharts from "echarts-for-react";
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from "react";
 
-const DeathGenderPie = ({ data }) => {
-  const [totalDeathMale, setTotalDeathMale] = useState(0)
-  const [totalDeathFemale, setTotalDeathFemale] = useState(0)
-  useEffect(()=> {
+export const DeathGenderPie = ({ data }) => {
+  const [totalDeathMale, setTotalDeathMale] = useState(0);
+  const [totalDeathFemale, setTotalDeathFemale] = useState(0);
+  useEffect(() => {
     const _totalDeathMale = data.reduce((acc, i) => {
       acc += i.deathMale;
       return acc;
@@ -14,8 +14,8 @@ const DeathGenderPie = ({ data }) => {
       return acc;
     }, 0);
     setTotalDeathFemale(_totalDeathFemale);
-    setTotalDeathMale(_totalDeathMale)
-  },[data])
+    setTotalDeathMale(_totalDeathMale);
+  }, [data]);
   const options = {
     textStyle: {
       fontFamily: "Kanit",
@@ -77,5 +77,3 @@ const DeathGenderPie = ({ data }) => {
     </div>
   );
 };
-
-export default DeathGenderPie;

@@ -1,6 +1,6 @@
 import EChartsReact from "echarts-for-react";
 
-const AccidentVehicleBar = ({ vehicleStat }) => {
+export const AccidentVehicleBar = ({ vehicleStat }) => {
   const options = {
     grid: {
       containLabel: true,
@@ -38,4 +38,3 @@ const AccidentVehicleBar = ({ vehicleStat }) => {
 
   return <EChartsReact option={options} />;
 };
-export default AccidentVehicleBar;

@@ -1,6 +1,6 @@
 import ReactECharts from "echarts-for-react";
 
-const AccidentGenderPie = ({ genderStat }) => {
+export const AccidentGenderPie = ({ genderStat }) => {
   const options = {
     series: [
       {
@@ -44,4 +44,3 @@ const AccidentGenderPie = ({ genderStat }) => {
   };
   return <ReactECharts option={options} />;
 };
-export default AccidentGenderPie;

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import zipcodeData from "./thailand-zipcode.json";
-const DistrictPages = () => {
+import zipcodeData from "../assets/thailand-zipcode.json";
+
+export const DistrictPages = () => {
   const { district, province } = useParams();
   const uniqueSubDistricts = [
     ...new Set(
@@ -86,4 +87,3 @@ const DistrictPages = () => {
     </div>
   );
 };
-export default DistrictPages;

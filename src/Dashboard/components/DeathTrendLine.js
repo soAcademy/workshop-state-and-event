@@ -1,6 +1,6 @@
 import ReactECharts from "echarts-for-react";
 
-const DeathTrendLine = ({ data }) => {
+export const DeathTrendLine = ({ data }) => {
   const uniqueYears = [...new Set(data.map((e) => e.year))];
   const _trendData = uniqueYears.map((year) => {
     return data
@@ -17,18 +17,19 @@ const DeathTrendLine = ({ data }) => {
         return acc;
       }, {});
   });
-  const trendData = (_trendData
-  .map((e) => Object.values(e))
-  .flat()).sort((a,b)=> a.year - b.year)
+  const trendData = _trendData
+    .map((e) => Object.values(e))
+    .flat()
+    .sort((a, b) => a.year - b.year);
   const options = {
     textStyle: {
-      fontFamily: 'Kanit'
-  },
-    grid: { 
+      fontFamily: "Kanit",
+    },
+    grid: {
       containLabel: true,
-      width: '100%',
-      height: '50%',
-      left: '2%'
+      width: "100%",
+      height: "50%",
+      left: "2%",
     },
     xAxis: {
       type: "category",
@@ -57,7 +58,7 @@ const DeathTrendLine = ({ data }) => {
             color: "blue",
           },
         },
-        center: ['25%','25%']
+        center: ["25%", "25%"],
       },
     ],
     tooltip: {
@@ -67,4 +68,3 @@ const DeathTrendLine = ({ data }) => {
   return <ReactECharts option={options} />;
 };
 
-export default DeathTrendLine;

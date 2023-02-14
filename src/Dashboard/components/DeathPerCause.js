@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const DeathPerCause = ({
+export const DeathPerCause = ({
   deathDataFiltered,
   uniqueCauseOfDeath,
   totalDeath,
@@ -39,14 +39,18 @@ const DeathPerCause = ({
     <>
       {deathNumPerCause.map((e, idx) => {
         return (
-          <div className="flex flex-row justify-between w-full my-1" key={idx}>
+          <div className="my-1 flex w-full flex-row justify-between" key={idx}>
             <div className="w-2/3">{e.cause}</div>
-            <div className="flex flex-row w-1/3 justify-center ">
-              <div className={`w-[${Math.round(((e.totalDeath / totalDeath) * 100))+'%'}] flex ` }>
-                <div className="bg-blue-500 w-1/2 text-right px-2">
+            <div className="flex w-1/3 flex-row justify-center ">
+              <div
+                className={`w-[${
+                  Math.round((e.totalDeath / totalDeath) * 100) + "%"
+                }] flex `}
+              >
+                <div className="w-1/2 bg-blue-500 px-2 text-right">
                   {e.totalDeath.toLocaleString()}
                 </div>
-                <div className="bg-teal-400 w-1/2 px-2">
+                <div className="w-1/2 bg-teal-400 px-2">
                   {((e.totalDeath / totalDeath) * 100).toFixed(2)}%
                 </div>
               </div>
@@ -57,5 +61,3 @@ const DeathPerCause = ({
     </>
   );
 };
-
-export default DeathPerCause;
