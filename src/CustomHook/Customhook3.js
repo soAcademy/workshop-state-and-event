@@ -22,6 +22,7 @@
 
 // export default CustomHook3;
 
+
 import React, { useState, useEffect } from "react";
 
 const useNum = () => {
@@ -30,20 +31,21 @@ const useNum = () => {
     num,
     setNum,
   };
-};
+}
 
-const useNumSquare = ({ num }) => {
+const useNumSquare = ({num}) =>{
   const [numSquare, setNumSquare] = useState(0);
-
   useEffect(() => {
     setNumSquare(Number(num) ** 2);
   }, [num]);
   return { numSquare, setNumSquare };
-};
+}
+
 
 const CustomHook3 = () => {
-  const { num, setNum } = useNum();
-  const { numSquare } = useNumSquare({ num });
+  const {num, setNum} = useNum();
+  const {numSquare, setNumSquare} = useNumSquare({num});
+
 
   return (
     <>

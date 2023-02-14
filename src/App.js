@@ -32,8 +32,13 @@
 // import Retirement from "./Retirement/Retirement";
 
 // import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
+import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
+
 // import CustomHook1 from "./CustomHook/Customhook1";
-import CustomHook2 from "./CustomHook/Customhook2";
+// import CustomHook2 from "./CustomHook/Customhook2";
+// import CustomHook3 from "./CustomHook/Customhook3";
+// import CustomHook4 from "./CustomHook/Customhook4";
+
 
 const App = () => {
   return (
@@ -68,9 +73,14 @@ const App = () => {
       {/* <DeathCause7 /> */}
       {/* <DeathCause8/> */}
       {/* <Retirement/> */}
+      
       {/* <CurrencyConverter1/> */}
+      <CurrencyConverter7 />
+
       {/* <CustomHook1/> */}
-      <CustomHook2 />
+      {/* <CustomHook2 /> */}
+      {/* <CustomHook3/> */}
+      {/* <CustomHook4/> */}
     </>
   );
 };
