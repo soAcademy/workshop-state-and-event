@@ -41,7 +41,7 @@ const useData = () => {
   return { data, setData };
 };
 
-const UseFetch = ({ setData }) => {
+const useFetch = ({ setData }) => {
   const [isFetch, setIsFetch] = useState(false);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const UseFetch = ({ setData }) => {
 };
 const CustomHook4 = () => {
   const { data, setData } = useData();
-  const { isFetch, setIsFetch } = UseFetch({ setData });
+  const { isFetch, setIsFetch } = useFetch({ setData });
 
   return (
     <>
