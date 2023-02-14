@@ -115,13 +115,13 @@ const App = () => {
       {/* <Retirement2 /> */}
       {/* <Retirement3 /> */}
       {/* <Retirement4 /> */}
-      {/* <Retirement5 /> */}
+      <Retirement5 />
       {/* <CurrencyConverter1 /> */}
       {/* <CurrencyConverter2 /> */}
       {/* <CurrencyConverter3 /> */}
       {/* <CurrencyConverter4 /> */}
       {/* <CurrencyConverter5 /> */}
-      <CurrencyConverter6 />
+      {/* <CurrencyConverter6 /> */}
       {/* <CurrencyConverter7 /> */}
     </>
   );
