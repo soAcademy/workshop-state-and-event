@@ -14,6 +14,15 @@ const CurrencyConverter1 = () => {
               placeholder="1"
             ></input>
           </div>
+          <div className="w-1/3">
+            <label>จาก</label>
+            <input
+              type="text"
+              name="อายุทั้งชีวิต"
+              className="p-2 w-full mt-2"
+              placeholder="THB"
+            ></input>
+          </div>
         </h1>
       </div>
     </div>
