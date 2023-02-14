@@ -7,11 +7,14 @@
 // import RetirementPlan from "./Retirement plan/home";
 // import RetirementPlanDew from "./Retirement plan/HomeDew";
 import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverterDew";
+import CurrencyConverterHome from "./CurrencyConverterTest/home";
 const App0 = () => {
   return (
     <div>
       {/* <RetirementPlan/> */}
-      <CurrencyConverter1/>
+      {/* <CurrencyConverter1/> */}
+      <CurrencyConverterHome/>
+
      
     </div>
   );
