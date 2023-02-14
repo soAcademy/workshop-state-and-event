@@ -1,4 +1,4 @@
-import { useInputVal, useResult } from "./useCustomHook";
+import { useInputVal, useResult } from "./hooks";
 
 const Retirement2 = () => {
   const {
