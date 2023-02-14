@@ -444,4 +444,18 @@ const quizes = [
   }
 ]
 ```
+<<<<<<< HEAD
 >>>>>>> 8ffaec18e29761a492f03a821d0ac01668adfe24
+=======
+
+## Currency Converter
+สร้าง App คำนวนอัตราแลกเปลี่ยนเงินตราเหมือน https://www.xe.com/currencyconverter/
+โดยใช้ API ดังต่อไปนี้
+1. API สำหรับดึงข้อมูลอัตราแลกเปลี่ยนเมื่อเทียบกับ USD
+https://www.xe.com/api/protected/midmarket-converter/
+ตอนยิง API ต้องใส่ headers `authorization` ด้วย
+2. API สำหรับดึงข้อมูลสรุปอัตราแลกเปลี่ยน ย้อนหลัง 7, 30, 90 วัน
+https://www.xe.com/api/protected/statistics/?from=THB&to=USD
+3. API สำหรับดึงข้อมูลย้อนหลังสำหรับทำ Chart
+https://www.xe.com/api/protected/charting-rates/?fromCurrency=SGD&toCurrency=GBP
+>>>>>>> 971113fb4d3e415aa2d6cf07a4a0c1a151a9024c
