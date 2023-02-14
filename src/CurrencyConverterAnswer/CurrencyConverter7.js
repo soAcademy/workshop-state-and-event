@@ -3,7 +3,7 @@ import ReactECharts from "echarts-for-react";
 import axios from "axios";
 // ขั้นตอนการ custom hook
 
-// เอาเรทการแลกเปลี่ยนมา
+// ก้อนนี้เอาเรทการแลกเปลี่ยนที่ยิง api มาเก็บไว้ใน useState
 const useFetchExchangeRate = ({ authToken }) => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
@@ -29,7 +29,7 @@ const useFetchExchangeRate = ({ authToken }) => {
 
   return { exchangeRates, currencyLists };
 };
-
+//ก้อนนี้เก็บการคำนวณอัตราการแลกเปลี่ยนจาก สกุลเงินนึงไปอีกสกุลเงินนึง
 const useConvertExchangeRate = ({ exchangeRates }) => {
   const [fromCurrency, setFromCurrency] = useState("THB");
   const [toCurrency, setToCurrency] = useState("USD");
@@ -64,6 +64,7 @@ const useConvertExchangeRate = ({ exchangeRates }) => {
   };
 };
 
+// ก้อนนี้เก็บการไปยิงเอาข้อมูล statistic มา
 const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
   const [exchangeStatistic, setExchangeRatesStatistic] = useState();
   console.log("useExchangeStatistic");
@@ -81,7 +82,7 @@ const useExchangeStatistic = ({ authToken, fromCurrency, toCurrency }) => {
   }, [fromCurrency, toCurrency]);
   return { exchangeStatistic };
 };
-
+//  ก้อนนี้เก็บการไปยิงเอาข้อมูลสำหรับทำ chart
 const useChartOption = ({ authToken, fromCurrency, toCurrency }) => {
   const [chartOption, setChartOption] = useState({});
   console.log("useChartOption");
@@ -134,7 +135,7 @@ const CurrencyConverter7 = () => {
   const authToken =
     "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
-  // เรียกใช้งาน custom hook
+  // เรียกใช้งาน custom hook ทุกๆก้อนที่เราทำไว้ในนี้
   const { exchangeRates, currencyLists } = useFetchExchangeRate(authToken);
   const {
     fromCurrency,
