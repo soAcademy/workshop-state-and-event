@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import image from "../CurrencyConverter/image.jpg";
 import ReactECharts from "echarts-for-react";
 import axios from "axios";
-import { useCurrencyList } from "./useCurrcencyList";
-import { useAmountConvert } from "./useAmountConvert";
-import { useExchangeStatistic } from "./useExchangeStatistic";
-import { useChartOption } from "./useChartOption";
+import { useCurrencyList, useAmountConvert, useExchangeStatistic, useChartOption } from "./hook";
+
 
 // const useCurrencyList = ({ authToken }) => {
 //   const [exchangeRates, setExchangeRates] = useState();

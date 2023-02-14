@@ -58,6 +58,8 @@ import CustomHook1 from "./CustomHook/CustomHook1"
 import CustomHook2 from "./CustomHook/CustomHook2";
 import CustomHook3 from "./CustomHook/CustomHook3";
 import CustomHook4 from "./CustomHook/CustomHook4";
+import DeathCause_CustomHook from "./DeathCauseAnswer/DeathCause_CustomHook"
+
 
 const App = () => {
   return (
@@ -119,6 +121,7 @@ const App = () => {
       {/* <DeathCause6 /> */}
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
+      <DeathCause_CustomHook />
       {/* <Retirement1 /> */}
       {/* <Retirement2 /> */}
       {/* <Retirement3 /> */}
@@ -130,7 +133,7 @@ const App = () => {
       {/* <CurrencyConverter4 /> */}
       {/* <CurrencyConverter5 /> */}
       {/* <CurrencyConverter6 /> */}
-      <CurrencyConverter7 />
+      {/* <CurrencyConverter7 /> */}
       {/* <CustomHook1 /> */}
       {/* <CustomHook2 /> */}
       {/* <CustomHook3 /> */}
