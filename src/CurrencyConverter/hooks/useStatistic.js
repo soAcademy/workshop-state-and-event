@@ -20,7 +20,6 @@ export const useStatistic = ({ fromCurrency, toCurrency }) => {
       // console.log(response.data);
       setStatData(response.data);
     });
-    // setStatData(statistics);
     axios({
       method: "GET",
       url: anyOriginUrl(
@@ -28,7 +27,7 @@ export const useStatistic = ({ fromCurrency, toCurrency }) => {
       ),
       headers: { authorization: AUTH_HEADER },
     }).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setChartData(response.data);
       const _optionForExchangeRates = {
         xAxis: {
