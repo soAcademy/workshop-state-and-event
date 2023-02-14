@@ -30,7 +30,10 @@
 // import DeathCause7 from "./DeathCause/DeathCause7"
 // import DeathCause8 from "./DeathCause/DeathCause8"
 // import Retirement from "./Retirement/Retirement";
-import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
+
+// import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
+// import CustomHook1 from "./CustomHook/Customhook1";
+import CustomHook2 from "./CustomHook/Customhook2";
 
 const App = () => {
   return (
@@ -65,7 +68,9 @@ const App = () => {
       {/* <DeathCause7 /> */}
       {/* <DeathCause8/> */}
       {/* <Retirement/> */}
-      <CurrencyConverter1/>
+      {/* <CurrencyConverter1/> */}
+      {/* <CustomHook1/> */}
+      <CustomHook2 />
     </>
   );
 };
