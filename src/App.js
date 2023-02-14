@@ -41,6 +41,7 @@ import CustomHook3 from "./CustomHook/CustomHook3";
 import CustomHook4 from "./CustomHook/CustomHook4";
 import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 import CurrencyConverter7_1 from "./CurrencyConverter/CurrencyConverter7_1";
+import CurrencyConverter7_2 from "./CurrencyConverter/CurrencyConverter7_2";
 
 const App = () => {
   return (
@@ -79,7 +80,8 @@ const App = () => {
       {/* <CustomHook3 /> */}
       {/* <CustomHook4 /> */}
       {/* <CurrencyConverter7 /> */}
-      <CurrencyConverter7_1 />
+      {/* <CurrencyConverter7_1 /> */}
+      <CurrencyConverter7_2 />
     </>
   );
 };
