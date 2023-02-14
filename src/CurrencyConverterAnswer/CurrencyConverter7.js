@@ -28,6 +28,7 @@ const useFetchExchangeRate = ({ authToken }) => {
 };
 
 const useConvertExchangeRate = ({ exchangeRates }) => {
+  console.log("test", exchangeRates);
   const [fromCurrency, setFromCurrency] = useState("THB");
   const [toCurrency, setToCurrency] = useState("USD");
   const [amount, setAmount] = useState(1);

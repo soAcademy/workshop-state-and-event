@@ -1,8 +1,15 @@
 import React from "react";
 import ReactECharts from "echarts-for-react";
-// import { useCurrencyConverter } from "./useCurrencyConverter";
+import {
+  useChart,
+  useConvertExchange,
+  useFetchExchange,
+  useStatistic,
+} from "./hooks";
 
 const CurrencyConverter6 = () => {
+  const { exchangeRates, currencyLists } = useFetchExchange();
+
   const {
     amount,
     setAmount,
@@ -10,13 +17,17 @@ const CurrencyConverter6 = () => {
     toCurrency,
     setFromCurrency,
     setToCurrency,
-    currencyLists,
     amountConverted,
     fromCurrencyRated,
     toCurrencyRated,
-    exchangeStatistic,
-    chart,
-  } = useCurrencyConverter();
+  } = useConvertExchange({ exchangeRates });
+
+  const { exchangeStatistic } = useStatistic({
+    fromCurrency,
+    toCurrency,
+  });
+
+  const { chart } = useChart({ fromCurrency, toCurrency });
 
   return (
     <div className="w-full">
@@ -33,7 +44,7 @@ const CurrencyConverter6 = () => {
               placeholder="1"
               onChange={(e) => setAmount(Number(e.target.value))}
               name="amount"
-              type="number"
+              type="text"
               value={amount}
             />
           </div>
