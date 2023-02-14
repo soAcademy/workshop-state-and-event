@@ -113,6 +113,7 @@
 // import CurrencyConverter4 from "./CurrencyConverter/CurrencyConverter4";
 // import CurrencyConverter5 from "./CurrencyConverter/CurrencyConverter5";
 // import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
+import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 
 // import CustomHook1 from "./CustomHookAnswer/CustomHook1";
 // import CustomHook2 from "./CustomHookAnswer/CustomHook2";
@@ -197,10 +198,11 @@ const App = () => (
     {/* <CurrencyConverter4 /> */}
     {/* <CurrencyConverter5 /> */}
     {/* <CurrencyConverter6 /> */}
+    <CurrencyConverter7 />
     {/* <CustomHook1 /> */}
     {/* <CustomHook2 /> */}
     {/* <CustomHook3 /> */}
-    <CustomHook4 />
+    {/* <CustomHook4 /> */}
   </div>
 );
 
