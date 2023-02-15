@@ -51,7 +51,7 @@ const LotteryChecker = () => {
                 <div className="">รางวัลละ 6,000,000 บาท</div>
                 <div className="">297411</div>
               </td>
-              <td  className="px-5 text-center border border-black">
+              <td className="px-5 text-center border border-black">
                 <div className="">รางวัลละ 4,000 บาท</div>
                 <div className="flex justify-between">
                   <div className="">181</div>
@@ -73,10 +73,10 @@ const LotteryChecker = () => {
           </tbody>
           <thead>
             <tr>
-              <td>รางวัลข้างเคียงรางวัลที่ 1</td>
-              <td>รางวัลละ 100,000 บาท</td>
-              <td>รางวัลที่ 2</td>
-              <td>รางวัลละ 200,000 บาท</td>
+              <td className="text-center border border-black">รางวัลข้างเคียงรางวัลที่ 1</td>
+              <td className="text-center border border-black">รางวัลละ 100,000 บาท</td>
+              <td className="text-center border border-black">รางวัลที่ 2</td>
+              <td className="text-center border border-black">รางวัลละ 200,000 บาท</td>
             </tr>
           </thead>
           <tbody>
@@ -85,37 +85,33 @@ const LotteryChecker = () => {
               <td className="text-center border border-black">297412</td>
               <td colSpan="2" className="text-center border border-black">
                 <div className="flex justify-between">
-                <td className="px-2 text-center border border-black">1</td>
-                <td>229120</td>
-                <td className="px-2 text-center border border-black">2</td>
-                <td>679028</td>
-                <td className="px-2 text-center border border-black">3</td>
-                <td>677223</td>
-                <td className="px-2 text-center border border-black">4</td>
-                <td>589702</td>
-                <td className="px-2 text-center border border-black">5</td>
-                <td>670839</td>
+                  <td className="px-2 text-center border border-black">1</td>
+                  <td>229120</td>
+                  <td className="px-2 text-center border border-black">2</td>
+                  <td>679028</td>
+                  <td className="px-2 text-center border border-black">3</td>
+                  <td>677223</td>
+                  <td className="px-2 text-center border border-black">4</td>
+                  <td>589702</td>
+                  <td className="px-2 text-center border border-black">5</td>
+                  <td>670839</td>
                 </div>
               </td>
             </tr>
           </tbody>
           <thead>
-            <tr>
-              <td colSpan="2" className="text-center border border-black">รางวัลที่ 3</td>
-              <td colSpan="3" className="text-center border border-black">รางวัลละ 80,000 บาท</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colSpan="2">
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>1</td>
-              </td>
-            </tr>
-          </tbody>
+          <tr>
+            <td colSpan="2" className="text-center border border-black">รางวัลที่3</td>
+            <td colSpan="2" className="text-center border border-black">รางวัลละ 80,000บาท</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            
+          </tr>
+        </tbody>
         </table>
+        
       </div>
     </>
   );
