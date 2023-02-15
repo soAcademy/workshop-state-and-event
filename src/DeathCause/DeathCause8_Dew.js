@@ -85,6 +85,7 @@ const DeathCause8 = () => {
   const yearLists = [...new Set(thailandDeathCause.map((r) => r.year))].sort(
     (a, b) => a - b
   );
+  console.log(">>>>>>>>>>>",yearLists);
   const [currentYear, setCurrentYear] = useState(2559);
   const [totalDeath, setTotalDeath] = useState(0);
   const [deathByCauses, setDeathByCauses] = useState([]);

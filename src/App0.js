@@ -8,14 +8,19 @@
 // import RetirementPlanDew from "./Retirement plan/HomeDew";
 // import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverterDew";
 // import CurrencyConverterHome from "./CurrencyConverterTest/home";
-import CurrencyConverterHook from "./CustomHook/CustomHook5";
+// import DeathCauseHome from "./DeathCauseCustomHook/DeathCause-home";
+// import CustomHook5 from "./CustomHook/CustomHook5"
+import LotteryHome from "./Lottery/LotteryHome";
 const App0 = () => {
   return (
     <div>
       {/* <RetirementPlan/> */}
       {/* <CurrencyConverter1/> */}
       {/* <CurrencyConverterHome/> */}
-      <CurrencyConverterHook/>
+      {/* <DeathCauseHome/> */}
+      {/* <DeathCause8/> */}
+      {/* <CustomHook5/> */}
+      <LotteryHome/>
 
      
     </div>

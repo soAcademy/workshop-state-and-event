@@ -29,7 +29,7 @@ const CurrencyConverter1 = () => {
       },
     }).then((res) => {
       const _exchangeRates = res.data;
-      const _currencyLists = Object.keys(_exchangeRates.rates);  //ดึงค่า values ของทุก key โดยไม่สนว่า key จะมีชื่อต่างกัน
+      const _currencyLists = Object.keys(_exchangeRates.rates);  //ดึงค่า key ของทุกตัว  โดยไม่สนว่า value จะมีชื่อต่างกัน
       // console.log(_currencyLists);
       console.log("_exchangeRates", _exchangeRates);
       setExchangeRates(_exchangeRates);
