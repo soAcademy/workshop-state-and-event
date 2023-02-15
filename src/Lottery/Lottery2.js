@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import axios from "axios";
-import lotteryApi from "./api-lottery.json";
+// import lotteryApi from "./api-lottery.json";
 
 const prizeNames = {
   1: "รางวัลที 1",
@@ -32,7 +32,7 @@ const useFetchLotteryResults = () => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `${baseApiUrl}`,
+      url: baseApiUrl,
       params: { history: "1", date: "2023-02-01" },
     }).then((response) => {
       // console.log(response.data.data);
