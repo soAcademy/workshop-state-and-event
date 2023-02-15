@@ -1,16 +1,16 @@
 // import State3 from "./StatesAnswer/State3";
-// import LocalStorage1 from "./LocalStorage/LocalStorage1";
-// import LocalStorage2 from "./LocalStorage/LocalStorage2";
-// import LocalStorage3 from "./LocalStorage/LocalStorage3";
-// import LocalStorage4 from "./LocalStorage/LocalStorage4";
-// import ToDoList1 from "./ToDoList/ToDoList1";
-// import ToDoList2 from "./ToDoList/ToDoList2";
-// import ToDoList3 from "./ToDoList/ToDoList3";
-// import ToDoList4 from "./ToDoList/ToDoList4";
-// import ToDoList5 from "./ToDoList/ToDoList5";
-// import Chart1 from "./Charts/Chart1";
-// import Chart2 from "./Charts/Chart2";
-// import Chart3 from "./Charts/Chart3";
+// import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
+// import LocalStorage2 from "./LocalStorageAnswer/LocalStorage2";
+// import LocalStorage3 from "./LocalStorageAnswer/LocalStorage3";
+// import LocalStorage4 from "./LocalStorageAnswer/LocalStorage4";
+// import ToDoList1 from "./ToDoListAnswers/ToDoList1";
+// import ToDoList2 from "./ToDoListAnswers/ToDoList2";
+// import ToDoList3 from "./ToDoListAnswers/ToDoList3";
+// import ToDoList4 from "./ToDoListAnswers/ToDoList4";
+// import ToDoList5 from "./ToDoListAnswers/ToDoList5";
+// import Chart1 from "./ChartsAnswer/Chart1";
+// import Chart2 from "./ChartsAnswer/Chart2";
+// import Chart3 from "./ChartsAnswer/Chart3";
 // import Accordian1 from "./AccordiansAnswer/Accordian1";
 // import Accordian2 from "./AccordiansAnswer/Accordian2";
 // import Accordian3 from "./AccordiansAnswer/Accordian3";
@@ -40,13 +40,24 @@
 // import Retirement3 from "./RetirementAnswer/Retirement3";
 // import Retirement4 from "./RetirementAnswer/Retirement4";
 // import Retirement5 from "./RetirementAnswer/Retirement5";
-import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
-// import CurrencyConverter2 from "./CurrencyConverter/CurrencyConverter2";
-// import CurrencyConverter3 from "./CurrencyConverter/CurrencyConverter3";
-// import CurrencyConverter4 from "./CurrencyConverter/CurrencyConverter4";
-// import CurrencyConverter5 from "./CurrencyConverter/CurrencyConverter5";
-// import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
-// import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
+// import CurrencyConverter1 from "./CurrencyConverterAnswer/CurrencyConverter1";
+// import CurrencyConverter2 from "./CurrencyConverterAnswer/CurrencyConverter2";
+// import CurrencyConverter3 from "./CurrencyConverterAnswer/CurrencyConverter3";
+// import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
+// import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
+// import CurrencyConverter6 from "./CurrencyConverterAnswer/CurrencyConverter6";
+import CurrencyConverter7 from "./CurrencyConverterAnswer/CurrencyConverter7";
+// import CustomHook1 from "./CustomHookAnswer";
+// import CustomHook2 from "./CustomHookAnswer";
+// import CustomHook3 from "./CustomHookAnswer";
+// import CustomHook4 from "./CustomHookAnswer";
+
+// import {
+//   CustomHook1,
+//   CustomHook2,
+//   CustomHook3,
+//   CustomHook4,
+// } from "./CustomHookAnswer";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
@@ -94,13 +105,16 @@ const App = () => {
       {/* <Retirement3 /> */}
       {/* <Retirement4 /> */}
       {/* <Retirement5 /> */}
-      <CurrencyConverter1 />
+      {/* <CurrencyConverter1 /> */}
       {/* <CurrencyConverter2 /> */}
       {/* <CurrencyConverter3 /> */}
       {/* <CurrencyConverter4 /> */}
       {/* <CurrencyConverter5 /> */}
       {/* <CurrencyConverter6 /> */}
-      {/* <CurrencyConverter7 /> */}
+      <CurrencyConverter7 />
+      {/* <CustomHook1 /> */}
+      {/* <CustomHook2 /> */}
+      {/* <CustomHook3 /> */}
     </>
   );
 };

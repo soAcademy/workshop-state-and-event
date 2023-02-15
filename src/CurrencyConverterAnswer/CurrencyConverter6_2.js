@@ -1,17 +1,12 @@
 import ReactECharts from "echarts-for-react";
-import {
-  useChartOption,
-  useConvertExchangeRate,
-  useFetchExchangeRate,
-  useExchangeStatistic,
-} from "./hooks";
+import { useCurrencyConverter } from "./useCurrencyConverter";
 
-const CurrencyConverter7 = () => {
+const CurrencyConverter6 = () => {
   const authToken =
     "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
-  const { exchangeRates, currencyLists } = useFetchExchangeRate({ authToken });
   const {
+    currencyLists,
     fromCurrency,
     setFromCurrency,
     toCurrency,
@@ -21,19 +16,9 @@ const CurrencyConverter7 = () => {
     amountConvert,
     fromCurrencyRate,
     toCurrencyRate,
-  } = useConvertExchangeRate({ exchangeRates });
-
-  const { exchangeStatistic } = useExchangeStatistic({
-    authToken,
-    fromCurrency,
-    toCurrency,
-  });
-
-  const { chartOption } = useChartOption({
-    authToken,
-    fromCurrency,
-    toCurrency,
-  });
+    exchangeStatistic,
+    chartOption,
+  } = useCurrencyConverter({ authToken });
 
   return (
     <div className="">
@@ -159,4 +144,4 @@ const CurrencyConverter7 = () => {
   );
 };
 
-export default CurrencyConverter7;
+export default CurrencyConverter6;
