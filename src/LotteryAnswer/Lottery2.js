@@ -174,7 +174,7 @@ const Lottery2 = () => {
 
   return (
     <div className="w-3/4 mx-auto text-center mt-8">
-      <h1 className="font-bold text-2xl">ตรวจผลเตอรี่ by หวยบิน</h1>
+      <h1 className="font-bold text-2xl">ตรวจผลลอตเตอรี่ by หวยบิน</h1>
       <LotteryForm />
       <LotteryResult />
       <LotteryTable
