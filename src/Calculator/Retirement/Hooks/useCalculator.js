@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 export const useCalculator = (input) => {
   const [result, setResult] = useState([]);
+
   const sum = (array) => {
     return array.reduce((acc, e) => (acc += e), 0);
   };
+
   const calculate = (input) => {
-    const yearsUntilDie = [
-      ...Array(Number(input.deadAge) + 1 - Number(input.age)).keys(),
-    ];
+    const yearsUntilDie =
+      input.deadAge > input.age
+        ? [...Array(Number(input.deadAge) + 1 - Number(input.age)).keys()]
+        : [];
     const cost = yearsUntilDie.map((e, idx) => {
       const cost = input.cost * 12 * (1 + input.inflation / 100) ** e;
       const age = input.age + e;
@@ -47,6 +50,7 @@ export const useCalculator = (input) => {
     }, []);
     return _result;
   };
+
   useEffect(() => {
     const _result =
       input.deadAge > input.retireAge
@@ -54,5 +58,6 @@ export const useCalculator = (input) => {
         : [{ age: 0, cost: 0, port: 0 }];
     setResult(_result);
   }, [input]);
-  return {result, setResult, sum, calculate}
-}
+  
+  return { result, setResult, sum, calculate };
+};
