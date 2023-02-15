@@ -47,6 +47,7 @@ import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 import CurrencyConverter7_1 from "./CurrencyConverter/CurrencyConverter7_1";
 import CurrencyConverter7_2 from "./CurrencyConverter/CurrencyConverter7_2";
 import CurrencyConverter7_3 from "./CurrencyConverter/CurrencyConverter7_3";
+import LotteryCheck from "./LotteryCheck/LotteryCheck";
 
 const App = () => {
   return (
@@ -79,7 +80,7 @@ const App = () => {
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
       {/* <DeathCause8_1 /> */}
-      <DeathCause8_2 />
+      {/* <DeathCause8_2 /> */}
       {/* <Retirement /> */}
       {/* <Converter /> */}
       {/* <CustomHook1 /> */}
@@ -92,6 +93,7 @@ const App = () => {
       {/* <CurrencyConverter7_3 /> */}
       {/* <Retirement2 /> */}
       {/* <Retirement3 /> */}
+      <LotteryCheck />
     </>
   );
 };
