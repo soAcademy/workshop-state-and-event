@@ -88,7 +88,7 @@ const App = () => {
       {/* <CustomHook4/> */}
 
       <Lottery1/>
-y    </>
+    </>
   );
 };
 
