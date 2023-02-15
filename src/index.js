@@ -14,6 +14,7 @@ import * as serviceWorker from './serviceWorker';
 import AppCalculator from "./Calculator/AppCalculator";
 import AppCustomHook from "./CustomHook/AppCustomHook";
 import AppZipcode from "./Zipcode/AppZipcode";
+import AppLotteryChecker from "./LotteryChecker/AppLotteryChecker";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,12 +22,13 @@ root.render(
     {/* <AppLocalStorage /> */}
     {/* <AppToDoList /> */}
     {/* <AppChart /> */}
-    <AppDashBoard />
+    {/* <AppDashBoard /> */}
     {/* <AppZipcode /> */}
     {/* <AppAccordian /> */}
     {/* <AppTrivia /> */}
     {/* <AppCalculator /> */}
     {/* <AppCustomHook /> */}
+    <AppLotteryChecker />
   </React.StrictMode>
 );
 
