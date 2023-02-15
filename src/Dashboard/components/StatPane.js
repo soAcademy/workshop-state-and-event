@@ -1,44 +1,19 @@
-import { useEffect, useState } from "react";
-import accident from "./assets/accident.json";
-import {
-  AccidentGenderPie,
-  AccidentProvinceStackedBar,
-  AccidentVehicleBar,
-  Map,
-  Panel,
-  StatPane,
-} from "./components";
-import {
-  useFilterDataByYear,
-  useGenderStat,
-  useProvinceStat,
-  useUniqueYears,
-  useVehicleStat,
-} from "./hooks";
+import React, { useState } from "react";
+import { useGenderStat, useProvinceStat, useVehicleStat } from "../hooks";
+import { AiOutlineClose } from "react-icons/ai";
+import { AccidentGenderPie } from "./AccidentGenderPie";
+import { AccidentVehicleBar } from "./AccidentVehicleBar";
+import { AccidentProvinceStackedBar } from "./AccidentProvinceStackedBar";
 
-const DashboardAccidents = () => {
-  const [yearQuery, setYearQuery] = useState();
-  const [vehicleQuery, setVehicleQuery] = useState("ทั้งหมด");
-  const [accidentData, setAccidentData] = useState(accident);
+export const StatPane = ({ accidentData }) => {
   const { vehicleStat } = useVehicleStat({ accidentData });
-  const { uniqueYears } = useUniqueYears({ accidentData });
-  const { dataFilteredByYear } = useFilterDataByYear({
-    accidentData,
-    yearQuery,
-    vehicleQuery,
-  });
+  const [statBarOpened, setStatBarOpened] = useState(false);
+  const { genderStat } = useGenderStat({ accidentData });
+  const { provinceStat } = useProvinceStat({ accidentData });
 
   return (
-    <div className="font-kanit">
-      <Map dataFilteredByYear={dataFilteredByYear} />
-      <Panel
-        setYearQuery={setYearQuery}
-        uniqueYears={uniqueYears}
-        setVehicleQuery={setVehicleQuery}
-        vehicleStat={vehicleStat}
-      />
-      <StatPane accidentData={accidentData} />
-      {/* <button
+    <>
+      <button
         onClick={() => setStatBarOpened(!statBarOpened)}
         className={`transform-translate" fixed top-1/2 right-0 flex h-10 w-8 
         items-center justify-center bg-white shadow-md shadow-slate-400 
@@ -83,8 +58,7 @@ const DashboardAccidents = () => {
             <AccidentProvinceStackedBar provinceStat={provinceStat} />
           </div>
         </div>
-      </div> */}
-    </div>
+      </div>
+    </>
   );
 };
-export default DashboardAccidents;
