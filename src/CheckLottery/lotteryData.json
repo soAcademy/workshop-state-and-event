@@ -1,0 +1,664 @@
+ {
+  "meta": {
+      "title": "ตรวจหวย 1 กุมภาพันธ์ 2566 สลากกินแบ่งรัฐบาล",
+      "description": "ตรวจหวย 1 กุมภาพันธ์ 2566 ตรวจลอตเตอรี่ ตรวจสลากกินแบ่งรัฐบาล รางวัลที่ 1 มูลค่า 6,000,000 บาท 297411 รางวัลเลขท้าย 2 ตัว 92",
+      "Last-Modified": "2023-02-14T16:59:32+07:00",
+      "canonical": "https://www.thairath.co.th/lottery",
+      "fullPath": "/lottery"
+  },
+  "headers": {
+      "Cache-Control": "public, max-age=60, must-revalidate"
+  },
+  "data": {
+      "analysis": [
+          {
+              "id": 2617315,
+              "title": "ตรวจสลากออมสิน \"พิเศษ 2 ปี\" งวดล่าสุด 1/2/66",
+              "fullPath": "/lottery/latest-result/2617315",
+              "publishTime": "1 ก.พ. 2566 09:00 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbH7p33PutB3KRHUAA0nwJwvvqBK.webp",
+              "canonical": "https://www.thairath.co.th/lottery/latest-result/2617315"
+          },
+          {
+              "id": 2604250,
+              "title": "ตรวจสลาก ธ.ก.ส. งวดวันที่ 17 มกราคม 2566",
+              "fullPath": "/lottery/latest-result/2604250",
+              "publishTime": "17 ม.ค. 2566 08:00 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbXqENO5p4OUIlXD8mi8Nb5wqa4E.webp",
+              "canonical": "https://www.thairath.co.th/lottery/latest-result/2604250"
+          },
+          {
+              "id": 2604130,
+              "title": "ตรวจหวย 17 มกราคม 2566 ผลลอตเตอรี่ งวดล่าสุด",
+              "fullPath": "/lottery/latest-result/2604130",
+              "publishTime": "17 ม.ค. 2566 14:00 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbXqEtF3jXeSb9bXnyqNDVIDLpif.webp",
+              "canonical": "https://www.thairath.co.th/lottery/latest-result/2604130"
+          },
+          {
+              "id": 2617565,
+              "title": "ตรวจหวย 1 ก.พ. 2566 ผลสลากกินแบ่งรัฐบาลงวดล่าสุด",
+              "fullPath": "/lottery/latest-result/2617565",
+              "publishTime": "1 ก.พ. 2566 14:40 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbH7ouhwDWEVEeW22k53SQClV6nr.webp",
+              "canonical": "https://www.thairath.co.th/lottery/latest-result/2617565"
+          },
+          {
+              "id": 2604156,
+              "title": "ตรวจหวย 17 ม.ค. 66 ตรวจลอตเตอรี่ เช็กผลหวย 17/1/66",
+              "fullPath": "/lottery/latest-result/2604156",
+              "publishTime": "17 ม.ค. 2566 14:40 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbXqEtU9NFEb3Ds4BzZwHF2XD35O.webp",
+              "canonical": "https://www.thairath.co.th/lottery/latest-result/2604156"
+          },
+          {
+              "id": 2605246,
+              "title": "สลากกินแบ่งรัฐบาล สถิติและข้อบ่งชี้ถึงทัศนคติคนไทย",
+              "fullPath": "/scoop/infographic/2605246",
+              "publishTime": "17 ม.ค. 2566 16:01 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbXo8tNe14YpceQuOzWnpWE9PVJt.webp",
+              "canonical": "https://www.thairath.co.th/scoop/infographic/2605246"
+          }
+      ],
+      "dates": [
+          {
+              "announceTs": 1675184400,
+              "title": "1 กุมภาพันธ์ 2566",
+              "str": "2023-02-01",
+              "link": "https://www.thairath.co.th/lottery?date=2023-02-01"
+          },
+          {
+              "announceTs": 1673888400,
+              "title": "17 มกราคม 2566",
+              "str": "2023-01-17",
+              "link": "https://www.thairath.co.th/lottery?date=2023-01-17"
+          },
+          {
+              "announceTs": 1672333200,
+              "title": "30 ธันวาคม 2565",
+              "str": "2022-12-30",
+              "link": "https://www.thairath.co.th/lottery?date=2022-12-30"
+          },
+          {
+              "announceTs": 1671123600,
+              "title": "16 ธันวาคม 2565",
+              "str": "2022-12-16",
+              "link": "https://www.thairath.co.th/lottery?date=2022-12-16"
+          },
+          {
+              "announceTs": 1669827600,
+              "title": "1 ธันวาคม 2565",
+              "str": "2022-12-01",
+              "link": "https://www.thairath.co.th/lottery?date=2022-12-01"
+          },
+          {
+              "announceTs": 1668531600,
+              "title": "16 พฤศจิกายน 2565",
+              "str": "2022-11-16",
+              "link": "https://www.thairath.co.th/lottery?date=2022-11-16"
+          }
+      ],
+      "lotteryDateTitle": "1 กุมภาพันธ์ 2566",
+      "news": [
+          {
+              "id": 2624370,
+              "title": "แห่ส่องเลขเด็ด \"พระสีวลี\" ปางเทพทันใจ หนึ่งเดียวในไทย ไปลุ้นรวยงวด 16/2/66 (คลิป)",
+              "fullPath": "/lottery/news/2624370",
+              "publishTime": "8 ก.พ. 2566 14:14 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbpD10mimR6QlOuCLYUtNbjaqxz1.webp",
+              "canonical": "https://www.thairath.co.th/lottery/news/2624370"
+          },
+          {
+              "id": 2624898,
+              "title": "ศิลปินตลกได้โชคถูกหวย มาแก้บน \"เจ้าสัวยี่กอฮง\" ไม่พลาด \"เลขเด็ดงวดนี้\" 16/2/66",
+              "fullPath": "/lottery/news/2624898",
+              "publishTime": "8 ก.พ. 2566 21:12 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbpDzMs7vgze0sxAphXXSSJYgL6B.webp",
+              "canonical": "https://www.thairath.co.th/lottery/news/2624898"
+          },
+          {
+              "id": 2626041,
+              "title": "เปิดสถิติหวยออก 16 ก.พ. นักเสี่ยงโชคดีใจ มี \"เลขเด็ด\" ออกซ้ำมาแล้ว 2 รอบ",
+              "fullPath": "/lottery/news/2626041",
+              "publishTime": "10 ก.พ. 2566 10:00 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbpIVsYQWVfW1pP50nC1GqZpimNJ.webp",
+              "canonical": "https://www.thairath.co.th/lottery/news/2626041"
+          },
+          {
+              "id": 2625891,
+              "title": "หวยงวดนี้ออกวันพฤหัสบดี นักเก็บสถิติยิ้มหวาน พบ \"เลขดัง\" เคยออกซ้ำ 2 รอบ",
+              "fullPath": "/lottery/news/2625891",
+              "publishTime": "9 ก.พ. 2566 20:00 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbpHZ6Pvsuv99WVINmfXYtIpp4P6.webp",
+              "canonical": "https://www.thairath.co.th/lottery/news/2625891"
+          },
+          {
+              "id": 2628143,
+              "title": "ชาวบ้านแห่ส่อง \"เลขเด็ดงวดนี้\" พิธีเบิกเนตร \"องค์พญานาคาธิบดีศรีสุขวัฒน์\" (คลิป)",
+              "fullPath": "/lottery/news/2628143",
+              "publishTime": "12 ก.พ. 2566 22:00 น.",
+              "image": "https://static.thairath.co.th/media/4DQpjUtzLUwmJZZSDbooLASWHo6CiBPGyLvyTTICAEjT.webp",
+              "canonical": "https://www.thairath.co.th/lottery/news/2628143"
+          }
+      ],
+      "prizes": {
+          "1": {
+              "info": [
+                  1,
+                  6000000
+              ],
+              "data": [
+                  "297411"
+              ]
+          },
+          "2": {
+              "info": [
+                  5,
+                  200000
+              ],
+              "data": [
+                  "229120",
+                  "679028",
+                  "677223",
+                  "589702",
+                  "670839"
+              ]
+          },
+          "3": {
+              "info": [
+                  10,
+                  80000
+              ],
+              "data": [
+                  "519329",
+                  "005369",
+                  "577584",
+                  "417970",
+                  "378121",
+                  "499020",
+                  "706595",
+                  "697581",
+                  "929824",
+                  "191302"
+              ]
+          },
+          "4": {
+              "info": [
+                  50,
+                  40000
+              ],
+              "data": [
+                  "889416",
+                  "667047",
+                  "316147",
+                  "195934",
+                  "294059",
+                  "534905",
+                  "098927",
+                  "662089",
+                  "964283",
+                  "379913",
+                  "377086",
+                  "932774",
+                  "156539",
+                  "248572",
+                  "529815",
+                  "612865",
+                  "671473",
+                  "243955",
+                  "495937",
+                  "643114",
+                  "907553",
+                  "591320",
+                  "655501",
+                  "948978",
+                  "551664",
+                  "060317",
+                  "044954",
+                  "908339",
+                  "046100",
+                  "698684",
+                  "125367",
+                  "123983",
+                  "154752",
+                  "293331",
+                  "886533",
+                  "793150",
+                  "314196",
+                  "992211",
+                  "806066",
+                  "882283",
+                  "563230",
+                  "283645",
+                  "060608",
+                  "383249",
+                  "037216",
+                  "795997",
+                  "496219",
+                  "700996",
+                  "645102",
+                  "213697"
+              ]
+          },
+          "5": {
+              "info": [
+                  100,
+                  20000
+              ],
+              "data": [
+                  "532896",
+                  "072434",
+                  "897541",
+                  "908162",
+                  "619806",
+                  "505813",
+                  "677452",
+                  "550530",
+                  "447400",
+                  "459126",
+                  "192205",
+                  "129809",
+                  "498332",
+                  "933622",
+                  "527586",
+                  "963744",
+                  "414870",
+                  "024078",
+                  "500828",
+                  "951529",
+                  "566972",
+                  "987355",
+                  "657618",
+                  "825390",
+                  "838618",
+                  "729368",
+                  "191104",
+                  "802625",
+                  "574769",
+                  "162559",
+                  "048819",
+                  "428390",
+                  "032629",
+                  "950875",
+                  "129984",
+                  "158835",
+                  "703694",
+                  "187760",
+                  "263926",
+                  "949002",
+                  "902917",
+                  "594922",
+                  "166433",
+                  "867845",
+                  "580035",
+                  "336076",
+                  "004724",
+                  "126694",
+                  "701708",
+                  "555578",
+                  "816115",
+                  "354817",
+                  "546671",
+                  "297247",
+                  "253253",
+                  "578280",
+                  "831534",
+                  "642196",
+                  "152329",
+                  "812266",
+                  "154013",
+                  "747231",
+                  "307139",
+                  "450581",
+                  "821659",
+                  "173419",
+                  "321869",
+                  "765870",
+                  "032110",
+                  "846202",
+                  "107517",
+                  "941717",
+                  "872163",
+                  "045161",
+                  "671700",
+                  "918730",
+                  "999180",
+                  "213354",
+                  "621186",
+                  "145232",
+                  "939479",
+                  "625669",
+                  "533990",
+                  "660304",
+                  "387380",
+                  "679029",
+                  "534651",
+                  "808815",
+                  "337953",
+                  "643031",
+                  "969351",
+                  "059266",
+                  "706471",
+                  "552040",
+                  "511194",
+                  "684318",
+                  "922367",
+                  "816485",
+                  "277896",
+                  "254872"
+              ]
+          },
+          "6": {
+              "info": [
+                  2,
+                  4000
+              ],
+              "data": [
+                  "101",
+                  "664"
+              ]
+          },
+          "7": {
+              "info": [
+                  1,
+                  2000
+              ],
+              "data": [
+                  "92"
+              ]
+          },
+          "10": {
+              "info": [
+                  2,
+                  4000
+              ],
+              "data": [
+                  "181",
+                  "789"
+              ]
+          },
+          "11": {
+              "info": [
+                  2,
+                  100000
+              ],
+              "data": [
+                  "297410",
+                  "297412"
+              ]
+          }
+      },
+      "tags": {
+          "หวย": 100,
+          "สลากกินแบ่งรัฐบาล": 50,
+          "สลากออมสิน": 100,
+          "หญิงใบ้ให้เลข": 50,
+          "ดวง": 100,
+          "เลขเด็ด": 50
+      },
+      "manualTags": [
+          {
+              "keyword": "สลากกินแบ่งรัฐบาล",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/สลากกินแบ่งรัฐบาล",
+              "fullpath": "/tags/สลากกินแบ่งรัฐบาล",
+              "source": "seo"
+          },
+          {
+              "keyword": "หวย",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/lottery",
+              "fullpath": "/lottery",
+              "source": "seo"
+          },
+          {
+              "keyword": "หวยไทยรัฐ1-2-66",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/หวยไทยรัฐ1-2-66",
+              "fullpath": "/tags/หวยไทยรัฐ1-2-66",
+              "source": "seo"
+          },
+          {
+              "keyword": "สลากออมสิน",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/สลากออมสิน",
+              "fullpath": "/tags/สลากออมสิน",
+              "source": "seo"
+          },
+          {
+              "keyword": "เลขเด็ด",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/เลขเด็ด",
+              "fullpath": "/tags/เลขเด็ด",
+              "source": "seo"
+          },
+          {
+              "keyword": "แม่น้ำหนึ่ง",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/แม่น้ำหนึ่ง",
+              "fullpath": "/tags/แม่น้ำหนึ่ง",
+              "source": "seo"
+          },
+          {
+              "keyword": "ไอ้ไข่",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/ไอ้ไข่",
+              "fullpath": "/tags/ไอ้ไข่",
+              "source": "seo"
+          },
+          {
+              "keyword": "เลขเด็ดงวดนี้",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/เลขเด็ดงวดนี้",
+              "fullpath": "/tags/เลขเด็ดงวดนี้",
+              "source": "seo"
+          },
+          {
+              "keyword": "สถิติหวยออกวันพุธ",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/สถิติหวยออกวันพุธ",
+              "fullpath": "/tags/สถิติหวยออกวันพุธ",
+              "source": "seo"
+          },
+          {
+              "keyword": "สถิติหวย 1 กุมภาพันธ์",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/สถิติหวย%201%20กุมภาพันธ์",
+              "fullpath": "/tags/สถิติหวย%201%20กุมภาพันธ์",
+              "source": "seo"
+          },
+          {
+              "keyword": "คําชะโนด",
+              "weight": 50,
+              "canonical": "https://www.thairath.co.th/tags/คําชะโนด",
+              "fullpath": "/tags/คําชะโนด",
+              "source": "seo"
+          }
+      ],
+      "video": [
+          {
+              "id": 711531,
+              "title": "ส่องเลขเด็ดปริศนาคำ ต้นตะเคียน \"แม่ศรีมณีทอง\" ลุ้นรวย",
+              "fullPath": "/video/news/topnews/hotclip/711531",
+              "image": "https://cdn.jwplayer.com/v2/media/eIA7zVaC/poster.jpg?width=720",
+              "canonical": "https://www.thairath.co.th/video/news/topnews/hotclip/711531"
+          },
+          {
+              "id": 711536,
+              "title": "กระซิบขอเลขเด็ด \"พ่อขุนช้างมหาเศรษฐี\" ลุ้นโชครวย",
+              "fullPath": "/video/news/topnews/hotclip/711536",
+              "image": "https://cdn.jwplayer.com/v2/media/K614o8qE/poster.jpg?width=720",
+              "canonical": "https://www.thairath.co.th/video/news/topnews/hotclip/711536"
+          },
+          {
+              "id": 717586,
+              "title": "แห่ตีเลขเด็ด หลังเจอ \"งูบองหลา\" โผล่กลางบ้าน ยาวกว่า 5 เมตร",
+              "fullPath": "/video/news/topnews/hotclip/717586",
+              "image": "https://cdn.jwplayer.com/v2/media/YybrXtjD/poster.jpg?width=720",
+              "canonical": "https://www.thairath.co.th/video/news/topnews/hotclip/717586"
+          },
+          {
+              "id": 717595,
+              "title": "คนดวงเฮง รวมตัวแก้บน \"ท้าวเวสสุวรรณ\" วัดพังม่วง",
+              "fullPath": "/video/news/topnews/hotclip/717595",
+              "image": "https://cdn.jwplayer.com/v2/media/IBEmAlUq/poster.jpg?width=720",
+              "canonical": "https://www.thairath.co.th/video/news/topnews/hotclip/717595"
+          },
+          {
+              "id": 717588,
+              "title": "คอหวยช่วยกันถอดคำใบ้ \"ตะเคียนแม่ศรีมณีทอง\" ยิ้มได้เลขเด็ด",
+              "fullPath": "/video/news/topnews/hotclip/717588",
+              "image": "https://cdn.jwplayer.com/v2/media/RNovksjy/poster.jpg?width=720",
+              "canonical": "https://www.thairath.co.th/video/news/topnews/hotclip/717588"
+          },
+          {
+              "id": 711541,
+              "title": "คอหวยยิ้มหวาน เจอเลขเด็ดธูปมงคล  \"ท้าวเวสสุวรรณ\" วัดจุฬามณี",
+              "fullPath": "/video/news/topnews/hotclip/711541",
+              "image": "https://cdn.jwplayer.com/v2/media/aAuY9rl3/poster.jpg?width=720",
+              "canonical": "https://www.thairath.co.th/video/news/topnews/hotclip/711541"
+          }
+      ],
+      "history": [
+          {
+              "announceTs": 1673888400,
+              "title": "17 มกราคม 2566",
+              "str": "2023-01-17",
+              "link": "https://www.thairath.co.th/lottery?date=2023-01-17",
+              "prizes": {
+                  "1": [
+                      "812519"
+                  ],
+                  "10": [
+                      "443",
+                      "389"
+                  ],
+                  "6": [
+                      "849",
+                      "564"
+                  ],
+                  "7": [
+                      "47"
+                  ]
+              }
+          },
+          {
+              "announceTs": 1672333200,
+              "title": "30 ธันวาคม 2565",
+              "str": "2022-12-30",
+              "link": "https://www.thairath.co.th/lottery?date=2022-12-30",
+              "prizes": {
+                  "1": [
+                      "157196"
+                  ],
+                  "10": [
+                      "007",
+                      "522"
+                  ],
+                  "6": [
+                      "250",
+                      "425"
+                  ],
+                  "7": [
+                      "58"
+                  ]
+              }
+          },
+          {
+              "announceTs": 1671123600,
+              "title": "16 ธันวาคม 2565",
+              "str": "2022-12-16",
+              "link": "https://www.thairath.co.th/lottery?date=2022-12-16",
+              "prizes": {
+                  "1": [
+                      "845093"
+                  ],
+                  "10": [
+                      "912",
+                      "411"
+                  ],
+                  "6": [
+                      "855",
+                      "593"
+                  ],
+                  "7": [
+                      "14"
+                  ]
+              }
+          },
+          {
+              "announceTs": 1669827600,
+              "title": "1 ธันวาคม 2565",
+              "str": "2022-12-01",
+              "link": "https://www.thairath.co.th/lottery?date=2022-12-01",
+              "prizes": {
+                  "1": [
+                      "375805"
+                  ],
+                  "10": [
+                      "170",
+                      "786"
+                  ],
+                  "6": [
+                      "409",
+                      "421"
+                  ],
+                  "7": [
+                      "08"
+                  ]
+              }
+          },
+          {
+              "announceTs": 1668531600,
+              "title": "16 พฤศจิกายน 2565",
+              "str": "2022-11-16",
+              "link": "https://www.thairath.co.th/lottery?date=2022-11-16",
+              "prizes": {
+                  "1": [
+                      "121789"
+                  ],
+                  "10": [
+                      "722",
+                      "532"
+                  ],
+                  "6": [
+                      "157",
+                      "973"
+                  ],
+                  "7": [
+                      "64"
+                  ]
+              }
+          },
+          {
+              "announceTs": 1667235600,
+              "title": "1 พฤศจิกายน 2565",
+              "str": "2022-11-01",
+              "link": "https://www.thairath.co.th/lottery?date=2022-11-01",
+              "prizes": {
+                  "1": [
+                      "913106"
+                  ],
+                  "10": [
+                      "722",
+                      "839"
+                  ],
+                  "6": [
+                      "343",
+                      "922"
+                  ],
+                  "7": [
+                      "70"
+                  ]
+              }
+          }
+      ]
+  },
+  "adsSetting": {
+      "isBillboard": true,
+      "isUnderlay": false,
+      "isBalloon": false,
+      "isLightbox": false,
+      "isOpen": true
+  }
+}

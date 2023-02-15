@@ -46,7 +46,9 @@ const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
       <div className="flex-auto bg-green-50 rounded-lg p-4">
         <h1 className="font-bold text-lg">รางวัลที่ 1</h1>
         <h2>รางวัลละ {lotteryData[0]?.prize?.toLocaleString("TH-th")} บาท</h2>
-        <div className="font-bold text-2xl mt-4">{lotteryData[0]?.numbers[0]}</div>
+        <div className="font-bold text-2xl mt-4">
+          {lotteryData[0]?.numbers[0]}
+        </div>
       </div>
       <div className="flex-auto bg-green-50 rounded-lg p-4">
         <h1 className="font-bold text-lg">เลขหน้า 3 ตัว</h1>
@@ -67,7 +69,9 @@ const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
       <div className="flex-auto bg-green-50 rounded-lg p-4">
         <h1 className="font-bold text-lg">เลขท้าย 2 ตัว</h1>
         <h2>รางวัลละ {lotteryData[6]?.prize?.toLocaleString("TH-th")} บาท</h2>
-        <div className="font-bold text-2xl mt-4">{lotteryData[6]?.numbers[0]}</div>
+        <div className="font-bold text-2xl mt-4">
+          {lotteryData[6]?.numbers[0]}
+        </div>
       </div>
     </div>
     <div className="flex w-full mt-4 space-x-4">
@@ -109,9 +113,7 @@ const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
       </div>
     </div>
     <div className="w-full mt-4 bg-green-50 rounded-lg p-4">
-      <h1 className="font-bold text-lg">
-        รางวัลที่ 4
-      </h1>
+      <h1 className="font-bold text-lg">รางวัลที่ 4</h1>
       <h2>รางวัลละ {lotteryData[3]?.prize?.toLocaleString("TH-th")} บาท</h2>
       <div className="font-bold text-xl mt-4 grid grid-cols-5 px-8">
         {lotteryData[3]?.numbers?.map((r, idx) => (
