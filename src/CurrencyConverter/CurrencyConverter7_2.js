@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ReactECharts from "echarts-for-react";
-// import ExchangeRatesData from "./exchange-rates.json";
-// import ExchangeStatisticData from "./exchange-statistic.json";
-// import ExchangeChartData from "./exchange-chart.json";
 import { HiSwitchHorizontal } from "react-icons/hi";
 import { useGetRates, useCal, useGetStat, useGetGraph } from "./useConverter";
 

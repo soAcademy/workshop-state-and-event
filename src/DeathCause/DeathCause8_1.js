@@ -183,7 +183,6 @@ const useCal = ({ yearLists }) => {
         type: "value",
         name: "จำนวนผู้เสียชีวิต",
         max: "dataMax",
-
         min: "dataMin",
       },
       series: [

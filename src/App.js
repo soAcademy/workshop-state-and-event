@@ -34,6 +34,7 @@ import DeathCause6 from "./DeathCause/DeathCause6";
 import DeathCause7 from "./DeathCause/DeathCause7";
 import DeathCause8 from "./DeathCause/DeathCause8";
 import DeathCause8_1 from "./DeathCause/DeathCause8_1";
+import DeathCause8_2 from "./DeathCause/DeathCause8_2";
 import Retirement from "./Retirement/Retirement";
 import Retirement2 from "./Retirement/Retirement2";
 import Retirement3 from "./Retirement/Retirement3";
@@ -78,6 +79,7 @@ const App = () => {
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
       {/* <DeathCause8_1 /> */}
+      <DeathCause8_2 />
       {/* <Retirement /> */}
       {/* <Converter /> */}
       {/* <CustomHook1 /> */}
@@ -87,7 +89,7 @@ const App = () => {
       {/* <CurrencyConverter7 /> */}
       {/* <CurrencyConverter7_1 /> */}
       {/* <CurrencyConverter7_2 /> */}
-      <CurrencyConverter7_3 />
+      {/* <CurrencyConverter7_3 /> */}
       {/* <Retirement2 /> */}
       {/* <Retirement3 /> */}
     </>
