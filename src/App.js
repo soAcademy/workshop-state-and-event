@@ -123,7 +123,8 @@
 // import CustomHook4 from "./CustomHookAnswer/CustomHook4";
 
 // import Lottery1 from "./Lottery/Lottery1";
-import Lottery2 from "./Lottery/Lottery2";
+// import Lottery2 from "./Lottery/Lottery2";
+import Lottery3 from "./Lottery/Lottery3";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
@@ -211,7 +212,8 @@ const App = () => (
     {/* <CustomHook3 /> */}
     {/* <CustomHook4 /> */}
     {/* <Lottery1 /> */}
-    <Lottery2 />
+    {/* <Lottery2 /> */}
+    <Lottery3 />
   </div>
 );
 
