@@ -3,13 +3,15 @@ import React from "react";
 const CheckLottery = () => {
   return (
     <>
-      <div className="w-1/2 m-auto mt-8">
-        <h1 className="text-center my-10 text-xl ">
+      <div className="w-1/2 m-auto mt-8 ">
+        <h1 className="text-center my-10 text-3xl bg-gradient-to-r from-cyan-500 to-blue-500 py-3 rounded-[20px] text-white">
           ตรวจลอตเตอรี่ by KhunBoeing
         </h1>
         <div className="bg-gradient-to-r from-cyan-500 to-green-500 px-5 py-9 rounded-[20px] shadow-xl">
           <form>
-            <label className="text-white text-xl flex j">ใส่เลขลอตเตอรี่</label>
+            <label className=" text-2xl flex ml-5 bg-green-100 w-fit p-3 rounded-[20px]">
+              ใส่เลขลอตเตอรี่
+            </label>
             <div className="flex flex-col items-center">
               <input
                 type="number"
@@ -29,10 +31,10 @@ const CheckLottery = () => {
               ></input>
             </div>
             <div className="flex justify-between mx-24 mt-10">
-              <button className="bg-white p-3 rounded-[10px] text-gray-800 shadow-lg ">
+              <button className="bg-white p-3 rounded-[10px] text-gray-800 shadow-lg hover:cursor-pointer hover:bg-yellow-500 hover:text-white ">
                 ตรวจหวย
               </button>
-              <button className="bg-gray-300 p-3 rounded-[10px] text-gray-800 shadow-lg">
+              <button className="bg-gray-300 p-3 rounded-[10px] text-gray-800 shadow- hover:cursor-pointer hover:bg-slate-600 hover:text-white ">
                 เคลียร์เลข
               </button>
             </div>
@@ -60,16 +62,29 @@ const CheckLottery = () => {
         </div>
       </div>
 
-      {/* --------------------Table Check Lottery------------------ */}
+      {/* --------------------Table 1------------------ */}
+      <div className="mb-5 flex justify-center">
+        <h1 className="text-2xl">
+          ผลการออกรางวัลสลากกินแบ่งรัฐบาลประจำวันที่ 16 กุมภาพันธ์ 2566
+        </h1>
+      </div>
 
       <div className="w-fit p-7 bg-gray-300 mx-auto">
         <table className="border-2 border-white w-full">
           <thead>
             <tr className="border-2 border-white ">
-              <th className="border-2 border-white">รางวัลที่ 1</th>
-              <th className="border-2 border-white">เลขหน้า 3 ตัว</th>
-              <th className="border-2 border-white">เลขท้าย 3 ตัว</th>
-              <th className="border-2 border-white">เลขท้าย 2 ตัว</th>
+              <th className="border-2 border-white bg-yellow-400">
+                รางวัลที่ 1
+              </th>
+              <th className="border-2 border-white bg-yellow-400">
+                เลขหน้า 3 ตัว
+              </th>
+              <th className="border-2 border-white bg-yellow-400">
+                เลขท้าย 3 ตัว
+              </th>
+              <th className="border-2 border-white bg-yellow-400">
+                เลขท้าย 2 ตัว
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -111,18 +126,20 @@ const CheckLottery = () => {
           </tbody>
         </table>
 
-        {/* ----------------------------------------------------------- */}
+        {/* --------------------------Table 2------------------------------- */}
         <table className="border-2 border-white mt-4 w-full">
           <thead>
             <tr className="border-2 border-white">
-              <th className="border-2 border-white">
+              <th className="border-2 border-white bg-yellow-400">
                 รางวัลข้างเคียงรางวัลที่ 1
               </th>
-              <th className="border-2 border-white">รางวัลละ 100,000 บาท</th>
-              <th className="border-2 border-white" colSpan="2">
+              <th className="border-2 border-white bg-white">
+                รางวัลละ 100,000 บาท
+              </th>
+              <th className="border-2 border-white bg-yellow-400" colSpan="2">
                 รางวัลที่ 2
               </th>
-              <th className="border-2 border-white" colSpan="3">
+              <th className="border-2 border-white bg-white" colSpan="3">
                 รางวัลละ 200,000 บาท
               </th>
             </tr>
@@ -153,14 +170,16 @@ const CheckLottery = () => {
             </tr>
           </tbody>
         </table>
-        {/* -------------------------------------------------------- */}
+        {/* ----------------------Table 3------------------------ */}
         <table className="border-2 border-white mt-4 w-full">
           <thead>
             <tr className="border-2 border-white">
-              <th className="border-2 border-white" colSpan="4">
+              <th className="border-2 border-white bg-yellow-400" colSpan="4">
                 รางวัลที่ 3
               </th>
-              <th colSpan="6">รางวัลละ 80,000 บาท</th>
+              <th className="bg-white" colSpan="6">
+                รางวัลละ 80,000 บาท
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -198,14 +217,14 @@ const CheckLottery = () => {
             </tr>
           </tbody>
         </table>
-        {/* -------------------------------------------------------- */}
+        {/* ---------------------Table 4---------------------- */}
         <table className="border-2 border-white mt-4 w-full">
           <thead>
             <tr className="border-2 border-white">
-              <th className="border-2 border-white" colSpan="3">
+              <th className="border-2 border-white bg-yellow-400" colSpan="3">
                 รางวัลที่ 4
               </th>
-              <th className="border-2 border-white" colSpan="7">
+              <th className="border-2 border-white bg-white" colSpan="7">
                 รางวัลละ 40,000 บาท{" "}
               </th>
             </tr>
@@ -373,12 +392,16 @@ const CheckLottery = () => {
             </tr>
           </tbody>
         </table>
-        {/* ----------------------------------------------------- */}
+        {/* -------------------Table 5-------------------- */}
         <table className="border-2 border-white mt-4 w-full">
           <thead>
             <tr>
-              <th colSpan="3">รางวัลที่ 5 </th>
-              <th colSpan="7">รางวัลละ 20,000 บาท</th>
+              <th className=" border-2 border-white bg-yellow-400" colSpan="3">
+                รางวัลที่ 5{" "}
+              </th>
+              <th className="bg-white" colSpan="7">
+                รางวัลละ 20,000 บาท
+              </th>
             </tr>
           </thead>
           <tbody>
