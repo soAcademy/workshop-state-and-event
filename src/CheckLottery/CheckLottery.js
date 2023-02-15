@@ -214,16 +214,15 @@ const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
           </tr>
         </thead>
         <tbody>
-          {[
-            // ...new Array(Math.ceil(lotteryData[3]?.number?.length / 10)).keys(),
-            ...new Array(5).keys(),
-          ]?.map((row) => (
+          {[...new Array(5).keys()]?.map((row) => (
             <tr className="border-2 border-white">
               {lotteryData[3]?.number
                 ?.slice(row * 10, (row + 1) * 10)
                 .map((r, idx) => (
                   <td className="border-2 border-white " colSpan="5">
-                    <span className="bg-white px-1 mx-2">{row * 10 + idx}</span>{" "}
+                    <span className="bg-white px-1 mx-2">
+                      {row * 10 + idx + 1}
+                    </span>{" "}
                     {r}
                   </td>
                 ))}
@@ -235,79 +234,29 @@ const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
       <table className="border-2 border-white mt-4 w-full">
         <thead>
           <tr>
-            <th className=" border-2 border-white bg-yellow-400" colSpan="3">
+            <th className=" border-2 border-white bg-yellow-400" colSpan="15">
               รางวัลที่ 5{" "}
             </th>
-            <th className="bg-white" colSpan="7">
-              รางวัลละ 20,000 บาท
+            <th className="bg-white" colSpan="35">
+              รางวัลละ {lotteryData[4]?.prize?.toLocaleString("TH-th")}บาท
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-          </tr>
-          <tr>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-            <td className="border-2 border-white">
-              <span className="bg-white px-1 mx-2">9</span> 202306
-            </td>
-          </tr>
+          {[...new Array(10).keys()]?.map((row) => (
+            <tr className="border-2 border-white">
+              {lotteryData[4]?.number
+                ?.slice(row * 10, (row + 1) * 10)
+                .map((r, idx) => (
+                  <td className="border-2 border-white " colSpan="5">
+                    <span className="bg-white px-1 mx-2">
+                      {row * 10 + idx + 1}
+                    </span>{" "}
+                    {r}
+                  </td>
+                ))}
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
