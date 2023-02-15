@@ -1,86 +1,85 @@
-import { useEffect, useState } from "react";
 import ThailandDeathCause from "./thailand-death-cause.json";
-import ReactECharts from "echarts-for-react";
 import { useSelectedCause, useTotalDeath, useDeathByCause, useDeathByProvinces, useChartOption1, useChartOption2 } from "./hook";
+import { DeathByCause, DeathByProvince, DeathChart, DeathFilter } from "./component";
 
-const DeathByCause = ({ totalDeath, deathByCauses, setSelectedCause }) => (
-  <div className="bg-blue-100 w-1/3 p-4 h-screen overflow-auto">
-    <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
-    <table className="w-full table-auto">
-      <tbody>
-        <tr
-          className="hover:bg-red-100 hover:cursor-pointer"
-          onClick={() => setSelectedCause(undefined)}
-        >
-          <td>ทั้งหมด</td>
-          <td>{totalDeath.toLocaleString()}</td>
-          <td>100%</td>
-        </tr>
-        {deathByCauses?.map((r, idx) => (
-          <tr
-            key={idx}
-            className="hover:bg-red-100 hover:cursor-pointer"
-            onClick={() => setSelectedCause(r.cause)}
-          >
-            <td>{r.cause}</td>
-            <td>{r.death.toLocaleString()}</td>
-            <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+// const DeathByCause = ({ totalDeath, deathByCauses, setSelectedCause }) => (
+//   <div className="bg-blue-100 w-1/3 p-4 h-screen overflow-auto">
+//     <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
+//     <table className="w-full table-auto">
+//       <tbody>
+//         <tr
+//           className="hover:bg-red-100 hover:cursor-pointer"
+//           onClick={() => setSelectedCause(undefined)}
+//         >
+//           <td>ทั้งหมด</td>
+//           <td>{totalDeath.toLocaleString()}</td>
+//           <td>100%</td>
+//         </tr>
+//         {deathByCauses?.map((r, idx) => (
+//           <tr
+//             key={idx}
+//             className="hover:bg-red-100 hover:cursor-pointer"
+//             onClick={() => setSelectedCause(r.cause)}
+//           >
+//             <td>{r.cause}</td>
+//             <td>{r.death.toLocaleString()}</td>
+//             <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
+//           </tr>
+//         ))}
+//       </tbody>
+//     </table>
+//   </div>
+// );
 
-const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
-  <div className="bg-amber-100 w-1/3 p-4 h-screen overflow-auto">
-    <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
-    <table className="w-full table-auto">
-      <tbody>
-        <tr>
-          <td>ทั้งหมด</td>
-          <td>{totalDeath.toLocaleString()}</td>
-          <td>100%</td>
-        </tr>
-        {deathByProvinces?.map((r, idx) => (
-          <tr key={idx}>
-            <td>{r.province}</td>
-            <td>{r.death.toLocaleString()}</td>
-            <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+// const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
+//   <div className="bg-amber-100 w-1/3 p-4 h-screen overflow-auto">
+//     <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
+//     <table className="w-full table-auto">
+//       <tbody>
+//         <tr>
+//           <td>ทั้งหมด</td>
+//           <td>{totalDeath.toLocaleString()}</td>
+//           <td>100%</td>
+//         </tr>
+//         {deathByProvinces?.map((r, idx) => (
+//           <tr key={idx}>
+//             <td>{r.province}</td>
+//             <td>{r.death.toLocaleString()}</td>
+//             <td>{((r.death / totalDeath) * 100).toFixed(2)}%</td>
+//           </tr>
+//         ))}
+//       </tbody>
+//     </table>
+//   </div>
+// );
 
-const DeathChart = ({ chartOption1, chartOption2 }) => (
-  <div className="bg-green-100 w-1/3 p-4 h-screen overflow-auto">
-    <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
-    <ReactECharts option={chartOption1} />
-    <div className="font-bold mb-2">การเสียชีวิตตามเพศ</div>
-    <ReactECharts option={chartOption2} />
-  </div>
-);
+// const DeathChart = ({ chartOption1, chartOption2 }) => (
+//   <div className="bg-green-100 w-1/3 p-4 h-screen overflow-auto">
+//     <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
+//     <ReactECharts option={chartOption1} />
+//     <div className="font-bold mb-2">การเสียชีวิตตามเพศ</div>
+//     <ReactECharts option={chartOption2} />
+//   </div>
+// );
 
-const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
-  <div>
-    <div className="mt-4">
-      เลือกปีพ.ศ.{" "}
-      <select
-        onChange={(e) => setCurrentYear(e.target.value)}
-        value={currentYear}
-      >
-        {yearLists.map((year) => (
-          <option key={year} value={year}>
-            {year}
-          </option>
-        ))}
-      </select>
-    </div>
-    <div className="">การเสียชีวิตของปีพ.ศ. {currentYear}</div>
-  </div>
-);
+// const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => (
+//   <div>
+//     <div className="mt-4">
+//       เลือกปีพ.ศ.{" "}
+//       <select
+//         onChange={(e) => setCurrentYear(e.target.value)}
+//         value={currentYear}
+//       >
+//         {yearLists.map((year) => (
+//           <option key={year} value={year}>
+//             {year}
+//           </option>
+//         ))}
+//       </select>
+//     </div>
+//     <div className="">การเสียชีวิตของปีพ.ศ. {currentYear}</div>
+//   </div>
+// );
 
 // const useSelectedCause = () => {
 //   const [selectedCause, setSelectedCause] = useState();
