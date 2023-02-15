@@ -33,12 +33,16 @@
 
 // import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
 // import CurrencyConverter6_1 from "./CurrencyConverter/CurrencyConverter6_1";
-import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
+// import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 
 // import CustomHook1 from "./CustomHook/Customhook1";
 // import CustomHook2 from "./CustomHook/Customhook2";
 // import CustomHook3 from "./CustomHook/Customhook3";
 // import CustomHook4 from "./CustomHook/Customhook4";
+
+import Lottery1 from "./Lottery/Lottery1";
+
+
 
 
 const App = () => {
@@ -76,12 +80,14 @@ const App = () => {
       {/* <Retirement/> */}
 
       {/* <CurrencyConverter6_1/> */}
-      <CurrencyConverter7/>
+      {/* <CurrencyConverter7/> */}
 
       {/* <CustomHook1/> */}
       {/* <CustomHook2 /> */}
       {/* <CustomHook3/> */}
       {/* <CustomHook4/> */}
+
+      <Lottery1/>
     </>
   );
 };
