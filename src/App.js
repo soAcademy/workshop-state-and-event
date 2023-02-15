@@ -57,6 +57,7 @@ import {
   CustomHook3,
   CustomHook4,
 } from "./CustomHookAnswer";
+import Lottery1 from "./LotteryAnswer/Lottery1";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
 
 const App = () => {
@@ -114,7 +115,8 @@ const App = () => {
       {/* <CustomHook1 /> */}
       {/* <CustomHook2 /> */}
       {/* <CustomHook3 /> */}
-      <CustomHook4 />
+      {/* <CustomHook4 /> */}
+      <Lottery1 />
     </>
   );
 };
