@@ -4,7 +4,7 @@ import axios from "axios";
 const apiToken =
   "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
 
-export const useStatistic = ({ fromCurrency, toCurrency }) => {
+export const useStatistic = ({ apiToken, fromCurrency, toCurrency }) => {
   const [exchangeStatistic, setExchangeStatistic] = useState();
   console.log("useStatistic Check");
   useEffect(() => {

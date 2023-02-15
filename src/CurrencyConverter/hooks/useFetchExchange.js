@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const apiToken =
-  "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
-
-export const useFetchExchange = () => {
+export const useFetchExchange = ({ apiToken }) => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
   console.log("useFetchExchangeCheck");

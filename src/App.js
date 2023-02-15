@@ -56,9 +56,11 @@
 // import CustomHook2 from "./CustomHook/CustomHook2";
 // import CustomHook3 from "./CustomHook/CustomHook3";
 // import CustomHook4 from "./CustomHook/CustomHook4";
-// import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6_1";
+// import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
 // import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6_2";
-import Retirement2 from "./Retirement/Retirement2";
+// import Retirement2 from "./Retirement/Retirement2";
+// import DeathCause8 from "./DeathCause/DeathCause8";
+import LotteryCheck from "./LotteryCheck/LotteryCheck";
 
 const App = () => {
   return (
@@ -116,7 +118,8 @@ const App = () => {
       {/* <CustomHook2 /> */}
       {/* <CustomHook3 /> */}
       {/* <CustomHook4 /> */}
-      <Retirement2 />
+      {/* <Retirement2 /> */}
+      <LotteryCheck />
     </>
   );
 };

@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const apiToken =
-  "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
-
-export const useChart = ({ fromCurrency, toCurrency }) => {
+export const useChart = ({ apiToken, fromCurrency, toCurrency }) => {
   const [chart, setChart] = useState({});
 
   useEffect(() => {

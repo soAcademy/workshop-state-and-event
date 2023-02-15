@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactECharts from "echarts-for-react";
 import {
   useChart,
@@ -6,9 +6,21 @@ import {
   useFetchExchange,
   useStatistic,
 } from "./hooks";
+import { BsArrowLeftRight } from "react-icons/bs";
 
 const CurrencyConverter6 = () => {
-  const { exchangeRates, currencyLists } = useFetchExchange();
+  const [toggle, setToggle] = useState(true);
+
+  const toggleConverter = () => {
+    const tempCurrency = fromCurrency;
+    setFromCurrency(toCurrency);
+    setToCurrency(tempCurrency);
+    setToggle(false);
+  };
+  const apiToken =
+    "Basic bG9kZXN0YXI6cGdFNlVEYm9GN2JWaGZsTmhJaldHVGNyQnNBWEdQVUY=";
+
+  const { exchangeRates, currencyLists } = useFetchExchange({ apiToken });
 
   const {
     amount,
@@ -20,14 +32,14 @@ const CurrencyConverter6 = () => {
     amountConverted,
     fromCurrencyRated,
     toCurrencyRated,
-  } = useConvertExchange({ exchangeRates });
+  } = useConvertExchange({ apiToken, exchangeRates });
 
   const { exchangeStatistic } = useStatistic({
     fromCurrency,
     toCurrency,
   });
 
-  const { chart } = useChart({ fromCurrency, toCurrency });
+  const { chart } = useChart({ apiToken, fromCurrency, toCurrency });
 
   return (
     <div className="w-full">
@@ -64,6 +76,13 @@ const CurrencyConverter6 = () => {
                   </option>
                 ))}
             </select>
+          </div>
+          <div className="pt-10 px-1 cursor-pointer hover:text-blue-600">
+            {toggle ? (
+              <BsArrowLeftRight onClick={() => toggleConverter()} />
+            ) : (
+              <BsArrowLeftRight onClick={() => toggleConverter()} />
+            )}
           </div>
           <div className="w-1/3">
             <p className="text-left">ไป</p>
