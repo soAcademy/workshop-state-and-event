@@ -2,7 +2,7 @@
 // import ExchangeStatistic from "./exchange-statistic.json";
 // import ExchangeChart from "./exchange-chart.json";
 import ReactECharts from "echarts-for-react";
-import { useCurrencyConverter } from "./useCurrencyConverter";
+import { useCurrencyConverter } from "./useCurrencyConverter"
 
 const CurrencyConverter6_1 = () => {
   const authToken =

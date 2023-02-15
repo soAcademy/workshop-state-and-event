@@ -6,7 +6,7 @@ const Trivia1 = () => {
       <div className="py-4 text-center">คำถาม</div>
       <div className="grid gap-2 grid-cols-2">
         {[...Array(4).keys()].map((r, index) => (
-          <button className="bg-green-400 py-4">{r}</button>
+          <button key={index} className="bg-green-400 py-4">{r}</button>
         ))}
       </div>
     </>

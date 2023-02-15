@@ -75,7 +75,7 @@ const App = () => {
       {/* <DeathCause8/> */}
       {/* <Retirement/> */}
 
-      {/* <CurrencyConverter1/> */}
+      {/* <CurrencyConverter6_1/> */}
       <CurrencyConverter7/>
 
       {/* <CustomHook1/> */}

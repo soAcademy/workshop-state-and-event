@@ -8,7 +8,7 @@ import {
 
 const CurrencyConverter7 = () => {
   const authToken =
-    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+    "Basic bG9kZXN0YXI6cGdFNlVEYm9GN2JWaGZsTmhJaldHVGNyQnNBWEdQVUY=";
 
   const { exchangeRates, currencyLists } = useFetchExchangeRate({ authToken });
   const {
