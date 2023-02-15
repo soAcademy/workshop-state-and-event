@@ -56,7 +56,7 @@ const useNumber = () => {
   };
 };
 
-const CustomHook2 = () => {
+export const CustomHook2 = () => {
   const { number1, setNumber1, number2, setNumber2, sum, setSum } = useNumber();
 
   return (
@@ -90,4 +90,4 @@ const CustomHook2 = () => {
   );
 };
 
-export default CustomHook2;
+// export default CustomHook2;
