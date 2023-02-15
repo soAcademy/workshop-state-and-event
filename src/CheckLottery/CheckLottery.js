@@ -42,19 +42,19 @@ const CheckLottery = () => {
         </div>
         <div className="bg-gradient-to-r from-sky-400 to-yellow-300 rounded-[20px] flex flex-col pl-10 py-6 my-8 shadow-lg">
           <div className="text-white ">
-            <p>1234567 ถูกกินจ้า</p>
+            <p className="text-xl">1234567 ถูกกินจ้า</p>
           </div>
           <div className="text-white">
-            <p>1234567 ถูกกินจ้า</p>
+            <p className="text-xl">1234567 ถูกกินจ้า</p>
           </div>
           <div className="text-white">
-            <p>1234567 ถูกกินจ้า</p>
+            <p className="text-xl">1234567 ถูกกินจ้า</p>
           </div>
           <div className="text-white">
-            <p>1234567 ถูกกินจ้า</p>
+            <p className="text-xl">1234567 ถูกกินจ้า</p>
           </div>
           <div className="mt-4">
-            <p>
+            <p className="text-xl">
               คุณถูกรางวัลทั้งหมด :{" "}
               <span className="text-green-700">0 บาทถ้วน</span>
             </p>
