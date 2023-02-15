@@ -1,20 +1,174 @@
-const Lottery1 =()=>{
-  return (
-    <div className="w-1/2 mx-auto bg-gray-100 mt-8 p-6">
-      <div className="font-bold text-xl text-center ">ตรวจผล Lottery</div>
-      <form>
-        <div className="">
-          <label>กรอกตัวเลข</label>
-          <br />
-          <input
-            type="text"
-            name="lottery_number"
-            className="p-2 w-full mt-2 h-48"
-            placeholder="333333"
-          ></input>
-        </div>
-      </form>
+const Lottery1 = () => {
+  const LotteryForm = () => (
+    <>
+      <div className="w-1/2 mx-auto mt-8 p-8">
+        <textarea
+          id="message"
+          rows="4"
+          className="block p-2.5 w-full text-sm  bg-gray-100 rounded-lg border"
+          placeholder="กรอกเลขลอตเตอรี่"
+        ></textarea>
+        <button className="bg-yellow-500 active:bg-amber-500 rounded-lg mt-4 p-4">
+          ตรวจหวย
+        </button>
+        <button className="bg-blue-200 active:bg-purple-200 rounded-lg mt-4 p-4">
+          เคลียร์เลข
+        </button>
+      </div>
+    </>
+  );
+
+  const LotteryResult = () => (
+    <div className="w-1/2 mx-auto pb-8">
+      <div className=" bg-gray-50  text-left pl-8">
+        <div>111111</div>
+        <div>333333</div>
+        <div>444444</div>
+        <div className="font-bold mt-4">คุณถูกหวยงวดนี้ทั้งสิ้น บาท</div>
+      </div>
     </div>
   );
-}
-export default Lottery1
+
+  const LotteryTable = () => (
+    <div className="mb-16">
+      <div>
+        <h1 className="text-xl font-bold">
+          ผลการออกรางวัลสลากกินแบ่งรัฐบาล
+          <br />
+          ประจำวันที่
+        </h1>
+      </div>
+      <div className="flex w-full mt-4 space-x-4">
+        <div className="flex-auto bg-green-50 rounded-lg p-4">
+          <h1 className="font-bold text-lg">รางวัลที่ 1</h1>
+          <h2>รางวัลละ 6,000,000 บาท</h2>
+          <div className="font-bold text-2xl mt-4"></div>
+        </div>
+        <div className="flex-auto bg-green-50 rounded-lg p-4">
+          <h1 className="font-bold text-lg">เลขหน้า 3 ตัว</h1>
+          <h2>รางวัลละ 4,000 บาท</h2>
+          <div className="font-bold text-2xl mt-4 flex">
+            <div className="flex-auto"></div>
+            <div className="flex-auto"></div>
+          </div>
+        </div>
+        <div className="flex-auto bg-green-50 rounded-lg p-4">
+          <h1 className="font-bold text-lg">เลขท้าย 3 ตัว</h1>
+          <h2>รางวัลละ 4,000 บาท</h2>
+          <div className="font-bold text-2xl mt-4 flex">
+            <div className="flex-auto"></div>
+            <div className="flex-auto"></div>
+          </div>
+        </div>
+        <div className="flex-auto bg-green-50 rounded-lg p-4">
+          <h1 className="font-bold text-lg">เลขท้าย 2 ตัว</h1>
+          <h2>รางวัลละ 2000 บาท</h2>
+          <div className="font-bold text-2xl mt-4"></div>
+        </div>
+      </div>
+      <div className="flex w-full mt-4 space-x-4">
+        <div className="flex-auto bg-green-50 rounded-lg p-4">
+          <h1 className="font-bold text-lg">รางวัลข้างเคียงรางวัลที่ 1</h1>
+          <h2>รางวัลละ 100,000 บาท</h2>
+          <div className="font-bold text-2xl mt-4 flex">
+            <div className="flex-auto">297410</div>
+            <div className="flex-auto">297412</div>
+          </div>
+        </div>
+        <div className="flex-auto bg-green-50 rounded-lg p-4">
+          <h1 className="font-bold text-lg">รางวัลที่ 2</h1>
+          <h2>รางวัลละ 200,000 บาท</h2>
+          <div className="font-bold text-xl mt-4 grid grid-cols-5 px-8">
+            {["229120", "679028", "677223", "589702", "670839"].map(
+              (r, idx) => (
+                <div className="float-left">
+                  <div className="float-left bg-gray-200 px-4 mx-4 text-blue-500">
+                    {idx + 1}
+                  </div>
+                  <div className="float-left">{r}</div>
+                </div>
+              )
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="w-full mt-4 bg-green-50 rounded-lg p-4">
+        <h1 className="font-bold text-lg">รางวัลที่ 3</h1>
+        <h2>รางวัลละ 80,000 บาท</h2>
+        <div className="font-bold text-xl mt-4 grid grid-cols-5 px-8">
+          {["229120", "679028", "677223", "589702", "670839"].map((r, idx) => (
+            <div className="float-left mb-4">
+              <div className="float-left bg-gray-200 px-4 mx-4 text-blue-500">
+                {idx + 1}
+              </div>
+              <div className="float-left">{r}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="w-full mt-4 bg-green-50 rounded-lg p-4">
+        <h1 className="font-bold text-lg">รางวัลที่ 4</h1>
+        <h2>รางวัลละ 40,000 บาท</h2>
+        <div className="font-bold text-xl mt-4 grid grid-cols-5 px-8">
+          {[
+            "229120",
+            "679028",
+            "677223",
+            "589702",
+            "670839",
+            "229120",
+            "679028",
+            "677223",
+            "589702",
+            "670839",
+          ].map((r, idx) => (
+            <div className="float-left mb-4">
+              <div className="float-left bg-gray-200 px-4 mx-4 text-blue-500">
+                {idx + 1}
+              </div>
+              <div className="float-left">{r}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="w-full mt-4 bg-green-50 rounded-lg p-4">
+        <h1 className="font-bold text-lg">รางวัลที่ 5</h1>
+        <h2>รางวัลละ 20,000 บาท</h2>
+        <div className="font-bold text-xl mt-4 grid grid-cols-5 px-8">
+          {[
+            "229120",
+            "679028",
+            "677223",
+            "589702",
+            "670839",
+            "229120",
+            "679028",
+            "677223",
+            "589702",
+            "670839",
+          ].map((r, idx) => (
+            <div className="float-left mb-4">
+              <div className="float-left bg-gray-200 px-4 mx-4 text-blue-500">
+                {idx + 1}
+              </div>
+              <div className="float-left">{r}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div>
+      <div className="w-3/4 mx-auto bg-green-100 mt-8 text-center rounded-lg">
+        <div className="font-bold text-xl  ">ตรวจผล Lottery</div>
+        <LotteryForm />
+        <LotteryResult />
+      </div>
+      <LotteryTable />
+    </div>
+  );
+};
+export default Lottery1;
