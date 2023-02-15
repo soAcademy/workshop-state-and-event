@@ -1,5 +1,37 @@
+const LotteryForm = () => (
+  <>
+    <div className="w-1/2 mx-auto bg-gray-100 mt-8 p-8">
+      <textarea
+        id="message"
+        rows="4"
+        className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="กรอกเลขลอตเตอรี่"
+      ></textarea>
+      <div className="space-x-4">
+        <button className="bg-yellow-500 active:bg-amber-500 rounded-lg mt-4 p-4">
+          ตรวจหวย
+        </button>
+        <button className="bg-blue-200 active:bg-purple-200 rounded-lg mt-4 p-4">
+          เคลียร์เลข
+        </button>
+      </div>
+    </div>
+  </>
+);
+
+const LotteryResult = () => (
+  <>
+    <div className="w-1/2 mx-auto bg-gray-50 my-8 py-8 text-left pl-8">
+      <div>130999 ถูกกินครับ</div>
+      <div>297410 เย้! ถูกรางวัลข้างเคียงรางวัลที่ 1</div>
+      <div>557584 เย้! ถูกรางวัลที่ 3</div>
+      <div className="font-bold mt-4">คุณถูกหวยงวดนี้ทั้งสิ้น 180,000 บาท</div>
+    </div>
+  </>
+);
+
 const LotteryTable = () => (
-  <div>
+  <div className="mb-16">
     <div>
       <h1 className="text-xl font-bold">
         ผลการออกรางวัลสลากกินแบ่งรัฐบาล
@@ -98,7 +130,7 @@ const LotteryTable = () => (
         ))}
       </div>
     </div>
-    
+
     <div className="w-full mt-4 bg-green-50 rounded-lg p-4">
       <h1 className="font-bold text-lg">รางวัลที่ 5</h1>
       <h2>รางวัลละ 20,000 บาท</h2>
@@ -124,7 +156,6 @@ const LotteryTable = () => (
         ))}
       </div>
     </div>
-    
   </div>
 );
 
@@ -132,26 +163,8 @@ const Lottery1 = () => {
   return (
     <div className="w-3/4 mx-auto text-center mt-8">
       <h1 className="font-bold text-2xl">ตรวจผลเตอรี่ by หวยบิน</h1>
-      <div className="w-1/2 mx-auto bg-gray-100 mt-8 p-8">
-        <textarea
-          id="message"
-          rows="4"
-          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="กรอกเลขลอตเตอรี่"
-        ></textarea>
-        <div className="space-x-4">
-          <button className="bg-yellow-500 mt-4 p-4">ตรวจหวย</button>
-          <button className="bg-blue-200 mt-4 p-4">เคลียร์เลข</button>
-        </div>
-      </div>
-      <div className="w-1/2 mx-auto bg-gray-50 my-8 py-8 text-left pl-8">
-        <div>130999 ถูกกินครับ</div>
-        <div>297410 เย้! ถูกรางวัลข้างเคียงรางวัลที่ 1</div>
-        <div>557584 เย้! ถูกรางวัลที่ 3</div>
-        <div className="font-bold mt-4">
-          คุณถูกหวยงวดนี้ทั้งสิ้น 180,000 บาท
-        </div>
-      </div>
+      <LotteryForm />
+      <LotteryResult />
       <LotteryTable />
     </div>
   );
