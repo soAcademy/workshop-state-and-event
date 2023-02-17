@@ -4,7 +4,7 @@ import { BsSearch } from "react-icons/bs";
 export const Form = ({ setCheckClicked, setQueryNumbers, checkClicked }) => {
   return (
     <div className="bg-gradi ent-to-b w-1/3 rounded-md from-slate-200 to-slate-50 p-5">
-      <p className="text-lg">กรอกเลข</p>
+      <p className="text-lg">กรอกเลข </p>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -16,7 +16,7 @@ export const Form = ({ setCheckClicked, setQueryNumbers, checkClicked }) => {
         }}
       >
         <textarea
-          placeholder="กรอกตัวเลข"
+          placeholder="กรอกตัวเลขที่ต้องการตรวจ เช่น 11, 222, 333333"
           cols={6}
           rows={5}
           className="my-2 max-h-[200px] min-h-[200px] w-full px-3 py-1"
