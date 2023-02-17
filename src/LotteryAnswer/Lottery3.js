@@ -28,7 +28,7 @@ const LotteryForm = ({
           className="bg-blue-200 active:bg-purple-200 rounded-lg mt-4 p-4"
           onClick={() => {
             setLotteryResult();
-            setLotteryNumbers('');
+            setLotteryNumbers("");
           }}
         >
           เคลียร์เลข
@@ -91,7 +91,8 @@ const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
         <h1 className="font-bold text-lg">เลขท้าย 2 ตัว</h1>
         <h2>รางวัลละ {lotteryData[6]?.prize?.toLocaleString("TH-th")} บาท</h2>
         <div className="font-bold text-2xl mt-4">
-          {lotteryData[6]?.numbers[0]}
+          <div className="flex-auto">{lotteryData[6]?.numbers[0]}</div>
+          <div className="flex-auto">{lotteryData[6]?.numbers[1]}</div>
         </div>
       </div>
     </div>
@@ -100,7 +101,6 @@ const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
         <h1 className="font-bold text-lg">รางวัลข้างเคียงรางวัลที่ 1</h1>
         <h2>รางวัลละ {lotteryData[8]?.prize?.toLocaleString("TH-th")} บาท</h2>
         <div className="font-bold text-2xl mt-4 flex">
-          <div className="flex-auto">{lotteryData[8]?.numbers[0]}</div>
           <div className="flex-auto">{lotteryData[8]?.numbers[0]}</div>
         </div>
       </div>
@@ -198,14 +198,15 @@ const useCheckLottery = ({ lotteryData }) => {
   const [lotteryResult, setLotteryResult] = useState();
 
   const checkLotteryPrize = (number) =>
-    lotteryData.findIndex((r, idx) =>
-      idx === 5
-        ? r.numbers.includes(number.substr(-3))
-        : idx === 6
-        ? r.numbers.includes(number.substr(-2))
-        : idx === 7
-        ? r.numbers.includes(number.substr(0, 3))
-        : r.numbers.includes(number)
+    lotteryData.findIndex(
+      (r, idx) =>
+        idx === 5
+          ? r.numbers.includes(number.substr(-3)) //เลขท้าย 3 ตัว
+          : idx === 6
+          ? r.numbers.includes(number.substr(-2)) // เลขท้าย 2 ตัว
+          : idx === 7
+          ? r.numbers.includes(number.substr(0, 3)) // เลขหน้า 3 ตัว
+          : r.numbers.includes(number) // รางวัลอื่นๆที่เหลือ
     );
 
   const getPrizeText = (index) =>
@@ -220,6 +221,7 @@ const useCheckLottery = ({ lotteryData }) => {
       : "รางวัลข้างเคียงรางวัลที่ 1";
 
   useEffect(() => {
+    console.log("lotteryNumbers", lotteryNumbers);
     const _lotteryNumbers = [
       ...new Set(lotteryNumbers?.split("\n").filter((r) => r.length === 6)),
     ];

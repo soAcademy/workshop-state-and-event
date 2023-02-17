@@ -1,40 +1,54 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const LotteryForm = () => (
+const LotteryForm = ({ handleSubmit }) => (
   <>
     <div className="w-1/2 m-auto mt-8 ">
       <h1 className="text-center my-10 text-3xl bg-gradient-to-r from-cyan-500 to-blue-500 py-3 rounded-[20px] text-white">
         ตรวจลอตเตอรี่ by KhunBoeing
       </h1>
       <div className="bg-gradient-to-r from-cyan-500 to-green-500 px-5 py-9 rounded-[20px] shadow-xl">
-        <form>
+        <form onSubmit={handleSubmit}>
           <label className=" text-2xl flex ml-5 bg-green-100 w-fit p-3 rounded-[20px]">
             ใส่เลขลอตเตอรี่
           </label>
           <div className="flex flex-col items-center">
             <input
               type="number"
+              max="10000000"
+              min="0"
               className="w-2/3 mt-5 text-lg shadow-lg rounded-lg"
             ></input>
             <input
+              max="10000000"
+              min="0"
               type="number"
               className="w-2/3 mt-5 text-lg shadow-lg rounded-lg"
             ></input>
             <input
+              max="10000000"
+              min="0"
               type="number"
               className="w-2/3 mt-5 text-lg shadow-lg rounded-lg"
             ></input>
             <input
+              max="10000000"
+              min="0"
               type="number"
               className="w-2/3 mt-5 text-lg shadow-lg rounded-lg"
             ></input>
           </div>
           <div className="flex justify-between mx-24 mt-10">
-            <button className="bg-white p-3 rounded-[10px] text-gray-800 shadow-lg hover:cursor-pointer hover:bg-yellow-500 hover:text-white ">
+            <button
+              type="submit"
+              className="bg-white p-3 rounded-[10px] text-gray-800 shadow-lg hover:cursor-pointer hover:bg-yellow-500 hover:text-white "
+            >
               ตรวจหวย
             </button>
-            <button className="bg-gray-300 p-3 rounded-[10px] text-gray-800 shadow- hover:cursor-pointer hover:bg-slate-600 hover:text-white ">
+            <button
+              type="button"
+              className="bg-gray-300 p-3 rounded-[10px] text-gray-800 shadow- hover:cursor-pointer hover:bg-slate-600 hover:text-white "
+            >
               เคลียร์เลข
             </button>
           </div>
@@ -43,26 +57,22 @@ const LotteryForm = () => (
     </div>
   </>
 );
-const LotteryResult = () => (
+const LotteryResult = ({ lotteryResult }) => (
   <>
     <div className="w-1/2 m-auto mt-8 ">
       <div className="bg-gradient-to-r from-sky-400 to-yellow-300 rounded-[20px] flex flex-col pl-10 py-6 my-8 shadow-lg">
-        <div className="text-white ">
-          <p className="text-xl">1234567 ถูกกินจ้า</p>
-        </div>
-        <div className="text-white">
-          <p className="text-xl">1234567 ถูกกินจ้า</p>
-        </div>
-        <div className="text-white">
-          <p className="text-xl">1234567 ถูกกินจ้า</p>
-        </div>
-        <div className="text-white">
-          <p className="text-xl">1234567 ถูกกินจ้า</p>
-        </div>
+        {console.log("::lotteryResult", lotteryResult)}
+        {lotteryResult?.resultTexts?.map((r) => (
+          <div className="text-white">
+            <p className="text-xl">{r}</p>
+          </div>
+        ))}
         <div className="mt-4">
           <p className="text-xl">
             คุณถูกรางวัลทั้งหมด :{" "}
-            <span className="text-green-700">0 บาทถ้วน</span>
+            <span className="text-green-700">
+              {lotteryResult?.totalPrize}บาทถ้วน
+            </span>
           </p>
         </div>
       </div>
@@ -214,6 +224,9 @@ const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
           </tr>
         </thead>
         <tbody>
+          {/* "[...new Array(5).keys()]"  สร้าง Array ขึ้นมา 5 ช่อง(เปล่าๆ) เพื่อทำให้เกิดการวนลูป 5 ครั้ง */}
+          {/*  */}
+          {console.log("lotteryData", lotteryData)}
           {[...new Array(5).keys()]?.map((row) => (
             <tr className="border-2 border-white">
               {lotteryData[3]?.number
@@ -263,12 +276,9 @@ const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
   </>
 );
 
-const useFetchLottery = ({ lotteryDate }) => {
+const useFetchLottery = (lotteryDate) => {
   const [lotteryData, setLotteryData] = useState([]);
   const [lotteryDateTitle, setlotteryDateTitle] = useState();
-
-  console.log("lotteryDateTitle", lotteryDateTitle);
-  console.log("lotteryData", lotteryData);
 
   useEffect(() => {
     axios({
@@ -278,14 +288,16 @@ const useFetchLottery = ({ lotteryDate }) => {
       .then((res) => {
         setlotteryDateTitle(res.data?.data?.lotteryDateTitle);
 
-        // ข้อมูลที่ไปยิงเอามาก้อน Data เป็น {}
+        // const _lotteryDataValue = Object.values(res.data?.data?.prizes);
+        // console.log("_lotteryDataValue", _lotteryDataValue);
+
+        // object.value = ทำให้มี new array ที่มีแต่ values
         const _lotteryData = Object.values(res.data?.data?.prizes)?.map(
           (r) => ({
             number: r.data,
             prize: r.info[1],
           })
         );
-        console.log(_lotteryData);
         setLotteryData(_lotteryData);
       })
       .catch((err) => console.log(err));
@@ -296,16 +308,100 @@ const useFetchLottery = ({ lotteryDate }) => {
     lotteryDateTitle,
   };
 };
+// lotteryDate = งวดไหน
+
+// -----------------------logic ตรวจหวย---------------------------
+const useCheckLottery = (lotteryData, listOfCheckingNumber) => {
+  const [toggleCalculateResult, setToggleCalculateResult] = useState(false);
+  const [lotteryResult, setLotteryResult] = useState();
+  const checkLotteryPrize = (number) => {
+    console.log("checkLotteryPrize::number", number);
+    return lotteryData.findIndex(
+      (r, idx) =>
+        idx === 5
+          ? r.number.includes(number.substr(-3)) //เลขท้าย 3 ตัว
+          : idx === 6
+          ? r.number.includes(number.substr(-2)) // เลขท้าย 2 ตัว
+          : idx === 7
+          ? r.number.includes(number.substr(0, 3)) // เลขหน้า 3 ตัว
+          : r.number.includes(number) // รางวัลอื่นๆที่เหลือ
+    );
+  };
+
+  const getPrizeText = (index) =>
+    index < 5
+      ? `รางวัลที่ ${index + 1}`
+      : index === 5
+      ? "รางวัลเลขท้าย 3 ตัว"
+      : index === 6
+      ? "รางวัลเลขท้าย 2 ตัว"
+      : index === 7
+      ? "รางวัลเลขหน้า 3 ตัว"
+      : "รางวัลข้างเคียงรางวัลที่ 1";
+
+  useEffect(() => {
+    console.log("listOfCheckingNumber", listOfCheckingNumber);
+    const _lotteryResult = listOfCheckingNumber.map((number) => {
+      console.log("number", number.substr(0, 3));
+      return {
+        number,
+        idxPrize: checkLotteryPrize(number),
+      };
+    });
+
+    const resultTexts = _lotteryResult.map(
+      (r) =>
+        "หมายเลข " +
+        r.number +
+        " " +
+        (r.idxPrize === -1
+          ? "ถูกกินจ้า 😂"
+          : `ถูก${getPrizeText(r.idxPrize)} 🎉`)
+    );
+
+    const totalPrize = _lotteryResult
+      .filter((r) => r.idxPrize !== -1)
+      .reduce((acc, r) => acc + lotteryData[r.idxPrize].prize, 0);
+
+    setLotteryResult({
+      resultTexts,
+      totalPrize,
+    });
+  }, [toggleCalculateResult]);
+
+  return {
+    toggleCalculateResult,
+    setToggleCalculateResult,
+    lotteryResult,
+    setLotteryResult,
+  };
+};
 
 const CheckLottery = () => {
+  const [listOfCheckingNumber, setListOfCheckingNumber] = useState([]);
+
   // เรียกใช้งาน hook
   const { lotteryData, lotteryDateTitle } = useFetchLottery("2022-12-05");
-
+  const { toggleCalculateResult, setToggleCalculateResult, lotteryResult } =
+    useCheckLottery(lotteryData, listOfCheckingNumber);
+  console.log("lotteryResult", lotteryResult);
+  const handleSubmit = (number) => {
+    number.preventDefault();
+    const listNumber = Object.values(number.target.elements)
+      .map((item) => item.value)
+      .filter((r) => r !== "");
+    setListOfCheckingNumber(listNumber);
+    setToggleCalculateResult(!toggleCalculateResult);
+  };
   return (
     <>
       <div>
-        <LotteryForm />
-        <LotteryResult />
+        <LotteryForm
+          toggleCalculateResult={toggleCalculateResult}
+          setToggleCalculateResult={setToggleCalculateResult}
+          handleSubmit={handleSubmit}
+        />
+        <LotteryResult lotteryResult={lotteryResult || []} />
         <LotteryTable
           lotteryData={lotteryData}
           lotteryDateTitle={lotteryDateTitle}
