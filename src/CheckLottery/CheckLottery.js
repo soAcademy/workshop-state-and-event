@@ -314,18 +314,37 @@ const useFetchLottery = (lotteryDate) => {
 const useCheckLottery = (lotteryData, listOfCheckingNumber) => {
   const [toggleCalculateResult, setToggleCalculateResult] = useState(false);
   const [lotteryResult, setLotteryResult] = useState();
-  const checkLotteryPrize = (number) => {
-    console.log("checkLotteryPrize::number", number);
-    return lotteryData.findIndex(
-      (r, idx) =>
-        idx === 5
-          ? r.number.includes(number.substr(-3)) //เลขท้าย 3 ตัว
-          : idx === 6
-          ? r.number.includes(number.substr(-2)) // เลขท้าย 2 ตัว
-          : idx === 7
-          ? r.number.includes(number.substr(0, 3)) // เลขหน้า 3 ตัว
-          : r.number.includes(number) // รางวัลอื่นๆที่เหลือ
-    );
+
+  const checkPrizes = (number) => {
+    const prizes = [];
+    if (number === lotteryData[0].number[0]) {
+      prizes.push(0);
+    }
+    if (lotteryData[1].number.includes(number)) {
+      prizes.push(1);
+    }
+    if (lotteryData[2].number.includes(number)) {
+      prizes.push(2);
+    }
+    if (lotteryData[3].number.includes(number)) {
+      prizes.push(3);
+    }
+    if (lotteryData[4].number.includes(number)) {
+      prizes.push(4);
+    }
+    if (lotteryData[5].number.includes(number.substr(0, 3))) {
+      prizes.push(5);
+    }
+    if (lotteryData[6].number.includes(number.substr(-2))) {
+      prizes.push(6);
+    }
+    if (lotteryData[7].number.includes(number.substr(-3))) {
+      prizes.push(7);
+    }
+    if (lotteryData[8].number.includes(number)) {
+      prizes.push(8);
+    }
+    return prizes;
   };
 
   const getPrizeText = (index) =>
@@ -342,26 +361,32 @@ const useCheckLottery = (lotteryData, listOfCheckingNumber) => {
   useEffect(() => {
     console.log("listOfCheckingNumber", listOfCheckingNumber);
     const _lotteryResult = listOfCheckingNumber.map((number) => {
-      console.log("number", number.substr(0, 3));
       return {
         number,
-        idxPrize: checkLotteryPrize(number),
+        idxPrize: checkPrizes(number),
       };
     });
-
+    console.log("_lotteryResult", _lotteryResult);
     const resultTexts = _lotteryResult.map(
       (r) =>
         "หมายเลข " +
         r.number +
         " " +
-        (r.idxPrize === -1
+        (r.idxPrize.length === 0
           ? "ถูกกินจ้า 😂"
-          : `ถูก${getPrizeText(r.idxPrize)} 🎉`)
+          : r.idxPrize.reduce((acc, r) => {
+              return `${acc},${getPrizeText(r)}`;
+            }, ``))
     );
 
     const totalPrize = _lotteryResult
-      .filter((r) => r.idxPrize !== -1)
-      .reduce((acc, r) => acc + lotteryData[r.idxPrize].prize, 0);
+      .filter((r) => r.idxPrize.length !== 0)
+      .reduce((acc, r) => {
+        const sumPrize = r.idxPrize.reduce((acc, index) => {
+          return (acc += lotteryData[index].prize);
+        }, 0);
+        return acc + sumPrize;
+      }, 0);
 
     setLotteryResult({
       resultTexts,
