@@ -151,7 +151,7 @@ const App = () => {
       {/* <CustomHook4 /> */}
       {/* <Lottery1 /> */}
       {/* <Lottery2 /> */}
-      <LotteryChecker />
+      {/* <LotteryChecker /> */}
     </>
   );
 };
