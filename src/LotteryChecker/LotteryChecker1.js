@@ -15,9 +15,9 @@ const LotteryChecker1 = () => {
   };
 
   return (
-    <div className="window w-full h-full font-prompt text-sm p-8">
+    <div className="window w-full h-full flex justify-center font-prompt text-sm p-8">
       {Object.keys(allDatasApi).length > 0 && datasLottery.length > 0 && (
-        <div className="main-block w-full">
+        <div className="main-block w-full lg:w-5/6">
           <div className="header mb-8">
             <h1 className="text-center text-3xl">ตรวจผลลอตเตอรี่ by หวยบิน</h1>
           </div>
