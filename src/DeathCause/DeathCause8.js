@@ -4,6 +4,7 @@ import {
   useSumDeathInYear,
   useByProvince,
 } from "./hooks";
+
 import {
   ByCause,
   SelectYear,

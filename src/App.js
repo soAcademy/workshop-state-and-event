@@ -39,7 +39,7 @@
 // import DeathCause5 from "./DeathCause/DeathCause5";
 // import DeathCause6 from "./DeathCause/DeathCause6";
 // import DeathCause7 from "./DeathCause/DeathCause7";
-import DeathCause8 from "./DeathCause/DeathCause8";
+// import DeathCause8 from "./DeathCause/DeathCause8";
 
 // import Retirement1 from "./Retirement/Retirement1";
 // import Retirement2 from "./Retirement/Retirement2";
@@ -52,6 +52,8 @@ import DeathCause8 from "./DeathCause/DeathCause8";
 // import CustomHook2 from "./CustomHook/CustomHook2";
 // import CustomHook3 from "./CustomHook/CustomHook3";
 // import CustomHook4 from "./CustomHook/CustomHook4";
+
+import LotteryChecker1 from "./LotteryChecker/LotteryChecker1";
 
 const App = () => {
   return (
@@ -121,7 +123,7 @@ const App = () => {
       {/* {<DeathCause5/>} */}
       {/* {<DeathCause6/>} */}
       {/* {<DeathCause7/>} */}
-      {<DeathCause8/>}
+      {/* {<DeathCause8/>} */}
 
       {/* <Retirement1 /> */}
       {/* <Retirement2 /> */}
@@ -136,6 +138,8 @@ const App = () => {
       {/* <CustomHook2/> */}
       {/* <CustomHook3/> */}
       {/* <CustomHook4/> */}
+
+      <LotteryChecker1 />
     </div>
   );
 };
