@@ -1,31 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { BsArrowRightCircle } from "react-icons/bs";
-export const History = ({ setPage, page }) => {
-  const [history, setHistory] = useState([]);
-  const [loadMore, setLoadMore] = useState(0);
-  useEffect(() => {
-    const queryDate = new Date(new Date().getTime() - 86400000 * 90 * loadMore)
-      .toISOString()
-      .split("T")[0];
-    console.log("_queryDate", queryDate);
-    var config = {
-      method: "get",
-      url: `https://www.thairath.co.th/api-lottery/history?date=${queryDate}`,
-      headers: {},
-    };
+import { useHistory } from "../hooks";
 
-    axios(config)
-      .then(function (response) {
-        console.log(response.data.data);
-        const _history = [...history, ...response.data.data];
-        console.log("_history", _history);
-        setHistory(_history);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [loadMore]);
+export const History = ({ setPage, page }) => {
+  const [loadMore, setLoadMore] = useState(0);
+  const {history} = useHistory({loadMore})
+
   return (
     <>
       <main className="flex flex-col items-center justify-center font-kanit">
