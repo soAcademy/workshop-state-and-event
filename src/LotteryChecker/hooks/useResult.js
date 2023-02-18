@@ -11,5 +11,5 @@ export const useResult = ({ queryNumbers, prizes, checkClicked }) => {
     setSumResult(sumResult);
     setResult(_result);
   }, [checkClicked]);
-  return { result, sumResult };
+  return { result, sumResult, setResult, setSumResult };
 };

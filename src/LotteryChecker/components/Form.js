@@ -24,8 +24,9 @@ export const Form = ({ setCheckClicked, setQueryNumbers, checkClicked }) => {
         <div className="m-4 flex space-x-4 font-bold">
           <button
             type="submit"
-            className="flex h-10 w-1/2 items-center justify-center rounded-md
-            bg-yellow-300 hover:bg-yellow-400 active:bg-amber-300"
+            className="flex h-10 w-1/2 items-center justify-center rounded-md 
+            bg-yellow-300 shadow-lg shadow-slate-300
+            duration-300 hover:bg-yellow-400 active:bg-amber-300"
           >
             <BsSearch className="text-xl" />
             &nbsp; ตรวจหวย
@@ -33,7 +34,8 @@ export const Form = ({ setCheckClicked, setQueryNumbers, checkClicked }) => {
           <button
             type="reset"
             className="flex h-10 w-1/2 items-center justify-center rounded-md 
-            bg-gray-400 hover:bg-gray-500 active:bg-slate-400"
+            bg-gray-400 shadow-lg shadow-slate-300
+            duration-300 hover:bg-gray-500 active:bg-slate-400"
           >
             <AiOutlineReload className="text-xl" />
             &nbsp; เคลียร์เลข
