@@ -8,10 +8,11 @@
 // import RetirementPlanDew from "./Retirement plan/HomeDew";
 // import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverterDew";
 // import CurrencyConverterHome from "./CurrencyConverterTest/home";
-// import DeathCauseHome from "./DeathCauseCustomHook/DeathCause-home";
+
 // import CustomHook5 from "./CustomHook/CustomHook5"
 // import LotteryHome from "./Lottery/LotteryHome";
-import Playground1 from "./CustomHookPlayground/Playground1";
+// import Playground1 from "./CustomHookPlayground/Playground1";
+import CustomHookDeathCauseHome from "./CustomHookDeathCause/home";
 
 const App0 = () => {
   return (
@@ -19,11 +20,11 @@ const App0 = () => {
       {/* <RetirementPlan/> */}
       {/* <CurrencyConverter1/> */}
       {/* <CurrencyConverterHome/> */}
-      {/* <DeathCauseHome/> */}
+      <CustomHookDeathCauseHome/>
       {/* <DeathCause8/> */}
       {/* <CustomHook5/> */}
       {/* <LotteryHome/> */}
-      <Playground1/>
+      {/* <Playground1/> */}
      
 
      

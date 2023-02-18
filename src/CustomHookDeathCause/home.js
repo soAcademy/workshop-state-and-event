@@ -1,10 +1,13 @@
-import { useCharts, useCalculateDeath } from "./hooks"
 import thailandDeathCause from "../DeathCauseAnswer/thailand-death-cause.json";
 import ReactECharts from "echarts-for-react";
+import {
+  useChartOption,
+  useTotalDeath,
+  useDeathByCause,
+  useDeathByProvince,
+} from "./hooks";
 
-
-//render
-const DeathByCause = ({ totalDeath, deathByCauses, cause, setCause }) => (
+const DeathByCause = ({ totalDeath, deathByCauses, setCause }) => (
   <div className="bg-blue-100 w-1/3 p-4">
     <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
     <table className="w-full">
@@ -82,30 +85,33 @@ const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => {
     </div>
   );
 };
-//home page
-const DeathCauseHome = () => {
+//calculate
+const DeathCause8 = () => {
   //const data
   const yearLists = [...new Set(thailandDeathCause.map((r) => r.year))].sort(
     (a, b) => a - b
   );
-  //use hook1 useCharts
-  const {
-    chartOption1,
-    chartOption2,
-  } = useCharts({ yearLists });
+  console.log(">>>>>>>>>>>", yearLists);
 
-  //use hook2  useCalculateDeath
   const {
+    deathByProvinces,
     currentYear,
     setCurrentYear,
-    totalDeath,
-    deathByCauses,  
-    deathByProvinces,
+  } = useDeathByProvince({ thailandDeathCause });
+  const { totalDeath } = useTotalDeath({
+    thailandDeathCause,
+    currentYear,
+  });
+  const { deathByCauses } = useDeathByCause({
+    currentYear,
+    thailandDeathCause,
+  });
+  const { chartOption1, chartOption2 } = useChartOption({
+    currentYear,
+    yearLists,
+    thailandDeathCause,
+  }); 
 
-  } = useCalculateDeath({ thailandDeathCause,yearLists });
-  console.log("thailandDeathCause",thailandDeathCause);
-  console.log("yearLists,currentYear, totalDeath, deathByCauses",yearLists,currentYear, totalDeath, deathByCauses);
-  //render
   return (
     <div className="p-4">
       <h1 className="font-bold text-xl">
@@ -128,4 +134,4 @@ const DeathCauseHome = () => {
   );
 };
 
-export default DeathCauseHome;
+export default DeathCause8;
