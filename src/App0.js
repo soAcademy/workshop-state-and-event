@@ -10,7 +10,9 @@
 // import CurrencyConverterHome from "./CurrencyConverterTest/home";
 // import DeathCauseHome from "./DeathCauseCustomHook/DeathCause-home";
 // import CustomHook5 from "./CustomHook/CustomHook5"
-import LotteryHome from "./Lottery/LotteryHome";
+// import LotteryHome from "./Lottery/LotteryHome";
+import Playground1 from "./CustomHookPlayground/Playground1";
+
 const App0 = () => {
   return (
     <div>
@@ -20,7 +22,9 @@ const App0 = () => {
       {/* <DeathCauseHome/> */}
       {/* <DeathCause8/> */}
       {/* <CustomHook5/> */}
-      <LotteryHome/>
+      {/* <LotteryHome/> */}
+      <Playground1/>
+     
 
      
     </div>
