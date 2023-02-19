@@ -12,6 +12,7 @@ export const usePrizes = ({page}) => {
       url: `https://www.thairath.co.th/api-lottery?history=1&date=${queryDate}`,
       headers: {},
     };
+    setPrizes([])
 
     axios(config)
       .then(function (response) {

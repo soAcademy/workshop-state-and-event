@@ -64,7 +64,7 @@ export const History = ({ setPage, page }) => {
           );
         })}
         <button
-          className="mx-auto rounded-md bg-emerald-500 p-1 px-2"
+          className="mx-auto rounded-md bg-emerald-500 p-1 px-2 my-6"
           onClick={() => setLoadMore(loadMore + 1)}
         >
           โหลดเพิ่ม
