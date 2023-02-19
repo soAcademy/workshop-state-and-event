@@ -4,7 +4,7 @@ import { checkResult } from "./checkResult";
 
 export const useResult = ({ queryNumbers, prizes, checkClicked }) => {
   const [result, setResult] = useState([]);
-  const [sumResult, setSumResult] = useState();
+  const [sumResult, setSumResult] = useState(0);
   useEffect(() => {
     const _result = checkResult({ queryNumbers, prizes });
     const sumResult = sum(_result?.map((e) => e.prize));
