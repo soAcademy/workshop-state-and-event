@@ -1,6 +1,6 @@
 export const Result = ({ queryNumbers, result, sumResult }) => {
   return (
-    <div className="my-4 w-11/12 md:w-3/4 rounded-md bg-gradient-to-t from-slate-100 md:px-8 py-4">
+    <div className="my-4 w-11/12 md:w-2/3 lg:w-1/3 rounded-md bg-gradient-to-t from-slate-50 md:px-8 py-4">
       {queryNumbers?.map((number, idx) => {
         return result?.findIndex((result) => result.number === number) !==
           -1 ? (
