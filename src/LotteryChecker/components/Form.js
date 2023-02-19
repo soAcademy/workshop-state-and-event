@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 
 export const Form = ({ setCheckClicked, setQueryNumbers, checkClicked }) => {
   return (
-    <div className="bg-gradi ent-to-b w-1/3 rounded-md from-slate-200 to-slate-50 p-5">
+    <div className="bg-gradient-to-b w-11/12 md:w-2/3 lg:w-1/3 rounded-md from-slate-200 to-slate-50 p-5 ">
       <p className="text-lg">กรอกเลข </p>
       <form
         onSubmit={(e) => {
