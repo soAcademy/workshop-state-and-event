@@ -1,7 +1,7 @@
 import { AiOutlineReload } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 
-export const Form = ({ setCheckClicked, setQueryNumbers, checkClicked }) => {
+export const Form = ({ setCheckClicked, setQueryNumbers, checkClicked,setSumResult }) => {
   return (
     <div className="bg-gradient-to-b w-11/12 md:w-2/3 lg:w-1/3 rounded-md from-slate-200 p-5 ">
       <p className="text-lg">กรอกเลข </p>
@@ -24,6 +24,9 @@ export const Form = ({ setCheckClicked, setQueryNumbers, checkClicked }) => {
         <div className="m-4 flex space-x-4 font-bold">
           <button
             type="submit"
+            onClick={()=>{
+              setSumResult(0)
+              setQueryNumbers([])}}
             className="flex h-10 w-1/2 items-center justify-center rounded-md 
             bg-yellow-300 shadow-lg shadow-slate-300
             duration-300 hover:bg-yellow-400 active:bg-amber-300"

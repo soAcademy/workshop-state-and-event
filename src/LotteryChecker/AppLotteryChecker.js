@@ -38,6 +38,7 @@ const AppLotteryChecker = () => {
             setCheckClicked={setCheckClicked}
             setQueryNumbers={setQueryNumbers}
             checkClicked={checkClicked}
+            setSumResult={setSumResult}
           />
           <Result
             queryNumbers={queryNumbers}
@@ -62,6 +63,7 @@ const AppLotteryChecker = () => {
             setCheckClicked={setCheckClicked}
             setQueryNumbers={setQueryNumbers}
             checkClicked={checkClicked}
+            setSumResult={setSumResult}
           />
           <Result
             queryNumbers={queryNumbers}
