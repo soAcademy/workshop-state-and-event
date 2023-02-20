@@ -52,6 +52,7 @@ const CurrencyConverter1 = () => {
         {/* สร้างกล้องใหญ่อันใหม่ที่ตรงนี้ */}
         <div className="w-1/2 mx-auto  mt-8">
         <h2 className="text-lg font-bold text-center">อัตราแลกเปลี่ยนย้อนหลัง</h2>
+        {/* กล่องย่อยแรก */}
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>1 วัน</div>
@@ -64,6 +65,9 @@ const CurrencyConverter1 = () => {
             <div>1 USD = 32.0190 THB </div>
           </div>
         </div>
+          {/* จบกล่องย่อยแรก */}
+
+          {/* กล่องย่อยสุดท้าย */}
         <div className="flex mt-4">
           <div className="w-1/2">
             <div>30 วัน</div>
@@ -76,6 +80,7 @@ const CurrencyConverter1 = () => {
             <div>1 USD = 32.0190 THB </div>
           </div>
         </div>
+        {/* จบกล่องย่อยสุดท้าย */}
         </div>
         {/* จบกล่องใหญ่ที่สองที่ตรงนี้ */}
       </div>
