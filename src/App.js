@@ -41,8 +41,8 @@
 // import Retirement4 from "./Retirement/Retirement4";
 // import Retirement5 from "./Retirement/Retirement5";
 // import CurrencyConverter1 from "./CurrencyConverter/CurrencyConverter1";
-import CurrencyConverter2 from "./CurrencyConverter/CurrencyConverter2.js";
-// import CurrencyConverter3 from "./CurrencyConverter/CurrencyConverter3";
+// import CurrencyConverter2 from "./CurrencyConverter/CurrencyConverter2.js";
+import CurrencyConverter3 from "./CurrencyConverter/CurrencyConverter3";
 // import CurrencyConverter4 from "./CurrencyConverter/CurrencyConverter4";
 // import CurrencyConverter5 from "./CurrencyConverter/CurrencyConverter5";
 // import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
@@ -108,8 +108,8 @@ const App = () => {
       {/* <Retirement4 /> */}
       {/* <Retirement5 /> */}
       {/* <CurrencyConverter1 /> */}
-      <CurrencyConverter2 />
-      {/* <CurrencyConverter3 /> */}
+      {/* <CurrencyConverter2 /> */}
+      <CurrencyConverter3 />
       {/* <CurrencyConverter4 /> */}
       {/* <CurrencyConverter5 /> */}
       {/* <CurrencyConverter6 /> */}
