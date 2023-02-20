@@ -4,6 +4,7 @@ const CurrencyConverter1 = () => {
     <div className="">
       <div className="1/2 mx-auto bg-gray-200 mt-6 p-4">
         <h1 className="flex mt-4 space-x-8">
+        สร้างสองกล่องบอกจำนวนและกล่องจาก
           <div className="w-1/3">
             <label>จำนวน</label>
             <br />
@@ -24,6 +25,7 @@ const CurrencyConverter1 = () => {
             ></input>
           </div>
         </h1>
+        จบที่ตรงนี้
       </div>
     </div>
   );
