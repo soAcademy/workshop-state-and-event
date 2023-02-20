@@ -48,6 +48,36 @@ const CurrencyConverter1 = () => {
           </div>
         </form>
         {/* จบกล่อง Form ที่ตรงนี้ */}
+        
+        {/* สร้างกล้องใหญ่อันใหม่ที่ตรงนี้ */}
+        <div className="w-1/2 mx-auto  mt-8">
+        <h2 className="text-lg font-bold text-center">อัตราแลกเปลี่ยนย้อนหลัง</h2>
+        <div className="flex mt-4">
+          <div className="w-1/2">
+            <div>1 วัน</div>
+            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
+            <div>1 USD = 32.0190 THB </div>
+          </div>
+          <div className="w-1/2">
+            <div>7 วัน</div>
+            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
+            <div>1 USD = 32.0190 THB </div>
+          </div>
+        </div>
+        <div className="flex mt-4">
+          <div className="w-1/2">
+            <div>30 วัน</div>
+            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
+            <div>1 USD = 32.0190 THB </div>
+          </div>
+          <div className="w-1/2">
+            <div>60 วัน</div>
+            <div className="font-bold text-xl">1 THB = 0.0249101 USD</div>
+            <div>1 USD = 32.0190 THB </div>
+          </div>
+        </div>
+        </div>
+        {/* จบกล่องใหญ่ที่สองที่ตรงนี้ */}
       </div>
     </div>
   );
