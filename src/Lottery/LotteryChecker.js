@@ -1,117 +1,200 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+const useFetchLottery = ({ lotteryDate }) => {
+  const [lotteryData, setLotteryData] = useState([]);
+  const [lotteryDateTitle, setLotteryDateTitle] = useState();
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `https://www.thairath.co.th/api-lottery?history=1&date=${lotteryDate}`,
+    }).then((response) => {
+      setLotteryDateTitle(response.data?.data?.lotteryDateTitle);
+
+      const _lotteryData = Object.values(response.data?.data?.prizes)?.map(
+        (r) => ({
+          numbers: r.data,
+          prize: r.info[1],
+        })
+      );
+      setLotteryData(_lotteryData);
+    });
+  }, [lotteryData]);
+  return {
+    lotteryData,
+    lotteryDateTitle,
+  };
+};
+
 const LotteryChecker = () => {
+  const { lotteryData, lotteryDateTitle } = useFetchLottery("2022-12-05");
+
   return (
     <>
-      <div className="w-1/2 mx-auto mt-10 rounded-lg bg-green-200">
-        <div className="text-center">
-          <h1 className="text-xl text-black">ตรวจผลลอตเตอรี่ By Kora</h1>
+      <div className="w-3/4 mx-auto">
+        <div className="mt-8 text-center">
+          <h1 className="text-2xl ">ตรวจผลลอตเตอรี่ by Korana</h1>
         </div>
-        <form className="p-3">
-          <p className="mt-2">กรอกเลข</p>
-          <div className="w-full mx-auto mt-2">
-            <textarea
-              type="text"
-              id="LotteryID"
-              className="border-2 border-blue-300 rounded py-2 w-full"
-            />
+        <div className=" w-1/2 mx-auto bg-slate-200 mt-4 p-4">
+          <textarea
+            rows="4"
+            className="w-full mt-3 bg-green-100 rounded-lg border border-gray-400 text-sm"
+          ></textarea>
+          <div className="mt-4 space-x-4 text-center">
+            <button className="bg-yellow-600 rounded-lg p-4">ตรวจหวย</button>
+            <button className="bg-yellow-600 rounded-lg p-4">เคลียร์เลข</button>
           </div>
-          <div className="flex justify-between my-4">
-            <div className="">
-              <button className="border-black border-2 rounded-lg p-2">
-                ตรวจหวย
-              </button>
-            </div>
-            <div className="border-black border-2 rounded-lg p-2">
-              <button>เคลียร์เลข</button>
+        </div>
+        <div className="w-1/2 mx-auto mt-4 p-4 bg-blue-100">
+          <h2>130999 ถูกกินครับ</h2>
+          <h2>297410 เย้! ถูกรางวัลข้างเคียงรางวัลที่ 1</h2>
+          <h2>557584 เย้! ถูกรางวัลที่ 3</h2>
+          <h2 className="font-bold text-xl mt-3">
+            คุณถูกหวยงวดนี้ทั้นสิ้น 180,000 บาท
+          </h2>
+        </div>
+        <div className="mt-10">
+          <h1 className="text-center text-xl font-bold">
+            ผลการออกรางวัลสลากกินแบ่งรัฐบาล <br />
+            ประจำวันที่ {lotteryDateTitle}
+          </h1>
+        </div>
+        <div className="flex text-center space-x-3 mt-4">
+          <div className="flex-auto bg-red-200 rounded-lg p-3">
+            <h1 className="font-bold ">รางวัลที่ 1</h1>
+            <h2 className="">
+              รางวัลละ {lotteryData[0]?.prize?.toLocaleString("TH-th")} บาท
+            </h2>
+            <div className="text-xl font-bold mt-2">
+              {lotteryData[0]?.numbers[0]}
             </div>
           </div>
-        </form>
-      </div>
-      <div className="w-1/2 mx-auto mt-10 rounded-lg bg-slate-500 p-2 text-white">
-        <div className="mt-2">130999 ถูกกินครับ</div>
-        <div className="mt-2">297410 เย้! ถูกรางวัลข้างเคียงรางวัลที่ 1</div>
-        <div className="mt-2">557584 เย้! ถูกรางวัลที่ 3</div>
-        <div className="mt-2">คุณถูกหวยงวดนี้ทั้งสิ้น 180,000 บาท</div>
-      </div>
-      <div className="text-center mt-4">
-        ผลการออกรางวัลสลากกินแบ่งรัฐบาลประจำวันที่ 1 กุมภาพันธ์ 2566
-      </div>
-      <div className="">
-        <table className="table-auto w-full text-center mx-10 mt-5 ">
-          <thead className="bg-yellow-500 ">
-            <tr className="">
-              <td className="border border-black">รางวัลที่ 1</td>
-              <td className="border border-black">เลขหน้า 3 ตัว</td>
-              <td className="border border-black">เลขท้าย 3 ตัว</td>
-              <td className="border border-black">เลขท้าย 2 ตัว</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="text-center border border-black">
-                <div className="">รางวัลละ 6,000,000 บาท</div>
-                <div className="">297411</div>
-              </td>
-              <td className="px-5 text-center border border-black">
-                <div className="">รางวัลละ 4,000 บาท</div>
-                <div className="flex justify-between">
-                  <div className="">181</div>
-                  <div className="">789</div>
+          <div className="flex-auto bg-red-200 rounded-lg p-3">
+            <h1 className="font-bold ">เลขหน้า 3 ตัว</h1>
+            <h2>
+              รางวัลละ {lotteryData[7]?.prize?.toLocaleString("TH-th")} บาท
+            </h2>
+            <div className="flex">
+              <div className="text-xl font-bold mt-2 flex-auto">
+                {lotteryData[7]?.numbers[0]}
+              </div>
+              <div className="text-xl font-bold mt-2 flex-auto">
+                {lotteryData[7]?.numbers[1]}
+              </div>
+            </div>
+          </div>
+          <div className="flex-auto bg-red-200 rounded-lg p-3">
+            <h1 className="font-bold ">เลขท้าย 3 ตัว</h1>
+            <h2 className="">
+              รางวัลละ {lotteryData[5]?.prize?.toLocaleString("TH-th")} บาท
+            </h2>
+            <div className="flex">
+              <div className="text-xl font-bold mt-2 flex-auto">
+                {lotteryData[5]?.numbers[0]}
+              </div>
+              <div className="text-xl font-bold mt-2 flex-auto">
+                {lotteryData[5]?.numbers[1]}
+              </div>
+            </div>
+          </div>
+          <div className="flex-auto bg-red-200 rounded-lg p-3">
+            <h1 className="font-bold ">เลขท้าย 2 ตัว</h1>
+            <h2 className="">
+              รางวัลละ {lotteryData[6]?.prize?.toLocaleString["TH-th"]} บาท
+            </h2>
+            <div className="text-xl font-bold mt-2">
+              {lotteryData[6]?.numbers[0]}
+            </div>
+          </div>
+        </div>
+        <div className="flex text-center space-x-3 mt-4">
+          <div className="flex-auto bg-red-200 rounded-lg p-3">
+            <h1 className="font-bold">รางวัลข้างเคียงรางวัลที่ 1</h1>
+            <h2>
+              รางวัลละ {lotteryData[8]?.prize?.toLocaleString("TH-th")} บาท
+            </h2>
+            <div className="flex mt-2">
+              <div className="text-xl font-bold flex-auto">
+                {lotteryData[8]?.numbers[0]}
+              </div>
+              <div className="text-xl font-bold flex-auto">
+                {lotteryData[8]?.numbers[1]}
+              </div>
+            </div>
+          </div>
+          <div className="flex-auto bg-red-200 rounded-lg p-3">
+            <h1 className="font-bold">รางวัลที่ 2</h1>
+            <h2>
+              {" "}
+              รางวัลละ {lotteryData[1]?.prize?.toLocaleString("TH-th")} บาท
+            </h2>
+            <div className="grid grid-cols-5 mt-2">
+              {lotteryData[1]?.numbers?.map((r, idx) => (
+                <div>
+                  <div className="float-left bg-yellow-200 px-2 mx-2">
+                    {idx + 1}
+                  </div>
+                  <div className="float-left font-bold text-xl">{r}</div>
                 </div>
-              </td>
-              <td className="px-5 text-center border border-black">
-                <div className="">รางวัลละ 4,000 บาท</div>
-                <div className="flex justify-between">
-                  <div className="">101</div>
-                  <div className="">664</div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="text-center mt-4">
+          <div className="bg-red-200 rounded-lg p-3">
+            <h1 className="font-bold">รางวัลที่ 3</h1>
+            <h2>
+              รางวัลละ {lotteryData[2]?.prize.toLocaleString("TH-th")} บาท
+            </h2>
+            <div className="grid grid-cols-5 mt-2">
+              {lotteryData[2]?.numbers?.map((r, idx) => (
+                <div className="mt-2">
+                  <div className="float-left bg-yellow-200 px-2 mx-2">
+                    {idx + 1}
+                  </div>
+                  <div className="float-left font-bold text-xl">{r}</div>
                 </div>
-              </td>
-              <td className="text-center border border-black">
-                <div className="">รางวัลละ 2,000 บาท</div>
-                <div className="">92</div>
-              </td>
-            </tr>
-          </tbody>
-          <thead>
-            <tr>
-              <td className="text-center border border-black">รางวัลข้างเคียงรางวัลที่ 1</td>
-              <td className="text-center border border-black">รางวัลละ 100,000 บาท</td>
-              <td className="text-center border border-black">รางวัลที่ 2</td>
-              <td className="text-center border border-black">รางวัลละ 200,000 บาท</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="text-center border border-black">297410</td>
-              <td className="text-center border border-black">297412</td>
-              <td colSpan="2" className="text-center border border-black">
-                <div className="flex justify-between">
-                  <td className="px-2 text-center border border-black">1</td>
-                  <td>229120</td>
-                  <td className="px-2 text-center border border-black">2</td>
-                  <td>679028</td>
-                  <td className="px-2 text-center border border-black">3</td>
-                  <td>677223</td>
-                  <td className="px-2 text-center border border-black">4</td>
-                  <td>589702</td>
-                  <td className="px-2 text-center border border-black">5</td>
-                  <td>670839</td>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="text-center mt-4">
+          <div className="bg-red-200 rounded-lg p-3">
+            <h1 className="font-bold">รางวัลที่ 4</h1>
+            <h2>
+              รางวัลละ {lotteryData[3]?.prize?.toLocaleString("TH-th")} บาท
+            </h2>
+            <div className="grid grid-cols-5 mt-2">
+              {lotteryData[3]?.numbers?.map((r, idx) => (
+                <div className="mt-2">
+                  <div className="float-left bg-yellow-200 px-2 mx-2">
+                    {idx + 1}
+                  </div>
+                  <div className="float-left font-bold text-xl">{r}</div>
                 </div>
-              </td>
-            </tr>
-          </tbody>
-          <thead>
-          <tr>
-            <td colSpan="2" className="text-center border border-black">รางวัลที่3</td>
-            <td colSpan="2" className="text-center border border-black">รางวัลละ 80,000บาท</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            
-          </tr>
-        </tbody>
-        </table>
-        
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="text-center mt-4">
+          <div className="bg-red-200 rounded-lg p-3">
+            <h1 className="font-bold">รางวัลที่ 5</h1>
+            <h2>
+              รางวัลละ {lotteryData[4]?.prize?.toLocaleString("TH-th")} บาท
+            </h2>
+            <div className="grid grid-cols-5 mt-2">
+              {lotteryData[4]?.numbers?.map((r, idx) => (
+                <div className="">
+                  <div className="float-left bg-yellow-200 px-2 mx-2">
+                    {idx + 1}
+                  </div>
+                  <div className="float-left font-bold text-xl">{r}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

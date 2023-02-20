@@ -70,6 +70,9 @@ import DeathCause_CustomHook from "./DeathCauseAnswer/DeathCause_CustomHook"
 import Refactor_Retirement5 from "./RetirementAnswer/Refactor_Retirement5";
 import LotteryChecker from "./Lottery/LotteryChecker"
 
+import Lottery2 from "./LotteryAnswer/Lottery2"
+import Lottery3 from "./LotteryAnswer/Lottery3"
+
 
 const App = () => {
   return (
@@ -151,7 +154,11 @@ const App = () => {
       {/* <CustomHook4 /> */}
       {/* <Lottery1 /> */}
       {/* <Lottery2 /> */}
-      {/* <LotteryChecker /> */}
+      {/* <Lottery3 /> */}
+      {/* <Lottery4 /> */}
+      {/* <Lottery5 /> */}
+      {/* <Zipcode8 /> */}
+      <LotteryChecker />
     </>
   );
 };
