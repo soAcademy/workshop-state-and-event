@@ -1,34 +1,42 @@
 import React, { useState, useEffect } from "react";
 
+const calculateFinancialSavings = (
+  lifeAge,
+  currentAge,
+  monthlySpending,
+  inflationRate
+) => {
+  const lifeSpan = [...Array(Number(lifeAge) - Number(currentAge)).keys()];
+  // console.log("retirement", retirement);
+  const temptFinancialPlans = lifeSpan.map((r, index) => ({
+    age: Number(currentAge) + index + 1,
+    livingCostPerYear:
+      Number(monthlySpending) *
+      12 *
+      (1 + Number(inflationRate) / 100) ** (index + 1),
+  }));
+  return { lifeSpan, temptFinancialPlans };
+};
 
-
-
-const RetirementPlan1 = () => {
+const useInvestmentPlans = () => {
   const [currentAge, setCurrentAge] = useState("22");
   const [lifeAge, setLifeAge] = useState("80");
   const [retireAge, setRetireAge] = useState("55");
   const [monthlySpending, setMonthlySpending] = useState("30000");
   const [inflationRate, setInflationRate] = useState("4.72");
   const [financialPlans, setFinancialPlans] = useState([]);
-  const [totalSavingsNeeded, setTotalSavingsNeeded] = useState("40000000");
-  const [investmentReturnRate, setInvestmentReturnRate] = useState("7.0");
+  // const [totalSavingsNeeded, setTotalSavingsNeeded] = useState("40000000");
+  // const [investmentReturnRate, setInvestmentReturnRate] = useState("7.0");
   const [investmentPerYear, setInvestmentPerYear] = useState("100000");
-
-  
-  const calculateRetirementSaving = () => {
-    const lifeSpan = [...Array(Number(lifeAge) - Number(currentAge)).keys()];
-    // console.log("retirement", retirement);
-    const temptFinancialPlans = lifeSpan.map((r, index) => ({
-      age: Number(currentAge) + index + 1,
-      livingCostPerYear:
-        Number(monthlySpending) *
-        12 *
-        (1 + Number(inflationRate) / 100) ** (index + 1),
-    }));
-
-    console.log("financialPlans", temptFinancialPlans);
+  const calculateInvestmentPlans = (
+    lifeSpan,
+    currentAge,
+    retireAge,
+    temptFinancialPlans,
+    investmentReturnRate
+  ) => {
     const temptInvestmentPlans = lifeSpan.reduce((acc, yearIndex) => {
-      const pastPortfolioValue = yearIndex > 0 ? acc[yearIndex - 1] : 0; 
+      const pastPortfolioValue = yearIndex > 0 ? acc[yearIndex - 1] : 0;
       const isNotRetire = yearIndex < Number(retireAge) - Number(currentAge);
       const investThisYearValue = isNotRetire ? Number(investmentPerYear) : 0; //
       const livingCostPerYear = isNotRetire
@@ -37,7 +45,7 @@ const RetirementPlan1 = () => {
       const value =
         (pastPortfolioValue + investThisYearValue - livingCostPerYear) *
         (1 + Number(investmentReturnRate) / 100);
-      return [...acc, value];  //ass value into the array, increasing array size
+      return [...acc, value]; //ass value into the array, increasing array size
     }, []);
     console.log("temptInvestmentPlans", temptInvestmentPlans);
 
@@ -45,15 +53,111 @@ const RetirementPlan1 = () => {
       ...r,
       investmentValue: temptInvestmentPlans[idx],
     }));
-    
-    // console.log("financialPlans", financialPlans);
-    // console.log("totalSavingsNeeded", totalSavingsNeeded);
 
+    return { temptInvestmentPlans, temptFinancialPlans2 };
+  };
+
+  return {
+    lifeAge,
+    currentAge,
+    monthlySpending,
+    inflationRate,
+    setCurrentAge,
+    setLifeAge,
+    setMonthlySpending,
+    setInflationRate,
+    retireAge,
+    setRetireAge,
+    financialPlans,
+
+    investmentPerYear,
+    setInvestmentPerYear,
+    calculateInvestmentPlans,
+  };
+};
+
+const useTotal = () => {
+  const [financialPlans, setFinancialPlans] = useState([]);
+  const [totalSavingsNeeded, setTotalSavingsNeeded] = useState("40000000");
+  const calculateTotalSavings = (
+    retireAge,
+    temptFinancialPlans,
+    temptFinancialPlans2
+  ) => {
     const temptTotalSavingsNeeded = temptFinancialPlans
       .filter((r) => r.age >= Number(retireAge))
       .reduce((acc, r) => (acc += r.livingCostPerYear), 0);
     setFinancialPlans(temptFinancialPlans2);
     setTotalSavingsNeeded(temptTotalSavingsNeeded);
+    return { temptTotalSavingsNeeded };
+  };
+  return {
+    setFinancialPlans,
+    totalSavingsNeeded,
+    setTotalSavingsNeeded,
+    calculateTotalSavings,
+  };
+};
+const RetirementPlan2 = () => {
+  // const [currentAge, setCurrentAge] = useState("22");
+  // const [lifeAge, setLifeAge] = useState("80");
+  // const [retireAge, setRetireAge] = useState("55");
+  // const [monthlySpending, setMonthlySpending] = useState("30000");
+  // const [inflationRate, setInflationRate] = useState("4.72");
+  // const [financialPlans, setFinancialPlans] = useState([]);
+  // const [totalSavingsNeeded, setTotalSavingsNeeded] = useState("40000000");
+  const [investmentReturnRate, setInvestmentReturnRate] = useState("7.0");
+  // const [investmentPerYear, setInvestmentPerYear] = useState("100000");
+
+  const {
+    lifeAge,
+    currentAge,
+    monthlySpending,
+    inflationRate,
+    setCurrentAge,
+    setLifeAge,
+    setMonthlySpending,
+    setInflationRate,
+    retireAge,
+    setRetireAge,
+    financialPlans,
+
+    investmentPerYear,
+    setInvestmentPerYear,
+    calculateInvestmentPlans,
+  } = useInvestmentPlans();
+
+  const {
+    setFinancialPlans,
+    totalSavingsNeeded,
+    setTotalSavingsNeeded,
+    calculateTotalSavings,
+  } = useTotal();
+  // console.log("calculateFinancialSavings" ,calculateFinancialSavings(lifeAge, currentAge, monthlySpending, inflationRate, lifeSpan))
+
+  const calculateRetirementSaving = () => {
+    const { lifeSpan, temptFinancialPlans } = calculateFinancialSavings(
+      lifeAge,
+      currentAge,
+      monthlySpending,
+      inflationRate
+    );
+    // console.log("financialPlans", temptFinancialPlans);
+    const { temptFinancialPlans2 } = calculateInvestmentPlans(
+      lifeSpan,
+      currentAge,
+      retireAge,
+      temptFinancialPlans,
+      investmentReturnRate
+    );
+
+    // console.log("financialPlans", financialPlans);
+    // console.log("totalSavingsNeeded", totalSavingsNeeded);
+    const { temptTotalSavingsNeeded } = calculateTotalSavings(
+      retireAge,
+      temptFinancialPlans,
+      temptFinancialPlans2
+    );
   };
 
   useEffect(() => {
@@ -174,7 +278,9 @@ const RetirementPlan1 = () => {
               <th className="border border-2 border-black p-2">
                 livingCostPerYear
               </th>
-              <th className="border border-2 border-black p-2">Portfolio Value</th>
+              <th className="border border-2 border-black p-2">
+                Portfolio Value
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -190,7 +296,9 @@ const RetirementPlan1 = () => {
                   <td className="text-center border border-2 border-black">
                     {r.livingCostPerYear.toFixed(0)}
                   </td>
-                  <td className="text-center border border-2 border-black">{r.investmentValue.toFixed(0)}</td>
+                  <td className="text-center border border-2 border-black">
+                    {r.investmentValue.toFixed(0)}
+                  </td>
                 </tr>
               )
             )}
@@ -201,4 +309,4 @@ const RetirementPlan1 = () => {
   );
 };
 
-export default RetirementPlan1;
+export default RetirementPlan2;

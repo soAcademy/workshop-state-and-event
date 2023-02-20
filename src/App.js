@@ -46,9 +46,9 @@
 // import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
 // import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
 // import CurrencyConverter6 from "./CurrencyConverterAnswer/CurrencyConverter6";
-import CurrencyConverter7_1 from "./CurrencyConverter/CurrencyConverter7_1";
+// import CurrencyConverter7_1 from "./CurrencyConverter/CurrencyConverter7_1";
 // import CustomHook1 from "./CustomHookAnswer/CustomHook1";
-import CustomHook4 from "./CustomHooks/CustomHook4";
+// import CustomHook4 from "./CustomHooks/CustomHook4";
 // import CustomHook3 from "./CustomHookAnswer/CustomHook3";
 // import CustomHook4 from "./CustomHookAnswer/CustomHook4";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
@@ -64,10 +64,11 @@ import CustomHook4 from "./CustomHooks/CustomHook4";
 // import DeathCause7 from "./DeathCauseAnswer/DeathCause7";
 // import DeathCause8 from "./DeathCauseAnswer/DeathCause8";
 // import Zipcode8 from "./ZipcodeAnswer/Zipcode8";
-// import RetirementPlan1 from "./retirementplan/RetirementPlan1";
+// import RetirementPlan2 from "./retirementplan/RetirementPlan2";
 // import Retirement5 from "./retirementplan/Retirement5";
 // import CurrencyConverter3 from "./CurrencyConverter/CurrencyConverter3";
 // import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
+import LotteryChecker3_1 from "./LotteryCheckers/LotteryChecker3_1";
 
 const App = () => {
   return (
@@ -110,7 +111,7 @@ const App = () => {
       {/* <DeathCause7 /> */}
       {/* <DeathCause8 /> */}
       {/* <Retirement1 /> */}
-      {/* <Retirement2 /> */}
+      {/* <RetirementPlan2 /> */}
       {/* <Retirement3 /> */}
       {/* <Retirement4 /> */}
       {/* <Retirement5 /> */}
@@ -120,11 +121,12 @@ const App = () => {
       {/* <CurrencyConverter4 /> */}
       {/* <CurrencyConverter5 /> */}
       {/* <CurrencyConverter6 /> */}
-      <CurrencyConverter7_1 />
+      {/* <CurrencyConverter7_1 /> */}
       {/* <CustomHook1 /> */}
       {/* <CustomHook2 /> */}
       {/* <CustomHook3 /> */}
       {/* <CustomHook4 /> */}
+      <LotteryChecker3_1 />
     </>
   );
 };

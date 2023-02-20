@@ -4,10 +4,8 @@ import StatisticsData from "./exchange-statistics.json";
 import ChartData from "./exchange-chart.json";
 import ReactECharts from "echarts-for-react";
 import axios from "axios";
-import { useChartOption } from "./useChartOption";
-import { useConversion } from "./useConversion";
-import { useFetchExchangeRates } from "./useFetchExchangeRates";
-import { useStatistics } from "./useStatistics";
+import { useChartOption, useConversion,useFetchExchangeRates,  useStatistics  } from "./hooks";
+
 
 const CurrencyConverter7_1 = () => {
   const authToken =
