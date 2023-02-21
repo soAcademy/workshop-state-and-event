@@ -6,7 +6,7 @@ import { useCurrencyConverter } from "./useCurrencyConverter"
 
 const CurrencyConverter6_1 = () => {
   const authToken =
-    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+    "Basic bG9kZXN0YXI6M2JHMUd0aFVDbkhpdkZ0aWRYVDUyNGZGTDhUR2Q2OFE=";
   const {
     exchangeRates,
     setExchangeRates,

@@ -1,34 +1,56 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const LotteryForm = () => (
+const LotteryForm = ({
+  lotteryNumbers,
+  setLotteryNumbers,
+  toggleCalculateResult,
+  setToggleCalculateResult,
+  setLotteryResult,
+}) => (
   <>
     <div className="w-1/2 mx-auto mt-8 p-8">
       <textarea
         id="message"
         rows="4"
+        value={lotteryNumbers}
         className="block p-2.5 w-full text-sm  bg-gray-100 rounded-lg border"
         placeholder="กรอกเลขลอตเตอรี่"
+        onChange={(e) => setLotteryNumbers(e.target.value)}
       ></textarea>
-      <button className="bg-yellow-500 active:bg-amber-500 rounded-lg mt-4 p-4">
+      <button
+        className="bg-yellow-500 active:bg-amber-500 rounded-lg mt-4 p-4"
+        onClick={() => setToggleCalculateResult(!toggleCalculateResult)}
+      >
         ตรวจหวย
       </button>
-      <button className="bg-blue-200 active:bg-purple-200 rounded-lg mt-4 p-4">
+      <button
+        className="bg-blue-200 active:bg-purple-200 rounded-lg mt-4 p-4"
+        onClick={() => {
+          setLotteryResult();
+          setLotteryNumbers("");
+        }}
+      >
         เคลียร์เลข
       </button>
     </div>
   </>
 );
 
-const LotteryResult = () => (
-  <div className="w-1/2 mx-auto pb-8">
-    <div className=" bg-gray-50  text-left pl-8">
-      <div>111111</div>
-      <div>333333</div>
-      <div>444444</div>
-      <div className="font-bold mt-4">คุณถูกหวยงวดนี้ทั้งสิ้น บาท</div>
-    </div>
-  </div>
+const LotteryResult = ({ lotteryResult }) => (
+  <>
+    {lotteryResult?.resultTexts?.length > 0 && (
+      <div className="w-1/2 mx-auto bg-gray-50 mt-8 py-8 text-left pl-8">
+        {lotteryResult?.resultTexts?.map((r, idx) => (
+          <div key={idx}>{r}</div>
+        ))}
+        <div className="font-bold mt-4">
+          คุณถูกหวยงวดนี้ทั้งสิ้น{" "}
+          {lotteryResult?.totalPrize?.toLocaleString("TH-th")} บาท
+        </div>
+      </div>
+    )}
+  </>
 );
 
 const LotteryTable = ({ lotteryData, lotteryDateTitle }) => (
@@ -169,14 +191,100 @@ const useFetchLottery = ({ lotteryDate }) => {
   };
 };
 
+const useCheckLottery = ({ lotteryData }) => {
+  const [lotteryNumbers, setLotteryNumbers] = useState();
+  const [toggleCalculateResult, setToggleCalculateResult] = useState(false);
+  const [lotteryResult, setLotteryResult] = useState();
+
+  const checkLotteryPrize = (number) =>
+    lotteryData.findIndex((r, idx) =>
+      idx === 5
+        ? r.numbers.includes(number.substr(-3))
+        : idx === 6
+        ? r.numbers.includes(number.substr(-2))
+        : idx === 7
+        ? r.numbers.includes(number.substr(0, 3))
+        : r.numbers.includes(number)
+    );
+
+  const getPrizeText = (index) =>
+    index < 5
+      ? `รางวัลที่ ${index + 1}`
+      : index === 5
+      ? "รางวัลเลขท้าย 3 ตัว"
+      : index === 6
+      ? "รางวัลเลขท้าย 2 ตัว"
+      : index === 7
+      ? "รางวัลเลขหน้า 3 ตัว"
+      : "รางวัลข้างเคียงรางวัลที่ 1";
+
+  useEffect(() => {
+    const _lotteryNumbers = [
+      ...new Set(lotteryNumbers?.split("\n").filter((r) => r.length === 6)),
+    ];
+
+    const _lotteryResult = _lotteryNumbers.map((number) => ({
+      number,
+      prize: checkLotteryPrize(number),
+    }));
+
+    const resultTexts = _lotteryResult.map(
+      (r) =>
+        "หมายเลข " +
+        r.number +
+        " " +
+        (r.prize === -1 ? "ถูกกินครับ" : `ถูก${getPrizeText(r.prize)}`)
+    );
+
+    const totalPrize = _lotteryResult
+      .filter((r) => r.prize !== -1)
+      .reduce((acc, r) => acc + lotteryData[r.prize].prize, 0);
+
+    setLotteryResult({
+      resultTexts,
+      totalPrize,
+    });
+  }, [toggleCalculateResult]);
+
+  return {
+    lotteryNumbers,
+    setLotteryNumbers,
+    toggleCalculateResult,
+    setToggleCalculateResult,
+    lotteryResult,
+    setLotteryResult,
+  };
+};
+const getDate = (date) => new Date(date).toISOString().slice(0, 10);
+
 const Lottery1 = () => {
-  const { lotteryData, lotteryDateTitle } = useFetchLottery("2022-12-05");
+  const { lotteryData, lotteryDateTitle } = useFetchLottery(
+    getDate(new Date())
+  );
+
+  const {
+    lotteryNumbers,
+    setLotteryNumbers,
+    toggleCalculateResult,
+    setToggleCalculateResult,
+    lotteryResult,
+    setLotteryResult,
+  } = useCheckLottery({
+    lotteryData,
+  });
+
   return (
     <div>
       <div className="w-3/4 mx-auto bg-green-100 mt-8 text-center rounded-lg">
         <div className="font-bold text-xl  ">ตรวจผล Lottery</div>
-        <LotteryForm />
-        <LotteryResult />
+        <LotteryForm
+          lotteryNumbers={lotteryNumbers}
+          setLotteryNumbers={setLotteryNumbers}
+          toggleCalculateResult={toggleCalculateResult}
+          setToggleCalculateResult={setToggleCalculateResult}
+          setLotteryResult={setLotteryResult}
+        />
+        <LotteryResult lotteryResult={lotteryResult} />
       </div>
       <LotteryTable
         lotteryData={lotteryData}

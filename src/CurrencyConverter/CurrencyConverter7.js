@@ -8,8 +8,8 @@ import {
 
 const CurrencyConverter6_1 = () => {
   const authToken =
-    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
-  const { exchangeRates, currencyLists } = useFetchExchangeRate({authToken});
+    "Basic bG9kZXN0YXI6M2JHMUd0aFVDbkhpdkZ0aWRYVDUyNGZGTDhUR2Q2OFE=";
+  const { exchangeRates, currencyLists } = useFetchExchangeRate({ authToken });
 
   const {
     fromCurrency,
@@ -48,7 +48,7 @@ const CurrencyConverter6_1 = () => {
                 type="text"
                 name="amount"
                 className="p-2 w-full mt-2"
-                onChange={(e) => setAmount((e.target.value))}
+                onChange={(e) => setAmount(e.target.value)}
                 value={amount}
               ></input>
             </div>
