@@ -8,9 +8,9 @@ import {
 } from "./hooks";
 
 const DeathByCause = ({ totalDeath, deathByCauses, setCause }) => (
-  <div className="bg-blue-100 w-1/3 p-4">
+  <div className="bg-gradient-to-b from-red-400 to-blue-200 w-1/3 p-4 rounded-lg ">
     <div className="font-bold mb-2">สาเหตุการเสียชีวิต</div>
-    <table className="w-full">
+    <table className="w-full ">
       <tbody>
         <tr>
           <td>ทั้งหมด</td>
@@ -35,7 +35,7 @@ const DeathByCause = ({ totalDeath, deathByCauses, setCause }) => (
 );
 //render
 const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
-  <div className="bg-amber-100 w-1/3 p-4">
+  <div className="bg-gradient-to-b from-slate-400 to-blue-200 w-1/3 p-4 rounded-lg  ">
     <div className="font-bold mb-2">จำนวนผู้เสียชีวิตแยกตามจังหวัด</div>
     <table className="w-full">
       <tbody>
@@ -57,7 +57,7 @@ const DeathByProvince = ({ totalDeath, deathByProvinces }) => (
 );
 //render
 const DeathChart = ({ chartOption1, chartOption2 }) => (
-  <div className="bg-green-100 w-1/3 p-4">
+  <div className="bg-red-100 w-1/3 p-4 rounded-lg">
     <div className="font-bold mb-2">แนวโน้มการเสียชีวิต</div>
     <ReactECharts option={chartOption1} />
     <div className="font-bold mb-2">การเสียชีวิตตามเพศ</div>
@@ -68,20 +68,20 @@ const DeathChart = ({ chartOption1, chartOption2 }) => (
 const DeathFilter = ({ yearLists, currentYear, setCurrentYear }) => {
   return (
     <div>
-      <div className="mt-4">
-        เลือกปีพ.ศ.
+      <div className="mt-4 ">
+        <div><h1 className="text-white">เลือกปีพ.ศ.</h1></div>
         <select
           onChange={(e) => setCurrentYear(e.target.value)}
           value={currentYear}
         >
           {yearLists.map((year) => (
-            <option key={year} value={year}>
+            <option key={year} value={year} className="text-black">
               {year}
             </option>
           ))}
         </select>
       </div>
-      <div>การเสียชีวิตของปีพ.ศ.{currentYear}</div>
+      <div className="text-white">การเสียชีวิตของปีพ.ศ.{currentYear}</div>
     </div>
   );
 };
@@ -113,16 +113,19 @@ const DeathCause8 = () => {
   }); 
 
   return (
-    <div className="p-4">
-      <h1 className="font-bold text-xl">
+    <div className="p-4 font-kanit bg-slate-800">
+      <div>
+      <h1 className="font-bold text-xl text-white">
         จำนวนผู้เสียชีวิต สาเหตุ และอัตราการตาย ปี 2554 - 2559
       </h1>
+      <div><img src="Death-Dashboard.png"/></div>
+      </div>
       <DeathFilter
         yearLists={yearLists}
         currentYear={currentYear}
         setCurrentYear={setCurrentYear}
       />
-      <div className="flex space-x-4 mt-4">
+      <div className="flex space-x-4 mt-4 ">
         <DeathByCause totalDeath={totalDeath} deathByCauses={deathByCauses} />
         <DeathByProvince
           totalDeath={totalDeath}
