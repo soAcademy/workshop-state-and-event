@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-export const useUniqueYears = () => {
-  const [uniqueYears, setUniqueYears] = useState([]);
+export const useUniqueVehicles = () => {
+  const [uniqueVehicles, setUniqueVehicles] = useState([]);
 
   useEffect(() => {
     var config = {
       method: "post",
-      url: "http://localhost:5555/getUniqueYears",
+      url: "http://localhost:5555/getUniqueVehicles",
       headers: {},
     };
 
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        setUniqueYears(response.data);
+        setUniqueVehicles(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, []);
 
-  return { uniqueYears, setUniqueYears };
+  return { uniqueVehicles, setUniqueVehicles };
 };

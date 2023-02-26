@@ -8,11 +8,11 @@ export const AccidentGenderPie = ({ genderStat }) => {
         type: "pie",
         data: [
           {
-            value: genderStat.male,
+            value: genderStat?.male,
             name: "ชาย",
           },
           {
-            value: genderStat.female,
+            value: genderStat?.female,
             name: "หญิง",
           },
         ],

@@ -2,11 +2,11 @@ import { longdo, map, LongdoMap } from "../longdo-map/LongdoMap";
 import accident from "../assets/accident.json";
 import { useEffect } from "react";
 
-export const Map = ({ dataFilteredByYear }) => {
+export const Map = ({ accidentData }) => {
   useEffect(() => {
     map.Overlays.clear();
-    dataFilteredByYear?.map((data, jdx) => {
-      const popup = `<div style="background: #ffffff; 
+    accidentData?.map((data, jdx) => {
+      const popup = `<div style="background: #f3f3f3;
   padding: 1rem;
   height: fit-content;
   width: 200px; 
@@ -42,7 +42,7 @@ export const Map = ({ dataFilteredByYear }) => {
       );
       map.Overlays.add(marker1);
     });
-  }, [dataFilteredByYear]);
+  }, [accidentData]);
   const initMap = () => {
     map.Layers.setBase(longdo.Layers.NORMAL);
     map.zoomRange({ min: 6, max: 15 });

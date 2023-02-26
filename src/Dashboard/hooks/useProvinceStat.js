@@ -5,8 +5,8 @@ export const useProvinceStat = ({accidentData}) => {
     { vehicle: "", province: [] },
   ]);
   useEffect(() => {
-    const vehicles = [...new Set(accidentData.map((e) => e.vehicle))];
-    const provinces = [...new Set(accidentData.map((e) => e.province))];
+    const vehicles = [...new Set(accidentData?.map((e) => e.vehicle))];
+    const provinces = [...new Set(accidentData?.map((e) => e.province))];
     const _provinceStat = vehicles.map((vehicle) => {
       const vehicleData = accidentData.filter(
         (data) => data.vehicle === vehicle

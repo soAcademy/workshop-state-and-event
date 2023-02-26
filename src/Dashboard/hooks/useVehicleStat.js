@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 export const useVehicleStat = ({ accidentData }) => {
   const [vehicleStat, setVehicleStat] = useState([]);
   useEffect(() => {
-    const vehicles = [...new Set(accidentData.map((e) => e.vehicle))];
+    const vehicles = [...new Set(accidentData?.map((e) => e.vehicle))];
     const _vehicleStat = vehicles
       .map((vehicle) => {
         const sum = accidentData

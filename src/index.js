@@ -22,13 +22,13 @@ root.render(
     {/* <AppLocalStorage /> */}
     {/* <AppToDoList /> */}
     {/* <AppChart /> */}
-    {/* <AppDashBoard /> */}
+    <AppDashBoard />
     {/* <AppZipcode /> */}
     {/* <AppAccordian /> */}
     {/* <AppTrivia /> */}
     {/* <AppCalculator /> */}
     {/* <AppCustomHook /> */}
-    <AppLotteryChecker />
+    {/* <AppLotteryChecker /> */}
   </React.StrictMode>
 );
 

@@ -1,9 +1,16 @@
+import React, { useState, useEffect } from "react";
 export const Panel = ({
+  yearQuery,
   setYearQuery,
   uniqueYears,
+  uniqueVehicles,
   setVehicleQuery,
-  vehicleStat,
 }) => {
+  const [selectedStart, setSelectedStart] = useState(0);
+  const [endOptions, setEndOptions] = useState();
+  useEffect(() => {
+    setEndOptions([...uniqueYears]);
+  }, [uniqueYears, selectedStart]);
   return (
     <>
       <div className="fixed top-5 left-5 bg-white p-2 font-bold shadow-md">
@@ -11,13 +18,18 @@ export const Panel = ({
       </div>
       <div
         onChange={() => {
+          const start = Number(document.querySelector("#start").value);
+          const end = Number(document.querySelector("#end").value);
+          setSelectedStart(Number(document.querySelector("#start").value));
+          if (start > end && start < Math.max(...uniqueYears)) {
+            document.querySelector("#end").value = start;
+          }
           const checkbox = document.querySelector("#checkbox");
           if (!checkbox.checked) {
-            const start = Number(document.querySelector("#start").value);
             const end = Number(document.querySelector("#end").value);
             setYearQuery([start, end]);
           } else {
-            setYearQuery();
+            yearQuery.length > 0 && setYearQuery([]);
           }
         }}
         className="fixed top-16 left-5 bg-white p-2"
@@ -36,10 +48,10 @@ export const Panel = ({
           className="mx-2 rounded px-2 outline outline-1 outline-slate-300"
           id="end"
         >
-          {uniqueYears.map((e, idx) => {
+          {endOptions?.map((e, idx) => {
             return (
               e &&
-              (e > Number(document.querySelector("#start").value) ? (
+              (e >= Number(document.querySelector("#start").value) ? (
                 <option key={idx}>{e}</option>
               ) : (
                 <option
@@ -72,8 +84,8 @@ export const Panel = ({
           className="mx-2 rounded px-2 outline outline-1 outline-slate-300"
         >
           <option>ทั้งหมด</option>
-          {vehicleStat.map((e, idx) => {
-            return <option key={idx}>{e.vehicle}</option>;
+          {uniqueVehicles.map((e, idx) => {
+            return <option key={idx}>{e}</option>;
           })}
         </select>
       </div>

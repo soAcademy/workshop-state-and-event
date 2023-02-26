@@ -31,22 +31,22 @@ export const AccidentProvinceStackedBar = ({ provinceStat }) => {
     },
     yAxis: {
       // type: 'category',
-      data: provinceStat[0].province.map((e) => e.province),
+      data: provinceStat[0]?.province.map((e) => e.province),
       axisLabel: {
         show: true,
         interval: 0,
         rotate: 0,
       },
     },
-    series: provinceStat.map((data) => {
+    series: provinceStat?.map((data) => {
       return {
-        name: data.vehicle,
+        name: data?.vehicle,
         type: "bar",
         stack: "total",
         emphasis: {
           focus: "series",
         },
-        data: data.province.map((e) => e.total),
+        data: data?.province?.map((e) => e.total),
       };
     }),
   };

@@ -10,7 +10,7 @@ export const AccidentVehicleBar = ({ vehicleStat }) => {
     },
     xAxis: {
       type: "category",
-      data: vehicleStat.map((e) => e.vehicle),
+      data: vehicleStat?.map((e) => e.vehicle),
       axisLabel: {
         show: true,
         interval: 0,
@@ -24,7 +24,7 @@ export const AccidentVehicleBar = ({ vehicleStat }) => {
     series: [
       {
         name: "Frequency",
-        data: vehicleStat.map((e) => e.total),
+        data: vehicleStat?.map((e) => e.total),
         type: "bar",
       },
     ],

@@ -38,13 +38,13 @@ export const StatPane = ({ accidentData }) => {
           </div>
           <div className="text-sm">
             <p className="text-[16px] font-semibold">เพศ</p>
-            <p>ชาย : {genderStat.male.toLocaleString()} คน</p>
-            <p>หญิง : {genderStat.female.toLocaleString()} คน</p>
+            <p>ชาย : {genderStat?.male.toLocaleString()} คน</p>
+            <p>หญิง : {genderStat?.female.toLocaleString()} คน</p>
             <AccidentGenderPie genderStat={genderStat} />
           </div>
           <div>
             <p className="text-md font-semibold">ยานพาหนะ</p>
-            {vehicleStat.map((e, idx) => {
+            {vehicleStat?.map((e, idx) => {
               return (
                 <p key={idx} className="text-sm">
                   {e.vehicle} : {e.total.toLocaleString()} คัน

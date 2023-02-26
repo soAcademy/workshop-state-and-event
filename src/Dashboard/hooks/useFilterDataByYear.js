@@ -1,30 +1,36 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-export const useFilterDataByYear = ({
-  accidentData,
+export const useAccidentData = ({
   yearQuery,
   vehicleQuery,
 }) => {
-  const [dataFilteredByYear, setDataFilteredByYear] = useState();
+  const [accidentData, setAccidentData] = useState();
   useEffect(() => {
-    const _dataFilteredByYear = yearQuery
-      ? vehicleQuery !== "ทั้งหมด"
-        ? accidentData.filter(
-            (data) =>
-              data.deadyearBudha >= yearQuery[0] &&
-              data.deadyearBudha <= yearQuery[1] &&
-              data.vehicle === vehicleQuery
-          )
-        : accidentData.filter(
-            (data) =>
-              data.deadyearBudha >= yearQuery[0] &&
-              data.deadyearBudha <= yearQuery[1]
-          )
-      : vehicleQuery !== "ทั้งหมด"
-      ? accidentData.filter((data) => data.vehicle === vehicleQuery)
-      : accidentData;
-    setDataFilteredByYear(_dataFilteredByYear);
+    var data = JSON.stringify({
+      "yearQuery": yearQuery,
+      "vehicleQuery": vehicleQuery
+    });
+    
+    var config = {
+      method: 'post',
+      url: 'http://localhost:5555/getAccidentData',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    axios(config)
+    .then(function (response) {
+      setAccidentData(response.data);
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
   }, [yearQuery, vehicleQuery]);
 
-  return { dataFilteredByYear, setDataFilteredByYear };
+  return { accidentData, setAccidentData };
 };
