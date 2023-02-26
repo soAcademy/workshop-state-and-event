@@ -12,7 +12,6 @@ export const useUniqueVehicles = () => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
         setUniqueVehicles(response.data);
       })
       .catch(function (error) {

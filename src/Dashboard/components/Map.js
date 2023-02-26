@@ -1,5 +1,4 @@
 import { longdo, map, LongdoMap } from "../longdo-map/LongdoMap";
-import accident from "../assets/accident.json";
 import { useEffect } from "react";
 
 export const Map = ({ accidentData }) => {
@@ -61,7 +60,7 @@ export const Map = ({ accidentData }) => {
     map.Ui.Crosshair.visible(false);
     map.Ui.Scale.visible(false);
 
-    accident.map((data, jdx) => {
+    accidentData?.map((data, jdx) => {
       const popup = `<div style="background: #ffffff; 
   padding: 1rem;
   height: fit-content;

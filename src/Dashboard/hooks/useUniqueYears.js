@@ -12,7 +12,6 @@ export const useUniqueYears = () => {
 
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
         setUniqueYears(response.data);
       })
       .catch(function (error) {

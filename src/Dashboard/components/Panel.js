@@ -7,7 +7,7 @@ export const Panel = ({
   setVehicleQuery,
 }) => {
   const [selectedStart, setSelectedStart] = useState(0);
-  const [endOptions, setEndOptions] = useState();
+  const [endOptions, setEndOptions] = useState([]);
   useEffect(() => {
     setEndOptions([...uniqueYears]);
   }, [uniqueYears, selectedStart]);
