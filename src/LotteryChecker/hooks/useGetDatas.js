@@ -8,11 +8,11 @@ export const useGetData = () => {
 
   useEffect(() => {
     const _dateNow = new Date();
-    const dateNowFormat = `${_dateNow.toLocaleString("default", {
+    const dateNowFormat = `${_dateNow.toLocaleString("th-TH", {
       year: "numeric",
-    })}-${_dateNow.toLocaleString("default", {
+    })}-${_dateNow.toLocaleString("th-TH", {
       month: "2-digit",
-    })}-${_dateNow.toLocaleString("default", {
+    })}-${_dateNow.toLocaleString("th-TH", {
       day: "2-digit",
     })}`;
     // const dateNow = "2023-02-15";

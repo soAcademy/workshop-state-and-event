@@ -1,93 +1,184 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaClipboardCheck, FaTrash, FaPlus, FaTimes } from "react-icons/fa";
+import axios from "axios";
 
 const ToDoList4 = () => {
-  const _task = JSON.parse(localStorage.getItem("tasks")) ?? [];
+  // const _task = JSON.parse(localStorage.getItem("tasks")) ?? [];
   // console.log(_task);
-  const [tasks, setTasks] = useState(_task);
+  const [tasks, setTasks] = useState({});
   const [toggle, setToggle] = useState(false);
 
   const colorPallet = ["#79b473", "#70A37F", "#41658A", "#414073", "#4C3957"];
 
+  useEffect(() => {
+    queryFromDb();
+  }, []);
+
+  const queryFromDb = () => {
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3000/todoList/getTasks",
+      headers: {},
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setTasks(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   const onsubmitBtn = (e) => {
     e.preventDefault();
 
-    const _task = JSON.parse(localStorage.getItem("tasks")) ?? [];
+    // const _task = JSON.parse(localStorage.getItem("tasks")) ?? [];
     // console.log(_task);
 
     const newVal = e.target["task"].value;
     // console.log(e.target["task"].value);
 
-    const newTask = [
-      ..._task,
-      {
-        id: crypto.randomUUID(),
-        dateTime: new Date(),
-        task: newVal,
-        status: "active",
-      },
-    ];
+    // const newTask = [
+    //   ..._task,
+    //   {
+    //     id: crypto.randomUUID(),
+    //     dateTime: new Date(),
+    //     task: newVal,
+    //     status: "active",
+    //   },
+    // ];
 
-    savOnLocalSt(newTask);
+    // savOnLocalSt(newTask);
+    const data = JSON.stringify({
+      task: newVal,
+    });
+
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3000/todoList/createTask",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setToggle(false);
+        queryFromDb();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     e.target["task"].value = "";
   };
 
-  const savOnLocalSt = (arrTasks) => {
-    const activeArr = arrTasks
-      .filter((r) => r.status === "active")
-      .sort(
-        (a, b) =>
-          new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
-      );
-    // console.log(activeArr);
+  // const savOnLocalSt = (arrTasks) => {
+  //   const activeArr = arrTasks
+  //     .filter((r) => r.status === "active")
+  //     .sort(
+  //       (a, b) =>
+  //         new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
+  //     );
+  //   // console.log(activeArr);
 
-    const doneArr = arrTasks
-      .filter((r) => r.status === "done")
-      .sort(
-        (a, b) =>
-          new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
-      );
+  //   const doneArr = arrTasks
+  //     .filter((r) => r.status === "done")
+  //     .sort(
+  //       (a, b) =>
+  //         new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
+  //     );
 
-    // console.log(arrTasks);
-    const newTasks = [...activeArr, ...doneArr];
-    // console.log(newTasks);
+  //   // console.log(arrTasks);
+  //   const newTasks = [...activeArr, ...doneArr];
+  //   // console.log(newTasks);
 
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
+  //   localStorage.setItem("tasks", JSON.stringify(newTasks));
 
-    setTasks(newTasks);
-    setToggle(false);
-  };
+  //   setTasks(newTasks);
+  //   setToggle(false);
+  // };
 
   const updateTask = (id) => {
     // console.log(id);
     // console.log(tasks);
-    const data = tasks.filter((r) => r.id === id);
-    const data0 = data[0];
+    // const data0 = tasks.filter((r) => r.id === id)[0];
     // console.log(data0);
 
-    const filterTasksOut = tasks.filter((r) => r.id !== id);
-    // console.log(filterTasksOut);
-    const newArrTasks = [
-      ...filterTasksOut,
-      {
-        id: data0.id,
-        dateTime: data0.dateTime,
-        task: data0.task,
-        status: "done",
+    const data = JSON.stringify({
+      id: tasks.filter((r) => r.id === id)[0].id,
+      status: "DONE",
+    });
+
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3000/todoList/updateTask",
+      headers: {
+        "Content-Type": "application/json",
       },
-    ];
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        queryFromDb();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    // const filterTasksOut = tasks.filter((r) => r.id !== id);
+    // console.log(filterTasksOut);
+    // const newArrTasks = [
+    //   ...filterTasksOut,
+    //   {
+    //     id: data0.id,
+    //     dateTime: data0.dateTime,
+    //     task: data0.task,
+    //     status: "done",
+    //   },
+    // ];
     // console.log(newArrTasks);
 
-    savOnLocalSt(newArrTasks);
+    // savOnLocalSt(newArrTasks);
   };
 
   const deleteTask = (id) => {
-    console.log(id);
+    // console.log(id);
+    const data0 = JSON.stringify({
+      id: id,
+    });
 
-    const filterTasksOut = tasks.filter((r) => r.id !== id);
-    console.log(filterTasksOut);
-    savOnLocalSt(filterTasksOut);
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3000/todoList/deleteId",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data0,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        queryFromDb();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    // const filterTasksOut = tasks.filter((r) => r.id !== id);
+    // console.log(filterTasksOut);
+    // savOnLocalSt(filterTasksOut);
   };
 
   return (
@@ -96,39 +187,40 @@ const ToDoList4 = () => {
         <h1 className="w-full text-center text-2xl mt-8">My ToDoLists</h1>
         <div className="w-full h-100 flex justify-center p-8">
           <div className="w-full grid grid-col-1 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {tasks.map((r, idx) => (
-              <div
-                key={idx}
-                className="max-w-[250px] h-[250px] rounded-lg shadow-lg text-sm p-4 mt-2"
-                style={{
-                  backgroundColor:
-                    colorPallet[
-                      Math.floor(Math.random() * (colorPallet.length - 1))
-                    ],
-                }}
-              >
-                <div className="h-full flex flex-col gap-2 text-white">
-                  <div className="h-[80%] flex text-xl">
-                    <p className={r.status === "done" ? `line-through` : ``}>
-                      {r.task}
-                    </p>
-                  </div>
-                  <div className="h-[20%] flex gap-2 justify-between items-end">
-                    <div className="text-xs font-thin">
-                      {new Date(r.dateTime).toLocaleString("TH")}
+            {tasks.length > 0 &&
+              tasks.map((r, idx) => (
+                <div
+                  key={idx}
+                  className="max-w-[250px] h-[250px] rounded-lg shadow-lg text-sm p-4 mt-2"
+                  style={{
+                    backgroundColor:
+                      colorPallet[
+                        Math.floor(Math.random() * (colorPallet.length - 1))
+                      ],
+                  }}
+                >
+                  <div className="h-full flex flex-col gap-2 text-white">
+                    <div className="h-[80%] flex text-xl">
+                      <p className={r.status === "DONE" ? `line-through` : ``}>
+                        {r.task}
+                      </p>
                     </div>
-                    <div className="flex gap-4">
-                      <button onClick={() => updateTask(r.id)} className="">
-                        <FaClipboardCheck className="text-lg" />
-                      </button>
-                      <button onClick={() => deleteTask(r.id)} className="">
-                        <FaTrash className="text-lg" />
-                      </button>
+                    <div className="h-[20%] flex gap-2 justify-between items-end">
+                      <div className="text-xs font-thin">
+                        {new Date(r.updatedAt).toLocaleString("TH")}
+                      </div>
+                      <div className="flex gap-4">
+                        <button onClick={() => updateTask(r.id)} className="">
+                          <FaClipboardCheck className="text-lg" />
+                        </button>
+                        <button onClick={() => deleteTask(r.id)} className="">
+                          <FaTrash className="text-lg" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>

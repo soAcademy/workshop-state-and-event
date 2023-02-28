@@ -1,4 +1,4 @@
-// import WorldMap from "./WorldMap/WorldMap";
+import WorldMap from "./WorldMap/WorldMap";
 
 // import State3 from "./StatesAnswer/State3";
 // import LocalStorage1 from "./LocalStorageAnswer/LocalStorage1";
@@ -53,7 +53,9 @@
 // import CustomHook3 from "./CustomHook/CustomHook3";
 // import CustomHook4 from "./CustomHook/CustomHook4";
 
-import LotteryChecker1 from "./LotteryChecker/LotteryChecker1";
+// import LotteryChecker1 from "./LotteryChecker/LotteryChecker1";
+
+import ToDoList4 from "./ToDoLists/ToDoList4";
 
 const App = () => {
   return (
@@ -93,7 +95,7 @@ const App = () => {
       {/* <ToDoList1 /> */}
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
-      {/* <ToDoList4 /> */}
+      <ToDoList4 />
 
       {/* <Chart1 /> */}
       {/* <Chart2 /> */}
@@ -139,7 +141,7 @@ const App = () => {
       {/* <CustomHook3/> */}
       {/* <CustomHook4/> */}
 
-      <LotteryChecker1 />
+      {/* <LotteryChecker1 /> */}
     </div>
   );
 };
