@@ -1,13 +1,15 @@
-// เราท Chart ไว้แสดงผล
-// เคลียร์ตัวฟังชันให้เสร็จทีนี้จะทำให้การทำงานหน้าจอ DOM ง่ายเลย บวกลบคณหารเอามาต่อกันได้ตามสบาย
-import ReactECharts from "echarts-for-react";
+// อันนี้เริ่มที่จะซับซ้อนขึ้นมาก เพราะมันมีการเอาตัว hardcode ออกแล้วก็เอาตัว function ที่เราทำไปใส่ในหน้า Dom ทำให้เราเริ่มสับสนอาจจะต้องเข้ามาทำความเข้าใจเพิ่ม
+
 import { useState, useEffect } from "react";
+import ReactECharts from "echarts-for-react";
 import ExchangeRatesData from "./exchange-rates.json";
-// นอกจากตัว ReactCharts แล้วเราก็มีเอาไฟล์ Json ตัวนี้เข้ามาด้วย
 import ExchangeStatistic from "./exchange-statistic.json";
 import ExchangeChart from "./exchange-chart.json";
+// เอาอันนี้เข้ามาเพื่อดึง API จะได้ไม่ต้องเอาไฟล์ json เข้ามา
+import axios from "axios";
 
-const CurrencyConverter5 = () => {
+// เปลี่ยนจาก CurrencyConverter เป็น useCurrency แล้วก็เพิ่ม authToken
+const useCurrencyConverter = ({ authToken }) => {
   const [exchangeRates, setExchangeRates] = useState();
   const [currencyLists, setCurrencyLists] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("THB");
@@ -17,15 +19,25 @@ const CurrencyConverter5 = () => {
   const [fromCurrencyRate, setFromCurrencyRate] = useState();
   const [toCurrencyRate, setToCurrencyRate] = useState();
   const [exchangeStatistic, setExchangeRatesStatistic] = useState();
-  // เพิ่มตัวนี้เข้ามา
   const [chartOption, setChartOption] = useState({});
 
   useEffect(() => {
+    // เพิ่มตัว Axios เข้ามา
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        "https://www.xe.com/api/protected/midmarket-converter/"
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+    // จบที่ตรงนี้สำหรับ axios
     const _exchangeRates = ExchangeRatesData;
     const _currencyLists = Object.keys(_exchangeRates.rates);
     // console.log(_currencyLists);
     setExchangeRates(_exchangeRates);
     setCurrencyLists(_currencyLists);
+    });
   }, []);
 
   // มี useEffect อีกตัว
@@ -34,9 +46,32 @@ const CurrencyConverter5 = () => {
     const _toCurrencyRate = exchangeRates?.rates[toCurrency];
     // console.log(fromCurrencyRate, toCurrencyRate);
     const _amountConvert = (amount / _fromCurrencyRate) * _toCurrencyRate;
-    const _exchangeStatistic = ExchangeStatistic;
+    // เพิ่มสามตัวข้างล่างเข้ามา
+    setAmountConvert(_amountConvert);
+    setFromCurrencyRate(_fromCurrencyRate);
+    setToCurrencyRate(_toCurrencyRate);
+    // const _exchangeStatistic = ExchangeStatistic; อันนี้ลบให้หายไปเลย
+    // จุดเริ่มต้นของ axios เริ่มต้นขึ้นแล้
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/statistics/?from=${fromCurrency}&to=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+      setExchangeRatesStatistic(res.data);
+    });
 
-// เราเพิ่มส่วนนี้เข้ามาเพื่อใช้สร้าง Chart แสดงผล 
+    axios({
+      url: `https://anyorigin-iinykauowa-uc.a.run.app/?url=${encodeURIComponent(
+        `https://www.xe.com/api/protected/charting-rates/?fromCurrency=${fromCurrency}&toCurrency=${toCurrency}`
+      )}`,
+      headers: {
+        Authorization: authToken,
+      },
+    }).then((res) => {
+    // ตรงข้างล่างนี้เหมือนเดิมเปะ
     const _exchangeChart = ExchangeChart;
     const _chartOption = {
       xAxis: {
@@ -65,11 +100,61 @@ const CurrencyConverter5 = () => {
       },
     };
 // สิ้นสุดฟังชัน Chart
-    setAmountConvert(_amountConvert);
-    setFromCurrencyRate(_fromCurrencyRate);
-    setToCurrencyRate(_toCurrencyRate);
-    setExchangeRatesStatistic(_exchangeStatistic);
-  }, [amount, fromCurrency, toCurrency]);
+
+  // ลบทั้งสี่ตัวนี้ทิ้งไปเลยแล้วก็ใช้ตัว setChartOption เข้ามาแทน
+    // setAmountConvert(_amountConvert);
+    // setFromCurrencyRate(_fromCurrencyRate);
+    // setToCurrencyRate(_toCurrencyRate);
+    // setExchangeRatesStatistic(_exchangeStatistic);
+    setChartOption(_chartOption);
+  });
+}, [amount, fromCurrency, toCurrency, exchangeRates]);
+
+  // อันนี้จะเป็นตัว return แบบไหนวะเนี่ย
+return {
+  exchangeRates,
+  setExchangeRates,
+  currencyLists,
+  setCurrencyLists,
+  fromCurrency,
+  setFromCurrency,
+  toCurrency,
+  setToCurrency,
+  amount,
+  setAmount,
+  amountConvert,
+  setAmountConvert,
+  fromCurrencyRate,
+  setFromCurrencyRate,
+  toCurrencyRate,
+  setToCurrencyRate,
+  exchangeStatistic,
+  setExchangeRatesStatistic,
+  chartOption,
+  setChartOption,
+};
+};
+// จุดสิ้นสุดของ return แรกของ function
+
+const CurrencyConverter6 = () => {
+  const authToken =
+    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+  const {
+    currencyLists,
+    fromCurrency,
+    setFromCurrency,
+    toCurrency,
+    setToCurrency,
+    amount,
+    setAmount,
+    amountConvert,
+    fromCurrencyRate,
+    toCurrencyRate,
+    exchangeStatistic,
+    chartOption,
+  } = useCurrencyConverter({ authToken });
+
+  // คือเรากำหนดตัว function ให้เสร็จจนหมดตั้งแต่แรกแล้ว ส่วนนี้มันเป็นตัวกำหนดตัวแปร
 
   return (
     <div className="">
@@ -161,41 +246,58 @@ const CurrencyConverter5 = () => {
           อัตราแลกเปลี่ยนย้อนหลัง
         </h2>
         <div className="flex mt-4">
-          <div className="w-1/2">
+        <div className="w-1/2">
             <div>1 วัน</div>
             <div className="font-bold text-xl">
-              {/* เปลี่ยนจาก Hard code มาเป็นการใช้ Function ต่าง ๆ */}
-              1 THB = {exchangeStatistic?.last1Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last1Days?.average}{" "}
+              {toCurrency}
             </div>
-            <div>1 USD = {1 / exchangeStatistic?.last1Days?.average} THB </div>
+            <div>
+              1 {toCurrency} = {1 / exchangeStatistic?.last1Days?.average}{" "}
+              {fromCurrency}{" "}
+            </div>
           </div>
           <div className="w-1/2">
             <div>7 วัน</div>
             <div className="font-bold text-xl">
-               {/* เปลี่ยนจาก Hard code มาเป็นการใช้ Function ต่าง ๆ */}
-              1 THB = {exchangeStatistic?.last7Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last7Days?.average}{" "}
+              {toCurrency}
             </div>
-            <div>1 USD ={1 / exchangeStatistic?.last7Days?.average} THB </div>
+            <div>
+              1 {toCurrency} ={1 / exchangeStatistic?.last7Days?.average}{" "}
+              {fromCurrency}{" "}
+            </div>
           </div>
         </div>
         <div className="flex mt-4">
-          <div className="w-1/2">
+        <div className="w-1/2">
             <div>30 วัน</div>
             <div className="font-bold text-xl">
-               {/* เปลี่ยนจาก Hard code มาเป็นการใช้ Function ต่าง ๆ */}
-              1 THB = {exchangeStatistic?.last30Days?.average} USD
+              1 {fromCurrency} = {exchangeStatistic?.last30Days?.average}{" "}
+              {toCurrency}
             </div>
-            <div>1 USD = {1 / exchangeStatistic?.last30Days?.average} THB </div>
+            <div>
+              1 {toCurrency} = {1 / exchangeStatistic?.last30Days?.average}{" "}
+              {fromCurrency}{" "}
+            </div>
           </div>
           <div className="w-1/2">
             <div>60 วัน</div>
             <div className="font-bold text-xl">
-              1 THB = {exchangeStatistic?.last60Days?.average} USD
+              {/* เพิ่มตัวนี้เข้ามาแทนให้เรียบร้อย */}
+              {/* 1 THB = {exchangeStatistic?.last60Days?.average} USD */}
+              1 {fromCurrency} = {exchangeStatistic?.last60Days?.average}{" "}
+              {toCurrency}
             </div>
-            <div>1 USD ={1 / exchangeStatistic?.last60Days?.average} THB </div>
+            <div>
+            1 {toCurrency} ={1 / exchangeStatistic?.last60Days?.average}{" "}
+              {fromCurrency}{" "} 
+              {/* ข้างบนมาแทนข้างล่างเพื่อมันเปลี่ยนไปตามที่เราเลือก */}
+              {/* 1 USD ={1 / exchangeStatistic?.last60Days?.average} THB  */}
+              </div>
           </div>
         </div>
-        {/* เพิ่ม Chart React เข้ามาตรงนี้ด้วย */}
+        {/* เพิ่ม Chart React เข้ามาตรงนี้ด้วย ให้มันโชว์ไป เพราะเรากำหนดฟังชันอะไรเสร็หมดแล้ว*/}
         <div className="mt-4">
           <ReactECharts option={chartOption} />
         </div>
@@ -203,4 +305,4 @@ const CurrencyConverter5 = () => {
     </div>
   );
 };
-export default CurrencyConverter5;
+export default CurrencyConverter6;
