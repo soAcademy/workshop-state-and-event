@@ -195,6 +195,9 @@ const CurrencyConverter5 = () => {
             <div>1 USD ={1 / exchangeStatistic?.last60Days?.average} THB </div>
           </div>
         </div>
+        <div className="mt-4">
+          <ReactECharts option={chartOption} />
+        </div>
       </div>
     </div>
   );
