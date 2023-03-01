@@ -5,9 +5,9 @@ const LottoForm = ({
   checkWinner,
   setLotteryNumbers,
   setLotteryResult,
+  selectedDate,
+  setSelectedDate,
   lotteryDate,
-  setLotteryDate,
-  Dates,
 }) => {
   return (
     <div>
@@ -21,12 +21,12 @@ const LottoForm = ({
             <label>เลือกงวด</label>
             <br />
             <select
-              onChange={(e) => setLotteryDate(e.target.value)}
-              value={lotteryDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              value={selectedDate}
             >
-              {Dates.map((date) => (
-                <option key={date.date} value={date.date}>
-                  {date.title}
+              {lotteryDate.map((date) => (
+                <option key={date.dateString} value={date.dateString}>
+                  {date.dateText}
                 </option>
               ))}
             </select>

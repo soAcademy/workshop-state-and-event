@@ -1,6 +1,6 @@
 import React from "react";
 
-const LottoTable = ({ lotteryData, lotteryDate }) => {
+const LottoTable = ({ lotteryData, selectedDate }) => {
   return (
     <div>
       {" "}
@@ -191,7 +191,7 @@ const LottoTable = ({ lotteryData, lotteryDate }) => {
         </div>
         <br />
         {/* หวยย้อนหลัง */}
-        <div className=" flex mb-4 text-2xl">งวดวันที่ {lotteryDate}</div>
+        <div className=" flex mb-4 text-2xl">งวดวันที่ {selectedDate}</div>
         <div className="w-full flex">
           <div className="w-1/4 mx-2">
             <h1 className="text-center p-2 bg-sky-200 rounded-t-2xl">

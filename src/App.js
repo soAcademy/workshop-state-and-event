@@ -5,6 +5,7 @@ import CustomHook4 from "./CustomHook/CustomHook4";
 import Exchange from "./Exchange/Exchange";
 import Lottery1 from "./Lottery/Lottery1";
 import Retirement from "./Retirement/Retirement";
+import ToDoList5 from "./ToDoListDB/ToDoList5";
 
 const App = () => {
   return (
@@ -15,7 +16,8 @@ const App = () => {
       {/* <CustomHook4 /> */}
       {/* <Exchange /> */}
       {/* <Retirement /> */}
-      <Lottery1 />
+      {/* <Lottery1 /> */}
+      <ToDoList5 />
     </>
   );
 };

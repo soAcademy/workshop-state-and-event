@@ -4,11 +4,16 @@ import LottoTable from "./LottoTable";
 import LottoResult from "./LottoResult";
 import LottoForm from "./LottoForm";
 import Dates from "./date.json";
+require("dayjs/locale/th");
+const dayjs = require("dayjs");
+var utc = require("dayjs/plugin/utc");
+dayjs.locale("th");
+dayjs.extend(utc);
 
 const Lottery1 = () => {
-  const [lotteryDate, setLotteryDate] = useState(Dates[0].date);
+  const [lotteryDate, setLotteryDate] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(lotteryDate[0]?.dateString);
   const [lotteryData, setLotteryData] = useState([]);
-  const [lotteryDateTitle, setLotteryDateTitle] = useState();
   const [lotteryNumbers, setLotteryNumbers] = useState("");
   const [lotteryResult, setLotteryResult] = useState([
     // {
@@ -18,16 +23,35 @@ const Lottery1 = () => {
     // },
   ]);
 
-  console.log("งวดที่เลือก คือ ", lotteryDate);
+  console.log("งวดที่เลือก คือ ", selectedDate);
+
+  useEffect(() => {
+    axios({
+      method: "POST",
+      url: `http://localhost:3100/lotteryDates`,
+    }).then((response) => {
+      console.log("response Date : ", response);
+
+      const _lotteryDate = response.data?.map((r) => {
+        const dateString = dayjs(r.date).utc().local().format("YYYY-MM-DD");
+        const dateText = dayjs(r.date)
+          .locale("th")
+          .utc()
+          .local()
+          .format("DD MMMM YYYY");
+        return { ...r, dateString, dateText };
+      });
+      setLotteryDate(_lotteryDate);
+      console.log("lotteryDate : ", _lotteryDate);
+    });
+  }, []);
 
   useEffect(() => {
     axios({
       method: "GET",
-      url: `https://www.thairath.co.th/api-lottery?history=1&date=${lotteryDate}`,
+      url: `https://www.thairath.co.th/api-lottery?history=1&date=${selectedDate}`,
     }).then((response) => {
-      console.log("response : ", response);
-      const _lotteryDateTitle = response.data?.data?.lotteryDateTitle;
-      setLotteryDateTitle(_lotteryDateTitle);
+      // console.log("response : ", response);
 
       const _lotteryData = Object.values(response.data?.data?.prizes)?.map(
         (r) => ({
@@ -36,10 +60,9 @@ const Lottery1 = () => {
         })
       );
       setLotteryData(_lotteryData);
-      console.log("lotteryData : ", lotteryData);
-      console.log("lotteryDateTitle : ", lotteryDateTitle);
+      // console.log("lotteryData : ", lotteryData);
     });
-  },[],lotteryDate);
+  }, [selectedDate]);
 
   const getPrizeText = (index) =>
     index < 5
@@ -152,12 +175,13 @@ const Lottery1 = () => {
         checkWinner={checkWinner}
         setLotteryNumbers={setLotteryNumbers}
         setLotteryResult={setLotteryResult}
-        lotteryDate={lotteryDate}
-        setLotteryDate={setLotteryDate}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
         Dates={Dates}
+        lotteryDate={lotteryDate}
       ></LottoForm>
       <LottoResult lotteryResult={lotteryResult}></LottoResult>
-      <LottoTable lotteryData={lotteryData} lotteryDate={lotteryDate} />
+      <LottoTable lotteryData={lotteryData} selectedDate={selectedDate} />
     </div>
   );
 };
