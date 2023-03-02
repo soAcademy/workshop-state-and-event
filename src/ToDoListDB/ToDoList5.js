@@ -6,7 +6,7 @@ const ToDoList5 = () => {
   const colorPalletes = ["#ffb88a", "	#a0c5e3", "#e39b99", "#9f9bbc", "#a1cec5"];
 
   const [toggle, setToggle] = useState(false);
-
+  const [reload, setReload] = useState(false);
   // const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
@@ -22,45 +22,90 @@ const ToDoList5 = () => {
       //update state task,setTasks
       setTasks(_tasks);
     });
-  }, []);
+  }, [reload]);
 
-  const updateTasks = (newTasks) => {
-    console.log("newTasks : ", newTasks);
-    localStorage.setItem(
-      "tasks",
-      JSON.stringify(newTasks.sort((a, b) => b.id - a.id))
-    );
-    setTasks(newTasks);
-  };
+  // const updateTasks = (newTasks) => {
+  //   console.log("newTasks : ", newTasks);
+  // localStorage.setItem(
+  //   "tasks",
+  //   JSON.stringify(newTasks.sort((a, b) => b.id - a.id))
+  // );
+  //   setTasks(newTasks);
+  // };
 
-  const addTask = (e) => {
-    e.preventDefault();
-    const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
-    console.log(e.target["task"].value);
-    const newTasks = [
-      ..._tasks,
-      {
-        id: new Date().getTime(),
-        task: e.target["task"].value,
-        dateTime: new Date(),
-        status: "active",
-      },
-    ];
+  const addTask = () => {
+    // const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
+    // console.log(e.target["task"].value);
+    // const newTasks = [
+    //   ..._tasks,
+    //   {
+    //     id: new Date().getTime(),
+    //     task: e.target["task"].value,
+    //     dateTime: new Date(),
+    //     status: "active",
+    //   },
+    // ];
     // add tasks to the list of tasks
-    updateTasks(newTasks);
+    // updateTasks(newTasks);
 
     // clear input fields
-    setInput("");
+    var data = JSON.stringify({
+      task: input,
+    });
+
+    var config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3100/todolist/createTask",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setInput("");
+        setReload(!reload);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const doneTask = (id) => {
-    const targetTask = tasks.filter((t) => t.id === id)[0];
+    var data = JSON.stringify({
+      id: id,
+      status: "DONE",
+    });
 
-    targetTask.status = "done";
+    var config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "http://localhost:3100/todolist/updateTask",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
 
-    const newTasks = [...tasks.filter((t) => t.id !== id), targetTask];
-    updateTasks(newTasks);
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setReload(!reload);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    //----------------------------------------------------------------
+    // const targetTask = tasks.filter((t) => t.id === id)[0];
 
+    // targetTask.status = "done";
+
+    // const newTasks = [...tasks.filter((t) => t.id !== id), targetTask];
+    // updateTasks(newTasks);
+    //-----------------------------------------------------------------
     // const targetTaskIndex = tasks.findIndex((t) => t.id === id);
     // const newTask = [...tasks];
     // console.log("newTask1: " , newTasks);
@@ -70,14 +115,13 @@ const ToDoList5 = () => {
   };
 
   const deleteTask = (id) => {
-
     var config = {
       method: "post",
       url: "http://localhost:3100/todolist/deleteTask",
       data: {
-        id
+        id,
       },
-    }
+    };
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
@@ -104,20 +148,20 @@ const ToDoList5 = () => {
                       border-2 w-1/2 z-[100] m-auto bg-white/80 
                       backdrop-blur-sm rounded-xl"
         >
-          <form onSubmit={(e) => addTask(e)} className="">
+          <form onSubmit={() => addTask()} className="">
             <div className="w-full p-4">
               <h1 className="font-bold text-xl">Add Note</h1>
               <textarea
                 type="text"
                 id="task"
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(event) => setInput(event.target.value)}
                 required
                 className="mt-8 border-2 border-blue-300 rounded p-2 w-full"
               />
               <button
                 type="submit"
-                onClick={() => addTask(input)}
+                // onClick={() => addTask()}
                 className="w-full mt-8 p-4 bg-red-300 rounded-xl shadow-lg"
               >
                 Save
@@ -137,12 +181,12 @@ const ToDoList5 = () => {
             <div className="flex w-[200px] h-[200px]">
               <div
                 className={`w-4 h-4 mt-1.5 mr-2 rounded-full shadow-md 
-                              ${t.status === "done" ? "hidden" : "bg-red-500"}`}
+                              ${t.status === "DONE" ? "hidden" : "bg-red-500"}`}
               ></div>
               <div
                 className={`text-lg 
                               ${
-                                t.status === "done"
+                                t.status === "DONE"
                                   ? "text-gray-800/30 line-through"
                                   : "font-bold"
                               }`}
