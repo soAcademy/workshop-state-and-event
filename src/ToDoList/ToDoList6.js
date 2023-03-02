@@ -34,9 +34,7 @@ const ToDoList6 = () => {
     closeConfirmDelete();
   };
 
-  // -------------delete task------------------
-
-  // -------------update task---------------------
+  // ----------------------update task-----------------------
 
   const doneTask = async (id) => {
     const result = await axios.post(
@@ -46,7 +44,7 @@ const ToDoList6 = () => {
     await getAllCard();
   };
 
-  // -------------update task---------------------
+  // ---------------------update task------------------------
 
   const updateTasks = (newTasks) => {
     console.log(newTasks);
@@ -57,21 +55,14 @@ const ToDoList6 = () => {
     setTasks(newTasks);
   };
 
-  const addTask = (e) => {
-    e.preventDefault();
-    const _tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
+  //--------------- add task -----------------
+  const addTask = async (task) => {
+    const result = await axios.post(
+      "http://localhost:4000/todolist/createTask",
+      { data: [{ task }] }
+    );
 
-    console.log(e.target["task"].value);
-    const newTasks = [
-      {
-        task: e.target["task"].value,
-        id: new Date().getTime(),
-        datetime: new Date(),
-        status: "active",
-      },
-      ..._tasks,
-    ];
-    updateTasks(newTasks);
+    await getAllCard();
   };
 
   const openConfirmDelete = (id) => {
@@ -116,7 +107,9 @@ const ToDoList6 = () => {
         <div className="fixed top-0 bottom-0 left-0 right-0 flex bg-gray-500/30 backdrop-opacity-80">
           <form
             onSubmit={(e) => {
-              addTask(e);
+              e.preventDefault();
+              console.log("e", e.target[0].value);
+              addTask(e.target[0].value);
               setToggleShow(false);
             }}
             className="flex flex-col m-auto bg-white p-5 w-2/5 h-auto rounded-lg"
