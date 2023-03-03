@@ -27,6 +27,8 @@ const useFetchLottery = ({ lotteryDate }) => {
   };
 };
 
+
+
 const LotteryChecker = () => {
   const { lotteryData, lotteryDateTitle } = useFetchLottery("2022-12-05");
 

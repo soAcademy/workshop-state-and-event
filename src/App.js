@@ -72,7 +72,7 @@ import LotteryChecker from "./Lottery/LotteryChecker"
 
 import Lottery2 from "./LotteryAnswer/Lottery2"
 import Lottery3 from "./LotteryAnswer/Lottery3"
-
+import ToDoList_Api from "./ToDoList/ToDoList_Api"
 
 const App = () => {
   return (
@@ -107,6 +107,7 @@ const App = () => {
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
       {/* <ToDoList5 /> */}
+      {/* <ToDoList_Api /> */}
       {/* <Chart1 /> */}
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
@@ -158,7 +159,7 @@ const App = () => {
       {/* <Lottery4 /> */}
       {/* <Lottery5 /> */}
       {/* <Zipcode8 /> */}
-      <LotteryChecker />
+      {/* <LotteryChecker /> */}
     </>
   );
 };
