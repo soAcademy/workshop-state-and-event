@@ -7,7 +7,7 @@
 // import ToDoList2 from "./ToDoListAnswers/ToDoList2";
 // import ToDoList3 from "./ToDoListAnswers/ToDoList3";
 // import ToDoList4 from "./ToDoListAnswers/ToDoList4";
-// import ToDoList5 from "./ToDoListAnswers/ToDoList5";
+import ToDoList6 from "./ToDoList/ToDoList6";
 // import Chart1 from "./ChartsAnswer/Chart1";
 // import Chart2 from "./ChartsAnswer/Chart2";
 // import Chart3 from "./ChartsAnswer/Chart3";
@@ -60,7 +60,7 @@
 // import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6_2";
 // import Retirement2 from "./Retirement/Retirement2";
 // import DeathCause8 from "./DeathCause/DeathCause8";
-import LotteryCheck from "./LotteryCheck/LotteryCheck";
+// import LotteryCheck from "./LotteryCheck/LotteryCheck";
 
 const App = () => {
   return (
@@ -74,7 +74,7 @@ const App = () => {
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
-      {/* <ToDoList5 /> */}
+      <ToDoList6 />
       {/* <Chart1 /> */}
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
@@ -119,7 +119,7 @@ const App = () => {
       {/* <CustomHook3 /> */}
       {/* <CustomHook4 /> */}
       {/* <Retirement2 /> */}
-      <LotteryCheck />
+      {/* <LotteryCheck /> */}
     </>
   );
 };

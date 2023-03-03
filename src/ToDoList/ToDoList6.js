@@ -4,8 +4,6 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import axios from "axios";
 
 const ToDoList5 = () => {
-  const tmpTasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
-
   const colors = [
     "#82CD47",
     "#FF78F0",
@@ -17,70 +15,78 @@ const ToDoList5 = () => {
     "#EA047E",
     "#F0FF42",
   ];
-  const randomColor = () => colors[Math.floor(Math.random() * colors.length)];
+  // const randomColor = () => colors[Math.floor(Math.random() * colors.length)];
 
-  const [getTasks, setGetTasks] = useState(tmpTasks);
   const [toggle, setToggle] = useState(false);
   const [toggleDel, setToggleDel] = useState(false);
-  const [deleteId, setDeleteId] = useState();
+  const [getTasks, setGetTasks] = useState();
+  const [deleteTaskById, setDeleteTaskById] = useState();
 
+  //---------------------getTask for Api --------------------//
+  const getTaskFromApi = async () => {
+    const result = await axios.post("http://localhost:3100/getTask");
+    console.log("Tasks from Api", result);
+    setGetTasks(result.data);
+  };
   useEffect(() => {
-    axios({
-      method: "post",
-      url: "http://localhost:3100/getTask",
-    }).then((response) => {
-      console.log("test Res Data", response.data);
-    });
+    getTaskFromApi();
   }, []);
 
-  const updateTasks = (newTasks) => {
-    console.log(newTasks);
-    localStorage.setItem(
-      "tasks",
-      JSON.stringify(newTasks.sort((a, b) => b.id - a.id))
-    );
-    setGetTasks(newTasks);
+  // useEffect(() => {
+  //   axios({
+  //     method: "post",
+  //     url: "http://localhost:3100/getTask",
+  //   }).then((response) => {
+  //     console.log("Data from Api", response.data);
+  //     setGetTask2(response.data);
+  //   });
+  // }, []);
+
+  //-----------------------------------------------------------//
+
+  //------------------CreateTask-----------------------------//
+
+  const createTask = async (task) => {
+    const result = await axios.post("http://localhost:3100/createTask", {
+      task: task,
+    });
+    console.log("createTask", result);
+    await getTaskFromApi();
   };
 
-  const addTask = (e) => {
-    e.preventDefault();
-    const tmpTasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
-    console.log(e.target["task"].value);
-    const newTasks = [
-      ...tmpTasks,
-      {
-        id: new Date().getTime(),
-        task: e.target["task"].value,
-        dateTime: new Date(),
-        bgColor: randomColor(),
-        status: "Active",
-      },
-    ];
-    updateTasks(newTasks);
+  //-------------------------------------------------------------//
+
+  //---------------Done Task---------------//
+  const doneTask = async (id) => {
+    const result = await axios.post("http://localhost:3100/updateTask", {
+      id,
+      status: "DONE",
+    });
+    await getTaskFromApi();
+    console.log("doneTask", result.data);
+  };
+  //------------------------------------------------------//
+
+  //------------------------DeleteTask--------------------//
+
+  const deleteTask = async () => {
+    const result = await axios.post("http://localhost:3100/deleteTask", {
+      id: deleteTaskById,
+    });
+    console.log("deleteTaskId", result);
+    setDeleteTaskById();
+    await getTaskFromApi();
   };
 
-  const doneTask = (id) => {
-    const targetTask = getTasks.filter((r) => r.id === id)[0];
-    const newTasks = [
-      ...getTasks.filter((r) => r.id !== id),
-      {
-        id: id,
-        task: targetTask.task,
-        dateTime: targetTask.dateTime,
-        bgColor: targetTask.bgColor,
-        status: "Done",
-      },
-    ];
-    updateTasks(newTasks);
-  };
+  //--------------------------------------------------------//
 
   return (
-    <div>
+    <div className="mb-14">
       {toggle && (
         <div className="w-full h-screen fixed flex bg-gray-500/30 backdrop-blur-sm">
           <form
             onSubmit={(e) => {
-              addTask(e);
+              createTask(e.target[0].value);
               setToggle(false);
             }}
             className="flex flex-col m-auto bg-white p-5 w-2/5 rounded-lg"
@@ -125,8 +131,9 @@ const ToDoList5 = () => {
             <div>
               <button
                 onClick={() => {
-                  const newTasks = getTasks.filter((r) => r.id !== deleteId);
-                  updateTasks(newTasks);
+                  // const newTasks = getTasks.filter((r) => r.id !== deleteId);
+                  // updateTasks(newTasks);
+                  deleteTask(); // กดยืนยัน เพื่อเรียกฟังก์ชัน deleteTask();
                   setToggleDel(false);
                 }}
                 className="px-4 py-2 bg-sky-300 active:bg-sky-100 rounded w-full font-bold"
@@ -140,14 +147,14 @@ const ToDoList5 = () => {
 
       <div className="px-4 pb-4">
         <div className=" my-3">
-          <p className="text-xl">บันทึกของฉัน</p>
+          <p className="text-xl">My To/Do List</p>
         </div>
         <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {getTasks?.map((r, idx) => (
             <div
               key={idx}
               className="rounded px-2 pt-5 pb-2 shadow-lg"
-              style={{ backgroundColor: r.bgColor }}
+              style={{ backgroundColor: colors[idx % colors.length] }}
             >
               <div
                 className={`w-[208px] h-[208px] text-xl ${
@@ -159,10 +166,10 @@ const ToDoList5 = () => {
               {/* <p>status: {r.status}</p> */}
               <div className="flex">
                 <div className="text-sm flex-auto">
-                  {new Date(r.dateTime).toLocaleString("TH")}
+                  {new Date(r.updatedAt).toLocaleString("TH")}
                 </div>
                 <div>
-                  {r.status === "Active" && (
+                  {r.status === "PENDING" && (
                     <button type="button" onClick={() => doneTask(r.id)}>
                       <BsCheckCircle />
                     </button>
@@ -171,7 +178,7 @@ const ToDoList5 = () => {
                     type="button"
                     onClick={() => {
                       setToggleDel(true);
-                      setDeleteId(r.id);
+                      setDeleteTaskById(r.id);
                     }}
                     className="pl-2"
                   >

@@ -11,7 +11,7 @@ export const useFetch = ({ dateCheck }) => {
       method: "get",
       url: `https://www.thairath.co.th/api-lottery?history=1&date=${dateCheck}`,
     }).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setLotteryTitle(response.data?.data?.lotteryDateTitle);
       console.log("DateLotto:", response.data?.data?.lotteryDateTitle);
       const lotteryReward = Object.values(response.data?.data?.prizes);
