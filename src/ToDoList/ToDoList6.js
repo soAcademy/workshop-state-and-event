@@ -158,7 +158,7 @@ const ToDoList5 = () => {
             >
               <div
                 className={`w-[208px] h-[208px] text-xl ${
-                  r.status === "Done" ? "line-through" : ""
+                  r.status === "DONE" ? "line-through" : ""
                 }`}
               >
                 {r.task}
