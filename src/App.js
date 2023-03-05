@@ -3,11 +3,11 @@
 // import LocalStorage2 from "./LocalStorage/LocalStorage2";
 // import LocalStorage3 from "./LocalStorage/LocalStorage3";
 // import LocalStorage4 from "./LocalStorage/LocalStorage4";
-// import ToDoList1 from "./ToDoList/ToDoList1";
-// import ToDoList2 from "./ToDoList/ToDoList2";
-// import ToDoList3 from "./ToDoListToDoList3";
-// import ToDoList4 from "./ToDoList/ToDoList4";
-// import ToDoList5 from "./ToDoList/ToDoList5";
+// import ToDoList1 from "./ToDoLists/ToDoList1";
+// import ToDoList2 from "./ToDoLists/ToDoList2";
+// import ToDoList3 from "./ToDoLists/ToDoList3";
+// import ToDoList4 from "./ToDoLists/ToDoList4";
+import ToDoList5 from "./ToDoLists/ToDoList5";
 // import Chart1 from "./Charts/Chart1";
 // import Chart2 from "./Charts/Chart2";
 // import Chart3 from "./Charts/Chart3";
@@ -45,7 +45,7 @@
 // import CurrencyConverter3 from "./CurrencyConverter/CurrencyConverter3";
 // import CurrencyConverter4 from "./CurrencyConverter/CurrencyConverter4";
 // import CurrencyConverter5 from "./CurrencyConverter/CurrencyConverter5";
-import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
+// import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
 // import CurrencyConverter7 from "./CurrencyConverter/CurrencyConverter7";
 // import CustomHook1 from "./CustomHook";
 // import CustomHook2 from "./CustomHook";
@@ -74,7 +74,7 @@ const App = () => {
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
-      {/* <ToDoList5 /> */}
+      <ToDoList5 />
       {/* <Chart1 />  */}
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
@@ -112,7 +112,7 @@ const App = () => {
       {/* <CurrencyConverter3 /> */}
       {/* <CurrencyConverter4 /> */}
       {/* <CurrencyConverter5 /> */}
-      <CurrencyConverter6 />
+      {/* <CurrencyConverter6 /> */}
       {/* <CurrencyConverter7 /> */}
       {/* <CustomHook1 /> */}
       {/* <CustomHook2 /> */}
