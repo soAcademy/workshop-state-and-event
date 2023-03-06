@@ -1,5 +1,6 @@
 // ตัวนี้มันเหมือน 6_1 นะแต่มีการเพิ่มเติมอะไรเข้ามาบ้าง ส่วนไอตัว 6_2 มันเป็นเหมือนตัวสาธิตเท่ ๆ ว่ามันทำได้นะถ้าจะแยก Function ออกมาจาก DOM อ่ะ
 // ความแตกต่างคือ อาจารย์แกลบไอพวก const authToken ที่อยู่ข้างล่าง return ออกไปแล้วย้ายมันมาไว้ข้างบนแทน
+// พูดง่าย ๆ ตัวนี้ทำให้มัน lean ขึ้นแล้วก็ลดวามซ้ำซ้อนของการ return เหมือนตัวนี้มันจะบอกว่าประกาศฯ้ำวได้ถ้าอยู่คนละ return อ่ะนะ
 import { useState, useEffect } from "react";
 import ReactECharts from "echarts-for-react";
 import ExchangeRatesData from "./exchange-rates.json";
