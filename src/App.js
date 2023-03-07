@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import ToDoList1 from "./ToDoList/ToDoList1";
 // import ToDoList2 from "./ToDoList/ToDoList2";
 // import ToDoList3 from "./ToDoList/ToDoList3";
-import ToDoList4 from "./ToDoList/ToDoList4";
+import ToDoList5 from "./ToDoList/ToDoList5";
 import Charts1 from "./Charts/Charts1";
 import Charts2 from "./Charts/Charts2";
 import Charts3 from "./Charts/Charts3";
@@ -48,6 +48,7 @@ import CurrencyConverter7_1 from "./CurrencyConverter/CurrencyConverter7_1";
 import CurrencyConverter7_2 from "./CurrencyConverter/CurrencyConverter7_2";
 import CurrencyConverter7_3 from "./CurrencyConverter/CurrencyConverter7_3";
 import LotteryCheck from "./LotteryCheck/LotteryCheck";
+import Test1 from "./Test1/Test1";
 
 const App = () => {
   return (
@@ -56,6 +57,7 @@ const App = () => {
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
+      <ToDoList5 />
       {/* <Test /> */}
       {/* <Charts1 /> */}
       {/* <Charts2 /> */}
@@ -93,7 +95,8 @@ const App = () => {
       {/* <CurrencyConverter7_3 /> */}
       {/* <Retirement2 /> */}
       {/* <Retirement3 /> */}
-      <LotteryCheck />
+      {/* <LotteryCheck /> */}
+      {/* <Test1 /> */}
     </>
   );
 };

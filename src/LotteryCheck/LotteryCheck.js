@@ -317,7 +317,7 @@ const LotteryCheck = () => {
 
           {/* ตรวจหวย */}
           {historyLotteryData?.map((r) => (
-            <div className="w-3/4 mx-auto text-center mt-6 border border-gray-300">
+            <div className="w-3/4 mx-auto text-center mt-6 border border-gray-300 rounded">
               <h1 className="bg-green-400 text-white text-left p-2 font-bold border-b border-gray-300">
                 ตรวจหวย {r.date}
               </h1>
