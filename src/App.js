@@ -124,9 +124,11 @@
 
 // import Lottery1 from "./Lottery/Lottery1";
 // import Lottery2 from "./Lottery/Lottery2";
-import Lottery3 from "./Lottery/Lottery3";
+// import Lottery3 from "./Lottery/Lottery3";
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
+
+import BinQuiz from "./BinQuiz/BinQuiz";
 
 import React from "react";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -213,7 +215,8 @@ const App = () => (
     {/* <CustomHook4 /> */}
     {/* <Lottery1 /> */}
     {/* <Lottery2 /> */}
-    <Lottery3 />
+    {/* <Lottery3 /> */}
+    <BinQuiz />
   </div>
 );
 
