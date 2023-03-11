@@ -41,10 +41,39 @@ import axios from "axios";
 
 const BinQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [categories, setCategories] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState(0);
   const [quizzes, setQuizzes] = useState([]);
   const [score, setScore] = useState(0);
 
   useEffect(() => {
+    axios({
+      method: "post",
+      url: "http://localhost:8000/binQuiz/getCategories",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => setCategories(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  // useEffect(() => {
+  //   axios({
+  //     method: "post",
+  //     url: "http://localhost:8000/binQuiz/getRandomizedQuizzesByCategory",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     data: {
+  //       categoryId: 1,
+  //     },
+  //   })
+  //     .then((response) => setQuizzes(response.data))
+  //     .catch((error) => console.log(error));
+  // }, []);
+
+  const handleCategoryClick = (categoryId) => {
     axios({
       method: "post",
       url: "http://localhost:8000/binQuiz/getRandomizedQuizzesByCategory",
@@ -52,12 +81,15 @@ const BinQuiz = () => {
         "Content-Type": "application/json",
       },
       data: {
-        categoryId: 1,
+        categoryId: categoryId,
       },
     })
-      .then((response) => setQuizzes(response.data))
+      .then((response) => {
+        setCurrentCategory(categoryId);
+        setQuizzes(response.data);
+      })
       .catch((error) => console.log(error));
-  }, []);
+  };
 
   const handleChoiceClick = (idx) => {
     quizzes[currentQuestion].answer === idx && setScore(score + 1);
@@ -67,7 +99,25 @@ const BinQuiz = () => {
 
   return (
     <div className="font-nstl">
-      {currentQuestion < quizzes.length ? (
+      {currentCategory === 0 ? (
+        <>
+          <h1 className="font-2xl mb-2 text-center">
+            Choose a category to play
+          </h1>
+          <ul className="grid grid-cols-2 gap-2">
+            {categories.map((category, idx) => (
+              <li key={idx}>
+                <button
+                  onClick={() => handleCategoryClick(category.id)}
+                  className="w-full bg-green-300 p-4"
+                >
+                  {category.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : currentQuestion < quizzes.length ? (
         <>
           <h1 className="font-2xl mb-2 text-center">
             Question no. {currentQuestion + 1}/{quizzes.length}
