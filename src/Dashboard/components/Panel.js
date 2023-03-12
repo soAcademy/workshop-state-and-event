@@ -21,7 +21,7 @@ export const Panel = ({
           const start = Number(document.querySelector("#start").value);
           const end = Number(document.querySelector("#end").value);
           setSelectedStart(Number(document.querySelector("#start").value));
-          if (start > end && start < Math.max(...uniqueYears)) {
+          if (start > end && start <= Math.max(...uniqueYears)) {
             document.querySelector("#end").value = start;
           }
           const checkbox = document.querySelector("#checkbox");

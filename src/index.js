@@ -22,10 +22,10 @@ root.render(
     {/* <AppLocalStorage /> */}
     {/* <AppToDoList /> */}
     {/* <AppChart /> */}
-    <AppDashBoard />
+    {/* <AppDashBoard /> */}
     {/* <AppZipcode /> */}
     {/* <AppAccordian /> */}
-    {/* <AppTrivia /> */}
+    <AppTrivia />
     {/* <AppCalculator /> */}
     {/* <AppCustomHook /> */}
     {/* <AppLotteryChecker /> */}
