@@ -1,167 +1,97 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { FaTrophy, FaCog, FaArrowAltCircleLeft } from "react-icons/fa";
+import { useState } from "react";
+import { FaTrophy, FaCog, FaGamepad, FaSave } from "react-icons/fa";
+import {
+  useSetPlayerName,
+  useFrameName,
+  useFrameCategory,
+  useFrameQuestion,
+  useFrameResult,
+  useFrameRound,
+  useFrameSetting,
+} from "./hooks";
 
 export const TriviaGame = () => {
-  const [frame, setFrame] = useState("name"); //name,category,question,result,record
-  const [username, setUsername] = useState("");
-  const [categories, setCategories] = useState([]);
-  const [categorySelected, setCategorySelected] = useState(undefined);
-  const [questions, setQuestions] = useState([]);
-  const [questionNo, setQuestionNo] = useState(0);
-  const [answers, setAnswers] = useState([]);
-  const [resultReturn, setResultReturn] = useState({});
-  const [records, setRecords] = useState([]);
+  const [frame, setFrame] = useState("name"); //name,category,question,result,record,setting,edit
 
-  useEffect(() => {
-    const getCategories = () => {
-      const config = {
-        method: "post",
-        maxBodyLength: Infinity,
-        url: "http://localhost:3000/triviaGame/getCategories",
-        headers: {},
-      };
-
-      axios(config)
-        .then(function (response) {
-          // console.log(JSON.stringify(response.data));
-          setCategories(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    };
-
-    const getRecords = () => {
-      const config = {
-        method: "post",
-        maxBodyLength: Infinity,
-        url: "http://localhost:3000/triviaGame/getRounds",
-        headers: {},
-      };
-
-      axios(config)
-        .then(function (response) {
-          // console.log(JSON.stringify(response.data));
-          setRecords(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    };
-
-    const getNewSetting = () => {
-      setUsername("");
-      setCategories([]);
-      setCategorySelected(undefined);
-      setQuestions([]);
-      setQuestionNo(0);
-      setAnswers([]);
-      setResultReturn({});
-      setRecords([]);
-    };
-
-    frame === "record" && getRecords();
-    frame === "category" && getCategories();
-    frame === "name" && getNewSetting();
-  }, [frame]);
-
-  useEffect(() => {
-    categorySelected > 0 && setFrame("question");
-
-    const data = JSON.stringify({
-      categoryId: categorySelected,
+  const { username, setUsername } = useSetPlayerName();
+  const { categories, setCategories, categorySelected, setCategorySelected } =
+    useFrameCategory({
+      frame,
     });
-
-    const config = {
-      method: "post",
-      maxBodyLength: Infinity,
-      url: "http://localhost:3000/triviaGame/getQuestionsByCategory",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        // console.log(JSON.stringify(response.data));
-        setQuestions(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [categorySelected]);
-
-  const setAnswersFunc = (questionNo, answerId) => {
-    setAnswers([...answers, answerId]);
-    questionNo < 2 ? setQuestionNo(questionNo + 1) : setFrame("result");
-  };
-
-  useEffect(() => {
-    const getResultFunc = () => {
-      const data = JSON.stringify({
-        name: username,
-        categoryId: categorySelected,
-        questions: questions.map((question, idx) => ({
-          id: question.id,
-          choices: question.choices.map((choice) => ({
-            choice: choice.id,
-          })),
-          select: answers[idx],
-        })),
-      });
-
-      // console.log(JSON.stringify(data, " ", 2));
-
-      const config = {
-        method: "post",
-        maxBodyLength: Infinity,
-        url: "http://localhost:3000/triviaGame/submitQuiz",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
-      };
-
-      axios(config)
-        .then(function (response) {
-          // console.log(JSON.stringify(response.data));
-          setResultReturn(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    };
-
-    answers.length === 3 &&
-      categorySelected !== undefined &&
-      frame === "result" &&
-      questions.length > 0 &&
-      username !== undefined &&
-      getResultFunc();
-  }, [answers, categorySelected, frame, questions, username]);
+  const {
+    questionNo,
+    setQuestionNo,
+    questions,
+    setQuestions,
+    answers,
+    setAnswers,
+    setAnswersFunc,
+  } = useFrameQuestion({
+    categorySelected,
+    setFrame,
+  });
+  const { resultReturn, setResultReturn } = useFrameResult({
+    frame,
+    username,
+    categorySelected,
+    questions,
+    answers,
+  });
+  const { records, setRecords } = useFrameRound({ frame });
+  const {
+    allQuestions,
+    setEditQId,
+    tempEdit,
+    passTempFunc,
+    updateQuestion,
+    updateAnswer,
+  } = useFrameSetting({
+    frame,
+    setFrame,
+  });
+  // eslint-disable-next-line no-empty-pattern
+  const {} = useFrameName({
+    frame,
+    setUsername,
+    setCategories,
+    setCategorySelected,
+    setQuestions,
+    setQuestionNo,
+    setAnswers,
+    setResultReturn,
+    setRecords,
+  });
 
   return (
-    <div className="w-100 bg-slate-800 font-prompt">
+    <div className="w-100 h-full bg-slate-800 font-prompt">
       {frame === "name" && (
         <div className="header absolute w-full top-0 left-0 text-white p-4">
           <div className="w-full flex justify-between">
             <button onClick={() => setFrame("record")}>
-              <FaTrophy />
+              <FaTrophy className="text-2xl" />
             </button>
-            <button>
-              <FaCog />
+            <button onClick={() => setFrame("setting")}>
+              <FaCog className="text-2xl" />
             </button>
           </div>
         </div>
       )}
 
-      {frame === "record" && (
+      {(frame === "record" || frame === "setting") && (
         <div className="header absolute w-full top-0 left-0 text-white p-4">
           <div className="w-full flex justify-start">
             <button onClick={() => setFrame("name")}>
-              <FaArrowAltCircleLeft />
+              <FaGamepad className="text-2xl" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {frame === "edit" && (
+        <div className="header absolute w-full top-0 left-0 text-white p-4">
+          <div className="w-full flex justify-end">
+            <button onClick={() => setFrame("setting")}>
+              <FaCog className="text-2xl" />
             </button>
           </div>
         </div>
@@ -317,6 +247,124 @@ export const TriviaGame = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {frame === "setting" && (
+        <div className="h-full flex justify-center p-4 pt-12">
+          <div className="h-full w-full md:w-3/4 lg:w-1/2 p-4">
+            <div className="text-white text-2xl text-center mb-4">
+              Update Question
+            </div>
+            <div className="flex justify-center text-white p-4">
+              <div className="bg-cyan-600 rounded-lg p-4">
+                <table className="table-auto">
+                  <thead>
+                    <tr>
+                      <th className="text-center pb-4 px-2">No.</th>
+                      <th className="text-center pb-4 px-2">Category</th>
+                      <th className="text-center pb-4 px-2">Question</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    {allQuestions?.map((question, idx) => (
+                      <tr key={`questionEdit_${idx + 1}`}>
+                        <td className="text-center align-text-top pb-2 px-2">
+                          {idx + 1}
+                        </td>
+                        <td className="text-center align-text-top pb-2 px-2">
+                          {question.category.name}
+                        </td>
+                        <td className="pb-2 px-2">
+                          <button
+                            onClick={() => setEditQId(question.id)}
+                            className="hover:text-gray-800 text-left rounded-lg"
+                          >
+                            {question.question}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {frame === "edit" && (
+        <div className="h-screen flex justify-center items-center p-4 pt-12">
+          <div className="w-full md:w-3/4 lg:w-1/2 p-4">
+            <div className="text-white text-2xl text-center mb-4">
+              Update Question
+            </div>
+            <div className="flex justify-center text-sm p-4">
+              <div className="w-3/4">
+                <div className="flex">
+                  <input
+                    className="w-11/12 rounded-lg text-center p-4 mb-4"
+                    value={tempEdit.question}
+                    onChange={(e) =>
+                      passTempFunc("question", tempEdit.questionId, e)
+                    }
+                  />
+                  <div className="w-1/12 flex justify-center items-center text-2xl mb-4 px-2">
+                    <button
+                      onClick={() => updateQuestion(tempEdit.questionId)}
+                      className="w-full h-full"
+                    >
+                      <FaSave className="text-white hover:text-slate-400" />
+                    </button>
+                  </div>
+                </div>
+                <div className="text-white text-center mb-4">
+                  Correct Answer
+                </div>
+                <div className="flex">
+                  <input
+                    type="text"
+                    value={tempEdit.answer}
+                    onChange={(e) =>
+                      passTempFunc("answer", tempEdit.answerId, e)
+                    }
+                    className="w-11/12 rounded-lg text-center p-4 mb-4"
+                  />
+                  <div className="w-1/12 flex justify-center items-center text-2xl mb-4 px-2">
+                    <button
+                      onClick={() => updateAnswer(tempEdit.answerId)}
+                      className="w-full h-full"
+                    >
+                      <FaSave className="text-white hover:text-slate-400" />
+                    </button>
+                  </div>
+                </div>
+                <div className="text-white text-xl text-center mb-4">
+                  Update Other Answer
+                </div>
+                {tempEdit?.choices?.map((choice, idx) => (
+                  <div key={`answerEdit_${idx + 1}`} className="flex">
+                    <input
+                      type="text"
+                      value={choice.choice}
+                      onChange={(e) =>
+                        passTempFunc("choice", choice.choiceId, e)
+                      }
+                      className="w-11/12 rounded-lg text-center p-4 mb-4"
+                    />
+                    <div className="w-1/12 flex justify-center items-center text-2xl mb-4 px-2">
+                      <button
+                        onClick={() => updateAnswer(choice.choiceId)}
+                        className="w-full h-full"
+                      >
+                        <FaSave className="text-white hover:text-slate-400" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
