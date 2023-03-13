@@ -91,10 +91,27 @@ const BinQuiz = () => {
       .catch((error) => console.log(error));
   };
 
-  const handleChoiceClick = (idx) => {
-    quizzes[currentQuestion].answer === idx && setScore(score + 1);
+  const handleChoiceClick = (answerId) => {
+    axios({
+      method: "post",
+      url: "http://localhost:8000/binQuiz/getCorrectChoiceByQuiz",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        quizId: quizzes[currentQuestion].questionId,
+      },
+    })
+      .then((response) => {
+        // console.log("answerId", answerId);
+        // console.log("correctChoiceId", response.data.correctChoiceId);
+        response.data.correctChoiceId === answerId && setScore(score + 1);
+        setCurrentQuestion(currentQuestion + 1);
+      })
+      .catch((error) => console.log(error));
+    // quizzes[currentQuestion].answer === idx && setScore(score + 1);
     // console.log(score);
-    setCurrentQuestion(currentQuestion + 1);
+    // setCurrentQuestion(currentQuestion + 1);
   };
 
   return (
@@ -130,10 +147,10 @@ const BinQuiz = () => {
             {quizzes[currentQuestion].answers.map((choice, idx) => (
               <li key={idx}>
                 <button
-                  onClick={() => handleChoiceClick(idx)}
+                  onClick={() => handleChoiceClick(choice.answerId)}
                   className="w-full bg-green-300 p-4"
                 >
-                  {choice}
+                  {choice.answerText}
                 </button>
               </li>
             ))}
