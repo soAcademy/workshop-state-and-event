@@ -203,7 +203,7 @@ const ToDoList5 = () => {
                 <button className="px-1" onClick={() => deleteTask(t.id)}>
                   <BsTrash />
                 </button>
-              </div>
+              </div> 
             </div>
           </div>
         ))}
