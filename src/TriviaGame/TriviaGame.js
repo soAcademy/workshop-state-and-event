@@ -10,7 +10,6 @@ export const TriviaGame = () => {
   const [questions, setQuestions] = useState([]);
   const [questionNo, setQuestionNo] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [resultDone, setResultDone] = useState(false);
   const [resultReturn, setResultReturn] = useState({});
   const [records, setRecords] = useState([]);
 
@@ -58,7 +57,6 @@ export const TriviaGame = () => {
       setQuestions([]);
       setQuestionNo(0);
       setAnswers([]);
-      setResultDone(false);
       setResultReturn({});
       setRecords([]);
     };
@@ -130,7 +128,6 @@ export const TriviaGame = () => {
         .then(function (response) {
           // console.log(JSON.stringify(response.data));
           setResultReturn(response.data);
-          setResultDone(true);
         })
         .catch(function (error) {
           console.log(error);
@@ -197,14 +194,14 @@ export const TriviaGame = () => {
         </div>
       )}
 
-      {frame === "category" && categories.length > 0 && (
+      {frame === "category" && (
         <div className="h-screen flex justify-center items-center">
           <div className="categoryBlock w-full md:w-3/4 lg:w-1/2 p-4">
             <div className="categoryHead text-white text-4xl text-center mb-20">
               Select Category
             </div>
             <div className="categoryLists grid grid-cols-1 gap-4 text-white">
-              {categories.map((r, idx) => (
+              {categories?.map((r, idx) => (
                 <button
                   key={`category_${idx + 1}`}
                   onClick={() => setCategorySelected(r.id)}
@@ -218,19 +215,19 @@ export const TriviaGame = () => {
         </div>
       )}
 
-      {frame === "question" && questions.length > 0 && (
+      {frame === "question" && (
         <div className="h-screen flex justify-center items-center">
           <div className="gameBlock w-full md:w-3/4 lg:w-1/2 p-4">
             <div className="text-center text-xl text-white mb-8">{`${
-              categories.filter((r) => r.id === categorySelected)[0].name
+              categories?.filter((r) => r.id === categorySelected)[0].name
             } ${questionNo + 1} / 3`}</div>
             <div className="questionBlock h-[120px] flex justify-center items-center bg-cyan-600 rounded-md text-xl text-white mb-20 px-8">
               <div className="text-center">
-                {questions[questionNo].question}
+                {questions[questionNo]?.question}
               </div>
             </div>
             <div className="answersBlock grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
-              {questions[questionNo].choices.map((choice, idx) => (
+              {questions[questionNo]?.choices.map((choice, idx) => (
                 <button
                   key={`choice_${idx + 1}`}
                   onClick={() => setAnswersFunc(questionNo, choice.id)}
@@ -244,18 +241,18 @@ export const TriviaGame = () => {
         </div>
       )}
 
-      {frame === "result" && resultDone && (
+      {frame === "result" && (
         <div className="h-screen flex justify-center items-center">
           <div className="gameBlock w-full md:w-1/2 p-4">
             <div className="text-center text-xl text-white mb-8">{`Result: ${
-              categories.filter((r) => r.id === categorySelected)[0].name
+              categories?.filter((r) => r.id === categorySelected)[0].name
             }`}</div>
             <div className="resultBlock flex justify-center text-white">
               <div>
                 <div className=" bg-cyan-600 rounded-lg mb-8 p-4">
                   <div className="flex justify-center">
                     <div className="flex flex-col gap-4 mb-8">
-                      {resultReturn.questions.map((result, idx) => (
+                      {resultReturn?.questions?.map((result, idx) => (
                         <div key={`result_${idx + 1}`}>
                           {`${idx + 1}. ${result.answerDetail}`}{" "}
                           {result.result && (
@@ -288,7 +285,7 @@ export const TriviaGame = () => {
         </div>
       )}
 
-      {frame === "record" && records.length > 0 && (
+      {frame === "record" && (
         <div className="h-screen flex justify-center p-4 pt-12">
           <div className="recordBlock h-full w-full md:w-3/4 lg:w-1/2 p-4">
             <div className="categoryHead text-white text-2xl text-center mb-4">
@@ -306,7 +303,7 @@ export const TriviaGame = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {records.map((record, idx) => (
+                    {records?.map((record, idx) => (
                       <tr key={`record_${idx + 1}`} className="text-sm">
                         <td className="text-center px-2">{idx + 1}</td>
                         <td className="text-center px-2">
