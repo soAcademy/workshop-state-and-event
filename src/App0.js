@@ -12,15 +12,17 @@
 // import CustomHook5 from "./CustomHook/CustomHook5"
 // import LotteryHome from "./Lottery/LotteryHome";
 // import Playground1 from "./CustomHookPlayground/Playground1";
-import CustomHookDeathCauseHome from "./CustomHookDeathCause/home";
+// import CustomHookDeathCauseHome from "./CustomHookDeathCause/home";
+import QuizeGame from "./QuizeGame/home"
 
 const App0 = () => {
   return (
     <div>
+      <QuizeGame/>
+      {/* <CustomHookDeathCauseHome/> */}
       {/* <RetirementPlan/> */}
       {/* <CurrencyConverter1/> */}
       {/* <CurrencyConverterHome/> */}
-      <CustomHookDeathCauseHome/>
       {/* <DeathCause8/> */}
       {/* <CustomHook5/> */}
       {/* <LotteryHome/> */}
