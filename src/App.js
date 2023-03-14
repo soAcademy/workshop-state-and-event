@@ -128,10 +128,13 @@
 
 // import Dashboard1 from "./Dashboard/Dashboard1";
 
-import BinQuiz from "./BinQuiz/BinQuiz";
+// import BinQuiz from "./BinQuiz/BinQuiz";
+
+import Home from "./Twitter/Pages/Home";
 
 import React from "react";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import User from "./Twitter/Pages/User";
 // import Home from "./Pages/Home";
 // import About from "./Pages/About";
 // import Products from "./Pages/Products";
@@ -156,7 +159,8 @@ const App = () => (
   //   </Routes>
   //   <div className="bg-purple-500 p-4">This is Footer</div>
   // </BrowserRouter>
-  <div className="p-8 font-prompt text-slate-900">
+  // <div className="p-8 font-prompt text-slate-900">
+  <>
     {/* <h1 className="mb-6 text-xl font-bold">บันทึกของฉัน</h1> */}
     {/* <ToDoList /> */}
     {/* <LocalStorage1 /> */}
@@ -216,8 +220,15 @@ const App = () => (
     {/* <Lottery1 /> */}
     {/* <Lottery2 /> */}
     {/* <Lottery3 /> */}
-    <BinQuiz />
-  </div>
+    {/* <BinQuiz /> */}
+    {/* </div> */}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/user/:id" element={<User />} />
+        <Route index element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  </>
 );
 
 export default App;

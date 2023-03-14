@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mui/base": "^5.0.0-alpha.120",
     "axios": "^1.2.3",
     "echarts": "^5.4.1",
     "echarts-for-react": "^3.0.2",
