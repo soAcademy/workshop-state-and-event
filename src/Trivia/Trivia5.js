@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Trivia4 = () => {
-  const quizes = [
+  const quizzes = [
     {
       question: "ซุปอะไรมีสารอาหารมากที่สุด",
       answers: ["ซุปไก่สกัด", "ซุปหางวัว", "ซุปเปอร์มาเก็ต", "ซุปหูฉลาม"],
@@ -50,7 +50,7 @@ const Trivia4 = () => {
 
   const checkAnswer = (id, answer) => {
     // console.log(quizId, answer);
-    const newScore = quizes[id].answer === answer ? 1 : 0;
+    const newScore = quizzes[id].answer === answer ? 1 : 0;
     const totalScore = score + newScore;
     setScore(totalScore);
     setQuizId(id + 1);
@@ -58,11 +58,11 @@ const Trivia4 = () => {
   console.log(score);
   return (
     <div>
-      {quizId < quizes.length && (
+      {quizId < quizzes.length && (
         <div className="p-4">
           <div className="text-center mb-4 text-xl">
             <p>
-              ข้อ {quizId + 1}/{quizes.length}
+              ข้อ {quizId + 1}/{quizzes.length}
             </p>
           </div>
           <div className="text-center text-lg mb-4">
@@ -70,10 +70,10 @@ const Trivia4 = () => {
           </div>
           <div className="text-lg mb-4">
             <p className="mb-2">คำถาม :</p>
-            <div>{quizes[quizId].question}</div>
+            <div>{quizzes[quizId].question}</div>
           </div>
           <div className="grid gap-4 grid-cols-2">
-            {quizes[quizId].answers.map((r, idx) => (
+            {quizzes[quizId].answers.map((r, idx) => (
               <button
                 key={idx}
                 className="bg-cyan-400 h-12 rounded active:bg-cyan-200"
@@ -85,7 +85,7 @@ const Trivia4 = () => {
           </div>
         </div>
       )}
-      {quizId >= quizes.length && (
+      {quizId >= quizzes.length && (
         <div className="w-full h-screen fixed flex bg-gray-500/30 backdrop-blur-sm">
           <div className="flex flex-col m-auto bg-white p-5 w-3/5 rounded-lg text-center">
             <p className="text-xl font-semibold">สรุปคะแนน : {score}</p>

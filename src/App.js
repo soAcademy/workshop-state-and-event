@@ -7,7 +7,7 @@
 // import ToDoList2 from "./ToDoListAnswers/ToDoList2";
 // import ToDoList3 from "./ToDoListAnswers/ToDoList3";
 // import ToDoList4 from "./ToDoListAnswers/ToDoList4";
-import ToDoList6 from "./ToDoList/ToDoList6";
+// import ToDoList6 from "./ToDoList/ToDoList6";
 // import Chart1 from "./ChartsAnswer/Chart1";
 // import Chart2 from "./ChartsAnswer/Chart2";
 // import Chart3 from "./ChartsAnswer/Chart3";
@@ -18,7 +18,7 @@ import ToDoList6 from "./ToDoList/ToDoList6";
 // import Trivia2 from "./TriviaAnswer/Trivia2";
 // import Trivia3 from "./TriviaAnswer/Trivia3";
 // import Trivia4 from "./TriviaAnswer/Trivia4";
-// import Trivia5 from "./TriviaAnswer/Trivia5";
+import Trivia6 from "./Trivia/Trivia6";
 // import Zipcode1 from "./ZipcodeAnswer/Zipcode1";
 // import Zipcode2 from "./ZipcodeAnswer/Zipcode2";
 // import Zipcode3 from "./ZipcodeAnswer/Zipcode3";
@@ -36,7 +36,7 @@ import ToDoList6 from "./ToDoList/ToDoList6";
 // import DeathCause7 from "./DeathCauseAnswer/DeathCause7";
 // import DeathCause8 from "./DeathCauseAnswer/DeathCause8";
 // import Retirement1 from "./RetirementAnswer/Retirement1";
-// import Retirement2 from "./RetirementAnswer/Retirement2";
+// import Retirement2 from "./Retirement/Retirement2";
 // import Retirement3 from "./RetirementAnswer/Retirement3";
 // import Retirement4 from "./RetirementAnswer/Retirement4";
 // import Retirement5 from "./RetirementAnswer/Retirement5";
@@ -61,6 +61,7 @@ import ToDoList6 from "./ToDoList/ToDoList6";
 // import Retirement2 from "./Retirement/Retirement2";
 // import DeathCause8 from "./DeathCause/DeathCause8";
 // import LotteryCheck from "./LotteryCheck/LotteryCheck";
+// import Home from "./Trivia/components/Home";
 
 const App = () => {
   return (
@@ -74,7 +75,7 @@ const App = () => {
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
-      <ToDoList6 />
+      {/* <ToDoList6 /> */}
       {/* <Chart1 /> */}
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
@@ -85,7 +86,8 @@ const App = () => {
       {/* <Trivia2 /> */}
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}
-      {/* <Trivia5 /> */}
+      <Trivia6 />
+      {/* <Home /> */}
       {/* <Zipcode1 /> */}
       {/* <Zipcode2 /> */}
       {/* <Zipcode3 /> */}
