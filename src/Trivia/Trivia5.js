@@ -42,45 +42,26 @@ const Trivia5 = () => {
   const [currentQuiz, setCurrentQuiz] = useState(0);
   const [score, setScore] = useState(0);
 
-<<<<<<< HEAD
   const checkAnswer = (quizId, answerId) => {
     console.log(quizId, answerId);
     setScore(score + (quizes[quizId].answer === answerId ? 1 : 0));
     setCurrentQuiz(quizId + 1);
-=======
-  const checkAns = (quizId, ansId) => {
-    setScore(score + (quizes[quizId].answer === ansId ? 1 : 0));
-    setCurrentQuiz(currentQuiz + 1);
->>>>>>> 121a60f1a706c57b4a9c526136becf20f7069442
   };
 
   return (
     <>
-<<<<<<< HEAD
       {currentQuiz <= quizes.length && (
-=======
-      {currentQuiz < quizes.length && (
->>>>>>> 121a60f1a706c57b4a9c526136becf20f7069442
         <>
           <div className="text-center">
             ข้อ {currentQuiz + 1}/{quizes.length}
           </div>
           <div className="text-center">คะแนน {score}</div>
-<<<<<<< HEAD
           <div className="py-4 text-center">{quizes[currentQuiz].question}</div>
           <div className="grid gap-2 grid-cols-2">
             {quizes[currentQuiz].answers.map((r, index) => (
               <button
                 className="bg-green-400 py-4"
                 onClick={() => checkAnswer(currentQuiz, index)}
-=======
-          <div className="text-center">{quizes[currentQuiz]?.question}</div>
-          <div className="grid grid-cols-2 gap-2">
-            {quizes[currentQuiz]?.answers.map((r, index) => (
-              <button
-                onClick={() => checkAns(currentQuiz, index)}
-                className="bg-yellow-600 py-4"
->>>>>>> 121a60f1a706c57b4a9c526136becf20f7069442
               >
                 {r}
               </button>
@@ -88,13 +69,9 @@ const Trivia5 = () => {
           </div>
         </>
       )}
-<<<<<<< HEAD
       {currentQuiz <= quizes.length && (
         <div className="text-center text-3xl">สรุปคะแนน {score}</div>
       )}
-=======
-      {currentQuiz >= quizes.length && <div className="text-center text-xl">สรุปคะแนน {score}</div>}
->>>>>>> 121a60f1a706c57b4a9c526136becf20f7069442
     </>
   );
 };

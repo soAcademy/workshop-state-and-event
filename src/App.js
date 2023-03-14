@@ -14,11 +14,11 @@
 // import Accordian1 from "./AccordiansAnswer/Accordian1";
 // import Accordian2 from "./AccordiansAnswer/Accordian2";
 // import Accordian3 from "./AccordiansAnswer/Accordian3";
-import Trivia1 from "./TriviaAnswer/Trivia1";
-import Trivia2 from "./TriviaAnswer/Trivia2";
-import Trivia3 from "./TriviaAnswer/Trivia3";
-import Trivia4 from "./TriviaAnswer/Trivia4";
-import Trivia5 from "./TriviaAnswer/Trivia5";
+// import Trivia1 from "./TriviaAnswer/Trivia1";
+// import Trivia2 from "./TriviaAnswer/Trivia2";
+// import Trivia3 from "./TriviaAnswer/Trivia3";
+// import Trivia4 from "./TriviaAnswer/Trivia4";
+// import Trivia5 from "./TriviaAnswer/Trivia5";
 // import Zipcode1 from "./ZipcodeAnswer/Zipcode1";
 // import Zipcode2 from "./ZipcodeAnswer/Zipcode2";
 // import Zipcode3 from "./ZipcodeAnswer/Zipcode3";
@@ -46,7 +46,7 @@ import Trivia5 from "./TriviaAnswer/Trivia5";
 // import CurrencyConverter4 from "./CurrencyConverterAnswer/CurrencyConverter4";
 // import CurrencyConverter5 from "./CurrencyConverterAnswer/CurrencyConverter5";
 // import CurrencyConverter6 from "./CurrencyConverterAnswer/CurrencyConverter6";
-// import CurrencyConverter7 from "./CurrencyConverterAnswer/CurrencyConverter7";
+import CurrencyConverter7 from "./CurrencyConverterAnswer/CurrencyConverter7";
 // import CustomHook1 from "./CustomHookAnswer";
 // import CustomHook2 from "./CustomHookAnswer";
 // import CustomHook3 from "./CustomHookAnswer";
@@ -72,8 +72,8 @@ import Trivia5 from "./TriviaAnswer/Trivia5";
 
 // import Lottery2 from "./LotteryAnswer/Lottery2"
 // import Lottery3 from "./LotteryAnswer/Lottery3"
-import ToDoList_Api from "./ToDoList/ToDoList_Api"
-import Trivia_api from "./Trivia/Trivia_api"
+// import ToDoList_Api from "./ToDoList/ToDoList_Api"
+import Trivia6 from "./Trivia/Trivia6";
 
 const App = () => {
   return (
@@ -120,7 +120,7 @@ const App = () => {
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}
       {/* <Trivia5 /> */}
-      <Trivia_api />
+      <Trivia6 />
       {/* <Zipcode1 /> */}
       {/* <Zipcode2 /> */}
       {/* <Zipcode3 /> */}
