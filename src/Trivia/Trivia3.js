@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Trivia2 = () => {
+const Trivia3 = () => {
   const quizes = [
     {
       question: "ซุปอะไรมีสารอาหารมากที่สุด",
@@ -106,4 +106,4 @@ const Trivia2 = () => {
   );
 };
 
-export default Trivia2;
+export default Trivia3;
