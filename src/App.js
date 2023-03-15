@@ -7,7 +7,7 @@
 // import ToDoList2 from "./ToDoListAnswers/ToDoList2";
 // import ToDoList3 from "./ToDoListAnswers/ToDoList3";
 // import ToDoList4 from "./ToDoListAnswers/ToDoList4";
-// import ToDoList5 from "./ToDoListAnswers/ToDoList5";
+// import ToDoListWorkShop2 from "./todolists/ToDoListWorkShop2";
 // import Chart1 from "./ChartsAnswer/Chart1";
 // import Chart2 from "./ChartsAnswer/Chart2";
 // import Chart3 from "./ChartsAnswer/Chart3";
@@ -18,7 +18,7 @@
 // import Trivia2 from "./TriviaAnswer/Trivia2";
 // import Trivia3 from "./TriviaAnswer/Trivia3";
 // import Trivia4 from "./TriviaAnswer/Trivia4";
-// import Trivia5 from "./TriviaAnswer/Trivia5";
+import Trivia6 from "./trivias/Trivia6";
 // import Zipcode1 from "./ZipcodeAnswer/Zipcode1";
 // import Zipcode2 from "./ZipcodeAnswer/Zipcode2";
 // import Zipcode3 from "./ZipcodeAnswer/Zipcode3";
@@ -68,7 +68,7 @@
 // import Retirement5 from "./retirementplan/Retirement5";
 // import CurrencyConverter3 from "./CurrencyConverter/CurrencyConverter3";
 // import CurrencyConverter6 from "./CurrencyConverter/CurrencyConverter6";
-import LotteryChecker3_1 from "./LotteryCheckers/LotteryChecker3_1";
+// import LotteryChecker3_1 from "./LotteryCheckers/LotteryChecker3_1";
 
 const App = () => {
   return (
@@ -82,7 +82,7 @@ const App = () => {
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
-      {/* <ToDoList5 /> */}
+      {/* <ToDoListWorkShop2 /> */}
       {/* <Chart1 /> */}
       {/* <Chart2 /> */}
       {/* <Chart3 /> */}
@@ -92,7 +92,7 @@ const App = () => {
       {/* <Trivia1 /> */}
       {/* <Trivia2 /> */}
       {/* <Trivia3 /> */}
-      {/* <Trivia4 /> */}
+      <Trivia6 />
       {/* <Trivia2_5 /> */}
       {/* <Zipcode1 /> */}
       {/* <Zipcode2 /> */}
@@ -126,7 +126,7 @@ const App = () => {
       {/* <CustomHook2 /> */}
       {/* <CustomHook3 /> */}
       {/* <CustomHook4 /> */}
-      <LotteryChecker3_1 />
+      {/* <LotteryChecker3_1 /> */}
     </>
   );
 };
