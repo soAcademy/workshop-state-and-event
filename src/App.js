@@ -57,98 +57,97 @@
 
 // import ToDoList4 from "./ToDoLists/ToDoList4";
 
-import { TriviaGame } from "./TriviaGame/TriviaGame";
+// import { TriviaGame } from "./TriviaGame/TriviaGame";
+import { Twitter } from "./Twitter/twitter";
+const App = () => (
+  <div>
+    {/* <Event1 /> */}
+    {/* <Event2 /> */}
+    {/* <Event3 /> */}
+    {/* <Event4 /> */}
+    {/* <Event5 /> */}
+    {/* <Event6 /> */}
+    {/* <Event7 /> */}
+    {/* <Event8 /> */}
+    {/* <State1 /> */}
+    {/* <State2 /> */}
+    {/* <State3 /> */}
+    {/* <State4 /> */}
+    {/* <State5 /> */}
+    {/* <State6 /> */}
+    {/* <State7 /> */}
+    {/* <Prop1 data="Hello World" /> */}
+    {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
+    {/* <Prop3 /> */}
+    {/* <Prop4 /> */}
+    {/* <Effect1 /> */}
+    {/* <Effect2 /> */}
+    {/* <Effect3 /> */}
+    {/* <Effect4 /> */}
+    {/* <Effect5 /> */}
+    {/* <Effect6 /> */}
+    {/* <Effect7 /> */}
 
-const App = () => {
-  return (
-    <div>
-      {/* <Event1 /> */}
-      {/* <Event2 /> */}
-      {/* <Event3 /> */}
-      {/* <Event4 /> */}
-      {/* <Event5 /> */}
-      {/* <Event6 /> */}
-      {/* <Event7 /> */}
-      {/* <Event8 /> */}
-      {/* <State1 /> */}
-      {/* <State2 /> */}
-      {/* <State3 /> */}
-      {/* <State4 /> */}
-      {/* <State5 /> */}
-      {/* <State6 /> */}
-      {/* <State7 /> */}
-      {/* <Prop1 data="Hello World" /> */}
-      {/* <Prop2 data1="Hello World" data2="Bin Bin Bin" /> */}
-      {/* <Prop3 /> */}
-      {/* <Prop4 /> */}
-      {/* <Effect1 /> */}
-      {/* <Effect2 /> */}
-      {/* <Effect3 /> */}
-      {/* <Effect4 /> */}
-      {/* <Effect5 /> */}
-      {/* <Effect6 /> */}
-      {/* <Effect7 /> */}
+    {/* <LocalStorage1 /> */}
+    {/* <LocalStorage2 /> */}
+    {/* <LocalStorage3 /> */}
+    {/* <LocalStorage4 /> */}
 
-      {/* <LocalStorage1 /> */}
-      {/* <LocalStorage2 /> */}
-      {/* <LocalStorage3 /> */}
-      {/* <LocalStorage4 /> */}
+    {/* <ToDoList1 /> */}
+    {/* <ToDoList2 /> */}
+    {/* <ToDoList3 /> */}
+    {/* <ToDoList4 /> */}
 
-      {/* <ToDoList1 /> */}
-      {/* <ToDoList2 /> */}
-      {/* <ToDoList3 /> */}
-      {/* <ToDoList4 /> */}
+    {/* <Chart1 /> */}
+    {/* <Chart2 /> */}
+    {/* <Chart3 /> */}
+    {/* <Accordian1 /> */}
+    {/* <Accordian2 /> */}
+    {/* <Accordian3 /> */}
+    {/* <Trivia1 /> */}
+    {/* <Trivia2 /> */}
+    {/* <Trivia3 /> */}
+    {/* <Trivia4 /> */}
+    {/* <Trivia5 /> */}
+    {/* <Zipcode1 /> */}
+    {/* <Zipcode2 /> */}
+    {/* <Zipcode3 /> */}
+    {/* <Zipcode4 /> */}
+    {/* <Zipcode5 /> */}
+    {/* <Zipcode6 /> */}
+    {/* <Zipcode7 /> */}
+    {/* <Zipcode8 /> */}
 
-      {/* <Chart1 /> */}
-      {/* <Chart2 /> */}
-      {/* <Chart3 /> */}
-      {/* <Accordian1 /> */}
-      {/* <Accordian2 /> */}
-      {/* <Accordian3 /> */}
-      {/* <Trivia1 /> */}
-      {/* <Trivia2 /> */}
-      {/* <Trivia3 /> */}
-      {/* <Trivia4 /> */}
-      {/* <Trivia5 /> */}
-      {/* <Zipcode1 /> */}
-      {/* <Zipcode2 /> */}
-      {/* <Zipcode3 /> */}
-      {/* <Zipcode4 /> */}
-      {/* <Zipcode5 /> */}
-      {/* <Zipcode6 /> */}
-      {/* <Zipcode7 /> */}
-      {/* <Zipcode8 /> */}
+    {/* <Dashboard/> */}
+    {/* {<DeathCause1/>} */}
+    {/* {<DeathCause2/>} */}
+    {/* {<DeathCause3/>} */}
+    {/* {<DeathCause4 />} */}
+    {/* {<DeathCause5/>} */}
+    {/* {<DeathCause6/>} */}
+    {/* {<DeathCause7/>} */}
+    {/* {<DeathCause8/>} */}
 
-      {/* <Dashboard/> */}
-      {/* {<DeathCause1/>} */}
-      {/* {<DeathCause2/>} */}
-      {/* {<DeathCause3/>} */}
-      {/* {<DeathCause4 />} */}
-      {/* {<DeathCause5/>} */}
-      {/* {<DeathCause6/>} */}
-      {/* {<DeathCause7/>} */}
-      {/* {<DeathCause8/>} */}
+    {/* <Retirement1 /> */}
+    {/* <Retirement2 /> */}
 
-      {/* <Retirement1 /> */}
-      {/* <Retirement2 /> */}
+    {/* <WorldMap /> */}
 
-      {/* <WorldMap /> */}
+    {/* <CurrencyConvertor1 /> */}
+    {/* <CurrencyConvertor4 /> */}
+    {/* <CurrencyConvertor7 /> */}
 
-      {/* <CurrencyConvertor1 /> */}
-      {/* <CurrencyConvertor4 /> */}
-      {/* <CurrencyConvertor7 /> */}
+    {/* <CustomHook1/> */}
+    {/* <CustomHook2/> */}
+    {/* <CustomHook3/> */}
+    {/* <CustomHook4/> */}
 
-      {/* <CustomHook1/> */}
-      {/* <CustomHook2/> */}
-      {/* <CustomHook3/> */}
-      {/* <CustomHook4/> */}
+    {/* <LotteryChecker1 /> */}
 
-      {/* <LotteryChecker1 /> */}
-
-      <TriviaGame />
-    </div>
-  );
-};
+    {/* <TriviaGame /> */}
+    {<Twitter />}
+  </div>
+);
 
 // const App = () => (
 //   <BrowserRouter>
