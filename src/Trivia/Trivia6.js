@@ -51,11 +51,10 @@ const Trivia6 = () => {
   //---------------------------------------------------------//
 
   //-------------------submitQuestion ----------------------//
-  console.log("currentQuiz", currentQuiz, "/", getQuiz.length);
 
   const submitQuestion = async (currentQuiz, idx) => {
     // console.log("getQuiz in Sub:", getQuiz);
-    // console.log("currentQuiz 2 ", currentQuiz, "/", getQuiz.length);
+    console.log("currentQuiz ", currentQuiz, "/", getQuiz.length);
 
     let answer = {
       questionId: getQuiz[currentQuiz].id,
@@ -63,13 +62,14 @@ const Trivia6 = () => {
     };
     const tmpUserAnswers = [...userAnswers, answer];
     console.log("tmpUserAnswers", tmpUserAnswers);
+    console.log("tmpUserAnswers length", tmpUserAnswers.length);
 
-    if (currentQuiz === getQuiz.length - 1) {
+    if (tmpUserAnswers.length === getQuiz.length) {
       console.log("test");
       const result = await axios.post("http://localhost:3100/submitQuestion", {
         user: username,
         categoryId: selectCategory,
-        roundQuestions: userAnswers,
+        roundQuestions: tmpUserAnswers,
       });
       console.log("submit Quiz", result);
       setScoreByRound(result?.data);
