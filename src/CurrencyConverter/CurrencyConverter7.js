@@ -1,0 +1,167 @@
+// ตัวที่ 7 นี่คือสุดยอดของความ lean ตัดออกเยอะชิบหาย แล้วก็เปลี่ยนโครงสร้างการเขียนด้วย ถ้าเข้าใจก่อนหน้าตัวนี้ก็สบายนะ
+// อาจารย์เล่นย่้าย functino ออกมาเป็น component แยกไส่ใน hooks folder แล้วก็ import เป็นไฟล์เข้ามาเลยทีเดียว
+//มันคือสร้าง index ให้เรา import ง่าย อยากจะ import จาก folder ง่าย ๆ ก็ให้ทำ indexด้วย
+import ReactECharts from "echarts-for-react";
+import {
+  useChartOption,
+  useConvertExchangeRate,
+  useFetchExchangeRate,
+  useExchangeStatistic,
+} from "./hooks";
+
+const CurrencyConverter7 = () => {
+  const authToken =
+    "Basic bG9kZXN0YXI6WnoxdndXVmFVRXdFZUFkdkpIWjFuMEY0bXRROWY4U1g=";
+
+  const { exchangeRates, currencyLists } = useFetchExchangeRate({ authToken });
+  const {
+    fromCurrency,
+    setFromCurrency,
+    toCurrency,
+    setToCurrency,
+    amount,
+    setAmount,
+    amountConvert,
+    fromCurrencyRate,
+    toCurrencyRate,
+  } = useConvertExchangeRate({ exchangeRates });
+
+  const { exchangeStatistic } = useExchangeStatistic({
+    authToken,
+    fromCurrency,
+    toCurrency,
+  });
+
+  const { chartOption } = useChartOption({
+    authToken,
+    fromCurrency,
+    toCurrency,
+  });
+
+
+// ตัวนี้ return นี้มันไม่ได้เปลี่ยนอะไรหรอก เพราะมันเข้ารูปแล้ว วันหลังก็ทำ DOM ให้เสร็จแล้วก็ว่าเล่นตัว function อีกทีก็ไม่สาย
+  return (
+    <div className="">
+      <div className="w-1/2 mx-auto bg-gray-100 mt-8 p-6">
+        <h1 className="font-bold text-xl text-center">คำนวนอัตราแลกเปลี่ยน</h1>
+        <form>
+          <div className="flex mt-4 space-x-8">
+            <div className="w-1/3">
+              <label>จำนวน</label>
+              <br />
+              <input
+                type="number"
+                name="amount"
+                className="p-2 w-full mt-2"
+                onChange={(e) => setAmount(Number(e.target.value))}
+                value={amount}
+              ></input>
+            </div>
+
+            <div className="w-1/3">
+              <label>จาก</label>
+              <br />
+              <select
+                className="p-2 pb-3 w-full mt-2"
+                value={fromCurrency}
+                onChange={(e) => setFromCurrency(e.target.value)}
+              >
+                {currencyLists
+                  ?.filter((r) => r !== toCurrency)
+                  ?.map((r, idx) => (
+                    <option key={idx} value={r}>
+                      {r}
+                    </option>
+                  ))}
+              </select>
+            </div>
+            <div className="w-1/3">
+              <label>ไป</label>
+              <br />
+              <select
+                className="p-2 pb-3 w-full mt-2"
+                value={toCurrency}
+                onChange={(e) => setToCurrency(e.target.value)}
+              >
+                {currencyLists
+                  ?.filter((r) => r !== fromCurrency)
+                  ?.map((r, idx) => (
+                    <option key={idx} value={r}>
+                      {r}
+                    </option>
+                  ))}
+              </select>
+            </div>
+          </div>
+          <div className="text-center mt-8">
+            <div>
+              {amount} {fromCurrency} =
+            </div>
+            <div className="font-bold text-xl">
+              {amountConvert} {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} = {(1 / toCurrencyRate) * fromCurrencyRate}{" "}
+              {fromCurrency}
+            </div>
+          </div>
+        </form>
+      </div>
+      <div className="w-1/2 mx-auto  mt-8">
+        <h2 className="text-lg font-bold text-center">อัตราแลกเปลี่ยนย้อนหลัง</h2>
+        <div className="flex mt-4">
+          <div className="w-1/2">
+            <div>1 วัน</div>
+            <div className="font-bold text-xl">
+              1 {fromCurrency} = {exchangeStatistic?.last1Days?.average}{" "}
+              {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} = {1 / exchangeStatistic?.last1Days?.average}{" "}
+              {fromCurrency}{" "}
+            </div>
+          </div>
+          <div className="w-1/2">
+            <div>7 วัน</div>
+            <div className="font-bold text-xl">
+              1 {fromCurrency} = {exchangeStatistic?.last7Days?.average}{" "}
+              {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} ={1 / exchangeStatistic?.last7Days?.average}{" "}
+              {fromCurrency}{" "}
+            </div>
+          </div>
+        </div>
+        <div className="flex mt-4">
+          <div className="w-1/2">
+            <div>30 วัน</div>
+            <div className="font-bold text-xl">
+              1 {fromCurrency} = {exchangeStatistic?.last30Days?.average}{" "}
+              {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} = {1 / exchangeStatistic?.last30Days?.average}{" "}
+              {fromCurrency}{" "}
+            </div>
+          </div>
+          <div className="w-1/2">
+            <div>60 วัน</div>
+            <div className="font-bold text-xl">
+              1 {fromCurrency} = {exchangeStatistic?.last60Days?.average}{" "}
+              {toCurrency}
+            </div>
+            <div>
+              1 {toCurrency} ={1 / exchangeStatistic?.last60Days?.average}{" "}
+              {fromCurrency}{" "}
+            </div>
+          </div>
+        </div>
+        <div className="mt-4">
+          <ReactECharts option={chartOption} />
+        </div>
+      </div>
+    </div>
+  );
+};
+export default CurrencyConverter7;
