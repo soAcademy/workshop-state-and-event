@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -30,52 +30,56 @@ const User = () => {
 
   return (
     <Container maxWidth="sm">
-      <Box
-        sx={{
-          width: "100%",
-          bgcolor: "background.paper",
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar
-          alt={userProfile?.name}
-          sx={{ m: 1, bgcolor: "secondary.main", width: 64, height: 64 }}
-        />
-        <Typography component="h1" variant="h5">
-          {userProfile?.name}
-        </Typography>
-        <Typography variant="body2" gutterBottom>
-          {userProfile?.bio}
-        </Typography>
-        <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-          {userProfile?.tweets.map((tweet, idx) => (
-            <>
-              <ListItem alignItems="flex-start" key={tweet.id}>
-                <ListItemAvatar>
-                  <Avatar
-                    alt={userProfile?.name}
-                    // src="/static/images/avatar/1.jpg"
-                  />
-                </ListItemAvatar>
-                <ListItemText
-                  primary={tweet.tweetText}
-                  secondary={new Intl.DateTimeFormat("en-US", {
-                    dateStyle: "full",
-                    timeStyle: "long",
-                    timeZone: "Asia/Bangkok",
-                  }).format(Date.parse(tweet.createdAt))}
-                />
-              </ListItem>
-              {idx < userProfile.tweets.length - 1 && (
-                <Divider component="li" />
-              )}
-            </>
-          ))}
-        </List>
-      </Box>
+      {userProfile !== undefined && (
+        <Box
+          sx={{
+            width: "100%",
+            bgcolor: "background.paper",
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar
+            alt={userProfile.name}
+            sx={{ m: 1, bgcolor: "secondary.main", width: 64, height: 64 }}
+          />
+          <Typography component="h1" variant="h5">
+            {userProfile.name}
+          </Typography>
+          <Typography variant="body2" gutterBottom>
+            {userProfile.bio}
+          </Typography>
+          <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+            {userProfile.tweets.map((tweet, idx) => (
+              <React.Fragment key={tweet.id}>
+                <Link to={`/tweet/${tweet.id}`}>
+                  <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                      <Avatar
+                        alt={userProfile.name}
+                        // src="/static/images/avatar/1.jpg"
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={tweet.tweetText}
+                      secondary={new Intl.DateTimeFormat("en-US", {
+                        dateStyle: "full",
+                        timeStyle: "long",
+                        timeZone: "Asia/Bangkok",
+                      }).format(Date.parse(tweet.createdAt))}
+                    />
+                  </ListItem>
+                </Link>
+                {idx < userProfile.tweets.length - 1 && (
+                  <Divider component="li" />
+                )}
+              </React.Fragment>
+            ))}
+          </List>
+        </Box>
+      )}
     </Container>
   );
 };
