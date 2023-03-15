@@ -8,6 +8,7 @@ import { TestUser } from "./Pages/TestUser";
 import { Hashtag } from "./Pages/Hashtag";
 import { Hashtags } from "./Pages/Hashtags";
 import { NewPost } from "./Pages/NewPost";
+import { Post } from "./Pages/Post";
 import { FaPlusCircle } from "react-icons/fa";
 
 export const ContextUserId = createContext();
@@ -59,6 +60,8 @@ export const Twitter = () => {
                   <Route exact path="/newPost" element={<NewPost />} />
                   <Route exact path="/hashtag/:id" element={<Hashtag />} />
                   <Route exact path="/hashtags" element={<Hashtags />} />
+                  <Route exact path="/post/:id" element={<Post />} />
+                  <Route exact path="/reply/:id" element={<NewPost />} />
                 </Routes>
               </div>
             </div>
