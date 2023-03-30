@@ -17,6 +17,7 @@ import Trivia2 from "./Trivia/Trivia2";
 import Trivia3 from "./Trivia/Trivia3";
 import Trivia4 from "./Trivia/Trivia4";
 import Trivia5 from "./Trivia/Trivia5";
+import Trivia6 from "./Trivia/Trivia6";
 import Zipcode1 from "./Zipcode/Zipcode1";
 import Zipcode2 from "./Zipcode/Zipcode2";
 import Zipcode3 from "./Zipcode/Zipcode3";
@@ -49,6 +50,8 @@ import CurrencyConverter7_2 from "./CurrencyConverter/CurrencyConverter7_2";
 import CurrencyConverter7_3 from "./CurrencyConverter/CurrencyConverter7_3";
 import LotteryCheck from "./LotteryCheck/LotteryCheck";
 import Test1 from "./Test1/Test1";
+import LogIn from "./LoginTest/LogIn";
+import Register from "./LoginTest/Register";
 
 const App = () => {
   return (
@@ -57,7 +60,7 @@ const App = () => {
       {/* <ToDoList2 /> */}
       {/* <ToDoList3 /> */}
       {/* <ToDoList4 /> */}
-      <ToDoList5 />
+      {/* <ToDoList5 /> */}
       {/* <Test /> */}
       {/* <Charts1 /> */}
       {/* <Charts2 /> */}
@@ -72,6 +75,7 @@ const App = () => {
       {/* <Trivia3 /> */}
       {/* <Trivia4 /> */}
       {/* <Trivia5 /> */}
+      {/* <Trivia6 /> */}
       {/* <Zipcode8 /> */}
       {/* <DeathCause1 /> */}
       {/* <DeathCause2 /> */}
@@ -97,6 +101,8 @@ const App = () => {
       {/* <Retirement3 /> */}
       {/* <LotteryCheck /> */}
       {/* <Test1 /> */}
+      <LogIn />
+      <Register />
     </>
   );
 };
